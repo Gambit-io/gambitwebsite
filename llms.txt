@@ -1,0 +1,71 @@
+# GambitCo
+
+> Gambit Technology Inc. (GambitCo) builds custom AI workers that solve complex business problems. Founded in 2023 and headquartered in Canada, Gambit deploys AI workers across healthcare, government, logistics, legal, entertainment, and business services.
+
+## What We Do
+
+Gambit builds AI workers — not chatbots, not copilots. AI workers with a job title, a scope, and accountability to an outcome. Each worker is custom-built for a specific business operation and runs 24/7 across web, SMS, voice, and phone channels.
+
+## Key Facts
+
+- 15+ AI workers deployed in production
+- Operations in 100+ countries
+- 100,000+ conversations handled
+- Clients include Cigna, HPE, Town of Vail, Primary People Group, Logistics Alliance, Pulse Law
+- Member of NVIDIA Inception Program
+- SOC 2 compliant infrastructure
+- Founded: 2023
+
+## Products & AI Workers
+
+- **AskEllyn**: AI health benefits navigator for Cigna members. Handles coverage questions, plan comparisons, and claims guidance 24/7.
+- **AskTodd**: AI legal assistant for Pulse Law LLP. Reviews documents, drafts analysis, and supports legal workflows.
+- **AskBibi**: AI educational assistant. Provides tutoring and learning support.
+- **AskEvaMarie**: AI concierge for entertainment and hospitality.
+- **AskAshleigh**: AI assistant for Primary People Group (recruitment/HR).
+- **Harlo**: AI logistics operations worker for Logistics Alliance. Processes freight loads, carrier scorecards, and customer reporting.
+- **Chloe**: AI voice concierge for Vail hospitality (Town of Vail).
+- **Bogan**: AI M&A outreach worker for Spearhead Corporate Development. Researches targets, drafts personalized outreach, and manages follow-up cadences.
+- **Demi**: AI assistant for Primary People Group strategic operations.
+- **AskGambit**: General Gambit AI assistant available at [gambitco.io](http://gambitco.io).
+
+## How It Works
+
+1. Discovery: Gambit identifies the business operation that needs an AI worker.
+2. Build: Custom AI worker is trained on domain knowledge, business rules, and workflows.
+3. Deploy: Worker goes live across chosen channels (web, SMS, voice, phone).
+4. Operate: Worker handles operations 24/7 with human oversight and continuous improvement.
+
+## Industries Served
+
+- Health & Wellness (Cigna, healthcare providers)
+- Government (Town of Vail)
+- Legal & Finance (Pulse Law LLP)
+- Logistics (Logistics Alliance)
+- Entertainment & Hospitality
+- Business Services (recruitment, HR, consulting)
+- M&A Advisory (Spearhead Corporate Development)
+
+## Technology
+
+- Multi-channel deployment: web chat, SMS, voice, phone
+- Enterprise-grade security and compliance
+- Custom knowledge bases per worker
+- Real-time analytics and conversation monitoring
+- Integration with existing business systems
+
+## Contact
+
+- Website: https://gambitco.io
+- Get Started: https://gambitco.io/get-started
+- LinkedIn: https://www.linkedin.com/company/gambit-co/
+- Instagram: https://www.instagram.com/gambitco/
+- YouTube: https://www.youtube.com/@GambitCo
+
+## Further Reading
+
+- Case Studies: https://gambitco.io/case-studies
+- About Us: https://gambitco.io/about-us
+- What is an AI Worker: https://gambitco.io/what-is-an-ai-worker
+- FAQs: https://gambitco.io/faqs
+- Insights: https://gambitco.io/insights
