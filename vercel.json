@@ -2,17 +2,6 @@
   "rewrites": [],
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "gambitco.io"
-        }
-      ],
-      "destination": "https://www.gambitco.io/:path*",
-      "permanent": true
-    },
-    {
       "source": "/#solutions",
       "destination": "/#work",
       "permanent": true
