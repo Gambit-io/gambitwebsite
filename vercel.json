@@ -17,6 +17,11 @@
       "permanent": true
     },
     {
+      "source": "/case-study/askevamarie",
+      "destination": "/case-study/chaddict-and-askevamarie",
+      "permanent": true
+    },
+    {
       "source": "/case-study/askellyn-ai-for-shared-lived-experience",
       "destination": "/case-study/askellyn",
       "permanent": true

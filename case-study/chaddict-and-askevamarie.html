@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambit | Chaddict and AskEvaMarie: AI Support for Addiction and Recovery</title>
+<meta name="description" content="Chaddict and AskEvaMarie are AI workers built for Infiniti Group, shaped around real voices and lived experience to support people considering addiction treatment — 24/7, without judgment.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Gambit Technology Inc.">
+<link rel="canonical" href="https://www.gambitco.io/case-study/chaddict-and-askevamarie">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GambitCo">
+<meta property="og:title" content="Chaddict and AskEvaMarie: AI Support for Addiction and Recovery">
+<meta property="og:description" content="How Gambit built a trust-first AI companion for addiction recovery with Chaddict, removing stigma barriers and connecting people with treatment resources 24/7.">
+<meta property="og:url" content="https://gambitco.io/case-study/chaddict-and-askevamarie">
+<meta property="og:image" content="https://gambitco.io/img/cs-chaddict.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AskEvaMarie - AI addiction recovery support by Gambit">
+<meta property="og:locale" content="en_US">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chaddict and AskEvaMarie: AI Support for Addiction and Recovery">
+<meta name="twitter:description" content="How Gambit built a trust-first AI companion for addiction recovery, removing stigma barriers and connecting people with treatment 24/7.">
+<meta name="twitter:image" content="https://gambitco.io/img/cs-chaddict.png">
+<meta name="twitter:image:alt" content="AskEvaMarie - AI addiction recovery support by Gambit">
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Chaddict and AskEvaMarie: AI Support for Addiction and Recovery",
+  "description": "AskEvaMarie is an AI companion for addiction and recovery built with Chaddict, offering stigma-free 24/7 support grounded in lived experience to help people take the first step.",
+  "image": "https://gambitco.io/img/cs-chaddict.png",
+  "author": { "@type": "Organization", "name": "Gambit Technology Inc.", "url": "https://gambitco.io" },
+  "publisher": { "@type": "Organization", "name": "Gambit Technology Inc.", "url": "https://gambitco.io", "logo": { "@type": "ImageObject", "url": "https://gambitco.io/img/gambit-logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gambitco.io/case-study/chaddict-and-askevamarie" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gambitco.io" },
+    { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://gambitco.io/case-studies" },
+    { "@type": "ListItem", "position": 3, "name": "Chaddict and AskEvaMarie: AI Support for Addiction and Recovery" }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a; --ink: #141414; --secondary: #52525b;
+  --muted: #a1a1aa; --border: #e4e4e7; --border-light: #f0f0f2;
+  --page: #fafafa; --white: #ffffff;
+  --font: 'General Sans', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { font-family: var(--font); background: var(--page); color: var(--ink); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; background: var(--white); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; display: inline-block; transition: transform 0.3s var(--ease); }
+.logo:hover { transform: translateX(6px); }
+.logo img { height: 24px; width: auto; display: block; }
+.footer-logo-img { height: 20px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.5; }
+nav { display: flex; align-items: center; gap: 4px; }
+nav a { font-size: 14px; font-weight: 450; color: var(--secondary); text-decoration: none; padding: 6px 16px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.btn-outline-h { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 100px; background: transparent; border: 1px solid var(--border); color: var(--secondary); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+.btn-outline-h:hover { opacity: 0.75; }
+.btn-solid-h { display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 100px; background: var(--ink); border: 1px solid var(--ink); color: var(--white); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+.btn-solid-h:hover { opacity: 0.75; }
+
+/* ARTICLE */
+.article-page { max-width: 720px; margin: 0 auto; padding: 120px 32px 0; flex: 1; }
+
+.article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; margin-bottom: 32px; transition: color 0.15s; }
+.article-back:hover { color: var(--ink); }
+
+.article-header { margin-bottom: 40px; }
+.article-header h1 { font-size: 36px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--muted); }
+.article-meta-divider { width: 1px; height: 14px; background: var(--border); }
+
+/* Hero image */
+.article-hero {
+  width: 100%; border-radius: 14px; overflow: hidden;
+  margin-bottom: 40px; background: var(--border);
+  aspect-ratio: 16 / 9;
+}
+.article-hero img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* Body */
+.article-body h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--border-light); }
+.article-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.article-body h3 { font-size: 17px; font-weight: 500; margin-top: 32px; margin-bottom: 12px; }
+.article-body p { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 16px; }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 24px; }
+.article-body li { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 8px; }
+.article-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.15s; }
+.article-body a:hover { opacity: 0.75; }
+.article-body strong { color: var(--ink); font-weight: 500; }
+.article-body blockquote { border-left: 2px solid var(--border); padding-left: 20px; margin: 24px 0; }
+.article-body blockquote p { color: var(--muted); font-style: italic; }
+.article-body hr { border: none; height: 1px; background: var(--border); margin: 32px 0; }
+
+/* Inline image */
+.article-body .inline-img {
+  width: 100%; border-radius: 12px; overflow: hidden;
+  margin: 32px 0; background: var(--border);
+}
+.article-body .inline-img img { width: 100%; display: block; }
+.article-body .inline-img figcaption { font-size: 12px; color: var(--muted); padding: 10px 0 0; }
+
+/* Share / bottom */
+.article-footer { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding-bottom: 0; }
+.article-author-block { display: flex; align-items: center; gap: 12px; }
+.article-author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--border); overflow: hidden; }
+.article-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.article-author-name { font-size: 14px; font-weight: 500; }
+.article-author-role { font-size: 12px; color: var(--muted); }
+.article-share { font-size: 13px; color: var(--muted); }
+
+/* FOOTER */
+.site-footer { background: var(--black); padding: 40px 32px; margin-top: 80px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-left { display: flex; align-items: center; gap: 16px; }
+.footer-logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.6); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+.footer-legal { display: flex; align-items: center; gap: 8px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.8); }
+.footer-legal span { font-size: 12px; color: rgba(255,255,255,0.4); }
+.footer-center { display: flex; align-items: center; gap: 24px; }
+.footer-center a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-center a:hover { color: rgba(255,255,255,0.9); }
+.footer-right { display: flex; align-items: center; gap: 16px; }
+.footer-socials { display: flex; align-items: center; gap: 10px; }
+.footer-social { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); transition: background 0.15s; text-decoration: none; }
+.footer-social:hover { background: rgba(255,255,255,0.1); }
+.footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+/* RESPONSIVE */
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.menu-toggle svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 1.5; }
+
+@media (max-width: 1024px) {
+  .header-inner { padding: 0 24px; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px 24px 24px; border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.06); z-index: 99; }
+  nav.open { display: flex; }
+  nav a { padding: 12px 0; font-size: 16px; }
+  .header-actions { gap: 8px; }
+  .btn-outline-h { display: none; }
+  .header-inner { padding: 0 20px; }
+  .site-footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-left { flex-direction: column; gap: 6px; }
+  .footer-center { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .footer-right { flex-direction: column; gap: 12px; align-items: center; }
+  .footer-socials { justify-content: center; }
+  .cta-section { padding: 60px 20px; margin-top: 48px; }
+  .cta-inner h2 { font-size: 28px; }
+  .cta-buttons { flex-direction: column; gap: 8px; }
+  .cta-primary, .cta-outline { text-align: center; justify-content: center; }
+  .article-page { padding: 100px 20px 0; }
+  .article-header h1 { font-size: 28px; }
+  .article-meta { flex-wrap: wrap; gap: 8px; }
+  .article-footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .article-header h1 { font-size: 24px; }
+  .article-hero { border-radius: 10px; }
+}
+/* FOCUS STATES */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.btn-outline-h:focus-visible, .btn-solid-h:focus-visible, .hero-btn-primary:focus-visible, .hero-btn-ghost:focus-visible, .cta-primary:focus-visible, .cta-outline:focus-visible { outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-outline-h">Contact</a><a href="/#askgambit" class="btn-solid-h">Ask Gambit</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
+
+<!-- ARTICLE -->
+<main class="article-page">
+
+  <a href="/case-studies" class="article-back">&larr; Back to Case Studies</a>
+
+  <div class="article-header">
+    <h1>Chaddict and AskEvaMarie: AI Support for Addiction and Recovery</h1>
+    <div class="article-meta">
+      <span>Alex Bukowski</span>
+      <div class="article-meta-divider"></div>
+      <span>Addiction &amp; Recovery &middot; Chaddict and AskEvaMarie</span>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="article-hero">
+    <img src="/img/cs-chaddict.png" alt="AskEvaMarie" loading="lazy">
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <div class="article-body">
+
+    <p><a href="https://chaddict.com/" target="_blank" rel="noopener noreferrer">Chaddict</a> and <a href="https://askevamarie.com/" target="_blank" rel="noopener noreferrer">AskEvaMarie</a> are AI workers built for <a href="https://www.infinitigroupllc.com/" target="_blank" rel="noopener noreferrer">Infiniti Group</a>, an operator of addiction treatment centers in Southern California. Each one is shaped around a real person's voice and lived experience, so the conversations feel human from the first message.</p>
+
+    <p>Most people who need help aren't ready to call a treatment center. These workers meet them where they are.</p>
+
+    <h2>The Challenge</h2>
+
+    <p>The people most likely to benefit from treatment are often the least likely to reach out. They show up at odd hours, carrying shame or fear, and one wrong tone ends the conversation before it starts. A generic chatbot doesn't work here. Neither does an aggressive push toward intake.</p>
+
+    <p>Infiniti Group needed a way to reach more people without losing the warmth that makes those early conversations possible. They also needed to respect the timing. For most people, the first step isn't booking treatment. It's talking to someone who doesn't make them feel worse for asking.</p>
+
+    <p>Their team couldn't be available around the clock for those conversations at scale. And the window when someone is open to help doesn't wait for business hours.</p>
+
+    <h2>The Workers</h2>
+
+    <p>Chaddict and AskEvaMarie each run as a distinct AI personality, built around a real voice and backstory. Both provide empathetic, non-judgmental support and create a path to treatment when the person is ready.</p>
+
+    <p>Chaddict is based on Chad Carlsen, the CEO of <a href="https://www.infinitigroupllc.com/" target="_blank" rel="noopener noreferrer">Infiniti Group</a>, who has worked in behavioral health since 2000 and co-founded <a href="https://www.hopebythesea.com/" target="_blank" rel="noopener noreferrer">Hope by the Sea</a>. The worker draws on that background to deliver grounded, practical support, calm and direct, without pressure.</p>
+
+    <figure class="inline-img">
+      <img src="/img/Chaddict%20Dashboard.png" alt="Chaddict AI worker dashboard" loading="lazy">
+    </figure>
+
+    <p>AskEvaMarie reflects the voice of Natalie Eva Marie, former WWE wrestler and CEO of <a href="https://www.nemrecoverycenters.com/" target="_blank" rel="noopener noreferrer">NEM Recovery Centers</a>. The worker offers straight talk and real perspective, shaped by her own recovery experience and her work in the field.</p>
+
+    <figure class="inline-img">
+      <img src="/img/AskEvaMarie%20Dashboard.png" alt="AskEvaMarie AI worker dashboard" loading="lazy">
+    </figure>
+
+    <p>Both workers share the same approach:</p>
+
+    <ul>
+      <li><strong>Conversation first:</strong> Responds with empathy, asks thoughtful questions, and meets the user where they are. No scripts, no pressure.</li>
+      <li><strong>Judgment-free support:</strong> Designed for people who feel ashamed, defensive, or unsure. The tone stays steady regardless of what the user shares.</li>
+      <li><strong>Timely next steps:</strong> When the user's messages point toward readiness, the worker gently introduces the option to connect with treatment support, including sharing a phone number to speak with someone directly.</li>
+      <li><strong>Always available:</strong> Runs around the clock, so the conversation can happen when the person is actually ready to have it.</li>
+    </ul>
+
+    <h2>The Impact</h2>
+
+    <p>Chaddict and AskEvaMarie have supported thousands of users and created a consistent, human front door for people considering treatment. One user who initially said they didn't want help stayed engaged for more than 350 messages. That level of sustained conversation almost never happens in traditional intake flows.</p>
+
+    <p>When the tone is right and the pressure is off, people stay. And when they stay long enough, some of them ask for help.</p>
+
+    <p>The partnership with Infiniti Group continues today. The work has also helped clarify what it takes to build AI for high-empathy, high-stakes situations.</p>
+
+    <blockquote>
+      <p>"We built these workers for the conversations that happen before someone is ready. That's where the difference gets made."</p>
+    </blockquote>
+
+  </div>
+
+  <!-- AUTHOR BLOCK -->
+  <div class="article-footer">
+    <div class="article-author-block">
+      <div class="article-author-avatar"><img src="/img/team-alex.jpg" alt="Alex Bukowski" loading="lazy"></div>
+      <div>
+        <div class="article-author-name">Alex Bukowski</div>
+        <div class="article-author-role">Head of Content, Gambit</div>
+      </div>
+    </div>
+    <div class="article-share">Share this article</div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
+    <div class="footer-center"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
+    <div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
+document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
+</script>
+</body>
+</html>
