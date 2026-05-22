@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambit | GillisOS: The AI Worker Transforming Hotel Sales Outreach</title>
+<meta name="description" content="GillisOS is an AI outbound sales worker for Gillis Sales that finds hotel prospects, researches market signals, and sends personalized emails at scale — generating qualified leads from day one.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Gambit Technology Inc.">
+<link rel="canonical" href="https://www.gambitco.io/case-study/gillisos">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GambitCo">
+<meta property="og:title" content="GillisOS: The AI Worker Transforming Hotel Sales Outreach">
+<meta property="og:description" content="How Gambit built an AI outbound sales worker for Gillis Sales that scans for prospect signals, identifies contacts, and sends personalized outreach automatically — with 5–8% conversion rates from day one.">
+<meta property="og:url" content="https://gambitco.io/case-study/gillisos">
+<meta property="og:image" content="https://gambitco.io/img/GillisOS%20Case%20Study%20Feature%20Image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GillisOS - AI outbound sales worker for hotel sales by Gambit">
+<meta property="og:locale" content="en_US">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GillisOS: The AI Worker Transforming Hotel Sales Outreach">
+<meta name="twitter:description" content="How Gambit built an AI outbound sales worker for Gillis Sales that scans for prospect signals, identifies contacts, and sends personalized outreach automatically.">
+<meta name="twitter:image" content="https://gambitco.io/img/GillisOS%20Case%20Study%20Feature%20Image.png">
+<meta name="twitter:image:alt" content="GillisOS - AI outbound sales worker for hotel sales by Gambit">
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GillisOS: The AI Worker Transforming Hotel Sales Outreach",
+  "description": "GillisOS is an AI outbound sales worker for Gillis Sales that finds hotel prospects, researches market signals, and sends personalized emails at scale — generating qualified leads from day one.",
+  "image": "https://gambitco.io/img/GillisOS%20Case%20Study%20Feature%20Image.png",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Bukowski",
+    "jobTitle": "Head of Content",
+    "url": "https://gambitco.io/about-us"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gambit Technology Inc.",
+    "url": "https://gambitco.io",
+    "logo": { "@type": "ImageObject", "url": "https://gambitco.io/img/gambit-logo.png" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gambitco.io/case-study/gillisos" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gambitco.io" },
+    { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://gambitco.io/case-studies" },
+    { "@type": "ListItem", "position": 3, "name": "GillisOS: The AI Worker Transforming Hotel Sales Outreach" }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a; --ink: #141414; --secondary: #52525b;
+  --muted: #a1a1aa; --border: #e4e4e7; --border-light: #f0f0f2;
+  --page: #fafafa; --white: #ffffff;
+  --font: 'General Sans', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { font-family: var(--font); background: var(--page); color: var(--ink); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; background: var(--white); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; display: inline-block; transition: transform 0.3s var(--ease); }
+.logo:hover { transform: translateX(6px); }
+.logo img { height: 24px; width: auto; display: block; }
+.footer-logo-img { height: 20px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.5; }
+nav { display: flex; align-items: center; gap: 4px; }
+nav a { font-size: 14px; font-weight: 450; color: var(--secondary); text-decoration: none; padding: 6px 16px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.btn-outline-h { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 100px; background: transparent; border: 1px solid var(--border); color: var(--secondary); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+.btn-outline-h:hover { opacity: 0.75; }
+.btn-solid-h { display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 100px; background: var(--ink); border: 1px solid var(--ink); color: var(--white); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+.btn-solid-h:hover { opacity: 0.75; }
+
+/* ARTICLE */
+.article-page { max-width: 720px; margin: 0 auto; padding: 120px 32px 0; flex: 1; }
+
+.article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; margin-bottom: 32px; transition: color 0.15s; }
+.article-back:hover { color: var(--ink); }
+
+.article-header { margin-bottom: 40px; }
+.article-header h1 { font-size: 36px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--muted); }
+.article-meta-divider { width: 1px; height: 14px; background: var(--border); }
+
+/* Hero image */
+.article-hero {
+  width: 100%; border-radius: 14px; overflow: hidden;
+  margin-bottom: 40px; background: var(--border);
+  aspect-ratio: 16 / 9;
+}
+.article-hero img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* Body */
+.article-body h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--border-light); }
+.article-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.article-body h3 { font-size: 17px; font-weight: 500; margin-top: 32px; margin-bottom: 12px; }
+.article-body p { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 16px; }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 24px; }
+.article-body li { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 8px; }
+.article-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.15s; }
+.article-body a:hover { opacity: 0.75; }
+.article-body strong { color: var(--ink); font-weight: 500; }
+.article-body blockquote { border-left: 2px solid var(--border); padding-left: 20px; margin: 24px 0; }
+.article-body blockquote p { color: var(--muted); font-style: italic; }
+.article-body hr { border: none; height: 1px; background: var(--border); margin: 32px 0; }
+
+/* Inline image */
+.article-body .inline-img {
+  width: 100%; border-radius: 12px; overflow: hidden;
+  margin: 32px 0; background: var(--border);
+}
+.article-body .inline-img img { width: 100%; display: block; }
+.article-body .inline-img figcaption { font-size: 12px; color: var(--muted); padding: 10px 0 0; }
+
+/* Share / bottom */
+.article-footer { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding-bottom: 0; }
+.article-author-block { display: flex; align-items: center; gap: 12px; }
+.article-author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--border); overflow: hidden; }
+.article-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.article-author-name { font-size: 14px; font-weight: 500; }
+.article-author-role { font-size: 12px; color: var(--muted); }
+.article-share { font-size: 13px; color: var(--muted); }
+
+/* FOOTER */
+.site-footer { background: var(--black); padding: 40px 32px; margin-top: 80px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-left { display: flex; align-items: center; gap: 16px; }
+.footer-logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.6); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+.footer-legal { display: flex; align-items: center; gap: 8px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.8); }
+.footer-legal span { font-size: 12px; color: rgba(255,255,255,0.4); }
+.footer-center { display: flex; align-items: center; gap: 24px; }
+.footer-center a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-center a:hover { color: rgba(255,255,255,0.9); }
+.footer-right { display: flex; align-items: center; gap: 16px; }
+.footer-socials { display: flex; align-items: center; gap: 10px; }
+.footer-social { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); transition: background 0.15s; text-decoration: none; }
+.footer-social:hover { background: rgba(255,255,255,0.1); }
+.footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+/* RESPONSIVE */
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.menu-toggle svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 1.5; }
+
+@media (max-width: 1024px) {
+  .header-inner { padding: 0 24px; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px 24px 24px; border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.06); z-index: 99; }
+  nav.open { display: flex; }
+  nav a { padding: 12px 0; font-size: 16px; }
+  .header-actions { gap: 8px; }
+  .btn-outline-h { display: none; }
+  .header-inner { padding: 0 20px; }
+  .site-footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-left { flex-direction: column; gap: 6px; }
+  .footer-center { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .footer-right { flex-direction: column; gap: 12px; align-items: center; }
+  .footer-socials { justify-content: center; }
+  .cta-section { padding: 60px 20px; margin-top: 48px; }
+  .cta-inner h2 { font-size: 28px; }
+  .cta-buttons { flex-direction: column; gap: 8px; }
+  .cta-primary, .cta-outline { text-align: center; justify-content: center; }
+  .article-page { padding: 100px 20px 0; }
+  .article-header h1 { font-size: 28px; }
+  .article-meta { flex-wrap: wrap; gap: 8px; }
+  .article-footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .article-header h1 { font-size: 24px; }
+  .article-hero { border-radius: 10px; }
+}
+/* FOCUS STATES */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.btn-outline-h:focus-visible, .btn-solid-h:focus-visible, .hero-btn-primary:focus-visible, .hero-btn-ghost:focus-visible, .cta-primary:focus-visible, .cta-outline:focus-visible { outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-outline-h">Contact</a><a href="/#askgambit" class="btn-solid-h">Ask Gambit</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
+
+<!-- ARTICLE -->
+<main class="article-page">
+
+  <a href="/case-studies" class="article-back">&larr; Back to Case Studies</a>
+
+  <div class="article-header">
+    <h1>GillisOS: The AI Worker Transforming Hotel Sales Outreach</h1>
+    <div class="article-meta">
+      <span>Alex Bukowski</span>
+      <div class="article-meta-divider"></div>
+      <span>Hospitality &middot; Gillis Sales</span>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="article-hero">
+    <img src="/img/GillisOS%20Case%20Study%20Feature%20Image.png" alt="GillisOS - AI outbound sales worker for hotel sales" loading="lazy">
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <div class="article-body">
+
+    <p>GillisOS is an AI worker built to help hotel sales teams find and reach potential clients faster than any human team could on their own. Developed for <strong>Gillis Sales</strong>, a firm with over 20 years of experience in hotel sales, GillisOS scans the market for signs that a company will need hotel rooms, identifies the right people to contact, and sends them personalized outreach emails automatically.</p>
+
+    <h2>The Challenge</h2>
+
+    <p>When a hotel wants to attract more corporate clients, someone has to go find them. That means figuring out which companies have employees traveling to the area, tracking down the right contact at each company, and sending a compelling email introducing the hotel. It's time-consuming, research-heavy work, and it has to be done at high volume to generate results.</p>
+
+    <p>The sales team at Gillis Sales was skilled at developing relationships with prospects once the conversation started. The harder problem was generating a large number of prospects quickly. Their hotel clients wanted to see early momentum, and building that momentum through manual research and outreach simply took too long.</p>
+
+    <p>Gillis Sales was also growing. The natural solution to needing more outreach was hiring more people, but that approach has limits. The team needed a way to scale their output without continuously expanding their headcount.</p>
+
+    <h2>The Worker</h2>
+
+    <p>GillisOS works as a dedicated outbound sales specialist for every Regional Director of Sales at Gillis Sales. A Regional Director of Sales (RDOS) is the person responsible for bringing new hotel clients into the business. GillisOS handles the research and outreach work that would otherwise consume most of their day.</p>
+
+    <p>The worker is built on the knowledge and sales philosophy of Tammy Gillis, the founder of Gillis Sales. Her approach, developed over two decades and documented across hundreds of materials including her own book, shapes how GillisOS communicates and which opportunities it pursues.</p>
+
+    <ul>
+      <li><strong>Finding signals:</strong> An RDOS tells GillisOS which hotel to focus on. GillisOS then searches within a five-mile radius of that hotel for signs that companies will have people traveling to the area — construction projects, government contracts, corporate expansions, tourism activity, and similar indicators. Each signal represents a potential reason for hotel bookings.</li>
+      <li><strong>Identifying prospects and writing outreach:</strong> Once GillisOS identifies a relevant signal, it finds the specific companies and individuals connected to it. It then writes a personalized email for each prospect, referencing what that person's organization is working on and why the hotel could be a good fit. These emails are sent through a persona called Sam — an AI personality designed to communicate in a warm, knowledgeable, and professional way.</li>
+      <li><strong>Routing and follow-up through Salesforce:</strong> All activity is connected to Salesforce, the customer relationship management platform Gillis Sales uses. Tasks and follow-ups are created automatically. When a prospect responds, they are routed to the right human sales rep so the conversation can continue naturally.</li>
+    </ul>
+
+    <figure class="inline-img">
+      <img src="/img/GillisOS%20AI%20Worker%20Dashboard.png" alt="GillisOS AI Worker Dashboard" loading="lazy">
+    </figure>
+
+    <p>GillisOS gives RDOS professionals the ability to reach a much larger number of prospects without spending their time on research. It handles the outreach so they can focus on the conversations that matter most.</p>
+
+    <h2>The Impact</h2>
+
+    <p>GillisOS started generating leads within the first few days of launching, which exceeded expectations. Conversion rates have ranged from 5 to 8 percent depending on the hotel — a strong result for this type of cold outreach.</p>
+
+    <p>What surprised the team most was not just the volume of responses, but the quality of them. Prospects were engaging with Sam as though they were corresponding with a real person. The first reply the team received was a prospect addressing Sam by name and asking to set up a call. That moment captured what GillisOS makes possible: outreach that feels personal and considered, even at scale.</p>
+
+    <p>For the hotels Gillis Sales represents, the difference is visible early. Clients see new leads coming in quickly, which builds confidence and demonstrates traction in a way that previously took much longer to achieve.</p>
+
+    <blockquote>
+      <p>"For too long, hotel sales has relied on the same manual playbook. GillisOS shows what becomes possible when you give a great sales team the tools to reach far more people, without losing the human touch that makes those connections meaningful."</p>
+    </blockquote>
+
+  </div>
+
+  <!-- AUTHOR BLOCK -->
+  <div class="article-footer">
+    <div class="article-author-block">
+      <div class="article-author-avatar"><img src="/img/team-alex.jpg" alt="Alex Bukowski" loading="lazy"></div>
+      <div>
+        <div class="article-author-name">Alex Bukowski</div>
+        <div class="article-author-role">Head of Content, Gambit</div>
+      </div>
+    </div>
+    <div class="article-share">Share this article</div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
+    <div class="footer-center"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
+    <div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
+document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
+</script>
+</body>
+</html>
