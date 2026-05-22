@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Emergency Status | Vail, CO</title>
+<style>
+  :root {
+    /* Vail.gov palette (matched from the live site) */
+    --teal:        #1f6b7a;   /* petrol blue: footer, headers, bands */
+    --teal-dark:   #14515e;
+    --teal-darker: #0e3f49;
+    --olive:       #7e9a3b;   /* avocado green: headings, buttons, accents */
+    --olive-dark:  #6a8431;
+    --ink:         #2b2b2b;
+    --body:        #444;
+    --muted:       #6f7378;
+    --rule:        #dcdedd;
+    --paper:       #ffffff;
+    --wash:        #f4f5f4;
+
+    /* status accent, overridden per level */
+    --status:      #7e9a3b;
+    --status-bg:   #eef2e3;
+    --status-bd:   #cdd9a8;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--body);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  a { color: var(--teal); }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- demo control strip (live-demo only) ---------- */
+  .demo-strip {
+    background: #2a2a2a; color: #eee; font-size: 12.5px;
+    font-family: Arial, sans-serif; padding: 9px 0;
+  }
+  .demo-strip .wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .demo-strip .label { color: #f0c14b; letter-spacing: .08em; font-weight: 700; text-transform: uppercase; font-size: 11px; }
+  .demo-strip button {
+    font: inherit; font-weight: 600; font-size: 12px;
+    border: 1px solid #555; background: #3a3a3a; color: #ddd;
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; transition: all .15s;
+  }
+  .demo-strip button:hover { background: #4a4a4a; }
+  .demo-strip button.active { background: #f0c14b; color: #1a1a1a; border-color: #f0c14b; }
+
+  /* ---------- top header / nav ---------- */
+  header.site {
+    background: #fff; border-bottom: 1px solid var(--rule);
+  }
+  .site .wrap {
+    display: flex; align-items: center; gap: 38px;
+    padding: 20px 28px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; flex: none; }
+  .logo .mark {
+    width: 58px; height: 58px; flex: none; position: relative;
+  }
+  .logo .mark svg { width: 100%; height: 100%; display: block; }
+  .logo .name {
+    font-size: 22px; letter-spacing: .14em; color: var(--ink);
+    font-weight: 400; text-transform: uppercase;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  }
+  nav.main { display: flex; gap: 40px; flex: 1; }
+  nav.main a {
+    text-decoration: none; color: var(--ink); font-weight: 700;
+    letter-spacing: .04em; font-size: 15.5px; padding-bottom: 6px;
+    text-transform: uppercase;
+  }
+  nav.main a.active { border-bottom: 4px solid var(--olive); }
+  .searchbox {
+    flex: none; display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid #c7c9c8; padding: 6px 4px; min-width: 230px;
+    color: var(--muted);
+  }
+  .searchbox input {
+    border: 0; outline: 0; font: inherit; color: var(--ink);
+    background: transparent; flex: 1; font-size: 15px;
+  }
+  .searchbox .mag { color: var(--teal); font-size: 17px; }
+
+  /* ---------- breadcrumb + page title ---------- */
+  .page-top { padding: 28px 0 6px; }
+  .crumb { color: var(--teal); font-size: 14px; text-decoration: underline; }
+  h1.page {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--olive); font-size: 40px; font-weight: 700;
+    margin: 6px 0 0; letter-spacing: .01em;
+  }
+
+  /* ---------- status banner ---------- */
+  .status-banner {
+    background: var(--status-bg); border: 1px solid var(--status-bd);
+    border-left: 6px solid var(--status); border-radius: 3px;
+    padding: 18px 22px; margin: 22px 0 26px;
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .status-chip {
+    flex: none; background: var(--status); color: #fff;
+    font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+    padding: 9px 15px; border-radius: 3px; font-size: 14px; white-space: nowrap;
+  }
+  .status-text h2 { margin: 0 0 3px; font-size: 17px; color: var(--status); font-family: "Trebuchet MS", sans-serif; }
+  .status-text p  { margin: 0; color: var(--ink); font-size: 15.5px; }
+  .status-text .updated { margin-top: 8px; font-size: 12.5px; color: var(--muted); }
+
+  /* ---------- content ---------- */
+  main { padding-bottom: 50px; }
+  .incident-name {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .1em;
+    color: var(--muted); margin: 0 0 2px;
+  }
+  h3.incident {
+    font-family: "Trebuchet MS", sans-serif; color: var(--ink);
+    font-size: 26px; font-weight: 700; margin: 0 0 20px;
+  }
+
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 36px; margin-bottom: 28px; }
+  .fact { border-top: 2px solid var(--rule); padding-top: 7px; }
+  .fact .k { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+  .fact .v { font-size: 16px; font-weight: 700; color: var(--ink); }
+
+  section.block { margin-bottom: 24px; }
+  section.block h4 {
+    font-family: "Trebuchet MS", sans-serif; color: var(--teal);
+    font-size: 14px; text-transform: uppercase; letter-spacing: .07em;
+    border-bottom: 1px solid var(--rule); padding-bottom: 6px; margin: 0 0 10px;
+  }
+  section.block ul { margin: 0; padding-left: 20px; }
+  section.block li { margin-bottom: 6px; font-size: 15.5px; color: var(--body); }
+  .callout {
+    background: #fff7e8; border-left: 4px solid #e0a93b;
+    padding: 12px 16px; font-size: 14.5px; margin-bottom: 14px; color: var(--ink);
+  }
+
+  .source-box {
+    background: var(--wash); border: 1px solid var(--rule);
+    border-radius: 3px; padding: 18px 20px; margin-top: 6px;
+  }
+  .source-box h4 { color: var(--teal); font-family: "Trebuchet MS", sans-serif; font-size: 15px; margin: 0 0 8px; }
+  .source-box p { margin: 0 0 8px; font-size: 15px; }
+  .source-box .note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+
+  /* ---------- footer ---------- */
+  footer.site {
+    background: var(--teal); color: #d7e4e7; margin-top: 10px;
+  }
+  footer.site .cols {
+    display: grid; grid-template-columns: 1.1fr 1.4fr 1fr; gap: 40px;
+    padding: 40px 28px 30px;
+  }
+  footer.site h5 {
+    color: #fff; font-family: "Trebuchet MS", sans-serif; font-size: 21px;
+    font-weight: 700; margin: 0 0 16px;
+  }
+  footer.site a { color: #d7e4e7; text-decoration: none; }
+  footer.site a:hover { color: #fff; text-decoration: underline; }
+  footer.site .contact div { margin-bottom: 4px; font-size: 14.5px; }
+  .our-sites { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; font-size: 14.5px; }
+  .subscribe input {
+    width: 100%; padding: 11px 12px; border: 0; border-radius: 2px;
+    font: inherit; font-style: italic; color: #777; margin-bottom: 10px;
+  }
+  .subscribe button {
+    background: var(--teal-darker); color: #fff; border: 0; border-radius: 2px;
+    padding: 12px 26px; font: inherit; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; cursor: pointer; font-size: 13px;
+  }
+  .footer-strip {
+    background: var(--teal-darker); color: #9fc0c6; text-align: center;
+    font-size: 12px; padding: 13px; letter-spacing: .02em;
+  }
+  .footer-strip strong { color: #cfe2e5; font-weight: 600; }
+
+  .hidden { display: none; }
+
+  @media (max-width: 880px) {
+    .site .wrap { flex-wrap: wrap; gap: 18px; }
+    nav.main { order: 3; width: 100%; gap: 22px; flex-wrap: wrap; }
+    .searchbox { min-width: 0; flex: 1; }
+    .facts { grid-template-columns: 1fr; }
+    footer.site .cols { grid-template-columns: 1fr; gap: 28px; }
+    .our-sites { grid-template-columns: 1fr; }
+    h1.page { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- DEMO CONTROL (live-demo only; not part of the real page) -->
+  <div class="demo-strip">
+    <div class="wrap">
+      <span class="label">Demo control</span>
+      <span>Set status:</span>
+      <button data-level="0" onclick="setLevel(0)">0 · Normal</button>
+      <button data-level="1" onclick="setLevel(1)">1 · Be Ready</button>
+      <button data-level="2" onclick="setLevel(2)">2 · Be Set</button>
+      <button data-level="3" onclick="setLevel(3)">3 · Go</button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site">
+    <div class="wrap">
+      <div class="logo">
+        <div class="mark">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- simple mountain + leaf mark echoing the Vail logo -->
+            <circle cx="50" cy="46" r="42" fill="none" stroke="#7e9a3b" stroke-width="2.5"/>
+            <path d="M14 60 L38 26 L52 46 L62 34 L86 60 Z" fill="#2f7fb5"/>
+            <path d="M14 60 Q40 52 86 60 L86 64 Q50 56 14 64 Z" fill="#7e9a3b"/>
+            <path d="M58 30 Q72 24 78 36 Q66 40 58 30 Z" fill="#7e9a3b"/>
+          </svg>
+        </div>
+        <span class="name">Town of Vail</span>
+      </div>
+      <nav class="main">
+        <a href="#" class="active">Government</a>
+        <a href="#">Community</a>
+        <a href="#">Business</a>
+        <a href="#">Visiting</a>
+      </nav>
+      <div class="searchbox">
+        <input type="text" placeholder="Search..." aria-label="Search">
+        <span class="mag">&#9906;</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <div class="wrap page-top">
+    <a class="crumb" href="#">Government »</a>
+    <h1 class="page">Emergency Status</h1>
+  </div>
+
+  <!-- STATUS BANNER -->
+  <div class="wrap">
+    <div class="status-banner" id="banner">
+      <div class="status-chip" id="chip">BE READY</div>
+      <div class="status-text">
+        <h2 id="status-head">Pre-evacuation readiness notice</h2>
+        <p id="status-sub">A wildfire is active in the White River National Forest west and north of town. No evacuation orders are in place. Be ready.</p>
+        <div class="updated" id="updated">Last updated: Saturday, 12:04 PM MDT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="wrap">
+
+    <!-- LEVEL 0 -->
+    <div class="level" id="level-0">
+      <p class="incident-name">Current conditions</p>
+      <h3 class="incident">No active incident</h3>
+      <p>There are currently no active wildfire incidents affecting the Town of Vail. This page is monitored by the Town of Vail and will be updated if conditions change.</p>
+      <section class="block">
+        <h4>Stay prepared</h4>
+        <ul>
+          <li>Know your evacuation zone and sign up for emergency alerts.</li>
+          <li>Read the Town's Emergency Evacuation Plan at vail.gov/evac.</li>
+          <li>Prepare a go-bag and a plan for your household and pets.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- LEVEL 1 -->
+    <div class="level" id="level-1">
+      <p class="incident-name">Skawak Creek Fire</p>
+      <h3 class="incident">Be Ready: Pre-Evacuation</h3>
+      <div class="facts">
+        <div class="fact"><div class="k">Size</div><div class="v">3&ndash;5 acres</div></div>
+        <div class="fact"><div class="k">Location</div><div class="v">West &amp; north of town, White River N.F.</div></div>
+        <div class="fact"><div class="k">Lead agency</div><div class="v">U.S. Forest Service</div></div>
+        <div class="fact"><div class="k">Containment</div><div class="v">0%, access limited</div></div>
+      </div>
+      <section class="block">
+        <h4>What this means for residents</h4>
+        <ul>
+          <li>No evacuation orders are in place. This is a pre-evacuation readiness notice.</li>
+          <li>Pre-evacuation plans are being prepared by the Town of Vail.</li>
+          <li>Residents should be ready in case conditions change.</li>
+        </ul>
+      </section>
+      <section class="block">
+        <h4>What you can do now</h4>
+        <ul>
+          <li>Confirm your evacuation zone and keep your phone on for alerts.</li>
+          <li>Prepare a go-bag and a plan for pets and family members.</li>
+          <li>Weekend event schedules are under review and may change.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="level hidden" id="level-2">
+      <p class="incident-name">Skawak Creek Fire</p>
+      <h3 class="incident">Be Set: Evacuation Warning</h3>
+      <div class="facts">
+        <div class="fact"><div class="k">Size</div><div class="v">~40 acres</div></div>
+        <div class="fact"><div class="k">Aircraft</div><div class="v">Limited by terrain</div></div>
+        <div class="fact"><div class="k">Wind</div><div class="v">West-northwest, strengthening</div></div>
+        <div class="fact"><div class="k">Outlook</div><div class="v">Vail may be impacted within 24 hrs</div></div>
+      </div>
+      <div class="callout"><strong>Evacuation zones are being identified.</strong> Residents in identified zones should be packed and ready to leave immediately when notified. Early evacuation and a precautionary power shutdown are being considered.</div>
+      <section class="block">
+        <h4>If you are in an identified zone</h4>
+        <ul>
+          <li>Be packed and ready to leave on short notice.</li>
+          <li>Do not return to any zone once it has been evacuated.</li>
+          <li>Make arrangements for pets now. Do not wait.</li>
+        </ul>
+      </section>
+      <section class="block">
+        <h4>Traffic &amp; parking</h4>
+        <ul>
+          <li>Evacuation traffic routing is being set up.</li>
+          <li>The top deck of parking structures is being cleared early to ease exit congestion.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div class="level hidden" id="level-3">
+      <p class="incident-name">Skawak Creek Fire</p>
+      <h3 class="incident">GO: Evacuation Order In Effect</h3>
+      <div class="facts">
+        <div class="fact"><div class="k">Size</div><div class="v">~4,400 acres</div></div>
+        <div class="fact"><div class="k">Power</div><div class="v">Shut off in affected areas</div></div>
+        <div class="fact"><div class="k">Highway</div><div class="v">I-70 westbound closed</div></div>
+        <div class="fact"><div class="k">Direction</div><div class="v">Evacuate to the EAST</div></div>
+      </div>
+      <div class="callout"><strong>Mandatory evacuation is in effect from West Vail to the golf course.</strong> Evacuate east. Westbound routes are closed. Follow directions from police and posted signage.</div>
+      <section class="block">
+        <h4>Critical instructions</h4>
+        <ul>
+          <li>Leave now if you are in an evacuation zone. Do not delay.</li>
+          <li>Do not return to evacuated areas for any reason, including pets or belongings.</li>
+          <li>Shelter-in-place locations, including designated parking structures, may be available if you cannot leave. Follow official direction.</li>
+          <li>Hikers and campers returning from trails: check in with authorities at staffed intersections before attempting to drive out.</li>
+        </ul>
+      </section>
+      <div class="callout"><strong>Offers of help:</strong> Please do not drop off supplies or contact emergency lines with donation offers. To help, coordinate through the American Red Cross.</div>
+    </div>
+
+    <!-- SOURCE (all levels) -->
+    <div class="source-box">
+      <h4>Official source</h4>
+      <p>This page is the authoritative source for incident status, maintained by the Town of Vail.</p>
+      <p style="margin:0;"><strong>vail.gov</strong> &ndash; official fire status, evacuation instructions, and updates.</p>
+      <p class="note">Do not rely on unofficial social media for evacuation decisions. Always verify at vail.gov.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="cols wrap">
+      <div class="contact">
+        <h5>Contact</h5>
+        <div>970-479-2100</div>
+        <div>75 S. Frontage Road West, Vail, CO 81657</div>
+        <div>info@vail.gov</div>
+        <div><a href="#">Town Directory</a></div>
+        <div><a href="#">Accessibility</a></div>
+      </div>
+      <div>
+        <h5>Our Sites</h5>
+        <div class="our-sites">
+          <a href="#">Event Calendar</a><a href="#">Art In Vail</a>
+          <a href="#">Discover Vail</a><a href="#">Hike Vail</a>
+          <a href="#">Love Vail</a><a href="#">Grand View</a>
+          <a href="#">Donovan Pavilion</a><a href="#">Career Opportunities</a>
+        </div>
+      </div>
+      <div class="subscribe">
+        <h5>Stay Connected</h5>
+        <input type="text" placeholder="enter email address..." aria-label="email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-strip">WEBSITE DESIGN BY <strong>GRANICUS</strong> - Connecting People and Government</div>
+  </footer>
+
+<script>
+  var DATA = {
+    0: { chip:"NORMAL", head:"No active evacuation alerts",
+         sub:"There are no active fire evacuation orders or warnings for the Town of Vail at this time.",
+         updated:"Last updated: Saturday, 8:02 AM MDT",
+         status:"#7e9a3b", bg:"#eef2e3", bd:"#cdd9a8" },
+    1: { chip:"BE READY", head:"Pre-evacuation readiness notice",
+         sub:"A wildfire is active in the White River National Forest west and north of town. No evacuation orders are in place. Be ready.",
+         updated:"Last updated: Saturday, 12:04 PM MDT",
+         status:"#c79100", bg:"#fbf3df", bd:"#e4cf95" },
+    2: { chip:"BE SET", head:"Evacuation warning in effect",
+         sub:"Evacuation zones are being identified. If you are in an identified zone, be packed and ready to leave immediately.",
+         updated:"Last updated: Saturday, 8:11 PM MDT",
+         status:"#d2691e", bg:"#fbeede", bd:"#eccaa3" },
+    3: { chip:"GO", head:"Mandatory evacuation order in effect",
+         sub:"Evacuate now from West Vail to the golf course. Go east. Westbound routes are closed.",
+         updated:"Last updated: Sunday, 6:03 AM MDT",
+         status:"#b3261e", bg:"#f7e3e1", bd:"#e0aaa5" }
+  };
+
+  function setLevel(n) {
+    var d = DATA[n], r = document.documentElement.style;
+    r.setProperty('--status', d.status);
+    r.setProperty('--status-bg', d.bg);
+    r.setProperty('--status-bd', d.bd);
+    document.getElementById('chip').textContent = d.chip;
+    document.getElementById('status-head').textContent = d.head;
+    document.getElementById('status-sub').textContent = d.sub;
+    document.getElementById('updated').textContent = d.updated;
+    for (var i=0;i<4;i++) document.getElementById('level-'+i).classList.add('hidden');
+    document.getElementById('level-'+n).classList.remove('hidden');
+    document.querySelectorAll('.demo-strip button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-level')==n);
+    });
+  }
+  setLevel(1); // default to Be Ready
+</script>
+</body>
+</html>
