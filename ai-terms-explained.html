@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Terms Explained Like You're Talking To A Friend | Gambit</title>
+
+<!-- PRIMARY SEO -->
+<meta name="description" content="Confused by AI jargon? Gambit breaks down the most common AI terms—from machine learning and LLMs to RAG, AI agents, and prompt engineering—in plain, simple language.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Alex Bukowski">
+<link rel="canonical" href="https://www.gambitco.io/ai-terms-explained">
+<meta name="keywords" content="AI terms explained, AI glossary, what is an LLM, prompt engineering, generative AI, AI agent, AI automation, machine learning, context window, RAG, AI workflow, AI copilot, hallucinations AI">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GambitCo">
+<meta property="og:title" content="AI Terms Explained Like You're Talking To A Friend">
+<meta property="og:description" content="Confused by AI jargon? Gambit breaks down the most common AI terms in plain, simple language—so you don't have to keep Googling them.">
+<meta property="og:url" content="https://gambitco.io/ai-terms-explained">
+<meta property="og:image" content="https://gambitco.io/img/AI%20Terms%20Blog%20Featured%20Image.png">
+<meta property="og:image:alt" content="AI Terms Explained Like You're Talking To A Friend">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Terms Explained Like You're Talking To A Friend">
+<meta name="twitter:description" content="Confused by AI jargon? Gambit breaks down the most common AI terms in plain, simple language—so you don't have to keep Googling them.">
+<meta name="twitter:image" content="https://gambitco.io/img/AI%20Terms%20Blog%20Featured%20Image.png">
+<meta name="twitter:image:alt" content="AI Terms Explained Like You're Talking To A Friend">
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI Terms Explained Like You're Talking To A Friend",
+  "description": "Confused by AI jargon? Gambit breaks down the most common AI terms—from machine learning and LLMs to RAG, AI agents, and prompt engineering—in plain, simple language.",
+  "image": "https://gambitco.io/img/AI%20Terms%20Blog%20Featured%20Image.png",
+  "datePublished": "2026-05-29",
+  "author": {
+    "@type": "Person",
+    "name": "Alex Bukowski",
+    "jobTitle": "Head of Content",
+    "url": "https://gambitco.io/about-us",
+    "sameAs": "https://www.linkedin.com/in/aleksandra-bukowski/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gambit Technology Inc.",
+    "url": "https://gambitco.io",
+    "logo": { "@type": "ImageObject", "url": "https://gambitco.io/img/gambit-logo.png" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gambitco.io/ai-terms-explained" },
+  "keywords": ["AI terms", "AI glossary", "LLM", "prompt engineering", "generative AI", "AI agent", "AI automation", "machine learning", "context window", "RAG", "AI workflow", "AI copilot", "hallucinations", "Gambit"]
+}
+</script>
+
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a; --ink: #141414; --secondary: #52525b;
+  --muted: #a1a1aa; --border: #e4e4e7; --border-light: #f0f0f2;
+  --page: #fafafa; --white: #ffffff;
+  --font: 'General Sans', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { font-family: var(--font); background: var(--page); color: var(--ink); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; background: var(--white); border-bottom: 1px solid var(--border); }
+.header-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; display: inline-block; transition: transform 0.3s var(--ease); }
+.logo:hover { transform: translateX(6px); }
+.logo img { height: 24px; width: auto; display: block; }
+.footer-logo-img { height: 20px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.5; }
+nav { display: flex; align-items: center; gap: 4px; }
+nav a { font-size: 14px; font-weight: 450; color: var(--secondary); text-decoration: none; padding: 6px 16px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.btn-outline-h { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 100px; background: transparent; border: 1px solid var(--border); color: var(--secondary); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+.btn-outline-h:hover { opacity: 0.75; }
+.btn-solid-h { display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 100px; background: var(--ink); border: 1px solid var(--ink); color: var(--white); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+.btn-solid-h:hover { opacity: 0.75; }
+
+/* ARTICLE */
+.article-page { max-width: 720px; margin: 0 auto; padding: 120px 32px 0; flex: 1; }
+
+.article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; margin-bottom: 32px; transition: color 0.15s; }
+.article-back:hover { color: var(--ink); }
+
+.article-header { margin-bottom: 40px; }
+.article-header h1 { font-size: 36px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--muted); }
+.article-meta-divider { width: 1px; height: 14px; background: var(--border); }
+
+/* Hero image */
+.article-hero {
+  width: 100%; border-radius: 14px; overflow: hidden;
+  margin-bottom: 40px; background: var(--border);
+  aspect-ratio: 16 / 9;
+}
+.article-hero img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* Body */
+.article-body h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--border-light); }
+.article-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.article-body h3 { font-size: 17px; font-weight: 500; margin-top: 32px; margin-bottom: 12px; }
+.article-body p { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 16px; }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 24px; }
+.article-body li { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 8px; }
+.article-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.15s; }
+.article-body a:hover { opacity: 0.75; }
+.article-body strong { color: var(--ink); font-weight: 500; }
+.article-body blockquote { border-left: 2px solid var(--border); padding-left: 20px; margin: 24px 0; }
+.article-body blockquote p { color: var(--muted); font-style: italic; }
+.article-body hr { border: none; height: 1px; background: var(--border); margin: 32px 0; }
+
+/* Inline image */
+.article-body .inline-img {
+  width: 100%; border-radius: 12px; overflow: hidden;
+  margin: 32px 0; background: var(--border);
+}
+.article-body .inline-img img { width: 100%; display: block; }
+.article-body .inline-img figcaption { font-size: 12px; color: var(--muted); padding: 10px 0 0; }
+
+/* Share / bottom */
+.article-footer { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding-bottom: 0; }
+.article-author-block { display: flex; align-items: center; gap: 12px; }
+.article-author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--border); overflow: hidden; }
+.article-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.article-author-name { font-size: 14px; font-weight: 500; }
+.article-author-role { font-size: 12px; color: var(--muted); }
+.article-share { font-size: 13px; color: var(--muted); }
+
+/* Related articles */
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); padding-bottom: 0; }
+.related-section h3 { font-size: 14px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+.related-list { display: flex; flex-direction: column; gap: 0; }
+.related-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-light); text-decoration: none; color: var(--ink); transition: opacity 0.15s; }
+.related-item:last-child { border-bottom: none; }
+.related-item:hover { opacity: 0.65; }
+.related-item-title { font-size: 14px; font-weight: 500; line-height: 1.35; }
+.related-item-arrow { font-size: 14px; color: var(--muted); flex-shrink: 0; }
+
+/* FOOTER */
+.site-footer { background: var(--black); padding: 40px 32px; margin-top: 80px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-left { display: flex; align-items: center; gap: 16px; }
+.footer-logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.6); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+.footer-legal { display: flex; align-items: center; gap: 8px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.8); }
+.footer-legal span { font-size: 12px; color: rgba(255,255,255,0.4); }
+.footer-center { display: flex; align-items: center; gap: 24px; }
+.footer-center a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-center a:hover { color: rgba(255,255,255,0.9); }
+.footer-right { display: flex; align-items: center; gap: 16px; }
+.footer-socials { display: flex; align-items: center; gap: 10px; }
+.footer-social { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); transition: background 0.15s; text-decoration: none; }
+.footer-social:hover { background: rgba(255,255,255,0.1); }
+.footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+/* RESPONSIVE */
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.menu-toggle svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 1.5; }
+
+@media (max-width: 1024px) {
+  .header-inner { padding: 0 24px; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px 24px 24px; border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.06); z-index: 99; }
+  nav.open { display: flex; }
+  nav a { padding: 12px 0; font-size: 16px; }
+  .header-actions { gap: 8px; }
+  .btn-outline-h { display: none; }
+  .header-inner { padding: 0 20px; }
+  .site-footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-left { flex-direction: column; gap: 6px; }
+  .footer-center { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .footer-right { flex-direction: column; gap: 12px; align-items: center; }
+  .footer-socials { justify-content: center; }
+  .article-page { padding: 100px 20px 0; }
+  .article-header h1 { font-size: 28px; }
+  .article-meta { flex-wrap: wrap; gap: 8px; }
+  .article-footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .article-header h1 { font-size: 24px; }
+  .article-hero { border-radius: 10px; }
+}
+/* FOCUS STATES */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.btn-outline-h:focus-visible, .btn-solid-h:focus-visible { outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-outline-h">Contact</a><a href="/#askgambit" class="btn-solid-h">Ask Gambit</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
+
+<!-- ARTICLE -->
+<main class="article-page">
+
+  <a href="/insights" class="article-back">&larr; Back to Insights</a>
+
+  <div class="article-header">
+    <h1>AI Terms Explained Like You're Talking To A Friend</h1>
+    <div class="article-meta">
+      <span>Alex Bukowski</span>
+      <div class="article-meta-divider"></div>
+      <span>May 2026</span>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="article-hero">
+    <img src="/img/AI%20Terms%20Blog%20Featured%20Image.png" alt="A visual guide to common AI terms explained in plain language" loading="lazy">
+  </div>
+
+  <div class="article-body">
+
+    <p>AI tools are becoming part of everyday business conversations. But for a lot of people, the language around AI still feels confusing and hard to follow.</p>
+
+    <p>Even people working in AI are learning new terms all the time (including us!).</p>
+
+    <p>So we put together a simple breakdown of some of the most common AI terms you're probably hearing right now, so you don't have to keep Googling them.</p>
+
+    <h2>AI</h2>
+
+    <p>AI stands for Artificial Intelligence, but most people think of it as software that can think and work like a human. It can answer questions, generate ideas, create images, and automate repetitive work much faster.</p>
+
+    <p>Because of that, there are now AI tools for pretty much everything. Writing, coding, design, meetings, research, customer support, and more. And the space moves so fast that what people consider the "best" AI tools is always changing.</p>
+
+    <figure class="inline-img">
+      <img src="/img/AI%20Tools%20Logos.png" alt="Logos of popular AI tools including ChatGPT, Claude, Gemini, and others" loading="lazy">
+    </figure>
+
+    <h2>Machine Learning</h2>
+
+    <p>Machine learning is a type of AI that learns from information over time.</p>
+
+    <p>For example, Spotify learning what music you like, Netflix recommending shows based on what you watch, or ChatGPT and Claude understanding different tones, writing styles, and questions are all forms of machine learning.</p>
+
+    <p>So the more information these systems process, the better they usually become at predicting what people want or helping with tasks.</p>
+
+    <h2>Generative AI</h2>
+
+    <p>Generative AI is a type of AI that creates new things. That could mean writing content, generating images, creating videos, building presentations, writing code, or even making music.</p>
+
+    <p>Tools like ChatGPT, Claude, Gemini, Lovable, and Canva AI are all examples of generative AI.</p>
+
+    <p>So if you've used AI to write, create, or brainstorm something before, you've already used generative AI.</p>
+
+    <h2>LLM</h2>
+
+    <p>LLM stands for large language model. This is the technology behind tools like ChatGPT, Claude, and Gemini.</p>
+
+    <p>You can think of an LLM as the "brain" that helps AI understand questions, hold conversations, write content, and respond in a way that sounds natural.</p>
+
+    <p>So when you chat with tools like ChatGPT, you're really interacting with an LLM.</p>
+
+    <h2>Prompt</h2>
+
+    <p>A prompt is the instruction or question you give AI. For example, you might type:</p>
+
+    <p>"Help me come up with a fun birthday party theme for a 10 year old."</p>
+
+    <p>From there, you can keep asking questions, adding details, or building on the conversation. Just remember, the clearer and more specific your prompts are, the better the AI response becomes.</p>
+
+    <h2>Prompt Engineering</h2>
+
+    <p>Prompt engineering sounds intimidating, but it really just means learning how to write better prompts for AI.</p>
+
+    <p>A weak prompt might look like this:</p>
+
+    <p>"Write me a social media post."</p>
+
+    <p>AI can still give you something, but it has to guess a lot of what you want since there's barely any context.</p>
+
+    <figure class="inline-img">
+      <img src="/img/Weak%20AI%20Prompt.png" alt="Example of a weak AI prompt with little context or direction" loading="lazy">
+    </figure>
+
+    <p>A stronger prompt could look like this:</p>
+
+    <p>"Pretend you're a 25 year old social media manager for a trendy coffee shop in Toronto with a cozy, modern aesthetic. Write an Instagram caption for our new iced strawberry matcha drink. Keep it fun and casual, use emojis, and end with a question that encourages people to comment."</p>
+
+    <p>This prompt gives AI way more direction around the vibe, audience, tone, and overall goal, which leads to a much better response.</p>
+
+    <figure class="inline-img">
+      <img src="/img/Strong%20AI%20Prompt.png" alt="Example of a strong AI prompt with detailed context, tone, and goal" loading="lazy">
+    </figure>
+
+    <p>A good way to think about it is this. AI works a lot like a person. If you gave both of these prompts to a social media manager, the second one would probably lead to a way better result too.</p>
+
+    <h2>Tokens</h2>
+
+    <p>Tokens are small chunks of words and information that AI reads and processes while you use it. For reference, 1 token is usually around 4 characters or about 0.75 words.</p>
+
+    <p>Every prompt, response, PDF, or conversation with AI gets broken down into tokens behind the scenes.</p>
+
+    <p>(Most casual users never really need to think about tokens, but you'll hear the term a lot when people compare AI tools.)</p>
+
+    <h2>Context Window</h2>
+
+    <p>A context window is basically the amount of information AI can remember at one time.</p>
+
+    <p>So the larger the context window, the more tokens, conversations, instructions, and documents AI can keep track of before it starts forgetting earlier details. This matters more when you're working with long PDFs, research, or bigger projects, and it's also why some AI tools forget earlier parts of long conversations.</p>
+
+    <h2>Multimodal AI</h2>
+
+    <p>Multimodal AI is AI that can understand more than just text. So instead of only chatting with AI, you can also upload screenshots, PDFs, images, videos, audio files, and other types of content for AI to work with.</p>
+
+    <p>For example, you could upload a screenshot of a website and ask AI how to improve the design, upload meeting notes and ask for a summary, or upload a photo and ask AI to explain what's happening in the image.</p>
+
+    <p>This is a big reason AI has become so useful for everyday work, because people can now interact with AI in way more natural and practical ways.</p>
+
+    <h2>Automation</h2>
+
+    <p>Automation means using technology to handle repetitive tasks automatically. Things like sending invoices, updating spreadsheets, organizing emails, booking meetings, or moving information between apps can all be automated.</p>
+
+    <p>Businesses have actually been using automation for years, even before the AI boom. The difference now is that AI is making automation much smarter and way more flexible.</p>
+
+    <h2>AI Automation</h2>
+
+    <p>AI automation is basically what happens when automation becomes a lot smarter.</p>
+
+    <p>Regular automation usually follows fixed rules. AI automation can understand information and help automate tasks that normally needed more human input.</p>
+
+    <p>For example, instead of sending every customer email to the same inbox, AI could read the message, figure out what the customer needs help with, and send it to the right team automatically.</p>
+
+    <p>This is a big reason businesses are getting excited about AI, because it can help reduce repetitive work and speed up everyday tasks.</p>
+
+    <h2>AI Workflow</h2>
+
+    <p>An AI workflow is when AI becomes part of a bigger process, instead of just being used for one task.</p>
+
+    <p>For example, a customer submits a request, AI reads it, organizes the information, creates a ticket, and notifies the right team.</p>
+
+    <p>So instead of someone manually reading the request, copying details, and deciding where it should go, AI helps move the work forward from step to step.</p>
+
+    <h2>AI Agent</h2>
+
+    <p>AI agents are one of the biggest topics in AI right now.</p>
+
+    <p>Unlike regular AI tools that wait for instructions, AI agents can make decisions, take action, and handle tasks with much less human involvement.</p>
+
+    <p>For example, instead of someone manually checking customer requests all day, an AI agent could monitor incoming emails, figure out what customers need help with, respond to common questions, update systems, and notify the right people automatically.</p>
+
+    <p>This is where AI starts feeling less like a chatbot and more like a digital teammate helping handle real work behind the scenes.</p>
+
+    <figure class="inline-img">
+      <img src="/img/AI%20Agent%20Assisting%20With%20Workflow.png" alt="An AI agent autonomously handling tasks and moving work forward across a business workflow" loading="lazy">
+    </figure>
+
+    <h2>AI Copilot</h2>
+
+    <p>An AI copilot is basically an AI assistant designed to help you work faster and stay organized.</p>
+
+    <p>Today, tools like Microsoft Copilot can help write emails, summarize meetings, organize notes, answer questions, and find information across the apps you already use every day.</p>
+
+    <p>The word "copilot" is important here, because the idea is that AI works alongside you instead of fully replacing you.</p>
+
+    <h2>Human in the Loop</h2>
+
+    <p>Human in the loop basically means a real person still reviews AI's work before anything becomes final.</p>
+
+    <p>For example, AI might draft a customer email, summarize a document, or create a report, but someone still checks it before it gets sent out or approved.</p>
+
+    <p>This matters because while AI can save a ton of time, it can still miss context, make mistakes, or confidently say something completely wrong sometimes.</p>
+
+    <h2>Hallucinations</h2>
+
+    <p>A hallucination is when AI gives incorrect information while sounding completely confident about it.</p>
+
+    <p>Sometimes AI will make up facts, fake statistics, incorrect summaries, or even sources that don't exist, while presenting everything like it's accurate. This is a big reason people still need to review AI-generated work, especially when it involves important information, research, or business decisions.</p>
+
+    <h2>RAG</h2>
+
+    <p>RAG stands for Retrieval-Augmented Generation. That sounds complicated, but it basically means AI searches through specific information before answering a question.</p>
+
+    <p>Imagine asking an internal AI assistant a question and it searches through your company documents, training materials, policies, or FAQs before responding.</p>
+
+    <p>This is what makes AI feel much more useful for businesses, because the answers can be based on your actual information instead of just a generic response from the internet.</p>
+
+    <h2>Fine-Tuning</h2>
+
+    <p>Fine-tuning is the process of training AI to get better at a specific task, industry, or style. This could mean teaching AI to understand medical terms, legal language, customer support workflows, or even teaching AI to sound more like a company's brand voice.</p>
+
+    <p>The goal is to make AI feel more accurate, consistent, and useful for real-world situations.</p>
+
+    <h2>It's Okay If AI Still Feels Confusing</h2>
+
+    <p>AI moves really fast right now, and there are constantly new tools, trends, and terms showing up online. But honestly, once you start understanding some of the basics, a lot of this stuff becomes way less intimidating.</p>
+
+    <p>And the truth is, most people are still figuring it out as they go. You definitely don't need to become an AI expert overnight to start exploring how AI could help your business or day-to-day work.</p>
+
+    <p>The important thing is just staying curious, experimenting a little, and learning as you go.</p>
+
+    <p>And if you're wondering how AI could actually fit into your business, that's exactly what we help companies figure out at <a href="/">Gambit</a>. <a href="/get-started">Let's chat</a> and see what's possible.</p>
+
+  </div>
+
+  <!-- RELATED ARTICLES -->
+  <div class="related-section">
+    <h3>More from Gambit</h3>
+    <div class="related-list">
+      <a href="/where-to-start-with-ai" class="related-item">
+        <span class="related-item-title">AI Is Everywhere. But Where Should Your Business Start?</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+      <a href="/what-is-an-ai-worker" class="related-item">
+        <span class="related-item-title">What Is an AI Worker? And Why It Changes Everything</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- AUTHOR BLOCK -->
+  <div class="article-footer">
+    <div class="article-author-block">
+      <div class="article-author-avatar"><img src="/img/team-alex.jpg" alt="Alex Bukowski" loading="lazy"></div>
+      <div>
+        <div class="article-author-name">Alex Bukowski</div>
+        <div class="article-author-role">Head of Content, Gambit</div>
+      </div>
+    </div>
+    <div class="article-share">Share this article</div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
+    <div class="footer-center"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
+    <div class="footer-right"><div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div><div class="footer-socials"><a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
+document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
+</script>
+</body>
+</html>
