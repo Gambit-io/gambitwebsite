@@ -26,36 +26,11 @@
 <meta name="twitter:image:alt" content="Chloe AI concierge feedback - GambitCo">
 
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --black: #0a0a0a; --ink: #141414; --secondary: #52525b;
-  --muted: #a1a1aa; --border: #e4e4e7; --border-light: #f0f0f2;
-  --page: #fafafa; --white: #ffffff;
-  --font: 'General Sans', sans-serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-}
-html { font-family: var(--font); background: var(--page); color: var(--ink); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-body { min-height: 100vh; display: flex; flex-direction: column; }
-
-/* HEADER */
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; background: var(--white); border-bottom: 1px solid var(--border); }
-.header-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
-.logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; display: inline-block; transition: transform 0.3s var(--ease); }
-.logo:hover { transform: translateX(6px); }
-.logo img { height: 24px; width: auto; display: block; }
-.footer-logo-img { height: 20px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.5; }
-nav { display: flex; align-items: center; gap: 4px; }
-nav a { font-size: 14px; font-weight: 450; color: var(--secondary); text-decoration: none; padding: 6px 16px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
-nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
-.header-actions { display: flex; align-items: center; gap: 10px; }
-.btn-outline-h { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 100px; background: transparent; border: 1px solid var(--border); color: var(--secondary); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
-.btn-outline-h:hover { opacity: 0.75; }
-.btn-solid-h { display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 100px; background: var(--ink); border: 1px solid var(--ink); color: var(--white); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
-.btn-solid-h:hover { opacity: 0.75; }
+html { background: #ffffff; -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; display: flex; flex-direction: column; font-family: 'DM Sans', sans-serif; color: #1A1A1A; background: #ffffff; }
 
 /* FEEDBACK FORM */
 .cf-feedback-form {
@@ -66,7 +41,7 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
   margin-right: auto;
   padding: 120px 36px 80px;
   flex: 1;
-  -webkit-font-smoothing: antialiased;
+  width: 100%;
 }
 .cf-feedback-form .cf-header { margin-bottom: 32px; }
 .cf-feedback-form .cf-header h2 {
@@ -166,7 +141,7 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 16px;
 }
-.cf-feedback-form .cf-check svg { width: 22px; height: 22px; stroke: #1B6D40; }
+.cf-feedback-form .cf-check svg { width: 22px; height: 22px; stroke: #1B6D40; fill: none; }
 .cf-feedback-form .cf-success h2 {
   font-family: 'Instrument Serif', serif;
   font-size: 28px;
@@ -208,69 +183,84 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 }
 @keyframes cfSpin { to { transform: rotate(360deg); } }
 
-/* FOOTER */
-.site-footer { background: var(--black); padding: 40px 32px; }
-.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-.footer-left { display: flex; align-items: center; gap: 16px; }
-.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.6); }
-.footer-center { display: flex; align-items: center; gap: 24px; }
-.footer-center a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
-.footer-center a:hover { color: rgba(255,255,255,0.9); }
-.footer-right { display: flex; align-items: center; gap: 16px; }
-.footer-legal { display: flex; align-items: center; gap: 8px; }
-.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
-.footer-legal a:hover { color: rgba(255,255,255,0.8); }
-.footer-legal span { font-size: 12px; color: rgba(255,255,255,0.4); }
-.footer-socials { display: flex; align-items: center; gap: 10px; }
-.footer-social { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); transition: background 0.15s; text-decoration: none; }
-.footer-social:hover { background: rgba(255,255,255,0.1); }
-.footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-
-/* RESPONSIVE */
-.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-.menu-toggle svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 1.5; }
-
-@media (max-width: 1024px) {
-  .header-inner { padding: 0 24px; }
+/* MINIMAL FOOTER */
+.cf-footer {
+  background: #ffffff;
+  border-top: 1px solid #f0f0f2;
+  padding: 28px 36px;
 }
-
-@media (max-width: 768px) {
-  .menu-toggle { display: block; }
-  nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px 24px 24px; border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.06); z-index: 99; }
-  nav.open { display: flex; }
-  nav a { padding: 12px 0; font-size: 16px; }
-  .header-actions { gap: 8px; }
-  .btn-outline-h { display: none; }
-  .header-inner { padding: 0 20px; }
-  .site-footer { padding: 32px 20px; }
-  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
-  .footer-left { flex-direction: column; gap: 6px; }
-  .footer-center { flex-wrap: wrap; justify-content: center; gap: 16px; }
-  .footer-right { flex-direction: column; gap: 12px; align-items: center; }
-  .footer-socials { justify-content: center; }
+.cf-footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cf-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.cf-footer-logo img {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+.cf-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6B6860;
+}
+.cf-footer-links a {
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.cf-footer-links a:hover { opacity: 0.65; }
+.cf-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cf-footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+.cf-footer-socials a:hover { opacity: 0.75; }
+.cf-footer-socials svg {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 @media (max-width: 520px) {
-  .cf-feedback-form { padding: 100px 16px 60px; }
+  .cf-feedback-form { padding: 80px 16px 60px; }
   .cf-feedback-form .cf-header h2 { font-size: 30px; }
+  .cf-footer { padding: 20px 16px; }
+  .cf-footer-inner { gap: 16px; }
+  .cf-footer-left { gap: 16px; flex-wrap: wrap; }
 }
+
 /* FOCUS STATES */
-a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
-.btn-outline-h:focus-visible, .btn-solid-h:focus-visible, .hero-btn-primary:focus-visible, .hero-btn-ghost:focus-visible, .cta-primary:focus-visible, .cta-outline:focus-visible { outline-offset: 3px; }
+a:focus-visible, button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #1A1A1A; outline-offset: 2px; border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-outline-h">Contact</a><a href="/#askgambit" class="btn-solid-h">Ask Gambit</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
-
-<!-- FEEDBACK FORM -->
+<!-- FEEDBACK FORM (no top header — standalone landing page) -->
 <div class="cf-feedback-form">
   <div id="cfFormView">
     <div class="cf-header">
       <h2>How was your experience with Chloe?</h2>
-      <p>Hey, we're Gambit — we helped build Chloe with the Town of Vail. Got any feedback? Fill out the form below and help us make Chloe even better.</p>
+      <p>Hey, we're Gambit &mdash; we helped build Chloe with the Town of Vail. Got any feedback? Fill out the form below and help us make Chloe even better.</p>
     </div>
+
     <form id="cfForm" novalidate>
       <div class="cf-field">
         <label for="cfTopic">What did you ask Chloe about?</label>
@@ -278,26 +268,29 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
           <select id="cfTopic" name="topic" required>
             <option value="" disabled selected>Select a topic</option>
             <option value="Parking">Parking</option>
-            <option value="Events & Activities">Events &amp; Activities</option>
-            <option value="Bus & Transit">Bus &amp; Transit</option>
-            <option value="Dining & Restaurants">Dining &amp; Restaurants</option>
-            <option value="Directions & Getting Around">Directions &amp; Getting Around</option>
+            <option value="Events &amp; Activities">Events &amp; Activities</option>
+            <option value="Bus &amp; Transit">Bus &amp; Transit</option>
+            <option value="Dining &amp; Restaurants">Dining &amp; Restaurants</option>
+            <option value="Directions &amp; Getting Around">Directions &amp; Getting Around</option>
             <option value="General Vail Info">General Vail Info</option>
             <option value="Other">Other</option>
           </select>
         </div>
       </div>
+
       <div class="cf-field">
         <label for="cfFeedback">Your feedback</label>
         <textarea id="cfFeedback" name="feedback" placeholder="What went well? What could be better?" required></textarea>
       </div>
+
       <button type="submit" class="cf-btn" id="cfSubmitBtn">Submit Feedback</button>
-      <p class="cf-error" id="cfError">Something went wrong — please try again.</p>
+      <p class="cf-error" id="cfError">Something went wrong &mdash; please try again.</p>
     </form>
   </div>
+
   <div class="cf-success" id="cfSuccessView">
     <div class="cf-check">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
     </div>
@@ -307,17 +300,50 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
-    <div class="footer-center"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
-    <div class="footer-right"><div class="footer-legal"><a href="/terms-of-service">Terms</a><span>·</span><a href="/privacy-policy">Privacy</a></div><div class="footer-socials"><a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
+<!-- MINIMAL FOOTER -->
+<footer class="cf-footer">
+  <div class="cf-footer-inner">
+    <div class="cf-footer-left">
+      <a href="/" class="cf-footer-logo" aria-label="Gambit home">
+        <img src="/img/gambit-logo.png" alt="Gambit" loading="lazy">
+      </a>
+      <div class="cf-footer-links">
+        <a href="/terms-of-service">Terms of Service</a>
+        <span>|</span>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="cf-footer-socials">
+      <a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="4" fill="#0A66C2"/>
+          <path d="M7.5 9.5h2.7v8.5H7.5V9.5zm1.35-4a1.55 1.55 0 1 1 0 3.1 1.55 1.55 0 0 1 0-3.1zM11.7 9.5h2.6v1.15h.04c.36-.68 1.24-1.4 2.56-1.4 2.74 0 3.25 1.8 3.25 4.15V18h-2.7v-3.95c0-.94-.02-2.15-1.3-2.15-1.3 0-1.5 1.02-1.5 2.08V18h-2.7V9.5h-.25z" fill="#fff"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="igGrad" cx="0.3" cy="1" r="1">
+              <stop offset="0" stop-color="#FFD776"/>
+              <stop offset="0.25" stop-color="#F76D44"/>
+              <stop offset="0.55" stop-color="#E33060"/>
+              <stop offset="0.85" stop-color="#A92E9C"/>
+              <stop offset="1" stop-color="#5A2EB2"/>
+            </radialGradient>
+          </defs>
+          <rect width="24" height="24" rx="6" fill="url(#igGrad)"/>
+          <rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.7"/>
+          <circle cx="12" cy="12" r="3.2" fill="none" stroke="#fff" stroke-width="1.7"/>
+          <circle cx="16.4" cy="7.6" r="0.95" fill="#fff"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </footer>
 
 <script>
-document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
+  const CF_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIK3wunnxhyeEJNQNLW79fb0XniLXENdvI5JEIBkNdGpCwz4S4DlBDqhfMcb7oecef0A/exec';
+
   (function() {
     const form        = document.getElementById('cfForm');
     const submitBtn   = document.getElementById('cfSubmitBtn');
@@ -326,70 +352,49 @@ document.getElementById("menuToggle").addEventListener("click",function(){docume
     const successView = document.getElementById('cfSuccessView');
     const againBtn    = document.getElementById('cfAgainBtn');
 
-    async function submitFeedback(rating, feedback) {
-      // Get CSRF token
-      const tokenRes = await fetch('/api/feedback');
-      if (!tokenRes.ok) throw new Error('Could not get security token');
-      const { token } = await tokenRes.json();
-
-      // Submit with token
-      const res = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': token
-        },
-        body: JSON.stringify({ rating, feedback })
-      });
-
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Submission failed');
-      }
-
-      return res.json();
-    }
-
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       errorText.style.display = 'none';
 
       var topic    = document.getElementById('cfTopic').value;
       var feedback = document.getElementById('cfFeedback').value.trim();
+
       if (!topic || !feedback) return;
-      if (feedback.length > 2000) {
-        errorText.textContent = 'Feedback is too long. Please keep it under 2000 characters.';
-        errorText.style.display = 'block';
-        return;
-      }
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="cf-spinner"></span>Sending\u2026';
+      submitBtn.innerHTML = '<span class="cf-spinner"></span>Sending…';
+
       try {
-        // Map topic to a numeric rating for the API (1-5 scale not used in original form,
-        // so we send a default rating of 3 and include topic in the feedback text)
-        var fullFeedback = '[' + topic + '] ' + feedback;
-        await submitFeedback(3, fullFeedback);
+        await fetch(CF_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({
+            topic:     topic,
+            feedback:  feedback,
+            timestamp: new Date().toISOString()
+          })
+        });
+
         formView.style.display    = 'none';
         successView.style.display = 'block';
+
       } catch (err) {
-        errorText.textContent = err.message || 'Something went wrong \u2014 please try again.';
         errorText.style.display = 'block';
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Submit Feedback';
       }
     });
+
     againBtn.addEventListener('click', function() {
       form.reset();
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Submit Feedback';
       errorText.style.display   = 'none';
-      errorText.textContent     = 'Something went wrong \u2014 please try again.';
       successView.style.display = 'none';
       formView.style.display    = 'block';
     });
   })();
-  document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
 </script>
 </body>
 </html>
