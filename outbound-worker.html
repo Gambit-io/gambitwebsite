@@ -622,7 +622,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 @media(max-width:480px){.intg-logos{padding:30px;gap:12px}}
 .intg-tile{background:var(--paper);border:1px solid var(--line);border-radius:16px;aspect-ratio:1/.86;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
 .intg-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(21,17,13,.4)}
-.intg-tile .mk{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.03em;flex:none}
+.intg-tile .ic{height:42px;display:flex;align-items:center;justify-content:center}
+.intg-tile .ic svg{height:42px;width:auto;max-width:54px;display:block}
 .intg-tile .lbl{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
 .intg-copy{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 @media(max-width:480px){.intg-copy{padding:38px 30px}}
@@ -839,12 +840,30 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
   <div class="wrap">
     <div class="intg-card">
       <div class="intg-logos">
-        <div class="intg-tile"><span class="mk" style="background:#00A1E0">SF</span><span class="lbl">Salesforce</span></div>
-        <div class="intg-tile"><span class="mk" style="background:#FF7A59">H</span><span class="lbl">HubSpot</span></div>
-        <div class="intg-tile"><span class="mk" style="background:#E5202E">Zi</span><span class="lbl">ZoomInfo</span></div>
-        <div class="intg-tile"><span class="mk" style="background:#4F46E5">A</span><span class="lbl">Apollo</span></div>
-        <div class="intg-tile"><span class="mk" style="background:#1A1A1A">C</span><span class="lbl">Clay</span></div>
-        <div class="intg-tile"><span class="mk" style="background:#146AFF">cb</span><span class="lbl">Crunchbase</span></div>
+        <div class="intg-tile">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><g fill="#00A1E0"><circle cx="44" cy="34" r="22"/><circle cx="72" cy="29" r="27"/><circle cx="95" cy="47" r="20"/><circle cx="29" cy="51" r="18"/><rect x="27" y="47" width="71" height="24" rx="12"/></g></svg></span>
+          <span class="lbl">Salesforce</span>
+        </div>
+        <div class="intg-tile">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#FF7A59" stroke-width="8.5"><circle cx="46" cy="60" r="22"/><line x1="46" y1="38" x2="46" y2="16"/><line x1="65.5" y1="49" x2="80" y2="34"/></g><g fill="#FF7A59"><circle cx="46" cy="60" r="6.5"/><circle cx="46" cy="11" r="11"/><circle cx="84" cy="30" r="10"/></g></svg></span>
+          <span class="lbl">HubSpot</span>
+        </div>
+        <div class="intg-tile">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#E51E25"/><g fill="none" stroke="#fff" stroke-width="11" stroke-linejoin="miter"><path d="M30 31 H70"/><path d="M70 31 L30 69"/><path d="M30 69 H70"/></g></svg></span>
+          <span class="lbl">ZoomInfo</span>
+        </div>
+        <div class="intg-tile">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 122.8 122.8" xmlns="http://www.w3.org/2000/svg"><path d="M25.8 77.6c0 7.1-5.8 12.9-12.9 12.9S0 84.7 0 77.6s5.8-12.9 12.9-12.9h12.9v12.9zm6.5 0c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9v32.3c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V77.6z" fill="#E01E5A"/><path d="M45.2 25.8c-7.1 0-12.9-5.8-12.9-12.9S38.1 0 45.2 0s12.9 5.8 12.9 12.9v12.9H45.2zm0 6.5c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H12.9C5.8 58.1 0 52.3 0 45.2s5.8-12.9 12.9-12.9h32.3z" fill="#36C5F0"/><path d="M97 45.2c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9-5.8 12.9-12.9 12.9H97V45.2zm-6.5 0c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V12.9C64.7 5.8 70.5 0 77.6 0s12.9 5.8 12.9 12.9v32.3z" fill="#2EB67D"/><path d="M77.6 97c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9-12.9-5.8-12.9-12.9V97h12.9zm0-6.5c-7.1 0-12.9-5.8-12.9-12.9s5.8-12.9 12.9-12.9h32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H77.6z" fill="#ECB22E"/></svg></span>
+          <span class="lbl">Slack</span>
+        </div>
+        <div class="intg-tile">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#FFE83B"/><g fill="#141414"><g transform="rotate(0 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(51 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(103 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(154 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(206 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(257 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(309 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g></g></svg></span>
+          <span class="lbl">Apollo</span>
+        </div>
+        <div class="intg-tile">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#146AFF"/><text x="50" y="50" dy=".34em" text-anchor="middle" fill="#fff" font-family="'General Sans','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="46" letter-spacing="-2">cb</text></svg></span>
+          <span class="lbl">Crunchbase</span>
+        </div>
       </div>
       <div class="intg-copy">
         <span class="eyebrow">Integrations</span>
