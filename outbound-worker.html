@@ -133,7 +133,7 @@ nav.scrolled{background:rgba(21,17,13,.86);backdrop-filter:blur(14px);border-bot
 }
 @keyframes drift{from{transform:translate(0,0)}to{transform:translate(-40px,40px)}}
 .hero-in{position:relative;z-index:2}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;padding-bottom:30px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;padding-bottom:30px}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:40px}}
 .hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:600;letter-spacing:-.03em;margin:22px 0 24px}
 .hero h1 .dim{color:var(--clay)}
@@ -534,7 +534,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .fade,.fade-r,.reveal,.hline{opacity:1!important;transform:none!important;clip-path:none!important}
+  .fade,.fade-r,.reveal,.hline,.wrow,.ws-result,.hero-email{opacity:1!important;transform:none!important;clip-path:none!important}
 }
 
 /* ===== drafted email overlay ===== */
@@ -560,6 +560,44 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 @media(max-width:760px){
   .ui-stack::before{display:none}
   .email-card{position:static;width:100%;max-width:none;right:0;bottom:0;margin-top:16px;animation:none}
+}
+
+/* ===== HERO WORKER SCREEN (research → email) ===== */
+.hero-stage{position:relative}
+.wscreen{background:#fff;border-radius:15px;border:1px solid #ece7ef;box-shadow:0 46px 92px -34px rgba(0,0,0,.66),0 9px 24px -12px rgba(0,0,0,.34);overflow:hidden}
+.ws-bar{display:flex;align-items:center;gap:7px;padding:12px 15px;background:#f4f0ea;border-bottom:1px solid #e8e1d6}
+.ws-bar .d{width:11px;height:11px;border-radius:50%}
+.ws-bar .d.r{background:#ff5f57}.ws-bar .d.y{background:#febc2e}.ws-bar .d.g{background:#28c840}
+.ws-title{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:#9a93a0}
+.ws-body{padding:15px 16px 17px;color:#1a1620}
+.ws-head{display:flex;align-items:center;gap:11px;padding-bottom:13px;border-bottom:1px solid #f0ece6;margin-bottom:2px}
+.ws-av{width:34px;height:34px;border-radius:9px;background:var(--clay);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:15px;flex:none}
+.ws-id{flex:1}
+.ws-name{font-family:var(--display);font-weight:600;font-size:14.5px;line-height:1.1;color:#1a1620}
+.ws-role{font-size:11.5px;color:#8b858f;margin-top:3px}
+.ws-active{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#1f9e54;background:rgba(62,196,109,.12);padding:4px 9px;border-radius:20px;display:inline-flex;align-items:center;gap:5px}
+.ws-active .dot{width:6px;height:6px;border-radius:50%;background:#3ec46d}
+.ws-feed{display:flex;flex-direction:column}
+.wrow{display:grid;grid-template-columns:50px 13px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid #f3eff5;align-items:start;opacity:0;animation:wIn .55s var(--ease) both}
+.wrow .ts{font-family:var(--mono);font-size:9.5px;color:#b8b1a7;padding-top:2px}
+.wrow .ic{width:13px;height:13px;border-radius:50%;margin-top:2px}
+.wrow .ic.sig{background:#c2701f}.wrow .ic.scope{background:#2a72a0}.wrow .ic.res{background:var(--clay)}.wrow .ic.draft{background:#8b858f}.wrow .ic.done{background:#1f9e54}
+.wrow .wt{font-size:12px;font-weight:600;color:#1a1620}
+.wrow .wd{font-size:11px;color:#6f675c;margin-top:1px}
+.wrow:nth-child(1){animation-delay:.45s}
+.wrow:nth-child(2){animation-delay:.9s}
+.wrow:nth-child(3){animation-delay:1.35s}
+.wrow:nth-child(4){animation-delay:1.8s}
+.wrow:nth-child(5){animation-delay:2.25s}
+@keyframes wIn{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+.ws-result{margin-top:12px;border:1px solid rgba(62,196,109,.28);background:rgba(62,196,109,.07);border-radius:9px;padding:11px 13px;opacity:0;animation:wIn .6s var(--ease) 2.75s both}
+.ws-result-l{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#1f9e54;margin-bottom:5px}
+.ws-result-q{font-size:11.5px;color:#3a3540;font-style:italic;line-height:1.5}
+.ws-result-m{display:flex;gap:14px;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:#a39b8c}
+/* drafted email, slides in after research */
+.hero-email{right:-16px;bottom:-30px;width:60%;max-width:288px;animation:emailIn .9s var(--ease) 3s both}
+@media(max-width:760px){
+  .hero-email{position:static;right:auto;bottom:auto;width:100%;max-width:none;margin-top:16px;animation:emailIn .8s var(--ease) .2s both}
 }
 
 .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:11px 18px;border-radius:0 0 10px 0;font-family:var(--display);font-size:14px;text-decoration:none}
@@ -666,9 +704,41 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
           <a href="#solutions" class="btn btn-light">See it in action <span class="ar">&rarr;</span></a>
         </div>
       </div>
-      <div class="feed fade-r d5">
-        <div class="feed-top"><span class="feed-title">Outbound Worker</span><span class="live"><span class="dot"></span> Live</span></div>
-        <div class="feed-list" id="feed"></div>
+      <div class="hero-stage fade-r d5">
+        <div class="wscreen">
+          <div class="ws-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="ws-title">bogan · signal-desk</span></div>
+          <div class="ws-body">
+            <div class="ws-head">
+              <span class="ws-av">B</span>
+              <div class="ws-id"><div class="ws-name">Bogan</div><div class="ws-role">Outbound Worker</div></div>
+              <span class="ws-active"><span class="dot"></span> Active</span>
+            </div>
+            <div class="ws-feed">
+              <div class="wrow"><span class="ts">09:41:02</span><span class="ic sig"></span><span><span class="wt">Signal detected</span><span class="wd">Atlas Fabrication &middot; ownership change</span></span></div>
+              <div class="wrow"><span class="ts">09:41:02</span><span class="ic scope"></span><span><span class="wt">Scope check &middot; within ICP</span><span class="wd">Fabrication &middot; $20&ndash;80M &middot; owner-operated</span></span></div>
+              <div class="wrow"><span class="ts">09:41:03</span><span class="ic res"></span><span><span class="wt">Research &middot; pulling public records</span><span class="wd">6 sources &middot; owner verified &middot; current</span></span></div>
+              <div class="wrow"><span class="ts">09:41:04</span><span class="ic draft"></span><span><span class="wt">Drafting &middot; personalized</span><span class="wd">Concise, soft CTA, no broker tone</span></span></div>
+              <div class="wrow"><span class="ts">09:41:04</span><span class="ic done"></span><span><span class="wt">Ready</span><span class="wd">Outreach drafted &middot; queued for review</span></span></div>
+            </div>
+            <div class="ws-result">
+              <div class="ws-result-l">Drafted</div>
+              <div class="ws-result-q">&ldquo;A quiet conversation, before it gets noisy.&rdquo;</div>
+              <div class="ws-result-m"><span>2.4s</span><span>6 sources</span><span>ready to send</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="email-card hero-email">
+          <div class="em-bar"><span class="em-tag">Drafted by Bogan</span><span class="em-status"><span class="dot"></span> ready to send</span></div>
+          <div class="em-head">
+            <div class="em-row"><span class="em-k">To</span><span class="em-v">Jordan Marsh &middot; Atlas Fabrication</span></div>
+            <div class="em-row"><span class="em-k">Subject</span><span class="em-v strong">A quiet conversation, before it gets noisy</span></div>
+          </div>
+          <div class="em-body">
+            <p>Jordan, I have been following Atlas while mapping ownership changes across fabrication in the region. This is not a pitch, and I am not a broker.</p>
+            <p class="em-sign">Best,<br>Bogan &middot; Spearhead</p>
+          </div>
+          <div class="em-foot"><span class="em-send">Queue outreach</span><span class="em-meta">From 6 public signals</span></div>
+        </div>
       </div>
     </div>
   </div>
