@@ -540,7 +540,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 /* ===== drafted email overlay ===== */
 .ui-stack{position:relative}
 .ui-stack::before{content:"";position:absolute;inset:0;border-radius:12px;background:linear-gradient(180deg,transparent 52%,rgba(21,17,13,.16));z-index:1;pointer-events:none}
-.email-card{position:absolute;right:-8px;bottom:-34px;width:50%;max-width:288px;z-index:3;background:#fff;border-radius:11px;border:1px solid #ece7ef;box-shadow:0 28px 58px -26px rgba(21,17,13,.5),0 5px 16px -10px rgba(21,17,13,.26);overflow:hidden;color:#1a1a1a;animation:emailIn .85s var(--ease) .55s both}
+.email-card{position:absolute;right:-8px;bottom:-64px;width:50%;max-width:288px;z-index:3;background:#fff;border-radius:11px;border:1px solid #ece7ef;box-shadow:0 28px 58px -26px rgba(21,17,13,.5),0 5px 16px -10px rgba(21,17,13,.26);overflow:hidden;color:#1a1a1a;animation:emailIn .85s var(--ease) .55s both}
 @keyframes emailIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
 .em-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#faf7f2;border-bottom:1px solid #efe9de}
 .em-tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep);background:rgba(184,149,122,.14);padding:3px 8px;border-radius:20px}
@@ -555,8 +555,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 .em-body p{font-size:10.5px;line-height:1.5;color:#3a3540;margin:0 0 7px}
 .em-body .em-sign{color:#1a1620}
 .em-foot{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;border-top:1px solid #efe9de;background:#fcfaf6}
-.em-send{font-size:10px;font-weight:600;color:#fff;background:var(--clay);padding:6px 12px;border-radius:6px}
-.em-meta{font-family:var(--mono);font-size:8px;letter-spacing:.04em;color:#a39b8c}
+.em-send{font-size:10px;font-weight:600;color:#fff;background:var(--clay);padding:6px 12px;border-radius:6px;white-space:nowrap;flex:none}
+.em-meta{font-family:var(--mono);font-size:8px;letter-spacing:.04em;color:#a39b8c;text-align:right;padding-left:10px;line-height:1.4}
 @media(max-width:760px){
   .ui-stack::before{display:none}
   .email-card{position:static;width:100%;max-width:none;right:0;bottom:0;margin-top:16px;animation:none}
@@ -836,7 +836,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
           <p>Worth a short call?</p>
           <p class="em-sign">Best,<br>M. Hale · Spearhead</p>
         </div>
-        <div class="em-foot"><span class="em-send">Queue outreach</span><span class="em-meta">Personalized from 6 public signals</span></div>
+        <div class="em-foot"><span class="em-send">Queue outreach</span><span class="em-meta">From 6 public signals</span></div>
       </div>
       </div>
       <div class="case-info">
