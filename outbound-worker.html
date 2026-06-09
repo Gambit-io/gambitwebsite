@@ -684,14 +684,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 .integrations{padding:92px 0;background:var(--bone)}
 .intg-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--paper);box-shadow:0 30px 70px -44px rgba(21,17,13,.4)}
 @media(max-width:860px){.intg-card{grid-template-columns:1fr}}
-.intg-logos{background:var(--bone-2);padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center}
-@media(max-width:480px){.intg-logos{padding:30px;gap:12px}}
+.intg-logos{background:var(--bone-2);padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center;min-width:0}
+@media(max-width:480px){.intg-logos{grid-template-columns:1fr 1fr;padding:26px;gap:12px}}
 .intg-tile{background:var(--paper);border:1px solid var(--line);border-radius:16px;aspect-ratio:1/.86;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
 .intg-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(21,17,13,.4)}
 .intg-tile .ic{height:42px;display:flex;align-items:center;justify-content:center}
 .intg-tile .ic svg{height:42px;width:auto;max-width:54px;display:block}
 .intg-tile .lbl{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
-.intg-copy{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.intg-copy{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0}
 @media(max-width:480px){.intg-copy{padding:38px 30px}}
 .intg-copy .eyebrow{color:var(--clay-deep);margin-bottom:16px}
 .intg-copy h2{margin-bottom:16px}
@@ -900,7 +900,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
           <p>This is not a pitch, and I am not a broker. I work with a group that backs owners through a transition on their own terms, quietly, well before any process begins.</p>
           <p>If the timing is wrong, ignore this with no hard feelings. If you have ever wondered what Atlas could be worth to the right buyer, I would value twenty minutes.</p>
           <p>Worth a short call?</p>
-          <p class="em-sign">Best,<br>M. Hale · Spearhead</p>
+          <p class="em-sign">Best,<br>Bogan · Spearhead</p>
         </div>
         <div class="em-foot"><span class="em-send">Queue outreach</span><span class="em-meta">From 6 public signals</span></div>
       </div>
