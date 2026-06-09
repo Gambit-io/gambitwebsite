@@ -564,6 +564,71 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 
 .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:11px 18px;border-radius:0 0 10px 0;font-family:var(--display);font-size:14px;text-decoration:none}
 .skip:focus{left:0}
+
+/* ============================================================
+   BRAND OVERRIDES — Spearhead (vermilion/navy) & Gillis (purple)
+   Placed last so they win over the base --clay theme.
+   ============================================================ */
+:root{
+  --sp:#F04E36;        /* Spearhead vermilion */
+  --sp-navy:#1a2332;   /* Spearhead deep navy */
+  --sp-deep:#142031;
+  --gp:#3d2b6b;        /* GillisOS deep purple */
+  --gp-deep:#1a1532;
+  --gp-2:#2a1f4e;
+  --gp-mid:#6a4fb0;
+  --gp-lav:#a78fd6;
+}
+
+/* --- Spearhead dashboard --- */
+.ui-spearhead .app-bar{background:var(--sp-navy);border-bottom-color:#2a3850}
+.ui-spearhead .app-side{background:var(--sp-deep);border-right-color:#22324a}
+.ui-spearhead .app-live{color:#ff7a64}
+.ui-spearhead .side-ic.on{background:var(--sp)}
+.ui-spearhead .chip.on{background:var(--sp);color:#fff}
+.ui-spearhead .bar b{background:var(--sp)}
+.ui-spearhead .b.orange{background:rgba(240,78,54,.13);color:#c33a23}
+.ui-spearhead .st.rep{background:rgba(240,78,54,.13);color:#c33a23}
+.ui-spearhead .ra-send{background:var(--sp)}
+/* Spearhead / Bogan email card */
+[data-case="spearhead"] .em-tag{color:var(--sp);background:rgba(240,78,54,.12)}
+[data-case="spearhead"] .em-send{background:var(--sp)}
+[data-case="spearhead"] .ci-k{color:var(--sp)}
+
+/* --- GillisOS dashboard (purple, per product video) --- */
+.ui-gillis .app-bar{background:var(--gp-deep);border-bottom-color:var(--gp-2)}
+.ui-gillis .app-side{background:#140f28;border-right-color:#241c44}
+.ui-gillis .app-live{color:var(--gp-lav)}
+.ui-gillis .side-ic.on{background:var(--gp-mid)}
+.ui-gillis .chip.on{background:var(--gp);color:#fff}
+.ui-gillis .bar b{background:var(--gp)}
+.ui-gillis .b.orange{background:rgba(106,79,176,.18);color:#5a3fa0}
+.ui-gillis .g-stat .gn{color:var(--gp)}
+.ui-gillis .st.seq{background:rgba(106,79,176,.18);color:#5a3fa0}
+.ui-gillis .st.rep{background:rgba(62,196,109,.16);color:#1f9e54}
+.ui-gillis .ra-send{background:var(--gp)}
+.ui-gillis .seqstep.done::before{background:var(--gp);border-color:var(--gp)}
+.ui-gillis .seqstep.now{color:var(--gp-mid)}
+.ui-gillis .seqstep.now::before{background:#fff;border-color:var(--gp);box-shadow:0 0 0 3px rgba(106,79,176,.2)}
+[data-case="gillis"] .ci-k{color:var(--gp-lav)}
+
+/* ============================================================
+   INTEGRATIONS
+   ============================================================ */
+.integrations{padding:92px 0;background:var(--bone)}
+.intg-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--paper);box-shadow:0 30px 70px -44px rgba(21,17,13,.4)}
+@media(max-width:860px){.intg-card{grid-template-columns:1fr}}
+.intg-logos{background:var(--bone-2);padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center}
+@media(max-width:480px){.intg-logos{padding:30px;gap:12px}}
+.intg-tile{background:var(--paper);border:1px solid var(--line);border-radius:16px;aspect-ratio:1/.86;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.intg-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(21,17,13,.4)}
+.intg-tile .mk{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.03em;flex:none}
+.intg-tile .lbl{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.intg-copy{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+@media(max-width:480px){.intg-copy{padding:38px 30px}}
+.intg-copy .eyebrow{color:var(--clay-deep);margin-bottom:16px}
+.intg-copy h2{margin-bottom:16px}
+.intg-copy .lead{margin-bottom:28px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -576,6 +641,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
     <div class="nav-links">
       <a href="#top">Vision</a>
       <a href="#solutions" class="active">Workers</a>
+      <a href="#integrations">Integrations</a>
       <a href="#factory">Factory</a>
       <a href="#proof">Case Studies</a>
       <a href="#">Insights</a>
@@ -715,32 +781,33 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
     <!-- GILLIS -->
     <div class="case" data-case="gillis">
       <div class="appframe ui-gillis">
-        <div class="app-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="app-title">GillisOS · Sales Desk</span><span class="app-live"><span class="dot"></span> 1,120 live RFPs</span></div>
+        <div class="app-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="app-title">GillisOS · Lead Research</span><span class="app-live"><span class="dot"></span> 85 new signals</span></div>
         <div class="app-body">
           <div class="app-side"><div class="side-ic on"></div><div class="side-ic"></div><div class="side-ic"></div><div class="side-ic"></div></div>
           <div class="app-main">
-            <div class="g-stats"><div class="g-stat"><div class="gn">12,400</div><div class="gl">accounts</div></div><div class="g-stat"><div class="gn">1,120</div><div class="gl">live RFPs</div></div><div class="g-stat"><div class="gn">2.4%</div><div class="gl">bounce</div></div></div>
+            <div class="g-stats"><div class="g-stat"><div class="gn">85</div><div class="gl">signals</div></div><div class="g-stat"><div class="gn">478</div><div class="gl">contacts</div></div><div class="g-stat"><div class="gn">38</div><div class="gl">hot leads</div></div></div>
             <div class="tbl">
-              <div class="tr th"><span>Account</span><span>Type</span><span>Fit</span><span>Contact</span><span>Status</span></div>
-              <div class="tr"><span class="co">Apex Pharma</span><span class="mut">Corporate</span><span class="sig"><i class="b orange">94%</i></span><span class="mut">events@apex.com</span><span class="st seq">Sequenced</span></div>
-              <div class="tr"><span class="co">Veritas Summit</span><span class="mut">Conference</span><span class="sig"><i class="b orange">89%</i></span><span class="mut">k.bell@veritas.org</span><span class="st rep">Replied</span></div>
-              <div class="tr"><span class="co">Northwind Travel</span><span class="mut">Group</span><span class="sig"><i class="b">76%</i></span><span class="mut">verified</span><span class="st seq">Sequenced</span></div>
-              <div class="tr"><span class="co">Halcyon Events</span><span class="mut">Planner</span><span class="sig"><i class="b orange">82%</i></span><span class="mut">rfp@halcyon.co</span><span class="st new">Queued</span></div>
+              <div class="tr th"><span>Demand signal</span><span>Sector</span><span>Type</span><span>Score</span><span>Status</span></div>
+              <div class="tr"><span class="co">NovaCare Rehab Partners</span><span class="mut">Healthcare</span><span class="sig"><i class="b orange">Crew lodging</i></span><span class="co" style="font-variant-numeric:tabular-nums">94.5</span><span class="st new">New</span></div>
+              <div class="tr"><span class="co">Gulf Coast Lakeside Hospital</span><span class="mut">Healthcare</span><span class="sig"><i class="b orange">Fellowships</i></span><span class="co" style="font-variant-numeric:tabular-nums">91.2</span><span class="st seq">Contacted</span></div>
+              <div class="tr"><span class="co">Greenway STEM Center</span><span class="mut">Education</span><span class="sig"><i class="b">Research</i></span><span class="co" style="font-variant-numeric:tabular-nums">89.7</span><span class="st new">New</span></div>
+              <div class="tr"><span class="co">Apex Environmental</span><span class="mut">Infrastructure</span><span class="sig"><i class="b orange">Training</i></span><span class="co" style="font-variant-numeric:tabular-nums">87.3</span><span class="st rep">Replied</span></div>
             </div>
           </div>
           <div class="app-rail">
-            <div class="rail-h">Active sequence</div>
-            <div class="rail-co">Apex Pharma · Q3 offsite</div>
-            <div class="seqsteps"><div class="seqstep done">RFP detected</div><div class="seqstep done">Proposal sent</div><div class="seqstep now">Reply detected</div><div class="seqstep">Handoff to sales</div></div>
+            <div class="rail-h">Outreach drafted</div>
+            <div class="rail-co">Meridian Health · L. Chen</div>
+            <div class="rail-msg">Laura, noticed Meridian's growing residency programs minutes from our property. Happy to put together a preferred rate built around your team size.</div>
+            <div class="rail-actions"><span class="ra-send">Queue</span><span class="ra-skip">Skip</span></div>
           </div>
         </div>
       </div>
       <div class="case-info">
         <div class="ci-h">Sam at GillisOS</div>
-        <div class="ci-tag">Fills the sales pipeline with accounts ready to book.</div>
-        <div class="ci-row"><span class="ci-k">The signal</span><span class="ci-v">RFPs, event announcements, group travel programs, expansions, new offices.</span></div>
-        <div class="ci-row"><span class="ci-k">The action</span><span class="ci-v">Surfaces in-market accounts and runs the outreach before the competition calls.</span></div>
-        <div class="ci-m"><div><div class="ci-mn">12,400</div><div class="ci-ml">accounts watched</div></div><div><div class="ci-mn">&lt;3%</div><div class="ci-ml">bounce rate</div></div><div><div class="ci-mn">same week</div><div class="ci-ml">to first contact</div></div></div>
+        <div class="ci-tag">Less searching. More selling.</div>
+        <div class="ci-row"><span class="ci-k">The signal</span><span class="ci-v">Construction projects, healthcare expansions, corporate relocations, conferences &mdash; every demand source within range.</span></div>
+        <div class="ci-row"><span class="ci-k">The action</span><span class="ci-v">Researches each signal, enriches the contacts, and drafts the outreach &mdash; ready to send before the competition calls.</span></div>
+        <div class="ci-m"><div><div class="ci-mn">85</div><div class="ci-ml">signals / search</div></div><div><div class="ci-mn">478</div><div class="ci-ml">contacts enriched</div></div><div><div class="ci-mn">same week</div><div class="ci-ml">to first contact</div></div></div>
       </div>
     </div>
 
@@ -763,6 +830,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
         <div class="ci-tag">Proprietary deal flow from public signal.</div>
         <div class="ci-row"><span class="ci-k">The signal</span><span class="ci-v">Distress, transition, and recapitalization triggers across filings.</span></div>
         <div class="ci-row"><span class="ci-k">The action</span><span class="ci-v">Off-market origination, contacted before the deal reaches auction.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations" id="integrations">
+  <div class="wrap">
+    <div class="intg-card">
+      <div class="intg-logos">
+        <div class="intg-tile"><span class="mk" style="background:#00A1E0">SF</span><span class="lbl">Salesforce</span></div>
+        <div class="intg-tile"><span class="mk" style="background:#FF7A59">H</span><span class="lbl">HubSpot</span></div>
+        <div class="intg-tile"><span class="mk" style="background:#E5202E">Zi</span><span class="lbl">ZoomInfo</span></div>
+        <div class="intg-tile"><span class="mk" style="background:#4F46E5">A</span><span class="lbl">Apollo</span></div>
+        <div class="intg-tile"><span class="mk" style="background:#1A1A1A">C</span><span class="lbl">Clay</span></div>
+        <div class="intg-tile"><span class="mk" style="background:#146AFF">cb</span><span class="lbl">Crunchbase</span></div>
+      </div>
+      <div class="intg-copy">
+        <span class="eyebrow">Integrations</span>
+        <h2>Works inside the stack you already sell in</h2>
+        <p class="lead">Your CRM, your data providers, your lead sources. The worker reads the signal and writes the next action back where your team already works &mdash; Salesforce, HubSpot, ZoomInfo, Apollo, Clay, Crunchbase and more. No rip and replace.</p>
+        <a href="#contact" class="btn btn-dark">Explore connectors <span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
