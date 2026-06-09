@@ -443,6 +443,34 @@ footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
 .run-result{margin-top:13px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--status);opacity:0;transform:translateY(4px);transition:.45s ease}
 .run-result.show{opacity:1;transform:none}
 .run-result::before{content:"\2713  "}
+.work{margin-top:24px;background:var(--ink);border-radius:14px;padding:22px;min-height:320px;position:relative;overflow:hidden}
+.work-bar{display:flex;align-items:center;gap:14px;padding-bottom:15px;margin-bottom:16px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.work-step{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--clay);background:rgba(184,149,122,.18);padding:5px 11px;border-radius:20px}
+.work-claim{font-family:var(--display);font-weight:500;font-size:17px;color:var(--paper);letter-spacing:-.01em}
+.wk-panel{display:none}
+.wk-panel.on{display:block;animation:wkin .5s var(--ease)}
+@keyframes wkin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wk-rows{display:flex;flex-direction:column;gap:13px}
+.wk-row{display:flex;align-items:center;gap:11px;font-size:14.5px;color:rgba(245,240,232,.82)}
+.wk-row b{color:var(--paper);font-weight:600}
+.wk-row.mut{color:var(--muted-d);font-size:13px}
+.wk-dot{width:7px;height:7px;border-radius:50%;background:var(--clay);flex:none}
+.wk-dot.ok{background:var(--status)}
+.wk-quote{margin-top:5px;font-size:14.5px;line-height:1.55;color:rgba(245,240,232,.9);border-left:2px solid var(--clay);padding:3px 0 3px 14px}
+.wk-result{margin-top:6px;font-family:var(--mono);font-size:12.5px;color:var(--clay);letter-spacing:.02em}
+.wk-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted-d)}
+.wk-prog{color:var(--clay)}
+.dossier{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:760px){.dossier{grid-template-columns:1fr 1fr}}
+.dtile{background:rgba(255,255,255,.03);border:1px solid var(--line-soft);border-radius:9px;padding:12px;opacity:.3;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease),border-color .45s ease}
+.dtile.in{opacity:1;transform:none;border-color:rgba(184,149,122,.42)}
+.dt-k{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d);margin-bottom:6px}
+.dtile.in .dt-k{color:var(--clay)}
+.dt-v{display:block;font-size:12px;color:rgba(245,240,232,.55)}
+.dtile.in .dt-v{color:var(--paper)}
+.wk-foot{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--muted-d)}
+.wk-foot.done{color:var(--clay)}
+.wk-foot.done::before{content:"\2713  "}
 .how-statement{max-width:58ch;margin:56px auto 0;text-align:center;font-family:var(--display);font-weight:500;font-size:clamp(20px,2.6vw,28px);line-height:1.35;letter-spacing:-.02em;color:var(--ink)}
 
 /* ===== factory map ===== */
@@ -765,18 +793,57 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
     </div>
     <div class="run">
       <div class="run-track">
-        <button class="run-stage on active" data-i="0"><span class="rs-ic"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><span class="rs-l">Signal</span><span class="rs-s">Public records</span></button>
+        <button class="run-stage on active" data-i="0"><span class="rs-ic"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><span class="rs-l">Signal</span><span class="rs-s">found &amp; verified</span></button>
         <span class="run-link"></span>
-        <button class="run-stage" data-i="1"><span class="rs-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="rs-l">Research</span><span class="rs-s">Proprietary joins</span></button>
+        <button class="run-stage" data-i="1"><span class="rs-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="rs-l">Research</span><span class="rs-s">the full dossier</span></button>
         <span class="run-link"></span>
-        <button class="run-stage" data-i="2"><span class="rs-ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 8l9 6 9-6"/></svg></span><span class="rs-l">Conversation</span><span class="rs-s">Personalized outreach</span></button>
+        <button class="run-stage" data-i="2"><span class="rs-ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 8l9 6 9-6"/></svg></span><span class="rs-l">Conversation</span><span class="rs-s">in their language</span></button>
         <span class="run-link"></span>
-        <button class="run-stage" data-i="3"><span class="rs-ic"><svg viewBox="0 0 24 24"><path d="M20 7L10 17l-5-5"/></svg></span><span class="rs-l">Close</span><span class="rs-s">Warm handoff</span></button>
+        <button class="run-stage" data-i="3"><span class="rs-ic"><svg viewBox="0 0 24 24"><path d="M20 7L10 17l-5-5"/></svg></span><span class="rs-l">Close</span><span class="rs-s">warm handoff</span></button>
       </div>
-      <div class="run-readout"><span class="run-tag" id="runTag">SIGNAL</span><span class="run-detail" id="runDetail">Ownership change at Atlas Fabrication</span></div>
-      <div class="run-result" id="runResult">12 found · 12 reached · $0</div>
+      <div class="work" id="work">
+        <div class="work-bar"><span class="work-step" id="workStep">SIGNAL</span><span class="work-claim" id="workClaim">A name and a website is enough.</span></div>
+        <div class="wk-panel on" data-w="0">
+          <div class="wk-rows">
+            <div class="wk-row"><span class="wk-dot"></span>Scored against your fit criteria <b>87 / 100</b></div>
+            <div class="wk-row"><span class="wk-dot"></span>Decision-maker identified <b>J. Marsh, Owner</b></div>
+            <div class="wk-row"><span class="wk-dot ok"></span>Email verified across <b>Apollo, Hunter, Truelist</b></div>
+            <div class="wk-row mut">No verified contact, no send.</div>
+          </div>
+        </div>
+        <div class="wk-panel" data-w="1">
+          <div class="wk-head"><span>Eleven live searches, one dossier</span><span class="wk-prog" id="wkProg">0 / 8</span></div>
+          <div class="dossier" id="dossier">
+            <div class="dtile" data-d="0"><span class="dt-k">Decision-maker</span><span class="dt-v">found &amp; verified</span></div>
+            <div class="dtile" data-d="1"><span class="dt-k">Company profile</span><span class="dt-v">what they do, how big</span></div>
+            <div class="dtile" data-d="2"><span class="dt-k">Market context</span><span class="dt-v">what&rsquo;s moving around them</span></div>
+            <div class="dtile" data-d="3"><span class="dt-k">Operating pressure</span><span class="dt-v">labor, costs, this year</span></div>
+            <div class="dtile" data-d="4"><span class="dt-k">The trigger</span><span class="dt-v">why now</span></div>
+            <div class="dtile" data-d="5"><span class="dt-k">Where you fit</span><span class="dt-v">the lever worth pulling</span></div>
+            <div class="dtile" data-d="6"><span class="dt-k">Personal hooks</span><span class="dt-v">tenure, community</span></div>
+            <div class="dtile" data-d="7"><span class="dt-k">Disqualifiers</span><span class="dt-v">checked, clean</span></div>
+          </div>
+          <div class="wk-foot" id="wkFoot">Composing the one reason to reach out &hellip;</div>
+        </div>
+        <div class="wk-panel" data-w="2">
+          <div class="wk-rows">
+            <div class="wk-row"><span class="wk-dot"></span>Persona matched to the industry</div>
+            <div class="wk-row"><span class="wk-dot"></span>Draft built from the dossier, in their language</div>
+            <div class="wk-row"><span class="wk-dot"></span>Checked against the guardrails</div>
+            <div class="wk-quote">Noticed what&rsquo;s shifting in your corner of the market. Worth a quick conversation before it&rsquo;s on everyone&rsquo;s radar?</div>
+          </div>
+        </div>
+        <div class="wk-panel" data-w="3">
+          <div class="wk-rows">
+            <div class="wk-row"><span class="wk-dot"></span>Intent read as <b>interested</b></div>
+            <div class="wk-row"><span class="wk-dot"></span>Answered with a relevant hook</div>
+            <div class="wk-row"><span class="wk-dot ok"></span>Handed to your team, warm</div>
+            <div class="wk-result">Eleven searches, one dossier, one conversation that wouldn&rsquo;t have happened.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="how-statement">This is how an organization goes from chasing to closing. The worker runs outbound at machine speed, around the clock, so your people spend their hours where only people win.</p>
+    <p class="how-statement">This is how a team goes from chasing to closing &mdash; outbound at machine speed, so your people spend their hours where only people win.</p>
   </div>
 </section>
 
@@ -1169,20 +1236,39 @@ if(feedEl){
 
 /* ----- animated run ----- */
 const RUN=[
-  {tag:'SIGNAL',d:'Ownership change at Atlas Fabrication.'},
-  {tag:'RESEARCH',d:'Joined to registry and court records. Owner verified.'},
-  {tag:'CONVERSATION',d:'Personalized email drafted and sent the same week.'},
-  {tag:'CLOSE',d:'Reply received. Handed to the desk.'}
+  {step:'SIGNAL',claim:'A name and a website is enough.'},
+  {step:'RESEARCH',claim:'It finds the one reason they would say yes.'},
+  {step:'CONVERSATION',claim:'It writes like it did the homework.'},
+  {step:'CLOSE',claim:'You step in warm.'}
 ];
+const DUR=[2400,4800,2900,2900];
 const rStages=document.querySelectorAll('.run-stage');
 if(rStages.length){
-  const rTag=document.getElementById('runTag'),rDetail=document.getElementById('runDetail'),rResult=document.getElementById('runResult');
-  let ri=0,rTimer=null;
-  function rShow(i){ri=i;rStages.forEach((s,x)=>{s.classList.toggle('on',x<=i);s.classList.toggle('active',x===i);});rTag.textContent=RUN[i].tag;rDetail.textContent=RUN[i].d;rResult.classList.remove('show');}
-  function rStep(){if(ri<RUN.length-1){rShow(ri+1);}else{rStages.forEach(s=>s.classList.add('on'));rResult.classList.add('show');setTimeout(()=>rShow(0),1500);}}
-  function rStart(){rTimer=setInterval(rStep,1550);}
-  rShow(0);rStart();
-  rStages.forEach(s=>s.addEventListener('click',()=>{clearInterval(rTimer);rShow(+s.dataset.i);rStart();}));
+  const workStep=document.getElementById('workStep'),workClaim=document.getElementById('workClaim'),
+        panels=document.querySelectorAll('.wk-panel'),wkProg=document.getElementById('wkProg'),wkFoot=document.getElementById('wkFoot');
+  let ri=0,rTO=null,fillTO=[];
+  function fillDossier(){
+    const tiles=[...document.querySelectorAll('.dtile')];
+    fillTO.forEach(clearTimeout);fillTO=[];
+    tiles.forEach(t=>t.classList.remove('in'));
+    if(wkProg)wkProg.textContent='0 / 8';
+    if(wkFoot){wkFoot.classList.remove('done');wkFoot.textContent='Composing the one reason to reach out …';}
+    tiles.forEach((t,k)=>fillTO.push(setTimeout(()=>{
+      t.classList.add('in');
+      if(wkProg)wkProg.textContent=(k+1)+' / 8';
+      if(k===tiles.length-1&&wkFoot){wkFoot.classList.add('done');wkFoot.textContent='Dossier complete. The reason to reach out is clear.';}
+    },300+k*300)));
+  }
+  function show(i){
+    ri=i;
+    rStages.forEach((s,x)=>{s.classList.toggle('on',x<=i);s.classList.toggle('active',x===i);});
+    workStep.textContent=RUN[i].step;workClaim.textContent=RUN[i].claim;
+    panels.forEach(p=>p.classList.toggle('on',+p.dataset.w===i));
+    if(i===1)fillDossier();
+  }
+  function schedule(){clearTimeout(rTO);rTO=setTimeout(()=>{show((ri+1)%RUN.length);schedule();},DUR[ri]);}
+  show(0);schedule();
+  rStages.forEach(s=>s.addEventListener('click',()=>{show(+s.dataset.i);schedule();}));
 }
 
 /* ----- factory floor sim ----- */
