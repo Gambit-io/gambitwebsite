@@ -97,24 +97,27 @@ h2{font-size:clamp(30px,4.4vw,52px)}
 .btn-ghost-l{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-ghost-l:hover{border-color:var(--clay);color:var(--clay-deep)}
 
-/* ---------- nav ---------- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:60;
-  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s;
-  border-bottom:1px solid transparent;
-}
-nav.scrolled{background:rgba(21,17,13,.86);backdrop-filter:blur(14px);border-bottom-color:var(--line-soft)}
-.nav-in{max-width:var(--maxw);margin:0 auto;padding:18px 28px;display:flex;align-items:center;justify-content:space-between}
+/* ---------- nav (site header) ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:var(--paper);border-bottom:1px solid var(--line)}
+.header-inner{max-width:var(--maxw);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.logo{display:inline-block;text-decoration:none;transition:transform .3s var(--ease)}
+.logo:hover{transform:translateX(5px)}
+.logo img{height:24px;width:auto;display:block}
+#mainNav{display:flex;align-items:center;gap:4px}
+#mainNav a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;transition:color .15s,background .15s}
+#mainNav a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+.header-actions{display:flex;align-items:center;gap:10px}
+.btn-solid-h{display:inline-flex;align-items:center;padding:8px 18px;border-radius:100px;background:var(--ink);border:1px solid var(--ink);color:var(--paper);font-size:13.5px;font-weight:500;text-decoration:none;transition:opacity .15s}
+.btn-solid-h:hover{opacity:.82}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-toggle svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.5;fill:none}
 .mark{font-family:var(--mark);font-weight:800;font-size:19px;letter-spacing:.16em;color:var(--paper);text-decoration:none}
-.nav-links{display:flex;gap:30px;align-items:center}
-.nav-links a{color:var(--muted-d);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--paper)}
-.nav-right{display:flex;gap:14px;align-items:center}
-.nav-right a.contact{color:var(--muted-d);font-size:14px;font-weight:500;text-decoration:none}
-.nav-right a.contact:hover{color:var(--paper)}
-.nav-pill{background:var(--paper);color:var(--ink);padding:9px 18px;border-radius:30px;font-size:14px;font-weight:500;text-decoration:none;transition:.2s}
-.nav-pill:hover{background:var(--sand)}
-@media(max-width:860px){.nav-links{display:none}.nav-right a.contact{display:none}}
+@media(max-width:860px){
+  .menu-toggle{display:block}
+  #mainNav{display:none;position:fixed;top:60px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:14px 24px 22px;border-bottom:1px solid var(--line);box-shadow:0 10px 26px rgba(21,17,13,.1)}
+  #mainNav.open{display:flex}
+  #mainNav a{padding:12px 0;font-size:16px;width:100%}
+}
 
 /* ---------- hero ---------- */
 .hero{background:var(--ink);color:var(--paper);padding:150px 0 0;overflow:hidden;position:relative}
@@ -702,22 +705,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 <a class="skip" href="#top">Skip to content</a>
 
 <!-- NAV -->
-<nav id="nav">
-  <div class="nav-in">
-    <a href="#top" class="mark">GAMBIT</a>
-    <div class="nav-links">
-      <a href="#top">Vision</a>
-      <a href="#solutions" class="active">Workers</a>
-      <a href="#integrations">Integrations</a>
-      <a href="#factory">Factory</a>
-      <a href="#proof">Case Studies</a>
-      <a href="#">Insights</a>
-    </div>
-    <div class="nav-right">
-      <a href="#contact" class="contact">Contact</a>
-    </div>
-  </div>
-</nav>
+<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-solid-h">Contact</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
 
 <!-- HERO -->
 <header class="hero" id="top">
@@ -1146,9 +1134,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 </footer>
 
 <script>
-/* ----- nav scroll ----- */
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30));
+/* ----- mobile nav toggle ----- */
+const menuToggle=document.getElementById('menuToggle'),mainNav=document.getElementById('mainNav');
+if(menuToggle&&mainNav){
+  menuToggle.addEventListener('click',()=>mainNav.classList.toggle('open'));
+  mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mainNav.classList.remove('open')));
+}
 
 /* ----- case filter ----- */
 document.querySelectorAll('.fpill').forEach(p=>{
