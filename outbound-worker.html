@@ -312,11 +312,11 @@ footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 @media(max-width:900px){.res-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.res-grid{grid-template-columns:1fr}}
-.res{background:var(--paper);padding:34px 30px 36px}
-.res .rk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-deep);display:block;margin-bottom:18px}
-.res .rn{font-family:var(--display);font-weight:600;font-size:clamp(36px,4.2vw,52px);letter-spacing:-.03em;line-height:1;color:var(--ink)}
-.res .rl{margin-top:12px;font-size:15px;color:var(--ink-2);font-weight:500;max-width:26ch}
-.res .rs{margin-top:7px;font-size:13.5px;color:var(--muted);max-width:30ch}
+.res-card{background:var(--paper);padding:34px 30px 36px}
+.res-card .rk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-deep);display:block;margin-bottom:18px}
+.res-card .rn{font-family:var(--display);font-weight:600;font-size:clamp(36px,4.2vw,52px);letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.res-card .rl{margin-top:12px;font-size:15px;color:var(--ink-2);font-weight:500;max-width:26ch}
+.res-card .rs{margin-top:7px;font-size:13.5px;color:var(--muted);max-width:30ch}
 
 /* hero logo bar */
 .logobar{display:flex;gap:38px;align-items:center;flex-wrap:wrap}
@@ -453,7 +453,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .fade,.fade-r,.reveal,.hline,.wrow,.ws-result,.hero-email{opacity:1!important;transform:none!important;clip-path:none!important}
+  .fade,.fade-r,.reveal,.hline,.wrow,.ws-result{opacity:1!important;transform:none!important;clip-path:none!important}
 }
 
 /* ===== drafted email overlay ===== */
@@ -513,11 +513,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 .ws-result-l{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#1f9e54;margin-bottom:5px}
 .ws-result-q{font-size:11.5px;color:#3a3540;font-style:italic;line-height:1.5}
 .ws-result-m{display:flex;gap:14px;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:#a39b8c}
-/* drafted email, slides in after research */
-.hero-email{right:-16px;bottom:-30px;width:60%;max-width:288px;animation:emailIn .9s var(--ease) 3s both}
-@media(max-width:960px){
-  .hero-email{position:static;right:auto;bottom:auto;width:100%;max-width:none;margin-top:16px;animation:emailIn .8s var(--ease) .2s both}
-}
 
 .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:11px 18px;border-radius:0 0 10px 0;font-family:var(--display);font-size:14px;text-decoration:none}
 .skip:focus{left:0}
@@ -616,7 +611,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
   .cs{padding:26px 20px}
   .moat-cell{padding:24px 20px}
   .case-info .ci-h{font-size:22px}
-  .res{padding:26px 22px 28px}
+  .res-card{padding:26px 22px 28px}
   .menu-toggle{padding:10px;margin-right:-10px}
   .foot-links{gap:36px}
 }
@@ -662,18 +657,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
               <div class="ws-result-m"><span>2.4s</span><span>6 sources</span><span>ready to send</span></div>
             </div>
           </div>
-        </div>
-        <div class="email-card hero-email">
-          <div class="em-bar"><span class="em-tag">Drafted by Bogan</span><span class="em-status"><span class="dot"></span> ready to send</span></div>
-          <div class="em-head">
-            <div class="em-row"><span class="em-k">To</span><span class="em-v">Jordan Marsh &middot; Atlas Fabrication</span></div>
-            <div class="em-row"><span class="em-k">Subject</span><span class="em-v strong">A quiet conversation, before it gets noisy</span></div>
-          </div>
-          <div class="em-body">
-            <p>Jordan, I have been following Atlas while mapping ownership changes across fabrication in the region. This is not a pitch, and I am not a broker.</p>
-            <p class="em-sign">Best,<br>Bogan &middot; Spearhead</p>
-          </div>
-          <div class="em-foot"><span class="em-send">Queue outreach</span><span class="em-meta">From 6 public signals</span></div>
         </div>
       </div>
     </div>
@@ -1003,37 +986,37 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
       <p class="lead">Every deployment runs on the same engine, so the results repeat: more replies, faster first touches, and hours handed back to the people who close.</p>
     </div>
     <div class="res-grid">
-      <div class="res">
+      <div class="res-card">
         <span class="rk">Sell-side origination</span>
         <div class="rn"><span data-count="30" data-suffix="%">30%</span></div>
         <div class="rl">response rate on cold outreach</div>
         <div class="rs">In a market where low single digits is called a win.</div>
       </div>
-      <div class="res">
+      <div class="res-card">
         <span class="rk">Hotel sales</span>
         <div class="rn">+<span data-count="50" data-suffix="%">50%</span></div>
         <div class="rl">more responses to outreach</div>
         <div class="rs">Same properties, same offer. Better signal, better timing.</div>
       </div>
-      <div class="res">
+      <div class="res-card">
         <span class="rk">Every rep</span>
         <div class="rn"><span data-count="2">2</span> hrs</div>
         <div class="rl">of research handed back, every day</div>
         <div class="rs">The homework is done before the morning starts.</div>
       </div>
-      <div class="res">
+      <div class="res-card">
         <span class="rk">Speed to market</span>
         <div class="rn">Same week</div>
         <div class="rl">from public signal to first conversation</div>
         <div class="rs">While the rest of the market is still building its list.</div>
       </div>
-      <div class="res">
+      <div class="res-card">
         <span class="rk">Before every send</span>
         <div class="rn"><span data-count="6">6</span>+</div>
         <div class="rl">sources verified per contact</div>
         <div class="rs">No verified owner, no send. Ever.</div>
       </div>
-      <div class="res">
+      <div class="res-card">
         <span class="rk">Data spend</span>
         <div class="rn">$0</div>
         <div class="rl">on purchased lists</div>
@@ -1204,7 +1187,7 @@ if(wgrid){
 /* ----- elevation: composed reveals + magnetic CTAs ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.section-head,.run,.how-statement,.factory-frame,.cs,.moat-cell,.res,.cta h2,.cta p,.cta-btns';
+  const sel='.section-head,.run,.how-statement,.factory-frame,.cs,.moat-cell,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.moat-grid,.res-grid,.cta .wrap').forEach(g=>{
