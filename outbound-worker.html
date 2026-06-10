@@ -307,20 +307,16 @@ footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
 .coming .cm-l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-deep);background:rgba(184,149,122,.18);padding:5px 13px;border-radius:20px}
 .coming .cm-t{font-size:14px;color:#6b656f}
 
-/* ===== testimonials ===== */
-.quotes{background:var(--bone);padding:104px 0;border-top:1px solid var(--line)}
-.q-stage{max-width:880px;margin:6px 0 36px;transition:opacity .25s ease;opacity:1}
-.q-stage.out{opacity:0}
-.q-mark{font-family:var(--display);font-weight:700;font-size:84px;line-height:1;color:var(--clay);display:block;height:46px;overflow:hidden}
-.q-text{font-family:var(--display);font-weight:500;font-size:clamp(21px,3vw,33px);line-height:1.3;letter-spacing:-.02em;color:var(--ink);border:0;margin:0 0 30px;padding:0}
-.q-by{display:flex;align-items:center;gap:14px}
-.q-av{width:44px;height:44px;border-radius:50%;background:var(--clay);color:#fff;font-family:var(--display);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
-.q-name{display:block;font-weight:600;font-size:15px;color:var(--ink)}
-.q-role{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
-.q-dots{display:flex;gap:9px}
-.q-dot{width:12px;height:12px;border-radius:50%;background:var(--line);border:0;cursor:pointer;padding:0;transition:.25s ease}
-.q-dot:hover{background:var(--sand-deep)}
-.q-dot.on{background:var(--clay);width:28px;border-radius:6px}
+/* ===== results across clients ===== */
+.results{background:var(--bone);padding:104px 0;border-top:1px solid var(--line)}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.res-grid{grid-template-columns:1fr}}
+.res{background:var(--paper);padding:34px 30px 36px}
+.res .rk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-deep);display:block;margin-bottom:18px}
+.res .rn{font-family:var(--display);font-weight:600;font-size:clamp(36px,4.2vw,52px);letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.res .rl{margin-top:12px;font-size:15px;color:var(--ink-2);font-weight:500;max-width:26ch}
+.res .rs{margin-top:7px;font-size:13.5px;color:var(--muted);max-width:30ch}
 
 /* hero logo bar */
 .logobar{display:flex;gap:38px;align-items:center;flex-wrap:wrap}
@@ -607,7 +603,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
   .hero-strip .wrap{flex-direction:column;align-items:flex-start;gap:14px;padding-top:18px;padding-bottom:26px}
   .logobar{gap:24px}
   .logobar .logo{font-size:15px}
-  .how,.cases,.moat,.proof,.quotes{padding:72px 0}
+  .how,.cases,.moat,.proof,.results{padding:72px 0}
   .integrations{padding:64px 0}
   .cta{padding:76px 0}
   .section-head{margin-bottom:36px}
@@ -620,7 +616,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
   .cs{padding:26px 20px}
   .moat-cell{padding:24px 20px}
   .case-info .ci-h{font-size:22px}
-  .q-text{margin-bottom:24px}
+  .res{padding:26px 22px 28px}
   .menu-toggle{padding:10px;margin-right:-10px}
   .foot-links{gap:36px}
 }
@@ -998,19 +994,52 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="quotes">
+<!-- RESULTS ACROSS CLIENTS -->
+<section class="results" id="results">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">From the field</span><h2>How outbound is transforming companies.</h2></div>
-    <div class="q-stage show" id="qStage">
-      <span class="q-mark">“</span>
-      <blockquote class="q-text" id="qText"></blockquote>
-      <div class="q-by">
-        <span class="q-av" id="qAv"></span>
-        <span class="q-meta"><span class="q-name" id="qName"></span><span class="q-role" id="qRole"></span></span>
+    <div class="section-head">
+      <span class="eyebrow">Across all clients</span>
+      <h2>Different markets. Same story.</h2>
+      <p class="lead">Every deployment runs on the same engine, so the results repeat: more replies, faster first touches, and hours handed back to the people who close.</p>
+    </div>
+    <div class="res-grid">
+      <div class="res">
+        <span class="rk">Sell-side origination</span>
+        <div class="rn"><span data-count="30" data-suffix="%">30%</span></div>
+        <div class="rl">response rate on cold outreach</div>
+        <div class="rs">In a market where low single digits is called a win.</div>
+      </div>
+      <div class="res">
+        <span class="rk">Hotel sales</span>
+        <div class="rn">+<span data-count="50" data-suffix="%">50%</span></div>
+        <div class="rl">more responses to outreach</div>
+        <div class="rs">Same properties, same offer. Better signal, better timing.</div>
+      </div>
+      <div class="res">
+        <span class="rk">Every rep</span>
+        <div class="rn"><span data-count="2">2</span> hrs</div>
+        <div class="rl">of research handed back, every day</div>
+        <div class="rs">The homework is done before the morning starts.</div>
+      </div>
+      <div class="res">
+        <span class="rk">Speed to market</span>
+        <div class="rn">Same week</div>
+        <div class="rl">from public signal to first conversation</div>
+        <div class="rs">While the rest of the market is still building its list.</div>
+      </div>
+      <div class="res">
+        <span class="rk">Before every send</span>
+        <div class="rn"><span data-count="6">6</span>+</div>
+        <div class="rl">sources verified per contact</div>
+        <div class="rs">No verified owner, no send. Ever.</div>
+      </div>
+      <div class="res">
+        <span class="rk">Data spend</span>
+        <div class="rn">$0</div>
+        <div class="rl">on purchased lists</div>
+        <div class="rs">Every name earned from public signal, not bought.</div>
       </div>
     </div>
-    <div class="q-dots" id="qDots"></div>
   </div>
 </section>
 
@@ -1095,28 +1124,6 @@ const io=new IntersectionObserver((ents)=>{
 },{threshold:.4});
 document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
 
-/* ----- testimonials (replace with real, approved client quotes) ----- */
-const TESTIMONIALS=[
-  {q:"We were in conversation with three owners before a banker ever called them. That has not happened for us before.",name:"Daniel R.",role:"Managing Partner · M&A advisory"},
-  {q:"We stopped buying lists. The worker builds a better one in minutes, and it never goes stale.",name:"Priya S.",role:"Head of Capital Markets · boutique bank"},
-  {q:"The first three weeks of every mandate used to be finding people. Now that time goes to closing.",name:"Marc L.",role:"Director of Corporate Development"},
-  {q:"Every conversation starts warm. The signal quality is the whole difference.",name:"Erin T.",role:"Founder · search fund"}
-];
-const qStage=document.getElementById('qStage');
-if(qStage){
-  const qText=document.getElementById('qText'),qName=document.getElementById('qName'),
-        qRole=document.getElementById('qRole'),qAv=document.getElementById('qAv'),qDots=document.getElementById('qDots');
-  let qi=0,qTimer=null;
-  const qInit=n=>n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-  function qRender(i){const t=TESTIMONIALS[i];qText.textContent=t.q;qName.textContent=t.name;qRole.textContent=t.role;qAv.textContent=qInit(t.name);[...qDots.children].forEach((d,x)=>d.classList.toggle('on',x===i));}
-  function qShow(i){qi=(i+TESTIMONIALS.length)%TESTIMONIALS.length;qStage.classList.add('out');setTimeout(()=>{qRender(qi);qStage.classList.remove('out');},230);}
-  function qStart(){qTimer=setInterval(()=>qShow(qi+1),6000);}
-  function qStop(){clearInterval(qTimer);}
-  TESTIMONIALS.forEach((t,i)=>{const b=document.createElement('button');b.className='q-dot'+(i===0?' on':'');b.setAttribute('aria-label','testimonial '+(i+1));b.onclick=()=>{qStop();qShow(i);qStart();};qDots.appendChild(b);});
-  qRender(0);qStart();
-  const qs=document.querySelector('.quotes');qs.addEventListener('mouseenter',qStop);qs.addEventListener('mouseleave',qStart);
-}
-
 /* ----- animated run ----- */
 const RUN=[
   {step:'SIGNAL',claim:'A name and a website is enough.'},
@@ -1197,10 +1204,10 @@ if(wgrid){
 /* ----- elevation: composed reveals + magnetic CTAs ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.section-head,.run,.how-statement,.factory-frame,.cs,.moat-cell,.cta h2,.cta p,.cta-btns';
+  const sel='.section-head,.run,.how-statement,.factory-frame,.cs,.moat-cell,.res,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
-  document.querySelectorAll('.moat-grid,.cta .wrap').forEach(g=>{
+  document.querySelectorAll('.moat-grid,.res-grid,.cta .wrap').forEach(g=>{
     [...g.children].filter(c=>c.classList.contains('reveal')).forEach((c,i)=>c.style.transitionDelay=(i*70)+'ms');
   });
   if(RM){els.forEach(el=>el.classList.add('in'));}
