@@ -453,7 +453,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .fade,.fade-r,.reveal,.hline,.wrow,.ws-result{opacity:1!important;transform:none!important;clip-path:none!important}
+  .fade,.fade-r,.reveal,.hline,.wrow{opacity:1!important;transform:none!important;clip-path:none!important}
 }
 
 /* ===== drafted email overlay ===== */
@@ -509,10 +509,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 .wrow:nth-child(4){animation-delay:1.8s}
 .wrow:nth-child(5){animation-delay:2.25s}
 @keyframes wIn{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
-.ws-result{margin-top:12px;border:1px solid rgba(62,196,109,.28);background:rgba(62,196,109,.07);border-radius:9px;padding:11px 13px;opacity:0;animation:wIn .6s var(--ease) 2.75s both}
-.ws-result-l{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#1f9e54;margin-bottom:5px}
-.ws-result-q{font-size:11.5px;color:#3a3540;font-style:italic;line-height:1.5}
-.ws-result-m{display:flex;gap:14px;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:#a39b8c}
 
 .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:11px 18px;border-radius:0 0 10px 0;font-family:var(--display);font-size:14px;text-decoration:none}
 .skip:focus{left:0}
@@ -650,11 +646,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
               <div class="wrow"><span class="ts">09:41:03</span><span class="ic res"></span><span><span class="wt">Research &middot; pulling public records</span><span class="wd">6 sources &middot; owner verified &middot; current</span></span></div>
               <div class="wrow"><span class="ts">09:41:04</span><span class="ic draft"></span><span><span class="wt">Drafting &middot; personalized</span><span class="wd">Concise, soft CTA, no broker tone</span></span></div>
               <div class="wrow"><span class="ts">09:41:04</span><span class="ic done"></span><span><span class="wt">Ready</span><span class="wd">Outreach drafted &middot; queued for review</span></span></div>
-            </div>
-            <div class="ws-result">
-              <div class="ws-result-l">Drafted</div>
-              <div class="ws-result-q">&ldquo;A quiet conversation, before it gets noisy.&rdquo;</div>
-              <div class="ws-result-m"><span>2.4s</span><span>6 sources</span><span>ready to send</span></div>
             </div>
           </div>
         </div>
@@ -1000,14 +991,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
       </div>
       <div class="res-card">
         <span class="rk">Every rep</span>
-        <div class="rn"><span data-count="2">2</span> hrs</div>
+        <div class="rn"><span data-count="4">4</span> hrs</div>
         <div class="rl">of research handed back, every day</div>
         <div class="rs">The homework is done before the morning starts.</div>
       </div>
       <div class="res-card">
         <span class="rk">Speed to market</span>
-        <div class="rn">Same week</div>
-        <div class="rl">from public signal to first conversation</div>
+        <div class="rn">Same day</div>
+        <div class="rl">from public signal to first response</div>
         <div class="rs">While the rest of the market is still building its list.</div>
       </div>
       <div class="res-card">
@@ -1140,8 +1131,15 @@ if(rStages.length){
     if(i===1)fillDossier();
   }
   function schedule(){clearTimeout(rTO);rTO=setTimeout(()=>{show((ri+1)%RUN.length);schedule();},DUR[ri]);}
+  /* click a stage to hold on it; click it again to resume the loop */
+  let held=false;
+  function setHeld(h){held=h;rStages.forEach((s,x)=>s.setAttribute('aria-pressed',h&&x===ri?'true':'false'));}
   show(0);schedule();
-  rStages.forEach(s=>s.addEventListener('click',()=>{show(+s.dataset.i);schedule();}));
+  rStages.forEach(s=>s.addEventListener('click',()=>{
+    const i=+s.dataset.i;
+    if(held&&i===ri){setHeld(false);schedule();}
+    else{clearTimeout(rTO);show(i);setHeld(true);}
+  }));
 }
 
 /* ----- factory floor sim ----- */
