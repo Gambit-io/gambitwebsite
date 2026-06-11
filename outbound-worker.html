@@ -108,13 +108,15 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:va
 #mainNav a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:6px;transition:color .15s,background .15s}
 #mainNav a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
 .header-actions{display:flex;align-items:center;gap:10px}
+.btn-outline-h{display:inline-flex;align-items:center;padding:7px 16px;border-radius:100px;background:transparent;border:1px solid #e4e4e7;color:#52525b;font-size:13.5px;font-weight:500;text-decoration:none;cursor:pointer;transition:opacity .15s}
+.btn-outline-h:hover{opacity:.75}
 .btn-solid-h{display:inline-flex;align-items:center;padding:8px 18px;border-radius:100px;background:var(--ink);border:1px solid var(--ink);color:var(--paper);font-size:13.5px;font-weight:500;text-decoration:none;transition:opacity .15s}
 .btn-solid-h:hover{opacity:.82}
 .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .menu-toggle svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.5;fill:none}
-.mark{font-family:var(--mark);font-weight:800;font-size:19px;letter-spacing:.16em;color:var(--paper);text-decoration:none}
 @media(max-width:860px){
   .menu-toggle{display:block}
+  .btn-outline-h{display:none}
   #mainNav{display:none;position:fixed;top:60px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:14px 24px 22px;border-bottom:1px solid var(--line);box-shadow:0 10px 26px rgba(21,17,13,.1)}
   #mainNav.open{display:flex}
   #mainNav a{padding:12px 0;font-size:16px;width:100%}
@@ -203,16 +205,32 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:va
 .cta p{color:#5d5546;font-size:18px;max-width:54ch;margin:0 auto 32px}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-/* ---------- footer ---------- */
-footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line-soft)}
-.foot-brand .mark{font-size:22px}
-.foot-brand p{color:var(--muted-d);font-size:13px;margin-top:10px}
-.foot-links{display:flex;gap:64px;flex-wrap:wrap}
-.foot-col h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d);margin-bottom:14px;font-weight:500}
-.foot-col a{display:block;color:rgba(245,240,232,.7);text-decoration:none;font-size:14px;margin-bottom:9px;transition:.2s}
-.foot-col a:hover{color:var(--paper)}
-.foot-bottom{display:flex;justify-content:space-between;padding-top:26px;color:var(--muted-d);font-size:12.5px;flex-wrap:wrap;gap:10px}
+/* ---------- footer (site standard) ---------- */
+.site-footer{background:#0a0a0a;padding:40px 32px}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-left{display:flex;align-items:center;gap:16px}
+.footer-logo-img{height:20px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.5}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.6)}
+.footer-center{display:flex;align-items:center;gap:24px}
+.footer-center a{font-size:13px;color:rgba(255,255,255,.7);text-decoration:none;transition:color .15s}
+.footer-center a:hover{color:rgba(255,255,255,.9)}
+.footer-right{display:flex;align-items:center;gap:16px}
+.footer-legal{display:flex;align-items:center;gap:8px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s}
+.footer-legal a:hover{color:rgba(255,255,255,.8)}
+.footer-legal span{font-size:12px;color:rgba(255,255,255,.4)}
+.footer-socials{display:flex;align-items:center;gap:10px}
+.footer-social{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);transition:background .15s;text-decoration:none}
+.footer-social:hover{background:rgba(255,255,255,.1)}
+.footer-social svg{width:16px;height:16px;stroke:rgba(255,255,255,.4);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){
+  .site-footer{padding:32px 20px}
+  .footer-inner{flex-direction:column;gap:24px;text-align:center}
+  .footer-left{flex-direction:column;gap:6px}
+  .footer-center{flex-wrap:wrap;justify-content:center;gap:16px}
+  .footer-right{flex-direction:column;gap:12px;align-items:center}
+  .footer-socials{justify-content:center}
+}
 
 /* ===== cases / UI showcase ===== */
 .cases{background:var(--ink);color:var(--paper);padding:108px 0}
@@ -609,7 +627,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
   .case-info .ci-h{font-size:22px}
   .res-card{padding:26px 22px 28px}
   .menu-toggle{padding:10px;margin-right:-10px}
-  .foot-links{gap:36px}
 }
 </style>
 </head>
@@ -617,7 +634,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 <a class="skip" href="#top">Skip to content</a>
 
 <!-- NAV -->
-<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-solid-h">Contact</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
+<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit"></a><nav id="mainNav"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-outline-h">Contact</a><a href="/#askgambit" class="btn-solid-h">Ask Gambit</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -1029,31 +1046,16 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.fpill:focus-visible,.wc
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="#top" class="mark">GAMBIT</a>
-        <p>We put AI to work.</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
+    <div class="footer-center"><a href="/#work">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
+    <div class="footer-right">
+      <div class="footer-legal"><a href="/terms-of-service">Terms</a><span>·</span><a href="/privacy-policy">Privacy</a></div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
       </div>
-      <div class="foot-links">
-        <div class="foot-col">
-          <h4>Product</h4>
-          <a href="#solutions">Workers</a><a href="#factory">The Factory</a><a href="#proof">Case Studies</a>
-        </div>
-        <div class="foot-col">
-          <h4>Company</h4>
-          <a href="/#work">Vision</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a>
-        </div>
-        <div class="foot-col">
-          <h4>Legal</h4>
-          <a href="/terms-of-service">Terms</a><a href="/privacy-policy">Privacy</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&copy; 2026 Gambit Co.</span>
-      <span>Forward-deployed teams. AI workers. The Factory.</span>
     </div>
   </div>
 </footer>
