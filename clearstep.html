@@ -151,6 +151,43 @@ body { min-height: 100vh; }
 .note .nv { font-size: 13.5px; line-height: 1.6; color: var(--dim); }
 .note .nv.summary { color: var(--ink); }
 
+/* INTAKE TABS + BUILD FORM */
+.ptabs { display: flex; gap: 4px; padding: 12px 14px 0; }
+.ptab { flex: 1; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dim); background: var(--card-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px; cursor: pointer; transition: all 0.14s; }
+.ptab:hover { color: var(--ink); }
+.ptab.active { color: var(--card); background: var(--ink); border-color: var(--ink); }
+.build-form { padding: 14px 16px 18px; }
+.autofill { background: var(--card-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+.autofill .hint { font-size: 12px; color: var(--dim); margin-bottom: 8px; line-height: 1.4; }
+.build-form label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; display: block; }
+.build-form input, .build-form select, .build-form textarea { width: 100%; font-family: var(--sans); font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; }
+.build-form input:focus, .build-form select:focus, .build-form textarea:focus { outline: none; border-color: var(--faint); }
+.build-form textarea { resize: vertical; min-height: 50px; line-height: 1.4; }
+.build-form select { cursor: pointer; }
+.field { margin-bottom: 11px; } .field.row { display: grid; grid-template-columns: 1fr 64px 88px; gap: 8px; } .field.two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.build-msg { font-family: var(--mono); font-size: 11px; color: var(--red); margin: 4px 0 10px; min-height: 14px; }
+.build-actions { display: flex; gap: 8px; }
+.build-actions .run-btn { flex: 1; justify-content: center; }
+.mini-btn { font-family: var(--sans); font-size: 12.5px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 8px 14px; cursor: pointer; }
+.mini-btn:hover:not(:disabled) { border-color: var(--faint); } .mini-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* SET PREVIEW */
+.set-card { margin-top: 18px; }
+.set-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--line-soft); cursor: pointer; transition: background 0.12s; }
+.set-row:last-child { border-bottom: none; }
+.set-row:hover { background: var(--card-2); }
+.set-row .nm { font-size: 13.5px; color: var(--ink); font-weight: 450; }
+.set-row .nm small { font-family: var(--mono); font-size: 11px; color: var(--faint); font-weight: 400; margin-left: 7px; }
+.set-row .ep { font-family: var(--mono); font-size: 11px; color: var(--dim); border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; white-space: nowrap; }
+.set-detail { display: none; padding: 0 16px 14px; background: var(--card-2); }
+.set-detail.open { display: block; }
+.set-detail .sd { padding-top: 12px; }
+.set-detail .sd .sk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+.set-detail .sd ul { list-style: none; display: grid; gap: 3px; margin-bottom: 4px; }
+.set-detail .sd li { font-size: 12.5px; color: var(--dim); line-height: 1.4; padding-left: 12px; position: relative; }
+.set-detail .sd li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+.set-detail .sd .truth { font-size: 12.5px; color: var(--dim); font-style: italic; line-height: 1.5; }
+
 /* BATCH */
 .batch-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 18px; }
 .src-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -257,8 +294,40 @@ a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid 
       <div class="stage">
         <div class="card">
           <div class="card-head"><span class="label">Patient worker</span><span class="label" id="pid">p001</span></div>
-          <div class="picker" id="picker"></div>
-          <div class="patient-body" id="patientBody"></div>
+          <div class="ptabs">
+            <button class="ptab active" data-ptab="presets">Presets</button>
+            <button class="ptab" data-ptab="build">Build your own</button>
+          </div>
+          <div id="presetsPane">
+            <div class="picker" id="picker"></div>
+            <div class="patient-body" id="patientBody"></div>
+          </div>
+          <div id="buildPane" class="hidden">
+            <div class="build-form">
+              <div class="autofill">
+                <p class="hint">Describe a patient in a sentence and let the worker draft the full case, or fill the fields in yourself.</p>
+                <textarea id="briefInput" placeholder="e.g. 62 year old man, sudden worst headache of his life with vision changes"></textarea>
+                <div style="margin-top:8px"><button class="mini-btn" id="autofillBtn">Auto-fill the case</button></div>
+              </div>
+              <div class="field row">
+                <div><label>Name</label><input id="bName" placeholder="Alex Rivera"></div>
+                <div><label>Age</label><input id="bAge" placeholder="34"></div>
+                <div><label>Sex</label><input id="bSex" placeholder="female"></div>
+              </div>
+              <div class="field"><label>Chief complaint</label><input id="bComplaint" placeholder="chest tightness"></div>
+              <div class="field"><label>Expected endpoint (answer key)</label><select id="bEndpoint">
+                <option value="">Select one</option>
+                <option>Self-care at home</option><option>Video visit</option><option>Urgent care</option><option>Specialist</option><option>Emergency department</option>
+              </select></div>
+              <div class="field"><label>Affirms, true, revealed only if asked (one per line)</label><textarea id="bAffirms" placeholder="the pain spreads to my left arm&#10;it started while climbing stairs"></textarea></div>
+              <div class="field"><label>Negates, not true, denied if asked (one per line)</label><textarea id="bNegates" placeholder="this is not heartburn"></textarea></div>
+              <div class="field"><label>Clinical truth</label><textarea id="bTruth" placeholder="what is actually going on and why the endpoint is right"></textarea></div>
+              <div class="field two"><div><label>Personality</label><input id="bPersonality" placeholder="stoic, downplays"></div><div><label>Health literacy</label><input id="bLiteracy" placeholder="medium"></div></div>
+              <div class="field two"><div><label>Emotional state</label><input id="bState" placeholder="a little scared"></div><div><label>Speech style</label><input id="bSpeech" placeholder="terse"></div></div>
+              <div class="build-msg" id="buildMsg"></div>
+              <div class="build-actions"><button class="run-btn" id="createBtn">Create patient</button></div>
+            </div>
+          </div>
         </div>
         <div class="card console">
           <div class="toolbar">
@@ -284,13 +353,18 @@ a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid 
         <div class="batch-controls">
           <div class="src-group">
             <button class="btn-ghost" id="genBtn">Generate ten patients</button>
-            <button class="btn-ghost" id="uploadBtn">Upload Excel</button>
-            <a class="btn-ghost" href="/clearstep-patients.xlsx" download>Download sample</a>
-            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv,application/json,.json" class="hidden">
+            <button class="btn-ghost" id="uploadBtn">Upload JSON</button>
+            <a class="btn-ghost" href="/clearstep-patients.json" download>Download sample JSON</a>
+            <input type="file" id="fileInput" accept="application/json,.json" class="hidden">
           </div>
           <button class="run-btn" id="runAllBtn"><span class="play"></span> <span id="runAllLabel">Run all</span></button>
           <div class="batch-note" id="batchNote">Current set: 10 patients. Runs go three at a time to stay under rate limits.</div>
         </div>
+      </div>
+
+      <div class="card set-card">
+        <div class="card-head"><span class="label">Patient set</span><span class="label" id="setCount"></span></div>
+        <div id="setList"></div>
       </div>
 
       <div class="report" id="report">
@@ -321,9 +395,8 @@ a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid 
   </div>
 </div>
 
-<script src="/vendor/xlsx.full.min.js"></script>
 <script type="module">
-import { runConversation, scoreRun, evaluate, runBatch, computeReport, summarizeReport, generatePersonas, parsePersonaUpload, parsePersonaRows } from '/lib/triage-engine.js';
+import { runConversation, scoreRun, evaluate, runBatch, computeReport, summarizeReport, generatePersonas, parsePersonaUpload, normalizePersona, ENDPOINTS } from '/lib/triage-engine.js';
 import { SEED_PERSONAS } from '/lib/personas.js';
 
 // Roles only; the model behind each worker is resolved server-side.
@@ -502,12 +575,89 @@ async function runSingle() {
 
 function onPersonaSetChanged() {
   activeSingle = personaSet[0];
-  renderPicker(); renderPatient(); resetSingleTrace();
+  renderPicker(); renderPatient(); resetSingleTrace(); renderSetPreview();
   $('runAllLabel').textContent = `Run all ${personaSet.length}`;
   $('batchNote').textContent = `Current set: ${personaSet.length} patients. Runs go three at a time to stay under rate limits.`;
   $('report').classList.remove('show'); $('runsBody').innerHTML = '';
   updateTiles();
 }
+
+// ---- patient set preview (so generated/uploaded sets are visible) ------
+function renderSetPreview() {
+  $('setCount').textContent = `${personaSet.length} patients`;
+  $('setList').innerHTML = personaSet.map((p, i) => `
+    <div class="set-row" data-i="${i}">
+      <span class="nm">${esc(firstName(p.display_name))}<small>${esc(p.age)} ${esc(p.sex)} &middot; ${esc(p.complaint)}</small></span>
+      <span class="ep">${esc(p.expected_endpoint || 'unset')}</span>
+    </div>
+    <div class="set-detail" data-d="${i}">
+      <div class="sd"><div class="sk">Affirms</div><ul>${(p.affirms || []).map((a) => `<li>${esc(a)}</li>`).join('') || '<li>none</li>'}</ul></div>
+      <div class="sd"><div class="sk">Negates</div><ul>${(p.negates || []).map((n) => `<li>${esc(n)}</li>`).join('') || '<li>none</li>'}</ul></div>
+      <div class="sd"><div class="sk">Clinical truth</div><div class="truth">${esc(p.clinical_truth)}</div></div>
+    </div>`).join('');
+  $('setList').querySelectorAll('.set-row').forEach((r) => r.addEventListener('click', () => {
+    $('setList').querySelector(`.set-detail[data-d="${r.dataset.i}"]`).classList.toggle('open');
+  }));
+}
+
+// ---- build-your-own intake form ---------------------------------------
+function fillForm(p) {
+  const c = p.character || {};
+  $('bName').value = firstName(p.display_name || '');
+  $('bAge').value = p.age || '';
+  $('bSex').value = p.sex || '';
+  $('bComplaint').value = p.complaint || '';
+  $('bEndpoint').value = ENDPOINTS.includes(p.expected_endpoint) ? p.expected_endpoint : '';
+  $('bAffirms').value = (p.affirms || []).join('\n');
+  $('bNegates').value = (p.negates || []).join('\n');
+  $('bTruth').value = p.clinical_truth || '';
+  $('bPersonality').value = c.personality && c.personality !== 'unspecified' ? c.personality : '';
+  $('bLiteracy').value = c.health_literacy && c.health_literacy !== 'unspecified' ? c.health_literacy : '';
+  $('bState').value = c.emotional_state && c.emotional_state !== 'unspecified' ? c.emotional_state : '';
+  $('bSpeech').value = c.speech_style && c.speech_style !== 'unspecified' ? c.speech_style : '';
+}
+
+async function autofillBrief() {
+  const brief = $('briefInput').value.trim();
+  if (!brief) { $('buildMsg').textContent = 'Add a one-line brief first.'; return; }
+  $('autofillBtn').disabled = true; const prev = $('autofillBtn').textContent; $('autofillBtn').textContent = 'Drafting...'; $('buildMsg').textContent = '';
+  try {
+    const out = await generatePersonas({ count: 1, callClaude, model: MODELS.patient, request: `Generate exactly one synthetic patient from this brief: "${brief}". Choose the most clinically appropriate expected_endpoint from the five options. Return a JSON array with one profile.` });
+    if (!out || !out[0]) throw new Error('No patient returned');
+    fillForm(out[0]);
+  } catch (err) { $('buildMsg').textContent = 'Auto-fill failed: ' + err.message; }
+  finally { $('autofillBtn').disabled = false; $('autofillBtn').textContent = prev; }
+}
+
+function buildPatient() {
+  const name = $('bName').value.trim(), age = $('bAge').value.trim();
+  const complaint = $('bComplaint').value.trim(), endpoint = $('bEndpoint').value;
+  if (!complaint) { $('buildMsg').textContent = 'A chief complaint is required.'; return; }
+  if (!endpoint) { $('buildMsg').textContent = 'Pick an expected endpoint.'; return; }
+  const lines = (v) => v.split('\n').map((s) => s.trim()).filter(Boolean);
+  const persona = normalizePersona({
+    id: 'c-' + rid(),
+    display_name: age ? `${name || 'Patient'}, ${age}` : (name || 'Patient'),
+    age: Number(age) || undefined, sex: $('bSex').value.trim(),
+    complaint, expected_endpoint: endpoint,
+    affirms: lines($('bAffirms').value), negates: lines($('bNegates').value),
+    clinical_truth: $('bTruth').value.trim(),
+    character: { personality: $('bPersonality').value.trim(), health_literacy: $('bLiteracy').value.trim(), emotional_state: $('bState').value.trim(), speech_style: $('bSpeech').value.trim() },
+  });
+  personaSet.push(persona);
+  activeSingle = persona;
+  renderPicker(); renderPatient(); renderSetPreview(); updateTiles();
+  ['bName', 'bAge', 'bSex', 'bComplaint', 'bAffirms', 'bNegates', 'bTruth', 'bPersonality', 'bLiteracy', 'bState', 'bSpeech', 'briefInput'].forEach((id) => { $(id).value = ''; });
+  $('bEndpoint').value = ''; $('buildMsg').textContent = '';
+  document.querySelector('.ptab[data-ptab="presets"]').click();
+}
+
+document.querySelectorAll('.ptab').forEach((b) => b.addEventListener('click', () => {
+  const t = b.dataset.ptab;
+  document.querySelectorAll('.ptab').forEach((x) => x.classList.toggle('active', x === b));
+  $('presetsPane').classList.toggle('hidden', t !== 'presets');
+  $('buildPane').classList.toggle('hidden', t !== 'build');
+}));
 
 async function generateTen() {
   if (batchRunning || singleRunning) return;
@@ -518,23 +668,16 @@ async function generateTen() {
 }
 
 function handleUpload(file) {
-  const isJson = /\.json$/i.test(file.name);
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      if (isJson) {
-        personaSet = parsePersonaUpload(reader.result);
-      } else {
-        const wb = window.XLSX.read(reader.result, { type: 'array' });
-        const rows = window.XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '' });
-        personaSet = parsePersonaRows(rows);
-      }
+      personaSet = parsePersonaUpload(reader.result);
       if (!personaSet.length) throw new Error('No patients found in the file');
       onPersonaSetChanged();
       $('batchNote').textContent = `Loaded ${personaSet.length} patients from ${file.name}.`;
     } catch (err) { $('batchNote').textContent = 'Upload failed: ' + err.message; }
   };
-  if (isJson) reader.readAsText(file); else reader.readAsArrayBuffer(file);
+  reader.readAsText(file);
 }
 
 function rowSkeleton(i, p) {
@@ -590,7 +733,7 @@ async function runAll() {
   finally { batchRunning = false; $('runAllBtn').disabled = false; $('genBtn').disabled = false; $('uploadBtn').disabled = false; }
 }
 
-renderPicker(); renderPatient();
+renderPicker(); renderPatient(); renderSetPreview();
 $('runAllLabel').textContent = `Run all ${personaSet.length}`;
 updateTiles();
 $('runBtn').addEventListener('click', runSingle);
@@ -598,6 +741,8 @@ $('runAllBtn').addEventListener('click', runAll);
 $('genBtn').addEventListener('click', generateTen);
 $('uploadBtn').addEventListener('click', () => $('fileInput').click());
 $('fileInput').addEventListener('change', (e) => { if (e.target.files[0]) handleUpload(e.target.files[0]); });
+$('autofillBtn').addEventListener('click', autofillBrief);
+$('createBtn').addEventListener('click', buildPatient);
 </script>
 </body>
 </html>

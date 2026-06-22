@@ -13,7 +13,6 @@ import {
   computeReport,
   normalizePersona,
   parsePersonaUpload,
-  parsePersonaRows,
   ENDPOINTS,
 } from '../lib/triage-engine.js';
 import { HEADACHE } from './fixtures.mjs';
@@ -130,21 +129,6 @@ console.log('\ncomputeReport (care routing accuracy is the headline)');
   eq('improved-outlook count', rep.improvedOutlook, 2);
   eq('breakdown groups by complaint', rep.byComplaint.length, 3);
   eq('empty set does not divide by zero', computeReport([]).accuracy, 0);
-}
-
-console.log('\nparsePersonaRows (Excel/CSV upload)');
-{
-  const rows = [
-    { id: 'x1', display_name: 'Sam, 40', age: 40, sex: 'male', complaint: 'cough', expected_endpoint: 'Video visit', affirms: 'cough for a week ; worse at night', negates: 'no fever', clinical_truth: 'persistent cough', personality: 'calm', health_literacy: 'high', emotional_state: 'fine', speech_style: 'clear' },
-    { 'Name': 'Lee, 22', 'Endpoint': 'Urgent care', 'Affirms': 'sprained wrist | swollen', complaint: 'wrist pain' },
-  ];
-  const out = parsePersonaRows(rows);
-  eq('parses both rows', out.length, 2);
-  eq('splits affirms on semicolons', out[0].affirms, ['cough for a week', 'worse at night']);
-  eq('maps the character block', out[0].character.personality, 'calm');
-  eq('tolerates alternate headers (Name/Endpoint)', out[1].display_name, 'Lee, 22');
-  eq('splits affirms on pipes too', out[1].affirms, ['sprained wrist', 'swollen']);
-  eq('keeps a valid endpoint from a header alias', out[1].expected_endpoint, 'Urgent care');
 }
 
 console.log('\npersona normalization and upload');
