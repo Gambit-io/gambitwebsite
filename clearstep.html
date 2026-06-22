@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambit | Clearstep triage simulation</title>
+<meta name="description" content="A Gambit worker that stands up synthetic patients and tests a triage engine on care routing accuracy. Running live on Claude.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Gambit Technology Inc.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b;
+  --panel: #121214;
+  --panel-2: #17171a;
+  --raise: #1c1c20;
+  --line: #2a2a30;
+  --line-soft: #202024;
+  --text: #ececee;
+  --dim: #9a9aa4;
+  --faint: #6b6b74;
+  --green: #3ec46d;
+  --green-deep: #1fa877;
+  --red: #e5484d;
+  --amber: #e7a13a;
+  --sans: 'General Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --orb: 'Orbitron', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; }
+
+/* HEADER */
+header { position: sticky; top: 0; z-index: 50; height: 58px; background: rgba(10,10,11,0.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
+.header-inner { max-width: 1240px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand img { height: 22px; width: auto; display: block; filter: brightness(0) invert(1); }
+.brand .div { width: 1px; height: 20px; background: var(--line); }
+.brand .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--dim); text-transform: uppercase; }
+.live { display: flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--dim); text-transform: uppercase; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(62,196,109,0.6); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(62,196,109,0.5); } 70% { box-shadow: 0 0 0 7px rgba(62,196,109,0); } 100% { box-shadow: 0 0 0 0 rgba(62,196,109,0); } }
+
+/* SHELL */
+main { flex: 1; max-width: 1240px; width: 100%; margin: 0 auto; padding: 40px 28px 80px; }
+.masthead { margin-bottom: 28px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+h1 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+.lede { font-size: 15.5px; line-height: 1.6; color: var(--dim); max-width: 720px; }
+.honesty { margin-top: 16px; font-size: 13px; line-height: 1.55; color: var(--faint); max-width: 720px; border-left: 2px solid var(--line); padding-left: 14px; }
+
+/* STAGE */
+.stage { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
+.card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 14px; }
+.card-head { padding: 14px 18px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card-head .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+
+/* PATIENT CARD */
+.picker { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 16px 4px; }
+.chip { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.03em; color: var(--dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 100px; padding: 6px 12px; cursor: pointer; transition: all 0.15s; }
+.chip:hover { color: var(--text); border-color: var(--faint); }
+.chip[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); font-weight: 500; }
+.patient-body { padding: 16px 18px 18px; }
+.person { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+.person .name { font-size: 19px; font-weight: 500; letter-spacing: -0.01em; }
+.person .meta { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+.complaint { font-size: 14px; color: var(--dim); margin-bottom: 16px; }
+.complaint b { color: var(--text); font-weight: 500; }
+.traits { display: grid; gap: 9px; }
+.trait { display: grid; grid-template-columns: 96px 1fr; gap: 10px; font-size: 13px; }
+.trait .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); padding-top: 1px; }
+.trait .v { color: var(--dim); line-height: 1.45; }
+
+.keytoggle { margin: 18px 0 0; }
+.keytoggle button { width: 100%; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); background: transparent; border: 1px dashed var(--line); border-radius: 9px; padding: 10px; cursor: pointer; transition: all 0.15s; }
+.keytoggle button:hover { color: var(--text); border-color: var(--faint); }
+.answer-key { margin-top: 12px; border: 1px solid var(--line-soft); border-radius: 10px; padding: 14px; background: var(--panel-2); display: none; }
+.answer-key.open { display: block; }
+.answer-key .ak-row { margin-bottom: 12px; }
+.answer-key .ak-row:last-child { margin-bottom: 0; }
+.answer-key .ak-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.answer-key .ak-endpoint { font-size: 14px; font-weight: 500; color: var(--text); }
+.answer-key ul { list-style: none; display: grid; gap: 5px; }
+.answer-key li { font-size: 12.5px; line-height: 1.45; color: var(--dim); padding-left: 14px; position: relative; }
+.answer-key li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
+.answer-key .negate li::before { background: transparent; border: 1px solid var(--faint); top: 7px; }
+.answer-key .truth { font-size: 12.5px; line-height: 1.5; color: var(--dim); font-style: italic; }
+
+/* CONSOLE */
+.console { min-height: 540px; display: flex; flex-direction: column; }
+.toolbar { padding: 14px 18px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.toolbar .meta { font-family: var(--mono); font-size: 11.5px; color: var(--faint); display: flex; gap: 16px; flex-wrap: wrap; }
+.toolbar .meta b { color: var(--dim); font-weight: 500; }
+.run-btn { display: inline-flex; align-items: center; gap: 9px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--bg); background: var(--text); border: none; border-radius: 100px; padding: 9px 20px; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
+.run-btn:hover:not(:disabled) { opacity: 0.85; }
+.run-btn:disabled { opacity: 0.4; cursor: default; }
+.run-btn .play { width: 0; height: 0; border-left: 8px solid var(--bg); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+
+.trace { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; max-height: 620px; }
+.trace-empty { margin: auto; text-align: center; color: var(--faint); font-size: 13.5px; line-height: 1.6; max-width: 360px; }
+.trace-empty .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 10px; }
+
+.turn { display: flex; flex-direction: column; gap: 6px; animation: rise 0.4s var(--ease); }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.turn .who { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); display: flex; align-items: center; gap: 8px; }
+.turn.triage .who { color: var(--dim); }
+.turn .standin { color: var(--faint); text-transform: none; letter-spacing: 0; font-size: 11px; }
+.bubble { font-size: 14.5px; line-height: 1.55; color: var(--text); background: var(--panel-2); border: 1px solid var(--line-soft); border-radius: 12px; padding: 12px 15px; max-width: 86%; white-space: pre-wrap; }
+.turn.patient { align-items: flex-start; }
+.turn.patient .bubble { border-top-left-radius: 4px; }
+.turn.triage { align-items: flex-end; }
+.turn.triage .bubble { border-top-right-radius: 4px; background: var(--raise); }
+.turn.triage .who { flex-direction: row-reverse; }
+
+.commit { align-self: flex-end; display: inline-flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--green); background: rgba(62,196,109,0.08); border: 1px solid rgba(62,196,109,0.32); border-radius: 100px; padding: 7px 14px; }
+.commit .dot { animation: none; box-shadow: none; }
+.thinking { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; color: var(--faint); display: flex; align-items: center; gap: 8px; }
+.thinking .dots span { animation: blink 1.4s infinite both; }
+.thinking .dots span:nth-child(2){ animation-delay: 0.2s; } .thinking .dots span:nth-child(3){ animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+
+/* VERDICT */
+.verdict { margin-top: 20px; border: 1px solid var(--line-soft); border-radius: 14px; background: var(--panel); overflow: hidden; display: none; }
+.verdict.show { display: block; animation: rise 0.4s var(--ease); }
+.verdict-head { padding: 16px 20px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.badge { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 13px; border-radius: 7px; }
+.badge.match { color: var(--green); background: rgba(62,196,109,0.1); border: 1px solid rgba(62,196,109,0.3); }
+.badge.miss { color: var(--red); background: rgba(229,72,77,0.1); border: 1px solid rgba(229,72,77,0.3); }
+.route-line { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.route-line .ep { font-family: var(--mono); font-size: 13px; padding: 5px 11px; border-radius: 7px; background: var(--panel-2); border: 1px solid var(--line); }
+.route-line .arrow { color: var(--faint); }
+.route-line .ep.chosen.ok { border-color: rgba(62,196,109,0.4); color: var(--green); }
+.route-line .ep.chosen.bad { border-color: rgba(229,72,77,0.4); color: var(--red); }
+.verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line-soft); }
+.vstat { padding: 16px 20px; border-right: 1px solid var(--line-soft); }
+.vstat:last-child { border-right: none; }
+.vstat .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 7px; }
+.vstat .v { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+.vstat .v small { font-size: 13px; color: var(--faint); font-weight: 400; }
+.sev-correct { color: var(--green); } .sev-over { color: var(--amber); } .sev-under, .sev-fail { color: var(--red); }
+.danger-note { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); margin-top: 4px; }
+.notes { padding: 18px 20px; display: grid; gap: 14px; }
+.note .nk { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.note .nv { font-size: 14px; line-height: 1.6; color: var(--dim); }
+.note .nv.summary { color: var(--text); }
+
+.err { color: var(--red); font-family: var(--mono); font-size: 12.5px; padding: 10px 14px; border: 1px solid rgba(229,72,77,0.3); border-radius: 9px; background: rgba(229,72,77,0.06); }
+
+/* FOOTER */
+.site-footer { border-top: 1px solid var(--line-soft); padding: 28px; }
+.footer-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.footer-inner img { height: 18px; filter: brightness(0) invert(1); opacity: 0.5; }
+.footer-inner .ft { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--faint); }
+
+@media (max-width: 920px) {
+  .stage { grid-template-columns: 1fr; }
+  .trace { max-height: none; }
+}
+@media (max-width: 560px) {
+  main { padding: 28px 18px 60px; }
+  .header-inner { padding: 0 18px; }
+  .brand .tag { display: none; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .verdict-grid { grid-template-columns: 1fr; }
+  .vstat { border-right: none; border-bottom: 1px solid var(--line-soft); }
+  .bubble { max-width: 100%; }
+}
+a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <img src="/img/gambit-logo.png" alt="Gambit">
+      <span class="div"></span>
+      <span class="tag">Clearstep triage simulation</span>
+    </a>
+    <div class="live"><span class="dot"></span> Worker running live on Claude</div>
+  </div>
+</header>
+
+<main>
+  <div class="masthead">
+    <div class="eyebrow">Gambit worker</div>
+    <h1>Patient simulation against a triage engine</h1>
+    <p class="lede">This worker stands up a synthetic patient, runs it in conversation against a triage engine, and scores whether the patient was routed to the right level of care. Pick a patient and run it live. Every turn below is a real model call.</p>
+    <p class="honesty">The triage side is a stand-in. In production it connects to Clearstep Smart Care Routing. The patient holds symptoms back and reveals them only when the triage worker asks, so the test stays honest. Nothing here is pre-scripted.</p>
+  </div>
+
+  <div class="stage">
+    <!-- PATIENT -->
+    <div class="card">
+      <div class="card-head"><span class="label">Patient worker</span><span class="label" id="pid">p001</span></div>
+      <div class="picker" id="picker"></div>
+      <div class="patient-body" id="patientBody"></div>
+    </div>
+
+    <!-- CONSOLE -->
+    <div class="card console">
+      <div class="toolbar">
+        <div class="meta">
+          <span><b id="mTurns">0</b> / 15 turns</span>
+          <span>patient + triage <b id="mPatientModel">sonnet 4.6</b></span>
+          <span>judge <b id="mEvalModel">opus 4.8</b></span>
+        </div>
+        <button class="run-btn" id="runBtn"><span class="play"></span> Run simulation</button>
+      </div>
+      <div class="trace" id="trace">
+        <div class="trace-empty" id="empty">
+          <span class="mono">Ready</span>
+          The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict" id="verdict"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="/img/gambit-logo.png" alt="Gambit">
+    <span class="ft">Ten real runs scale to thousands overnight on the same loop.</span>
+  </div>
+</footer>
+
+<script type="module">
+import { runConversation, scoreRun, evaluate, parseRoute } from '/lib/triage-engine.js';
+
+const MODELS = {
+  patient: 'claude-sonnet-4-6',
+  triage: 'claude-sonnet-4-6',
+  evaluator: 'claude-opus-4-8',
+};
+
+// Seed personas spanning the acuity range. Generation and upload come next.
+const PERSONAS = [
+  {
+    id: 'p001', display_name: 'Maria, 35', age: 35, sex: 'female', complaint: 'headache',
+    expected_endpoint: 'Video visit',
+    affirms: ['this headache is different than my usual headaches', 'I have a history of occasional headaches'],
+    negates: ['this is not a mild headache'],
+    clinical_truth: 'New-character headache in someone with prior mild headaches. Warrants a prompt virtual evaluation, not the ER, not self-care.',
+    character: { personality: 'anxious, over-explains', health_literacy: 'low, uses plain language', emotional_state: 'worried but coherent', speech_style: 'short messages, some run-ons' },
+  },
+  {
+    id: 'p002', display_name: 'James, 58', age: 58, sex: 'male', complaint: 'chest tightness',
+    expected_endpoint: 'Emergency department',
+    affirms: ['the tightness started about an hour ago while I was walking up the stairs', 'it spreads into my left arm and up into my jaw', 'I am sweaty and a little short of breath'],
+    negates: ['this is not heartburn or something I ate'],
+    clinical_truth: 'Exertional chest pressure radiating to the left arm and jaw with sweating and breathlessness in a 58 year old. Possible acute coronary syndrome. Needs emergency evaluation now.',
+    character: { personality: 'stoic, downplays things', health_literacy: 'medium', emotional_state: 'trying to stay calm, a little scared', speech_style: 'terse, understated' },
+  },
+  {
+    id: 'p003', display_name: 'Priya, 24', age: 24, sex: 'female', complaint: 'sore throat',
+    expected_endpoint: 'Self-care at home',
+    affirms: ['it started two days ago and it is a mild scratchy feeling', 'I have a slight runny nose', 'I can still eat and drink normally'],
+    negates: ['I do not have a high fever', 'I have no trouble breathing or swallowing', 'my neck is not stiff and I am not drooling'],
+    clinical_truth: 'Mild viral sore throat with a runny nose, no red flags, eating and drinking normally. Appropriate for self care at home with advice on when to seek more help.',
+    character: { personality: 'matter of fact', health_literacy: 'high', emotional_state: 'mildly annoyed, not worried', speech_style: 'clear and concise' },
+  },
+];
+
+const SEV_CLASS = { 'correct': 'sev-correct', 'over-triage': 'sev-over', 'under-triage': 'sev-under', 'fail': 'sev-fail' };
+const SEV_LABEL = { 'correct': 'On target', 'over-triage': 'Over triage', 'under-triage': 'Under triage', 'fail': 'No disposition' };
+
+let active = PERSONAS[0];
+let running = false;
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+function renderPicker() {
+  $('picker').innerHTML = PERSONAS.map((p) =>
+    `<button class="chip" data-id="${p.id}" aria-pressed="${p.id === active.id}">${esc(p.display_name.split(',')[0])} · ${esc(p.complaint)}</button>`
+  ).join('');
+  $('picker').querySelectorAll('.chip').forEach((b) => {
+    b.addEventListener('click', () => {
+      if (running) return;
+      active = PERSONAS.find((p) => p.id === b.dataset.id);
+      $('picker').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.id === active.id)));
+      renderPatient();
+      resetTrace();
+    });
+  });
+}
+
+function renderPatient() {
+  const p = active;
+  const c = p.character;
+  $('pid').textContent = p.id;
+  $('patientBody').innerHTML = `
+    <div class="person"><span class="name">${esc(p.display_name.split(',')[0])}</span><span class="meta">${esc(p.age)} · ${esc(p.sex)}</span></div>
+    <p class="complaint">Comes in with a <b>${esc(p.complaint)}</b>.</p>
+    <div class="traits">
+      <div class="trait"><span class="k">Personality</span><span class="v">${esc(c.personality)}</span></div>
+      <div class="trait"><span class="k">Literacy</span><span class="v">${esc(c.health_literacy)}</span></div>
+      <div class="trait"><span class="k">State</span><span class="v">${esc(c.emotional_state)}</span></div>
+      <div class="trait"><span class="k">Speech</span><span class="v">${esc(c.speech_style)}</span></div>
+    </div>
+    <div class="keytoggle">
+      <button id="keyBtn" aria-expanded="false">Show answer key</button>
+      <div class="answer-key" id="answerKey">
+        <div class="ak-row"><div class="ak-label">Expected endpoint</div><div class="ak-endpoint">${esc(p.expected_endpoint)}</div></div>
+        <div class="ak-row"><div class="ak-label">Affirms (true, reveal only if asked)</div><ul>${p.affirms.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
+        <div class="ak-row"><div class="ak-label">Negates (deny if asked)</div><ul class="negate">${p.negates.map((n) => `<li>${esc(n)}</li>`).join('')}</ul></div>
+        <div class="ak-row"><div class="ak-label">Clinical truth</div><div class="truth">${esc(p.clinical_truth)}</div></div>
+      </div>
+    </div>`;
+  $('keyBtn').addEventListener('click', () => {
+    const ak = $('answerKey'); const open = ak.classList.toggle('open');
+    $('keyBtn').textContent = open ? 'Hide answer key' : 'Show answer key';
+    $('keyBtn').setAttribute('aria-expanded', String(open));
+  });
+}
+
+function resetTrace() {
+  $('mTurns').textContent = '0';
+  $('verdict').className = 'verdict';
+  $('verdict').innerHTML = '';
+  $('trace').innerHTML = `<div class="trace-empty"><span class="mono">Ready</span>The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.</div>`;
+}
+
+function addTurn({ speaker, text, route }) {
+  const empty = $('trace').querySelector('.trace-empty');
+  if (empty) empty.remove();
+  const wrap = document.createElement('div');
+  wrap.className = `turn ${speaker}`;
+  const who = speaker === 'patient'
+    ? 'Patient worker'
+    : 'Triage worker <span class="standin">stand-in for Clearstep</span>';
+  let body = text;
+  if (route) body = text.replace(/^\s*ROUTE:.*$/gim, '').trim();
+  wrap.innerHTML = `<div class="who">${who}</div><div class="bubble">${esc(body)}</div>`;
+  if (route) {
+    const commit = document.createElement('div');
+    commit.className = 'commit';
+    commit.innerHTML = `<span class="dot"></span> Committed: ${esc(route)}`;
+    wrap.appendChild(commit);
+  }
+  $('trace').appendChild(wrap);
+  $('trace').scrollTop = $('trace').scrollHeight;
+}
+
+function showThinking(side) {
+  const t = document.createElement('div');
+  t.className = `turn ${side}`;
+  t.id = 'thinkingRow';
+  const who = side === 'patient' ? 'Patient worker' : 'Triage worker';
+  t.innerHTML = `<div class="who">${who}</div><div class="thinking">thinking<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>`;
+  $('trace').appendChild(t);
+  $('trace').scrollTop = $('trace').scrollHeight;
+}
+function clearThinking() { const t = $('thinkingRow'); if (t) t.remove(); }
+
+async function callClaude({ system, messages, model, max_tokens }) {
+  const r = await fetch('/api/claude', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ system, messages, model, max_tokens }),
+  });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error || `Request failed (${r.status})`);
+  return data.text;
+}
+
+// Wrap callClaude so the UI shows a thinking row on whichever side speaks next.
+function tracedCall(nextSpeakerOf) {
+  return async (args) => {
+    clearThinking();
+    showThinking(nextSpeakerOf(args));
+    try { return await callClaude(args); }
+    finally { clearThinking(); }
+  };
+}
+
+function renderVerdict({ score, chosen, failed, turns, verdict }) {
+  const p = active;
+  const match = score.routing_correct;
+  const sev = score.severity;
+  const fid = verdict.fidelity_score;
+  const v = $('verdict');
+  v.innerHTML = `
+    <div class="verdict-head">
+      <span class="badge ${match ? 'match' : 'miss'}">${match ? 'Match' : 'Miss'}</span>
+      <div class="route-line">
+        <span class="ep">Expected: ${esc(p.expected_endpoint)}</span>
+        <span class="arrow">to</span>
+        <span class="ep chosen ${match ? 'ok' : 'bad'}">Chosen: ${failed ? 'No disposition' : esc(chosen)}</span>
+      </div>
+    </div>
+    <div class="verdict-grid">
+      <div class="vstat"><div class="k">Severity</div><div class="v ${SEV_CLASS[sev]}">${SEV_LABEL[sev]}</div>${sev === 'under-triage' ? '<div class="danger-note">Dangerous direction</div>' : ''}</div>
+      <div class="vstat"><div class="k">Patient fidelity</div><div class="v">${fid == null ? 'n/a' : fid}<small> / 10</small></div></div>
+      <div class="vstat"><div class="k">Turns to commit</div><div class="v">${turns}<small> / 15</small></div></div>
+    </div>
+    <div class="notes">
+      <div class="note"><div class="nk">How the patient behaved</div><div class="nv">${esc(verdict.fidelity_notes || '')}</div></div>
+      <div class="note"><div class="nk">Why it landed here</div><div class="nv">${esc(verdict.routing_notes || '')}</div></div>
+      <div class="note"><div class="nk">Verdict</div><div class="nv summary">${esc(verdict.summary || '')}</div></div>
+    </div>`;
+  v.className = 'verdict show';
+}
+
+async function run() {
+  if (running) return;
+  running = true;
+  $('runBtn').disabled = true;
+  $('runBtn').innerHTML = '<span class="play"></span> Running';
+  $('verdict').className = 'verdict';
+  $('trace').innerHTML = '';
+  $('mTurns').textContent = '0';
+
+  try {
+    const { transcript, chosen, failed, turns } = await runConversation({
+      persona: active,
+      models: MODELS,
+      callClaude: tracedCall((args) => args.system.includes('clinical triage worker') ? 'triage' : 'patient'),
+      onEvent: (e) => {
+        if (e.type !== 'turn') return;
+        addTurn(e);
+        if (e.turn) $('mTurns').textContent = String(e.turn);
+      },
+    });
+
+    clearThinking();
+    const ev = document.createElement('div');
+    ev.className = 'turn triage';
+    ev.id = 'evalRow';
+    ev.innerHTML = '<div class="thinking">scoring and evaluating<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>';
+    $('trace').appendChild(ev);
+    $('trace').scrollTop = $('trace').scrollHeight;
+
+    const score = scoreRun({ expected: active.expected_endpoint, chosen, failed });
+    const verdict = await evaluate({
+      persona: active, transcript, chosen, expected: active.expected_endpoint,
+      callClaude, model: MODELS.evaluator,
+    });
+    $('evalRow')?.remove();
+    renderVerdict({ score, chosen, failed, turns, verdict });
+  } catch (err) {
+    clearThinking();
+    $('evalRow')?.remove();
+    const e = document.createElement('div');
+    e.className = 'err';
+    e.textContent = 'Run stopped: ' + err.message;
+    $('trace').appendChild(e);
+  } finally {
+    running = false;
+    $('runBtn').disabled = false;
+    $('runBtn').innerHTML = '<span class="play"></span> Run simulation';
+  }
+}
+
+renderPicker();
+renderPatient();
+$('runBtn').addEventListener('click', run);
+</script>
+</body>
+</html>
