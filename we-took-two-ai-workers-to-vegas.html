@@ -142,6 +142,16 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 .article-body .inline-img-half img { width: 100%; display: block; }
 .article-body .inline-img-half figcaption { font-size: 12px; color: var(--muted); padding: 8px 0 0; }
 
+/* Related articles */
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); padding-bottom: 0; }
+.related-section h3 { font-size: 14px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+.related-list { display: flex; flex-direction: column; gap: 0; }
+.related-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-light); text-decoration: none; color: var(--ink); transition: opacity 0.15s; }
+.related-item:last-child { border-bottom: none; }
+.related-item:hover { opacity: 0.65; }
+.related-item-title { font-size: 14px; font-weight: 500; line-height: 1.35; }
+.related-item-arrow { font-size: 14px; color: var(--muted); flex-shrink: 0; }
+
 /* Share / bottom */
 .article-footer { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding-bottom: 0; }
 .article-author-block { display: flex; align-items: center; gap: 12px; }
@@ -257,7 +267,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
         <img src="/img/Chloe%20HPE%20Booth.jpg" alt="Chloe at the HPE Discover booth in Las Vegas" loading="lazy">
       </figure>
 
-      <p>Ryan spent the week introducing attendees to Chloe, who spent most of her time hanging out at the <a href="/gambitco-joins-hpe-unleash-ai-partner-program">HPE booth</a>.</p>
+      <p>Ryan spent the week introducing attendees to Chloe, who spent most of her time hanging out at the HPE booth.</p>
 
       <p>Chloe helps residents and visitors get quick answers about parking and events in Vail. She can also communicate in more than 50 languages, which is one of those things we obviously had to test.</p>
 
@@ -296,6 +306,25 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <p>And who knows? The next <a href="/what-is-an-ai-worker">AI worker</a> we build might be for your team. If you'd like to explore what that could look like, <a href="/get-started">get in touch with us</a>.</p>
 
+  </div>
+
+  <!-- MORE FROM GAMBIT -->
+  <div class="related-section">
+    <h3>More from Gambit</h3>
+    <div class="related-list">
+      <a href="/vail-ai-voice-concierge-chloe" class="related-item">
+        <span class="related-item-title">Meet Chloe: The Town of Vail's AI Voice Concierge</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+      <a href="/what-is-an-ai-worker" class="related-item">
+        <span class="related-item-title">What Is an AI Worker? And Why It Changes Everything</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+      <a href="/gambitco-joins-hpe-unleash-ai-partner-program" class="related-item">
+        <span class="related-item-title">GambitCo Joins HPE Unleash AI Partner Program</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+    </div>
   </div>
 
   <!-- AUTHOR BLOCK -->
