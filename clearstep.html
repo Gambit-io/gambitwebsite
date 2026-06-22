@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambit | Clearstep triage simulation</title>
+<meta name="description" content="A Gambit Cloud worker that stands up synthetic patients and tests a triage engine on care routing accuracy.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Gambit Technology Inc.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #f3f3f2; --card: #ffffff; --card-2: #fafafa; --line: #e6e6e9; --line-soft: #eeeef0;
+  --ink: #161619; --dim: #65656e; --faint: #9a9aa3;
+  --side: #0c0c0e; --side-2: #141417; --side-line: #26262c; --side-text: #e9e9ec; --side-dim: #8a8a93; --side-faint: #5d5d66;
+  --panel: #121214; --panel-line: #26262c;
+  --green: #1fa877; --green-bright: #3ec46d; --red: #c43d3d; --amber: #b07d1c;
+  --sans: 'General Sans', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; --orb: 'Orbitron', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; }
+.hidden { display: none !important; }
+.app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+
+/* SIDEBAR */
+.sidebar { background: var(--side); border-right: 1px solid var(--side-line); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+.brand { display: flex; align-items: center; gap: 11px; padding: 20px 20px 18px; text-decoration: none; border-bottom: 1px solid var(--side-line); }
+.brand img { height: 20px; filter: brightness(0) invert(1); }
+.brand .sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--side-faint); display: block; margin-top: 3px; }
+.nav { padding: 14px 12px; display: flex; flex-direction: column; gap: 3px; }
+.nav-item { display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; font-family: var(--sans); font-size: 13.5px; font-weight: 450; color: var(--side-dim); background: transparent; border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer; transition: all 0.14s; text-decoration: none; }
+.nav-item:hover { color: var(--side-text); background: rgba(255,255,255,0.04); }
+.nav-item.active { color: var(--side-text); background: rgba(255,255,255,0.07); }
+.nav-item svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.nav-sep { height: 1px; background: var(--side-line); margin: 10px 14px; }
+.nav-sec { padding: 8px 22px; }
+.nav-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--side-faint); margin-bottom: 12px; }
+.wk { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; }
+.wk .wk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); flex-shrink: 0; box-shadow: 0 0 0 0 rgba(62,196,109,0.5); animation: pulse 2.4s infinite; }
+.wk .wk-name { font-size: 12.5px; color: var(--side-text); }
+.wk .wk-role { font-family: var(--mono); font-size: 10px; color: var(--side-faint); display: block; margin-top: 1px; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(62,196,109,0.45); } 70% { box-shadow: 0 0 0 6px rgba(62,196,109,0); } 100% { box-shadow: 0 0 0 0 rgba(62,196,109,0); } }
+.sidebar-foot { margin-top: auto; padding: 16px 22px; border-top: 1px solid var(--side-line); font-family: var(--mono); font-size: 10.5px; color: var(--side-faint); line-height: 1.9; }
+.sidebar-foot b { color: var(--green-bright); font-weight: 500; }
+
+.work { min-width: 0; display: flex; flex-direction: column; }
+.statbar { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; margin: 22px 28px 0; padding: 16px 20px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.statbar .sb-title { display: flex; align-items: center; gap: 11px; }
+.statbar .sb-title .ttl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--side-text); }
+.statbar .sb-title .op { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-bright); display: flex; align-items: center; gap: 7px; }
+.statbar .op .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); animation: pulse 2.4s infinite; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 10px; flex: 1; min-width: 360px; }
+.tile { background: var(--side-2); border: 1px solid var(--panel-line); border-radius: 10px; padding: 11px 14px; }
+.tile .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--side-faint); margin-bottom: 6px; }
+.tile .v { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--side-text); }
+.tile .v.green { color: var(--green-bright); }
+
+.view { padding: 26px 28px 70px; }
+.view-head { margin-bottom: 22px; }
+.view-head h1 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 7px; }
+.view-head p { font-size: 14px; line-height: 1.55; color: var(--dim); max-width: 760px; }
+.view-head .honesty { margin-top: 12px; font-size: 12.5px; color: var(--faint); border-left: 2px solid var(--line); padding-left: 12px; line-height: 1.5; max-width: 760px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.card-head { padding: 13px 17px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card-head .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+
+/* SINGLE */
+.stage { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
+.picker { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 15px 4px; }
+.chip { font-family: var(--mono); font-size: 11px; color: var(--dim); background: var(--card-2); border: 1px solid var(--line); border-radius: 100px; padding: 6px 11px; cursor: pointer; transition: all 0.14s; }
+.chip:hover { color: var(--ink); border-color: var(--faint); }
+.chip[aria-pressed="true"] { color: var(--card); background: var(--ink); border-color: var(--ink); font-weight: 500; }
+.patient-body { padding: 15px 17px 18px; }
+.person { display: flex; align-items: baseline; gap: 9px; margin-bottom: 4px; }
+.person .name { font-size: 18px; font-weight: 500; }
+.person .meta { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+.complaint { font-size: 13.5px; color: var(--dim); margin-bottom: 15px; }
+.complaint b { color: var(--ink); font-weight: 500; }
+.traits { display: grid; gap: 8px; }
+.trait { display: grid; grid-template-columns: 84px 1fr; gap: 10px; font-size: 12.5px; }
+.trait .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); padding-top: 1px; }
+.trait .v { color: var(--dim); line-height: 1.4; }
+.keytoggle { margin-top: 16px; }
+.keytoggle button { width: 100%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); background: transparent; border: 1px dashed var(--line); border-radius: 9px; padding: 9px; cursor: pointer; transition: all 0.14s; }
+.keytoggle button:hover { color: var(--ink); border-color: var(--faint); }
+.answer-key { margin-top: 11px; border: 1px solid var(--line); border-radius: 10px; padding: 13px; background: var(--card-2); display: none; }
+.answer-key.open { display: block; }
+.ak-row { margin-bottom: 11px; } .ak-row:last-child { margin-bottom: 0; }
+.ak-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.ak-endpoint { font-size: 13.5px; font-weight: 500; }
+.answer-key ul { list-style: none; display: grid; gap: 4px; }
+.answer-key li { font-size: 12px; line-height: 1.4; color: var(--dim); padding-left: 13px; position: relative; }
+.answer-key li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+.answer-key .negate li::before { background: transparent; border: 1px solid var(--faint); }
+.answer-key .truth { font-size: 12px; line-height: 1.5; color: var(--dim); font-style: italic; }
+.console { display: flex; flex-direction: column; min-height: 520px; }
+.toolbar { padding: 13px 17px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.toolbar .meta { font-family: var(--mono); font-size: 11px; color: var(--faint); display: flex; gap: 15px; flex-wrap: wrap; }
+.toolbar .meta b { color: var(--dim); font-weight: 500; }
+.run-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13.5px; font-weight: 500; color: var(--card); background: var(--ink); border: none; border-radius: 100px; padding: 9px 19px; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
+.run-btn:hover:not(:disabled) { opacity: 0.85; }
+.run-btn:disabled { opacity: 0.4; cursor: default; }
+.run-btn .play { width: 0; height: 0; border-left: 7px solid var(--card); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.trace { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 15px; }
+.trace-empty { margin: auto; text-align: center; color: var(--faint); font-size: 13px; line-height: 1.6; max-width: 360px; }
+.trace-empty .mono { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 9px; }
+.turn { display: flex; flex-direction: column; gap: 6px; animation: rise 0.35s var(--ease); }
+@keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+.turn .who { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); display: flex; align-items: center; gap: 8px; }
+.turn .standin { color: var(--faint); text-transform: none; letter-spacing: 0; font-size: 10.5px; }
+.bubble { font-size: 14px; line-height: 1.55; color: var(--ink); background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; max-width: 88%; white-space: pre-wrap; }
+.turn.patient .bubble { border-top-left-radius: 4px; }
+.turn.triage { align-items: flex-end; }
+.turn.triage .bubble { border-top-right-radius: 4px; background: #f1f4ff; border-color: #e2e8fb; }
+.turn.triage .who { flex-direction: row-reverse; }
+.commit { align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; color: var(--green); background: rgba(31,168,119,0.07); border: 1px solid rgba(31,168,119,0.28); border-radius: 100px; padding: 6px 13px; }
+.commit .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.thinking { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--faint); display: flex; align-items: center; gap: 7px; }
+.thinking .dots span { animation: blink 1.4s infinite both; }
+.thinking .dots span:nth-child(2){ animation-delay: 0.2s; } .thinking .dots span:nth-child(3){ animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+.err { color: var(--red); font-family: var(--mono); font-size: 12px; padding: 10px 13px; border: 1px solid rgba(196,61,61,0.3); border-radius: 9px; background: rgba(196,61,61,0.05); }
+
+.verdict { margin-top: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+.verdict-head { padding: 15px 19px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+.badge { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 7px; }
+.badge.match { color: var(--green); background: rgba(31,168,119,0.1); border: 1px solid rgba(31,168,119,0.3); }
+.badge.miss { color: var(--red); background: rgba(196,61,61,0.09); border: 1px solid rgba(196,61,61,0.3); }
+.route-line { display: flex; align-items: center; gap: 11px; font-size: 13.5px; flex-wrap: wrap; }
+.route-line .ep { font-family: var(--mono); font-size: 12.5px; padding: 5px 10px; border-radius: 7px; background: var(--card-2); border: 1px solid var(--line); }
+.route-line .arrow { color: var(--faint); }
+.route-line .ep.ok { border-color: rgba(31,168,119,0.4); color: var(--green); }
+.route-line .ep.bad { border-color: rgba(196,61,61,0.4); color: var(--red); }
+.vgrid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.vgrid.exp { border-top: 1px solid var(--line-soft); }
+.vstat { padding: 14px 19px; border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.vgrid .vstat:nth-child(3n) { border-right: none; }
+.vgrid.exp .vstat { border-bottom: none; }
+.vstat .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+.vstat .v { font-size: 19px; font-weight: 500; }
+.vstat .v small { font-size: 13px; color: var(--faint); font-weight: 400; }
+.sev-correct { color: var(--green); } .sev-over { color: var(--amber); } .sev-under, .sev-fail { color: var(--red); }
+.pos { color: var(--green); } .neg { color: var(--red); }
+.danger-note { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--red); margin-top: 4px; }
+.notes { padding: 17px 19px; display: grid; gap: 13px; }
+.note .nk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.note .nv { font-size: 13.5px; line-height: 1.6; color: var(--dim); }
+.note .nv.summary { color: var(--ink); }
+
+/* INTAKE TABS + BUILD FORM */
+.ptabs { display: flex; gap: 4px; padding: 12px 14px 0; }
+.ptab { flex: 1; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dim); background: var(--card-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px; cursor: pointer; transition: all 0.14s; }
+.ptab:hover { color: var(--ink); }
+.ptab.active { color: var(--card); background: var(--ink); border-color: var(--ink); }
+.build-form { padding: 14px 16px 18px; }
+.autofill { background: var(--card-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+.autofill .hint { font-size: 12px; color: var(--dim); margin-bottom: 8px; line-height: 1.4; }
+.build-form label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; display: block; }
+.build-form input, .build-form select, .build-form textarea { width: 100%; font-family: var(--sans); font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; }
+.build-form input:focus, .build-form select:focus, .build-form textarea:focus { outline: none; border-color: var(--faint); }
+.build-form textarea { resize: vertical; min-height: 50px; line-height: 1.4; }
+.build-form select { cursor: pointer; }
+.field { margin-bottom: 11px; } .field.row { display: grid; grid-template-columns: 1fr 64px 88px; gap: 8px; } .field.two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.build-msg { font-family: var(--mono); font-size: 11px; color: var(--red); margin: 4px 0 10px; min-height: 14px; }
+.build-actions { display: flex; gap: 8px; }
+.build-actions .run-btn { flex: 1; justify-content: center; }
+.mini-btn { font-family: var(--sans); font-size: 12.5px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 8px 14px; cursor: pointer; }
+.mini-btn:hover:not(:disabled) { border-color: var(--faint); } .mini-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* SET PREVIEW */
+.set-card { margin-top: 18px; }
+.set-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--line-soft); cursor: pointer; transition: background 0.12s; }
+.set-row:last-child { border-bottom: none; }
+.set-row:hover { background: var(--card-2); }
+.set-row .nm { font-size: 13.5px; color: var(--ink); font-weight: 450; }
+.set-row .nm small { font-family: var(--mono); font-size: 11px; color: var(--faint); font-weight: 400; margin-left: 7px; }
+.set-row .ep { font-family: var(--mono); font-size: 11px; color: var(--dim); border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; white-space: nowrap; }
+.set-detail { display: none; padding: 0 16px 14px; background: var(--card-2); }
+.set-detail.open { display: block; }
+.set-detail .sd { padding-top: 12px; }
+.set-detail .sd .sk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+.set-detail .sd ul { list-style: none; display: grid; gap: 3px; margin-bottom: 4px; }
+.set-detail .sd li { font-size: 12.5px; color: var(--dim); line-height: 1.4; padding-left: 12px; position: relative; }
+.set-detail .sd li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+.set-detail .sd .truth { font-size: 12.5px; color: var(--dim); font-style: italic; line-height: 1.5; }
+
+/* BATCH */
+.batch-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 18px; }
+.src-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.btn-ghost { font-family: var(--sans); font-size: 13px; font-weight: 450; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 8px 16px; cursor: pointer; transition: all 0.14s; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.btn-ghost:hover:not(:disabled) { border-color: var(--faint); }
+.btn-ghost:disabled { opacity: 0.45; cursor: default; }
+.batch-controls .run-btn { margin-left: auto; }
+.batch-note { font-family: var(--mono); font-size: 11.5px; color: var(--faint); width: 100%; padding-top: 2px; display: flex; align-items: center; gap: 8px; }
+.batch-note.running, .batch-note.done { color: var(--ink); }
+.batch-note .rdot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(31,168,119,0.5); animation: pulse 1.5s infinite; flex-shrink: 0; }
+.batch-note .check { color: var(--green); font-weight: 600; }
+.batch-bar { width: 100%; height: 7px; background: var(--line); border-radius: 5px; overflow: hidden; margin-top: 9px; display: none; }
+.batch-bar.show { display: block; }
+.batch-bar i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 5px; transition: width 0.35s var(--ease); }
+.report { margin-top: 18px; display: none; }
+.report.show { display: block; }
+.headline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.headline .kpi { display: flex; flex-direction: column; }
+.headline .kpi .big { font-family: var(--mono); font-size: 56px; font-weight: 600; line-height: 1; color: var(--green); }
+.headline .kpi .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-top: 10px; }
+.headline .kpi .sub { font-size: 13px; color: var(--dim); margin-top: 5px; }
+.mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; flex: 1; min-width: 320px; }
+.mini { border: 1px solid var(--line); border-radius: 11px; padding: 13px 15px; background: var(--card-2); }
+.mini .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 7px; }
+.mini .v { font-size: 22px; font-weight: 500; }
+.mini.danger .v { color: var(--red); }
+.mini .tagline { font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--red); margin-top: 3px; }
+.exp-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+.exp-row .mini .v { color: var(--ink); }
+.exp-row .mini .v.green { color: var(--green); }
+.report-cols { display: grid; grid-template-columns: 300px 1fr; gap: 18px; margin-top: 18px; align-items: start; }
+.breakdown { padding: 16px 18px; }
+.bd-row { margin-bottom: 13px; } .bd-row:last-child { margin-bottom: 0; }
+.bd-top { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 5px; }
+.bd-top .c { color: var(--ink); } .bd-top .n { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+.bd-bar { height: 6px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.bd-bar i { display: block; height: 100%; background: var(--green); border-radius: 4px; }
+.findings { padding: 17px 19px; }
+.findings .nv { font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
+.findings .writing { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+.runs-strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+.runs-strip .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+.runs-table { width: 100%; margin-top: 10px; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.runs-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-weight: 500; }
+.runs-table td { font-size: 13px; padding: 12px 14px; border-bottom: 1px solid var(--line-soft); color: var(--dim); }
+.runs-table tr:last-child td { border-bottom: none; }
+.runs-table td.name { color: var(--ink); font-weight: 450; }
+.pill { font-family: var(--mono); font-size: 10.5px; padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+.pill.ok { color: var(--green); background: rgba(31,168,119,0.1); }
+.pill.bad { color: var(--red); background: rgba(196,61,61,0.09); }
+.runs-table .sev { font-family: var(--mono); font-size: 11px; }
+.runs-table .st-running { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+.runs-table .st-running::before { content: "running "; }
+
+@media (max-width: 1080px) { .report-cols { grid-template-columns: 1fr; } .exp-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 920px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; flex-direction: column; }
+  .nav { flex-direction: row; flex-wrap: wrap; } .nav-item { width: auto; }
+  .nav-sec, .nav-sep, .sidebar-foot { display: none; }
+  .stage { grid-template-columns: 1fr; } .trace { max-height: none; }
+  .mini-stats { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .statbar { margin: 16px 16px 0; } .view { padding: 20px 16px 50px; }
+  .tiles { grid-template-columns: repeat(2, 1fr); min-width: 0; }
+  .headline .kpi .big { font-size: 44px; } .runs-table { display: block; overflow-x: auto; }
+  .exp-row { grid-template-columns: 1fr; }
+}
+a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a href="/" class="brand"><img src="/img/gambit-logo.png" alt="Gambit"></a>
+    <nav class="nav">
+      <button class="nav-item active" data-view="single"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg> Single run</button>
+      <button class="nav-item" data-view="batch"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Batch report</button>
+      <div class="nav-sep"></div>
+      <a class="nav-item" href="/traces"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></svg> Tracing backend</a>
+    </nav>
+    <div class="nav-sec">
+      <div class="nav-label">Workers</div>
+      <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Patient</span><span class="wk-role">synthetic patient</span></span></div>
+      <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Triage</span><span class="wk-role">stand-in for Clearstep</span></span></div>
+      <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Evaluator</span><span class="wk-role">scores each run</span></span></div>
+    </div>
+    <div class="sidebar-foot">Worker gateway: <b>Running</b><br>Gambit Cloud</div>
+  </aside>
+
+  <div class="work">
+    <div class="statbar">
+      <div class="sb-title"><span class="ttl">Clearstep triage simulation</span><span class="op"><span class="dot"></span> Gambit Cloud</span></div>
+      <div class="tiles">
+        <div class="tile"><div class="k">Patients</div><div class="v" id="tPatients">0</div></div>
+        <div class="tile"><div class="k">Runs</div><div class="v" id="tRuns">0</div></div>
+        <div class="tile"><div class="k">Worker calls</div><div class="v" id="tCalls">0</div></div>
+        <div class="tile"><div class="k">Routing accuracy</div><div class="v green" id="tAcc">--</div></div>
+      </div>
+    </div>
+
+    <!-- SINGLE -->
+    <section class="view" id="view-single">
+      <div class="view-head">
+        <h1>Single run</h1>
+        <p>Stand up one synthetic patient and run it live against the triage engine. The patient holds symptoms back and reveals them only when the triage worker asks. Watch it commit to a disposition, then read the verdict.</p>
+        <p class="honesty">The triage side is a stand-in. In production it connects to Clearstep Smart Care Routing. Nothing here is pre-scripted. Every run is recorded to the tracing backend.</p>
+      </div>
+      <div class="stage">
+        <div class="card">
+          <div class="card-head"><span class="label">Patient worker</span><span class="label" id="pid">p001</span></div>
+          <div class="ptabs">
+            <button class="ptab active" data-ptab="presets">Presets</button>
+            <button class="ptab" data-ptab="build">Build your own</button>
+          </div>
+          <div id="presetsPane">
+            <div class="picker" id="picker"></div>
+            <div class="patient-body" id="patientBody"></div>
+          </div>
+          <div id="buildPane" class="hidden">
+            <div class="build-form">
+              <div class="autofill">
+                <p class="hint">Describe a patient in a sentence and let the worker draft the full case, or fill the fields in yourself.</p>
+                <textarea id="briefInput" placeholder="e.g. 62 year old man, sudden worst headache of his life with vision changes"></textarea>
+                <div style="margin-top:8px"><button class="mini-btn" id="autofillBtn">Auto-fill the case</button></div>
+              </div>
+              <div class="field row">
+                <div><label>Name</label><input id="bName" placeholder="Alex Rivera"></div>
+                <div><label>Age</label><input id="bAge" placeholder="34"></div>
+                <div><label>Sex</label><input id="bSex" placeholder="female"></div>
+              </div>
+              <div class="field"><label>Chief complaint</label><input id="bComplaint" placeholder="chest tightness"></div>
+              <div class="field"><label>Expected endpoint (answer key)</label><select id="bEndpoint">
+                <option value="">Select one</option>
+                <option>Self-care at home</option><option>Video visit</option><option>Urgent care</option><option>Specialist</option><option>Emergency department</option>
+              </select></div>
+              <div class="field"><label>Affirms, true, revealed only if asked (one per line)</label><textarea id="bAffirms" placeholder="the pain spreads to my left arm&#10;it started while climbing stairs"></textarea></div>
+              <div class="field"><label>Negates, not true, denied if asked (one per line)</label><textarea id="bNegates" placeholder="this is not heartburn"></textarea></div>
+              <div class="field"><label>Clinical truth</label><textarea id="bTruth" placeholder="what is actually going on and why the endpoint is right"></textarea></div>
+              <div class="field two"><div><label>Personality</label><input id="bPersonality" placeholder="stoic, downplays"></div><div><label>Health literacy</label><input id="bLiteracy" placeholder="medium"></div></div>
+              <div class="field two"><div><label>Emotional state</label><input id="bState" placeholder="a little scared"></div><div><label>Speech style</label><input id="bSpeech" placeholder="terse"></div></div>
+              <div class="build-msg" id="buildMsg"></div>
+              <div class="build-actions"><button class="run-btn" id="createBtn">Create patient</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="card console">
+          <div class="toolbar">
+            <div class="meta"><span><b id="mTurns">0</b> / 15 turns</span><span>Gambit Cloud workers</span></div>
+            <button class="run-btn" id="runBtn"><span class="play"></span> Run simulation</button>
+          </div>
+          <div class="trace" id="trace">
+            <div class="trace-empty"><span class="mono">Ready</span>The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.</div>
+          </div>
+        </div>
+      </div>
+      <div id="singleVerdict"></div>
+    </section>
+
+    <!-- BATCH -->
+    <section class="view hidden" id="view-batch">
+      <div class="view-head">
+        <h1>Batch report</h1>
+        <p>Run the whole patient set against the triage engine and measure care routing accuracy, the same KPI Clearstep publishes. Ten real runs here scale to thousands overnight on the same loop. Full transcripts for every run land in the tracing backend.</p>
+        <p class="honesty">These are real runs, not projected numbers. Under-triage, routing a patient below the care they needed, is the dangerous direction and is flagged as such.</p>
+      </div>
+      <div class="card">
+        <div class="batch-controls">
+          <div class="src-group">
+            <button class="btn-ghost" id="genBtn">Generate ten patients</button>
+            <button class="btn-ghost" id="uploadBtn">Upload JSON</button>
+            <a class="btn-ghost" href="/clearstep-patients.json" download>Download sample JSON</a>
+            <input type="file" id="fileInput" accept="application/json,.json" class="hidden">
+          </div>
+          <button class="run-btn" id="runAllBtn"><span class="play"></span> <span id="runAllLabel">Run all</span></button>
+          <div class="batch-note" id="batchNote">Current set: 10 patients. Runs go three at a time to stay under rate limits.</div>
+          <div class="batch-bar" id="batchBar"><i id="batchBarFill"></i></div>
+        </div>
+      </div>
+
+      <div class="card set-card">
+        <div class="card-head"><span class="label">Patient set</span><span class="label" id="setCount"></span></div>
+        <div id="setList"></div>
+      </div>
+
+      <div class="report" id="report">
+        <div class="headline">
+          <div class="kpi"><span class="big" id="rAcc">--</span><span class="lbl">Care routing accuracy</span><span class="sub" id="rAccSub"></span></div>
+          <div class="mini-stats">
+            <div class="mini danger"><div class="k">Under triage</div><div class="v" id="rUnder">0</div><div class="tagline">Dangerous</div></div>
+            <div class="mini"><div class="k">Over triage</div><div class="v" id="rOver">0</div></div>
+            <div class="mini"><div class="k">Fail to route</div><div class="v" id="rFail">0</div></div>
+          </div>
+        </div>
+        <div class="exp-row">
+          <div class="mini"><div class="k">Avg fidelity</div><div class="v" id="rFid">--</div></div>
+          <div class="mini"><div class="k">Avg comprehension</div><div class="v" id="rComp">--</div></div>
+          <div class="mini"><div class="k">Avg satisfaction</div><div class="v" id="rSat">--</div></div>
+          <div class="mini"><div class="k">Improved outlook</div><div class="v green" id="rOutlook">--</div></div>
+        </div>
+
+        <div class="report-cols">
+          <div class="card"><div class="card-head"><span class="label">By complaint</span></div><div class="breakdown" id="breakdown"></div></div>
+          <div class="card"><div class="card-head"><span class="label">Findings</span></div><div class="findings" id="findings"><div class="writing">Findings appear when the batch completes.</div></div></div>
+        </div>
+
+        <div class="runs-strip"><span class="lbl">Runs this batch</span><a class="btn-ghost" href="/traces">Open full traces in the backend</a></div>
+        <table class="runs-table"><thead><tr><th>#</th><th>Patient</th><th>Complaint</th><th>Result</th><th>Severity</th><th>Fidelity</th><th>Satisfaction</th></tr></thead><tbody id="runsBody"></tbody></table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="module">
+import { runConversation, scoreRun, evaluate, runBatch, computeReport, summarizeReport, generatePersonas, parsePersonaUpload, normalizePersona, ENDPOINTS } from '/lib/triage-engine.js';
+import { SEED_PERSONAS } from '/lib/personas.js';
+
+// Roles only; the model behind each worker is resolved server-side.
+const MODELS = { patient: 'patient', triage: 'triage', evaluator: 'evaluator' };
+const SEV_CLASS = { 'correct': 'sev-correct', 'over-triage': 'sev-over', 'under-triage': 'sev-under', 'fail': 'sev-fail' };
+const SEV_LABEL = { 'correct': 'On target', 'over-triage': 'Over triage', 'under-triage': 'Under triage', 'fail': 'No disposition' };
+
+let personaSet = SEED_PERSONAS.map((p) => ({ ...p }));
+let activeSingle = personaSet[0];
+let singleRunning = false, batchRunning = false;
+let sessionRuns = [], workerCalls = 0;
+
+const $ = (id) => document.getElementById(id);
+// Strips em/en dashes from anything rendered (brand rule), then escapes HTML.
+const esc = (s) => String(s == null ? '' : s).replace(/[—–]/g, '-').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const firstName = (n) => String(n).split(',')[0];
+const rid = () => Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+
+function updateTiles() {
+  $('tPatients').textContent = personaSet.length;
+  $('tRuns').textContent = sessionRuns.length;
+  $('tCalls').textContent = workerCalls;
+  $('tAcc').textContent = sessionRuns.length ? Math.round((sessionRuns.filter((r) => r.routing_correct).length / sessionRuns.length) * 100) + '%' : '--';
+}
+
+async function callClaude({ system, messages, model, max_tokens }) {
+  workerCalls++; $('tCalls').textContent = workerCalls;
+  const r = await fetch('/api/claude', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ system, messages, role: model, max_tokens }) });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error || `Request failed (${r.status})`);
+  return data.text;
+}
+
+// Fire-and-forget persist to the tracing backend.
+function postTrace(run, run_type, batch_id) {
+  try {
+    fetch('/api/traces', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: run.run_id, run, run_type, batch_id, created_at: new Date().toISOString() }) }).catch(() => {});
+  } catch { /* never block the UI on tracing */ }
+}
+
+function showView(name) {
+  document.querySelectorAll('.nav-item[data-view]').forEach((b) => b.classList.toggle('active', b.dataset.view === name));
+  $('view-single').classList.toggle('hidden', name !== 'single');
+  $('view-batch').classList.toggle('hidden', name !== 'batch');
+}
+document.querySelectorAll('.nav-item[data-view]').forEach((b) => b.addEventListener('click', () => showView(b.dataset.view)));
+
+function turnEl({ speaker, text, route }) {
+  const wrap = document.createElement('div');
+  wrap.className = `turn ${speaker}`;
+  const who = speaker === 'patient' ? 'Patient worker' : 'Triage worker <span class="standin">stand-in for Clearstep</span>';
+  const body = route ? text.replace(/^\s*ROUTE:.*$/gim, '').trim() : text;
+  wrap.innerHTML = `<div class="who">${who}</div><div class="bubble">${esc(body)}</div>`;
+  if (route) { const c = document.createElement('div'); c.className = 'commit'; c.innerHTML = `<span class="dot"></span> Committed: ${esc(route)}`; wrap.appendChild(c); }
+  return wrap;
+}
+
+function shiftLabel(n) {
+  if (n == null) return 'n/a';
+  if (n > 0) return `+${n}`;
+  return String(n);
+}
+
+function verdictHTML(run) {
+  const match = run.routing_correct, sev = run.severity, v = run.verdict || {};
+  const shift = run.emotional_shift;
+  return `
+    <div class="verdict-head">
+      <span class="badge ${match ? 'match' : 'miss'}">${match ? 'Match' : 'Miss'}</span>
+      <div class="route-line">
+        <span class="ep">Expected: ${esc(run.expected_endpoint)}</span><span class="arrow">to</span>
+        <span class="ep ${match ? 'ok' : 'bad'}">Chosen: ${run.failed ? 'No disposition' : esc(run.chosen_endpoint)}</span>
+      </div>
+    </div>
+    <div class="vgrid">
+      <div class="vstat"><div class="k">Severity</div><div class="v ${SEV_CLASS[sev]}">${SEV_LABEL[sev]}</div>${sev === 'under-triage' ? '<div class="danger-note">Dangerous direction</div>' : ''}</div>
+      <div class="vstat"><div class="k">Patient fidelity</div><div class="v">${v.fidelity_score == null ? 'n/a' : v.fidelity_score}<small> / 10</small></div></div>
+      <div class="vstat"><div class="k">Turns to commit</div><div class="v">${run.turns}<small> / 15</small></div></div>
+    </div>
+    <div class="vgrid exp">
+      <div class="vstat"><div class="k">Comprehension</div><div class="v">${run.comprehension == null ? 'n/a' : run.comprehension}<small> / 10</small></div></div>
+      <div class="vstat"><div class="k">Satisfaction</div><div class="v">${run.satisfaction == null ? 'n/a' : run.satisfaction}<small> / 10</small></div></div>
+      <div class="vstat"><div class="k">Emotional shift</div><div class="v ${shift > 0 ? 'pos' : shift < 0 ? 'neg' : ''}">${shiftLabel(shift)}</div></div>
+    </div>
+    <div class="notes">
+      <div class="note"><div class="nk">How the patient behaved</div><div class="nv">${esc(v.fidelity_notes)}</div></div>
+      <div class="note"><div class="nk">Patient experience</div><div class="nv">${esc(v.experience_notes)}</div></div>
+      <div class="note"><div class="nk">Why it landed here</div><div class="nv">${esc(v.routing_notes)}</div></div>
+      <div class="note"><div class="nk">Verdict</div><div class="nv summary">${esc(v.summary)}</div></div>
+    </div>`;
+}
+
+function renderPicker() {
+  $('picker').innerHTML = personaSet.map((p) => `<button class="chip" data-id="${esc(p.id)}" aria-pressed="${p.id === activeSingle.id}">${esc(firstName(p.display_name))} &middot; ${esc(p.complaint)}</button>`).join('');
+  $('picker').querySelectorAll('.chip').forEach((b) => b.addEventListener('click', () => {
+    if (singleRunning) return;
+    activeSingle = personaSet.find((p) => p.id === b.dataset.id);
+    $('picker').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.id === activeSingle.id)));
+    renderPatient(); resetSingleTrace();
+  }));
+}
+
+function renderPatient() {
+  const p = activeSingle, c = p.character || {};
+  $('pid').textContent = p.id;
+  $('patientBody').innerHTML = `
+    <div class="person"><span class="name">${esc(firstName(p.display_name))}</span><span class="meta">${esc(p.age)} &middot; ${esc(p.sex)}</span></div>
+    <p class="complaint">Chief complaint: <b>${esc(p.complaint)}</b>.</p>
+    <div class="traits">
+      <div class="trait"><span class="k">Personality</span><span class="v">${esc(c.personality)}</span></div>
+      <div class="trait"><span class="k">Literacy</span><span class="v">${esc(c.health_literacy)}</span></div>
+      <div class="trait"><span class="k">State</span><span class="v">${esc(c.emotional_state)}</span></div>
+      <div class="trait"><span class="k">Speech</span><span class="v">${esc(c.speech_style)}</span></div>
+    </div>
+    <div class="keytoggle">
+      <button id="keyBtn" aria-expanded="false">Show answer key</button>
+      <div class="answer-key" id="answerKey">
+        <div class="ak-row"><div class="ak-label">Expected endpoint</div><div class="ak-endpoint">${esc(p.expected_endpoint)}</div></div>
+        <div class="ak-row"><div class="ak-label">Affirms, reveal only if asked</div><ul>${(p.affirms || []).map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
+        <div class="ak-row"><div class="ak-label">Negates, deny if asked</div><ul class="negate">${(p.negates || []).map((n) => `<li>${esc(n)}</li>`).join('')}</ul></div>
+        <div class="ak-row"><div class="ak-label">Clinical truth</div><div class="truth">${esc(p.clinical_truth)}</div></div>
+      </div>
+    </div>`;
+  $('keyBtn').addEventListener('click', () => {
+    const ak = $('answerKey'), open = ak.classList.toggle('open');
+    $('keyBtn').textContent = open ? 'Hide answer key' : 'Show answer key';
+    $('keyBtn').setAttribute('aria-expanded', String(open));
+  });
+}
+
+function resetSingleTrace() {
+  $('mTurns').textContent = '0';
+  $('singleVerdict').innerHTML = '';
+  $('trace').innerHTML = `<div class="trace-empty"><span class="mono">Ready</span>The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.</div>`;
+}
+
+function thinkingRow(side, label) {
+  const t = document.createElement('div');
+  t.className = `turn ${side}`; t.id = 'thinkingRow';
+  t.innerHTML = `<div class="who">${side === 'patient' ? 'Patient worker' : 'Triage worker'}</div><div class="thinking">${label || 'thinking'}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>`;
+  $('trace').appendChild(t); t.scrollIntoView({ block: 'nearest' });
+}
+const clearThinking = () => $('thinkingRow')?.remove();
+function tracedCall(args) { clearThinking(); thinkingRow(args.system.includes('clinical triage worker') ? 'triage' : 'patient'); return callClaude(args).finally(clearThinking); }
+
+async function runSingle() {
+  if (singleRunning || batchRunning) return;
+  singleRunning = true;
+  $('runBtn').disabled = true; $('runBtn').innerHTML = '<span class="play"></span> Running';
+  $('singleVerdict').innerHTML = ''; $('trace').innerHTML = ''; $('mTurns').textContent = '0';
+  try {
+    const { transcript, chosen, failed, turns } = await runConversation({
+      persona: activeSingle, models: MODELS, callClaude: tracedCall,
+      onEvent: (e) => { if (e.type === 'turn') { const el = turnEl(e); $('trace').appendChild(el); el.scrollIntoView({ block: 'nearest' }); if (e.turn) $('mTurns').textContent = String(e.turn); } },
+    });
+    clearThinking(); thinkingRow('triage', 'scoring and evaluating');
+    const score = scoreRun({ expected: activeSingle.expected_endpoint, chosen, failed });
+    const verdict = await evaluate({ persona: activeSingle, transcript, chosen, expected: activeSingle.expected_endpoint, callClaude, model: MODELS.evaluator });
+    clearThinking();
+    const run = {
+      run_id: rid(), ...activeSingle, expected_endpoint: activeSingle.expected_endpoint, chosen_endpoint: chosen, failed, turns,
+      routing_correct: score.routing_correct, severity: score.severity,
+      fidelity_score: verdict.fidelity_score, comprehension: verdict.comprehension ?? null, satisfaction: verdict.satisfaction ?? null, emotional_shift: verdict.emotional_shift ?? null,
+      verdict, transcript,
+    };
+    sessionRuns.push(run); updateTiles();
+    postTrace(run, 'single', null);
+    $('singleVerdict').innerHTML = `<div class="verdict">${verdictHTML(run)}</div>`;
+  } catch (err) {
+    clearThinking();
+    const e = document.createElement('div'); e.className = 'err'; e.textContent = 'Run stopped: ' + err.message; $('trace').appendChild(e);
+  } finally {
+    singleRunning = false; $('runBtn').disabled = false; $('runBtn').innerHTML = '<span class="play"></span> Run simulation';
+  }
+}
+
+function onPersonaSetChanged() {
+  activeSingle = personaSet[0];
+  renderPicker(); renderPatient(); resetSingleTrace(); renderSetPreview();
+  $('runAllLabel').textContent = `Run all ${personaSet.length}`;
+  setBatchStatus(`Current set: ${personaSet.length} patients. Runs go three at a time to stay under rate limits.`, '');
+  $('batchBar').classList.remove('show');
+  $('report').classList.remove('show'); $('runsBody').innerHTML = '';
+  updateTiles();
+}
+
+// ---- patient set preview (so generated/uploaded sets are visible) ------
+function renderSetPreview() {
+  $('setCount').textContent = `${personaSet.length} patients`;
+  $('setList').innerHTML = personaSet.map((p, i) => `
+    <div class="set-row" data-i="${i}">
+      <span class="nm">${esc(firstName(p.display_name))}<small>${esc(p.age)} ${esc(p.sex)} &middot; ${esc(p.complaint)}</small></span>
+      <span class="ep">${esc(p.expected_endpoint || 'unset')}</span>
+    </div>
+    <div class="set-detail" data-d="${i}">
+      <div class="sd"><div class="sk">Affirms</div><ul>${(p.affirms || []).map((a) => `<li>${esc(a)}</li>`).join('') || '<li>none</li>'}</ul></div>
+      <div class="sd"><div class="sk">Negates</div><ul>${(p.negates || []).map((n) => `<li>${esc(n)}</li>`).join('') || '<li>none</li>'}</ul></div>
+      <div class="sd"><div class="sk">Clinical truth</div><div class="truth">${esc(p.clinical_truth)}</div></div>
+    </div>`).join('');
+  $('setList').querySelectorAll('.set-row').forEach((r) => r.addEventListener('click', () => {
+    $('setList').querySelector(`.set-detail[data-d="${r.dataset.i}"]`).classList.toggle('open');
+  }));
+}
+
+// ---- build-your-own intake form ---------------------------------------
+function fillForm(p) {
+  const c = p.character || {};
+  $('bName').value = firstName(p.display_name || '');
+  $('bAge').value = p.age || '';
+  $('bSex').value = p.sex || '';
+  $('bComplaint').value = p.complaint || '';
+  $('bEndpoint').value = ENDPOINTS.includes(p.expected_endpoint) ? p.expected_endpoint : '';
+  $('bAffirms').value = (p.affirms || []).join('\n');
+  $('bNegates').value = (p.negates || []).join('\n');
+  $('bTruth').value = p.clinical_truth || '';
+  $('bPersonality').value = c.personality && c.personality !== 'unspecified' ? c.personality : '';
+  $('bLiteracy').value = c.health_literacy && c.health_literacy !== 'unspecified' ? c.health_literacy : '';
+  $('bState').value = c.emotional_state && c.emotional_state !== 'unspecified' ? c.emotional_state : '';
+  $('bSpeech').value = c.speech_style && c.speech_style !== 'unspecified' ? c.speech_style : '';
+}
+
+async function autofillBrief() {
+  const brief = $('briefInput').value.trim();
+  if (!brief) { $('buildMsg').textContent = 'Add a one-line brief first.'; return; }
+  $('autofillBtn').disabled = true; const prev = $('autofillBtn').textContent; $('autofillBtn').textContent = 'Drafting...'; $('buildMsg').textContent = '';
+  try {
+    const out = await generatePersonas({ count: 1, callClaude, model: MODELS.patient, request: `Generate exactly one synthetic patient from this brief: "${brief}". Choose the most clinically appropriate expected_endpoint from the five options. Return a JSON array with one profile.` });
+    if (!out || !out[0]) throw new Error('No patient returned');
+    fillForm(out[0]);
+  } catch (err) { $('buildMsg').textContent = 'Auto-fill failed: ' + err.message; }
+  finally { $('autofillBtn').disabled = false; $('autofillBtn').textContent = prev; }
+}
+
+function buildPatient() {
+  const name = $('bName').value.trim(), age = $('bAge').value.trim();
+  const complaint = $('bComplaint').value.trim(), endpoint = $('bEndpoint').value;
+  if (!complaint) { $('buildMsg').textContent = 'A chief complaint is required.'; return; }
+  if (!endpoint) { $('buildMsg').textContent = 'Pick an expected endpoint.'; return; }
+  const lines = (v) => v.split('\n').map((s) => s.trim()).filter(Boolean);
+  const persona = normalizePersona({
+    id: 'c-' + rid(),
+    display_name: age ? `${name || 'Patient'}, ${age}` : (name || 'Patient'),
+    age: Number(age) || undefined, sex: $('bSex').value.trim(),
+    complaint, expected_endpoint: endpoint,
+    affirms: lines($('bAffirms').value), negates: lines($('bNegates').value),
+    clinical_truth: $('bTruth').value.trim(),
+    character: { personality: $('bPersonality').value.trim(), health_literacy: $('bLiteracy').value.trim(), emotional_state: $('bState').value.trim(), speech_style: $('bSpeech').value.trim() },
+  });
+  personaSet.push(persona);
+  activeSingle = persona;
+  renderPicker(); renderPatient(); renderSetPreview(); updateTiles();
+  ['bName', 'bAge', 'bSex', 'bComplaint', 'bAffirms', 'bNegates', 'bTruth', 'bPersonality', 'bLiteracy', 'bState', 'bSpeech', 'briefInput'].forEach((id) => { $(id).value = ''; });
+  $('bEndpoint').value = ''; $('buildMsg').textContent = '';
+  document.querySelector('.ptab[data-ptab="presets"]').click();
+}
+
+document.querySelectorAll('.ptab').forEach((b) => b.addEventListener('click', () => {
+  const t = b.dataset.ptab;
+  document.querySelectorAll('.ptab').forEach((x) => x.classList.toggle('active', x === b));
+  $('presetsPane').classList.toggle('hidden', t !== 'presets');
+  $('buildPane').classList.toggle('hidden', t !== 'build');
+}));
+
+async function generateTen() {
+  if (batchRunning || singleRunning) return;
+  $('genBtn').disabled = true; const prev = $('genBtn').textContent; $('genBtn').textContent = 'Generating...';
+  try { personaSet = await generatePersonas({ count: 10, callClaude, model: MODELS.patient }); onPersonaSetChanged(); setBatchStatus(`Generated ${personaSet.length} patients. Review them below, then run all.`, ''); }
+  catch (err) { setBatchStatus('Generation failed: ' + esc(err.message), ''); }
+  finally { $('genBtn').disabled = false; $('genBtn').textContent = prev; }
+}
+
+function handleUpload(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      personaSet = parsePersonaUpload(reader.result);
+      if (!personaSet.length) throw new Error('No patients found in the file');
+      onPersonaSetChanged();
+      setBatchStatus(`Loaded ${personaSet.length} patients from ${esc(file.name)}. Review them below, then run all.`, '');
+    } catch (err) { setBatchStatus('Upload failed: ' + esc(err.message), ''); }
+  };
+  reader.readAsText(file);
+}
+
+function rowSkeleton(i, p) {
+  const tr = document.createElement('tr'); tr.id = `run-${i}`;
+  tr.innerHTML = `<td>${i + 1}</td><td class="name">${esc(firstName(p.display_name))}</td><td>${esc(p.complaint)}</td><td colspan="4"><span class="st-running"></span></td>`;
+  return tr;
+}
+function fillRow(i, run) {
+  const tr = $(`run-${i}`); if (!tr) return;
+  const fid = run.fidelity_score == null ? 'n/a' : run.fidelity_score;
+  const sat = run.satisfaction == null ? 'n/a' : run.satisfaction;
+  tr.innerHTML = `<td>${i + 1}</td><td class="name">${esc(firstName(run.display_name))}</td><td>${esc(run.complaint)}</td>
+    <td><span class="pill ${run.routing_correct ? 'ok' : 'bad'}">${run.routing_correct ? 'Correct' : 'Miss'}</span></td>
+    <td class="sev ${SEV_CLASS[run.severity]}">${SEV_LABEL[run.severity]}</td><td>${fid}</td><td>${sat}</td>`;
+}
+
+function renderReport(results) {
+  const rep = computeReport(results);
+  $('rAcc').textContent = rep.accuracy + '%';
+  $('rAccSub').textContent = `${rep.correct} of ${rep.total} patients routed correctly`;
+  $('rUnder').textContent = rep.under; $('rOver').textContent = rep.over; $('rFail').textContent = rep.fail;
+  $('rFid').textContent = rep.avgFidelity == null ? '--' : rep.avgFidelity;
+  $('rComp').textContent = rep.avgComprehension == null ? '--' : rep.avgComprehension;
+  $('rSat').textContent = rep.avgSatisfaction == null ? '--' : rep.avgSatisfaction;
+  $('rOutlook').textContent = `${rep.improvedOutlook}/${rep.total}`;
+  $('breakdown').innerHTML = rep.byComplaint.map((b) => `<div class="bd-row"><div class="bd-top"><span class="c">${esc(b.complaint)}</span><span class="n">${b.correct}/${b.total}</span></div><div class="bd-bar"><i style="width:${Math.round((b.correct / b.total) * 100)}%"></i></div></div>`).join('');
+}
+
+function setBatchStatus(html, cls) {
+  const n = $('batchNote');
+  n.className = 'batch-note' + (cls ? ' ' + cls : '');
+  n.innerHTML = html;
+}
+function setBatchProgress(done, total) { $('batchBarFill').style.width = Math.round((done / total) * 100) + '%'; }
+
+async function runAll() {
+  if (batchRunning || singleRunning) return;
+  batchRunning = true; const batchId = 'batch-' + rid();
+  const total = personaSet.length;
+  $('runAllBtn').disabled = true; $('genBtn').disabled = true; $('uploadBtn').disabled = true;
+  $('runAllBtn').innerHTML = '<span class="play"></span> Running';
+  $('report').classList.add('show'); $('runsBody').innerHTML = '';
+  personaSet.forEach((p, i) => $('runsBody').appendChild(rowSkeleton(i, p)));
+  $('findings').innerHTML = '<div class="writing">Findings appear when the batch completes.</div>';
+  $('batchBar').classList.add('show'); setBatchProgress(0, total);
+  setBatchStatus(`<span class="rdot"></span> Running 0 of ${total} simulations, three at a time`, 'running');
+  let started = 0;
+  const done = [];
+  try {
+    const results = await runBatch({
+      personas: personaSet, models: MODELS, callClaude, concurrency: 3,
+      onRunStart: () => { started++; },
+      onRunDone: (i, run) => {
+        run.run_id = rid();
+        fillRow(i, run); done.push(run); sessionRuns.push(run); updateTiles(); renderReport(done);
+        postTrace(run, 'batch', batchId);
+        setBatchProgress(done.length, total);
+        setBatchStatus(`<span class="rdot"></span> ${done.length} of ${total} simulations complete`, 'running');
+      },
+    });
+    setBatchProgress(total, total);
+    setBatchStatus(`<span class="rdot"></span> All ${total} simulations done. Writing findings`, 'running');
+    renderReport(results);
+    $('findings').innerHTML = '<div class="writing">Writing findings...</div>';
+    try { const text = await summarizeReport({ results, callClaude, model: MODELS.patient }); $('findings').innerHTML = `<div class="nv">${esc(text)}</div>`; }
+    catch { $('findings').innerHTML = '<div class="nv">Findings summary unavailable for this batch.</div>'; }
+    setBatchStatus(`<span class="check">Done.</span> ${total} simulations complete and recorded to the tracing backend.`, 'done');
+  } catch (err) {
+    setBatchStatus('Batch stopped: ' + esc(err.message), '');
+  } finally {
+    batchRunning = false;
+    $('runAllBtn').disabled = false; $('genBtn').disabled = false; $('uploadBtn').disabled = false;
+    $('runAllBtn').innerHTML = `<span class="play"></span> <span id="runAllLabel">Run all ${personaSet.length}</span>`;
+  }
+}
+
+renderPicker(); renderPatient(); renderSetPreview();
+$('runAllLabel').textContent = `Run all ${personaSet.length}`;
+updateTiles();
+$('runBtn').addEventListener('click', runSingle);
+$('runAllBtn').addEventListener('click', runAll);
+$('genBtn').addEventListener('click', generateTen);
+$('uploadBtn').addEventListener('click', () => $('fileInput').click());
+$('fileInput').addEventListener('change', (e) => { if (e.target.files[0]) handleUpload(e.target.files[0]); });
+$('autofillBtn').addEventListener('click', autofillBrief);
+$('createBtn').addEventListener('click', buildPatient);
+</script>
+</body>
+</html>
