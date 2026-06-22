@@ -433,9 +433,11 @@ $('refreshBtn').addEventListener('click', load);
 $('exportCsvBtn').addEventListener('click', exportCSV);
 $('exportJsonBtn').addEventListener('click', exportJSON);
 $('clearBtn').addEventListener('click', async () => {
-  if (!confirm('Clear all recorded runs?')) return;
-  await fetch('/api/traces', { method: 'DELETE' }).catch(() => {});
-  load();
+  const key = prompt('Admin key to clear all recorded runs:');
+  if (!key) return;
+  const r = await fetch('/api/traces', { method: 'DELETE', headers: { 'x-admin-key': key } }).catch(() => null);
+  if (r && r.ok) load();
+  else alert('Not authorized to clear. Set TRACES_ADMIN_KEY in Vercel and enter it here.');
 });
 
 load();

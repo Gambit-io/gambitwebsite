@@ -204,6 +204,12 @@ export default async function handler(req, res) {
     }
 
     if (req.method === 'DELETE') {
+      // Destructive: requires an admin key. If TRACES_ADMIN_KEY is unset,
+      // clearing is disabled entirely (safe default for the public demo).
+      const adminKey = process.env.TRACES_ADMIN_KEY;
+      if (!adminKey || req.headers['x-admin-key'] !== adminKey) {
+        return res.status(403).json({ error: 'Not authorized' });
+      }
       const ok = await clearAll();
       return res.status(200).json({ ok });
     }
