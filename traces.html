@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambit | Clearstep tracing backend</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #f3f3f2; --card: #ffffff; --card-2: #fafafa; --line: #e6e6e9; --line-soft: #eeeef0;
+  --ink: #161619; --dim: #65656e; --faint: #9a9aa3;
+  --side: #0c0c0e; --side-line: #26262c; --side-2: #141417; --side-text: #e9e9ec; --side-dim: #8a8a93; --side-faint: #5d5d66;
+  --panel: #121214; --panel-line: #26262c;
+  --green: #1fa877; --green-bright: #3ec46d; --red: #c43d3d; --amber: #b07d1c;
+  --sans: 'General Sans', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+.app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+.sidebar { background: var(--side); border-right: 1px solid var(--side-line); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+.brand { display: flex; align-items: center; gap: 11px; padding: 20px 20px 18px; text-decoration: none; border-bottom: 1px solid var(--side-line); }
+.brand img { height: 20px; filter: brightness(0) invert(1); }
+.brand .sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--side-faint); display: block; margin-top: 3px; }
+.nav { padding: 14px 12px; display: flex; flex-direction: column; gap: 3px; }
+.nav-item { display: flex; align-items: center; gap: 11px; font-size: 13.5px; color: var(--side-dim); background: transparent; border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer; text-decoration: none; transition: all 0.14s; }
+.nav-item:hover { color: var(--side-text); background: rgba(255,255,255,0.04); }
+.nav-item.active { color: var(--side-text); background: rgba(255,255,255,0.07); }
+.nav-item svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sidebar-foot { margin-top: auto; padding: 16px 22px; border-top: 1px solid var(--side-line); font-family: var(--mono); font-size: 10.5px; color: var(--side-faint); line-height: 1.9; }
+.sidebar-foot b { color: var(--green-bright); font-weight: 500; }
+.sidebar-foot b.warn { color: var(--amber); }
+
+.work { min-width: 0; display: flex; flex-direction: column; }
+.statbar { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; margin: 22px 28px 0; padding: 16px 20px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.sb-title { display: flex; align-items: center; gap: 11px; }
+.sb-title .ttl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--side-text); }
+.sb-title .op { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-bright); display: flex; align-items: center; gap: 7px; }
+.sb-title .op .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); }
+.tiles { display: grid; grid-template-columns: repeat(5, minmax(96px, 1fr)); gap: 10px; flex: 1; min-width: 420px; }
+.tile { background: var(--side-2); border: 1px solid var(--panel-line); border-radius: 10px; padding: 11px 14px; }
+.tile .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--side-faint); margin-bottom: 6px; }
+.tile .v { font-family: var(--mono); font-size: 19px; font-weight: 600; color: var(--side-text); }
+.tile .v.green { color: var(--green-bright); }
+.tile .v.red { color: #e5736f; }
+
+.view { padding: 24px 28px 70px; }
+.view-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.view-head h1 { font-size: 23px; font-weight: 500; letter-spacing: -0.02em; }
+.view-head p { font-size: 13.5px; color: var(--dim); margin-top: 6px; max-width: 620px; line-height: 1.5; }
+.controls { display: flex; align-items: center; gap: 8px; }
+.filters { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
+.filters button { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dim); background: transparent; border: none; border-radius: 100px; padding: 6px 13px; cursor: pointer; }
+.filters button.active { color: var(--card); background: var(--ink); }
+.btn-ghost { font-family: var(--sans); font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 7px 15px; cursor: pointer; }
+.btn-ghost:hover { border-color: var(--faint); }
+.btn-ghost.danger { color: var(--red); }
+
+.runs-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.runs-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-weight: 500; }
+.runs-table td { font-size: 13px; padding: 12px 14px; border-bottom: 1px solid var(--line-soft); color: var(--dim); }
+.runs-table tr:last-child td { border-bottom: none; }
+.runs-table tbody tr { cursor: pointer; transition: background 0.12s; }
+.runs-table tbody tr:hover { background: var(--card-2); }
+.runs-table td.name { color: var(--ink); font-weight: 450; }
+.runs-table .when { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+.type-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); border: 1px solid var(--line); border-radius: 5px; padding: 2px 7px; }
+.pill { font-family: var(--mono); font-size: 10.5px; padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+.pill.ok { color: var(--green); background: rgba(31,168,119,0.1); }
+.pill.bad { color: var(--red); background: rgba(196,61,61,0.09); }
+.sev { font-family: var(--mono); font-size: 11px; }
+.sev-correct { color: var(--green); } .sev-over { color: var(--amber); } .sev-under, .sev-fail { color: var(--red); }
+.pos { color: var(--green); } .neg { color: var(--red); }
+.empty { text-align: center; color: var(--faint); font-size: 13.5px; line-height: 1.7; padding: 50px 18px; }
+.empty .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 10px; }
+
+/* modal */
+.modal { position: fixed; inset: 0; background: rgba(12,12,14,0.55); display: none; align-items: flex-start; justify-content: center; padding: 40px 20px; z-index: 100; overflow-y: auto; }
+.modal.show { display: flex; }
+.modal-box { background: var(--bg); border-radius: 16px; max-width: 840px; width: 100%; border: 1px solid var(--line); }
+.modal-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); border-radius: 16px 16px 0 0; }
+.modal-head .mt { font-size: 15px; font-weight: 500; }
+.modal-head .mt span { font-family: var(--mono); font-size: 12px; color: var(--faint); margin-left: 8px; }
+.modal-close { background: var(--card); border: 1px solid var(--line); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; color: var(--dim); font-size: 16px; }
+.modal-body { padding: 20px; }
+.trace { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+.turn { display: flex; flex-direction: column; gap: 6px; }
+.turn .who { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); display: flex; gap: 8px; }
+.turn .standin { color: var(--faint); text-transform: none; letter-spacing: 0; }
+.bubble { font-size: 14px; line-height: 1.55; color: var(--ink); background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; max-width: 88%; white-space: pre-wrap; }
+.turn.triage { align-items: flex-end; } .turn.triage .who { flex-direction: row-reverse; }
+.turn.triage .bubble { background: #f1f4ff; border-color: #e2e8fb; }
+.commit { align-self: flex-end; font-family: var(--mono); font-size: 11.5px; color: var(--green); background: rgba(31,168,119,0.07); border: 1px solid rgba(31,168,119,0.28); border-radius: 100px; padding: 6px 13px; }
+.verdict { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+.verdict-head { padding: 14px 18px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.badge { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 7px; }
+.badge.match { color: var(--green); background: rgba(31,168,119,0.1); border: 1px solid rgba(31,168,119,0.3); }
+.badge.miss { color: var(--red); background: rgba(196,61,61,0.09); border: 1px solid rgba(196,61,61,0.3); }
+.route-line { display: flex; align-items: center; gap: 10px; font-size: 13px; flex-wrap: wrap; }
+.route-line .ep { font-family: var(--mono); font-size: 12px; padding: 4px 9px; border-radius: 7px; background: var(--card-2); border: 1px solid var(--line); }
+.route-line .ep.ok { border-color: rgba(31,168,119,0.4); color: var(--green); } .route-line .ep.bad { border-color: rgba(196,61,61,0.4); color: var(--red); }
+.route-line .arrow { color: var(--faint); }
+.vgrid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line-soft); }
+.vstat { padding: 13px 18px; border-right: 1px solid var(--line-soft); }
+.vstat:nth-child(3n) { border-right: none; }
+.vstat .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+.vstat .v { font-size: 18px; font-weight: 500; } .vstat .v small { font-size: 12px; color: var(--faint); }
+.notes { padding: 16px 18px; display: grid; gap: 12px; }
+.note .nk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.note .nv { font-size: 13.5px; line-height: 1.6; color: var(--dim); } .note .nv.summary { color: var(--ink); }
+
+@media (max-width: 920px) {
+  .app { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; }
+  .nav { flex-direction: row; flex-wrap: wrap; } .sidebar-foot { display: none; }
+  .tiles { grid-template-columns: repeat(2, 1fr); min-width: 0; }
+  .runs-table { display: block; overflow-x: auto; }
+}
+a:focus-visible, button:focus-visible, tr:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a href="/" class="brand"><img src="/img/gambit-logo.png" alt="Gambit"><span class="sub">Gambit Cloud</span></a>
+    <nav class="nav">
+      <a class="nav-item" href="/clearstep"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg> Simulation</a>
+      <a class="nav-item active" href="/traces"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></svg> Tracing backend</a>
+    </nav>
+    <div class="sidebar-foot">Store: <b id="storeMode">checking</b><br>Gambit Cloud</div>
+  </aside>
+
+  <div class="work">
+    <div class="statbar">
+      <div class="sb-title"><span class="ttl">Synthetic tracing backend</span><span class="op"><span class="dot"></span> Gambit Cloud</span></div>
+      <div class="tiles">
+        <div class="tile"><div class="k">Runs</div><div class="v" id="tRuns">0</div></div>
+        <div class="tile"><div class="k">Routing accuracy</div><div class="v green" id="tAcc">--</div></div>
+        <div class="tile"><div class="k">Under triage</div><div class="v red" id="tUnder">0</div></div>
+        <div class="tile"><div class="k">Avg fidelity</div><div class="v" id="tFid">--</div></div>
+        <div class="tile"><div class="k">Avg satisfaction</div><div class="v" id="tSat">--</div></div>
+      </div>
+    </div>
+
+    <section class="view">
+      <div class="view-head">
+        <div>
+          <h1>Every run, recorded</h1>
+          <p>Each single run and batch run is persisted here with its full transcript, verdict, and experience stats. Click any row to open the trace.</p>
+        </div>
+        <div class="controls">
+          <div class="filters"><button data-f="all" class="active">All</button><button data-f="single">Single</button><button data-f="batch">Batch</button></div>
+          <button class="btn-ghost" id="refreshBtn">Refresh</button>
+          <button class="btn-ghost danger" id="clearBtn">Clear</button>
+        </div>
+      </div>
+      <div id="tableWrap"></div>
+    </section>
+  </div>
+</div>
+
+<div class="modal" id="modal"><div class="modal-box">
+  <div class="modal-head"><div class="mt" id="modalTitle"></div><button class="modal-close" id="modalClose" aria-label="Close">&times;</button></div>
+  <div class="modal-body" id="modalBody"></div>
+</div></div>
+
+<script type="module">
+import { parseRoute } from '/lib/triage-engine.js';
+
+const SEV_CLASS = { 'correct': 'sev-correct', 'over-triage': 'sev-over', 'under-triage': 'sev-under', 'fail': 'sev-fail' };
+const SEV_LABEL = { 'correct': 'On target', 'over-triage': 'Over triage', 'under-triage': 'Under triage', 'fail': 'No disposition' };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const firstName = (n) => String(n || '').split(',')[0];
+const shift = (n) => n == null ? 'n/a' : (n > 0 ? '+' + n : String(n));
+
+let all = [], filter = 'all';
+
+function when(iso) { try { return new Date(iso).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch { return ''; } }
+
+async function load() {
+  try {
+    const [list, dbg] = await Promise.all([
+      fetch('/api/traces').then((r) => r.json()),
+      fetch('/api/traces?debug=1').then((r) => r.json()).catch(() => null),
+    ]);
+    all = Array.isArray(list) ? list : [];
+    if (dbg) {
+      $('storeMode').textContent = dbg.configured ? 'Supabase' : 'in-memory';
+      $('storeMode').className = dbg.configured ? '' : 'warn';
+    }
+  } catch { all = []; }
+  renderStats(); renderTable();
+}
+
+function renderStats() {
+  const n = all.length;
+  $('tRuns').textContent = n;
+  const avg = (k) => { const v = all.map((r) => r[k]).filter((x) => typeof x === 'number'); return v.length ? Math.round((v.reduce((a, b) => a + b, 0) / v.length) * 10) / 10 : null; };
+  $('tAcc').textContent = n ? Math.round((all.filter((r) => r.routing_correct).length / n) * 100) + '%' : '--';
+  $('tUnder').textContent = all.filter((r) => r.severity === 'under-triage').length;
+  $('tFid').textContent = avg('fidelity_score') ?? '--';
+  $('tSat').textContent = avg('satisfaction') ?? '--';
+}
+
+function renderTable() {
+  const rows = all.filter((r) => filter === 'all' || (r.run_type || 'single') === filter);
+  if (!rows.length) {
+    $('tableWrap').innerHTML = `<div class="empty"><span class="mono">No runs yet</span>${all.length ? 'No runs match this filter.' : 'Run a simulation and every run will appear here with its full trace.'}</div>`;
+    return;
+  }
+  $('tableWrap').innerHTML = `<table class="runs-table"><thead><tr>
+    <th>When</th><th>Type</th><th>Patient</th><th>Complaint</th><th>Expected</th><th>Chosen</th><th>Result</th><th>Severity</th><th>Fid</th><th>Sat</th><th>Mood</th>
+  </tr></thead><tbody>${rows.map((r, i) => {
+    const sh = r.emotional_shift;
+    return `<tr data-id="${esc(r.id)}">
+      <td class="when">${when(r.created_at)}</td>
+      <td><span class="type-tag">${esc(r.run_type || 'single')}</span></td>
+      <td class="name">${esc(firstName(r.display_name))}</td>
+      <td>${esc(r.complaint)}</td>
+      <td>${esc(r.expected_endpoint)}</td>
+      <td>${r.chosen_endpoint ? esc(r.chosen_endpoint) : 'none'}</td>
+      <td><span class="pill ${r.routing_correct ? 'ok' : 'bad'}">${r.routing_correct ? 'Correct' : 'Miss'}</span></td>
+      <td class="sev ${SEV_CLASS[r.severity] || ''}">${SEV_LABEL[r.severity] || r.severity || ''}</td>
+      <td>${r.fidelity_score ?? 'n/a'}</td>
+      <td>${r.satisfaction ?? 'n/a'}</td>
+      <td class="${sh > 0 ? 'pos' : sh < 0 ? 'neg' : ''}">${shift(sh)}</td>
+    </tr>`;
+  }).join('')}</tbody></table>`;
+  $('tableWrap').querySelectorAll('tbody tr').forEach((tr) => tr.addEventListener('click', () => openDetail(tr.dataset.id)));
+}
+
+function turnEl(speaker, text) {
+  const route = speaker === 'triage' ? parseRoute(text) : null;
+  const who = speaker === 'patient' ? 'Patient worker' : 'Triage worker <span class="standin">stand-in for Clearstep</span>';
+  const body = route ? text.replace(/^\s*ROUTE:.*$/gim, '').trim() : text;
+  return `<div class="turn ${speaker}"><div class="who">${who}</div><div class="bubble">${esc(body)}</div>${route ? `<div class="commit">Committed: ${esc(route)}</div>` : ''}</div>`;
+}
+
+async function openDetail(id) {
+  $('modalTitle').innerHTML = 'Loading...';
+  $('modalBody').innerHTML = '';
+  $('modal').classList.add('show');
+  let d;
+  try { d = await fetch('/api/traces?id=' + encodeURIComponent(id)).then((r) => r.ok ? r.json() : null); } catch { d = null; }
+  if (!d) { $('modalTitle').textContent = 'Trace unavailable'; return; }
+  const v = d.verdict || {};
+  $('modalTitle').innerHTML = `${esc(firstName(d.display_name))} <span>${esc(d.complaint)}</span>`;
+  const trace = (d.transcript || []).map((t) => turnEl(t.speaker, t.text)).join('');
+  const match = d.routing_correct;
+  $('modalBody').innerHTML = `
+    <div class="trace">${trace || '<div class="note"><div class="nv">No transcript stored for this run.</div></div>'}</div>
+    <div class="verdict">
+      <div class="verdict-head"><span class="badge ${match ? 'match' : 'miss'}">${match ? 'Match' : 'Miss'}</span>
+        <div class="route-line"><span class="ep">Expected: ${esc(d.expected_endpoint)}</span><span class="arrow">to</span><span class="ep ${match ? 'ok' : 'bad'}">Chosen: ${d.chosen_endpoint ? esc(d.chosen_endpoint) : 'No disposition'}</span></div>
+      </div>
+      <div class="vgrid">
+        <div class="vstat"><div class="k">Severity</div><div class="v ${SEV_CLASS[d.severity] || ''}">${SEV_LABEL[d.severity] || ''}</div></div>
+        <div class="vstat"><div class="k">Fidelity</div><div class="v">${d.fidelity_score ?? 'n/a'}<small> / 10</small></div></div>
+        <div class="vstat"><div class="k">Turns</div><div class="v">${d.turns ?? 'n/a'}</div></div>
+        <div class="vstat"><div class="k">Comprehension</div><div class="v">${d.comprehension ?? 'n/a'}<small> / 10</small></div></div>
+        <div class="vstat"><div class="k">Satisfaction</div><div class="v">${d.satisfaction ?? 'n/a'}<small> / 10</small></div></div>
+        <div class="vstat"><div class="k">Emotional shift</div><div class="v ${d.emotional_shift > 0 ? 'pos' : d.emotional_shift < 0 ? 'neg' : ''}">${shift(d.emotional_shift)}</div></div>
+      </div>
+      <div class="notes">
+        <div class="note"><div class="nk">How the patient behaved</div><div class="nv">${esc(v.fidelity_notes)}</div></div>
+        <div class="note"><div class="nk">Patient experience</div><div class="nv">${esc(v.experience_notes)}</div></div>
+        <div class="note"><div class="nk">Why it landed here</div><div class="nv">${esc(v.routing_notes)}</div></div>
+        <div class="note"><div class="nk">Verdict</div><div class="nv summary">${esc(v.summary)}</div></div>
+      </div>
+    </div>`;
+}
+
+$('modalClose').addEventListener('click', () => $('modal').classList.remove('show'));
+$('modal').addEventListener('click', (e) => { if (e.target === $('modal')) $('modal').classList.remove('show'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') $('modal').classList.remove('show'); });
+document.querySelectorAll('.filters button').forEach((b) => b.addEventListener('click', () => {
+  filter = b.dataset.f;
+  document.querySelectorAll('.filters button').forEach((x) => x.classList.toggle('active', x === b));
+  renderTable();
+}));
+$('refreshBtn').addEventListener('click', load);
+$('clearBtn').addEventListener('click', async () => {
+  if (!confirm('Clear all recorded runs?')) return;
+  await fetch('/api/traces', { method: 'DELETE' }).catch(() => {});
+  load();
+});
+
+load();
+</script>
+</body>
+</html>

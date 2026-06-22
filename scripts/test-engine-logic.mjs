@@ -13,6 +13,7 @@ import {
   computeReport,
   normalizePersona,
   parsePersonaUpload,
+  parsePersonaRows,
   ENDPOINTS,
 } from '../lib/triage-engine.js';
 import { HEADACHE } from './fixtures.mjs';
@@ -110,11 +111,11 @@ console.log('\nloop that never commits (hits the 15-turn cap)');
 console.log('\ncomputeReport (care routing accuracy is the headline)');
 {
   const results = [
-    { complaint: 'headache', routing_correct: true, severity: 'correct', fidelity_score: 8 },
-    { complaint: 'headache', routing_correct: false, severity: 'over-triage', fidelity_score: 6 },
-    { complaint: 'chest pain', routing_correct: false, severity: 'under-triage', fidelity_score: 9 },
-    { complaint: 'chest pain', routing_correct: true, severity: 'correct', fidelity_score: 7 },
-    { complaint: 'rash', routing_correct: false, severity: 'fail', fidelity_score: null },
+    { complaint: 'headache', routing_correct: true, severity: 'correct', fidelity_score: 8, comprehension: 7, satisfaction: 9, emotional_shift: 2 },
+    { complaint: 'headache', routing_correct: false, severity: 'over-triage', fidelity_score: 6, comprehension: 6, satisfaction: 5, emotional_shift: -1 },
+    { complaint: 'chest pain', routing_correct: false, severity: 'under-triage', fidelity_score: 9, comprehension: 8, satisfaction: 4, emotional_shift: -3 },
+    { complaint: 'chest pain', routing_correct: true, severity: 'correct', fidelity_score: 7, comprehension: 9, satisfaction: 8, emotional_shift: 3 },
+    { complaint: 'rash', routing_correct: false, severity: 'fail', fidelity_score: null, comprehension: null, satisfaction: null, emotional_shift: null },
   ];
   const rep = computeReport(results);
   eq('accuracy is correct / total as percent', rep.accuracy, 40);
@@ -123,8 +124,27 @@ console.log('\ncomputeReport (care routing accuracy is the headline)');
   eq('over-triage count', rep.over, 1);
   eq('fail-to-route count', rep.fail, 1);
   eq('average fidelity ignores nulls', rep.avgFidelity, 7.5);
+  eq('average comprehension ignores nulls', rep.avgComprehension, 7.5);
+  eq('average satisfaction ignores nulls', rep.avgSatisfaction, 6.5);
+  eq('average emotional shift ignores nulls', rep.avgEmotionalShift, 0.3);
+  eq('improved-outlook count', rep.improvedOutlook, 2);
   eq('breakdown groups by complaint', rep.byComplaint.length, 3);
   eq('empty set does not divide by zero', computeReport([]).accuracy, 0);
+}
+
+console.log('\nparsePersonaRows (Excel/CSV upload)');
+{
+  const rows = [
+    { id: 'x1', display_name: 'Sam, 40', age: 40, sex: 'male', complaint: 'cough', expected_endpoint: 'Video visit', affirms: 'cough for a week ; worse at night', negates: 'no fever', clinical_truth: 'persistent cough', personality: 'calm', health_literacy: 'high', emotional_state: 'fine', speech_style: 'clear' },
+    { 'Name': 'Lee, 22', 'Endpoint': 'Urgent care', 'Affirms': 'sprained wrist | swollen', complaint: 'wrist pain' },
+  ];
+  const out = parsePersonaRows(rows);
+  eq('parses both rows', out.length, 2);
+  eq('splits affirms on semicolons', out[0].affirms, ['cough for a week', 'worse at night']);
+  eq('maps the character block', out[0].character.personality, 'calm');
+  eq('tolerates alternate headers (Name/Endpoint)', out[1].display_name, 'Lee, 22');
+  eq('splits affirms on pipes too', out[1].affirms, ['sprained wrist', 'swollen']);
+  eq('keeps a valid endpoint from a header alias', out[1].expected_endpoint, 'Urgent care');
 }
 
 console.log('\npersona normalization and upload');

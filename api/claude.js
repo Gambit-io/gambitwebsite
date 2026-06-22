@@ -8,10 +8,22 @@
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
-// Only these models may be requested through the proxy, so the route cannot be
-// abused to call arbitrary or expensive models.
+// The browser selects a worker by role only; the model mapping stays
+// server-side so model names never reach the client (Gambit Cloud framing).
+const ROLE_MODELS = {
+  patient: 'claude-sonnet-4-6',
+  triage: 'claude-sonnet-4-6',
+  evaluator: 'claude-opus-4-8',
+};
+// Real model ids still accepted for the dev/test scripts that call directly.
 const ALLOWED_MODELS = new Set(['claude-sonnet-4-6', 'claude-opus-4-8']);
 const DEFAULT_MODEL = 'claude-sonnet-4-6';
+
+function resolveModel(body) {
+  if (body.role && ROLE_MODELS[body.role]) return ROLE_MODELS[body.role];
+  if (ALLOWED_MODELS.has(body.model)) return body.model;
+  return DEFAULT_MODEL;
+}
 const MAX_TOKENS_CAP = 8192;
 const SYSTEM_MAX = 20000;
 
@@ -108,7 +120,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'System prompt too long' });
   }
 
-  const model = ALLOWED_MODELS.has(body.model) ? body.model : DEFAULT_MODEL;
+  const model = resolveModel(body);
   let maxTokens = Number.isInteger(body.max_tokens) ? body.max_tokens : 1024;
   maxTokens = Math.max(1, Math.min(MAX_TOKENS_CAP, maxTokens));
 
