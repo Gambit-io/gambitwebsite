@@ -13,292 +13,516 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #0a0a0b;
+  /* light working area */
+  --bg: #f3f3f2;
+  --card: #ffffff;
+  --card-2: #fafafa;
+  --line: #e6e6e9;
+  --line-soft: #eeeef0;
+  --ink: #161619;
+  --dim: #65656e;
+  --faint: #9a9aa3;
+  /* dark chrome */
+  --side: #0c0c0e;
+  --side-2: #141417;
+  --side-line: #26262c;
+  --side-text: #e9e9ec;
+  --side-dim: #8a8a93;
+  --side-faint: #5d5d66;
   --panel: #121214;
-  --panel-2: #17171a;
-  --raise: #1c1c20;
-  --line: #2a2a30;
-  --line-soft: #202024;
-  --text: #ececee;
-  --dim: #9a9aa4;
-  --faint: #6b6b74;
-  --green: #3ec46d;
-  --green-deep: #1fa877;
-  --red: #e5484d;
-  --amber: #e7a13a;
+  --panel-line: #26262c;
+  /* status */
+  --green: #1fa877;
+  --green-bright: #3ec46d;
+  --red: #c43d3d;
+  --amber: #b07d1c;
   --sans: 'General Sans', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
   --orb: 'Orbitron', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
-html { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
-body { min-height: 100vh; display: flex; flex-direction: column; }
-a { color: inherit; }
-
-/* HEADER */
-header { position: sticky; top: 0; z-index: 50; height: 58px; background: rgba(10,10,11,0.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
-.header-inner { max-width: 1240px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
-.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-.brand img { height: 22px; width: auto; display: block; filter: brightness(0) invert(1); }
-.brand .div { width: 1px; height: 20px; background: var(--line); }
-.brand .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--dim); text-transform: uppercase; }
-.live { display: flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--dim); text-transform: uppercase; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(62,196,109,0.6); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(62,196,109,0.5); } 70% { box-shadow: 0 0 0 7px rgba(62,196,109,0); } 100% { box-shadow: 0 0 0 0 rgba(62,196,109,0); } }
+html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; }
+.hidden { display: none !important; }
 
 /* SHELL */
-main { flex: 1; max-width: 1240px; width: 100%; margin: 0 auto; padding: 40px 28px 80px; }
-.masthead { margin-bottom: 28px; }
-.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
-h1 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
-.lede { font-size: 15.5px; line-height: 1.6; color: var(--dim); max-width: 720px; }
-.honesty { margin-top: 16px; font-size: 13px; line-height: 1.55; color: var(--faint); max-width: 720px; border-left: 2px solid var(--line); padding-left: 14px; }
+.app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
 
-/* STAGE */
-.stage { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
-.card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 14px; }
-.card-head { padding: 14px 18px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.card-head .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+/* SIDEBAR */
+.sidebar { background: var(--side); border-right: 1px solid var(--side-line); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+.brand { display: flex; align-items: center; gap: 11px; padding: 20px 20px 18px; text-decoration: none; border-bottom: 1px solid var(--side-line); }
+.brand img { height: 20px; filter: brightness(0) invert(1); }
+.brand .sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--side-faint); display: block; margin-top: 3px; }
+.nav { padding: 14px 12px; display: flex; flex-direction: column; gap: 3px; }
+.nav-item { display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; font-family: var(--sans); font-size: 13.5px; font-weight: 450; color: var(--side-dim); background: transparent; border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer; transition: all 0.14s; }
+.nav-item:hover { color: var(--side-text); background: rgba(255,255,255,0.04); }
+.nav-item.active { color: var(--side-text); background: rgba(255,255,255,0.07); }
+.nav-item svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.nav-sec { padding: 8px 22px; margin-top: 8px; }
+.nav-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--side-faint); margin-bottom: 12px; }
+.wk { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+.wk .wk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); flex-shrink: 0; box-shadow: 0 0 0 0 rgba(62,196,109,0.5); animation: pulse 2.4s infinite; }
+.wk .wk-name { font-size: 12.5px; color: var(--side-text); }
+.wk .wk-model { font-family: var(--mono); font-size: 10px; color: var(--side-faint); display: block; margin-top: 1px; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(62,196,109,0.45); } 70% { box-shadow: 0 0 0 6px rgba(62,196,109,0); } 100% { box-shadow: 0 0 0 0 rgba(62,196,109,0); } }
+.sidebar-foot { margin-top: auto; padding: 16px 22px; border-top: 1px solid var(--side-line); font-family: var(--mono); font-size: 10.5px; color: var(--side-faint); line-height: 1.9; }
+.sidebar-foot b { color: var(--green-bright); font-weight: 500; }
 
-/* PATIENT CARD */
-.picker { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 16px 4px; }
-.chip { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.03em; color: var(--dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 100px; padding: 6px 12px; cursor: pointer; transition: all 0.15s; }
-.chip:hover { color: var(--text); border-color: var(--faint); }
-.chip[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); font-weight: 500; }
-.patient-body { padding: 16px 18px 18px; }
-.person { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
-.person .name { font-size: 19px; font-weight: 500; letter-spacing: -0.01em; }
+/* WORK AREA */
+.work { min-width: 0; display: flex; flex-direction: column; }
+
+/* STATUS STRIP (dark) */
+.statbar { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; margin: 22px 28px 0; padding: 16px 20px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.statbar .sb-title { display: flex; align-items: center; gap: 11px; }
+.statbar .sb-title .ttl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--side-text); }
+.statbar .sb-title .op { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-bright); display: flex; align-items: center; gap: 7px; }
+.statbar .op .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); animation: pulse 2.4s infinite; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 10px; flex: 1; min-width: 360px; }
+.tile { background: var(--side-2); border: 1px solid var(--panel-line); border-radius: 10px; padding: 11px 14px; }
+.tile .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--side-faint); margin-bottom: 6px; }
+.tile .v { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--side-text); letter-spacing: 0.01em; }
+.tile .v.green { color: var(--green-bright); }
+
+/* VIEW */
+.view { padding: 26px 28px 70px; }
+.view-head { margin-bottom: 22px; }
+.view-head h1 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 7px; }
+.view-head p { font-size: 14px; line-height: 1.55; color: var(--dim); max-width: 760px; }
+.view-head .honesty { margin-top: 12px; font-size: 12.5px; color: var(--faint); border-left: 2px solid var(--line); padding-left: 12px; line-height: 1.5; max-width: 760px; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.card-head { padding: 13px 17px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card-head .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+
+/* SINGLE VIEW */
+.stage { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
+.picker { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 15px 4px; }
+.chip { font-family: var(--mono); font-size: 11px; color: var(--dim); background: var(--card-2); border: 1px solid var(--line); border-radius: 100px; padding: 6px 11px; cursor: pointer; transition: all 0.14s; }
+.chip:hover { color: var(--ink); border-color: var(--faint); }
+.chip[aria-pressed="true"] { color: var(--card); background: var(--ink); border-color: var(--ink); font-weight: 500; }
+.patient-body { padding: 15px 17px 18px; }
+.person { display: flex; align-items: baseline; gap: 9px; margin-bottom: 4px; }
+.person .name { font-size: 18px; font-weight: 500; }
 .person .meta { font-family: var(--mono); font-size: 12px; color: var(--faint); }
-.complaint { font-size: 14px; color: var(--dim); margin-bottom: 16px; }
-.complaint b { color: var(--text); font-weight: 500; }
-.traits { display: grid; gap: 9px; }
-.trait { display: grid; grid-template-columns: 96px 1fr; gap: 10px; font-size: 13px; }
-.trait .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); padding-top: 1px; }
-.trait .v { color: var(--dim); line-height: 1.45; }
-
-.keytoggle { margin: 18px 0 0; }
-.keytoggle button { width: 100%; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); background: transparent; border: 1px dashed var(--line); border-radius: 9px; padding: 10px; cursor: pointer; transition: all 0.15s; }
-.keytoggle button:hover { color: var(--text); border-color: var(--faint); }
-.answer-key { margin-top: 12px; border: 1px solid var(--line-soft); border-radius: 10px; padding: 14px; background: var(--panel-2); display: none; }
+.complaint { font-size: 13.5px; color: var(--dim); margin-bottom: 15px; }
+.complaint b { color: var(--ink); font-weight: 500; }
+.traits { display: grid; gap: 8px; }
+.trait { display: grid; grid-template-columns: 84px 1fr; gap: 10px; font-size: 12.5px; }
+.trait .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); padding-top: 1px; }
+.trait .v { color: var(--dim); line-height: 1.4; }
+.keytoggle { margin-top: 16px; }
+.keytoggle button { width: 100%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); background: transparent; border: 1px dashed var(--line); border-radius: 9px; padding: 9px; cursor: pointer; transition: all 0.14s; }
+.keytoggle button:hover { color: var(--ink); border-color: var(--faint); }
+.answer-key { margin-top: 11px; border: 1px solid var(--line); border-radius: 10px; padding: 13px; background: var(--card-2); display: none; }
 .answer-key.open { display: block; }
-.answer-key .ak-row { margin-bottom: 12px; }
-.answer-key .ak-row:last-child { margin-bottom: 0; }
-.answer-key .ak-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
-.answer-key .ak-endpoint { font-size: 14px; font-weight: 500; color: var(--text); }
-.answer-key ul { list-style: none; display: grid; gap: 5px; }
-.answer-key li { font-size: 12.5px; line-height: 1.45; color: var(--dim); padding-left: 14px; position: relative; }
-.answer-key li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
-.answer-key .negate li::before { background: transparent; border: 1px solid var(--faint); top: 7px; }
-.answer-key .truth { font-size: 12.5px; line-height: 1.5; color: var(--dim); font-style: italic; }
+.ak-row { margin-bottom: 11px; } .ak-row:last-child { margin-bottom: 0; }
+.ak-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.ak-endpoint { font-size: 13.5px; font-weight: 500; }
+.answer-key ul { list-style: none; display: grid; gap: 4px; }
+.answer-key li { font-size: 12px; line-height: 1.4; color: var(--dim); padding-left: 13px; position: relative; }
+.answer-key li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+.answer-key .negate li::before { background: transparent; border: 1px solid var(--faint); }
+.answer-key .truth { font-size: 12px; line-height: 1.5; color: var(--dim); font-style: italic; }
 
-/* CONSOLE */
-.console { min-height: 540px; display: flex; flex-direction: column; }
-.toolbar { padding: 14px 18px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.toolbar .meta { font-family: var(--mono); font-size: 11.5px; color: var(--faint); display: flex; gap: 16px; flex-wrap: wrap; }
+.console { display: flex; flex-direction: column; min-height: 520px; }
+.toolbar { padding: 13px 17px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.toolbar .meta { font-family: var(--mono); font-size: 11px; color: var(--faint); display: flex; gap: 15px; flex-wrap: wrap; }
 .toolbar .meta b { color: var(--dim); font-weight: 500; }
-.run-btn { display: inline-flex; align-items: center; gap: 9px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--bg); background: var(--text); border: none; border-radius: 100px; padding: 9px 20px; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
+.run-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13.5px; font-weight: 500; color: var(--card); background: var(--ink); border: none; border-radius: 100px; padding: 9px 19px; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
 .run-btn:hover:not(:disabled) { opacity: 0.85; }
 .run-btn:disabled { opacity: 0.4; cursor: default; }
-.run-btn .play { width: 0; height: 0; border-left: 8px solid var(--bg); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-
-.trace { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; max-height: 620px; }
-.trace-empty { margin: auto; text-align: center; color: var(--faint); font-size: 13.5px; line-height: 1.6; max-width: 360px; }
-.trace-empty .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 10px; }
-
-.turn { display: flex; flex-direction: column; gap: 6px; animation: rise 0.4s var(--ease); }
-@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.turn .who { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); display: flex; align-items: center; gap: 8px; }
-.turn.triage .who { color: var(--dim); }
-.turn .standin { color: var(--faint); text-transform: none; letter-spacing: 0; font-size: 11px; }
-.bubble { font-size: 14.5px; line-height: 1.55; color: var(--text); background: var(--panel-2); border: 1px solid var(--line-soft); border-radius: 12px; padding: 12px 15px; max-width: 86%; white-space: pre-wrap; }
-.turn.patient { align-items: flex-start; }
+.run-btn .play { width: 0; height: 0; border-left: 7px solid var(--card); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.trace { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto; max-height: 600px; }
+.trace-empty { margin: auto; text-align: center; color: var(--faint); font-size: 13px; line-height: 1.6; max-width: 360px; }
+.trace-empty .mono { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 9px; }
+.turn { display: flex; flex-direction: column; gap: 6px; animation: rise 0.35s var(--ease); }
+@keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+.turn .who { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); display: flex; align-items: center; gap: 8px; }
+.turn .standin { color: var(--faint); text-transform: none; letter-spacing: 0; font-size: 10.5px; }
+.bubble { font-size: 14px; line-height: 1.55; color: var(--ink); background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; max-width: 88%; white-space: pre-wrap; }
 .turn.patient .bubble { border-top-left-radius: 4px; }
 .turn.triage { align-items: flex-end; }
-.turn.triage .bubble { border-top-right-radius: 4px; background: var(--raise); }
+.turn.triage .bubble { border-top-right-radius: 4px; background: #f1f4ff; border-color: #e2e8fb; }
 .turn.triage .who { flex-direction: row-reverse; }
-
-.commit { align-self: flex-end; display: inline-flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--green); background: rgba(62,196,109,0.08); border: 1px solid rgba(62,196,109,0.32); border-radius: 100px; padding: 7px 14px; }
-.commit .dot { animation: none; box-shadow: none; }
-.thinking { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; color: var(--faint); display: flex; align-items: center; gap: 8px; }
+.commit { align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; color: var(--green); background: rgba(31,168,119,0.07); border: 1px solid rgba(31,168,119,0.28); border-radius: 100px; padding: 6px 13px; }
+.commit .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.thinking { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--faint); display: flex; align-items: center; gap: 7px; }
 .thinking .dots span { animation: blink 1.4s infinite both; }
 .thinking .dots span:nth-child(2){ animation-delay: 0.2s; } .thinking .dots span:nth-child(3){ animation-delay: 0.4s; }
 @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+.err { color: var(--red); font-family: var(--mono); font-size: 12px; padding: 10px 13px; border: 1px solid rgba(196,61,61,0.3); border-radius: 9px; background: rgba(196,61,61,0.05); }
 
-/* VERDICT */
-.verdict { margin-top: 20px; border: 1px solid var(--line-soft); border-radius: 14px; background: var(--panel); overflow: hidden; display: none; }
-.verdict.show { display: block; animation: rise 0.4s var(--ease); }
-.verdict-head { padding: 16px 20px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.badge { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 13px; border-radius: 7px; }
-.badge.match { color: var(--green); background: rgba(62,196,109,0.1); border: 1px solid rgba(62,196,109,0.3); }
-.badge.miss { color: var(--red); background: rgba(229,72,77,0.1); border: 1px solid rgba(229,72,77,0.3); }
-.route-line { display: flex; align-items: center; gap: 12px; font-size: 14px; }
-.route-line .ep { font-family: var(--mono); font-size: 13px; padding: 5px 11px; border-radius: 7px; background: var(--panel-2); border: 1px solid var(--line); }
+/* VERDICT (shared by single view + modal) */
+.verdict { margin-top: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+.verdict-head { padding: 15px 19px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+.badge { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 7px; }
+.badge.match { color: var(--green); background: rgba(31,168,119,0.1); border: 1px solid rgba(31,168,119,0.3); }
+.badge.miss { color: var(--red); background: rgba(196,61,61,0.09); border: 1px solid rgba(196,61,61,0.3); }
+.route-line { display: flex; align-items: center; gap: 11px; font-size: 13.5px; flex-wrap: wrap; }
+.route-line .ep { font-family: var(--mono); font-size: 12.5px; padding: 5px 10px; border-radius: 7px; background: var(--card-2); border: 1px solid var(--line); }
 .route-line .arrow { color: var(--faint); }
-.route-line .ep.chosen.ok { border-color: rgba(62,196,109,0.4); color: var(--green); }
-.route-line .ep.chosen.bad { border-color: rgba(229,72,77,0.4); color: var(--red); }
+.route-line .ep.ok { border-color: rgba(31,168,119,0.4); color: var(--green); }
+.route-line .ep.bad { border-color: rgba(196,61,61,0.4); color: var(--red); }
 .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line-soft); }
-.vstat { padding: 16px 20px; border-right: 1px solid var(--line-soft); }
+.vstat { padding: 15px 19px; border-right: 1px solid var(--line-soft); }
 .vstat:last-child { border-right: none; }
-.vstat .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 7px; }
-.vstat .v { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+.vstat .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+.vstat .v { font-size: 19px; font-weight: 500; }
 .vstat .v small { font-size: 13px; color: var(--faint); font-weight: 400; }
 .sev-correct { color: var(--green); } .sev-over { color: var(--amber); } .sev-under, .sev-fail { color: var(--red); }
-.danger-note { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); margin-top: 4px; }
-.notes { padding: 18px 20px; display: grid; gap: 14px; }
-.note .nk { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
-.note .nv { font-size: 14px; line-height: 1.6; color: var(--dim); }
-.note .nv.summary { color: var(--text); }
+.danger-note { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--red); margin-top: 4px; }
+.notes { padding: 17px 19px; display: grid; gap: 13px; }
+.note .nk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.note .nv { font-size: 13.5px; line-height: 1.6; color: var(--dim); }
+.note .nv.summary { color: var(--ink); }
 
-.err { color: var(--red); font-family: var(--mono); font-size: 12.5px; padding: 10px 14px; border: 1px solid rgba(229,72,77,0.3); border-radius: 9px; background: rgba(229,72,77,0.06); }
+/* BATCH VIEW */
+.batch-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 18px; }
+.src-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.btn-ghost { font-family: var(--sans); font-size: 13px; font-weight: 450; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 8px 16px; cursor: pointer; transition: all 0.14s; }
+.btn-ghost:hover:not(:disabled) { border-color: var(--faint); }
+.btn-ghost:disabled { opacity: 0.45; cursor: default; }
+.batch-controls .run-btn { margin-left: auto; }
+.batch-note { font-family: var(--mono); font-size: 11px; color: var(--faint); width: 100%; padding-top: 2px; }
+.batch-progress { font-family: var(--mono); font-size: 11.5px; color: var(--dim); display: flex; align-items: center; gap: 8px; }
 
-/* FOOTER */
-.site-footer { border-top: 1px solid var(--line-soft); padding: 28px; }
-.footer-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.footer-inner img { height: 18px; filter: brightness(0) invert(1); opacity: 0.5; }
-.footer-inner .ft { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--faint); }
+.report { margin-top: 18px; display: none; }
+.report.show { display: block; }
+.headline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.headline .kpi { display: flex; flex-direction: column; }
+.headline .kpi .big { font-family: var(--mono); font-size: 56px; font-weight: 600; line-height: 1; color: var(--green); letter-spacing: -0.01em; }
+.headline .kpi .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-top: 10px; }
+.headline .kpi .sub { font-size: 13px; color: var(--dim); margin-top: 5px; }
+.mini-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; min-width: 340px; }
+.mini { border: 1px solid var(--line); border-radius: 11px; padding: 13px 15px; background: var(--card-2); }
+.mini .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 7px; }
+.mini .v { font-size: 22px; font-weight: 500; }
+.mini.danger .v { color: var(--red); }
+.mini .tagline { font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--red); margin-top: 3px; }
 
+.report-cols { display: grid; grid-template-columns: 300px 1fr; gap: 18px; margin-top: 18px; align-items: start; }
+.breakdown { padding: 16px 18px; }
+.bd-row { margin-bottom: 13px; } .bd-row:last-child { margin-bottom: 0; }
+.bd-top { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 5px; }
+.bd-top .c { color: var(--ink); } .bd-top .n { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+.bd-bar { height: 6px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.bd-bar i { display: block; height: 100%; background: var(--green); border-radius: 4px; }
+.findings { padding: 17px 19px; }
+.findings .nv { font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
+.findings .writing { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+
+.runs-table { width: 100%; margin-top: 18px; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.runs-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-weight: 500; }
+.runs-table td { font-size: 13px; padding: 12px 14px; border-bottom: 1px solid var(--line-soft); color: var(--dim); }
+.runs-table tr:last-child td { border-bottom: none; }
+.runs-table tbody tr { cursor: pointer; transition: background 0.12s; }
+.runs-table tbody tr:hover { background: var(--card-2); }
+.runs-table td.name { color: var(--ink); font-weight: 450; }
+.runs-table .pill { font-family: var(--mono); font-size: 10.5px; padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+.pill.ok { color: var(--green); background: rgba(31,168,119,0.1); }
+.pill.bad { color: var(--red); background: rgba(196,61,61,0.09); }
+.runs-table .sev { font-family: var(--mono); font-size: 11px; }
+.runs-table .st-running { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+.runs-table .st-running::before { content: "running "; }
+.report-empty { color: var(--faint); font-size: 13px; padding: 30px 18px; text-align: center; }
+
+/* MODAL */
+.modal { position: fixed; inset: 0; background: rgba(12,12,14,0.55); display: none; align-items: flex-start; justify-content: center; padding: 40px 20px; z-index: 100; overflow-y: auto; }
+.modal.show { display: flex; }
+.modal-box { background: var(--bg); border-radius: 16px; max-width: 820px; width: 100%; border: 1px solid var(--line); }
+.modal-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); border-radius: 16px 16px 0 0; }
+.modal-head .mt { font-size: 15px; font-weight: 500; }
+.modal-head .mt span { font-family: var(--mono); font-size: 12px; color: var(--faint); margin-left: 8px; }
+.modal-close { background: var(--card); border: 1px solid var(--line); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; color: var(--dim); font-size: 16px; line-height: 1; }
+.modal-close:hover { color: var(--ink); }
+.modal-body { padding: 20px; }
+.modal-body .trace { padding: 0; max-height: none; margin-bottom: 4px; }
+
+@media (max-width: 1080px) {
+  .report-cols { grid-template-columns: 1fr; }
+}
 @media (max-width: 920px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; flex-direction: column; }
+  .nav { flex-direction: row; flex-wrap: wrap; }
+  .nav-item { width: auto; }
+  .nav-sec { display: none; }
+  .sidebar-foot { display: none; }
   .stage { grid-template-columns: 1fr; }
   .trace { max-height: none; }
+  .mini-stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
-  main { padding: 28px 18px 60px; }
-  .header-inner { padding: 0 18px; }
-  .brand .tag { display: none; }
-  .toolbar { flex-direction: column; align-items: stretch; }
-  .verdict-grid { grid-template-columns: 1fr; }
-  .vstat { border-right: none; border-bottom: 1px solid var(--line-soft); }
-  .bubble { max-width: 100%; }
+  .statbar { margin: 16px 16px 0; }
+  .view { padding: 20px 16px 50px; }
+  .tiles { grid-template-columns: repeat(2, 1fr); min-width: 0; }
+  .headline .kpi .big { font-size: 44px; }
+  .runs-table { display: block; overflow-x: auto; }
 }
-a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+a:focus-visible, button:focus-visible, .chip:focus-visible, tr:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
 </style>
 </head>
 <body>
-
-<header>
-  <div class="header-inner">
-    <a href="/" class="brand">
-      <img src="/img/gambit-logo.png" alt="Gambit">
-      <span class="div"></span>
-      <span class="tag">Clearstep triage simulation</span>
-    </a>
-    <div class="live"><span class="dot"></span> Worker running live on Claude</div>
-  </div>
-</header>
-
-<main>
-  <div class="masthead">
-    <div class="eyebrow">Gambit worker</div>
-    <h1>Patient simulation against a triage engine</h1>
-    <p class="lede">This worker stands up a synthetic patient, runs it in conversation against a triage engine, and scores whether the patient was routed to the right level of care. Pick a patient and run it live. Every turn below is a real model call.</p>
-    <p class="honesty">The triage side is a stand-in. In production it connects to Clearstep Smart Care Routing. The patient holds symptoms back and reveals them only when the triage worker asks, so the test stays honest. Nothing here is pre-scripted.</p>
-  </div>
-
-  <div class="stage">
-    <!-- PATIENT -->
-    <div class="card">
-      <div class="card-head"><span class="label">Patient worker</span><span class="label" id="pid">p001</span></div>
-      <div class="picker" id="picker"></div>
-      <div class="patient-body" id="patientBody"></div>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="/" class="brand"><img src="/img/gambit-logo.png" alt="Gambit"><span class="sub">Floor Control</span></a>
+    <nav class="nav">
+      <button class="nav-item active" data-view="single"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg> Single run</button>
+      <button class="nav-item" data-view="batch"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Batch report</button>
+    </nav>
+    <div class="nav-sec">
+      <div class="nav-label">Workers</div>
+      <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Patient</span><span class="wk-model">claude-sonnet-4-6</span></span></div>
+      <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Triage stand-in</span><span class="wk-model">claude-sonnet-4-6</span></span></div>
+      <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Evaluator</span><span class="wk-model">claude-opus-4-8</span></span></div>
     </div>
+    <div class="sidebar-foot">
+      Worker gateway: <b>Running</b><br>
+      Live on Claude
+    </div>
+  </aside>
 
-    <!-- CONSOLE -->
-    <div class="card console">
-      <div class="toolbar">
-        <div class="meta">
-          <span><b id="mTurns">0</b> / 15 turns</span>
-          <span>patient + triage <b id="mPatientModel">sonnet 4.6</b></span>
-          <span>judge <b id="mEvalModel">opus 4.8</b></span>
-        </div>
-        <button class="run-btn" id="runBtn"><span class="play"></span> Run simulation</button>
+  <!-- WORK AREA -->
+  <div class="work">
+    <div class="statbar">
+      <div class="sb-title">
+        <span class="ttl">Clearstep triage simulation</span>
+        <span class="op"><span class="dot"></span> Live on Claude</span>
       </div>
-      <div class="trace" id="trace">
-        <div class="trace-empty" id="empty">
-          <span class="mono">Ready</span>
-          The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.
-        </div>
+      <div class="tiles">
+        <div class="tile"><div class="k">Patients</div><div class="v" id="tPatients">0</div></div>
+        <div class="tile"><div class="k">Runs</div><div class="v" id="tRuns">0</div></div>
+        <div class="tile"><div class="k">Model calls</div><div class="v" id="tCalls">0</div></div>
+        <div class="tile"><div class="k">Routing accuracy</div><div class="v green" id="tAcc">--</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- VERDICT -->
-  <div class="verdict" id="verdict"></div>
-</main>
+    <!-- SINGLE RUN VIEW -->
+    <section class="view" id="view-single">
+      <div class="view-head">
+        <h1>Single run</h1>
+        <p>Stand up one synthetic patient and run it live against the triage engine. The patient holds symptoms back and reveals them only when the triage worker asks. Every turn below is a real model call.</p>
+        <p class="honesty">The triage side is a stand-in. In production it connects to Clearstep Smart Care Routing. Nothing here is pre-scripted.</p>
+      </div>
+      <div class="stage">
+        <div class="card">
+          <div class="card-head"><span class="label">Patient worker</span><span class="label" id="pid">p001</span></div>
+          <div class="picker" id="picker"></div>
+          <div class="patient-body" id="patientBody"></div>
+        </div>
+        <div class="card console">
+          <div class="toolbar">
+            <div class="meta">
+              <span><b id="mTurns">0</b> / 15 turns</span>
+              <span>patient + triage <b>sonnet 4.6</b></span>
+              <span>judge <b>opus 4.8</b></span>
+            </div>
+            <button class="run-btn" id="runBtn"><span class="play"></span> Run simulation</button>
+          </div>
+          <div class="trace" id="trace">
+            <div class="trace-empty"><span class="mono">Ready</span>The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.</div>
+          </div>
+        </div>
+      </div>
+      <div id="singleVerdict"></div>
+    </section>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/img/gambit-logo.png" alt="Gambit">
-    <span class="ft">Ten real runs scale to thousands overnight on the same loop.</span>
+    <!-- BATCH REPORT VIEW -->
+    <section class="view hidden" id="view-batch">
+      <div class="view-head">
+        <h1>Batch report</h1>
+        <p>Run the whole patient set against the triage engine and measure care routing accuracy, the same KPI Clearstep publishes. Ten real runs here scale to thousands overnight on the same loop.</p>
+        <p class="honesty">These are real runs, not projected numbers. Under-triage, routing a patient below the care they needed, is the dangerous direction and is flagged as such.</p>
+      </div>
+      <div class="card">
+        <div class="batch-controls">
+          <div class="src-group">
+            <button class="btn-ghost" id="genBtn">Generate ten patients</button>
+            <button class="btn-ghost" id="uploadBtn">Upload patients</button>
+            <input type="file" id="fileInput" accept="application/json,.json" class="hidden">
+          </div>
+          <button class="run-btn" id="runAllBtn"><span class="play"></span> <span id="runAllLabel">Run all</span></button>
+          <div class="batch-note" id="batchNote">Current set: 3 patients. Runs go three at a time to stay under rate limits.</div>
+        </div>
+      </div>
+
+      <div class="report" id="report">
+        <div class="headline">
+          <div class="kpi">
+            <span class="big" id="rAcc">--</span>
+            <span class="lbl">Care routing accuracy</span>
+            <span class="sub" id="rAccSub"></span>
+          </div>
+          <div class="mini-stats">
+            <div class="mini"><div class="k">Avg fidelity</div><div class="v" id="rFid">--</div></div>
+            <div class="mini danger"><div class="k">Under triage</div><div class="v" id="rUnder">0</div><div class="tagline">Dangerous</div></div>
+            <div class="mini"><div class="k">Over triage</div><div class="v" id="rOver">0</div></div>
+            <div class="mini"><div class="k">Fail to route</div><div class="v" id="rFail">0</div></div>
+          </div>
+        </div>
+
+        <div class="report-cols">
+          <div class="card"><div class="card-head"><span class="label">By complaint</span></div><div class="breakdown" id="breakdown"></div></div>
+          <div class="card"><div class="card-head"><span class="label">Findings</span></div><div class="findings" id="findings"><div class="writing">Findings appear when the batch completes.</div></div></div>
+        </div>
+
+        <table class="runs-table" id="runsTable">
+          <thead><tr><th>#</th><th>Patient</th><th>Complaint</th><th>Expected</th><th>Chosen</th><th>Result</th><th>Severity</th><th>Fidelity</th><th>Turns</th></tr></thead>
+          <tbody id="runsBody"></tbody>
+        </table>
+      </div>
+    </section>
   </div>
-</footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><div class="mt" id="modalTitle"></div><button class="modal-close" id="modalClose" aria-label="Close">&times;</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
 
 <script type="module">
-import { runConversation, scoreRun, evaluate, parseRoute } from '/lib/triage-engine.js';
+import {
+  runConversation, scoreRun, evaluate, parseRoute,
+  runBatch, computeReport, summarizeReport, generatePersonas, parsePersonaUpload,
+} from '/lib/triage-engine.js';
 
-const MODELS = {
-  patient: 'claude-sonnet-4-6',
-  triage: 'claude-sonnet-4-6',
-  evaluator: 'claude-opus-4-8',
-};
+const MODELS = { patient: 'claude-sonnet-4-6', triage: 'claude-sonnet-4-6', evaluator: 'claude-opus-4-8' };
 
-// Seed personas spanning the acuity range. Generation and upload come next.
-const PERSONAS = [
-  {
-    id: 'p001', display_name: 'Maria, 35', age: 35, sex: 'female', complaint: 'headache',
-    expected_endpoint: 'Video visit',
+const SEED_PERSONAS = [
+  { id: 'p001', display_name: 'Maria, 35', age: 35, sex: 'female', complaint: 'headache', expected_endpoint: 'Video visit',
     affirms: ['this headache is different than my usual headaches', 'I have a history of occasional headaches'],
     negates: ['this is not a mild headache'],
     clinical_truth: 'New-character headache in someone with prior mild headaches. Warrants a prompt virtual evaluation, not the ER, not self-care.',
-    character: { personality: 'anxious, over-explains', health_literacy: 'low, uses plain language', emotional_state: 'worried but coherent', speech_style: 'short messages, some run-ons' },
-  },
-  {
-    id: 'p002', display_name: 'James, 58', age: 58, sex: 'male', complaint: 'chest tightness',
-    expected_endpoint: 'Emergency department',
+    character: { personality: 'anxious, over-explains', health_literacy: 'low, uses plain language', emotional_state: 'worried but coherent', speech_style: 'short messages, some run-ons' } },
+  { id: 'p002', display_name: 'James, 58', age: 58, sex: 'male', complaint: 'chest tightness', expected_endpoint: 'Emergency department',
     affirms: ['the tightness started about an hour ago while I was walking up the stairs', 'it spreads into my left arm and up into my jaw', 'I am sweaty and a little short of breath'],
     negates: ['this is not heartburn or something I ate'],
     clinical_truth: 'Exertional chest pressure radiating to the left arm and jaw with sweating and breathlessness in a 58 year old. Possible acute coronary syndrome. Needs emergency evaluation now.',
-    character: { personality: 'stoic, downplays things', health_literacy: 'medium', emotional_state: 'trying to stay calm, a little scared', speech_style: 'terse, understated' },
-  },
-  {
-    id: 'p003', display_name: 'Priya, 24', age: 24, sex: 'female', complaint: 'sore throat',
-    expected_endpoint: 'Self-care at home',
+    character: { personality: 'stoic, downplays things', health_literacy: 'medium', emotional_state: 'trying to stay calm, a little scared', speech_style: 'terse, understated' } },
+  { id: 'p003', display_name: 'Priya, 24', age: 24, sex: 'female', complaint: 'sore throat', expected_endpoint: 'Self-care at home',
     affirms: ['it started two days ago and it is a mild scratchy feeling', 'I have a slight runny nose', 'I can still eat and drink normally'],
     negates: ['I do not have a high fever', 'I have no trouble breathing or swallowing', 'my neck is not stiff and I am not drooling'],
     clinical_truth: 'Mild viral sore throat with a runny nose, no red flags, eating and drinking normally. Appropriate for self care at home with advice on when to seek more help.',
-    character: { personality: 'matter of fact', health_literacy: 'high', emotional_state: 'mildly annoyed, not worried', speech_style: 'clear and concise' },
-  },
+    character: { personality: 'matter of fact', health_literacy: 'high', emotional_state: 'mildly annoyed, not worried', speech_style: 'clear and concise' } },
 ];
 
 const SEV_CLASS = { 'correct': 'sev-correct', 'over-triage': 'sev-over', 'under-triage': 'sev-under', 'fail': 'sev-fail' };
 const SEV_LABEL = { 'correct': 'On target', 'over-triage': 'Over triage', 'under-triage': 'Under triage', 'fail': 'No disposition' };
 
-let active = PERSONAS[0];
-let running = false;
+let personaSet = SEED_PERSONAS.map((p) => ({ ...p }));
+let activeSingle = personaSet[0];
+let singleRunning = false;
+let batchRunning = false;
+let sessionRuns = [];
+let modelCalls = 0;
+let lastBatch = [];
 
 const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const firstName = (n) => String(n).split(',')[0];
 
+// ---- tiles -------------------------------------------------------------
+function updateTiles() {
+  $('tPatients').textContent = personaSet.length;
+  $('tRuns').textContent = sessionRuns.length;
+  $('tCalls').textContent = modelCalls;
+  if (sessionRuns.length) {
+    const acc = Math.round((sessionRuns.filter((r) => r.routing_correct).length / sessionRuns.length) * 100);
+    $('tAcc').textContent = acc + '%';
+  } else {
+    $('tAcc').textContent = '--';
+  }
+}
+
+// ---- proxy call (counts toward the live tile) -------------------------
+async function callClaude({ system, messages, model, max_tokens }) {
+  modelCalls++;
+  $('tCalls').textContent = modelCalls;
+  const r = await fetch('/api/claude', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ system, messages, model, max_tokens }),
+  });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error || `Request failed (${r.status})`);
+  return data.text;
+}
+
+// ---- nav ---------------------------------------------------------------
+function showView(name) {
+  document.querySelectorAll('.nav-item').forEach((b) => b.classList.toggle('active', b.dataset.view === name));
+  $('view-single').classList.toggle('hidden', name !== 'single');
+  $('view-batch').classList.toggle('hidden', name !== 'batch');
+}
+document.querySelectorAll('.nav-item').forEach((b) => b.addEventListener('click', () => showView(b.dataset.view)));
+
+// ---- shared renderers --------------------------------------------------
+function turnEl({ speaker, text, route }) {
+  const wrap = document.createElement('div');
+  wrap.className = `turn ${speaker}`;
+  const who = speaker === 'patient'
+    ? 'Patient worker'
+    : 'Triage worker <span class="standin">stand-in for Clearstep</span>';
+  const body = route ? text.replace(/^\s*ROUTE:.*$/gim, '').trim() : text;
+  wrap.innerHTML = `<div class="who">${who}</div><div class="bubble">${esc(body)}</div>`;
+  if (route) {
+    const c = document.createElement('div');
+    c.className = 'commit';
+    c.innerHTML = `<span class="dot"></span> Committed: ${esc(route)}`;
+    wrap.appendChild(c);
+  }
+  return wrap;
+}
+
+function verdictHTML(run) {
+  const match = run.routing_correct;
+  const sev = run.severity;
+  const v = run.verdict || {};
+  return `
+    <div class="verdict-head">
+      <span class="badge ${match ? 'match' : 'miss'}">${match ? 'Match' : 'Miss'}</span>
+      <div class="route-line">
+        <span class="ep">Expected: ${esc(run.expected_endpoint)}</span>
+        <span class="arrow">to</span>
+        <span class="ep ${match ? 'ok' : 'bad'}">Chosen: ${run.failed ? 'No disposition' : esc(run.chosen_endpoint)}</span>
+      </div>
+    </div>
+    <div class="verdict-grid">
+      <div class="vstat"><div class="k">Severity</div><div class="v ${SEV_CLASS[sev]}">${SEV_LABEL[sev]}</div>${sev === 'under-triage' ? '<div class="danger-note">Dangerous direction</div>' : ''}</div>
+      <div class="vstat"><div class="k">Patient fidelity</div><div class="v">${v.fidelity_score == null ? 'n/a' : v.fidelity_score}<small> / 10</small></div></div>
+      <div class="vstat"><div class="k">Turns to commit</div><div class="v">${run.turns}<small> / 15</small></div></div>
+    </div>
+    <div class="notes">
+      <div class="note"><div class="nk">How the patient behaved</div><div class="nv">${esc(v.fidelity_notes)}</div></div>
+      <div class="note"><div class="nk">Why it landed here</div><div class="nv">${esc(v.routing_notes)}</div></div>
+      <div class="note"><div class="nk">Verdict</div><div class="nv summary">${esc(v.summary)}</div></div>
+    </div>`;
+}
+
+// ---- single view -------------------------------------------------------
 function renderPicker() {
-  $('picker').innerHTML = PERSONAS.map((p) =>
-    `<button class="chip" data-id="${p.id}" aria-pressed="${p.id === active.id}">${esc(p.display_name.split(',')[0])} · ${esc(p.complaint)}</button>`
+  $('picker').innerHTML = personaSet.map((p) =>
+    `<button class="chip" data-id="${esc(p.id)}" aria-pressed="${p.id === activeSingle.id}">${esc(firstName(p.display_name))} &middot; ${esc(p.complaint)}</button>`
   ).join('');
   $('picker').querySelectorAll('.chip').forEach((b) => {
     b.addEventListener('click', () => {
-      if (running) return;
-      active = PERSONAS.find((p) => p.id === b.dataset.id);
-      $('picker').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.id === active.id)));
+      if (singleRunning) return;
+      activeSingle = personaSet.find((p) => p.id === b.dataset.id);
+      $('picker').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.id === activeSingle.id)));
       renderPatient();
-      resetTrace();
+      resetSingleTrace();
     });
   });
 }
 
 function renderPatient() {
-  const p = active;
-  const c = p.character;
+  const p = activeSingle, c = p.character || {};
   $('pid').textContent = p.id;
   $('patientBody').innerHTML = `
-    <div class="person"><span class="name">${esc(p.display_name.split(',')[0])}</span><span class="meta">${esc(p.age)} · ${esc(p.sex)}</span></div>
+    <div class="person"><span class="name">${esc(firstName(p.display_name))}</span><span class="meta">${esc(p.age)} &middot; ${esc(p.sex)}</span></div>
     <p class="complaint">Comes in with a <b>${esc(p.complaint)}</b>.</p>
     <div class="traits">
       <div class="trait"><span class="k">Personality</span><span class="v">${esc(c.personality)}</span></div>
@@ -310,159 +534,234 @@ function renderPatient() {
       <button id="keyBtn" aria-expanded="false">Show answer key</button>
       <div class="answer-key" id="answerKey">
         <div class="ak-row"><div class="ak-label">Expected endpoint</div><div class="ak-endpoint">${esc(p.expected_endpoint)}</div></div>
-        <div class="ak-row"><div class="ak-label">Affirms (true, reveal only if asked)</div><ul>${p.affirms.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
-        <div class="ak-row"><div class="ak-label">Negates (deny if asked)</div><ul class="negate">${p.negates.map((n) => `<li>${esc(n)}</li>`).join('')}</ul></div>
+        <div class="ak-row"><div class="ak-label">Affirms, reveal only if asked</div><ul>${(p.affirms || []).map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
+        <div class="ak-row"><div class="ak-label">Negates, deny if asked</div><ul class="negate">${(p.negates || []).map((n) => `<li>${esc(n)}</li>`).join('')}</ul></div>
         <div class="ak-row"><div class="ak-label">Clinical truth</div><div class="truth">${esc(p.clinical_truth)}</div></div>
       </div>
     </div>`;
   $('keyBtn').addEventListener('click', () => {
-    const ak = $('answerKey'); const open = ak.classList.toggle('open');
+    const ak = $('answerKey'), open = ak.classList.toggle('open');
     $('keyBtn').textContent = open ? 'Hide answer key' : 'Show answer key';
     $('keyBtn').setAttribute('aria-expanded', String(open));
   });
 }
 
-function resetTrace() {
+function resetSingleTrace() {
   $('mTurns').textContent = '0';
-  $('verdict').className = 'verdict';
-  $('verdict').innerHTML = '';
+  $('singleVerdict').innerHTML = '';
   $('trace').innerHTML = `<div class="trace-empty"><span class="mono">Ready</span>The patient opens with a chief complaint, then the triage worker asks one question at a time until it commits to a disposition. Press run to begin.</div>`;
 }
 
-function addTurn({ speaker, text, route }) {
-  const empty = $('trace').querySelector('.trace-empty');
-  if (empty) empty.remove();
-  const wrap = document.createElement('div');
-  wrap.className = `turn ${speaker}`;
-  const who = speaker === 'patient'
-    ? 'Patient worker'
-    : 'Triage worker <span class="standin">stand-in for Clearstep</span>';
-  let body = text;
-  if (route) body = text.replace(/^\s*ROUTE:.*$/gim, '').trim();
-  wrap.innerHTML = `<div class="who">${who}</div><div class="bubble">${esc(body)}</div>`;
-  if (route) {
-    const commit = document.createElement('div');
-    commit.className = 'commit';
-    commit.innerHTML = `<span class="dot"></span> Committed: ${esc(route)}`;
-    wrap.appendChild(commit);
-  }
-  $('trace').appendChild(wrap);
-  $('trace').scrollTop = $('trace').scrollHeight;
-}
-
-function showThinking(side) {
+function thinkingRow(side, label) {
   const t = document.createElement('div');
   t.className = `turn ${side}`;
   t.id = 'thinkingRow';
   const who = side === 'patient' ? 'Patient worker' : 'Triage worker';
-  t.innerHTML = `<div class="who">${who}</div><div class="thinking">thinking<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>`;
+  t.innerHTML = `<div class="who">${who}</div><div class="thinking">${label || 'thinking'}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>`;
   $('trace').appendChild(t);
   $('trace').scrollTop = $('trace').scrollHeight;
 }
-function clearThinking() { const t = $('thinkingRow'); if (t) t.remove(); }
+const clearThinking = () => $('thinkingRow')?.remove();
 
-async function callClaude({ system, messages, model, max_tokens }) {
-  const r = await fetch('/api/claude', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ system, messages, model, max_tokens }),
-  });
-  const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(data.error || `Request failed (${r.status})`);
-  return data.text;
+function tracedCall(args) {
+  clearThinking();
+  thinkingRow(args.system.includes('clinical triage worker') ? 'triage' : 'patient');
+  return callClaude(args).finally(clearThinking);
 }
 
-// Wrap callClaude so the UI shows a thinking row on whichever side speaks next.
-function tracedCall(nextSpeakerOf) {
-  return async (args) => {
-    clearThinking();
-    showThinking(nextSpeakerOf(args));
-    try { return await callClaude(args); }
-    finally { clearThinking(); }
-  };
-}
-
-function renderVerdict({ score, chosen, failed, turns, verdict }) {
-  const p = active;
-  const match = score.routing_correct;
-  const sev = score.severity;
-  const fid = verdict.fidelity_score;
-  const v = $('verdict');
-  v.innerHTML = `
-    <div class="verdict-head">
-      <span class="badge ${match ? 'match' : 'miss'}">${match ? 'Match' : 'Miss'}</span>
-      <div class="route-line">
-        <span class="ep">Expected: ${esc(p.expected_endpoint)}</span>
-        <span class="arrow">to</span>
-        <span class="ep chosen ${match ? 'ok' : 'bad'}">Chosen: ${failed ? 'No disposition' : esc(chosen)}</span>
-      </div>
-    </div>
-    <div class="verdict-grid">
-      <div class="vstat"><div class="k">Severity</div><div class="v ${SEV_CLASS[sev]}">${SEV_LABEL[sev]}</div>${sev === 'under-triage' ? '<div class="danger-note">Dangerous direction</div>' : ''}</div>
-      <div class="vstat"><div class="k">Patient fidelity</div><div class="v">${fid == null ? 'n/a' : fid}<small> / 10</small></div></div>
-      <div class="vstat"><div class="k">Turns to commit</div><div class="v">${turns}<small> / 15</small></div></div>
-    </div>
-    <div class="notes">
-      <div class="note"><div class="nk">How the patient behaved</div><div class="nv">${esc(verdict.fidelity_notes || '')}</div></div>
-      <div class="note"><div class="nk">Why it landed here</div><div class="nv">${esc(verdict.routing_notes || '')}</div></div>
-      <div class="note"><div class="nk">Verdict</div><div class="nv summary">${esc(verdict.summary || '')}</div></div>
-    </div>`;
-  v.className = 'verdict show';
-}
-
-async function run() {
-  if (running) return;
-  running = true;
+async function runSingle() {
+  if (singleRunning || batchRunning) return;
+  singleRunning = true;
   $('runBtn').disabled = true;
   $('runBtn').innerHTML = '<span class="play"></span> Running';
-  $('verdict').className = 'verdict';
+  $('singleVerdict').innerHTML = '';
   $('trace').innerHTML = '';
   $('mTurns').textContent = '0';
 
   try {
     const { transcript, chosen, failed, turns } = await runConversation({
-      persona: active,
-      models: MODELS,
-      callClaude: tracedCall((args) => args.system.includes('clinical triage worker') ? 'triage' : 'patient'),
-      onEvent: (e) => {
-        if (e.type !== 'turn') return;
-        addTurn(e);
-        if (e.turn) $('mTurns').textContent = String(e.turn);
-      },
+      persona: activeSingle, models: MODELS, callClaude: tracedCall,
+      onEvent: (e) => { if (e.type === 'turn') { $('trace').appendChild(turnEl(e)); $('trace').scrollTop = $('trace').scrollHeight; if (e.turn) $('mTurns').textContent = String(e.turn); } },
     });
-
     clearThinking();
-    const ev = document.createElement('div');
-    ev.className = 'turn triage';
-    ev.id = 'evalRow';
-    ev.innerHTML = '<div class="thinking">scoring and evaluating<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>';
-    $('trace').appendChild(ev);
-    $('trace').scrollTop = $('trace').scrollHeight;
-
-    const score = scoreRun({ expected: active.expected_endpoint, chosen, failed });
-    const verdict = await evaluate({
-      persona: active, transcript, chosen, expected: active.expected_endpoint,
-      callClaude, model: MODELS.evaluator,
-    });
-    $('evalRow')?.remove();
-    renderVerdict({ score, chosen, failed, turns, verdict });
+    thinkingRow('triage', 'scoring and evaluating');
+    const score = scoreRun({ expected: activeSingle.expected_endpoint, chosen, failed });
+    const verdict = await evaluate({ persona: activeSingle, transcript, chosen, expected: activeSingle.expected_endpoint, callClaude, model: MODELS.evaluator });
+    clearThinking();
+    const run = { ...activeSingle, expected_endpoint: activeSingle.expected_endpoint, chosen_endpoint: chosen, failed, turns, routing_correct: score.routing_correct, severity: score.severity, verdict, transcript };
+    sessionRuns.push(run);
+    updateTiles();
+    $('singleVerdict').innerHTML = `<div class="verdict">${verdictHTML(run)}</div>`;
   } catch (err) {
     clearThinking();
-    $('evalRow')?.remove();
     const e = document.createElement('div');
     e.className = 'err';
     e.textContent = 'Run stopped: ' + err.message;
     $('trace').appendChild(e);
   } finally {
-    running = false;
+    singleRunning = false;
     $('runBtn').disabled = false;
     $('runBtn').innerHTML = '<span class="play"></span> Run simulation';
   }
 }
 
+// ---- persona source ----------------------------------------------------
+function onPersonaSetChanged() {
+  activeSingle = personaSet[0];
+  renderPicker();
+  renderPatient();
+  resetSingleTrace();
+  $('runAllLabel').textContent = `Run all ${personaSet.length}`;
+  $('batchNote').textContent = `Current set: ${personaSet.length} patients. Runs go three at a time to stay under rate limits.`;
+  $('report').classList.remove('show');
+  $('runsBody').innerHTML = '';
+  lastBatch = [];
+  updateTiles();
+}
+
+async function generateTen() {
+  if (batchRunning || singleRunning) return;
+  $('genBtn').disabled = true;
+  const prev = $('genBtn').textContent;
+  $('genBtn').textContent = 'Generating ten patients...';
+  try {
+    const gen = await generatePersonas({ count: 10, callClaude, model: MODELS.patient });
+    personaSet = gen;
+    onPersonaSetChanged();
+  } catch (err) {
+    $('batchNote').textContent = 'Generation failed: ' + err.message;
+  } finally {
+    $('genBtn').disabled = false;
+    $('genBtn').textContent = prev;
+  }
+}
+
+function handleUpload(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      personaSet = parsePersonaUpload(reader.result);
+      if (!personaSet.length) throw new Error('No personas in file');
+      onPersonaSetChanged();
+    } catch (err) {
+      $('batchNote').textContent = 'Upload failed: ' + err.message;
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ---- batch report ------------------------------------------------------
+function rowSkeleton(i, p) {
+  const tr = document.createElement('tr');
+  tr.id = `run-${i}`;
+  tr.innerHTML = `<td>${i + 1}</td><td class="name">${esc(firstName(p.display_name))}</td><td>${esc(p.complaint)}</td><td>${esc(p.expected_endpoint)}</td><td colspan="5"><span class="st-running"></span></td>`;
+  return tr;
+}
+
+function fillRow(i, run) {
+  const tr = $(`run-${i}`);
+  if (!tr) return;
+  const fid = run.verdict && run.verdict.fidelity_score != null ? run.verdict.fidelity_score : 'n/a';
+  tr.innerHTML = `
+    <td>${i + 1}</td>
+    <td class="name">${esc(firstName(run.display_name))}</td>
+    <td>${esc(run.complaint)}</td>
+    <td>${esc(run.expected_endpoint)}</td>
+    <td>${run.failed ? 'No disposition' : esc(run.chosen_endpoint)}</td>
+    <td><span class="pill ${run.routing_correct ? 'ok' : 'bad'}">${run.routing_correct ? 'Correct' : 'Miss'}</span></td>
+    <td class="sev ${SEV_CLASS[run.severity]}">${SEV_LABEL[run.severity]}</td>
+    <td>${fid}</td>
+    <td>${run.turns}</td>`;
+  tr.addEventListener('click', () => openRun(run));
+}
+
+function renderReport(results) {
+  const rep = computeReport(results);
+  $('rAcc').textContent = rep.accuracy + '%';
+  $('rAccSub').textContent = `${rep.correct} of ${rep.total} patients routed correctly`;
+  $('rFid').textContent = rep.avgFidelity == null ? '--' : rep.avgFidelity;
+  $('rUnder').textContent = rep.under;
+  $('rOver').textContent = rep.over;
+  $('rFail').textContent = rep.fail;
+  const max = Math.max(...rep.byComplaint.map((b) => b.total), 1);
+  $('breakdown').innerHTML = rep.byComplaint.map((b) => `
+    <div class="bd-row">
+      <div class="bd-top"><span class="c">${esc(b.complaint)}</span><span class="n">${b.correct}/${b.total}</span></div>
+      <div class="bd-bar"><i style="width:${Math.round((b.correct / b.total) * 100)}%"></i></div>
+    </div>`).join('');
+}
+
+async function runAll() {
+  if (batchRunning || singleRunning) return;
+  batchRunning = true;
+  $('runAllBtn').disabled = true; $('genBtn').disabled = true; $('uploadBtn').disabled = true;
+  $('report').classList.add('show');
+  $('runsBody').innerHTML = '';
+  personaSet.forEach((p, i) => $('runsBody').appendChild(rowSkeleton(i, p)));
+  $('findings').innerHTML = '<div class="writing">Findings appear when the batch completes.</div>';
+  const done = [];
+
+  try {
+    const results = await runBatch({
+      personas: personaSet, models: MODELS, callClaude, concurrency: 3,
+      onRunDone: (i, run) => {
+        fillRow(i, run);
+        done.push(run);
+        sessionRuns.push(run);
+        updateTiles();
+        renderReport(done);
+        $('batchNote').textContent = `${done.length} of ${personaSet.length} runs complete.`;
+      },
+    });
+    lastBatch = results;
+    renderReport(results);
+    $('findings').innerHTML = '<div class="writing">Writing findings...</div>';
+    try {
+      const text = await summarizeReport({ results, callClaude, model: MODELS.patient });
+      $('findings').innerHTML = `<div class="nv">${esc(text)}</div>`;
+    } catch {
+      $('findings').innerHTML = '<div class="nv">Findings summary unavailable for this batch.</div>';
+    }
+    $('batchNote').textContent = `Batch complete. ${personaSet.length} real runs.`;
+  } catch (err) {
+    $('batchNote').textContent = 'Batch stopped: ' + err.message;
+  } finally {
+    batchRunning = false;
+    $('runAllBtn').disabled = false; $('genBtn').disabled = false; $('uploadBtn').disabled = false;
+  }
+}
+
+// ---- modal (reuses the trace + verdict components) ---------------------
+function openRun(run) {
+  $('modalTitle').innerHTML = `${esc(firstName(run.display_name))} <span>${esc(run.complaint)}</span>`;
+  const trace = document.createElement('div');
+  trace.className = 'trace';
+  (run.transcript || []).forEach((t) => {
+    const route = t.speaker === 'triage' ? parseRoute(t.text) : null;
+    trace.appendChild(turnEl({ speaker: t.speaker, text: t.text, route }));
+  });
+  $('modalBody').innerHTML = '';
+  $('modalBody').appendChild(trace);
+  const v = document.createElement('div');
+  v.className = 'verdict';
+  v.innerHTML = verdictHTML(run);
+  $('modalBody').appendChild(v);
+  $('modal').classList.add('show');
+}
+$('modalClose').addEventListener('click', () => $('modal').classList.remove('show'));
+$('modal').addEventListener('click', (e) => { if (e.target === $('modal')) $('modal').classList.remove('show'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') $('modal').classList.remove('show'); });
+
+// ---- init --------------------------------------------------------------
 renderPicker();
 renderPatient();
-$('runBtn').addEventListener('click', run);
+$('runAllLabel').textContent = `Run all ${personaSet.length}`;
+updateTiles();
+$('runBtn').addEventListener('click', runSingle);
+$('runAllBtn').addEventListener('click', runAll);
+$('genBtn').addEventListener('click', generateTen);
+$('uploadBtn').addEventListener('click', () => $('fileInput').click());
+$('fileInput').addEventListener('change', (e) => { if (e.target.files[0]) handleUpload(e.target.files[0]); });
 </script>
 </body>
 </html>

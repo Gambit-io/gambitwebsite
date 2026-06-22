@@ -10,6 +10,9 @@ import {
   toPatientMessages,
   toTriageMessages,
   runConversation,
+  computeReport,
+  normalizePersona,
+  parsePersonaUpload,
   ENDPOINTS,
 } from '../lib/triage-engine.js';
 import { HEADACHE } from './fixtures.mjs';
@@ -102,6 +105,43 @@ console.log('\nloop that never commits (hits the 15-turn cap)');
   check('marked as failed', result.failed === true);
   eq('ran exactly 15 turns', result.turns, 15);
   eq('scores as fail', scoreRun({ expected: HEADACHE.expected_endpoint, chosen: result.chosen, failed: result.failed }), { routing_correct: false, severity: 'fail' });
+}
+
+console.log('\ncomputeReport (care routing accuracy is the headline)');
+{
+  const results = [
+    { complaint: 'headache', routing_correct: true, severity: 'correct', fidelity_score: 8 },
+    { complaint: 'headache', routing_correct: false, severity: 'over-triage', fidelity_score: 6 },
+    { complaint: 'chest pain', routing_correct: false, severity: 'under-triage', fidelity_score: 9 },
+    { complaint: 'chest pain', routing_correct: true, severity: 'correct', fidelity_score: 7 },
+    { complaint: 'rash', routing_correct: false, severity: 'fail', fidelity_score: null },
+  ];
+  const rep = computeReport(results);
+  eq('accuracy is correct / total as percent', rep.accuracy, 40);
+  eq('correct count', rep.correct, 2);
+  eq('under-triage count', rep.under, 1);
+  eq('over-triage count', rep.over, 1);
+  eq('fail-to-route count', rep.fail, 1);
+  eq('average fidelity ignores nulls', rep.avgFidelity, 7.5);
+  eq('breakdown groups by complaint', rep.byComplaint.length, 3);
+  eq('empty set does not divide by zero', computeReport([]).accuracy, 0);
+}
+
+console.log('\npersona normalization and upload');
+{
+  const n = normalizePersona({ display_name: 'Sam, 40', complaint: 'cough', expected_endpoint: 'Bogus' }, 4);
+  check('fills a stable id when missing', n.id === 'g005');
+  check('rejects an invalid expected endpoint', n.expected_endpoint === null);
+  check('defaults affirms/negates to arrays', Array.isArray(n.affirms) && Array.isArray(n.negates));
+  check('fills the character block', n.character.personality === 'unspecified');
+  const up = parsePersonaUpload(JSON.stringify([{ display_name: 'A, 1', complaint: 'x', expected_endpoint: 'Urgent care' }]));
+  check('upload returns normalized personas', up.length === 1 && up[0].expected_endpoint === 'Urgent care');
+  let threw = false;
+  try { parsePersonaUpload('not json'); } catch { threw = true; }
+  check('upload rejects non-JSON', threw);
+  let threw2 = false;
+  try { parsePersonaUpload('{"not":"an array"}'); } catch { threw2 = true; }
+  check('upload rejects non-array JSON', threw2);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
