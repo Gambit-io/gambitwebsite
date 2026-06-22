@@ -132,6 +132,17 @@ async function listSummaries() {
   });
 }
 
+async function listDetails() {
+  const cfg = getConfig();
+  if (!cfg) return memory.map((r) => r.detail);
+  return withTimeout(async (signal) => {
+    const res = await fetch(`${cfg.url}/rest/v1/${cfg.table}?select=detail&order=created_at.desc&limit=${RETENTION}`, { headers: sbHeaders(cfg), signal });
+    if (!res.ok) return [];
+    const rows = await res.json();
+    return rows.map((r) => r.detail);
+  });
+}
+
 async function getById(id) {
   const cfg = getConfig();
   if (!cfg) return memory.find((r) => r.id === id)?.detail || null;
@@ -170,6 +181,9 @@ export default async function handler(req, res) {
       if (url.searchParams.get('debug')) {
         const cfg = getConfig();
         return res.status(200).json({ configured: !!cfg, store: cfg ? 'supabase' : 'memory', table: cfg?.table, memoryCount: memory.length });
+      }
+      if (url.searchParams.get('full')) {
+        return res.status(200).json(await listDetails());
       }
       const id = url.searchParams.get('id');
       if (id) {

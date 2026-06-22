@@ -24,7 +24,6 @@ html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webk
 .sidebar { background: var(--side); border-right: 1px solid var(--side-line); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
 .brand { display: flex; align-items: center; gap: 11px; padding: 20px 20px 18px; text-decoration: none; border-bottom: 1px solid var(--side-line); }
 .brand img { height: 20px; filter: brightness(0) invert(1); }
-.brand .sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--side-faint); display: block; margin-top: 3px; }
 .nav { padding: 14px 12px; display: flex; flex-direction: column; gap: 3px; }
 .nav-item { display: flex; align-items: center; gap: 11px; font-size: 13.5px; color: var(--side-dim); background: transparent; border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer; text-decoration: none; transition: all 0.14s; }
 .nav-item:hover { color: var(--side-text); background: rgba(255,255,255,0.04); }
@@ -51,7 +50,7 @@ html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webk
 .view-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
 .view-head h1 { font-size: 23px; font-weight: 500; letter-spacing: -0.02em; }
 .view-head p { font-size: 13.5px; color: var(--dim); margin-top: 6px; max-width: 620px; line-height: 1.5; }
-.controls { display: flex; align-items: center; gap: 8px; }
+.controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .filters { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
 .filters button { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dim); background: transparent; border: none; border-radius: 100px; padding: 6px 13px; cursor: pointer; }
 .filters button.active { color: var(--card); background: var(--ink); }
@@ -59,6 +58,44 @@ html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webk
 .btn-ghost:hover { border-color: var(--faint); }
 .btn-ghost.danger { color: var(--red); }
 
+/* INSIGHTS */
+.insights { margin-bottom: 22px; }
+.icard { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 16px; }
+.icard-head { padding: 13px 17px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.icard-head .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+.icard-body { padding: 16px 17px; }
+.legend { display: flex; gap: 14px; font-family: var(--mono); font-size: 10px; color: var(--faint); flex-wrap: wrap; }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; vertical-align: middle; }
+.lg-correct { background: rgba(31,168,119,0.55); } .lg-under { background: rgba(196,61,61,0.55); } .lg-over { background: rgba(176,125,28,0.55); }
+.matrix-wrap { overflow-x: auto; padding: 16px 17px; }
+.matrix { border-collapse: collapse; font-family: var(--mono); margin: 0 auto; }
+.matrix th, .matrix td { border: 1px solid var(--line); padding: 9px 11px; text-align: center; font-size: 12px; }
+.matrix th { color: var(--faint); font-weight: 500; background: var(--card-2); white-space: nowrap; }
+.matrix th.corner { text-align: right; font-size: 9.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+.matrix td.rowh { color: var(--ink); text-align: right; background: var(--card-2); white-space: nowrap; font-weight: 500; }
+.matrix td.cell { color: var(--ink); font-size: 13px; min-width: 52px; }
+.matrix td.cell.zero { color: var(--line); }
+.matrix td.diag { background: rgba(31,168,119,0.13); color: var(--green); font-weight: 600; }
+.matrix td.under { background: rgba(196,61,61,0.11); color: var(--red); font-weight: 600; }
+.matrix td.over { background: rgba(176,125,28,0.11); color: var(--amber); font-weight: 600; }
+.matrix td.nonecol { background: rgba(196,61,61,0.05); color: var(--red); }
+.matrix-note { font-size: 11.5px; color: var(--faint); padding: 0 17px 15px; line-height: 1.5; }
+
+.igrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.istat-row { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; font-size: 13px; }
+.istat-row:last-child { margin-bottom: 0; }
+.istat-row .k { color: var(--dim); min-width: 96px; } .istat-row .k small { color: var(--red); font-family: var(--mono); font-size: 10px; }
+.istat-row .bar { flex: 1; height: 6px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.istat-row .bar i { display: block; height: 100%; border-radius: 4px; }
+.istat-row .v { font-family: var(--mono); font-size: 12px; color: var(--ink); white-space: nowrap; min-width: 40px; text-align: right; }
+.bar i.g { background: var(--green); } .bar i.r { background: var(--red); } .bar i.a { background: var(--amber); }
+.big-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.big-stat .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 5px; }
+.big-stat .v { font-size: 22px; font-weight: 500; } .big-stat .v small { font-size: 12px; color: var(--faint); font-weight: 400; }
+.big-stat .v.green { color: var(--green); } .big-stat .v.red { color: var(--red); }
+
+.table-head { display: flex; align-items: center; justify-content: space-between; margin: 4px 0 10px; }
+.table-head .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
 .runs-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
 .runs-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-weight: 500; }
 .runs-table td { font-size: 13px; padding: 12px 14px; border-bottom: 1px solid var(--line-soft); color: var(--dim); }
@@ -77,7 +114,6 @@ html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webk
 .empty { text-align: center; color: var(--faint); font-size: 13.5px; line-height: 1.7; padding: 50px 18px; }
 .empty .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 10px; }
 
-/* modal */
 .modal { position: fixed; inset: 0; background: rgba(12,12,14,0.55); display: none; align-items: flex-start; justify-content: center; padding: 40px 20px; z-index: 100; overflow-y: auto; }
 .modal.show { display: flex; }
 .modal-box { background: var(--bg); border-radius: 16px; max-width: 840px; width: 100%; border: 1px solid var(--line); }
@@ -116,6 +152,7 @@ html { background: var(--bg); color: var(--ink); font-family: var(--sans); -webk
   .app { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; }
   .nav { flex-direction: row; flex-wrap: wrap; } .sidebar-foot { display: none; }
   .tiles { grid-template-columns: repeat(2, 1fr); min-width: 0; }
+  .igrid { grid-template-columns: 1fr; }
   .runs-table { display: block; overflow-x: auto; }
 }
 a:focus-visible, button:focus-visible, tr:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
@@ -147,15 +184,21 @@ a:focus-visible, button:focus-visible, tr:focus-visible { outline: 2px solid var
     <section class="view">
       <div class="view-head">
         <div>
-          <h1>Every run, recorded</h1>
-          <p>Each single run and batch run is persisted here with its full transcript, verdict, and experience stats. Click any row to open the trace.</p>
+          <h1>Insights and traces</h1>
+          <p>Every single run and batch run is recorded with its full transcript, verdict, and experience stats. Filter, drill into any run, or export the lot.</p>
         </div>
         <div class="controls">
           <div class="filters"><button data-f="all" class="active">All</button><button data-f="single">Single</button><button data-f="batch">Batch</button></div>
+          <button class="btn-ghost" id="exportCsvBtn">Export CSV</button>
+          <button class="btn-ghost" id="exportJsonBtn">Export JSON</button>
           <button class="btn-ghost" id="refreshBtn">Refresh</button>
           <button class="btn-ghost danger" id="clearBtn">Clear</button>
         </div>
       </div>
+
+      <div id="insights"></div>
+
+      <div class="table-head"><span class="lbl">All runs</span><span class="lbl" id="tableCount"></span></div>
       <div id="tableWrap"></div>
     </section>
   </div>
@@ -167,17 +210,20 @@ a:focus-visible, button:focus-visible, tr:focus-visible { outline: 2px solid var
 </div></div>
 
 <script type="module">
-import { parseRoute } from '/lib/triage-engine.js';
+import { parseRoute, ENDPOINTS, ACUITY } from '/lib/triage-engine.js';
 
 const SEV_CLASS = { 'correct': 'sev-correct', 'over-triage': 'sev-over', 'under-triage': 'sev-under', 'fail': 'sev-fail' };
 const SEV_LABEL = { 'correct': 'On target', 'over-triage': 'Over triage', 'under-triage': 'Under triage', 'fail': 'No disposition' };
+const SHORT = { 'Self-care at home': 'Self-care', 'Video visit': 'Video', 'Urgent care': 'Urgent', 'Specialist': 'Specialist', 'Emergency department': 'Emergency' };
 const $ = (id) => document.getElementById(id);
-// Strips em/en dashes from anything rendered (brand rule), then escapes HTML.
 const esc = (s) => String(s == null ? '' : s).replace(/[—–]/g, '-').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 const firstName = (n) => String(n || '').split(',')[0];
 const shift = (n) => n == null ? 'n/a' : (n > 0 ? '+' + n : String(n));
+const pct = (a, b) => b ? Math.round((a / b) * 100) : 0;
+const avg = (a) => a.length ? Math.round((a.reduce((x, y) => x + y, 0) / a.length) * 10) / 10 : null;
 
 let all = [], filter = 'all';
+const filtered = () => all.filter((r) => filter === 'all' || (r.run_type || 'single') === filter);
 
 function when(iso) { try { return new Date(iso).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch { return ''; } }
 
@@ -188,33 +234,115 @@ async function load() {
       fetch('/api/traces?debug=1').then((r) => r.json()).catch(() => null),
     ]);
     all = Array.isArray(list) ? list : [];
-    if (dbg) {
-      $('storeMode').textContent = dbg.configured ? 'Supabase' : 'in-memory';
-      $('storeMode').className = dbg.configured ? '' : 'warn';
-    }
+    if (dbg) { $('storeMode').textContent = dbg.configured ? 'Supabase' : 'in-memory'; $('storeMode').className = dbg.configured ? '' : 'warn'; }
   } catch { all = []; }
-  renderStats(); renderTable();
+  render();
 }
 
-function renderStats() {
-  const n = all.length;
-  $('tRuns').textContent = n;
-  const avg = (k) => { const v = all.map((r) => r[k]).filter((x) => typeof x === 'number'); return v.length ? Math.round((v.reduce((a, b) => a + b, 0) / v.length) * 10) / 10 : null; };
-  $('tAcc').textContent = n ? Math.round((all.filter((r) => r.routing_correct).length / n) * 100) + '%' : '--';
-  $('tUnder').textContent = all.filter((r) => r.severity === 'under-triage').length;
-  $('tFid').textContent = avg('fidelity_score') ?? '--';
-  $('tSat').textContent = avg('satisfaction') ?? '--';
+function render() { const rows = filtered(); renderStats(rows); renderInsights(rows); renderTable(rows); }
+
+function renderStats(rows) {
+  $('tRuns').textContent = rows.length;
+  $('tAcc').textContent = rows.length ? pct(rows.filter((r) => r.routing_correct).length, rows.length) + '%' : '--';
+  $('tUnder').textContent = rows.filter((r) => r.severity === 'under-triage').length;
+  $('tFid').textContent = avg(rows.map((r) => r.fidelity_score).filter((n) => typeof n === 'number')) ?? '--';
+  $('tSat').textContent = avg(rows.map((r) => r.satisfaction).filter((n) => typeof n === 'number')) ?? '--';
 }
 
-function renderTable() {
-  const rows = all.filter((r) => filter === 'all' || (r.run_type || 'single') === filter);
+// ---- insights ----------------------------------------------------------
+function computeInsights(rows) {
+  const idx = (e) => ENDPOINTS.indexOf(e);
+  const conf = ENDPOINTS.map(() => ENDPOINTS.map(() => 0));
+  const confNone = ENDPOINTS.map(() => 0);
+  const byEnd = ENDPOINTS.map(() => ({ total: 0, correct: 0, under: 0, over: 0, fail: 0 }));
+  let routed = 0, correct = 0, under = 0, over = 0, fail = 0;
+  const comp = [], sat = [], shiftA = [], turns = [], fid = [];
+  const cm = {};
+  for (const r of rows) {
+    if (typeof r.comprehension === 'number') comp.push(r.comprehension);
+    if (typeof r.satisfaction === 'number') sat.push(r.satisfaction);
+    if (typeof r.emotional_shift === 'number') shiftA.push(r.emotional_shift);
+    if (typeof r.turns === 'number') turns.push(r.turns);
+    if (typeof r.fidelity_score === 'number') fid.push(r.fidelity_score);
+    const k = r.complaint || 'unknown';
+    cm[k] = cm[k] || { complaint: k, total: 0, correct: 0 };
+    cm[k].total++; if (r.routing_correct) cm[k].correct++;
+    const ei = idx(r.expected_endpoint); if (ei < 0) continue;
+    byEnd[ei].total++; routed++;
+    if (r.severity === 'fail' || !r.chosen_endpoint) { confNone[ei]++; fail++; byEnd[ei].fail++; continue; }
+    const ci = idx(r.chosen_endpoint); if (ci >= 0) conf[ei][ci]++;
+    if (r.routing_correct) { correct++; byEnd[ei].correct++; }
+    else if (r.severity === 'under-triage') { under++; byEnd[ei].under++; }
+    else if (r.severity === 'over-triage') { over++; byEnd[ei].over++; }
+  }
+  return {
+    routed, correct, under, over, fail, conf, confNone, byEnd,
+    avgComp: avg(comp), avgSat: avg(sat), avgShift: avg(shiftA), avgTurns: avg(turns), avgFid: avg(fid),
+    improved: shiftA.filter((n) => n > 0).length, worsened: shiftA.filter((n) => n < 0).length,
+    byComplaint: Object.values(cm).sort((a, b) => b.total - a.total),
+  };
+}
+
+function renderInsights(rows) {
+  const el = $('insights');
+  if (!rows.length) { el.innerHTML = ''; return; }
+  const ins = computeInsights(rows);
+
+  const head = `<tr><th class="corner">expected \\ chosen</th>${ENDPOINTS.map((e) => `<th>${SHORT[e]}</th>`).join('')}<th>None</th></tr>`;
+  const body = ENDPOINTS.map((e, ei) => `<tr><td class="rowh">${SHORT[e]}</td>${ENDPOINTS.map((c, ci) => {
+    const n = ins.conf[ei][ci]; const cls = ci === ei ? 'diag' : ci < ei ? 'under' : 'over';
+    return `<td class="cell ${n ? cls : 'zero'}">${n || '·'}</td>`;
+  }).join('')}<td class="cell ${ins.confNone[ei] ? 'nonecol' : 'zero'}">${ins.confNone[ei] || '·'}</td></tr>`).join('');
+  const matrix = `<table class="matrix"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+
+  const byEndHtml = ENDPOINTS.map((e, ei) => {
+    const b = ins.byEnd[ei]; if (!b.total) return '';
+    return `<div class="istat-row"><span class="k">${SHORT[e]}${b.under ? ` <small>${b.under} under</small>` : ''}</span><span class="bar"><i class="g" style="width:${pct(b.correct, b.total)}%"></i></span><span class="v">${b.correct}/${b.total}</span></div>`;
+  }).join('') || '<div class="istat-row"><span class="k">No data</span></div>';
+
+  const sevRow = (label, n, cls) => `<div class="istat-row"><span class="k">${label}</span><span class="bar"><i class="${cls}" style="width:${pct(n, ins.routed)}%"></i></span><span class="v">${n}</span></div>`;
+  const severity = sevRow('On target', ins.correct, 'g') + sevRow('Under triage', ins.under, 'r') + sevRow('Over triage', ins.over, 'a') + sevRow('Fail to route', ins.fail, 'r');
+
+  const experience = `<div class="big-stats">
+    <div class="big-stat"><div class="k">Avg comprehension</div><div class="v">${ins.avgComp ?? '--'}<small> /10</small></div></div>
+    <div class="big-stat"><div class="k">Avg satisfaction</div><div class="v">${ins.avgSat ?? '--'}<small> /10</small></div></div>
+    <div class="big-stat"><div class="k">Avg emotional shift</div><div class="v ${ins.avgShift > 0 ? 'green' : ins.avgShift < 0 ? 'red' : ''}">${ins.avgShift == null ? '--' : (ins.avgShift > 0 ? '+' : '') + ins.avgShift}</div></div>
+    <div class="big-stat"><div class="k">Improved / worsened</div><div class="v"><span class="green">${ins.improved}</span> / <span class="red">${ins.worsened}</span></div></div>
+  </div>`;
+
+  const efficiency = `<div class="big-stats">
+    <div class="big-stat"><div class="k">Avg turns to commit</div><div class="v">${ins.avgTurns ?? '--'}<small> /15</small></div></div>
+    <div class="big-stat"><div class="k">Avg fidelity</div><div class="v">${ins.avgFid ?? '--'}<small> /10</small></div></div>
+  </div>`;
+
+  const byComplaint = ins.byComplaint.map((b) => `<div class="istat-row"><span class="k">${esc(b.complaint)}</span><span class="bar"><i class="g" style="width:${pct(b.correct, b.total)}%"></i></span><span class="v">${b.correct}/${b.total}</span></div>`).join('');
+
+  el.innerHTML = `
+    <div class="insights">
+      <div class="icard">
+        <div class="icard-head"><span class="lbl">Confusion matrix</span><span class="legend"><span><i class="lg-correct"></i>correct</span><span><i class="lg-under"></i>under (dangerous)</span><span><i class="lg-over"></i>over</span></span></div>
+        <div class="matrix-wrap">${matrix}</div>
+        <div class="matrix-note">Rows are the expected endpoint, columns are where the triage worker actually routed. The green diagonal is correct. Anything below it is under-triage, routing a patient below the care they needed, which is the dangerous direction.</div>
+      </div>
+      <div class="igrid">
+        <div class="icard"><div class="icard-head"><span class="lbl">Accuracy by endpoint</span></div><div class="icard-body">${byEndHtml}</div></div>
+        <div class="icard"><div class="icard-head"><span class="lbl">Severity split</span></div><div class="icard-body">${severity}</div></div>
+        <div class="icard"><div class="icard-head"><span class="lbl">Patient experience</span></div><div class="icard-body">${experience}</div></div>
+        <div class="icard"><div class="icard-head"><span class="lbl">Efficiency</span></div><div class="icard-body">${efficiency}</div></div>
+        <div class="icard" style="grid-column:1/-1"><div class="icard-head"><span class="lbl">By complaint</span></div><div class="icard-body">${byComplaint}</div></div>
+      </div>
+    </div>`;
+}
+
+function renderTable(rows) {
+  $('tableCount').textContent = rows.length ? `${rows.length} shown` : '';
   if (!rows.length) {
     $('tableWrap').innerHTML = `<div class="empty"><span class="mono">No runs yet</span>${all.length ? 'No runs match this filter.' : 'Run a simulation and every run will appear here with its full trace.'}</div>`;
     return;
   }
   $('tableWrap').innerHTML = `<table class="runs-table"><thead><tr>
     <th>When</th><th>Type</th><th>Patient</th><th>Complaint</th><th>Expected</th><th>Chosen</th><th>Result</th><th>Severity</th><th>Fid</th><th>Sat</th><th>Mood</th>
-  </tr></thead><tbody>${rows.map((r, i) => {
+  </tr></thead><tbody>${rows.map((r) => {
     const sh = r.emotional_shift;
     return `<tr data-id="${esc(r.id)}">
       <td class="when">${when(r.created_at)}</td>
@@ -241,9 +369,7 @@ function turnEl(speaker, text) {
 }
 
 async function openDetail(id) {
-  $('modalTitle').innerHTML = 'Loading...';
-  $('modalBody').innerHTML = '';
-  $('modal').classList.add('show');
+  $('modalTitle').innerHTML = 'Loading...'; $('modalBody').innerHTML = ''; $('modal').classList.add('show');
   let d;
   try { d = await fetch('/api/traces?id=' + encodeURIComponent(id)).then((r) => r.ok ? r.json() : null); } catch { d = null; }
   if (!d) { $('modalTitle').textContent = 'Trace unavailable'; return; }
@@ -274,15 +400,38 @@ async function openDetail(id) {
     </div>`;
 }
 
+// ---- export ------------------------------------------------------------
+function csvEsc(v) { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+function download(name, text, type) {
+  const blob = new Blob([text], { type }); const u = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 1500);
+}
+function exportCSV() {
+  if (!all.length) return;
+  const cols = ['created_at', 'run_type', 'batch_id', 'display_name', 'complaint', 'expected_endpoint', 'chosen_endpoint', 'routing_correct', 'severity', 'fidelity_score', 'comprehension', 'satisfaction', 'emotional_shift', 'turns', 'id'];
+  const lines = [cols.join(',')].concat(all.map((r) => cols.map((c) => csvEsc(r[c])).join(',')));
+  download('clearstep-traces.csv', lines.join('\n'), 'text/csv;charset=utf-8');
+}
+async function exportJSON() {
+  let data;
+  try { data = await fetch('/api/traces?full=1').then((r) => r.json()); } catch { data = all; }
+  if (!Array.isArray(data) || !data.length) data = all;
+  download('clearstep-traces.json', JSON.stringify(data, null, 2), 'application/json');
+}
+
+// ---- wiring ------------------------------------------------------------
 $('modalClose').addEventListener('click', () => $('modal').classList.remove('show'));
 $('modal').addEventListener('click', (e) => { if (e.target === $('modal')) $('modal').classList.remove('show'); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') $('modal').classList.remove('show'); });
 document.querySelectorAll('.filters button').forEach((b) => b.addEventListener('click', () => {
   filter = b.dataset.f;
   document.querySelectorAll('.filters button').forEach((x) => x.classList.toggle('active', x === b));
-  renderTable();
+  render();
 }));
 $('refreshBtn').addEventListener('click', load);
+$('exportCsvBtn').addEventListener('click', exportCSV);
+$('exportJsonBtn').addEventListener('click', exportJSON);
 $('clearBtn').addEventListener('click', async () => {
   if (!confirm('Clear all recorded runs?')) return;
   await fetch('/api/traces', { method: 'DELETE' }).catch(() => {});
