@@ -188,6 +188,20 @@ body { min-height: 100vh; }
 .set-detail .sd li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
 .set-detail .sd .truth { font-size: 12.5px; color: var(--dim); font-style: italic; line-height: 1.5; }
 
+/* WORKER CONFIG */
+.worker-config { display: grid; gap: 16px; max-width: 920px; }
+.wcard { background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.wcard-head { padding: 14px 17px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.wlabel { font-size: 14px; font-weight: 500; color: var(--ink); }
+.wnote { display: block; font-family: var(--mono); font-size: 11px; color: var(--faint); margin-top: 3px; }
+.wactions { display: flex; align-items: center; gap: 10px; }
+.wmod { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); }
+.wprompt { width: 100%; border: none; border-radius: 0 0 14px 14px; padding: 14px 17px; font-family: var(--mono); font-size: 12.5px; line-height: 1.55; color: var(--ink); background: var(--card); resize: vertical; min-height: 200px; display: block; }
+.wprompt:focus { outline: none; }
+.wprompt[readonly] { background: var(--card-2); color: var(--dim); }
+.wsave { display: flex; align-items: center; gap: 14px; }
+.wsave-msg { font-family: var(--mono); font-size: 12px; color: var(--green); }
+
 /* BATCH */
 .batch-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 16px 18px; }
 .src-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -267,11 +281,12 @@ a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid 
     <nav class="nav">
       <button class="nav-item active" data-view="single"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg> Single run</button>
       <button class="nav-item" data-view="batch"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Batch report</button>
+      <button class="nav-item" data-view="workers"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="9" cy="7" r="2.2"/><circle cx="15" cy="12" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg> Configure</button>
       <div class="nav-sep"></div>
       <a class="nav-item" href="/traces"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></svg> Tracing backend</a>
     </nav>
     <div class="nav-sec">
-      <div class="nav-label">Workers</div>
+      <div class="nav-label">Status</div>
       <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Patient</span><span class="wk-role">synthetic patient</span></span></div>
       <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Triage</span><span class="wk-role">stand-in for Clearstep</span></span></div>
       <div class="wk"><span class="wk-dot"></span><span><span class="wk-name">Evaluator</span><span class="wk-role">scores each run</span></span></div>
@@ -399,11 +414,35 @@ a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid 
         <table class="runs-table"><thead><tr><th>#</th><th>Patient</th><th>Complaint</th><th>Result</th><th>Severity</th><th>Fidelity</th><th>Satisfaction</th></tr></thead><tbody id="runsBody"></tbody></table>
       </div>
     </section>
+
+    <!-- WORKERS CONFIG -->
+    <section class="view hidden" id="view-workers">
+      <div class="view-head">
+        <h1>Configure workers</h1>
+        <p>Adjust the workers in the simulation framework. The triage worker stands in for Clearstep Smart Care Routing, so tune it here to mirror or stress the engine. Changes apply to new runs and are saved in this browser.</p>
+        <p class="honesty">The patient worker is driven per patient by the selected persona and its hidden answer key, so it is shown read-only. The evaluator uses a standardized rubric; edit it only if you are changing the scoring framework.</p>
+      </div>
+      <div class="worker-config">
+        <div class="wcard">
+          <div class="wcard-head"><div><span class="wlabel">Triage worker</span><span class="wnote">Stand-in for Clearstep Smart Care Routing</span></div><div class="wactions"><span class="wmod" id="triageMod"></span><button class="mini-btn" id="triageReset">Reset to default</button></div></div>
+          <textarea id="triagePromptInput" class="wprompt" spellcheck="false"></textarea>
+        </div>
+        <div class="wcard">
+          <div class="wcard-head"><div><span class="wlabel">Evaluator worker</span><span class="wnote">Standardized scoring rubric. Edit with care.</span></div><div class="wactions"><span class="wmod" id="evalMod"></span><button class="mini-btn" id="evalReset">Reset to default</button></div></div>
+          <textarea id="evalPromptInput" class="wprompt" spellcheck="false"></textarea>
+        </div>
+        <div class="wcard">
+          <div class="wcard-head"><div><span class="wlabel">Patient worker</span><span class="wnote">Read-only. Built per patient from the selected persona and its answer key.</span></div></div>
+          <textarea id="patientPromptView" class="wprompt" readonly spellcheck="false"></textarea>
+        </div>
+        <div class="wsave"><button class="run-btn" id="saveWorkers">Save changes</button><span class="wsave-msg" id="wsaveMsg"></span></div>
+      </div>
+    </section>
   </div>
 </div>
 
 <script type="module">
-import { runConversation, scoreRun, evaluate, runBatch, computeReport, summarizeReport, generatePersonas, parsePersonaUpload, normalizePersona, ENDPOINTS } from '/lib/triage-engine.js';
+import { runConversation, scoreRun, evaluate, runBatch, computeReport, summarizeReport, generatePersonas, parsePersonaUpload, normalizePersona, ENDPOINTS, triageSystem, evaluatorSystem, patientSystem } from '/lib/triage-engine.js';
 import { SEED_PERSONAS } from '/lib/personas.js';
 
 // Roles only; the model behind each worker is resolved server-side.
@@ -415,6 +454,12 @@ let personaSet = SEED_PERSONAS.map((p) => ({ ...p }));
 let activeSingle = personaSet[0];
 let singleRunning = false, batchRunning = false;
 let sessionRuns = [], workerCalls = 0;
+
+// Worker prompt overrides (Triage + Evaluator), persisted per browser. An unset
+// field means the engine default is used for that worker.
+const WCONFIG_KEY = 'clearstep-worker-config';
+let workerConfig = {};
+try { workerConfig = JSON.parse(localStorage.getItem(WCONFIG_KEY) || '{}') || {}; } catch { workerConfig = {}; }
 
 const $ = (id) => document.getElementById(id);
 // Strips em/en dashes from anything rendered (brand rule), then escapes HTML.
@@ -449,8 +494,39 @@ function showView(name) {
   document.querySelectorAll('.nav-item[data-view]').forEach((b) => b.classList.toggle('active', b.dataset.view === name));
   $('view-single').classList.toggle('hidden', name !== 'single');
   $('view-batch').classList.toggle('hidden', name !== 'batch');
+  $('view-workers').classList.toggle('hidden', name !== 'workers');
+  if (name === 'workers') renderWorkers();
 }
 document.querySelectorAll('.nav-item[data-view]').forEach((b) => b.addEventListener('click', () => showView(b.dataset.view)));
+
+// ---- worker configuration ---------------------------------------------
+function renderWorkers() {
+  $('triagePromptInput').value = workerConfig.triage || triageSystem();
+  $('evalPromptInput').value = workerConfig.evaluator || evaluatorSystem();
+  $('patientPromptView').value = patientSystem(activeSingle);
+  $('triageMod').textContent = workerConfig.triage ? 'Customized' : '';
+  $('evalMod').textContent = workerConfig.evaluator ? 'Customized' : '';
+}
+function persistWorkers() {
+  const save = {};
+  if (workerConfig.triage) save.triage = workerConfig.triage;
+  if (workerConfig.evaluator) save.evaluator = workerConfig.evaluator;
+  try { localStorage.setItem(WCONFIG_KEY, JSON.stringify(save)); } catch { /* ignore */ }
+  workerConfig = save;
+}
+function saveWorkers() {
+  const t = $('triagePromptInput').value.trim();
+  const e = $('evalPromptInput').value.trim();
+  workerConfig.triage = (t && t !== triageSystem().trim()) ? t : undefined;
+  workerConfig.evaluator = (e && e !== evaluatorSystem().trim()) ? e : undefined;
+  persistWorkers();
+  renderWorkers();
+  $('wsaveMsg').textContent = 'Saved. Applies to new runs.';
+  setTimeout(() => { $('wsaveMsg').textContent = ''; }, 3500);
+}
+$('triageReset').addEventListener('click', () => { delete workerConfig.triage; persistWorkers(); renderWorkers(); });
+$('evalReset').addEventListener('click', () => { delete workerConfig.evaluator; persistWorkers(); renderWorkers(); });
+$('saveWorkers').addEventListener('click', saveWorkers);
 
 function turnEl({ speaker, text, route }) {
   const wrap = document.createElement('div');
@@ -557,12 +633,12 @@ async function runSingle() {
   $('singleVerdict').innerHTML = ''; $('trace').innerHTML = ''; $('mTurns').textContent = '0';
   try {
     const { transcript, chosen, failed, turns } = await runConversation({
-      persona: activeSingle, models: MODELS, callClaude: tracedCall,
+      persona: activeSingle, models: MODELS, callClaude: tracedCall, triagePrompt: workerConfig.triage,
       onEvent: (e) => { if (e.type === 'turn') { const el = turnEl(e); $('trace').appendChild(el); el.scrollIntoView({ block: 'nearest' }); if (e.turn) $('mTurns').textContent = String(e.turn); } },
     });
     clearThinking(); thinkingRow('triage', 'scoring and evaluating');
     const score = scoreRun({ expected: activeSingle.expected_endpoint, chosen, failed });
-    const verdict = await evaluate({ persona: activeSingle, transcript, chosen, expected: activeSingle.expected_endpoint, callClaude, model: MODELS.evaluator });
+    const verdict = await evaluate({ persona: activeSingle, transcript, chosen, expected: activeSingle.expected_endpoint, callClaude, model: MODELS.evaluator, system: workerConfig.evaluator });
     clearThinking();
     const run = {
       run_id: rid(), ...activeSingle, expected_endpoint: activeSingle.expected_endpoint, chosen_endpoint: chosen, failed, turns,
@@ -738,6 +814,7 @@ async function runAll() {
   try {
     const results = await runBatch({
       personas: personaSet, models: MODELS, callClaude, concurrency: 3,
+      triagePrompt: workerConfig.triage, evaluatorPrompt: workerConfig.evaluator,
       onRunStart: () => { started++; },
       onRunDone: (i, run) => {
         run.run_id = rid();
