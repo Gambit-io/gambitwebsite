@@ -70,7 +70,7 @@ body { min-height: 100vh; }
 
 /* SINGLE */
 .stage { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
-.picker { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 15px 4px; max-height: 132px; overflow-y: auto; }
+.picker { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 15px 4px; }
 .chip { font-family: var(--mono); font-size: 11px; color: var(--dim); background: var(--card-2); border: 1px solid var(--line); border-radius: 100px; padding: 6px 11px; cursor: pointer; transition: all 0.14s; }
 .chip:hover { color: var(--ink); border-color: var(--faint); }
 .chip[aria-pressed="true"] { color: var(--card); background: var(--ink); border-color: var(--ink); font-weight: 500; }
@@ -105,7 +105,7 @@ body { min-height: 100vh; }
 .run-btn:hover:not(:disabled) { opacity: 0.85; }
 .run-btn:disabled { opacity: 0.4; cursor: default; }
 .run-btn .play { width: 0; height: 0; border-left: 7px solid var(--card); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-.trace { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto; max-height: 600px; }
+.trace { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 15px; }
 .trace-empty { margin: auto; text-align: center; color: var(--faint); font-size: 13px; line-height: 1.6; max-width: 360px; }
 .trace-empty .mono { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 9px; }
 .turn { display: flex; flex-direction: column; gap: 6px; animation: rise 0.35s var(--ease); }
@@ -195,7 +195,13 @@ body { min-height: 100vh; }
 .btn-ghost:hover:not(:disabled) { border-color: var(--faint); }
 .btn-ghost:disabled { opacity: 0.45; cursor: default; }
 .batch-controls .run-btn { margin-left: auto; }
-.batch-note { font-family: var(--mono); font-size: 11px; color: var(--faint); width: 100%; padding-top: 2px; }
+.batch-note { font-family: var(--mono); font-size: 11.5px; color: var(--faint); width: 100%; padding-top: 2px; display: flex; align-items: center; gap: 8px; }
+.batch-note.running, .batch-note.done { color: var(--ink); }
+.batch-note .rdot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(31,168,119,0.5); animation: pulse 1.5s infinite; flex-shrink: 0; }
+.batch-note .check { color: var(--green); font-weight: 600; }
+.batch-bar { width: 100%; height: 7px; background: var(--line); border-radius: 5px; overflow: hidden; margin-top: 9px; display: none; }
+.batch-bar.show { display: block; }
+.batch-bar i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 5px; transition: width 0.35s var(--ease); }
 .report { margin-top: 18px; display: none; }
 .report.show { display: block; }
 .headline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
@@ -359,6 +365,7 @@ a:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid 
           </div>
           <button class="run-btn" id="runAllBtn"><span class="play"></span> <span id="runAllLabel">Run all</span></button>
           <div class="batch-note" id="batchNote">Current set: 10 patients. Runs go three at a time to stay under rate limits.</div>
+          <div class="batch-bar" id="batchBar"><i id="batchBarFill"></i></div>
         </div>
       </div>
 
@@ -410,7 +417,8 @@ let singleRunning = false, batchRunning = false;
 let sessionRuns = [], workerCalls = 0;
 
 const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s == null ? '' : s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+// Strips em/en dashes from anything rendered (brand rule), then escapes HTML.
+const esc = (s) => String(s == null ? '' : s).replace(/[—–]/g, '-').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 const firstName = (n) => String(n).split(',')[0];
 const rid = () => Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
 
@@ -504,7 +512,7 @@ function renderPatient() {
   $('pid').textContent = p.id;
   $('patientBody').innerHTML = `
     <div class="person"><span class="name">${esc(firstName(p.display_name))}</span><span class="meta">${esc(p.age)} &middot; ${esc(p.sex)}</span></div>
-    <p class="complaint">Comes in with a <b>${esc(p.complaint)}</b>.</p>
+    <p class="complaint">Chief complaint: <b>${esc(p.complaint)}</b>.</p>
     <div class="traits">
       <div class="trait"><span class="k">Personality</span><span class="v">${esc(c.personality)}</span></div>
       <div class="trait"><span class="k">Literacy</span><span class="v">${esc(c.health_literacy)}</span></div>
@@ -537,7 +545,7 @@ function thinkingRow(side, label) {
   const t = document.createElement('div');
   t.className = `turn ${side}`; t.id = 'thinkingRow';
   t.innerHTML = `<div class="who">${side === 'patient' ? 'Patient worker' : 'Triage worker'}</div><div class="thinking">${label || 'thinking'}<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>`;
-  $('trace').appendChild(t); $('trace').scrollTop = $('trace').scrollHeight;
+  $('trace').appendChild(t); t.scrollIntoView({ block: 'nearest' });
 }
 const clearThinking = () => $('thinkingRow')?.remove();
 function tracedCall(args) { clearThinking(); thinkingRow(args.system.includes('clinical triage worker') ? 'triage' : 'patient'); return callClaude(args).finally(clearThinking); }
@@ -550,7 +558,7 @@ async function runSingle() {
   try {
     const { transcript, chosen, failed, turns } = await runConversation({
       persona: activeSingle, models: MODELS, callClaude: tracedCall,
-      onEvent: (e) => { if (e.type === 'turn') { $('trace').appendChild(turnEl(e)); $('trace').scrollTop = $('trace').scrollHeight; if (e.turn) $('mTurns').textContent = String(e.turn); } },
+      onEvent: (e) => { if (e.type === 'turn') { const el = turnEl(e); $('trace').appendChild(el); el.scrollIntoView({ block: 'nearest' }); if (e.turn) $('mTurns').textContent = String(e.turn); } },
     });
     clearThinking(); thinkingRow('triage', 'scoring and evaluating');
     const score = scoreRun({ expected: activeSingle.expected_endpoint, chosen, failed });
@@ -577,7 +585,8 @@ function onPersonaSetChanged() {
   activeSingle = personaSet[0];
   renderPicker(); renderPatient(); resetSingleTrace(); renderSetPreview();
   $('runAllLabel').textContent = `Run all ${personaSet.length}`;
-  $('batchNote').textContent = `Current set: ${personaSet.length} patients. Runs go three at a time to stay under rate limits.`;
+  setBatchStatus(`Current set: ${personaSet.length} patients. Runs go three at a time to stay under rate limits.`, '');
+  $('batchBar').classList.remove('show');
   $('report').classList.remove('show'); $('runsBody').innerHTML = '';
   updateTiles();
 }
@@ -662,8 +671,8 @@ document.querySelectorAll('.ptab').forEach((b) => b.addEventListener('click', ()
 async function generateTen() {
   if (batchRunning || singleRunning) return;
   $('genBtn').disabled = true; const prev = $('genBtn').textContent; $('genBtn').textContent = 'Generating...';
-  try { personaSet = await generatePersonas({ count: 10, callClaude, model: MODELS.patient }); onPersonaSetChanged(); }
-  catch (err) { $('batchNote').textContent = 'Generation failed: ' + err.message; }
+  try { personaSet = await generatePersonas({ count: 10, callClaude, model: MODELS.patient }); onPersonaSetChanged(); setBatchStatus(`Generated ${personaSet.length} patients. Review them below, then run all.`, ''); }
+  catch (err) { setBatchStatus('Generation failed: ' + esc(err.message), ''); }
   finally { $('genBtn').disabled = false; $('genBtn').textContent = prev; }
 }
 
@@ -674,8 +683,8 @@ function handleUpload(file) {
       personaSet = parsePersonaUpload(reader.result);
       if (!personaSet.length) throw new Error('No patients found in the file');
       onPersonaSetChanged();
-      $('batchNote').textContent = `Loaded ${personaSet.length} patients from ${file.name}.`;
-    } catch (err) { $('batchNote').textContent = 'Upload failed: ' + err.message; }
+      setBatchStatus(`Loaded ${personaSet.length} patients from ${esc(file.name)}. Review them below, then run all.`, '');
+    } catch (err) { setBatchStatus('Upload failed: ' + esc(err.message), ''); }
   };
   reader.readAsText(file);
 }
@@ -706,31 +715,52 @@ function renderReport(results) {
   $('breakdown').innerHTML = rep.byComplaint.map((b) => `<div class="bd-row"><div class="bd-top"><span class="c">${esc(b.complaint)}</span><span class="n">${b.correct}/${b.total}</span></div><div class="bd-bar"><i style="width:${Math.round((b.correct / b.total) * 100)}%"></i></div></div>`).join('');
 }
 
+function setBatchStatus(html, cls) {
+  const n = $('batchNote');
+  n.className = 'batch-note' + (cls ? ' ' + cls : '');
+  n.innerHTML = html;
+}
+function setBatchProgress(done, total) { $('batchBarFill').style.width = Math.round((done / total) * 100) + '%'; }
+
 async function runAll() {
   if (batchRunning || singleRunning) return;
   batchRunning = true; const batchId = 'batch-' + rid();
+  const total = personaSet.length;
   $('runAllBtn').disabled = true; $('genBtn').disabled = true; $('uploadBtn').disabled = true;
+  $('runAllBtn').innerHTML = '<span class="play"></span> Running';
   $('report').classList.add('show'); $('runsBody').innerHTML = '';
   personaSet.forEach((p, i) => $('runsBody').appendChild(rowSkeleton(i, p)));
   $('findings').innerHTML = '<div class="writing">Findings appear when the batch completes.</div>';
+  $('batchBar').classList.add('show'); setBatchProgress(0, total);
+  setBatchStatus(`<span class="rdot"></span> Running 0 of ${total} simulations, three at a time`, 'running');
+  let started = 0;
   const done = [];
   try {
     const results = await runBatch({
       personas: personaSet, models: MODELS, callClaude, concurrency: 3,
+      onRunStart: () => { started++; },
       onRunDone: (i, run) => {
         run.run_id = rid();
         fillRow(i, run); done.push(run); sessionRuns.push(run); updateTiles(); renderReport(done);
         postTrace(run, 'batch', batchId);
-        $('batchNote').textContent = `${done.length} of ${personaSet.length} runs complete.`;
+        setBatchProgress(done.length, total);
+        setBatchStatus(`<span class="rdot"></span> ${done.length} of ${total} simulations complete`, 'running');
       },
     });
+    setBatchProgress(total, total);
+    setBatchStatus(`<span class="rdot"></span> All ${total} simulations done. Writing findings`, 'running');
     renderReport(results);
     $('findings').innerHTML = '<div class="writing">Writing findings...</div>';
     try { const text = await summarizeReport({ results, callClaude, model: MODELS.patient }); $('findings').innerHTML = `<div class="nv">${esc(text)}</div>`; }
     catch { $('findings').innerHTML = '<div class="nv">Findings summary unavailable for this batch.</div>'; }
-    $('batchNote').textContent = `Batch complete. ${personaSet.length} real runs recorded to the tracing backend.`;
-  } catch (err) { $('batchNote').textContent = 'Batch stopped: ' + err.message; }
-  finally { batchRunning = false; $('runAllBtn').disabled = false; $('genBtn').disabled = false; $('uploadBtn').disabled = false; }
+    setBatchStatus(`<span class="check">Done.</span> ${total} simulations complete and recorded to the tracing backend.`, 'done');
+  } catch (err) {
+    setBatchStatus('Batch stopped: ' + esc(err.message), '');
+  } finally {
+    batchRunning = false;
+    $('runAllBtn').disabled = false; $('genBtn').disabled = false; $('uploadBtn').disabled = false;
+    $('runAllBtn').innerHTML = `<span class="play"></span> <span id="runAllLabel">Run all ${personaSet.length}</span>`;
+  }
 }
 
 renderPicker(); renderPatient(); renderSetPreview();

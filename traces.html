@@ -172,7 +172,8 @@ import { parseRoute } from '/lib/triage-engine.js';
 const SEV_CLASS = { 'correct': 'sev-correct', 'over-triage': 'sev-over', 'under-triage': 'sev-under', 'fail': 'sev-fail' };
 const SEV_LABEL = { 'correct': 'On target', 'over-triage': 'Over triage', 'under-triage': 'Under triage', 'fail': 'No disposition' };
 const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s == null ? '' : s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+// Strips em/en dashes from anything rendered (brand rule), then escapes HTML.
+const esc = (s) => String(s == null ? '' : s).replace(/[—–]/g, '-').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 const firstName = (n) => String(n || '').split(',')[0];
 const shift = (n) => n == null ? 'n/a' : (n > 0 ? '+' + n : String(n));
 
