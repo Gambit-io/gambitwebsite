@@ -239,8 +239,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .cap p{font-size:14px;color:var(--muted);line-height:1.55}
 
 /* ---------- testimonial ---------- */
-.testi{padding:96px 0;background:var(--bone)}
-.testi-card{max-width:820px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:44px 46px;box-shadow:0 30px 70px -50px rgba(21,17,13,.4)}
+.testi{padding:104px 0;background:var(--paper)}
+.testi-card{max-width:840px;margin:0 auto;background:var(--bone);border:1px solid var(--line);border-radius:20px;padding:48px 50px;box-shadow:0 30px 70px -50px rgba(21,17,13,.32)}
 @media(max-width:600px){.testi-card{padding:32px 26px}}
 .testi-lg{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.02em;color:var(--ink);margin-bottom:22px}
 .testi-q{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.4vw,27px);line-height:1.36;letter-spacing:-.02em;color:var(--ink);margin-bottom:28px}
@@ -375,8 +375,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .lstep p{font-size:13px;color:var(--muted);line-height:1.5}
 
 /* centerpiece artifact: the investment brief */
-.artifact{padding:100px 0;background:var(--paper)}
-.art-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:center;margin-top:8px}
+.artifact{padding:108px 0;background:var(--paper)}
+.art-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;margin-top:8px}
 @media(max-width:900px){.art-grid{grid-template-columns:1fr;gap:30px}}
 .art-copy .eyebrow{margin-bottom:14px}
 .art-copy h2{margin-bottom:14px}
@@ -498,11 +498,247 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   .menu-toggle{padding:10px;margin-right:-10px}
   .foot-links{gap:36px}
 }
+/* ===== FLOW (the pipeline) ===== */
+.flow{padding:94px 0;background:var(--bone)}
+.flow .section-head{max-width:680px;margin:0 auto 42px;text-align:center}
+.flow .section-head .eyebrow{margin-bottom:16px}
+.flow .section-head h2{margin-bottom:14px}
+.flow .section-head .lead{margin:0 auto}
+.pipe{display:flex;align-items:stretch;justify-content:center;max-width:1000px;margin:0 auto}
+.pnode{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.pnode .pic{width:38px;height:38px;border-radius:10px;background:var(--bone);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.pnode .pic svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pnode .pl{font-family:var(--display);font-weight:600;font-size:14px;color:var(--ink)}
+.pnode .pd{font-size:11.5px;color:var(--muted);line-height:1.4}
+.parrow{flex:0 0 22px;align-self:center;color:var(--sand-deep);display:flex;align-items:center;justify-content:center}
+.parrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:820px){.pipe{flex-direction:column}.parrow{transform:rotate(90deg);padding:5px 0}.pnode{width:100%}}
+
+/* ===== STAGGERED FEATURES ===== */
+.feat{padding:108px 0;background:var(--paper)}
+.feat.alt{background:var(--bone)}
+.feat-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center;max-width:1140px;margin:0 auto}
+.feat.rev .feat-vis{order:-1}
+.flabel{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.feat-copy h2{font-size:clamp(27px,3.5vw,42px);margin:15px 0 16px}
+.feat-copy .fsub{font-size:clamp(16px,1.45vw,18.5px);color:var(--muted);line-height:1.6}
+.feat-points{margin-top:28px;display:flex;flex-direction:column;gap:16px}
+.fpoint{display:flex;gap:11px;font-size:14px;color:var(--muted);line-height:1.5}
+.fpoint .fck{flex:none;width:18px;height:18px;border-radius:50%;background:rgba(240,78,54,.1);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.fpoint .fck svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fpoint b{color:var(--ink);font-weight:600}
+@media(max-width:860px){.feat-grid{grid-template-columns:1fr;gap:30px}.feat.rev .feat-vis{order:0}}
+
+/* shared feature panel */
+.fpanel{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 84px -44px rgba(14,26,44,.45)}
+.fp-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy)}
+.fp-bar .tl{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.2)}
+.fp-bar .ft{margin-left:8px;font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:rgba(255,255,255,.74)}
+.fp-bar .fl{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#7fd4a4}
+.fp-bar .fl .dot{width:6px;height:6px;border-radius:50%;background:var(--status)}
+.fp-body{padding:24px 26px}
+.irow{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line-2);font-size:14px}
+.irow:last-of-type{border-bottom:0}
+.irow .ik{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);padding-top:2px}
+.irow .iv{color:#241f1a;font-weight:500;text-align:right}
+.irow .iv .ok{color:var(--status-d)}
+.ifit{display:inline-flex;align-items:center;gap:8px}
+.ifit .bar{width:58px;height:5px;border-radius:4px;background:#eee6db;overflow:hidden}
+.ifit .bar b{display:block;height:100%;background:var(--accent)}
+.ichips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.ichip{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--muted);background:var(--bone-2);border:1px solid var(--line);border-radius:6px;padding:5px 10px}
+.em-r{display:flex;gap:10px;padding:4px 0;font-size:13px}
+.em-r .ek{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);width:48px;flex:none;padding-top:2px}
+.em-r .ev{color:#3a352f}
+.em-r .ev.s{font-weight:600;color:#1a1620}
+.em-div{height:1px;background:var(--line-2);margin:12px 0 14px}
+.em-p{font-size:13.5px;line-height:1.6;color:#3a352f;margin:0 0 11px}
+.em-sg{color:#1a1620;font-size:13.5px}
+.em-ft{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2)}
+.em-q{font-size:11px;font-weight:600;color:#fff;background:var(--accent);padding:7px 13px;border-radius:7px}
+.em-m{font-family:var(--mono);font-size:8.5px;color:var(--muted-2)}
+.scl-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:14px}
+.scl-n{font-family:var(--display);font-weight:600;font-size:24px;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.scl-n small{font-size:10.5px;font-weight:500;color:var(--muted-2);font-family:var(--mono);letter-spacing:.04em;display:block;margin-top:4px}
+.scl-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--status-d)}
+.scl-live .dot{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.scl-row{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-2);font-size:14px}
+.scl-row:last-child{border-bottom:0}
+.scl-row .sco{font-weight:600;color:#241f1a;flex:1}
+.scl-row .scm{color:var(--muted-2);font-family:var(--mono);font-size:12px}
+.scl-row .bar{width:72px;height:6px;border-radius:4px;background:#eee6db;overflow:hidden;flex:none}
+.scl-row .bar b{display:block;height:100%;background:var(--accent)}
+
+/* ===== SIGNAL DESK (full dashboard) ===== */
+.desk{padding:96px 0;background:var(--bone)}
+.desk .section-head{max-width:680px;margin:0 auto 42px;text-align:center}
+.desk .section-head .eyebrow{margin-bottom:16px}
+.desk .section-head h2{margin-bottom:14px}
+.desk .section-head .lead{margin:0 auto}
+.deskwrap{margin:0 auto;max-width:1000px}
+.appframe{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 50px 100px -40px rgba(14,26,44,.5);border:1px solid var(--line)}
+.app-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy);border-bottom:1px solid #1d3050}
+.app-bar .tl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2)}
+.app-title{margin-left:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.74)}
+.app-live{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:#7fd4a4;display:inline-flex;align-items:center;gap:6px}
+.app-live .dot{width:6px;height:6px;border-radius:50%;background:var(--status)}
+.app-body{display:grid;grid-template-columns:46px 1fr 206px}
+.app-side{background:#faf8f5;border-right:1px solid #ece7e0;padding:13px 0;display:flex;flex-direction:column;gap:9px;align-items:center}
+.side-ic{width:22px;height:22px;border-radius:6px;background:#e9e2d8}
+.side-ic.on{background:var(--accent)}
+.app-main{background:#fff;min-height:300px}
+.app-toolbar{display:flex;align-items:center;gap:12px;padding:12px 15px;border-bottom:1px solid #f1ece4;flex-wrap:wrap}
+.app-search{flex:1;min-width:120px;background:#f5f1ea;border-radius:7px;padding:7px 11px;color:#9a938a;font-size:11.5px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:10.5px;color:#8b857c;background:#f3eee6;border-radius:20px;padding:4px 10px}
+.chip.on{background:var(--navy);color:#fff}
+.tbl{font-size:11.5px}
+.tr{display:grid;grid-template-columns:1.5fr 1fr 1.2fr .8fr .7fr;gap:10px;padding:12px 15px;border-bottom:1px solid #f3eee6;align-items:center}
+.tr.th{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#a39b8f;background:#fcfaf7}
+.tr .co{font-weight:600;color:#241f1a}
+.tr .mut{color:#8b857c}
+.tr .sig{display:flex;gap:4px;flex-wrap:wrap}
+.tr .sig .b{font-family:var(--mono);font-size:8.5px;letter-spacing:.03em;padding:3px 7px;border-radius:5px;background:#f1ece4;color:#8b857c;white-space:nowrap;font-style:normal}
+.tr .sig .b.orange{background:rgba(240,78,54,.12);color:var(--accent-deep)}
+.tr .bar{height:5px;border-radius:4px;background:#eee6db;overflow:hidden;position:relative}
+.tr .bar b{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:4px}
+.tr .fitn{font-family:var(--mono);font-size:11px;color:#241f1a}
+.tr .st{font-size:9.5px;padding:3px 8px;border-radius:20px;text-align:center;white-space:nowrap}
+.tr .st.new{background:rgba(62,196,109,.15);color:var(--status-d)}
+.tr .st.dr{background:rgba(240,78,54,.12);color:var(--accent-deep)}
+.tr .st.scr{background:rgba(46,108,180,.13);color:#2a6cb4}
+.app-rail{background:#faf8f5;border-left:1px solid #ece7e0;padding:15px}
+.rail-h{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#a39b8f;margin-bottom:10px}
+.rail-co{font-size:12px;font-weight:600;color:#241f1a;margin-bottom:8px}
+.rail-msg{font-size:11.5px;line-height:1.5;color:#4a443d;margin-bottom:14px}
+.rail-actions{display:flex;gap:8px;align-items:center}
+.ra-send{font-size:10.5px;font-weight:600;color:#fff;background:var(--accent);padding:6px 12px;border-radius:6px}
+.ra-skip{font-size:10.5px;color:#8b857c;padding:6px 10px}
+@media(max-width:820px){.app-body{grid-template-columns:1fr}.app-side,.app-rail{display:none}.tr{grid-template-columns:1.5fr 1fr .7fr}.tr .mut,.tr .sig{display:none}}
+
+/* ===== RELATED ===== */
+.related{padding:100px 0;background:var(--paper)}
+.related .section-head{max-width:700px;margin:0 auto 44px;text-align:center}
+.related .section-head .eyebrow{margin-bottom:16px}
+.related .section-head h2{margin-bottom:14px}
+.related .section-head .lead{margin:0 auto;max-width:58ch}
+.rel-foot{text-align:center;margin-top:36px}
+/* distinct email card (outreach) */
+.mailcard{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 84px -44px rgba(14,26,44,.4)}
+.mail-head{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:var(--bone);border-bottom:1px solid var(--line)}
+.mail-from{display:flex;align-items:center;gap:10px}
+.mail-av{width:30px;height:30px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:13px}
+.mail-ft{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mail-rdy{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--status-d)}
+.mail-rdy .dot{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.mail-body{padding:22px 24px}
+/* desk benefit points */
+.desk-points{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:920px;margin:42px auto 0}
+.dp .dpi{width:34px;height:34px;border-radius:9px;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:12px}
+.dp .dpi svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dp b{display:block;font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);margin-bottom:5px}
+.dp span{font-size:13px;color:var(--muted);line-height:1.5}
+@media(max-width:760px){.desk-points{grid-template-columns:1fr;gap:18px;max-width:420px}}
+/* ===== trusted strip (stronger) ===== */
+.logos{padding:52px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);text-align:center;background:var(--paper)}
+.logos .ll{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:26px}
+.logobar{display:flex;justify-content:center;align-items:center;gap:clamp(30px,5vw,62px)}
+.logobar .lg{font-family:var(--display);font-weight:700;font-size:clamp(25px,3.7vw,37px);letter-spacing:-.02em;color:var(--ink-2);opacity:.92}
+.lgdot{width:6px;height:6px;border-radius:50%;background:var(--sand-deep);flex:none}
+.logos .lsub{margin-top:22px;font-size:13.5px;color:var(--muted)}
+/* ===== integrations card + live factory floor (from outbound worker) ===== */
+.moat{background:var(--navy);color:var(--paper);padding:108px 0}
+.moat .eyebrow{color:#9db4d6}
+.moat .lead{color:rgba(230,236,245,.66)}
+.moat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10);border-radius:14px;overflow:hidden;margin-top:54px}
+@media(max-width:900px){.moat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.moat-grid{grid-template-columns:1fr}}
+.moat-cell{background:var(--navy);padding:30px 26px}
+.moat-cell .mi{width:30px;height:30px;border:1px solid rgba(157,180,214,.4);border-radius:7px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.moat-cell .mi svg{width:15px;height:15px;stroke:#9db4d6;fill:none;stroke-width:1.6}
+.moat-cell h3{font-size:17px;margin-bottom:9px}
+.moat-cell p{color:rgba(230,236,245,.6);font-size:14px}
+.factory-frame{background:var(--ink);border:1px solid var(--line-soft-2);border-radius:14px;overflow:hidden;box-shadow:0 44px 90px -36px rgba(0,0,0,.6);margin:8px 0 52px}
+.factory-frame .app-bar{background:#231d1a;border-bottom-color:#332b26}
+.factory-frame .app-title{color:rgba(255,255,255,.7)}
+.factory-frame .app-live{color:rgba(245,240,232,.6)}
+/* ===== interactive factory floor ===== */
+.floorframe .app-bar{background:#15151a;border-bottom-color:#26262d}
+.floorframe .app-title{color:rgba(255,255,255,.72)}.floorframe .app-live{color:rgba(255,255,255,.55)}
+.floor-band{background:#15151a;padding:20px 22px 22px}
+.floor-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.floor-title{color:#fff;font-weight:600;font-size:18px;letter-spacing:-.01em}
+.floor-op{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#1fa877;font-weight:500}
+.opdot{width:7px;height:7px;border-radius:50%;background:#1fa877;display:inline-block;flex:none}
+.floor-op .opdot{animation:pulse 2s infinite}
+.floor-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+@media(max-width:620px){.floor-stats{grid-template-columns:1fr 1fr}}
+.fstat{background:#1f1f26;border:1px solid #2c2c34;border-radius:7px;padding:13px 15px}
+.fstat .fl{font-size:9.5px;color:#8a8a93;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.fstat .fv{font-family:var(--mono);font-size:21px;font-weight:700;color:#fff;line-height:1}
+.fstat .fv.green{color:#1fa877}
+.floor-body{background:#fff;padding:18px;display:grid;grid-template-columns:1.7fr 1fr;gap:16px}
+@media(max-width:820px){.floor-body{grid-template-columns:1fr}}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:12px;align-content:start}
+.wcard{background:#fff;border:1px solid #e3ddd0;border-radius:9px;padding:16px;cursor:pointer;transition:transform .2s ease,border-color .25s ease,box-shadow .25s ease}
+.wcard:hover{transform:translateY(-2px);border-color:#c4b8a4}
+.wcard.flash{border-color:var(--accent);box-shadow:0 0 0 3px rgba(184,149,122,.14)}
+.wcard.sel{border-color:#15151a;box-shadow:0 0 0 2px rgba(21,21,26,.08)}
+.wc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px}
+.wc-id{display:flex;gap:10px;align-items:center}
+.wc-av{width:36px;height:36px;border-radius:8px;background:#f1ece3;border:1px solid #e3ddd0;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:14px;color:#15151a;flex:none}
+.wc-name{font-weight:700;font-size:15px;color:#15151a}
+.wc-title{font-size:11px;color:#8a8275}
+.wc-status{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.wc-status.live{color:#1fa877}.wc-status.training{color:#b5821c}
+.wc-status .sd{width:7px;height:7px;border-radius:50%;background:currentColor}
+.wc-status.live .sd{animation:pulse 2s infinite}
+.wc-spark{display:flex;align-items:flex-end;gap:2.5px;height:18px;margin-bottom:13px}
+.wc-spark i{width:3px;border-radius:1px;background:#e3ddd0;transition:background .4s,height .5s}
+.wcard.flash .wc-spark i{background:#1fa877}
+.wc-foot{display:flex;justify-content:space-between;border-top:1px solid #efe9de;padding-top:12px}
+.wc-foot .k{font-size:9px;color:#8a8275;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.wc-foot .vv{font-family:var(--mono);font-size:15px;font-weight:700;color:#15151a}
+.fstream{background:#faf7f2;border:1px solid #e8e1d4;border-radius:9px;padding:15px;min-height:0}
+.fstream-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a8275;display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.fstream-list{display:flex;flex-direction:column}
+.frow{padding:8px 0;border-bottom:1px dashed #ece6da;opacity:0;transform:translateY(-5px);transition:opacity .45s ease,transform .45s ease;color:#4a4a52;font-size:12px;line-height:1.4}
+.frow:last-child{border-bottom:0}
+.frow.in{opacity:1;transform:none}
+.frow .fw{font-weight:700;color:#15151a}
+.frow.esc{color:#b5821c}
+.frow .ft{font-family:var(--mono);font-size:9.5px;color:#a39b8c;margin-right:8px}
+.integrations{padding:104px 0;background:var(--paper)}
+.intg-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--bone);box-shadow:0 40px 80px -48px rgba(21,17,13,.4)}
+@media(max-width:860px){.intg-card{grid-template-columns:1fr}}
+.intg-logos{background:var(--bone-2);padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center;min-width:0}
+@media(max-width:480px){.intg-logos{grid-template-columns:1fr 1fr;padding:26px;gap:12px}}
+.intg-tile{background:var(--paper);border:1px solid var(--line);border-radius:16px;aspect-ratio:1/.86;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.intg-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(21,17,13,.4)}
+.intg-tile .ic{height:42px;display:flex;align-items:center;justify-content:center}
+.intg-tile .ic svg{height:42px;width:auto;max-width:54px;display:block}
+.intg-tile .lbl{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.intg-copy{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0}
+@media(max-width:480px){.intg-copy{padding:38px 30px}}
+.intg-copy .eyebrow{color:var(--accent-deep);margin-bottom:16px}
+.intg-copy h2{margin-bottom:16px}
+.intg-copy .lead{margin-bottom:28px;color:var(--muted)}
+@media(max-width:680px){.integrations{padding:64px 0}.moat{padding:74px 0}.moat-cell{padding:24px 20px}}
+/* floor workers as clickable roster */
+.wcard{display:block;text-decoration:none;color:inherit}
+.wcard .wc-name::after{content:" \2192";color:var(--accent);opacity:0;transition:opacity .2s ease}
+.wcard:hover .wc-name::after{opacity:1}
+.wcard.training{opacity:.78}
+.moat-foot{text-align:center;margin-top:40px}
+.moat-foot a{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:500;font-size:14px;color:#cdd8ea;border:1px solid rgba(255,255,255,.22);padding:11px 22px;border-radius:30px;transition:.2s;text-decoration:none}
+.moat-foot a:hover{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.42)}
+.moat-foot a .ar{transition:transform .2s}
+.moat-foot a:hover .ar{transform:translateX(3px)}
 </style>
 </head>
 <body>
 
-<a href="#loop" class="skip">Skip to content</a>
+<a href="#how" class="skip">Skip to content</a>
 
 <!-- ============ SHARED HEADER (megamenu) ============ -->
 <header id="siteHeader">
@@ -687,28 +923,23 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 </div>
 
 <!-- HERO -->
-<section class="whero" id="top">
+<section class="hero" id="top">
   <div class="wrap">
-    <div class="fade-up d1">
-      <div class="wh-top"><span class="eyebrow">Buy-side origination worker</span><span class="wh-status"><span class="sd"></span>Live · Spearhead</span></div>
-      <h1>Find the owners <span class="dim">before the bankers do.</span></h1>
-      <p class="lead">Bogan reads public signals, learns how you actually invest, scores targets against that pattern, and drafts the first touch. Proprietary deal flow, opened before the market builds its list.</p>
-      <div class="wh-cta">
-        <a href="#artifact" class="btn btn-accent">See what it produces <span class="ar">&rarr;</span></a>
-        <a href="/get-started" class="btn btn-ghost">Book a scope call</a>
-      </div>
-      <div class="wh-name"><span class="wn-av">B</span><span>Meet <b>Bogan</b>, the worker behind buy-side origination. One engine, configured to your mandate and your portfolio.</span></div>
+    <div class="wh-top fade-up d1"><span class="eyebrow">Buy-side worker</span><span class="wh-status"><span class="sd"></span>Live · Spearhead</span></div>
+    <h1 class="fade-up d1" style="margin:14px 0 0">Reach the owner before the market does.</h1>
+    <p class="tag fade-up d2">Bogan finds the owners who fit your thesis, runs the research a full deal team can't, and gets you to the conversation first. Proprietary deal flow, before the competition is even looking.</p>
+    <div class="wh-cta fade-up d2" style="margin-top:26px">
+      <a href="#how" class="btn btn-accent">See it work <span class="ar">&rarr;</span></a>
+      <a href="/get-started" class="btn btn-ghost">Book a scope call</a>
     </div>
-    <div class="console fade-up d3" aria-label="Bogan live console">
-      <div class="con-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="ct">bogan · signal desk</span><span class="cl"><span class="dot"></span> live</span></div>
-      <div class="con-head"><span class="con-av">B</span><div class="con-id"><div class="cn">Bogan</div><div class="cr">Buy-side origination</div></div><span class="con-active"><span class="dot"></span> Active</span></div>
-      <div class="con-feed" id="conFeed">
-        <div class="crow"><span class="cts">09:41:02</span><span class="cic"></span><span><span class="cwt">Signal detected</span><span class="cwd">Atlas Fabrication · ownership change</span></span></div>
-        <div class="crow"><span class="cts">09:41:02</span><span class="cic"></span><span><span class="cwt">Pattern check · fits how you buy</span><span class="cwd">Industrials · 20 to 80M · owner-operated</span></span></div>
-        <div class="crow"><span class="cts">09:41:03</span><span class="cic"></span><span><span class="cwt">Primary sources · filings and registry</span><span class="cwd">6 sources · owner verified · current</span></span></div>
-        <div class="crow"><span class="cts">09:41:04</span><span class="cic"></span><span><span class="cwt">Ranked against the field</span><span class="cwd">3 likely buyers · your fit leads at 87</span></span></div>
-        <div class="crow"><span class="cts">09:41:04</span><span class="cic ok"></span><span><span class="cwt">Investment brief drafted</span><span class="cwd">Queued for partner review</span></span></div>
-      </div>
+    <!-- MEDIA SLOT: drop a product walkthrough video or premium animation of the worker running. Overlays sit on top. -->
+    <div class="media fade-up d3">
+      <div class="m-grid"></div>
+      <div class="m-vig"></div>
+      <div class="m-note">Product walkthrough</div>
+      <div class="m-tag"><span class="dot"></span> Live · Spearhead</div>
+      <div class="m-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="m-cap">Bogan, working a live market.</div>
     </div>
   </div>
 </section>
@@ -716,34 +947,101 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- TRUSTED -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Live in buy-side origination</div>
+    <div class="ll">Trusted by buy-side teams</div>
     <div class="logobar">
-      <span class="lg">Spearhead</span>
       <span class="lg">OceanPark</span>
+      <span class="lgdot"></span>
+      <span class="lg">Spearhead</span>
     </div>
+    <div class="lsub">Live buy-side origination, in production today.</div>
   </div>
 </section>
 
-<!-- THE LOOP -->
-<section class="loop" id="loop">
+<!-- HOW IT WORKS -->
+<section class="flow" id="how">
   <div class="wrap">
-    <div class="section-head" style="max-width:680px;margin:0 auto;text-align:center">
-      <span class="eyebrow">The loop</span>
-      <h2 style="margin:16px 0 14px">The same five moves, every target.</h2>
-      <p class="lead" style="margin:0 auto;max-width:56ch">A name and a website is enough. Bogan runs the loop on every signal, so the desk only sees the targets worth a partner's time.</p>
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From a public signal to a conversation.</h2>
+      <p class="lead">A filing is all it takes. Bogan does the rest, before the market builds its list.</p>
     </div>
-    <div class="loop-grid">
-      <div class="lstep"><div class="lp">01</div><h3>Read the signal</h3><p>Ownership changes, liquidity events, founder transitions, registry matches. Public signal in, no list bought.</p></div>
-      <div class="lstep"><div class="lp">02</div><h3>Derive the pattern</h3><p>Reads your portfolio and past deals to learn how you actually buy, not just the mandate you wrote down.</p></div>
-      <div class="lstep"><div class="lp">03</div><h3>Score the target</h3><p>Grades each target against that pattern. Taxonomic precision, so a manufacturer is never scored as a servicer.</p></div>
-      <div class="lstep"><div class="lp">04</div><h3>Draft the opener</h3><p>Writes the first touch and the investment brief behind it, in your voice, grounded in primary sources.</p></div>
-      <div class="lstep"><div class="lp">05</div><h3>Rank the field</h3><p>Reads the competitive picture and ranks where you stand against other likely buyers, so you move on the ones you can win.</p></div>
+    <div class="pipe">
+      <div class="pnode"><span class="pic"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span><span class="pl">Signal</span><span class="pd">An owner worth knowing</span></div>
+      <span class="parrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="pnode"><span class="pic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="pl">Research</span><span class="pd">The full picture, primary sources</span></div>
+      <span class="parrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="pnode"><span class="pic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></span><span class="pl">Score</span><span class="pd">Ranked against your thesis</span></div>
+      <span class="parrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="pnode"><span class="pic"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span><span class="pl">Outreach</span><span class="pd">The first touch, in your voice</span></div>
+      <span class="parrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="pnode"><span class="pic"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="pl">Connect</span><span class="pd">A conversation, before the market</span></div>
     </div>
   </div>
 </section>
 
-<!-- CENTERPIECE ARTIFACT: the investment brief -->
-<section class="artifact" id="artifact">
+<!-- FEATURE 1: AUTOMATED RESEARCH -->
+<section class="feat" id="research">
+  <div class="wrap">
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <span class="flabel">Automated Research</span>
+        <h2>Every owner, researched before you ask.</h2>
+        <p class="fsub">Bogan pulls the full picture on every target worth knowing, the owner, the trigger, the financials, the angle, from primary sources. The homework is done before a partner ever opens the file.</p>
+        <div class="feat-points">
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Primary-sourced, verified across six sources.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Owner, trigger, and financials in one brief.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>No purchased lists. Everything earned from public signal.</span></div>
+        </div>
+      </div>
+      <div class="feat-vis">
+        <div class="fpanel">
+          <div class="fp-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="ft">Target intelligence</span><span class="fl"><span class="dot"></span> verified</span></div>
+          <div class="fp-body">
+            <div class="irow"><span class="ik">Target</span><span class="iv">Atlas Fabrication</span></div>
+            <div class="irow"><span class="ik">Owner</span><span class="iv">J. Marsh, founder <span class="ok">&middot; 6 sources</span></span></div>
+            <div class="irow"><span class="ik">Trigger</span><span class="iv">Ownership change filed</span></div>
+            <div class="irow"><span class="ik">Financials</span><span class="iv">~$6M EBITDA, in band</span></div>
+            <div class="irow"><span class="ik">Classification</span><span class="iv">Fabricator, not distributor</span></div>
+            <div class="ichips"><span class="ichip">SEC filings</span><span class="ichip">State registry</span><span class="ichip">Court records</span><span class="ichip">Company site</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 2: INTELLIGENT SCORING -->
+<section class="feat alt rev" id="scoring">
+  <div class="wrap">
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <span class="flabel">Intelligent Scoring</span>
+        <h2>The targets that fit, ranked to the top.</h2>
+        <p class="fsub">Bogan scores every target against how you actually invest, not the mandate you wrote down, and ranks the field so your partners spend their time only on the deals worth winning.</p>
+        <div class="feat-points">
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Scored on your real pattern, learned from past deals.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Ranked against the rest of the market.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Taxonomic precision. A fabricator is never a distributor.</span></div>
+        </div>
+      </div>
+      <div class="feat-vis">
+        <div class="fpanel">
+          <div class="fp-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="ft">Thesis fit &middot; ranked</span><span class="fl"><span class="dot"></span> live</span></div>
+          <div class="fp-body">
+            <div class="scl-row"><span class="sco">Atlas Fabrication</span><span class="scm">87</span><span class="bar"><b style="width:87%"></b></span></div>
+            <div class="scl-row"><span class="sco">Calder &amp; Roe LLP</span><span class="scm">84</span><span class="bar"><b style="width:84%"></b></span></div>
+            <div class="scl-row"><span class="sco">Harbor Logistics</span><span class="scm">72</span><span class="bar"><b style="width:72%"></b></span></div>
+            <div class="scl-row"><span class="sco">Meridian Tooling</span><span class="scm">69</span><span class="bar"><b style="width:69%"></b></span></div>
+            <div class="scl-row"><span class="sco">Cardinal Plastics</span><span class="scm">64</span><span class="bar"><b style="width:64%"></b></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE OUTPUT: investment brief (centerpiece artifact) -->
+<section class="artifact" id="output">
   <div class="wrap">
     <div class="art-grid">
       <div class="art-copy">
@@ -775,104 +1073,50 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
-<!-- CONFIG -->
-<section class="cfg" id="config">
+<!-- FEATURE 3: OUTBOUND THAT LANDS -->
+<section class="feat alt" id="outbound">
   <div class="wrap">
-    <div class="section-head" style="max-width:680px;margin:0 auto;text-align:center">
-      <span class="eyebrow">One worker, configured</span>
-      <h2 style="margin:16px 0 14px">The same loop, different fuel.</h2>
-      <p class="lead" style="margin:0 auto;max-width:56ch">Bogan is one product, configured to a desk. Today it runs the private equity configuration, live at Spearhead. New configurations go live only when they are real.</p>
-    </div>
-    <div class="cfg-card">
-      <div><span class="cfg-tag"><span class="sd"></span>Live default</span></div>
-      <div>
-        <h3>Private equity buy-side</h3>
-        <p>Reads filings and your portfolio, screens the market against your pattern, and produces the investment brief and the first touch for owner-operated targets in your range.</p>
-        <div class="cfg-io">
-          <div class="io"><div class="iok">Reads</div><div class="iov">Public filings, the business registry, your portfolio and past deals.</div></div>
-          <div class="io"><div class="iok">Produces</div><div class="iov">A scored investment brief and a drafted first touch, grounded and verified.</div></div>
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <span class="flabel">Outbound that lands</span>
+        <h2>Outreach owners actually answer.</h2>
+        <p class="fsub">Generic outreach gets deleted. Bogan writes the first touch from real signals, in your voice, so it reads like you did the homework. Owners reply because it is specific, relevant, and human.</p>
+        <div class="feat-points">
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Written from the research, never a template.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>In your firm's voice, founder to principal.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Earns the same-day reply.</span></div>
+        </div>
+      </div>
+      <div class="feat-vis">
+        <div class="mailcard">
+          <div class="mail-head">
+            <div class="mail-from"><span class="mail-av">B</span><span class="mail-ft">Drafted by Bogan</span></div>
+            <span class="mail-rdy"><span class="dot"></span> ready to send</span>
+          </div>
+          <div class="mail-body">
+            <div class="em-r"><span class="ek">To</span><span class="ev">David &middot; Calder &amp; Roe LLP</span></div>
+            <div class="em-r"><span class="ek">Subject</span><span class="ev s">Three tuitions</span></div>
+            <div class="em-div"></div>
+            <p class="em-p">David, saw the two practices you folded in this year. Smart moves. But associate wages keep climbing, and holding mid-level talent is getting expensive.</p>
+            <p class="em-p">The funds are finally moving into legal, paying 7 to 9x for platforms like yours that have already done the heavy lifting.</p>
+            <p class="em-p em-sg">Best,<br>Bogan &middot; Spearhead</p>
+            <div class="em-ft"><span class="em-q">Queue outreach</span><span class="em-m">From 5 public signals</span></div>
+          </div>
         </div>
       </div>
     </div>
-    <p class="cfg-note">Other configurations stand up on the same engine as they become real. We do not pre-build what does not exist yet.</p>
   </div>
 </section>
 
-<!-- DIFFERENTIATORS -->
-<section class="diffs" id="why">
+<!-- TESTIMONIAL -->
+<section class="testi">
   <div class="wrap">
-    <div class="section-head" style="max-width:680px;margin:0 auto;text-align:center">
-      <span class="eyebrow">Why Bogan</span>
-      <h2 style="margin:16px 0 0">What a generic outbound tool misses.</h2>
-    </div>
-    <div class="diff-grid">
-      <div class="dcard"><div class="dn">01</div><h3>Pattern over stated mandate</h3><p>A mandate is what a desk says it wants. The pattern is what it actually buys. Bogan learns the pattern from the portfolio and screens against that.</p><div class="deg">Reads two prior platforms, not just the one-line thesis.</div></div>
-      <div class="dcard"><div class="dn">02</div><h3>Taxonomic precision</h3><p>A manufacturer is not a servicer, and a distributor is not either. Bogan classifies the business correctly before it scores fit, so the margin profile matches.</p><div class="deg">A fabricator scored as a fabricator, not lumped with the sector.</div></div>
-      <div class="dcard"><div class="dn">03</div><h3>Competitive ranking</h3><p>Finding the target is half the job. Bogan reads who else is likely circling and ranks where you stand, so the desk moves on the deals it can win.</p><div class="deg">Three likely buyers, your fit and relationship lead.</div></div>
-      <div class="dcard"><div class="dn">04</div><h3>Primary-sourced, hallucination-gated</h3><p>Every claim traces to a filing or the registry, verified across multiple sources. No verified owner, no claim, no send. Ever.</p><div class="deg">Six sources per target, zero spent on purchased data.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT FITS -->
-<section class="fits" id="fits">
-  <div class="wrap">
-    <div class="fits-head">
-      <span class="eyebrow">Integrations</span>
-      <h2>Reads and writes where your deal team already works.</h2>
-      <p class="fits-sub">Bogan pulls the signal from your sources and writes the next action back into your stack: the target, the brief, and the drafted touch, queued where your team picks up. No rip and replace.</p>
-    </div>
-    <div class="fits-logos">
-      <div class="ftile">
-        <span class="fic"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><g fill="#00A1E0"><circle cx="44" cy="34" r="22"/><circle cx="72" cy="29" r="27"/><circle cx="95" cy="47" r="20"/><circle cx="29" cy="51" r="18"/><rect x="27" y="47" width="71" height="24" rx="12"/></g></svg></span>
-        <span class="flb">Salesforce</span>
-      </div>
-      <div class="ftile">
-        <span class="fic"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#E51E25"/><g fill="none" stroke="#fff" stroke-width="11" stroke-linejoin="miter"><path d="M30 31 H70"/><path d="M70 31 L30 69"/><path d="M30 69 H70"/></g></svg></span>
-        <span class="flb">ZoomInfo</span>
-      </div>
-      <!-- DealCloud: placeholder monogram mark, swap for the real logo when ready -->
-      <div class="ftile">
-        <span class="fic"><span class="dcmark">dc</span></span>
-        <span class="flb">DealCloud</span>
-      </div>
-      <div class="ftile">
-        <span class="fic"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#FFE83B"/><g fill="#141414"><g transform="rotate(0 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(51 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(103 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(154 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(206 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(257 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(309 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g></g></svg></span>
-        <span class="flb">Apollo</span>
-      </div>
-    </div>
-    <div class="fits-claims">
-      <span>Public filings and registries</span>
-      <span>Your CRM, both ways</span>
-      <span>No verified owner, no send</span>
-      <span>Nothing leaves your box</span>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF -->
-<section class="proof" id="proof">
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;margin:0 auto;text-align:center">
-      <span class="eyebrow">Case study</span>
-      <h2 style="margin:14px 0 0">One county. Two weeks. Zero dollars.</h2>
-    </div>
-    <div class="proof-card">
-      <div class="proof-meta">Spearhead · Florida · Buy-side origination</div>
-      <div class="proof-cols">
-        <div class="pcol"><div class="pk">The challenge</div><p>Find owners likely to sell in a market no list covers, without spending a dollar on data.</p></div>
-        <div class="pcol"><div class="pk">What Bogan did</div><p>Ingested one county's public filings, joined them to the state business registry, verified the owners, and drafted the first touch for each.</p></div>
-        <div class="pcol"><div class="pk">The result</div><p>Twelve verified owners with a reason to sell, contacted the same fortnight. Nothing left the box. Repeatable in any county.</p></div>
-      </div>
-      <div class="proof-stats">
-        <div class="pf"><div class="pn">1</div><div class="pl">county of public filings</div></div>
-        <div class="pf"><div class="pn">14</div><div class="pl">days of records</div></div>
-        <div class="pf"><div class="pn">12</div><div class="pl">verified owners surfaced</div></div>
-        <div class="pf"><div class="pn">$0</div><div class="pl">spent to find them</div></div>
-      </div>
-      <div class="proof-q">
-        <div class="pq">We were in real conversations with owners weeks before anyone else knew they were in play. Bogan did the finding, so our partners could do the closing.</div>
-        <div class="pby">Cam Vernest · Partner, Spearhead · draft pending approval</div>
+    <div class="testi-card">
+      <div class="testi-lg">SPEARHEAD</div>
+      <p class="testi-q">We were in real conversations with owners weeks before anyone else knew they were in play. Bogan did the finding, so our partners could do the closing.</p>
+      <div class="testi-by">
+        <span class="testi-av">CV</span>
+        <div><div class="testi-n">Cam Vernest</div><div class="testi-r">Partner, Spearhead &middot; draft pending approval</div></div>
       </div>
     </div>
   </div>
@@ -882,9 +1126,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="results" id="results">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Across deployments</span>
-      <h2>The discipline shows up in the numbers.</h2>
-      <p class="lead">Every deployment runs the same loop, so the results repeat: warmer first touches, faster, and earned from public signal rather than bought.</p>
+      <span class="eyebrow">The numbers</span>
+      <h2>Proof from live desks.</h2>
+      <p class="lead">What buy-side teams running Bogan see in production: warmer first touches, sent faster, and earned from public signal instead of bought.</p>
     </div>
     <div class="res-grid">
       <div class="stat-card"><span class="sk">Cold outreach</span><div class="sn">30%</div><div class="sl">response rate</div><div class="ss">In a market where low single digits is called a win.</div></div>
@@ -897,13 +1141,77 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
-<!-- THE FACTORY -->
-<section class="fband" id="factory">
+<!-- INTEGRATIONS -->
+<section class="integrations" id="integrations">
   <div class="wrap">
-    <span class="eyebrow">The Factory</span>
-    <h2>Bogan runs on the Factory.</h2>
-    <p>The same engine behind every Gambit worker: your infrastructure, the model you choose, auditable end to end. Build one worker, then build the desk.</p>
-    <a href="/factory" class="btn btn-ghost">See the Factory <span class="ar">&rarr;</span></a>
+    <div class="intg-card">
+      <div class="intg-logos">
+        <div class="intg-tile"><span class="ic" aria-hidden="true"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><g fill="#00A1E0"><circle cx="44" cy="34" r="22"/><circle cx="72" cy="29" r="27"/><circle cx="95" cy="47" r="20"/><circle cx="29" cy="51" r="18"/><rect x="27" y="47" width="71" height="24" rx="12"/></g></svg></span><span class="lbl">Salesforce</span></div>
+        <div class="intg-tile"><span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#1b2a4a"/><text x="50" y="50" dy=".34em" text-anchor="middle" fill="#fff" font-family="'General Sans','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="44" letter-spacing="-2">dc</text></svg></span><span class="lbl">DealCloud</span></div>
+        <div class="intg-tile"><span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#E51E25"/><g fill="none" stroke="#fff" stroke-width="11" stroke-linejoin="miter"><path d="M30 31 H70"/><path d="M70 31 L30 69"/><path d="M30 69 H70"/></g></svg></span><span class="lbl">ZoomInfo</span></div>
+        <div class="intg-tile"><span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#FFE83B"/><g fill="#141414"><g transform="rotate(0 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(51 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(103 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(154 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(206 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(257 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(309 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g></g></svg></span><span class="lbl">Apollo</span></div>
+        <div class="intg-tile"><span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#146AFF"/><text x="50" y="50" dy=".34em" text-anchor="middle" fill="#fff" font-family="'General Sans','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="44" letter-spacing="-2">cb</text></svg></span><span class="lbl">Crunchbase</span></div>
+        <div class="intg-tile"><span class="ic" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#E4002B"/><text x="50" y="50" dy=".34em" text-anchor="middle" fill="#fff" font-family="'General Sans','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="44" letter-spacing="-2">pb</text></svg></span><span class="lbl">PitchBook</span></div>
+      </div>
+      <div class="intg-copy">
+        <span class="eyebrow">Integrations</span>
+        <h2>Works inside the stack your deal team already runs</h2>
+        <p class="lead">Your CRM, your data providers, your deal platform. Bogan reads the signal and writes the next action back where your team already works: Salesforce, DealCloud, ZoomInfo, Apollo, Crunchbase, PitchBook and more. No rip and replace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FACTORY (live floor) -->
+<section class="moat" id="factory">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Factory</span>
+      <h2>Start with Bogan. Build the deal team.</h2>
+      <p class="lead">Bogan is one worker on the Gambit Factory. The rest of your desk, sell-side, diligence, research, and support, runs on the same engine, live and operational. Click any worker on the floor to open it, or add the ones you need next.</p>
+    </div>
+    <div class="factory-frame floorframe">
+      <div class="app-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="app-title">Gambit Factory &middot; Spearhead</span><span class="app-live"><span class="dot"></span> operational</span></div>
+      <div class="floor-band">
+        <div class="floor-head"><span class="floor-title">Floor Control</span><span class="floor-op"><i class="opdot"></i> All systems operational</span></div>
+        <div class="floor-stats">
+          <div class="fstat"><div class="fl">Tasks today</div><div class="fv green" id="stTasks">1,284</div></div>
+          <div class="fstat"><div class="fl">Resolved</div><div class="fv" id="stResolved">1,147</div></div>
+          <div class="fstat"><div class="fl">Escalated to human</div><div class="fv" id="stEsc">137</div></div>
+          <div class="fstat"><div class="fl">Workers live</div><div class="fv green">5 / 6</div></div>
+        </div>
+      </div>
+      <div class="floor-body">
+        <div class="wgrid" id="wgrid"></div>
+        <div class="fstream">
+          <div class="fstream-h"><i class="opdot"></i> Live feed</div>
+          <div class="fstream-list" id="fstream"></div>
+        </div>
+      </div>
+    </div>
+    <div class="moat-grid">
+      <div class="moat-cell">
+        <div class="mi"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7 7l4 9M17 7l-4 9"/></svg></div>
+        <h3>Build one, build many</h3>
+        <p>Workers share one engine and compound. Bogan is the first of a roster, not the whole story.</p>
+      </div>
+      <div class="moat-cell">
+        <div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>Runs on your infrastructure</h3>
+        <p>Every model and join executes on hardware you control. Nothing depends on an outside service.</p>
+      </div>
+      <div class="moat-cell">
+        <div class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M9.6 10a2.4 2 0 0 1 4.8 0c0 2-4.8 1-4.8 3a2.4 2 0 0 0 4.8 0"/></svg></div>
+        <h3>Open models, lower cost</h3>
+        <p>Open models keep it cheaper to run, and yours to keep. No per-seat tax on the work.</p>
+      </div>
+      <div class="moat-cell">
+        <div class="mi"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
+        <h3>Data stays private</h3>
+        <p>Public sources in. Nothing sensitive ever leaves the room it runs in.</p>
+      </div>
+    </div>
+    <div class="moat-foot"><a href="/workers">See all workers <span class="ar">&rarr;</span></a></div>
   </div>
 </section>
 
@@ -930,7 +1238,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="foot-links">
         <div class="foot-col">
           <h4>Bogan</h4>
-          <a href="#loop">The loop</a><a href="#artifact">The output</a><a href="/factory">The Factory</a>
+          <a href="#how">How it works</a><a href="#research">Research</a><a href="#results">Numbers</a><a href="/factory">The Factory</a>
         </div>
         <div class="foot-col">
           <h4>Company</h4>
@@ -1004,10 +1312,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.loop .section-head,.lstep,.art-copy,.brief,.cfg .section-head,.cfg-card,.cfg-note,.diffs .section-head,.dcard,.fits-head,.ftile,.fits-claims,.proof .section-head,.proof-card,.results .section-head,.stat-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.flow .section-head,.pnode,.feat-copy,.fpanel,.mailcard,.art-copy,.brief,.testi-card,.results .section-head,.stat-card,.intg-card,.moat .section-head,.factory-frame,.moat-cell,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
-  document.querySelectorAll('.loop-grid,.diff-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
+  document.querySelectorAll('.pipe,.res-grid,.moat-grid,.cta .wrap').forEach(g=>{
     [...g.children].filter(c=>c.classList.contains('reveal')).forEach((c,i)=>c.style.transitionDelay=(i*70)+'ms');
   });
   if(RM){els.forEach(el=>el.classList.add('in'));}
@@ -1015,6 +1323,47 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});
     els.forEach(el=>ro.observe(el));
   }
+})();
+</script>
+<script>
+(function(){
+  const FWORKERS=[
+    {id:'bogan',href:'/workers/bogan',name:'Bogan',title:'Buy-side Worker',status:'live',k:'Targets surfaced',v:'312',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
+    {id:'atlas',href:'/workers/atlas',name:'Atlas',title:'Sell-side Worker',status:'live',k:'Buyers engaged',v:'184',tasks:8420,verbs:['qualified a buyer','built a teaser','ran a process update','answered a diligence question']},
+    {id:'dealroom',href:'/workers/deal-room',name:'Deal Room',title:'Post-LOI Worker',status:'live',k:'Deals in close',v:'28',tasks:5180,verbs:['advanced a diligence item','chased a missing document','updated the data room','flagged a close risk']},
+    {id:'mira',href:'/workers/mira',name:'Mira',title:'Research Worker',status:'live',k:'Accounts researched',v:'1,290',tasks:4070,verbs:['built an account brief','ranked a target on fit','pulled market signal','filtered out a mismatch']},
+    {id:'reed',href:'/workers/reed',name:'Reed',title:'Support Worker',status:'live',k:'Replies handled',v:'880',tasks:2940,verbs:['answered a client question','routed a request','logged a warm reply','scheduled a call']},
+    {id:'sentry',href:'/workers',name:'Sentry',title:'Signal Monitor',status:'training',k:'Triggers caught',v:'47',tasks:1210,verbs:['caught a new trigger','flagged a leadership change','noticed a litigation filing','updated the watch list']}
+  ];
+  const wgrid=document.getElementById('wgrid');
+  if(!wgrid) return;
+  const spark=()=>'<div class="wc-spark">'+[...Array(7)].map(()=>'<i style="height:'+(22+Math.random()*78)+'%"></i>').join('')+'</div>';
+  FWORKERS.forEach(w=>{
+    const c=document.createElement('a');c.className='wcard';c.id='wc-'+w.id;c.href=w.href;
+    c.innerHTML=`<div class="wc-top"><div class="wc-id"><span class="wc-av">${w.name[0]}</span><div><div class="wc-name">${w.name}</div><div class="wc-title">${w.title}</div></div></div><span class="wc-status ${w.status}"><span class="sd"></span>${w.status==='live'?'Live':'Training'}</span></div>${spark()}<div class="wc-foot"><div><div class="k">Tasks handled</div><div class="vv" id="t-${w.id}">${w.tasks.toLocaleString()}</div></div><div style="text-align:right"><div class="k">${w.k}</div><div class="vv">${w.v}</div></div></div>`;
+    wgrid.appendChild(c);
+  });
+  const ESC=['escalated a target to a partner','paused on a conflict check','flagged for human review'];
+  const liveW=FWORKERS.filter(w=>w.status==='live');
+  const stream=document.getElementById('fstream');
+  let tasks=1284,resolved=1147,esc=137;
+  const elT=document.getElementById('stTasks'),elR=document.getElementById('stResolved'),elE=document.getElementById('stEsc');
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tick(){
+    const w=liveW[Math.floor(Math.random()*liveW.length)];
+    const isE=Math.random()<0.13;
+    const verb=isE?ESC[Math.floor(Math.random()*ESC.length)]:w.verbs[Math.floor(Math.random()*w.verbs.length)];
+    const now=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    const r=document.createElement('div');r.className='frow'+(isE?' esc':'');
+    r.innerHTML='<span class="ft">'+now+'</span><span class="fw">'+w.name+'</span> '+verb;
+    stream.prepend(r);while(stream.children.length>7)stream.removeChild(stream.lastChild);
+    requestAnimationFrame(()=>r.classList.add('in'));
+    const card=document.getElementById('wc-'+w.id);if(card){card.classList.add('flash');setTimeout(()=>card.classList.remove('flash'),900);}
+    const tc=document.getElementById('t-'+w.id);if(tc){tc.textContent=(parseInt(tc.textContent.replace(/,/g,''))+1).toLocaleString();}
+    tasks++;if(isE)esc++;else resolved++;
+    elT.textContent=tasks.toLocaleString();elR.textContent=resolved.toLocaleString();elE.textContent=esc.toLocaleString();
+  }
+  tick(); if(!RM) setInterval(tick,950);
 })();
 </script>
 </body>
