@@ -42,6 +42,11 @@
       "permanent": true
     },
     {
+      "source": "/outbound-worker",
+      "destination": "/workers/bogan",
+      "permanent": true
+    },
+    {
       "source": "/partners",
       "destination": "/get-started",
       "permanent": true
