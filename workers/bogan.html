@@ -239,8 +239,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .cap p{font-size:14px;color:var(--muted);line-height:1.55}
 
 /* ---------- testimonial ---------- */
-.testi{padding:104px 0;background:var(--paper)}
-.testi-card{max-width:840px;margin:0 auto;background:var(--bone);border:1px solid var(--line);border-radius:20px;padding:48px 50px;box-shadow:0 30px 70px -50px rgba(21,17,13,.32)}
+.testi{padding:104px 0;background:var(--bone)}
+.testi-card{max-width:840px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:48px 50px;box-shadow:0 30px 70px -50px rgba(21,17,13,.4)}
 @media(max-width:600px){.testi-card{padding:32px 26px}}
 .testi-lg{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.02em;color:var(--ink);margin-bottom:22px}
 .testi-q{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.4vw,27px);line-height:1.36;letter-spacing:-.02em;color:var(--ink);margin-bottom:28px}
@@ -301,7 +301,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 @media(max-width:540px){.ftile{width:calc(50% - 7px)}}
 
 /* ---------- results ---------- */
-.results{padding:100px 0;background:var(--bone)}
+.results{padding:104px 0;background:var(--paper)}
 .results .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
 .results .section-head .eyebrow{margin-bottom:16px}
 .results .section-head h2{margin-bottom:14px}
@@ -708,8 +708,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .frow .fw{font-weight:700;color:#15151a}
 .frow.esc{color:#b5821c}
 .frow .ft{font-family:var(--mono);font-size:9.5px;color:#a39b8c;margin-right:8px}
-.integrations{padding:104px 0;background:var(--paper)}
-.intg-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--bone);box-shadow:0 40px 80px -48px rgba(21,17,13,.4)}
+.integrations{padding:104px 0;background:var(--bone)}
+.intg-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--paper);box-shadow:0 40px 80px -48px rgba(21,17,13,.4)}
 @media(max-width:860px){.intg-card{grid-template-columns:1fr}}
 .intg-logos{background:var(--bone-2);padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:center;min-width:0}
 @media(max-width:480px){.intg-logos{grid-template-columns:1fr 1fr;padding:26px;gap:12px}}
@@ -1040,41 +1040,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
-<!-- THE OUTPUT: investment brief (centerpiece artifact) -->
-<section class="artifact" id="output">
-  <div class="wrap">
-    <div class="art-grid">
-      <div class="art-copy">
-        <span class="eyebrow">The output</span>
-        <h2>An investment brief, not a lead.</h2>
-        <p>The work product is the point. For a private equity desk, Bogan reads the target's filings and your portfolio, then drafts the brief a partner would expect: who owns it, why now, how it fits your pattern, and where you stand against other buyers.</p>
-        <div class="art-meta">
-          <div class="am"><span class="amk"></span><span><b>Grounded in primary sources.</b> <span>Filings and the business registry, not the open web.</span></span></div>
-          <div class="am"><span class="amk"></span><span><b>Scored to your pattern.</b> <span>Fit is measured against how you actually invest.</span></span></div>
-          <div class="am"><span class="amk"></span><span><b>Hallucination-gated.</b> <span>No verified owner, no claim, no send.</span></span></div>
-        </div>
-      </div>
-      <div class="brief">
-        <div class="brief-bar"><span class="ba">B</span><span class="bt">Investment brief · drafted by Bogan</span><span class="bl"><span class="dot"></span> ready for review</span></div>
-        <div class="brief-head">
-          <div class="brief-row"><span class="bk">Target</span><span class="bv strong">Atlas Fabrication · contract metal fabrication</span></div>
-          <div class="brief-row"><span class="bk">Owner</span><span class="bv">J. Marsh, founder · verified across 6 sources</span></div>
-          <div class="brief-row"><span class="bk">Trigger</span><span class="bv">Ownership change filed · founder 60+</span></div>
-        </div>
-        <div class="brief-body">
-          <div class="bscore"><span class="bchip">Pattern fit 87 / 100</span><span class="bchip n">Industrials</span><span class="bchip n">EBITDA ~6M</span><span class="bchip n">Owner-operated</span></div>
-          <p>Atlas fits the pattern you have paid up for twice: owner-operated industrials in the 20 to 80M range, where the founder is ready and the operation is clean. This is a fabricator, not a distributor, so the margin profile matches your last two platforms rather than the servicers you have passed on.</p>
-          <p>The ownership-change filing and the founder's age read as a genuine transition, not a raise. Two other sponsors have circled the sector this quarter, but neither has the operating partner you can offer. On fit and on relationship, you lead the field.</p>
-          <p class="bsign">Recommendation: a direct, founder-to-principal first touch. Draft ready in your voice.</p>
-        </div>
-        <div class="brief-foot"><span class="bf-send">Queue first touch</span><span class="bf-meta">6 primary sources · 0 spent on data</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FEATURE 3: OUTBOUND THAT LANDS -->
-<section class="feat alt" id="outbound">
+<section class="feat" id="outbound">
   <div class="wrap">
     <div class="feat-grid">
       <div class="feat-copy">
@@ -1312,7 +1279,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.flow .section-head,.pnode,.feat-copy,.fpanel,.mailcard,.art-copy,.brief,.testi-card,.results .section-head,.stat-card,.intg-card,.moat .section-head,.factory-frame,.moat-cell,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.flow .section-head,.pnode,.feat-copy,.fpanel,.mailcard,.testi-card,.results .section-head,.stat-card,.intg-card,.moat .section-head,.factory-frame,.moat-cell,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.pipe,.res-grid,.moat-grid,.cta .wrap').forEach(g=>{
