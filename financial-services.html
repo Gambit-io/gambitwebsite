@@ -169,8 +169,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 /* hero media slot (drop a video or premium photograph here; the caption and overlays sit on top) */
 .media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:2.4/1;background:radial-gradient(130% 150% at 28% 18%,#1d2f4a 0%,#0c1626 68%);box-shadow:0 50px 100px -42px rgba(14,26,44,.55);margin-top:40px}
 @media(max-width:720px){.media{aspect-ratio:1.15/1}}
-.m-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px}
-.m-vig{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,26,.05) 30%,rgba(8,15,26,.62))}
+.m-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#0c1626}
+.m-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;z-index:1}
+.m-vig{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,26,.05) 30%,rgba(8,15,26,.62));z-index:1}
+.m-note,.m-tag,.m-play,.m-cap{z-index:2}
 .m-note{position:absolute;top:18px;left:22px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.32)}
 .m-tag{position:absolute;top:16px;right:20px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7fd4a4}
 .m-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
@@ -550,11 +552,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="tag fade-up d2">Find more deals. Win them faster.</div>
     <!-- MEDIA SLOT: replace this block's background with a video (autoplay, muted, looped) or a premium photograph. The caption, play control, and tag sit on top. -->
     <div class="media fade-up d3">
-      <div class="m-grid"></div>
+      <video class="m-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/video/fs-hero-demo.mp4" type="video/mp4">
+      </video>
       <div class="m-vig"></div>
-      <div class="m-note">Video or photograph</div>
       <div class="m-tag"><span class="dot"></span> Live · Spearhead</div>
-      <div class="m-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="m-cap">I was talking to the owner before the bankers called.</div>
     </div>
   </div>
