@@ -528,6 +528,24 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .fpoint .fck{flex:none;width:18px;height:18px;border-radius:50%;background:rgba(240,78,54,.1);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;margin-top:1px}
 .fpoint .fck svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .fpoint b{color:var(--ink);font-weight:600}
+/* dark feature band (breaks the light-screen rhythm) */
+.feat.dark{background:radial-gradient(72% 92% at 50% 2%,rgba(216,164,148,.16),transparent 55%),radial-gradient(120% 130% at 50% -10%,#1c2c46 0%,#11203a 55%,#0b1422 100%);color:#fff}
+.feat.dark .flabel{color:var(--accent-2)}
+.feat.dark .feat-copy h2{color:#fff}
+.feat.dark .feat-copy .fsub{color:rgba(225,232,242,.72)}
+.feat.dark .fpoint{color:rgba(225,232,242,.7)}
+.feat.dark .fpoint b{color:#fff}
+.feat.dark .fpoint .fck{background:rgba(240,78,54,.22);color:#ff9d86}
+/* ranked-fit graphic (a data viz, not an app window) */
+.rankviz{display:flex;flex-direction:column;gap:20px}
+.rk-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(225,232,242,.5);margin-bottom:2px}
+.rk-row{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:10px;align-items:baseline}
+.rk-co{font-weight:600;font-size:clamp(15px,1.5vw,18px);color:rgba(225,232,242,.78);letter-spacing:-.01em}
+.rk-score{font-family:var(--mono);font-weight:700;font-size:clamp(22px,2.4vw,30px);color:#fff;line-height:1}
+.rk-bar{grid-column:1/-1;height:10px;border-radius:6px;background:rgba(255,255,255,.09);overflow:hidden}
+.rk-bar b{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.rk-row.top .rk-co{color:#fff}
+.rk-tag{margin-left:9px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);background:rgba(240,78,54,.16);border:1px solid rgba(240,78,54,.32);border-radius:20px;padding:2px 8px}
 @media(max-width:860px){.feat-grid{grid-template-columns:1fr;gap:30px}.feat.rev .feat-vis{order:0}}
 
 /* shared feature panel */
@@ -1016,7 +1034,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="wh-top fade-up d1"><span class="eyebrow">Buy-side worker</span><span class="wh-status"><span class="sd"></span>Live · Spearhead</span></div>
     <h1 class="fade-up d1" style="margin:14px 0 0">Reach the owner before the market does.</h1>
-    <p class="tag fade-up d2">Bogan finds the owners who fit your thesis, runs the research a full deal team can't, and gets you to the conversation first. Proprietary deal flow, before the competition is even looking.</p>
+    <p class="tag fade-up d2">Bogan finds the owners who fit your thesis, runs the research a deal team can't, and gets you to the conversation first. Proprietary deal flow, before the competition is looking.</p>
     <div class="wh-cta fade-up d2" style="margin-top:26px">
       <a href="#how" class="btn btn-accent">See it work <span class="ar">&rarr;</span></a>
       <a href="/get-started" class="btn btn-ghost">Book a scope call</a>
@@ -1128,7 +1146,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 </section>
 
 <!-- FEATURE 2: INTELLIGENT SCORING -->
-<section class="feat alt rev" id="scoring">
+<section class="feat dark rev" id="scoring">
   <div class="wrap">
     <div class="feat-grid">
       <div class="feat-copy">
@@ -1142,15 +1160,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         </div>
       </div>
       <div class="feat-vis">
-        <div class="fpanel">
-          <div class="fp-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="ft">Thesis fit &middot; ranked</span><span class="fl"><span class="dot"></span> live</span></div>
-          <div class="fp-body">
-            <div class="scl-row"><span class="sco">Atlas Fabrication</span><span class="scm">87</span><span class="bar"><b style="width:87%"></b></span></div>
-            <div class="scl-row"><span class="sco">Calder &amp; Roe LLP</span><span class="scm">84</span><span class="bar"><b style="width:84%"></b></span></div>
-            <div class="scl-row"><span class="sco">Harbor Logistics</span><span class="scm">72</span><span class="bar"><b style="width:72%"></b></span></div>
-            <div class="scl-row"><span class="sco">Meridian Tooling</span><span class="scm">69</span><span class="bar"><b style="width:69%"></b></span></div>
-            <div class="scl-row"><span class="sco">Cardinal Plastics</span><span class="scm">64</span><span class="bar"><b style="width:64%"></b></span></div>
-          </div>
+        <div class="rankviz">
+          <div class="rk-label">Thesis fit &middot; ranked</div>
+          <div class="rk-row top"><span class="rk-co">Atlas Fabrication <span class="rk-tag">Best fit</span></span><span class="rk-score">87</span><span class="rk-bar"><b style="width:87%"></b></span></div>
+          <div class="rk-row"><span class="rk-co">Meridian Tooling</span><span class="rk-score">81</span><span class="rk-bar"><b style="width:81%"></b></span></div>
+          <div class="rk-row"><span class="rk-co">Harbor Components</span><span class="rk-score">74</span><span class="rk-bar"><b style="width:74%"></b></span></div>
+          <div class="rk-row"><span class="rk-co">Cardinal Plastics</span><span class="rk-score">68</span><span class="rk-bar"><b style="width:68%"></b></span></div>
+          <div class="rk-row"><span class="rk-co">Granite Castings</span><span class="rk-score">61</span><span class="rk-bar"><b style="width:61%"></b></span></div>
         </div>
       </div>
     </div>
@@ -1396,7 +1412,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.flow .section-head,.pnode,.feat-copy,.fpanel,.mailcard,.testi-card,.results .section-head,.stat-card,.intg-card,.moat .section-head,.factory-frame,.moat-cell,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.flow .section-head,.pnode,.feat-copy,.fpanel,.rankviz,.mailcard,.testi-card,.results .section-head,.stat-card,.intg-card,.moat .section-head,.factory-frame,.moat-cell,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.pipe,.res-grid,.moat-grid,.cta .wrap').forEach(g=>{
