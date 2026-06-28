@@ -759,6 +759,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .moat-foot a:hover .ar{transform:translateX(3px)}
 /* ===== hero live product demo ===== */
 .hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(56% 78% at 50% 46%,rgba(255,255,255,.14),transparent 70%)}
+.m-toggle{position:absolute;right:16px;bottom:16px;z-index:7;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(15,22,32,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:background .2s,transform .2s}
+.m-toggle:hover{background:rgba(15,22,32,.72)}
+.m-toggle:active{transform:scale(.94)}
+.m-toggle svg{width:16px;height:16px;fill:currentColor}
+.m-toggle .ic-play{display:none;margin-left:2px}
+.m-toggle.paused .ic-pause{display:none}
+.m-toggle.paused .ic-play{display:block}
+#dStage.paused *{animation-play-state:paused!important}
 .demo-stage2{position:absolute;inset:0;z-index:2}
 .morph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;overflow:hidden;box-shadow:0 2px 10px -2px rgba(0,0,0,.35),0 40px 90px -28px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.1);transition:width .58s cubic-bezier(.16,1,.3,1),height .58s cubic-bezier(.16,1,.3,1),border-radius .58s cubic-bezier(.16,1,.3,1)}
 .morph.s-icon{width:210px;height:76px;border-radius:38px}
@@ -1079,6 +1087,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         </div>
         <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#0e1a2c" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
       </div>
+      <button class="m-toggle" id="bToggle" type="button" aria-label="Pause animation">
+        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1482,12 +1494,15 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   const SUBJ="Your fabrication shop";
   const BODY="John, saw the ownership filing. You built a real fabricator, not a distributor, and the funds are paying up for shops like yours.\n\nWorth a word before this becomes an auction.\n\nBogan \u00B7 Spearhead";
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  let paused=false; var waiters=[];
+  function gate(){return paused?new Promise(function(r){waiters.push(r);}):Promise.resolve();}
+  function resumeAll(){paused=false;stage.classList.remove('paused');var w=waiters;waiters=[];w.forEach(function(r){r();});}
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms)).then(gate);
   function setState(st){morph.classList.remove('s-icon','s-input','s-desk');morph.classList.add(st);}
   function moveTo(el){const d=stage.getBoundingClientRect(),t=el.getBoundingClientRect();cursor.style.transform=`translate(${t.left-d.left+t.width*0.5-5}px,${t.top-d.top+t.height*0.5-2}px)`;}
   function park(){const d=stage.getBoundingClientRect();cursor.style.transition='none';cursor.style.transform=`translate(${d.width*0.5}px,${d.height*0.74}px)`;void cursor.offsetWidth;cursor.style.transition='';}
   function clickFx(){cursor.classList.add('click');setTimeout(()=>cursor.classList.remove('click'),420);}
-  function type(el,text,speed,caret){return new Promise(res=>{caret&&caret.classList.add('on');let i=0;el.textContent='';(function st(){if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(st,speed);}else{caret&&caret.classList.remove('on');res();}})();});}
+  function type(el,text,speed,caret){return new Promise(res=>{caret&&caret.classList.add('on');let i=0;el.textContent='';(function st(){if(paused){waiters.push(st);return;}if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(st,speed);}else{caret&&caret.classList.remove('on');res();}})();});}
   function countTo(el,to,dur){const t0=performance.now();(function f(now){const p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(p*to);if(p<1)requestAnimationFrame(f);})(t0);}
   function resetInner(){
     rows.forEach(r=>r.classList.remove('in'));
@@ -1525,7 +1540,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     right.classList.add('active');subjEl.textContent=SUBJ;bodyEl.textContent=BODY;
     queue.classList.add('hide');done.classList.add('show');cursor.style.display='none';
   }
-  if(RM){showStatic();return;}
+  var btn=document.getElementById('bToggle');
+  if(btn){
+    var setBtn=function(p){btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play animation':'Pause animation');};
+    btn.addEventListener('click',function(){if(paused){resumeAll();setBtn(false);}else{paused=true;stage.classList.add('paused');setBtn(true);}});
+  }
+  if(RM){showStatic();if(btn)btn.style.display='none';return;}
   setTimeout(loop,400);
 })();
 </script>
