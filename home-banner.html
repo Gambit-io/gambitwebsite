@@ -161,12 +161,24 @@ body.has-hero.scrolled .burger svg{stroke:var(--ink)}
 .b-accent:hover{background:var(--accent-deep)}
 .b-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .b-ghost:hover{background:rgba(255,255,255,.16)}
+.b-white{background:#fff;color:var(--ink)}
+.b-white:hover{background:var(--bone-2)}
 .b-toggle{position:absolute;right:26px;bottom:26px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(11,13,17,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:background .2s,transform .2s}
 .b-toggle:hover{background:rgba(11,13,17,.72)}.b-toggle:active{transform:scale(.94)}
 .b-toggle svg{width:16px;height:16px;fill:currentColor}
 .b-toggle .ic-play{display:none;margin-left:2px}
 .b-toggle.paused .ic-pause{display:none}.b-toggle.paused .ic-play{display:block}
 @media(max-width:620px){.banner-inner{padding:0 20px 78px}.b-toggle{right:18px;bottom:18px}}
+/* worker conversation overlay */
+.b-chat{position:absolute;right:26px;bottom:92px;z-index:3;width:min(360px,40vw);display:flex;flex-direction:column;gap:10px;align-items:flex-end;pointer-events:none}
+.cbub{width:100%;background:rgba(18,22,28,.44);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px 15px;opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.cbub.in{opacity:1;transform:none}
+.cbub .who{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.cbub .av{width:19px;height:19px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:9.5px;color:#fff;background:var(--accent)}
+.cbub.user .av{background:rgba(255,255,255,.28)}
+.cbub .nm{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.cbub .msg{font-size:13.5px;line-height:1.42;color:#fff}
+@media(max-width:760px){.b-chat{display:none}}
 
 /* ============ FOOTER ============ */
 footer{background:var(--ink);color:rgba(255,255,255,.7);padding:48px 0}
@@ -378,14 +390,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
   <div class="scrim"></div>
   <div class="warm"></div>
   <div class="banner-inner">
-    <span class="b-eyebrow"><span class="sd"></span> Forward-deployed AI workers</span>
-    <h1><span class="dim">Agents assist.</span><br>Workers operate.</h1>
-    <p class="b-sub">Gambit builds and runs AI workers on your infrastructure, accountable to the outcome, not a software license. Software is free. Results are not.</p>
+    <h1>Delivering outcomes<br>that matter.</h1>
     <div class="b-cta">
-      <a href="/workers" class="b-btn b-accent">See the workers <span class="ar">&rarr;</span></a>
-      <a href="/get-started" class="b-btn b-ghost">Talk to us</a>
+      <a href="/workers" class="b-btn b-white">Learn more</a>
     </div>
   </div>
+  <div class="b-chat" id="bChat" aria-hidden="true"></div>
   <button class="b-toggle" id="bannerToggle" type="button" aria-label="Pause video">
     <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
     <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -452,13 +462,34 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 })();
 
-/* ----- hero video: reduced-motion guard + play/pause ----- */
+/* ----- hero: worker conversation overlay ----- */
+(function(){
+  var chat=document.getElementById('bChat'); if(!chat) return;
+  var convos=[
+    {w:'Chloe',a:'C',un:'Resident',ut:"When is my street cleaning this week?",rt:"Thursday, 8am. Want a reminder the night before?"},
+    {w:'Harlo',a:'H',un:'Dispatch',ut:"Can we still make the 4pm window?",rt:"Rerouted. ETA 3:42, confirmed with the driver."},
+    {w:'Bogan',a:'B',un:'Partner',ut:"Anyone ready to sell in industrials?",rt:"Three owner-operators fit your pattern. Briefs drafted."}
+  ];
+  var paused=false,timers=[];
+  function clr(){timers.forEach(clearTimeout);timers=[];}
+  function at(ms,fn){timers.push(setTimeout(fn,ms));}
+  function bub(cls,av,nm,msg){var d=document.createElement('div');d.className='cbub '+cls;d.innerHTML='<div class="who"><span class="av">'+av+'</span><span class="nm">'+nm+'</span></div><div class="msg">'+msg+'</div>';chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('in');});}
+  function run(i){if(paused)return;chat.innerHTML='';var c=convos[i%convos.length];bub('user',c.un.charAt(0),c.un,c.ut);at(1500,function(){if(!paused)bub('work',c.a,c.w,c.rt);});at(5400,function(){if(!paused)run(i+1);});}
+  window.__bChat={pause:function(){paused=true;clr();},play:function(){if(paused){paused=false;run(0);}}};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){var c=convos[0];bub('user',c.un.charAt(0),c.un,c.ut);bub('work',c.a,c.w,c.rt);return;}
+  run(0);
+})();
+
+/* ----- hero video: reduced-motion guard + play/pause (also controls overlay) ----- */
 (function(){
   var v=document.querySelector('.b-vid'),btn=document.getElementById('bannerToggle');
   if(v&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
   if(!v||!btn)return;
   function sync(){var p=v.paused;btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play video':'Pause video');}
-  btn.addEventListener('click',function(){v.paused?v.play():v.pause();});
+  btn.addEventListener('click',function(){
+    if(v.paused){v.play();window.__bChat&&window.__bChat.play();}
+    else{v.pause();window.__bChat&&window.__bChat.pause();}
+  });
   v.addEventListener('play',sync);v.addEventListener('pause',sync);sync();
 })();
 </script>
