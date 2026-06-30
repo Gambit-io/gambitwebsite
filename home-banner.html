@@ -147,7 +147,7 @@ body.has-hero.scrolled .burger svg{stroke:var(--ink)}
 .banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .banner .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,13,17,.84) 0%,rgba(11,13,17,.5) 38%,rgba(11,13,17,.1) 68%,rgba(11,13,17,.34) 100%),linear-gradient(0deg,rgba(11,13,17,.86) 0%,rgba(11,13,17,.18) 44%,rgba(11,13,17,.4) 100%)}
 .banner .warm{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 80% at 82% 8%,rgba(240,78,54,.14),transparent 56%);mix-blend-mode:soft-light}
-.banner-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:clamp(120px,18vh,210px) 26px 0;color:#fff}
+.banner-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:clamp(88px,28vh,250px) 26px 0;color:#fff}
 .b-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);font-weight:500;display:inline-flex;align-items:center;gap:9px}
 .b-eyebrow .sd{width:7px;height:7px;border-radius:50%;background:var(--status);animation:bpulse 2.4s infinite}
 @keyframes bpulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 7px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
@@ -170,7 +170,7 @@ body.has-hero.scrolled .burger svg{stroke:var(--ink)}
 .b-toggle.paused .ic-pause{display:none}.b-toggle.paused .ic-play{display:block}
 @media(max-width:620px){.banner-inner{padding:0 20px 78px}.b-toggle{right:18px;bottom:18px}}
 /* worker conversation overlay */
-.b-chat{position:absolute;right:30px;bottom:100px;z-index:3;width:min(460px,46vw);display:flex;flex-direction:column;gap:12px;align-items:flex-end;pointer-events:none}
+.b-chat{margin-top:34px;width:min(440px,100%);display:flex;flex-direction:column;gap:12px;align-items:flex-start;pointer-events:none}
 .cbub{width:100%;background:rgba(18,22,28,.46);-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px);border:1px solid rgba(255,255,255,.17);border-radius:18px;padding:17px 20px;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease);box-shadow:0 18px 50px -24px rgba(0,0,0,.5)}
 .cbub.in{opacity:1;transform:none}
 .cbub .who{display:flex;align-items:center;gap:9px;margin-bottom:8px}
@@ -394,8 +394,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
     <div class="b-cta">
       <a href="/workers" class="b-btn b-white">Learn more</a>
     </div>
+    <div class="b-chat" id="bChat" aria-hidden="true"></div>
   </div>
-  <div class="b-chat" id="bChat" aria-hidden="true"></div>
   <button class="b-toggle" id="bannerToggle" type="button" aria-label="Pause video">
     <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
     <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
