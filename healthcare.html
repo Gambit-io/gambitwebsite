@@ -289,14 +289,48 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .dchip{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);font-weight:500}
 .dchip svg{width:16px;height:16px;stroke:var(--accent-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
+/* ---------- in-clinic console ---------- */
+.clinic-sec{padding:100px 0;background:var(--bone)}
+.clinic-sec .section-head{max-width:720px;margin:0 auto 42px;text-align:center}
+.clinic-sec .section-head .eyebrow{margin-bottom:16px}
+.clinic-sec .section-head h2{margin-bottom:14px}
+.clinic-sec .section-head .lead{margin:0 auto;max-width:62ch}
+.clinic{max-width:940px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 44px 90px -46px rgba(33,26,46,.5)}
+.cl-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.09)}
+.cl-bar .tl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
+.cl-bar .dt{margin-left:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.78)}
+.cl-bar .dt b{color:#fff;font-weight:600;letter-spacing:.06em}
+.cl-bar .plt{margin-left:auto;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#cbb49c;border:1px solid rgba(203,180,156,.4);border-radius:20px;padding:3px 10px}
+.cl-prog{padding:14px 18px;border-bottom:1px solid var(--line-2);background:#fcfbf9;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cl-chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);background:rgba(158,84,98,.1);border-radius:20px;padding:5px 11px}
+.cl-chip .sd{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.cl-track{flex:1;min-width:150px;height:6px;border-radius:4px;background:#ece6db;overflow:hidden}
+.cl-track b{display:block;height:100%;width:60%;background:var(--accent);border-radius:4px}
+.cl-pct{font-family:var(--mono);font-size:9.5px;color:var(--muted-2);letter-spacing:.06em}
+.cl-body{display:grid;grid-template-columns:1.35fr 1fr}
+@media(max-width:720px){.cl-body{grid-template-columns:1fr}}
+.cl-main{padding:20px 22px;border-right:1px solid var(--line-2)}
+@media(max-width:720px){.cl-main{border-right:0;border-bottom:1px solid var(--line-2)}}
+.cl-side{padding:20px 22px;background:#fbf9fa}
+.cl-sl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:13px}
+.cl-reason{list-style:none;margin:0 0 18px}
+.cl-reason li{display:flex;gap:9px;font-size:12.5px;color:var(--ink-2);line-height:1.45;padding:6px 0}
+.cl-reason li .rk{width:15px;height:15px;border-radius:50%;background:rgba(62,196,109,.14);color:var(--status-d);display:flex;align-items:center;justify-content:center;font-size:8.5px;flex:none;margin-top:1px}
+.cl-soap{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cl-soap .sh{background:var(--bone-2);padding:8px 12px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+.cl-soap .sr{display:flex;gap:9px;padding:8px 12px;border-top:1px solid var(--line-2);font-size:12px}
+.cl-soap .sr .sk{font-family:var(--mono);font-weight:600;color:var(--accent-deep);flex:none;width:14px}
+.cl-soap .sr .sv{color:var(--ink-2);line-height:1.4}
+.cl-stamp{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-deep)}
+
 /* ---------- the suite ---------- */
-.suite{padding:100px 0;background:var(--bone)}
+.suite{padding:100px 0;background:var(--paper)}
 .suite .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
 .suite .section-head .eyebrow{margin-bottom:16px}
 .suite .section-head h2{margin-bottom:16px}
 .suite .section-head .lead{margin:0 auto;max-width:60ch}
 .suite-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
-.suite-card{flex:1 1 330px;max-width:349px;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;box-shadow:0 16px 34px -26px rgba(21,17,13,.4);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease;overflow:hidden}
+.suite-card{flex:1 1 330px;max-width:349px;position:relative;background:var(--bone);border:1px solid #e4dac9;border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;box-shadow:0 16px 34px -26px rgba(21,17,13,.4);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease;overflow:hidden}
 .suite-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(21,17,13,.5);border-color:var(--sand-deep)}
 .suite-card.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
@@ -305,7 +339,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .sc-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
 .sc-desc{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 18px;flex:1}
 .sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.sc-tag{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--bone);border:1px solid var(--line);border-radius:20px;padding:4px 9px}
+.sc-tag{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:4px 9px}
 .sc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:15px;margin-top:auto}
 .sc-link{font-family:var(--display);font-weight:500;font-size:13px;color:var(--ink);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .suite-card:hover .sc-link{color:var(--accent)}
@@ -315,6 +349,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .spill .sd{width:6px;height:6px;border-radius:50%}
 .spill.live{color:var(--status-d);background:rgba(62,196,109,.13)}
 .spill.live .sd{background:var(--status);animation:pulse 2s infinite}
+.spill.pilot{color:var(--muted);background:var(--bone-2);border:1px solid var(--line)}
+.spill.pilot .sd{background:var(--muted-2)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 6px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
 
 /* ---------- how it fits (trust band) ---------- */
@@ -656,32 +692,22 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="dawn-sec" id="dawn">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The platform</span>
-      <h2>Dawn: one platform, many companions.</h2>
-      <p class="lead">Every companion is a real person's voice and lived experience, running on Dawn, the platform Gambit built for high-empathy, high-stakes conversations. AskEllyn runs on it. So do Chaddict and AskEvaMarie, built for Infiniti Group's addiction treatment centers. Pick a companion to see how each one meets its moment.</p>
+      <span class="eyebrow">The platform for recovery</span>
+      <h2>Dawn: our platform for addiction and recovery.</h2>
+      <p class="lead">Chaddict and AskEvaMarie run on Dawn, the platform Gambit built for the hardest, highest-empathy conversations. Each is a real person's voice and lived experience, built for Infiniti Group's addiction treatment centers, meeting people well before they are ready to call. Pick a companion to see how it meets that moment.</p>
     </div>
 
     <div class="dawn" id="dawnConsole">
-      <div class="dawn-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="dt"><b>Dawn</b> &middot; Gambit care platform</span><span class="dl"><span class="dot"></span> 3 companions live</span></div>
+      <div class="dawn-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="dt"><b>Dawn</b> &middot; Gambit recovery platform</span><span class="dl"><span class="dot"></span> 2 companions live</span></div>
       <div class="dawn-body">
         <div class="dawn-rail" role="tablist" aria-label="Companions">
           <div class="dawn-rl">Companions</div>
-          <button class="drow on" role="tab" aria-selected="true" data-conv="ellyn"><span class="wmark s28" style="--wm:var(--f-care)">E</span><span><span class="dn">AskEllyn</span><span class="du">Breast cancer &middot; Cigna</span></span><span class="dlive"></span></button>
-          <button class="drow" role="tab" aria-selected="false" data-conv="chaddict"><span class="wmark s28" style="--wm:var(--f-care)">C</span><span><span class="dn">Chaddict</span><span class="du">Addiction &middot; Infiniti Group</span></span><span class="dlive"></span></button>
+          <button class="drow on" role="tab" aria-selected="true" data-conv="chaddict"><span class="wmark s28" style="--wm:var(--f-care)">C</span><span><span class="dn">Chaddict</span><span class="du">Addiction &middot; Infiniti Group</span></span><span class="dlive"></span></button>
           <button class="drow" role="tab" aria-selected="false" data-conv="eva"><span class="wmark s28 two" style="--wm:var(--f-care)">EV</span><span><span class="dn">AskEvaMarie</span><span class="du">Recovery &middot; NEM Recovery</span></span><span class="dlive"></span></button>
         </div>
         <div class="dawn-panel">
 
-          <div class="dpane on" data-conv="ellyn">
-            <div class="dpane-h"><span class="wmark s36" style="--wm:var(--f-care)">E</span><span><div class="pn">AskEllyn</div><div class="pr">Breast cancer support &middot; built on Ellyn Winters-Robinson</div></span></div>
-            <div class="conv">
-              <div class="dmsg user"><div class="who">Patient</div>How do I tell my kids?</div>
-              <div class="dmsg co"><div class="who">AskEllyn</div>There is no perfect script, and you know your kids better than anyone. When I told mine, I kept it honest and simple, and I let them ask whatever they needed to. Want to talk through their ages and what might land for them?</div>
-            </div>
-            <div class="dpane-note">Studied by Brock University in a Canadian Cancer Society funded project on AI companions for patients and caregivers.</div>
-          </div>
-
-          <div class="dpane" data-conv="chaddict">
+          <div class="dpane on" data-conv="chaddict">
             <div class="dpane-h"><span class="wmark s36" style="--wm:var(--f-care)">C</span><span><div class="pn">Chaddict</div><div class="pr">Addiction support &middot; built on Chad Carlsen, Infiniti Group</div></span></div>
             <div class="conv">
               <div class="dmsg user"><div class="who">Visitor</div>I don't think I have a problem. My wife does.</div>
@@ -711,13 +737,60 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
+<!-- IN-CLINIC (anonymized hospital pilot) -->
+<section class="clinic-sec" id="clinic">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">In the clinic</span>
+      <h2>A specialist consult that writes itself up.</h2>
+      <p class="lead">In a pilot with a hospital specialist clinic, a Gambit worker reads the referral, runs the structured consultation with the patient, shows the clinician its reasoning as it goes, and drafts the clinical note for review. The clinician stays in charge. The write-up stops piling up.</p>
+    </div>
+    <div class="clinic">
+      <div class="cl-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="dt"><b>Clinic</b> &middot; specialist consult</span><span class="plt">Pilot</span></div>
+      <div class="cl-prog"><span class="cl-chip"><span class="sd"></span> Referral read, protocol selected</span><span class="cl-track"><b></b></span><span class="cl-pct">Consult 60% complete</span></div>
+      <div class="cl-body">
+        <div class="cl-main">
+          <div class="cl-sl">Consultation</div>
+          <div class="conv">
+            <div class="dmsg co"><div class="who">Clinic worker</div>Thanks, that is helpful. On a typical night, how many times do you get up to use the washroom?</div>
+            <div class="dmsg user"><div class="who">Patient</div>Two or three times, most nights.</div>
+            <div class="dmsg co"><div class="who">Clinic worker</div>Got it. Over the last few months, has that been getting worse, staying about the same, or improving?</div>
+            <div class="dmsg user"><div class="who">Patient</div>Worse, I would say.</div>
+          </div>
+        </div>
+        <div class="cl-side">
+          <div class="cl-sl">Clinical reasoning</div>
+          <ul class="cl-reason">
+            <li><span class="rk">&#10003;</span>Nocturia, 2 to 3 per night, worsening trend</li>
+            <li><span class="rk">&#10003;</span>Red-flag screen so far: none reported</li>
+            <li><span class="rk">&#10003;</span>Symptom score building toward moderate</li>
+          </ul>
+          <div class="cl-soap">
+            <div class="sh">SOAP note, drafting</div>
+            <div class="sr"><span class="sk">S</span><span class="sv">Increasing nighttime urinary frequency over three months.</span></div>
+            <div class="sr"><span class="sk">O</span><span class="sv">Structured symptom intake completed.</span></div>
+            <div class="sr"><span class="sk">A</span><span class="sv">Moderate lower urinary tract symptoms.</span></div>
+            <div class="sr"><span class="sk">P</span><span class="sv">Held for clinician review.</span></div>
+          </div>
+          <span class="cl-stamp">Drafted for the clinician, never sent on its own</span>
+        </div>
+      </div>
+    </div>
+    <div class="dawn-foot">
+      <span class="dchip"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Reads the referral, picks the protocol</span>
+      <span class="dchip"><svg viewBox="0 0 24 24"><path d="M4 14v-3M8 16V8M12 18V6M16 16V8M20 14v-3"/></svg> Shows its reasoning live</span>
+      <span class="dchip"><svg viewBox="0 0 24 24"><path d="M8 4h8l2 3v13H6V7z"/><path d="M9 12h6M9 15h4"/></svg> Drafts the note for review</span>
+    </div>
+  </div>
+</section>
+
 <!-- THE SUITE -->
 <section class="suite" id="suite">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The suite</span>
+      <span class="eyebrow">The lineup</span>
       <h2>Gambit for Healthcare.</h2>
-      <p class="lead">Companions built on real lived experience, each one shaped around a real person and the moment they know best.</p>
+      <p class="lead">Conversational care, configured per condition. Each one is its own platform, built on a real voice and the moment it knows best.</p>
     </div>
     <div class="suite-grid">
 
@@ -729,17 +802,24 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       </a>
 
       <a class="suite-card" href="/case-study/chaddict-and-askevamarie">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-care)">C</span><div><div class="sc-name">Chaddict</div><div class="sc-role">Addiction</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">A calm, direct companion built on Chad Carlsen of Infiniti Group. Meets people before they are ready to call, and opens a path when they are.</p>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-care)">D</span><div><div class="sc-name">Dawn</div><div class="sc-role">Addiction and recovery</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">Chaddict and AskEvaMarie, calm and direct companions built on Chad Carlsen and Natalie Eva Marie for Infiniti Group. They meet people before they are ready to call.</p>
         <div class="sc-tags"><span class="sc-tag">Infiniti Group</span><span class="sc-tag">Recovery</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/case-study/askevamarie">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-care)">EV</span><div><div class="sc-name">AskEvaMarie</div><div class="sc-role">Recovery</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Straight talk and real perspective built on Natalie Eva Marie of NEM Recovery Centers, shaped by her own recovery experience.</p>
-        <div class="sc-tags"><span class="sc-tag">NEM Recovery</span><span class="sc-tag">Recovery</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card" href="/introducing-askayla-ai-companion-parents-children-disabilities">
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-care)">AY</span><div><div class="sc-name">AskAyla</div><div class="sc-role">Disabilities</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">A free companion for parents raising a child with a disability, built with lived experience. A steady voice for the questions that arrive after midnight.</p>
+        <div class="sc-tags"><span class="sc-tag">Free</span><span class="sc-tag">Caregivers</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">Read the story <span class="ar">&rarr;</span></span></div>
+      </a>
+
+      <a class="suite-card" href="#clinic">
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-care)">CL</span><div><div class="sc-name">Clinic</div><div class="sc-role">In-clinic</div></div></div><span class="spill pilot"><span class="sd"></span>Pilot</span></div>
+        <p class="sc-desc">In a hospital pilot, a worker runs the specialist consult, shows its reasoning, and drafts the clinical note. The clinician stays in charge of the care.</p>
+        <div class="sc-tags"><span class="sc-tag">Hospital pilot</span><span class="sc-tag">SOAP notes</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">See how it works <span class="ar">&rarr;</span></span></div>
       </a>
 
     </div>
@@ -832,7 +912,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="foot-links">
         <div class="foot-col">
           <h4>Healthcare</h4>
-          <a href="#ellyn">AskEllyn on Cigna</a><a href="#dawn">The Dawn platform</a><a href="#suite">The companions</a>
+          <a href="#ellyn">AskEllyn on Cigna</a><a href="#dawn">Dawn, for recovery</a><a href="#clinic">In the clinic</a><a href="#suite">The lineup</a>
         </div>
         <div class="foot-col">
           <h4>Company</h4>
@@ -914,7 +994,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.chat,.etxt,.mtesti-card,.dawn-sec .section-head,.dawn,.dawn-foot,.suite .section-head,.suite-card,.fits-head,.ftile,.fits-claims,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.chat,.etxt,.mtesti-card,.dawn-sec .section-head,.dawn,.dawn-foot,.clinic-sec .section-head,.clinic,.suite .section-head,.suite-card,.fits-head,.ftile,.fits-claims,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos').forEach(g=>{
