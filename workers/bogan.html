@@ -39,6 +39,14 @@
   --muted-d:rgba(240,243,248,.6);
   --status:#3ec46d;
   --status-d:#1f9e54;
+  /* worker job-family hues (icon system; match the site scene palette) */
+  --f-core:#a07c61;
+  --f-ma:#2b3a54;
+  --f-sup:#57606e;
+  --f-care:#8a5560;
+  --f-civic:#54697b;
+  --f-log:#a0713a;
+  --f-legal:#6b5d3f;
   /* Financial Services accent: deep navy + vermilion */
   --navy:#0e1a2c;
   --navy-2:#16263e;
@@ -52,6 +60,23 @@
   --ease:cubic-bezier(.16,1,.3,1);
   --ease-hero:cubic-bezier(0,.55,.45,1);
 }
+
+/* ---------- worker icon system ---------- */
+/* monogram marks: Orbitron letterform on a family-colored tile (identity) */
+.wmark{border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--f-core))}
+.wmark.s56{width:56px;height:56px;font-size:24px}
+.wmark.s46{width:46px;height:46px;font-size:19px}
+.wmark.s36{width:36px;height:36px;font-size:15px}
+.wmark.s24{width:24px;height:24px;font-size:10.5px}
+.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}
+.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
+/* role glyphs: supporting language in the Products megamenu (never an avatar) */
+.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
+.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi:hover .mi-glyph{color:var(--clay-deep)}
+.mi-w .mi-tx{min-width:0;display:block}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:74px}
@@ -910,17 +935,17 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="grid-prod">
         <div class="mcol">
           <div class="collabel">Go to market</div>
-          <a class="mi" href="/workers/mira"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></a>
+          <a class="mi mi-w" href="/workers/mira"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="mi-tx"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">M&amp;A</div>
-          <a class="mi" href="/workers/bogan"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></a>
-          <a class="mi" href="/workers/atlas"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></a>
-          <a class="mi" href="/workers/deal-room"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></a>
+          <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
+          <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
+          <a class="mi mi-w" href="/workers/deal-room"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Support</div>
-          <a class="mi" href="/workers/reed"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></a>
+          <a class="mi mi-w" href="/workers/reed"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>
@@ -1444,19 +1469,19 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <script>
 (function(){
   const FWORKERS=[
-    {id:'bogan',href:'/workers/bogan',name:'Bogan',title:'Buy-side Worker',status:'live',k:'Targets surfaced',v:'312',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
-    {id:'atlas',href:'/workers/atlas',name:'Atlas',title:'Sell-side Worker',status:'live',k:'Buyers engaged',v:'184',tasks:8420,verbs:['qualified a buyer','built a teaser','ran a process update','answered a diligence question']},
-    {id:'dealroom',href:'/workers/deal-room',name:'Deal Room',title:'Post-LOI Worker',status:'live',k:'Deals in close',v:'28',tasks:5180,verbs:['advanced a diligence item','chased a missing document','updated the data room','flagged a close risk']},
-    {id:'mira',href:'/workers/mira',name:'Mira',title:'Research Worker',status:'live',k:'Accounts researched',v:'1,290',tasks:4070,verbs:['built an account brief','ranked a target on fit','pulled market signal','filtered out a mismatch']},
-    {id:'reed',href:'/workers/reed',name:'Reed',title:'Support Worker',status:'live',k:'Replies handled',v:'880',tasks:2940,verbs:['answered a client question','routed a request','logged a warm reply','scheduled a call']},
-    {id:'sentry',href:'/workers',name:'Sentry',title:'Signal Monitor',status:'training',k:'Triggers caught',v:'47',tasks:1210,verbs:['caught a new trigger','flagged a leadership change','noticed a litigation filing','updated the watch list']}
+    {id:'bogan',href:'/workers/bogan',name:'Bogan',mark:'B',wm:'--f-ma',title:'Buy-side Worker',status:'live',k:'Targets surfaced',v:'312',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
+    {id:'atlas',href:'/workers/atlas',name:'Atlas',mark:'AT',wm:'--f-ma',title:'Sell-side Worker',status:'live',k:'Buyers engaged',v:'184',tasks:8420,verbs:['qualified a buyer','built a teaser','ran a process update','answered a diligence question']},
+    {id:'dealroom',href:'/workers/deal-room',name:'Deal Room',mark:'DR',wm:'--f-ma',title:'Post-LOI Worker',status:'live',k:'Deals in close',v:'28',tasks:5180,verbs:['advanced a diligence item','chased a missing document','updated the data room','flagged a close risk']},
+    {id:'mira',href:'/workers/mira',name:'Mira',mark:'M',wm:'--f-core',title:'Research Worker',status:'live',k:'Accounts researched',v:'1,290',tasks:4070,verbs:['built an account brief','ranked a target on fit','pulled market signal','filtered out a mismatch']},
+    {id:'reed',href:'/workers/reed',name:'Reed',mark:'R',wm:'--f-sup',title:'Support Worker',status:'live',k:'Replies handled',v:'880',tasks:2940,verbs:['answered a client question','routed a request','logged a warm reply','scheduled a call']},
+    {id:'sentry',href:'/workers',name:'Sentry',mark:'S',wm:'--f-sup',title:'Signal Monitor',status:'training',k:'Triggers caught',v:'47',tasks:1210,verbs:['caught a new trigger','flagged a leadership change','noticed a litigation filing','updated the watch list']}
   ];
   const wgrid=document.getElementById('wgrid');
   if(!wgrid) return;
   const spark=()=>'<div class="wc-spark">'+[...Array(7)].map(()=>'<i style="height:'+(22+Math.random()*78)+'%"></i>').join('')+'</div>';
   FWORKERS.forEach(w=>{
     const c=document.createElement('a');c.className='wcard';c.id='wc-'+w.id;c.href=w.href;
-    c.innerHTML=`<div class="wc-top"><div class="wc-id"><span class="wc-av">${w.name[0]}</span><div><div class="wc-name">${w.name}</div><div class="wc-title">${w.title}</div></div></div><span class="wc-status ${w.status}"><span class="sd"></span>${w.status==='live'?'Live':'Training'}</span></div>${spark()}<div class="wc-foot"><div><div class="k">Tasks handled</div><div class="vv" id="t-${w.id}">${w.tasks.toLocaleString()}</div></div><div style="text-align:right"><div class="k">${w.k}</div><div class="vv">${w.v}</div></div></div>`;
+    c.innerHTML=`<div class="wc-top"><div class="wc-id"><span class="wmark s36${w.mark.length>1?' two':''}" style="--wm:var(${w.wm})">${w.mark}</span><div><div class="wc-name">${w.name}</div><div class="wc-title">${w.title}</div></div></div><span class="wc-status ${w.status}"><span class="sd"></span>${w.status==='live'?'Live':'Training'}</span></div>${spark()}<div class="wc-foot"><div><div class="k">Tasks handled</div><div class="vv" id="t-${w.id}">${w.tasks.toLocaleString()}</div></div><div style="text-align:right"><div class="k">${w.k}</div><div class="vv">${w.v}</div></div></div>`;
     wgrid.appendChild(c);
   });
   const ESC=['escalated a target to a partner','paused on a conflict check','flagged for human review'];

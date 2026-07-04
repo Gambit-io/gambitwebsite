@@ -83,6 +83,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .livetag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--status-d);background:rgba(62,196,109,.13);padding:2px 7px;border-radius:20px}
 .livetag .sd{width:5px;height:5px;border-radius:50%;background:var(--status)}
 
+/* role glyphs: supporting language in the Products megamenu (never an avatar) */
+.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
+.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi:hover .mi-glyph{color:var(--clay-deep)}
+.mi-w .mi-tx{min-width:0;display:block}
+
 /* products + partners grids */
 .grid-prod{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 .grid-sol{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 26px}
@@ -194,17 +201,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
       <div class="grid-prod">
         <div class="mcol">
           <div class="collabel">Go to market</div>
-          <a class="mi" href="/workers/mira"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></a>
+          <a class="mi mi-w" href="/workers/mira"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="mi-tx"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">M&amp;A</div>
-          <a class="mi" href="/workers/bogan"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></a>
-          <a class="mi" href="/workers/atlas"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></a>
-          <a class="mi" href="/workers/deal-room"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></a>
+          <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
+          <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
+          <a class="mi mi-w" href="/workers/deal-room"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Support</div>
-          <a class="mi" href="/workers/reed"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></a>
+          <a class="mi mi-w" href="/workers/reed"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>

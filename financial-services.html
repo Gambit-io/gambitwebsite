@@ -39,6 +39,14 @@
   --muted-d:rgba(240,243,248,.6);
   --status:#3ec46d;
   --status-d:#1f9e54;
+  /* worker job-family hues (icon system; match the site scene palette) */
+  --f-core:#a07c61;
+  --f-ma:#2b3a54;
+  --f-sup:#57606e;
+  --f-care:#8a5560;
+  --f-civic:#54697b;
+  --f-log:#a0713a;
+  --f-legal:#6b5d3f;
   /* Financial Services accent: deep navy + vermilion */
   --navy:#0e1a2c;
   --navy-2:#16263e;
@@ -52,6 +60,23 @@
   --ease:cubic-bezier(.16,1,.3,1);
   --ease-hero:cubic-bezier(0,.55,.45,1);
 }
+
+/* ---------- worker icon system ---------- */
+/* monogram marks: Orbitron letterform on a family-colored tile (identity) */
+.wmark{border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--f-core))}
+.wmark.s56{width:56px;height:56px;font-size:24px}
+.wmark.s46{width:46px;height:46px;font-size:19px}
+.wmark.s36{width:36px;height:36px;font-size:15px}
+.wmark.s24{width:24px;height:24px;font-size:10.5px}
+.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}
+.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
+/* role glyphs: supporting language in the Products megamenu (never an avatar) */
+.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
+.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi:hover .mi-glyph{color:var(--clay-deep)}
+.mi-w .mi-tx{min-width:0;display:block}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:74px}
@@ -422,17 +447,17 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="grid-prod">
         <div class="mcol">
           <div class="collabel">Go to market</div>
-          <a class="mi" href="/workers/mira"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></a>
+          <a class="mi mi-w" href="/workers/mira"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="mi-tx"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">M&amp;A</div>
-          <a class="mi" href="/workers/bogan"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></a>
-          <a class="mi" href="/workers/atlas"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></a>
-          <a class="mi" href="/workers/deal-room"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></a>
+          <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
+          <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
+          <a class="mi mi-w" href="/workers/deal-room"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Support</div>
-          <a class="mi" href="/workers/reed"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></a>
+          <a class="mi mi-w" href="/workers/reed"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>
@@ -653,35 +678,35 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="suite-grid">
 
       <a class="suite-card featured" href="/workers/bogan">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">B</span><div><div class="sc-name">Bogan</div><div class="sc-role">Buy-side</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-ma)">B</span><div><div class="sc-name">Bogan</div><div class="sc-role">Buy-side</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">Turns public signals into opened deals. Maps ownership and intent, verifies the decision-maker, and drafts the first touch in your voice.</p>
         <div class="sc-tags"><span class="sc-tag">Private Equity</span><span class="sc-tag">Investment Banking</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Bogan <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/workers/atlas">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">A</span><div><div class="sc-name">Atlas</div><div class="sc-role">Sell-side</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-ma)">AT</span><div><div class="sc-name">Atlas</div><div class="sc-role">Sell-side</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
         <p class="sc-desc">Runs the sell-side process end to end. Builds the buyer universe, prepares the materials, and brings qualified buyers to the table.</p>
         <div class="sc-tags"><span class="sc-tag">Investment Banking</span><span class="sc-tag">Private Equity</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Atlas <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/workers/deal-room">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">DR</span><div><div class="sc-name">Deal Room</div><div class="sc-role">Post-LOI</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-ma)">DR</span><div><div class="sc-name">Deal Room</div><div class="sc-role">Post-LOI</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
         <p class="sc-desc">Carries a signed deal from LOI through diligence to close. Tracks every request, document, and open item so nothing stalls the timeline.</p>
         <div class="sc-tags"><span class="sc-tag">Private Equity</span><span class="sc-tag">Investment Banking</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Deal Room <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/workers/mira">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">M</span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-core)">M</span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
         <p class="sc-desc">Screens live deal flow against your thesis and your pattern, scores the fit, and routes the matches to the partner who owns them. The mandate, working while you sleep.</p>
         <div class="sc-tags"><span class="sc-tag">Private Equity</span><span class="sc-tag">Investment Banking</span><span class="sc-tag">Funds</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Mira <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/workers/reed">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-sup)">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
         <p class="sc-desc">Inbound questions, replies, and scheduling across web, SMS, and voice. The first answer, around the clock, in a register that fits the relationship.</p>
         <div class="sc-tags"><span class="sc-tag">Wealth</span><span class="sc-tag">Banking</span><span class="sc-tag">Insurance</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Reed <span class="ar">&rarr;</span></span></div>
