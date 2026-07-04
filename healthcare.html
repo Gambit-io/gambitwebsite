@@ -232,12 +232,17 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .chat-h .cn{font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-.01em}
 .chat-h .clive{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--status-d)}
 .chat-h .clive .sd{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
-.chat-body{padding:20px 18px;background:linear-gradient(180deg,#fbf9fa,#fff)}
+.chat-body{padding:20px 18px;background:linear-gradient(180deg,#faf7fc,#fff)}
 .chat-input{margin:2px 18px 14px;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:30px;padding:9px 9px 9px 16px}
 .chat-input span{flex:1;font-size:13px;color:var(--muted-2)}
-.chat-input .snd{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.chat-input .snd{width:34px;height:34px;border-radius:50%;background:#ece5f8;color:#6f5aa8;display:flex;align-items:center;justify-content:center;flex:none}
 .chat-input .snd svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .chat-foot{padding:0 18px 16px;font-size:10.5px;color:var(--muted-2);line-height:1.5}
+/* AskEllyn brand: the real product interface uses lavender purple + soft coral */
+.chat{border-top:3px solid #f4a79f}
+.chat .wmark{background:#6f5aa8}
+.chat .dmsg.co .who{color:#6f5aa8}
+.ellyn .etxt .eyebrow{color:#6f5aa8}
 
 /* Margaux testimonial */
 .mtesti{padding:0 0 100px;background:var(--bone)}
@@ -634,6 +639,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="ll">Trusted in care</div>
     <div class="logobar">
+      <img class="lg" src="/img/uhn.png" alt="UHN, University Health Network" style="height:40px" onerror="this.style.display='none'">
       <img class="lg" src="/img/Cigna.png" alt="Cigna Healthcare" style="height:46px">
       <img class="lg" src="/img/infiniti-group.png" alt="Infiniti Group" style="height:22px">
     </div>
@@ -795,7 +801,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="suite-grid">
 
       <a class="suite-card featured" href="/case-study/askellyn">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-care)">E</span><div><div class="sc-name">AskEllyn</div><div class="sc-role">Breast cancer</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:#6f5aa8">E</span><div><div class="sc-name">AskEllyn</div><div class="sc-role">Breast cancer</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">Warm, non-medical support built on the lived experience of a breast cancer survivor. Live on Cigna Healthcare, in 50+ languages, any hour.</p>
         <div class="sc-tags"><span class="sc-tag">Cigna</span><span class="sc-tag">Multilingual</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
