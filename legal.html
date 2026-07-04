@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Financial Services · Gambit</title>
-<meta name="description" content="Gambit for Financial Services. A suite of AI workers for private equity, investment banking, and wealth: origination, sell-side, post-LOI execution, research, and support. Find more deals. Win them faster.">
+<title>Legal · Gambit</title>
+<meta name="description" content="Gambit for Legal. AI workers for law firms: client intake, consultation preparation, practice-area routing, and research, around the clock. Turn visitors into clients.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/financial-services">
+<link rel="canonical" href="https://gambitco.io/legal">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Financial Services · Gambit">
-<meta property="og:description" content="Find more deals. Win them faster. A suite of AI workers for private equity, investment banking, and wealth.">
+<meta property="og:title" content="Legal · Gambit">
+<meta property="og:description" content="Turn visitors into clients. Prepare them before they arrive. AI workers for law firms.">
 <meta property="og:image" content="https://gambitco.io/og-homepage.png">
-<meta property="og:url" content="https://gambitco.io/financial-services">
+<meta property="og:url" content="https://gambitco.io/legal">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,15 +39,7 @@
   --muted-d:rgba(240,243,248,.6);
   --status:#3ec46d;
   --status-d:#1f9e54;
-  /* worker job-family hues (icon system; match the site scene palette) */
-  --f-core:#a07c61;
-  --f-ma:#2b3a54;
-  --f-sup:#57606e;
-  --f-care:#8a5560;
-  --f-civic:#54697b;
-  --f-log:#a0713a;
-  --f-legal:#6b5d3f;
-  /* Financial Services accent: deep navy + vermilion */
+  /* Industry accent: deep navy + vermilion */
   --navy:#0e1a2c;
   --navy-2:#16263e;
   --accent:#F04E36;
@@ -60,23 +52,6 @@
   --ease:cubic-bezier(.16,1,.3,1);
   --ease-hero:cubic-bezier(0,.55,.45,1);
 }
-
-/* ---------- worker icon system ---------- */
-/* monogram marks: Orbitron letterform on a family-colored tile (identity) */
-.wmark{border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--f-core))}
-.wmark.s56{width:56px;height:56px;font-size:24px}
-.wmark.s46{width:46px;height:46px;font-size:19px}
-.wmark.s36{width:36px;height:36px;font-size:15px}
-.wmark.s24{width:24px;height:24px;font-size:10.5px}
-.wmark.s20{width:20px;height:20px;font-size:9px}
-.wmark.two{letter-spacing:-.02em}
-.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
-/* role glyphs: supporting language in the Products megamenu (never an avatar) */
-.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
-.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
-.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.mi:hover .mi-glyph{color:var(--clay-deep)}
-.mi-w .mi-tx{min-width:0;display:block}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:74px}
@@ -142,6 +117,11 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mi-role{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);font-weight:500}
 .mi:hover .mi-name{color:var(--clay-deep)}
 .mi-desc{font-size:12.5px;color:var(--muted);line-height:1.45;margin-top:3px}
+.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
+.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi:hover .mi-glyph{color:var(--clay-deep)}
+.mi-w .mi-tx{min-width:0;display:block}
 .livetag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--status-d);background:rgba(62,196,109,.13);padding:2px 7px;border-radius:20px}
 .livetag .sd{width:5px;height:5px;border-radius:50%;background:var(--status)}
 .grid-prod{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
@@ -220,6 +200,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .logobar .lg{width:auto;display:block;filter:grayscale(1);opacity:.55;transition:filter .25s var(--ease),opacity .25s var(--ease)}
 .logobar .lg.light{filter:grayscale(1) brightness(.62)}
 .logobar .lg:hover{filter:none;opacity:1}
+.logobar .lgword{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--muted-2);opacity:.7;display:inline-flex;align-items:baseline;gap:8px;transition:color .25s var(--ease),opacity .25s var(--ease)}
+.logobar .lgword b{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.16em;color:var(--sand-deep)}
+.logobar .lgword:hover{color:var(--ink);opacity:1}
 
 /* ---------- sub-vertical showcase ---------- */
 .showcase{padding:100px 0;background:var(--paper)}
@@ -232,7 +215,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .sv-head h2{font-size:clamp(26px,3.4vw,40px)}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* deal-desk mockup */
+/* load-desk mockup */
 .mock{margin:30px auto 0;max-width:880px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -44px rgba(14,26,44,.4)}
 .mock-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy);border-bottom:1px solid #1d3050}
 .mock-bar .tl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
@@ -244,7 +227,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mock-stats .ms:last-child{border-right:0}
 .mock-stats .mn{font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy);letter-spacing:-.02em}
 .mock-stats .mk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
-.mrow{display:grid;grid-template-columns:1.5fr 1.4fr .8fr .9fr .8fr;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-2);align-items:center;font-size:12.5px}
+.mrow{display:grid;grid-template-columns:1.2fr 1.5fr .9fr .9fr .9fr;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-2);align-items:center;font-size:12.5px}
 .mrow.mh{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);background:#fcfbf9;padding-top:10px;padding-bottom:10px}
 .mrow:last-child{border-bottom:0}
 .mrow .mco{font-weight:600;color:#231f1a}
@@ -328,7 +311,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .ftile .fic{height:34px;display:flex;align-items:center;justify-content:center}
 .ftile .fic svg{height:32px;width:auto;max-width:54px;display:block}
 .ftile .flb{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
-.ftile .dcmark{width:34px;height:34px;border-radius:8px;background:#1b2a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:-.01em}
+.ftile .dcmark{width:34px;height:34px;border-radius:8px;background:#1b2a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:-.01em}
 .fits-claims{display:flex;justify-content:center;align-items:center;gap:12px 24px;flex-wrap:wrap;text-align:center;max-width:760px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
 .fits-claims span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(225,232,242,.7)}
 @media(max-width:540px){.ftile{width:calc(50% - 7px)}}
@@ -527,13 +510,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <button class="msec-h">Products <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
     <div class="msec-body">
       <div class="msec-lbl">Go to market</div>
-      <a href="/workers/mira"><span class="mn">Mira</span> · Research</a>
+      <a href="/workers/mira"><span class="mn">Mira</span> &middot; Research</a>
       <div class="msec-lbl">M&amp;A</div>
-      <a href="/workers/bogan"><span class="mn">Bogan</span> · Buy-side</a>
-      <a href="/workers/atlas"><span class="mn">Atlas</span> · Sell-side</a>
-      <a href="/workers/deal-room"><span class="mn">Deal Room</span> · Post-LOI</a>
+      <a href="/workers/bogan"><span class="mn">Bogan</span> &middot; Buy-side</a>
+      <a href="/workers/atlas"><span class="mn">Atlas</span> &middot; Sell-side</a>
+      <a href="/workers/deal-room"><span class="mn">Deal Room</span> &middot; Post-LOI</a>
       <div class="msec-lbl">Support</div>
-      <a href="/workers/reed"><span class="mn">Reed</span> · Support</a>
+      <a href="/workers/reed"><span class="mn">Reed</span> &middot; Support</a>
       <div class="msec-lbl">Platform</div>
       <a href="/factory"><span class="mn">The Factory</span></a>
       <a href="/factory#integrations"><span class="mn">Integrations</span></a>
@@ -581,13 +564,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">Financial Services</h1>
-    <div class="tag fade-up d2">Find more deals. Win them faster.</div>
+    <h1 class="fade-up d1">Legal</h1>
+    <div class="tag fade-up d2">Turn visitors into clients. Prepare them before they arrive.</div>
     <div class="media fade-up d3">
-      <video class="m-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/video/fs-hero.mp4" type="video/mp4">
+      <!-- hero video to be produced; wire the real path when it lands -->
+      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-legal.jpg">
+        <source src="/video/legal-hero.mp4" type="video/mp4">
       </video>
-      <button class="m-toggle" id="fsVidToggle" type="button" aria-label="Pause video">
+      <button class="m-toggle" id="legalVidToggle" type="button" aria-label="Pause video">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
         <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       </button>
@@ -598,10 +582,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- LOGO STRIP (real clients) -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Trusted across financial services</div>
+    <div class="ll">Trusted across legal</div>
     <div class="logobar">
-      <img class="lg light" src="/img/OceanPark.png" alt="OceanPark" style="height:30px">
-      <img class="lg" src="/img/Spearhead.png" alt="Spearhead" style="height:46px">
+      <!-- interim text wordmark: no Pulse Law logo asset in the repo yet. Swap for <img class="lg" src="/img/<file>.png" alt="Pulse Law LLP" style="height:34px"> when the firm's logo lands. Add more firm logos as they go live. -->
+      <span class="lgword" aria-label="Pulse Law LLP">Pulse&nbsp;Law <b>LLP</b></span>
     </div>
   </div>
 </section>
@@ -610,58 +594,58 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="showcase" id="showcase">
   <div class="wrap">
     <div class="sv-tabs" id="svTabs">
-      <button class="sv-tab on" data-seg="pe">Private Equity</button>
-      <button class="sv-tab" data-seg="ib">Investment Banking</button>
-      <button class="sv-tab" data-seg="wealth">Wealth Management</button>
+      <button class="sv-tab on" data-seg="firm">Law Firms</button>
+      <button class="sv-tab" data-seg="inhouse">In-house Legal</button>
+      <button class="sv-tab" data-seg="access">Access to Justice</button>
     </div>
 
-    <div class="sv-head on" data-seg="pe"><h2>Find the deal before the market does.</h2></div>
-    <div class="sv-head" data-seg="ib"><h2>Win the mandate before the pitch.</h2></div>
-    <div class="sv-head" data-seg="wealth"><h2>Grow the book without the busywork.</h2></div>
+    <div class="sv-head on" data-seg="firm"><h2>Turn website visitors into consultations.</h2></div>
+    <div class="sv-head" data-seg="inhouse"><h2>Triage before it reaches counsel.</h2></div>
+    <div class="sv-head" data-seg="access"><h2>Legal help that does not keep office hours.</h2></div>
 
-    <!-- deal-desk mockup (static, anchors the section) -->
+    <!-- load-desk mockup (static, anchors the section) -->
     <div class="mock">
-      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Deal Desk</span><span class="ml"><span class="dot"></span> live</span></div>
+      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Intake Desk</span><span class="ml"><span class="dot"></span> live</span></div>
       <div class="mock-stats">
-        <div class="ms"><div class="mn">38</div><div class="mk">Signals today</div></div>
-        <div class="ms"><div class="mn">11</div><div class="mk">In screening</div></div>
-        <div class="ms"><div class="mn">6</div><div class="mk">Drafted for review</div></div>
+        <div class="ms"><div class="mn">48</div><div class="mk">Intakes today</div></div>
+        <div class="ms"><div class="mn">80%</div><div class="mk">Converted</div></div>
+        <div class="ms"><div class="mn">6</div><div class="mk">Routed to a partner</div></div>
       </div>
-      <div class="mrow mh"><span>Company</span><span class="mmut">Signal</span><span class="c-fit">Pattern fit</span><span>Worker</span><span>Status</span></div>
-      <div class="mrow"><span class="mco">Atlas Fabrication</span><span class="mmut">Ownership change</span><span class="c-fit mfit"><span class="bar"><b style="width:87%"></b></span><span class="fv">87</span></span><span class="mtag">Bogan</span><span class="mst new">New</span></div>
-      <div class="mrow"><span class="mco">Cedar Logistics</span><span class="mmut">Liquidity event</span><span class="c-fit mfit"><span class="bar"><b style="width:72%"></b></span><span class="fv">72</span></span><span class="mtag">Mira</span><span class="mst scr">Screening</span></div>
-      <div class="mrow"><span class="mco">Harbor Components</span><span class="mmut">Founder, 60+</span><span class="c-fit mfit"><span class="bar"><b style="width:81%"></b></span><span class="fv">81</span></span><span class="mtag">Bogan</span><span class="mst dr">Drafted</span></div>
-      <div class="mrow"><span class="mco">Meridian Tooling</span><span class="mmut">Registry match</span><span class="c-fit mfit"><span class="bar"><b style="width:69%"></b></span><span class="fv">69</span></span><span class="mtag">Bogan</span><span class="mst scr">Screening</span></div>
+      <div class="mrow mh"><span>Inquiry</span><span class="mmut">Matter</span><span class="c-fit">Readiness</span><span>Worker</span><span>Status</span></div>
+      <div class="mrow"><span class="mco">Web chat &middot; Sun 9:12pm</span><span class="mmut">Employment dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
+      <div class="mrow"><span class="mco">Voice &middot; 11:20pm</span><span class="mmut">Shareholder dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:76%"></b></span><span class="fv">76</span></span><span class="mtag">AskTodd</span><span class="mst scr">Routing</span></div>
+      <div class="mrow"><span class="mco">SMS &middot; 7:05am</span><span class="mmut">IP and trademark</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
+      <div class="mrow"><span class="mco">Web chat &middot; 10:48pm</span><span class="mmut">Contract review</span><span class="c-fit mfit"><span class="bar"><b style="width:69%"></b></span><span class="fv">69</span></span><span class="mtag">AskTodd</span><span class="mst dr">Prepared</span></div>
     </div>
 
-    <div class="sv-caps on" data-seg="pe">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Proprietary sourcing</h3><p>Bogan surfaces owners likely to sell before they reach a banker's list, and drafts the first touch in your voice.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></div><h3>Faster diligence</h3><p>Deal Room carries the signed deal from LOI through diligence to close, tracking every request so the process moves at the speed of the decision.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></div><h3>Pattern-fit screening</h3><p>Mira reads your portfolio, not just your mandate, and screens the market against how you actually invest, routing only the matches worth a partner's time.</p></div>
+    <div class="sv-caps on" data-seg="firm">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Convert the after-hours visitor</h3><p>Clients research their options on a Sunday night. AskTodd engages them the moment they land, so interest becomes a booked consultation instead of a closed tab.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>First hour on strategy, not orientation</h3><p>Clients arrive already understanding their position and what to ask, so your associates skip the foundations and go straight to substance.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><circle cx="12" cy="14" r="6"/><path d="M9.5 14l1.7 1.7 3.3-3.4"/></svg></div><h3>Routed to the right practice area</h3><p>Every inquiry sent to the right team, from a corporate dispute to an IP question, before it reaches a partner's desk.</p></div>
     </div>
-    <div class="sv-caps" data-seg="ib">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Origination at scale</h3><p>Bogan opens more conversations than a coverage team can hold, and keeps every one of them warm.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5"/><path d="M16 8h5"/></svg></div><h3>Sell-side, run end to end</h3><p>Atlas builds the buyer universe, prepares the materials, and runs the process, so the mandate moves without adding bodies.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></div><h3>First in the room</h3><p>Mira screens the field so your tailored point of view lands before anyone else's does.</p></div>
+    <div class="sv-caps" data-seg="inhouse">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2"/><path d="M4 10h16"/><path d="M8 15h5"/></svg></div><h3>Triage the legal inbox</h3><p>Routine questions answered and requests routed, so counsel's hours go to the matters that actually need a lawyer.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Grounded in your playbook</h3><p>Policies, templates, and precedent applied consistently, in the language your team already uses, not the open web.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>A record of every ask</h3><p>Each request logged and auditable, so nothing slips through and patterns surface while they still matter.</p></div>
     </div>
-    <div class="sv-caps" data-seg="wealth">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Qualified introductions</h3><p>Bogan hands advisors warm, qualified prospects instead of cold lists, so growth stops waiting on free hours.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Service that scales</h3><p>Reed answers inbound across web, SMS, and voice, around the clock, in a register that fits the relationship.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></div><h3>Spot the moments that matter</h3><p>Mira watches the book for liquidity and life events, so advisors reach out with the right timing instead of chasing a list.</p></div>
+    <div class="sv-caps" data-seg="access">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Help that does not keep office hours</h3><p>People with legal questions get clear, plain-language guidance at midnight, not a callback in three weeks.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><h3>The process, without the jargon</h3><p>What they are facing and what to do next, explained simply, so the system stops being a maze.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></div><h3>Pointed to the right resource</h3><p>Connected to the right clinic, form, or service, with what they need to actually use it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL (DRAFT: pending approval from Cam Vernest / Spearhead) -->
+<!-- TESTIMONIAL: quote is from the live AskTodd case study. Confirm the named spokesperson at Pulse Law before publishing an attributed name. -->
 <section class="testi">
   <div class="wrap">
     <div class="testi-card">
-      <div class="testi-lg">SPEARHEAD</div>
-      <div class="testi-q">In origination, the edge is being early. We were in real conversations with owners weeks before anyone else knew they were in play. Bogan did the finding, so our partners could do the closing.</div>
+      <div class="testi-lg">PULSE LAW LLP</div>
+      <div class="testi-q">The best legal outcomes start with better-prepared clients. AskTodd makes that preparation accessible to everyone, not just those who already know how the system works.</div>
       <div class="testi-by">
-        <span class="testi-av">CV</span>
-        <span><span class="testi-n">Cam Vernest</span><span class="testi-r">Partner · Spearhead</span></span>
-        <a class="testi-link" href="/case-study/spearhead">Read the story <span class="ar">&rarr;</span></a>
+        <span class="testi-av">PL</span>
+        <span><span class="testi-n">Partner</span><span class="testi-r">Pulse Law LLP</span></span>
+        <a class="testi-link" href="/case-study/asktodd">Read the story <span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -672,44 +656,31 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The suite</span>
-      <h2>Gambit for Financial Services.</h2>
-      <p class="lead">Five workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
+      <h2>Gambit for Legal.</h2>
+      <p class="lead">Three workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
     </div>
     <div class="suite-grid">
 
-      <a class="suite-card featured" href="/workers/bogan">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-ma)">B</span><div><div class="sc-name">Bogan</div><div class="sc-role">Buy-side</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Turns public signals into opened deals. Maps ownership and intent, verifies the decision-maker, and drafts the first touch in your voice.</p>
-        <div class="sc-tags"><span class="sc-tag">Private Equity</span><span class="sc-tag">Investment Banking</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Bogan <span class="ar">&rarr;</span></span></div>
-      </a>
-
-      <a class="suite-card" href="/workers/atlas">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-ma)">AT</span><div><div class="sc-name">Atlas</div><div class="sc-role">Sell-side</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Runs the sell-side process end to end. Builds the buyer universe, prepares the materials, and brings qualified buyers to the table.</p>
-        <div class="sc-tags"><span class="sc-tag">Investment Banking</span><span class="sc-tag">Private Equity</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Atlas <span class="ar">&rarr;</span></span></div>
-      </a>
-
-      <a class="suite-card" href="/workers/deal-room">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--f-ma)">DR</span><div><div class="sc-name">Deal Room</div><div class="sc-role">Post-LOI</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Carries a signed deal from LOI through diligence to close. Tracks every request, document, and open item so nothing stalls the timeline.</p>
-        <div class="sc-tags"><span class="sc-tag">Private Equity</span><span class="sc-tag">Investment Banking</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Deal Room <span class="ar">&rarr;</span></span></div>
-      </a>
-
-      <a class="suite-card" href="/workers/mira">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-core)">M</span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Screens live deal flow against your thesis and your pattern, scores the fit, and routes the matches to the partner who owns them. The mandate, working while you sleep.</p>
-        <div class="sc-tags"><span class="sc-tag">Private Equity</span><span class="sc-tag">Investment Banking</span><span class="sc-tag">Funds</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Mira <span class="ar">&rarr;</span></span></div>
+      <!-- AskTodd is deployed at Pulse Law LLP. /workers/asktodd page may not exist yet; link points to the live case study. -->
+      <a class="suite-card featured" href="/case-study/asktodd">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">T</span><div><div class="sc-name">AskTodd</div><div class="sc-role">Legal strategy</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">Modeled on decades of practice at Pulse Law. Helps clients understand their situation, weigh their options, and arrive at the first consultation prepared. Around the clock, across web, SMS, and voice.</p>
+        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Client intake</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/workers/reed">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--f-sup)">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Inbound questions, replies, and scheduling across web, SMS, and voice. The first answer, around the clock, in a register that fits the relationship.</p>
-        <div class="sc-tags"><span class="sc-tag">Wealth</span><span class="sc-tag">Banking</span><span class="sc-tag">Insurance</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <p class="sc-desc">Client questions, intake, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits a law firm.</p>
+        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">In-house</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Reed <span class="ar">&rarr;</span></span></div>
+      </a>
+
+      <a class="suite-card" href="/workers/mira">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">M</span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <p class="sc-desc">Turns your practice areas and matters into live research: background, conflicts, and the landscape around a new client or a new case.</p>
+        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Corporate</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">View Mira <span class="ar">&rarr;</span></span></div>
       </a>
 
     </div>
@@ -721,27 +692,15 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="fits-head">
       <span class="eyebrow">How it fits</span>
-      <h2>Works inside the stack your desk already runs in.</h2>
-      <p class="fits-sub">The output is grounded in your data and your systems, not the open web, so what a worker produces reads like your desk made it. No rip and replace, and nothing for your team to relearn.</p>
+      <h2>Works inside the systems your firm already runs.</h2>
+      <p class="fits-sub">Grounded in your practice management, your documents, and your firm's own approach, not the open web, so what a worker tells a client is what your firm would tell them. No rip and replace, and nothing for your team to relearn.</p>
     </div>
     <div class="fits-logos">
-      <div class="ftile">
-        <span class="fic"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><g fill="#00A1E0"><circle cx="44" cy="34" r="22"/><circle cx="72" cy="29" r="27"/><circle cx="95" cy="47" r="20"/><circle cx="29" cy="51" r="18"/><rect x="27" y="47" width="71" height="24" rx="12"/></g></svg></span>
-        <span class="flb">Salesforce</span>
-      </div>
-      <div class="ftile">
-        <span class="fic"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#E51E25"/><g fill="none" stroke="#fff" stroke-width="11" stroke-linejoin="miter"><path d="M30 31 H70"/><path d="M70 31 L30 69"/><path d="M30 69 H70"/></g></svg></span>
-        <span class="flb">ZoomInfo</span>
-      </div>
-      <!-- DealCloud: placeholder monogram mark, swap for the real logo when ready -->
-      <div class="ftile">
-        <span class="fic"><span class="dcmark">dc</span></span>
-        <span class="flb">DealCloud</span>
-      </div>
-      <div class="ftile">
-        <span class="fic"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="24" fill="#FFE83B"/><g fill="#141414"><g transform="rotate(0 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(51 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(103 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(154 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(206 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(257 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g><g transform="rotate(309 50 50)"><path d="M45 47 L50 9 L55 47 Z"/></g></g></svg></span>
-        <span class="flb">Apollo</span>
-      </div>
+      <!-- placeholder monogram tiles: swap for real Clio / NetDocuments / iManage / Twilio logos when licensed; confirm the actual integration list with Chris -->
+      <div class="ftile"><span class="fic"><span class="dcmark">cl</span></span><span class="flb">Clio</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">nd</span></span><span class="flb">NetDocuments</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">im</span></span><span class="flb">iManage</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">tw</span></span><span class="flb">Twilio</span></div>
     </div>
     <div class="fits-claims">
       <span>Runs on your infrastructure</span>
@@ -758,24 +717,23 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="section-head">
       <span class="eyebrow">Customers</span>
       <h2>The results speak for themselves.</h2>
-      <p class="lead">Real outcomes on real desks. The work that used to fill the first month of a mandate now happens before it starts.</p>
+      <p class="lead">Real outcomes at a real firm. The website visitors who used to leave now arrive as prepared, qualified consultations.</p>
     </div>
     <div class="res-grid">
 
-      <a class="res-card" href="/case-study/spearhead">
-        <div class="res-lg">Spearhead</div>
-        <div class="res-n">12</div>
-        <div class="res-nl">verified owners surfaced</div>
-        <p class="res-p">One county of public filings, joined to the business registry and verified in two weeks. Nothing spent on data, nothing left the box. Repeatable in any county.</p>
+      <a class="res-card" href="/case-study/asktodd">
+        <div class="res-lg">Pulse Law LLP</div>
+        <div class="res-n">80%</div>
+        <div class="res-nl">visitor to consultation</div>
+        <p class="res-p">Prospective clients who engage with AskTodd convert to booked consultations at a far higher rate than a traditional web form ever did.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
-      <!-- DRAFT result, pending real approved numbers from OceanPark -->
-      <a class="res-card" href="/case-study/oceanpark">
-        <div class="res-lg">OceanPark</div>
-        <div class="res-n">3&times;</div>
-        <div class="res-nl">more qualified deal flow</div>
-        <p class="res-p">Tripled the top of the funnel in a single quarter, without adding to the origination team. Every conversation started warm.</p>
+      <a class="res-card" href="/case-study/asktodd">
+        <div class="res-lg">Time on strategy</div>
+        <div class="res-n">20%</div>
+        <div class="res-nl">more internal efficiency</div>
+        <p class="res-p">Clients arrive prepared, so the legal team skips the first-hour orientation and goes straight to substantive strategy.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
@@ -786,12 +744,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>See what a worker does on your desk.</h2>
-    <p>Tell us the outcome you need, from the first signal to the signed deal. We will show you what it finds, on your data, in two weeks.</p>
+    <h2>See what a worker does for your firm.</h2>
+    <p>Tell us the outcome you need, from the first website visit to the booked consultation. We will show you what it does, on your practice, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
       <!-- One-pager PDF to be generated next; wire this to the real file path -->
-      <a href="/financial-services-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
+      <a href="/legal-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
     </div>
   </div>
 </section>
@@ -806,7 +764,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       </div>
       <div class="foot-links">
         <div class="foot-col">
-          <h4>Financial Services</h4>
+          <h4>Gambit for Legal</h4>
           <a href="#suite">The suite</a><a href="/factory">The Factory</a><a href="#results">Customers</a>
         </div>
         <div class="foot-col">
@@ -838,7 +796,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
 /* ----- hero video: play/pause toggle ----- */
 (function(){
-  var v=document.querySelector('.m-vid'),btn=document.getElementById('fsVidToggle');
+  var v=document.querySelector('.m-vid'),btn=document.getElementById('legalVidToggle');
   if(!v||!btn)return;
   function sync(){var p=v.paused;btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play video':'Pause video');}
   btn.addEventListener('click',function(){v.paused?v.play():v.pause();});
