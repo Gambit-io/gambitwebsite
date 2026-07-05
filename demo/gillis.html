@@ -28,6 +28,8 @@
     --c-outbound:#3D2B6B;  --c-outbound-soft:#EEE9F8;  --c-outbound-border:#D8D0ED;
     --c-coaching:#0E9A88;  --c-coaching-soft:#E4F8F4;  --c-coaching-border:#B0E8E0;
     --c-tools:#B8860B;     --c-tools-soft:#FBF4E2;     --c-tools-border:#E8D49C;
+    --c-desk:#C25E43;      --c-desk-soft:#FBEDE7;      --c-desk-border:#EFC7B8;
+    --c-anchor:#2F5D8A;    --c-anchor-soft:#E9F0F7;    --c-anchor-border:#C3D5E6;
     --m-violet:#8B5CF6; --m-lilac:#7C6BC4; --m-orange:#E8875B; --m-gold:#D4A843; --m-blue:#3B82F6;
     --hot:#E8875B; --hot-ink:#b0511f; --warm:#D4A843; --warm-ink:#8a6a17; --pipe:#7C6BC4;
 
@@ -198,7 +200,8 @@
   .space-tab svg{width:16px;height:16px}
   .space-tab.on{background:var(--brand);color:#fff;box-shadow:0 6px 14px -6px rgba(30,24,50,.45)}
   .space-tab:not(.on):hover{background:rgba(255,255,255,.95);color:var(--text)}
-  @media (max-width:940px){.space-tab span{display:none}.space-tab{padding:8px 12px}.topbar{gap:12px}}
+  @media (max-width:1200px){.space-tab{padding:8px 11px;font-size:12.5px}.space-tab svg{width:15px;height:15px}.topbar{gap:14px}}
+  @media (max-width:1060px){.space-tab span{display:none}.space-tab{padding:8px 12px}.topbar{gap:12px}}
   @media (max-width:560px){
     .topbar{padding:0 12px;gap:8px}
     .topbar .icon-btn{display:none}
@@ -710,6 +713,30 @@
   .ws-grid.full .ws-detail{position:static}
   /* grids self-adapt via auto-fit in every mode */
 
+  /* ===== suite panes: Scout, Front Desk, Anchor ===== */
+  .tier-chip{flex:none;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:16px;padding:6px 13px;white-space:nowrap}
+  .tier-chip.desk{color:var(--c-desk);background:var(--c-desk-soft);border-color:var(--c-desk-border)}
+  .lockchip{font-size:10.5px;font-weight:700;color:var(--muted);background:var(--bg);border:1px dashed var(--border);border-radius:14px;padding:4px 10px;justify-self:start;white-space:nowrap}
+  .ladder{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(120deg,var(--brand-soft),#fff);border:1px solid var(--brand-border);border-radius:16px;padding:18px 20px}
+  .ladder-tx{font-size:13.5px;line-height:1.55;color:var(--text-soft);max-width:56ch}
+  .ladder-tx b{color:var(--text)}
+
+  .desk-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+  @media(max-width:860px){.desk-grid{grid-template-columns:1fr}}
+  .desk-chatcard{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(30,24,50,.04),0 14px 30px -24px rgba(30,24,50,.25)}
+  .desk-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+  .dtile{font-size:13px;font-weight:600;color:var(--text);background:var(--c-desk-soft);border:1px solid var(--c-desk-border);border-radius:12px;padding:13px 12px;text-align:center;transition:transform .15s var(--ease),box-shadow .15s}
+  .dtile:hover{transform:translateY(-2px);box-shadow:0 10px 20px -14px rgba(194,94,67,.5)}
+  .desk-chat{display:flex;flex-direction:column;gap:9px;min-height:170px;max-height:300px;overflow-y:auto;background:var(--bg);border-radius:12px;padding:13px}
+  .desk-chat .msg{font-size:13px}
+  .capture-card{background:var(--surface);border:1px solid var(--c-desk-border);border-radius:18px;padding:18px;box-shadow:0 1px 2px rgba(30,24,50,.04),0 14px 30px -24px rgba(30,24,50,.25)}
+  .cap-h{font-family:'Sora';font-weight:600;font-size:15.5px;letter-spacing:-.01em}
+  .cap-sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin:5px 0 13px}
+  .cap-fields{display:flex;flex-direction:column;gap:9px;margin-bottom:13px}
+  .cap-f .fgl{margin-bottom:4px}
+  .cap-in{width:100%;font-family:inherit;font-size:13px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 11px;outline:none}
+  .cap-in:focus{border-color:var(--c-desk-border)}
+
   .fade{animation:fadeUp .45s var(--ease) both}
   @media (max-width:560px){
     .ws-kpis{grid-template-columns:1fr 1fr}
@@ -810,24 +837,7 @@
   <section class="screen" id="workScreen">
     <header class="topbar">
       <button class="lockup-btn" onclick="goHome()" title="Back to home"><div class="lockup" id="workLockup"></div></button>
-      <div class="space-tabs" role="tablist" aria-label="Workspace">
-        <button class="space-tab on" id="tabResearch" role="tab" onclick="setSpace('research')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-          <span>Research</span>
-        </button>
-        <button class="space-tab" id="tabAssess" role="tab" onclick="setSpace('assess')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 4 3 4-7"/></svg>
-          <span>Market Assessment</span>
-        </button>
-        <button class="space-tab" id="tabCoaching" role="tab" onclick="setSpace('coaching')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
-          <span>Coaching</span>
-        </button>
-        <button class="space-tab" id="tabChat" role="tab" onclick="setSpace('chat')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>AskGillis</span>
-        </button>
-      </div>
+      <div class="space-tabs" role="tablist" aria-label="Workspace" id="spaceTabs"></div>
       <div class="top-right">
         <button class="icon-btn" title="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
@@ -901,6 +911,188 @@
           </div></div>
           <div class="coach-foot">AskGillis, powered by Tammy's 28 years of hospitality sales</div>
         </div>
+      </div>
+    </main>
+
+    <!-- SCOUT: the low-cost, self-serve research door -->
+    <main class="work-wrap work-pane" id="paneScout">
+      <div class="rs-head">
+        <div><h1 class="rs-h1">Scout</h1><p class="rs-sub">Self-serve market intelligence for every property. Enter your hotel, see what you're missing.</p></div>
+        <span class="tier-chip">Included for every Choice property</span>
+      </div>
+      <div class="assess-run">
+        <input class="chat-input" type="text" value="Comfort Inn Brooklyn Center" aria-label="Your hotel">
+        <button class="run-btn">See my market
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="kn">6</div><div class="kl">Live signals near you</div><div class="kh"><i></i>2 are hot right now</div></div>
+        <div class="kpi"><div class="kn">23</div><div class="kl">Companies identified</div><div class="kh"><i></i>with a reason to book</div></div>
+        <div class="kpi"><div class="kn">3</div><div class="kl">Decision makers verified</div><div class="kh"><i></i>names, titles, and emails</div></div>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>What's driving room nights within 5 miles</h3><span class="ph-meta"><i></i>live signals, not a static list</span></div>
+        <div class="rrow rh"><span>Signal</span><span>Why it books rooms</span><span>Priority</span><span class="rl2">Est. demand</span></div>
+        <button class="rrow"><span class="rn">I-694 Lighting Replacement</span><span class="rc">Night crews need day-sleeper rooms</span><span class="prio hot">Hot</span><span class="rl2">Multi-season</span></button>
+        <button class="rrow"><span class="rn">Hwy 252 Corridor Rebuild</span><span class="rc">Paving crews staging nearby</span><span class="prio hot">Hot</span><span class="rl2">2 seasons</span></button>
+        <button class="rrow"><span class="rn">Fall Conference Calendar</span><span class="rc">Q4 overflow on peak weeks</span><span class="prio warm">Warm</span><span class="rl2">Peak weeks</span></button>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>Verified decision makers</h3><span class="ph-meta"><i></i>real people, checked before you call</span></div>
+        <div class="rrow rh"><span>Contact</span><span>Company</span><span>Email</span><span class="rl2"></span></div>
+        <div class="rrow"><span class="rn">April Ryan · Project Manager</span><span class="rc">Short Elliott Hendrickson</span><span class="dstatus">april.ryan@sehinc.com</span><span class="rl2"></span></div>
+        <div class="rrow"><span class="rn">Marcus Alvarez · Field Super</span><span class="rc">Design Electric, Inc.</span><span class="lockchip">Included with GillisOS</span><span class="rl2"></span></div>
+        <div class="rrow"><span class="rn">Carl Denton · Project Director</span><span class="rc">Meridian Paving Group</span><span class="lockchip">Included with GillisOS</span><span class="rl2"></span></div>
+      </div>
+      <div class="ladder">
+        <div class="ladder-tx"><b>Ready to work these?</b> GillisOS adds the deep research, verified contact lists, and outreach written and sent for you.</div>
+        <button class="run-btn" id="scoutPushBtn" onclick="scoutPush()">Push to GillisOS
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </main>
+
+    <!-- ASKGILLIS FRONT DESK: the reception surface -->
+    <main class="work-wrap work-pane" id="paneDesk">
+      <div class="rs-head">
+        <div><h1 class="rs-h1">Front Desk</h1><p class="rs-sub">AskGillis at reception: answers for the guest in front of you, and every walk-in with a project becomes a lead.</p></div>
+        <span class="tier-chip desk">Comfort Inn Brooklyn Center · Desk mode</span>
+      </div>
+      <div class="desk-grid">
+        <div class="desk-chatcard">
+          <div class="desk-tiles">
+            <button class="dtile" onclick="deskAsk('rates')">Weekly crew rates</button>
+            <button class="dtile" onclick="deskAsk('group')">Rooms for a group tonight</button>
+            <button class="dtile" onclick="deskAsk('late')">Late checkout policy</button>
+            <button class="dtile" onclick="deskAsk('local')">Open late nearby</button>
+          </div>
+          <div class="desk-chat" id="deskChat">
+            <div class="msg tam">Hi! I'm the desk assistant. Tap a question or type what the guest is asking.</div>
+          </div>
+          <div class="agc-input" style="margin:10px 0 0">
+            <input class="chat-input" id="deskInput" type="text" placeholder="Type the guest's question..." style="border:none;padding:4px 0" onkeydown="if(event.key==='Enter')deskSend()">
+            <span class="snd" onclick="deskSend()" style="cursor:pointer"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="desk-side">
+          <div class="capture-card">
+            <div class="cap-h">Walk-in with a project?</div>
+            <p class="cap-sub">Capture it in 10 seconds. It lands in GillisOS and your RDOS follows up.</p>
+            <div class="cap-fields">
+              <div class="cap-f"><span class="fgl">Company</span><input class="cap-in" value="Halvorsen Roofing" aria-label="Company"></div>
+              <div class="cap-f"><span class="fgl">Need</span><input class="cap-in" value="8 rooms, about 6 weeks" aria-label="Need"></div>
+              <div class="cap-f"><span class="fgl">Contact</span><input class="cap-in" value="Foreman · 612 555 0148" aria-label="Contact"></div>
+            </div>
+            <button class="run-btn" id="deskCapBtn" onclick="deskCapture()" style="width:100%;justify-content:center">Capture to GillisOS</button>
+          </div>
+          <div class="panel-card" style="margin-top:14px">
+            <div class="panel-head"><h3>Captured today</h3><span class="ph-meta"><i></i>flows to your RDOS</span></div>
+            <div id="deskCaptured">
+              <div class="rrow"><span class="rn">Neset Surveying</span><span class="rc">4 rooms, two weeks</span><span class="dstatus">In GillisOS</span><span class="rl2">9:20 AM</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ANCHOR: key national accounts -->
+    <main class="work-wrap work-pane" id="paneAnchor">
+      <div class="rs-head">
+        <div><h1 class="rs-h1">Anchor</h1><p class="rs-sub">Your key national accounts, managed like the assets they are. Anchor pushes their demand down to the right properties instead of hunting for it.</p></div>
+        <button class="run-btn" onclick="alert('Prototype: opens the new national account intake.')">Add account
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="kn">28</div><div class="kl">National accounts</div><div class="kh"><i></i>5 segments</div></div>
+        <div class="kpi"><div class="kn">14,200</div><div class="kl">Room nights YTD</div><div class="kh"><i></i>routed to properties</div></div>
+        <div class="kpi kpi-need"><div class="kn">3</div><div class="kl">Need action</div><div class="kh"><i></i>QBR due or at risk</div></div>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>Key accounts</h3><span class="ph-meta"><i></i>expand for the account plan</span></div>
+        <div class="acc" style="border:none;border-radius:0;margin:0;border-bottom:1px solid var(--border-soft)">
+          <button class="acc-head" onclick="accToggle(this)">
+            <span class="acc-t">Turner Construction<span class="acc-sub">Construction · 42 properties</span></span>
+            <span class="acc-r"><span class="dstatus">6,400 rn YTD</span><span class="prio warm">QBR due</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="acc-body">
+            <div class="cgrid">
+              <div class="fg"><span class="fgl">Account owner</span><span class="fgv">Dana W., National Accounts</span></div>
+              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">T. Rios, Travel Program Lead</span></div>
+              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">National crew rate, renewed Jan</span></div>
+              <div class="fg"><span class="fgl">Next action</span><span class="fgv">QBR next week, growth plan attached</span></div>
+            </div>
+            <div class="dfield"><span class="dfl">Live routing</span><p>Crew block for the Columbus hospital project routed to 3 Ohio properties this week. Two more projects breaking ground in Q3, mapped to nearby hotels.</p></div>
+          </div>
+        </div>
+        <div class="acc" style="border:none;border-radius:0;margin:0;border-bottom:1px solid var(--border-soft)">
+          <button class="acc-head" onclick="accToggle(this)">
+            <span class="acc-t">Live Nation<span class="acc-sub">Entertainment tours · 31 properties</span></span>
+            <span class="acc-r"><span class="dstatus">3,850 rn YTD</span><span class="prio hot">Growing</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="acc-body">
+            <div class="cgrid">
+              <div class="fg"><span class="fgl">Account owner</span><span class="fgv">Dana W., National Accounts</span></div>
+              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">Tour logistics desk</span></div>
+              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">Tour block rate, 12 markets</span></div>
+              <div class="fg"><span class="fgl">Next action</span><span class="fgv">Fall tour calendar lands Friday</span></div>
+            </div>
+            <div class="dfield"><span class="dfl">Live routing</span><p>Fall tour routing drafted: 12 markets, blocks held at the closest property to each venue. Crew rooming lists sync automatically.</p></div>
+          </div>
+        </div>
+        <div class="acc" style="border:none;border-radius:0;margin:0;border-bottom:1px solid var(--border-soft)">
+          <button class="acc-head" onclick="accToggle(this)">
+            <span class="acc-t">Amazon Logistics<span class="acc-sub">Distribution · 58 properties</span></span>
+            <span class="acc-r"><span class="dstatus">2,700 rn YTD</span><span class="prio hot">Growing</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="acc-body">
+            <div class="cgrid">
+              <div class="fg"><span class="fgl">Account owner</span><span class="fgv">M. Chen, National Accounts</span></div>
+              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">Regional launch team</span></div>
+              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">Launch-surge rate, per market</span></div>
+              <div class="fg"><span class="fgl">Next action</span><span class="fgv">Two new facility launches flagged</span></div>
+            </div>
+            <div class="dfield"><span class="dfl">Live routing</span><p>New fulfillment center launches surface as signals in GillisOS and route here automatically when the account is national. Two launches in the southeast mapped to 6 properties.</p></div>
+          </div>
+        </div>
+        <div class="acc" style="border:none;border-radius:0;margin:0;border-bottom:1px solid var(--border-soft)">
+          <button class="acc-head" onclick="accToggle(this)">
+            <span class="acc-t">GSA Federal Travel<span class="acc-sub">Government · 66 properties</span></span>
+            <span class="acc-r"><span class="dstatus">890 rn YTD</span><span class="prio pipe">Steady</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="acc-body">
+            <div class="cgrid">
+              <div class="fg"><span class="fgl">Account owner</span><span class="fgv">M. Chen, National Accounts</span></div>
+              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">Agency travel coordinators</span></div>
+              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">Per-diem compliant, all markets</span></div>
+              <div class="fg"><span class="fgl">Next action</span><span class="fgv">Annual rate load, on track</span></div>
+            </div>
+            <div class="dfield"><span class="dfl">Live routing</span><p>Steady per-diem volume. Storm-response and disaster deployments spike regionally and route to available properties within the response zone.</p></div>
+          </div>
+        </div>
+        <div class="acc" style="border:none;border-radius:0;margin:0">
+          <button class="acc-head" onclick="accToggle(this)">
+            <span class="acc-t">Siemens Field Services<span class="acc-sub">Industrial services · 24 properties</span></span>
+            <span class="acc-r"><span class="dstatus">640 rn YTD</span><span class="prio warm">At risk</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="acc-body">
+            <div class="cgrid">
+              <div class="fg"><span class="fgl">Account owner</span><span class="fgv">Dana W., National Accounts</span></div>
+              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">Field deployment scheduler</span></div>
+              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">Field-tech rate, lapsing Q3</span></div>
+              <div class="fg"><span class="fgl">Next action</span><span class="fgv">Renewal call, volume down 18%</span></div>
+            </div>
+            <div class="dfield"><span class="dfl">Live routing</span><p>Volume drifting to a competitor program in two regions. Anchor flagged the dip and drafted the win-back outreach for the account owner.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>Routed this week</h3><span class="ph-meta"><i></i>national demand, delivered to properties</span></div>
+        <div class="rrow rh"><span>Routing</span><span>Account</span><span>Properties</span><span class="rl2">Rooms</span></div>
+        <div class="rrow"><span class="rn">Columbus hospital project crew block</span><span class="rc">Turner Construction</span><span class="dstatus">3 in Ohio</span><span class="rl2">31 rooms</span></div>
+        <div class="rrow"><span class="rn">Fall tour, midwest leg</span><span class="rc">Live Nation</span><span class="dstatus">4 markets</span><span class="rl2">48 rooms</span></div>
+        <div class="rrow"><span class="rn">Fulfillment center launch, Savannah</span><span class="rc">Amazon Logistics</span><span class="dstatus">2 properties</span><span class="rl2">22 rooms</span></div>
       </div>
     </main>
 
@@ -1027,7 +1219,18 @@ const ic = {
   coaching:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>`,
   assess:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 4 3 4-7"/></svg>`,
   chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-  scout:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>`,
+  scout:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>`,
+  desk:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16v2H4z"/><path d="M12 6a7 7 0 0 1 7 7v4H5v-4a7 7 0 0 1 7-7z"/><path d="M12 3v3"/></svg>`,
+  anchor:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><path d="M12 8v13"/><path d="M4 13a8 8 0 0 0 16 0"/><path d="M9 13H4M20 13h-5"/></svg>`,
+};
+const TABIC = {
+  search:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>`,
+  chart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 4 3 4-7"/></svg>`,
+  trend:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>`,
+  bubble:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  scope:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>`,
+  bell:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16v2H4z"/><path d="M12 6a7 7 0 0 1 7 7v4H5v-4a7 7 0 0 1 7-7z"/><path d="M12 3v3"/></svg>`,
+  anchor:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><path d="M12 8v13"/><path d="M4 13a8 8 0 0 0 16 0"/><path d="M9 13H4M20 13h-5"/></svg>`,
 };
 const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>`;
 const arrowL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>`;
@@ -1052,6 +1255,18 @@ const TENANTS = {
       {icon:ic.chat,     t:"AskGillis", d:"Answers, anytime"},
     ],
     user:{name:"Ryan", role:"Creative Director", initials:"RY"},
+    spaces:[
+      {id:'research', label:'Research', icon:'search'},
+      {id:'assess', label:'Market Assessment', icon:'chart'},
+      {id:'coaching', label:'Coaching', icon:'trend'},
+      {id:'chat', label:'AskGillis', icon:'bubble'},
+    ],
+    pillars:[
+      {space:"research", accent:"outbound", title:"Research", desc:"Backyard Search, signals, leads, and contacts. Find the demand within five miles of every hotel and reach out first.", icon:'search', meta:"85 live signals", live:true},
+      {space:"assess", accent:"tools", title:"Dynamic Market Assessment", desc:"A live read on any market: what is driving demand, where the room nights come from, and the moves to make next.", icon:'chart', meta:"Refreshed live", live:true},
+      {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment: outreach support, objection handling, role play, and the Daily Sharpener, built on Room to Grow.", icon:'trend', meta:"Always on", live:true},
+      {space:"chat", accent:"chat", title:"AskGillis", desc:"The open chat. Answers in Tammy's voice, on anything from a prospect to a policy, whenever you need a hand.", icon:'bubble', meta:"Always on", live:true},
+    ],
     greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
     chatGreeting:"Hi Ryan! I'm here whenever you need a hand. Ask me about a prospect, a play, or anything from the Gillis library.",
     chips:["They already have a preferred hotel","Sharpen my cold email","What's a good follow-up cadence?"],
@@ -1065,24 +1280,34 @@ const TENANTS = {
     lede:"Research, coaching, and an always-on assistant tuned to the Choice playbook, behind your own sign-in.",
     signSub:"Use your Choice Hotels work account to continue.",
     values:[
-      {icon:ic.outbound, t:"Research", d:"Find and win new business"},
-      {icon:ic.assess,   t:"Market Assessment", d:"A live read on any market"},
+      {icon:ic.outbound, t:"GillisOS", d:"Research and outreach, bundled"},
+      {icon:ic.scout,    t:"Scout", d:"Self-serve, every property"},
+      {icon:ic.desk,     t:"Front Desk", d:"Walk-ins become leads"},
+      {icon:ic.anchor,   t:"Anchor", d:"National accounts, routed"},
       {icon:ic.coaching, t:"Coaching", d:"Tuned to the Choice playbook"},
-      {icon:ic.chat,     t:"AskGillis", d:"Answers, anytime"},
     ],
     user:{name:"Dana", role:"Brand Sales Manager", initials:"DA"},
+    spaces:[
+      {id:'research', label:'GillisOS', icon:'search'},
+      {id:'scout', label:'Scout', icon:'scope'},
+      {id:'desk', label:'Front Desk', icon:'bell'},
+      {id:'anchor', label:'Anchor', icon:'anchor'},
+      {id:'coaching', label:'Coaching', icon:'trend'},
+      {id:'chat', label:'AskGillis', icon:'bubble'},
+    ],
+    pillars:[
+      {space:"research", accent:"outbound", title:"GillisOS", desc:"Research and outreach, bundled. Signals within five miles of every property, verified contacts, and the first email written and sent.", icon:'search', meta:"85 live signals", live:true},
+      {space:"scout", accent:"tools", title:"Scout", desc:"The self-serve entry point for every property. Enter your hotel, see the demand you're missing, at a price any GM can say yes to.", icon:'scope', meta:"Every property", live:true},
+      {space:"desk", accent:"desk", title:"AskGillis Front Desk", desc:"Reception, upgraded. Answers for the guest at the desk, and every walk-in with a project becomes a captured lead.", icon:'bell', meta:"Desk mode", live:true},
+      {space:"anchor", accent:"anchor", title:"Anchor", desc:"Key national accounts, managed like assets. Routes Turner, Live Nation, and GSA demand down to the right properties.", icon:'anchor', meta:"28 accounts", live:true},
+      {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment, tuned to the Choice playbook: outreach support, objections, role play, and the Daily Sharpener.", icon:'trend', meta:"Always on", live:true},
+    ],
     greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
     chatGreeting:"Hi Dana! Ask me anything about Choice selling, your accounts, or what to do next on a lead.",
     chips:["Research a new lead","Draft an outreach email","They already have a preferred hotel"],
   },
 };
 
-const PILLARS = [
-  {space:"research", accent:"outbound", title:"Research", desc:"Backyard Search, signals, leads, and contacts. Find the demand within five miles of every hotel and reach out first.", icon:ic.outbound, meta:"85 live signals", live:true},
-  {space:"assess", accent:"tools", title:"Dynamic Market Assessment", desc:"A live read on any market: what is driving demand, where the room nights come from, and the moves to make next.", icon:ic.assess, meta:"Refreshed live", live:true},
-  {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment: outreach support, objection handling, role play, and the Daily Sharpener, built on Room to Grow.", icon:ic.coaching, meta:"Always on", live:true},
-  {space:"chat", accent:"chat", title:"AskGillis", desc:"The open chat. Answers in Tammy's voice, on anything from a prospect to a policy, whenever you need a hand.", icon:ic.chat, meta:"Always on", live:true},
-];
 const TOOLS = [
   {icon:ic.scout, name:"Scout Search", desc:"Prospect and research"},
 ];
@@ -1673,9 +1898,11 @@ function render(key){
   const h = new Date().getHours();
   document.getElementById('greetTime').textContent = h<12?'Good morning':h<18?'Good afternoon':'Good evening';
 
-  document.getElementById('pillarGrid').innerHTML = PILLARS.map(p=>`
+  document.getElementById('spaceTabs').innerHTML = t.spaces.map((s,i)=>
+    `<button class="space-tab" data-space="${s.id}" role="tab" onclick="setSpace('${s.id}')">${TABIC[s.icon]}<span>${s.label}</span></button>`).join('');
+  document.getElementById('pillarGrid').innerHTML = t.pillars.map(p=>`
     <button class="pillar" style="--accent:var(--c-${p.accent});--accent-soft:var(--c-${p.accent}-soft);--accent-border:var(--c-${p.accent}-border)" onclick="openWorkspace('${p.space}')">
-      <div class="p-top"><span class="p-icon">${p.icon}</span></div>
+      <div class="p-top"><span class="p-icon">${TABIC[p.icon]||p.icon}</span></div>
       <h3>${p.title}</h3>
       <p class="desc">${p.desc}</p>
       <div class="pillar-foot">
@@ -1706,6 +1933,7 @@ function render(key){
     const el = document.getElementById(id);
     el.classList.remove('stagger'); void el.offsetWidth; el.classList.add('stagger');
   });
+  ensureSpace();
 }
 function setTenant(key){ render(key); }
 
@@ -1756,24 +1984,34 @@ function openWorkspace(space){
   show('workScreen');
   setSpace(space);
 }
-const SPACES = {
-  research:{tab:'tabResearch', pane:'paneResearch', fab:true},
-  assess:{tab:'tabAssess', pane:'paneAssess', fab:true},
-  coaching:{tab:'tabCoaching', pane:'paneCoaching', fab:false, focus:'coachInput'},
-  chat:{tab:'tabChat', pane:'paneChat', fab:false, focus:'chatInput2'},
+const PANES = {
+  research:{pane:'paneResearch', fab:true},
+  assess:{pane:'paneAssess', fab:true},
+  scout:{pane:'paneScout', fab:true},
+  desk:{pane:'paneDesk', fab:false},
+  anchor:{pane:'paneAnchor', fab:true},
+  coaching:{pane:'paneCoaching', fab:false, focus:'coachInput'},
+  chat:{pane:'paneChat', fab:false, focus:'chatInput2'},
 };
 function setSpace(space){
-  const s = SPACES[space] || SPACES.research;
-  for(const k in SPACES){
-    document.getElementById(SPACES[k].tab).classList.toggle('on', k===space);
-    document.getElementById(SPACES[k].pane).classList.toggle('on', k===space);
-  }
-  /* the coach panes ARE the conversation, so the side panel only lives outside them */
+  const t = TENANTS[currentTenant];
+  if(!t.spaces.some(s=>s.id===space)) space = t.spaces[0].id;
+  const s = PANES[space];
+  document.querySelectorAll('#spaceTabs .space-tab').forEach(b=>b.classList.toggle('on', b.dataset.space===space));
+  for(const k in PANES) document.getElementById(PANES[k].pane).classList.toggle('on', k===space);
+  /* the coach and desk surfaces own their own conversation, so the Tammy panel lives outside them */
   closeChat();
   document.getElementById('chatFab').style.display = s.fab ? 'grid' : 'none';
-  if(!s.fab){
+  if(!s.fab && space!=='desk'){
     renderThreadAll();
     if(s.focus) setTimeout(()=>document.getElementById(s.focus).focus(), 250);
+  }
+}
+/* tenant switch while the workspace is open: snap to a space this tenant has */
+function ensureSpace(){
+  if(document.getElementById('workScreen').classList.contains('is-active')){
+    const onTab = document.querySelector('#spaceTabs .space-tab.on');
+    setSpace(onTab ? onTab.dataset.space : TENANTS[currentTenant].spaces[0].id);
   }
 }
 function openCoaching(){
@@ -1801,6 +2039,54 @@ function toggleChat(){
   }
 }
 function closeChat(){ panel.classList.remove('open'); }
+
+/* ============================================================
+   SUITE INTERACTIONS: Scout, Front Desk, Anchor
+   ============================================================ */
+function scoutPush(){
+  const b = document.getElementById('scoutPushBtn');
+  b.textContent = 'Pushed. Opening GillisOS...';
+  setTimeout(()=>{ setSpace('research'); b.innerHTML = 'Push to GillisOS <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>'; }, 700);
+}
+const DESK_ANSWERS = {
+  rates:"For 7 nights or more we apply the extended-stay rate automatically. For a crew of 4 or more rooms, I can hold a block right now and flag the sales team for a custom rate. Want me to start that hold?",
+  group:"Tonight we have 14 rooms available, 9 tomorrow. For 5 or more rooms I can open a group hold and price it as a block. How many do they need?",
+  late:"Late checkout is 1pm on request, 3pm for rewards members when the house allows. For night-shift crews we can flip the schedule entirely: quiet floors, daytime housekeeping holds.",
+  local:"Open late nearby: the 24 hour diner two blocks north, the grocery with a hot counter until 11, and the laundromat until midnight. Want me to print the crew card with all three?",
+};
+function deskAppend(html, who){
+  const el = document.getElementById('deskChat');
+  const d = document.createElement('div');
+  d.className = 'msg ' + who;
+  d.innerHTML = html;
+  el.appendChild(d);
+  el.scrollTop = el.scrollHeight;
+}
+function deskAsk(key){
+  const labels = {rates:'Weekly crew rates', group:'Rooms for a group tonight', late:'Late checkout policy', local:'Open late nearby'};
+  deskAppend(labels[key], 'me');
+  setTimeout(()=>deskAppend(DESK_ANSWERS[key], 'tam'), 500);
+}
+function deskSend(){
+  const inp = document.getElementById('deskInput');
+  const v = inp.value.trim(); if(!v) return;
+  inp.value = '';
+  deskAppend(v, 'me');
+  setTimeout(()=>deskAppend("This is a prototype, so I answer the four quick questions for now. In the live product this is where the desk assistant responds from your property's own policies and rates.", 'tam'), 500);
+}
+function deskCapture(){
+  const b = document.getElementById('deskCapBtn');
+  const co = document.querySelectorAll('.cap-in')[0].value || 'Walk-in lead';
+  const need = document.querySelectorAll('.cap-in')[1].value || '';
+  b.textContent = 'Captured. Routed to your RDOS.';
+  b.style.background = 'linear-gradient(140deg,var(--teal),var(--teal-dark))';
+  const list = document.getElementById('deskCaptured');
+  const row = document.createElement('div');
+  row.className = 'rrow';
+  row.innerHTML = '<span class="rn">'+co+'</span><span class="rc">'+need+'</span><span class="dstatus">In GillisOS</span><span class="rl2">Just now</span>';
+  list.prepend(row);
+  setTimeout(()=>{ b.textContent = 'Capture to GillisOS'; }, 2600);
+}
 
 /* boot */
 render('gillis');
