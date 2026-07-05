@@ -24,7 +24,7 @@
   /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
   --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
   /* roster audit additions (reserve palette) */
-  --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
+  --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
   --w-gillis:#1e1745;
   --ink:#15110d;
   --ink-2:#1f1a14;
@@ -522,8 +522,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <a class="mi mi-w" href="/public-sector"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
           <a class="mi mi-w" href="/logistics"><span class="wmark s24" style="--wm:var(--w-harlo)"><b>H</b></span><span class="mi-tx"><span class="mi-name">Harlo <span class="mi-role">Freight</span></span></span></a>
           <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
-          <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-bibi)"><b>BI</b></span><span class="mi-tx"><span class="mi-name">AskBibi <span class="mi-role">Media</span></span></span></a>
-          <a class="mi mi-w" href="/business-services"><span class="wmark s24" style="--wm:var(--w-geotab)"><b>G</b></span><span class="mi-tx"><span class="mi-name">Geotab <span class="mi-role">Sponsorship</span></span></span></a>
           <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
         </div>
         <div class="mcol">
@@ -612,8 +610,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <a href="/public-sector"><span class="mn">Chloe</span> &middot; Civic</a>
       <a href="/logistics"><span class="mn">Harlo</span> &middot; Freight</a>
       <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
-      <a href="/business-services"><span class="mn">AskBibi</span> &middot; Media</a>
-      <a href="/business-services"><span class="mn">Geotab</span> &middot; Sponsorship</a>
       <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
       <div class="msec-lbl">Care</div>
       <a href="/healthcare"><span class="mn">AskEllyn</span> &middot; Breast cancer</a>
@@ -753,13 +749,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="dawn-body">
         <div class="dawn-rail" role="tablist" aria-label="Companions">
           <div class="dawn-rl">Companions</div>
-          <button class="drow on" role="tab" aria-selected="true" data-conv="chaddict"><span class="wmark s28 two" style="--wm:var(--w-chaddict)"><b>CH</b></span><span><span class="dn">Chaddict</span><span class="du">Addiction &middot; Infiniti Group</span></span><span class="dlive"></span></button>
-          <button class="drow" role="tab" aria-selected="false" data-conv="eva"><span class="wmark s28 two" style="--wm:var(--w-evamarie)"><b>EV</b></span><span><span class="dn">AskEvaMarie</span><span class="du">Recovery &middot; NEM Recovery</span></span><span class="dlive"></span></button>
+          <button class="drow on" role="tab" aria-selected="true" data-conv="chaddict"><span class="wmark s28" style="--wm:var(--w-dawn)"><b>D</b></span><span><span class="dn">Chaddict</span><span class="du">Addiction &middot; Infiniti Group</span></span><span class="dlive"></span></button>
+          <button class="drow" role="tab" aria-selected="false" data-conv="eva"><span class="wmark s28" style="--wm:var(--w-dawn)"><b>D</b></span><span><span class="dn">AskEvaMarie</span><span class="du">Recovery &middot; NEM Recovery</span></span><span class="dlive"></span></button>
         </div>
         <div class="dawn-panel">
 
           <div class="dpane on" data-conv="chaddict">
-            <div class="dpane-h"><span class="wmark s36 two" style="--wm:var(--w-chaddict)"><b>CH</b></span><span><div class="pn">Chaddict</div><div class="pr">Addiction support &middot; built on Chad Carlsen, Infiniti Group</div></span></div>
+            <div class="dpane-h"><span class="wmark s36" style="--wm:var(--w-dawn)"><b>D</b></span><span><div class="pn">Chaddict</div><div class="pr">Addiction support &middot; built on Chad Carlsen, Infiniti Group</div></span></div>
             <div class="conv">
               <div class="dmsg user"><div class="who">Visitor</div>I don't think I have a problem. My wife does.</div>
               <div class="dmsg co"><div class="who">Chaddict</div>Fair enough, and you don't have to put a label on any of it. I'm not here to talk you into something. What is going on at home that had you typing this at all?</div>
@@ -768,7 +764,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           </div>
 
           <div class="dpane" data-conv="eva">
-            <div class="dpane-h"><span class="wmark s36 two" style="--wm:var(--w-evamarie)"><b>EV</b></span><span><div class="pn">AskEvaMarie</div><div class="pr">Recovery support &middot; built on Natalie Eva Marie, NEM Recovery</div></span></div>
+            <div class="dpane-h"><span class="wmark s36" style="--wm:var(--w-dawn)"><b>D</b></span><span><div class="pn">AskEvaMarie</div><div class="pr">Recovery support &middot; built on Natalie Eva Marie, NEM Recovery</div></span></div>
             <div class="conv">
               <div class="dmsg user"><div class="who">Visitor</div>I relapsed last week and I feel like a failure.</div>
               <div class="dmsg co"><div class="who">AskEvaMarie</div>You are not a failure, you are in it, and it takes something to even say that out loud. I have been exactly where you are. Relapse is part of a lot of recovery stories, including mine. Do you want to talk about what led up to it?</div>
