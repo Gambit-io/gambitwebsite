@@ -23,6 +23,7 @@
 :root{
   /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
   --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
   /* roster audit additions (reserve palette) */
   --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
   --ink:#15110d;
@@ -76,7 +77,7 @@
 .wmark.two{letter-spacing:-.02em}
 .wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
 /* role glyphs: supporting language in the Products megamenu (never an avatar) */
-.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
+.mi.mi-w{display:flex;gap:10px;align-items:center}
 .mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
 .mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .mi:hover .mi-glyph{color:var(--clay-deep)}
@@ -630,18 +631,29 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       </div>
       <div class="grid-prod">
         <div class="mcol">
-          <div class="collabel">Go to market</div>
-          <a class="mi mi-w" href="/workers/mira"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></span><span class="mi-tx"><span class="mi-name">Mira <span class="mi-role">Research</span></span><span class="mi-desc">Turns your ICP and battle cards into live market and account research.</span></span></a>
+          <div class="collabel">Growth</div>
+          <a class="mi mi-w" href="/workers/mira"><span class="wmark s24" style="--wm:var(--w-mira)"><b>M</b></span><span class="mi-tx"><span class="mi-name">Mira <span class="mi-role">Research</span></span></span></a>
+          <a class="mi mi-w" href="/workers/bogan"><span class="wmark s24" style="--wm:var(--w-bogan)"><b>B</b></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span></span></a>
+          <a class="mi mi-w" href="/workers/atlas"><span class="wmark s24 two" style="--wm:var(--w-atlas)"><b>AT</b></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span></span></a>
+          <a class="mi mi-w" href="/workers/dealio"><span class="wmark s24 two" style="--wm:var(--w-dealio)"><b>DE</b></span><span class="mi-tx"><span class="mi-name">Dealio <span class="mi-role">Post-LOI</span></span></span></a>
         </div>
         <div class="mcol">
-          <div class="collabel">M&amp;A</div>
-          <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
-          <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
-          <a class="mi mi-w" href="/workers/dealio"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Dealio <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
+          <div class="collabel">Operations</div>
+          <a class="mi mi-w" href="/workers/jericho"><span class="wmark s24" style="--wm:var(--w-jericho)"><b>J</b></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span></span></a>
+          <a class="mi mi-w" href="/public-sector"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
+          <a class="mi mi-w" href="/logistics"><span class="wmark s24" style="--wm:var(--w-harlo)"><b>H</b></span><span class="mi-tx"><span class="mi-name">Harlo <span class="mi-role">Freight</span></span></span></a>
+          <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
+          <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-bibi)"><b>BI</b></span><span class="mi-tx"><span class="mi-name">AskBibi <span class="mi-role">Media</span></span></span></a>
+          <a class="mi mi-w" href="/business-services"><span class="wmark s24" style="--wm:var(--w-geotab)"><b>G</b></span><span class="mi-tx"><span class="mi-name">Geotab <span class="mi-role">Sponsorship</span></span></span></a>
+          <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
         </div>
         <div class="mcol">
-          <div class="collabel">Support</div>
-          <a class="mi mi-w" href="/workers/jericho"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
+          <div class="collabel">Care</div>
+          <a class="mi mi-w" href="/healthcare"><span class="wmark s24" style="--wm:var(--w-askellyn)"><b>E</b></span><span class="mi-tx"><span class="mi-name">AskEllyn <span class="mi-role">Breast cancer</span></span></span></a>
+          <a class="mi mi-w" href="/healthcare#dawn"><span class="wmark s24" style="--wm:var(--w-dawn)"><b>D</b></span><span class="mi-tx"><span class="mi-name">Dawn <span class="mi-role">Recovery</span></span></span></a>
+          <a class="mi mi-w" href="/healthcare"><span class="wmark s24 two" style="--wm:var(--w-ayla)"><b>AY</b></span><span class="mi-tx"><span class="mi-name">Ayla <span class="mi-role">Disabilities</span></span></span></a>
+          <a class="mi mi-w" href="/healthcare"><span class="wmark s24 two" style="--wm:var(--w-askashleigh)"><b>AS</b></span><span class="mi-tx"><span class="mi-name">AskAshleigh <span class="mi-role">Caregiving</span></span></span></a>
+          <a class="mi mi-w" href="/healthcare#clinic"><span class="wmark s24 two" style="--wm:var(--w-clinic)"><b>CL</b></span><span class="mi-tx"><span class="mi-name">Clinic <span class="mi-role">In-clinic</span></span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>
@@ -710,14 +722,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="msec">
     <button class="msec-h">Products <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
     <div class="msec-body">
-      <div class="msec-lbl">Go to market</div>
-      <a href="/workers/mira"><span class="mn">Mira</span> · Research</a>
-      <div class="msec-lbl">M&amp;A</div>
-      <a href="/workers/bogan"><span class="mn">Bogan</span> · Buy-side</a>
-      <a href="/workers/atlas"><span class="mn">Atlas</span> · Sell-side</a>
-      <a href="/workers/dealio"><span class="mn">Dealio</span> · Post-LOI</a>
-      <div class="msec-lbl">Support</div>
-      <a href="/workers/jericho"><span class="mn">Jericho</span> · Support</a>
+      <div class="msec-lbl">Growth</div>
+      <a href="/workers/mira"><span class="mn">Mira</span> &middot; Research</a>
+      <a href="/workers/bogan"><span class="mn">Bogan</span> &middot; Buy-side</a>
+      <a href="/workers/atlas"><span class="mn">Atlas</span> &middot; Sell-side</a>
+      <a href="/workers/dealio"><span class="mn">Dealio</span> &middot; Post-LOI</a>
+      <div class="msec-lbl">Operations</div>
+      <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
+      <a href="/public-sector"><span class="mn">Chloe</span> &middot; Civic</a>
+      <a href="/logistics"><span class="mn">Harlo</span> &middot; Freight</a>
+      <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
+      <a href="/business-services"><span class="mn">AskBibi</span> &middot; Media</a>
+      <a href="/business-services"><span class="mn">Geotab</span> &middot; Sponsorship</a>
+      <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
+      <div class="msec-lbl">Care</div>
+      <a href="/healthcare"><span class="mn">AskEllyn</span> &middot; Breast cancer</a>
+      <a href="/healthcare#dawn"><span class="mn">Dawn</span> &middot; Recovery</a>
+      <a href="/healthcare"><span class="mn">Ayla</span> &middot; Disabilities</a>
+      <a href="/healthcare"><span class="mn">AskAshleigh</span> &middot; Caregiving</a>
+      <a href="/healthcare#clinic"><span class="mn">Clinic</span> &middot; In-clinic</a>
       <div class="msec-lbl">Platform</div>
       <a href="/factory"><span class="mn">The Factory</span></a>
       <a href="/factory#integrations"><span class="mn">Integrations</span></a>
