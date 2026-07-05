@@ -725,7 +725,7 @@
   .pms-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#1b202b;border-bottom:1px solid #313a4b}
   .pms-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.14)}
   .pms-title{margin-left:8px;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.65);font-weight:600}
-  .pms-user{margin-left:auto;font-size:11.5px;color:rgba(255,255,255,.45)}
+  .pms-user{font-size:11.5px;color:rgba(255,255,255,.45)}
   .pms-body{display:grid;grid-template-columns:1fr 340px;align-items:stretch}
   @media(max-width:860px){.pms-body{grid-template-columns:1fr}.pms-main{display:none}}
   .pms-main{padding:18px 20px;opacity:.82}
@@ -749,6 +749,12 @@
   .desk-chat .steps{margin-top:7px;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px 11px 9px 26px;font-size:12px;color:var(--text-soft)}
   .desk-chat .steps li{margin:3px 0}
   .capchip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:10.5px;font-weight:700;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:14px;padding:4px 10px}
+  .sk-input{display:flex;gap:8px;align-items:center;margin-top:10px}
+  .sk-send{width:38px;height:38px;border-radius:11px}
+  .sk-send svg{width:16px;height:16px}
+  .ext-pin{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:#fff;background:rgba(107,83,176,.35);border:1px solid rgba(167,143,214,.45);border-radius:9px;padding:5px 10px}
+  .ext-pin b{display:grid;place-items:center;width:17px;height:17px;border-radius:5px;background:var(--brand-bright);font-size:8px;font-weight:800}
+  .pms-user{margin-left:14px}
   .capchip i{width:6px;height:6px;border-radius:50%;background:var(--teal)}
 
   .fade{animation:fadeUp .45s var(--ease) both}
@@ -970,11 +976,11 @@
     <!-- ASKGILLIS FRONT DESK: the sidekick for frontline staff -->
     <main class="work-wrap work-pane" id="paneDesk">
       <div class="rs-head">
-        <div><h1 class="rs-h1">Front Desk Sidekick</h1><p class="rs-sub">For the people at the desk. It sits over the systems they already work in and answers like a shift manager who has seen everything: complaints, comps, walks, and the system itself.</p></div>
+        <div><h1 class="rs-h1">Front Desk Sidekick</h1><p class="rs-sub">AskGillis, extended to the front line. It ships as an extension that pins over whatever system your desk runs, and answers like a shift manager who has seen everything: complaints, comps, walks, and the screen itself. No integration project.</p></div>
         <span class="tier-chip desk">Comfort Inn Brooklyn Center · Overnight shift</span>
       </div>
       <div class="pms-window">
-        <div class="pms-bar"><span class="pms-dot"></span><span class="pms-dot"></span><span class="pms-dot"></span><span class="pms-title">Property system · Front desk</span><span class="pms-user">J. Okafor · Front Desk Associate</span></div>
+        <div class="pms-bar"><span class="pms-dot"></span><span class="pms-dot"></span><span class="pms-dot"></span><span class="pms-title">Property system · Front desk</span><span class="ext-pin"><b>AG</b> AskGillis</span><span class="pms-user">J. Okafor · Front Desk Associate</span></div>
         <div class="pms-body">
           <div class="pms-main">
             <div class="pms-sec">Arrivals tonight</div>
@@ -988,7 +994,7 @@
             <div class="pms-row"><span>3</span><span>112</span><span>7</span><span class="pms-st err">2</span></div>
           </div>
           <div class="sidekick">
-            <div class="sk-head"><span class="tg-av" style="background:linear-gradient(140deg,var(--brand-bright),var(--brand));width:28px;height:28px;font-size:10px">AG</span><span><div class="sk-name">Sidekick</div><div class="sk-sub">Ask me anything on shift</div></span></div>
+            <div class="sk-head"><span class="tg-av" style="background:linear-gradient(140deg,var(--brand-bright),var(--brand));width:28px;height:28px;font-size:10px">TG</span><span><div class="sk-name">Tammy · AskGillis</div><div class="sk-sub">Extended to the desk, on every shift</div></span></div>
             <div class="desk-tiles">
               <button class="dtile" onclick="deskAsk('charge')">Guest says they were double charged</button>
               <button class="dtile" onclick="deskAsk('comp')">How do I comp a night?</button>
@@ -996,11 +1002,11 @@
               <button class="dtile" onclick="deskAsk('crew')">A crew foreman just walked in</button>
             </div>
             <div class="desk-chat" id="deskChat">
-              <div class="msg tam">Hey J. Quiet so far. Tap a situation or ask me anything, the system, a policy, or a guest in front of you.</div>
+              <div class="msg tam">Hey J. Same Tammy your sales team works with, extended to the desk. Tap a situation or ask me anything: a guest, a policy, or the system in front of you.</div>
             </div>
-            <div class="agc-input" style="margin:10px 0 0">
-              <input class="chat-input" id="deskInput" type="text" placeholder="Ask your sidekick..." style="border:none;padding:4px 0" onkeydown="if(event.key==='Enter')deskSend()">
-              <span class="snd" onclick="deskSend()" style="cursor:pointer"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <div class="sk-input">
+              <input class="chat-input" id="deskInput" type="text" placeholder="Ask Tammy anything on shift..." onkeydown="if(event.key==='Enter')deskSend()">
+              <button class="send-btn sk-send" onclick="deskSend()" title="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4 11 13"/><path d="M22 4 15 22l-4-9-9-4 20-5z"/></svg></button>
             </div>
           </div>
         </div>
@@ -1293,7 +1299,7 @@ const TENANTS = {
     values:[
       {icon:ic.outbound, t:"GillisOS", d:"Research and outreach, bundled"},
       {icon:ic.scout,    t:"Scout", d:"Self-serve, every property"},
-      {icon:ic.desk,     t:"Front Desk", d:"A sidekick for frontline staff"},
+      {icon:ic.desk,     t:"Front Desk", d:"Tammy, extended to the desk"},
       {icon:ic.anchor,   t:"Anchor", d:"National accounts, routed"},
       {icon:ic.coaching, t:"Coaching", d:"Tuned to the Choice playbook"},
     ],
@@ -1309,7 +1315,7 @@ const TENANTS = {
     pillars:[
       {space:"research", accent:"outbound", title:"GillisOS", desc:"Research and outreach, bundled. Signals within five miles of every property, verified contacts, and the first email written and sent.", icon:'search', meta:"85 live signals", live:true},
       {space:"scout", accent:"tools", title:"Scout", desc:"The self-serve entry point for every property. Enter your hotel, see the demand you're missing, at a price any GM can say yes to.", icon:'scope', meta:"Every property", live:true},
-      {space:"desk", accent:"desk", title:"AskGillis Front Desk", desc:"The sidekick for frontline staff. It overlays the desk systems and answers like a shift manager: complaints, comps, walks, and how to work the system.", icon:'bell', meta:"On every shift", live:true},
+      {space:"desk", accent:"desk", title:"AskGillis Front Desk", desc:"Tammy, extended to frontline staff as an extension over any desk system: complaints, comps, walks, and how to work the screen in front of them.", icon:'bell', meta:"On every shift", live:true},
       {space:"anchor", accent:"anchor", title:"Anchor", desc:"Key national accounts, managed like assets. Routes Turner, Live Nation, and GSA demand down to the right properties.", icon:'anchor', meta:"28 accounts", live:true},
       {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment, tuned to the Choice playbook: outreach support, objections, role play, and the Daily Sharpener.", icon:'trend', meta:"Always on", live:true},
     ],
@@ -2091,7 +2097,7 @@ function deskSend(){
   const v = inp.value.trim(); if(!v) return;
   inp.value = '';
   deskAppend(v, 'me');
-  setTimeout(()=>deskAppend("This is a prototype, so I answer the four situations for now. In the live product the sidekick answers from your property's own policies, rates, and system, in your brand's voice.", 'tam'), 550);
+  setTimeout(()=>deskAppend("This is a prototype, so I answer the four situations for now. In the live extension I answer from your property's own policies and rates, and I can see the system screen you are on, so the steps match what is in front of you.", 'tam'), 550);
 }
 
 /* boot */
