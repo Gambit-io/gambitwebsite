@@ -490,6 +490,23 @@
   }
   .ask-tam:hover{transform:translateY(-1px);box-shadow:0 4px 10px -6px rgba(14,138,122,.5)}
 
+  /* market assessment */
+  .assess-run{display:flex;gap:9px;align-items:center;margin-bottom:18px}
+  .assess-run .chat-input{max-width:520px}
+  .run-btn{
+    display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;
+    font-size:13.5px;font-weight:700;color:#fff;
+    background:linear-gradient(140deg,var(--teal),var(--teal-dark));
+    transition:transform .15s var(--ease);
+  }
+  .run-btn:hover{transform:translateY(-1px)}
+  .mixrow{display:grid;grid-template-columns:1.1fr 2fr .4fr;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--border-soft);font-size:13.5px}
+  .mixrow:last-child{border-bottom:0}
+  .mixrow .mn2{font-weight:600;color:var(--text)}
+  .mixrow .bar2{height:8px;border-radius:5px;background:var(--bg);overflow:hidden}
+  .mixrow .bar2 b{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--brand-bright),var(--brand))}
+  .mixrow .pv3{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+
   .fade{animation:fadeUp .45s var(--ease) both}
   .stagger > *{animation:fadeUp .5s var(--ease) both}
   .stagger > *:nth-child(1){animation-delay:.03s}
@@ -590,9 +607,17 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
           <span>Research</span>
         </button>
+        <button class="space-tab" id="tabAssess" role="tab" onclick="setSpace('assess')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 4 3 4-7"/></svg>
+          <span>Market Assessment</span>
+        </button>
         <button class="space-tab" id="tabCoaching" role="tab" onclick="setSpace('coaching')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
           <span>Coaching</span>
+        </button>
+        <button class="space-tab" id="tabChat" role="tab" onclick="setSpace('chat')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>AskGillis</span>
         </button>
       </div>
       <div class="top-right">
@@ -611,6 +636,64 @@
     <main class="work-wrap work-pane on" id="paneResearch">
       <div class="subnav" id="subnav"></div>
       <div id="boards"></div>
+    </main>
+
+    <!-- DYNAMIC MARKET ASSESSMENT -->
+    <main class="work-wrap work-pane" id="paneAssess">
+      <div class="assess-run">
+        <input class="chat-input" type="text" value="Comfort Inn Brooklyn Center, 5 mi radius" aria-label="Market to assess">
+        <button class="run-btn">Run assessment
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="kn">82</div><div class="kl">Market score</div><div class="kh"><i></i>strong demand, low coverage</div></div>
+        <div class="kpi"><div class="kn">Strong</div><div class="kl">Demand outlook</div><div class="kh"><i></i>multi-season construction</div></div>
+        <div class="kpi"><div class="kn">Moderate</div><div class="kl">Comp pressure</div><div class="kh"><i></i>2 hotels chasing crews</div></div>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>What is driving demand here</h3><span class="ph-meta"><i></i>refreshed live</span></div>
+        <div class="rrow rh"><span>Driver</span><span>Detail</span><span>Priority</span><span class="rl2">Horizon</span></div>
+        <button class="rrow"><span class="rn">I-694 corridor construction</span><span class="rc">Night-shift crews, day-sleeper rooms</span><span class="prio hot">Hot</span><span class="rl2">2 seasons</span></button>
+        <button class="rrow"><span class="rn">Fall conference calendar</span><span class="rc">Three citywide events, Q4</span><span class="prio warm">Warm</span><span class="rl2">Q4</span></button>
+        <button class="rrow"><span class="rn">Corporate relocations</span><span class="rc">Two filings within 5 miles</span><span class="prio warm">Warm</span><span class="rl2">6 months</span></button>
+        <button class="rrow"><span class="rn">Government project RFPs</span><span class="rc">MnDOT pipeline, monitored</span><span class="prio pipe">Pipeline</span><span class="rl2">Watching</span></button>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>Where the room nights come from</h3><span class="ph-meta"><i></i>projected mix</span></div>
+        <div class="mixrow"><span class="mn2">Construction crews</span><span class="bar2"><b style="width:44%"></b></span><span class="pv3">44%</span></div>
+        <div class="mixrow"><span class="mn2">Corporate transient</span><span class="bar2"><b style="width:27%"></b></span><span class="pv3">27%</span></div>
+        <div class="mixrow"><span class="mn2">Events and conferences</span><span class="bar2"><b style="width:18%"></b></span><span class="pv3">18%</span></div>
+        <div class="mixrow"><span class="mn2">Government</span><span class="bar2"><b style="width:11%"></b></span><span class="pv3">11%</span></div>
+      </div>
+      <div class="panel-card">
+        <div class="panel-head"><h3>Recommended moves</h3><span class="ph-meta"><i></i>from the assessment</span></div>
+        <div class="rrow rh"><span>Action</span><span>Why</span><span>Owner</span><span class="rl2">Coach</span></div>
+        <div class="rrow"><span class="rn">Lock crew blocks with SEH and Design Electric</span><span class="rc">Highest-fit leads from Backyard Search</span><span class="dstatus">Sam, drafted</span><button class="ask-tam" onclick="leadTammy('Short Elliott Hendrickson (SEH)','I-694 Lighting Replacement')">Ask Tammy</button></div>
+        <div class="rrow"><span class="rn">Hold day-sleeper floors through the season</span><span class="rc">Night-shift demand runs to November</span><span class="dstatus">Ops</span><span class="rl2"></span></div>
+        <div class="rrow"><span class="rn">Bid the fall conference RFP</span><span class="rc">Three citywide events, Q4</span><span class="dstatus">RDOS</span><span class="rl2"></span></div>
+      </div>
+    </main>
+
+    <!-- ASKGILLIS, THE OPEN CHAT -->
+    <main class="work-wrap work-pane" id="paneChat">
+      <div class="coach-grid" style="grid-template-columns:1fr">
+        <div class="coach-main">
+          <div class="coach-head">
+            <span class="tg-av" style="background:linear-gradient(140deg,var(--brand-bright),var(--brand))">TG</span>
+            <span><div class="cn2">AskGillis</div><div class="cs2"><i></i> Open chat, answers in Tammy's voice</div></span>
+            <span class="mode-tag">Ask anything</span>
+          </div>
+          <div class="coach-body"><div class="inner" id="chatBody2"></div></div>
+          <div class="coach-input-row"><div class="inner-row">
+            <input class="chat-input" id="chatInput2" type="text" placeholder="Ask Tammy anything..." onkeydown="if(event.key==='Enter')sendChat2()">
+            <button class="send-btn" onclick="sendChat2()" title="Send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4 11 13"/><path d="M22 4 15 22l-4-9-9-4 20-5z"/></svg>
+            </button>
+          </div></div>
+          <div class="coach-foot">AskGillis, powered by Tammy's 28 years of hospitality sales</div>
+        </div>
+      </div>
     </main>
 
     <!-- COACHING -->
@@ -734,6 +817,8 @@ function markChoice(){return `
 const ic = {
   outbound:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>`,
   coaching:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>`,
+  assess:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 4 3 4-7"/></svg>`,
+  chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
   scout:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>`,
 };
 const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>`;
@@ -753,8 +838,9 @@ const TENANTS = {
     signSub:"Use your work account to continue. Takes about 10 seconds.",
     values:[
       {icon:ic.outbound, t:"Research", d:"Find and win new business"},
+      {icon:ic.assess,   t:"Market Assessment", d:"A live read on any market"},
       {icon:ic.coaching, t:"Coaching", d:"Tammy, in the moment"},
-      {icon:ic.scout,    t:"Tools", d:"Scout Search and more"},
+      {icon:ic.chat,     t:"AskGillis", d:"Answers, anytime"},
     ],
     user:{name:"Ryan", role:"Creative Director", initials:"RY"},
     greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
@@ -771,8 +857,9 @@ const TENANTS = {
     signSub:"Use your Choice Hotels work account to continue.",
     values:[
       {icon:ic.outbound, t:"Research", d:"Find and win new business"},
+      {icon:ic.assess,   t:"Market Assessment", d:"A live read on any market"},
       {icon:ic.coaching, t:"Coaching", d:"Tuned to the Choice playbook"},
-      {icon:ic.scout,    t:"Tools", d:"Scout Search and more"},
+      {icon:ic.chat,     t:"AskGillis", d:"Answers, anytime"},
     ],
     user:{name:"Dana", role:"Brand Sales Manager", initials:"DA"},
     greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
@@ -783,7 +870,9 @@ const TENANTS = {
 
 const PILLARS = [
   {space:"research", accent:"outbound", title:"Research", desc:"Backyard Search, signals, leads, and contacts. Find the demand within five miles of every hotel and reach out first.", icon:ic.outbound, meta:"85 live signals", live:true},
+  {space:"assess", accent:"tools", title:"Dynamic Market Assessment", desc:"A live read on any market: what is driving demand, where the room nights come from, and the moves to make next.", icon:ic.assess, meta:"Refreshed live", live:true},
   {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment: outreach support, objection handling, role play, and the Daily Sharpener, built on Room to Grow.", icon:ic.coaching, meta:"Always on", live:true},
+  {space:"chat", accent:"chat", title:"AskGillis", desc:"The open chat. Answers in Tammy's voice, on anything from a prospect to a policy, whenever you need a hand.", icon:ic.chat, meta:"Always on", live:true},
 ];
 const TOOLS = [
   {icon:ic.scout, name:"Scout Search", desc:"Prospect and research"},
@@ -916,6 +1005,7 @@ function renderThreadInto(el){
 function renderThreadAll(){
   renderThreadInto(document.getElementById('chatBody'));
   renderThreadInto(document.getElementById('coachBody'));
+  renderThreadInto(document.getElementById('chatBody2'));
 }
 function seedThread(greet, chips){
   thread = [{who:'tam', html:greet}];
@@ -952,6 +1042,11 @@ function sendMsg(){
 }
 function sendCoach(){
   const inp = document.getElementById('coachInput');
+  const v = inp.value.trim(); if(!v) return;
+  inp.value=''; askTammy(v);
+}
+function sendChat2(){
+  const inp = document.getElementById('chatInput2');
   const v = inp.value.trim(); if(!v) return;
   inp.value=''; askTammy(v);
 }
@@ -1133,18 +1228,24 @@ function openWorkspace(space){
   show('workScreen');
   setSpace(space);
 }
+const SPACES = {
+  research:{tab:'tabResearch', pane:'paneResearch', fab:true},
+  assess:{tab:'tabAssess', pane:'paneAssess', fab:true},
+  coaching:{tab:'tabCoaching', pane:'paneCoaching', fab:false, focus:'coachInput'},
+  chat:{tab:'tabChat', pane:'paneChat', fab:false, focus:'chatInput2'},
+};
 function setSpace(space){
-  const research = space==='research';
-  document.getElementById('tabResearch').classList.toggle('on', research);
-  document.getElementById('tabCoaching').classList.toggle('on', !research);
-  document.getElementById('paneResearch').classList.toggle('on', research);
-  document.getElementById('paneCoaching').classList.toggle('on', !research);
-  /* Coaching IS the conversation, so the side panel only lives outside it */
+  const s = SPACES[space] || SPACES.research;
+  for(const k in SPACES){
+    document.getElementById(SPACES[k].tab).classList.toggle('on', k===space);
+    document.getElementById(SPACES[k].pane).classList.toggle('on', k===space);
+  }
+  /* the coach panes ARE the conversation, so the side panel only lives outside them */
   closeChat();
-  document.getElementById('chatFab').style.display = research ? 'grid' : 'none';
-  if(!research){
+  document.getElementById('chatFab').style.display = s.fab ? 'grid' : 'none';
+  if(!s.fab){
     renderThreadAll();
-    setTimeout(()=>document.getElementById('coachInput').focus(), 250);
+    if(s.focus) setTimeout(()=>document.getElementById(s.focus).focus(), 250);
   }
 }
 function openCoaching(){
@@ -1157,8 +1258,10 @@ function openCoaching(){
    ============================================================ */
 const panel = document.getElementById('chatPanel');
 function openTammy(){
-  if(document.getElementById('paneCoaching').classList.contains('on') &&
-     document.getElementById('workScreen').classList.contains('is-active')) return;
+  const inWork = document.getElementById('workScreen').classList.contains('is-active');
+  const inCoachPane = document.getElementById('paneCoaching').classList.contains('on') ||
+                      document.getElementById('paneChat').classList.contains('on');
+  if(inWork && inCoachPane) return;
   panel.classList.add('open');
   renderThreadAll();
 }
