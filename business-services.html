@@ -21,6 +21,10 @@
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 :root{
+  /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  /* roster audit additions (reserve palette) */
+  --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
   --ink:#15110d;
   --ink-2:#1f1a14;
   --paper:#ffffff;
@@ -278,7 +282,16 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .suite-card.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
 .sc-id{display:flex;gap:13px;align-items:center}
-.sc-av{width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:18px;flex:none}
+.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
+.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.wmark>b,.wmark>span.mk{position:relative;z-index:1;font-weight:700}
+.wmark.s56{width:56px;height:56px;font-size:24px}
+.wmark.s46{width:46px;height:46px;font-size:19px}
+.wmark.s36{width:36px;height:36px;font-size:15px}
+.wmark.s24{width:24px;height:24px;font-size:10.5px}
+.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}
+.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
 .sc-name{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
 .sc-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
 .sc-desc{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 18px;flex:1}
@@ -433,11 +446,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="collabel">M&amp;A</div>
           <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
           <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
-          <a class="mi mi-w" href="/workers/deal-room"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
+          <a class="mi mi-w" href="/workers/dealio"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Dealio <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Support</div>
-          <a class="mi mi-w" href="/workers/reed"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
+          <a class="mi mi-w" href="/workers/jericho"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>
@@ -511,9 +524,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="msec-lbl">M&amp;A</div>
       <a href="/workers/bogan"><span class="mn">Bogan</span> &middot; Buy-side</a>
       <a href="/workers/atlas"><span class="mn">Atlas</span> &middot; Sell-side</a>
-      <a href="/workers/deal-room"><span class="mn">Deal Room</span> &middot; Post-LOI</a>
+      <a href="/workers/dealio"><span class="mn">Dealio</span> &middot; Post-LOI</a>
       <div class="msec-lbl">Support</div>
-      <a href="/workers/reed"><span class="mn">Reed</span> &middot; Support</a>
+      <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
       <div class="msec-lbl">Platform</div>
       <a href="/factory"><span class="mn">The Factory</span></a>
       <a href="/factory#integrations"><span class="mn">Integrations</span></a>
@@ -660,14 +673,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
       <!-- AskBibi is deployed at Bobit Business Media. /workers/askbibi page may not exist yet; link points to the live case study. -->
       <a class="suite-card featured" href="/case-study/askbibi">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">B</span><div><div class="sc-name">AskBibi</div><div class="sc-role">Media sales</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-bibi)"><b>BI</b></span><div><div class="sc-name">AskBibi</div><div class="sc-role">Media sales</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">Engages advertisers across Bobit Business Media's portfolio of publications, events, and digital platforms. Builds cross-service packages tailored to each buyer's goals and delivers pre-qualified leads to the sales team.</p>
         <div class="sc-tags"><span class="sc-tag">B2B media</span><span class="sc-tag">Lead qualification</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/case-study/geotab">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">G</span><div><div class="sc-name">Geotab Assistant</div><div class="sc-role">Sponsorship sales</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-geotab)"><b>G</b></span><div><div class="sc-name">Geotab Assistant</div><div class="sc-role">Sponsorship sales</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">Launched at Geotab Connect 2025. Builds customized sponsorship packages in real time from the event's full inventory, tuned to each brand's objectives, audience, and budget, with a structured proposal in minutes.</p>
         <div class="sc-tags"><span class="sc-tag">Events</span><span class="sc-tag">Sponsorship</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
@@ -675,7 +688,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
       <!-- Demi runs at Primary People Group; no dedicated worker page yet, linking to the partner announcement. -->
       <a class="suite-card" href="/gambitco-primary-people-group-partner">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">D</span><div><div class="sc-name">Demi</div><div class="sc-role">HR advisor</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-demi)"><b>DM</b></span><div><div class="sc-name">Demi</div><div class="sc-role">HR advisor</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">An HR advisor and coach built with Primary People Group. Answers policy, benefits, and workplace questions in the company's own voice, around the clock, and escalates the sensitive ones to a human with context.</p>
         <div class="sc-tags"><span class="sc-tag">HR services</span><span class="sc-tag">Employee support</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">Read the story <span class="ar">&rarr;</span></span></div>

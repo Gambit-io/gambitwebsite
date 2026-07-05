@@ -21,6 +21,10 @@
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 :root{
+  /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  /* roster audit additions (reserve palette) */
+  --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
   --ink:#15110d;
   --ink-2:#1f1a14;
   --paper:#ffffff;
@@ -278,7 +282,16 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .suite-card.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
 .sc-id{display:flex;gap:13px;align-items:center}
-.sc-av{width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:18px;flex:none}
+.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
+.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.wmark>b,.wmark>span.mk{position:relative;z-index:1;font-weight:700}
+.wmark.s56{width:56px;height:56px;font-size:24px}
+.wmark.s46{width:46px;height:46px;font-size:19px}
+.wmark.s36{width:36px;height:36px;font-size:15px}
+.wmark.s24{width:24px;height:24px;font-size:10.5px}
+.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}
+.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
 .sc-name{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
 .sc-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
 .sc-desc{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 18px;flex:1}
@@ -473,11 +486,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="collabel">M&amp;A</div>
           <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
           <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
-          <a class="mi mi-w" href="/workers/deal-room"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
+          <a class="mi mi-w" href="/workers/dealio"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Dealio <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Support</div>
-          <a class="mi mi-w" href="/workers/reed"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
+          <a class="mi mi-w" href="/workers/jericho"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>
@@ -551,9 +564,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="msec-lbl">M&amp;A</div>
       <a href="/workers/bogan"><span class="mn">Bogan</span> &middot; Buy-side</a>
       <a href="/workers/atlas"><span class="mn">Atlas</span> &middot; Sell-side</a>
-      <a href="/workers/deal-room"><span class="mn">Deal Room</span> &middot; Post-LOI</a>
+      <a href="/workers/dealio"><span class="mn">Dealio</span> &middot; Post-LOI</a>
       <div class="msec-lbl">Support</div>
-      <a href="/workers/reed"><span class="mn">Reed</span> &middot; Support</a>
+      <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
       <div class="msec-lbl">Platform</div>
       <a href="/factory"><span class="mn">The Factory</span></a>
       <a href="/factory#integrations"><span class="mn">Integrations</span></a>
@@ -722,7 +735,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
       <!-- /workers/chloe product page does not exist yet; linking to the live Chloe/Vail story until it does -->
       <a class="suite-card featured" href="/vail-ai-voice-concierge-chloe">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">C</span><div><div class="sc-name">Chloe</div><div class="sc-role">Resident services</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-chloe)"><b>C</b></span><div><div class="sc-name">Chloe</div><div class="sc-role">Resident services</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">A voice-first concierge for your residents. Answers parking, permits, events, and services questions by phone, text, and web, around the clock, in 50 plus languages. Live for the Town of Vail.</p>
         <div class="sc-tags"><span class="sc-tag">Cities and towns</span><span class="sc-tag">Voice</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Chloe <span class="ar">&rarr;</span></span></div>
@@ -730,17 +743,17 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
       <!-- AskAshleigh: named worker, built with a U.S. Area Agency on Aging. Case study keeps the specific agency (UCPCOG) anonymous; see note on the proof card. -->
       <a class="suite-card" href="/case-study/askashleigh">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">AS</span><div><div class="sc-name">AskAshleigh</div><div class="sc-role">Caregiver support</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-askashleigh)"><b>AS</b></span><div><div class="sc-name">AskAshleigh</div><div class="sc-role">Caregiver support</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
         <p class="sc-desc">Round-the-clock benefits navigation, local resources, and a judgment-free ear for family caregivers. Built with a U.S. Area Agency on Aging, designed to scale across the national network.</p>
         <div class="sc-tags"><span class="sc-tag">Counties and agencies</span><span class="sc-tag">Aging services</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/reed">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+      <a class="suite-card" href="/workers/jericho">
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-jericho)"><b>J</b></span><div><div class="sc-name">Jericho</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
         <p class="sc-desc">Intake, program questions, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits public service.</p>
         <div class="sc-tags"><span class="sc-tag">Counties and agencies</span><span class="sc-tag">Utilities</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Reed <span class="ar">&rarr;</span></span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">View Jericho <span class="ar">&rarr;</span></span></div>
       </a>
 
       </div>

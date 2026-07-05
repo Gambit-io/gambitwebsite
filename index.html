@@ -21,6 +21,10 @@
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 :root{
+  /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  /* roster audit additions (reserve palette) */
+  --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
   --ink:#15110d;
   --ink-2:#1f1a14;
   --paper:#ffffff;
@@ -61,7 +65,9 @@
 
 /* ---------- worker icon system ---------- */
 /* monogram marks: Orbitron letterform on a family-colored tile (identity) */
-.wmark{border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--f-core))}
+.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
+.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.wmark>b,.wmark>span.mk{position:relative;z-index:1;font-weight:700}
 .wmark.s56{width:56px;height:56px;font-size:24px}
 .wmark.s46{width:46px;height:46px;font-size:19px}
 .wmark.s36{width:36px;height:36px;font-size:15px}
@@ -207,7 +213,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .cbub.in{opacity:1;transform:none}
 .cbub.out{opacity:0;transform:translateY(-14px)}
 .cbub .who{display:flex;align-items:center;gap:9px;margin-bottom:8px}
-.cbub .av{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:13px;color:#fff;background:var(--accent)}
+.cbub .av{position:relative;overflow:hidden;width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:13px;color:#fff;background:var(--accent)}
 .cbub.user .av{background:rgba(255,255,255,.28)}
 .cbub .nm{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .cbub .msg{font-size:17px;line-height:1.45;color:#fff}
@@ -566,6 +572,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   .logos{padding:44px 0 56px}
   .cta-btns .btn{width:100%;justify-content:center;padding:15px 22px;font-size:15px}
 }
+.cbub .av::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.cbub .av b{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -629,11 +637,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="collabel">M&amp;A</div>
           <a class="mi mi-w" href="/workers/bogan"><span class="mi-glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5"/></svg></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span><span class="mi-desc">Finds and opens acquisition targets that fit how you invest.</span></span></a>
           <a class="mi mi-w" href="/workers/atlas"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span><span class="mi-desc">Runs the sell-side process and brings qualified buyers.</span></span></a>
-          <a class="mi mi-w" href="/workers/deal-room"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Deal Room <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
+          <a class="mi mi-w" href="/workers/dealio"><span class="mi-glyph"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><span class="mi-tx"><span class="mi-name">Dealio <span class="mi-role">Post-LOI</span></span><span class="mi-desc">Carries a signed deal through diligence to close.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Support</div>
-          <a class="mi mi-w" href="/workers/reed"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Reed <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
+          <a class="mi mi-w" href="/workers/jericho"><span class="mi-glyph"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span><span class="mi-desc">Front-line customer support across web, SMS, and voice.</span></span></a>
         </div>
         <div class="mcol">
           <div class="collabel">Platform</div>
@@ -707,9 +715,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="msec-lbl">M&amp;A</div>
       <a href="/workers/bogan"><span class="mn">Bogan</span> · Buy-side</a>
       <a href="/workers/atlas"><span class="mn">Atlas</span> · Sell-side</a>
-      <a href="/workers/deal-room"><span class="mn">Deal Room</span> · Post-LOI</a>
+      <a href="/workers/dealio"><span class="mn">Dealio</span> · Post-LOI</a>
       <div class="msec-lbl">Support</div>
-      <a href="/workers/reed"><span class="mn">Reed</span> · Support</a>
+      <a href="/workers/jericho"><span class="mn">Jericho</span> · Support</a>
       <div class="msec-lbl">Platform</div>
       <a href="/factory"><span class="mn">The Factory</span></a>
       <a href="/factory#integrations"><span class="mn">Integrations</span></a>
@@ -1197,12 +1205,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   var chat=document.getElementById('bChat'),v=document.querySelector('.b-vid');
   if(!chat||!v) return;
   var segs=[
-    {end:4.7, w:'Bogan',a:'B',wm:'--f-ma',  un:'Partner', ut:"Anyone ready to sell in industrials?", rt:"Three owner-operators fit your pattern. Briefs drafted."},
-    {end:9.1, w:'Chloe',a:'C',wm:'--f-civic',un:'Resident',ut:"When is my street cleaning this week?", rt:"Thursday, 8am. Want a reminder the night before?"},
-    {end:13.5,w:'Harlo',a:'H',wm:'--f-log',  un:'Dispatch',ut:"Can we still make the 4pm window?",    rt:"Rerouted. ETA 3:42, confirmed with the driver."},
-    {end:99,  w:'Bogan',a:'B',wm:'--f-ma',  un:'Founder', ut:"Did the brief go out?",                rt:"Sent in your voice, grounded in six primary sources."}
+    {end:4.7, w:'Bogan',a:'B',wm:'--w-bogan',  un:'Partner', ut:"Anyone ready to sell in industrials?", rt:"Three owner-operators fit your pattern. Briefs drafted."},
+    {end:9.1, w:'Chloe',a:'C',wm:'--w-chloe',un:'Resident',ut:"When is my street cleaning this week?", rt:"Thursday, 8am. Want a reminder the night before?"},
+    {end:13.5,w:'Harlo',a:'H',wm:'--w-harlo',  un:'Dispatch',ut:"Can we still make the 4pm window?",    rt:"Rerouted. ETA 3:42, confirmed with the driver."},
+    {end:99,  w:'Bogan',a:'B',wm:'--w-bogan',  un:'Founder', ut:"Did the brief go out?",                rt:"Sent in your voice, grounded in six primary sources."}
   ];
-  function bub(cls,av,nm,msg,wm){var d=document.createElement('div');d.className='cbub '+cls;var st=wm?' style="background:var('+wm+')"':'';d.innerHTML='<div class="who"><span class="av"'+st+'>'+av+'</span><span class="nm">'+nm+'</span></div><div class="msg">'+msg+'</div>';chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('in');});}
+  function bub(cls,av,nm,msg,wm){var d=document.createElement('div');d.className='cbub '+cls;var st=wm?' style="background:var('+wm+')"':'';d.innerHTML='<div class="who"><span class="av"'+st+'><b>'+av+'</b></span><span class="nm">'+nm+'</span></div><div class="msg">'+msg+'</div>';chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('in');});}
   function segFor(t){for(var i=0;i<segs.length;i++){if(t<segs[i].end)return i;}return segs.length-1;}
   var cur=-1,replyTimer=null;
   function clearOut(cb){var kids=[].slice.call(chat.children);if(!kids.length){cb();return;}kids.forEach(function(k){k.classList.remove('in');k.classList.add('out');});setTimeout(function(){kids.forEach(function(k){k.remove();});cb();},420);}
@@ -1276,21 +1284,21 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <script>
 (function(){
   const FWORKERS=[
-    {id:'bogan',href:'/workers/bogan',name:'Bogan',mark:'B',wm:'--f-ma',title:'Buy-side Worker',status:'live',k:'Owners reached',v:'38',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
-    {id:'chloe',href:'/workers',name:'Chloe',mark:'C',wm:'--f-civic',title:'Civic Concierge',status:'live',k:'Residents answered',v:'1,904',tasks:9310,verbs:['answered a parking question','confirmed an event detail','replied in Spanish','routed a permit request']},
-    {id:'harlo',href:'/workers',name:'Harlo',mark:'H',wm:'--f-log',title:'Freight Coordinator',status:'live',k:'Loads confirmed',v:'412',tasks:8420,verbs:['confirmed a load','re-routed a shipment','replied to a carrier','scheduled a pickup']},
-    {id:'ellyn',href:'/workers',name:'AskEllyn',mark:'E',wm:'--f-care',title:'Patient Support',status:'live',k:'Patients supported',v:'96',tasks:4070,verbs:['supported a patient at 3am','answered in Portuguese','shared a resource','connected a nurse line']},
-    {id:'todd',href:'/workers',name:'AskTodd',mark:'T',wm:'--f-legal',title:'Legal Strategist',status:'live',k:'Consultations',v:'450',tasks:2940,verbs:['ran an intake','drafted a strategy note','answered a client question','scheduled a consult']},
-    {id:'ayla',href:'/workers',name:'Ayla',mark:'AY',wm:'--f-care',title:'Caregiver Support',status:'live',k:'Caregivers guided',v:'61',tasks:1830,verbs:['guided a caregiver','shared a navigation step','answered after midnight','connected a resource']},
-    {id:'demi',href:'/workers',name:'Demi',mark:'D',wm:'--f-sup',title:'HR Advisor',status:'live',k:'Cases this week',v:'89',tasks:2210,verbs:['answered a policy question','guided an onboarding','resolved a benefits question','logged a case']},
-    {id:'atlas',href:'/workers/atlas',name:'Atlas',mark:'AT',wm:'--f-ma',title:'Sell-side Worker',status:'training',k:'Buyers mapped',v:'47',tasks:1210,verbs:['qualified a buyer','built a teaser','mapped a buyer universe','ran a process update']}
+    {id:'bogan',href:'/workers/bogan',name:'Bogan',mark:'B',wm:'--w-bogan',title:'Buy-side Worker',status:'live',k:'Owners reached',v:'38',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
+    {id:'chloe',href:'/workers',name:'Chloe',mark:'C',wm:'--w-chloe',title:'Civic Concierge',status:'live',k:'Residents answered',v:'1,904',tasks:9310,verbs:['answered a parking question','confirmed an event detail','replied in Spanish','routed a permit request']},
+    {id:'harlo',href:'/workers',name:'Harlo',mark:'H',wm:'--w-harlo',title:'Freight Coordinator',status:'live',k:'Loads confirmed',v:'412',tasks:8420,verbs:['confirmed a load','re-routed a shipment','replied to a carrier','scheduled a pickup']},
+    {id:'ellyn',href:'/workers',name:'AskEllyn',mark:'E',wm:'--w-askellyn',title:'Patient Support',status:'live',k:'Patients supported',v:'96',tasks:4070,verbs:['supported a patient at 3am','answered in Portuguese','shared a resource','connected a nurse line']},
+    {id:'todd',href:'/workers',name:'AskTodd',mark:'T',wm:'--w-asktodd',title:'Legal Strategist',status:'live',k:'Consultations',v:'450',tasks:2940,verbs:['ran an intake','drafted a strategy note','answered a client question','scheduled a consult']},
+    {id:'ayla',href:'/workers',name:'Ayla',mark:'AY',wm:'--w-ayla',title:'Caregiver Support',status:'live',k:'Caregivers guided',v:'61',tasks:1830,verbs:['guided a caregiver','shared a navigation step','answered after midnight','connected a resource']},
+    {id:'demi',href:'/workers',name:'Demi',mark:'DM',wm:'--w-demi',title:'HR Advisor',status:'live',k:'Cases this week',v:'89',tasks:2210,verbs:['answered a policy question','guided an onboarding','resolved a benefits question','logged a case']},
+    {id:'atlas',href:'/workers/atlas',name:'Atlas',mark:'AT',wm:'--w-atlas',title:'Sell-side Worker',status:'training',k:'Buyers mapped',v:'47',tasks:1210,verbs:['qualified a buyer','built a teaser','mapped a buyer universe','ran a process update']}
   ];
   const wgrid=document.getElementById('wgrid');
   if(!wgrid) return;
   const spark=()=>'<div class="flc-spark">'+[...Array(7)].map(()=>'<i style="height:'+(22+Math.random()*78)+'%"></i>').join('')+'</div>';
   FWORKERS.forEach(w=>{
     const c=document.createElement('a');c.className='flcard';c.id='flc-'+w.id;c.href=w.href;
-    c.innerHTML=`<div class="flc-top"><div class="flc-id"><span class="wmark s36${w.mark.length>1?' two':''}" style="--wm:var(${w.wm})">${w.mark}</span><div><div class="flc-name">${w.name}</div><div class="flc-title">${w.title}</div></div></div><span class="flc-status ${w.status}"><span class="sd"></span>${w.status==='live'?'Live':'Training'}</span></div>${spark()}<div class="flc-foot"><div><div class="k">Tasks handled</div><div class="vv" id="t-${w.id}">${w.tasks.toLocaleString()}</div></div><div style="text-align:right"><div class="k">${w.k}</div><div class="vv">${w.v}</div></div></div>`;
+    c.innerHTML=`<div class="flc-top"><div class="flc-id"><span class="wmark s36${w.mark.length>1?' two':''}" style="--wm:var(${w.wm})"><b>${w.mark}</b></span><div><div class="flc-name">${w.name}</div><div class="flc-title">${w.title}</div></div></div><span class="flc-status ${w.status}"><span class="sd"></span>${w.status==='live'?'Live':'Training'}</span></div>${spark()}<div class="flc-foot"><div><div class="k">Tasks handled</div><div class="vv" id="t-${w.id}">${w.tasks.toLocaleString()}</div></div><div style="text-align:right"><div class="k">${w.k}</div><div class="vv">${w.v}</div></div></div>`;
     wgrid.appendChild(c);
   });
   const ESC=['escalated a target to a partner','paused on a conflict check','flagged for human review'];
