@@ -534,11 +534,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
 (function(){
   var chat=document.getElementById('bChat'),v=document.querySelector('.b-vid');
   if(!chat||!v) return;
-  /* one worker per clip in the reel (boundaries at the crossfade midpoints) */
+  /* one worker per clip in the reel (boundaries at the crossfade midpoints of the 42s reel;
+     the production overlay on index.html runs the full chat-plus-interface sequences) */
   var segs=[
-    {end:4.2, w:'Bogan', a:'B', un:'Partner', ut:"Anyone ready to sell in industrials?",       rt:"Three owner-operators fit your thesis. Briefs drafted."},
-    {end:8.1, w:'Clinic',a:'CL',un:'Patient', ut:"I keep waking up at night. Should I worry?", rt:"Let's walk through it together. Your clinician reviews everything we cover."},
-    {end:12.0,w:'Harlo', a:'H', un:'Dispatch',ut:"Did the paperwork on load 4417 clear?",      rt:"Read, checked against policy, confirmed. Three minutes flat."},
+    {end:11.1,w:'Bogan', a:'B', un:'Partner', ut:"Anyone ready to sell in industrials?",       rt:"Three owner-operators fit your thesis. Briefs drafted."},
+    {end:21.9,w:'Clinic',a:'CL',un:'Patient', ut:"I keep waking up at night. Should I worry?", rt:"Let's walk through it together. Your clinician reviews everything we cover."},
+    {end:32.7,w:'Harlo', a:'H', un:'Dispatch',ut:"Did the paperwork on load 4417 clear?",      rt:"Read, checked against policy, confirmed. Three minutes flat."},
     {end:99,  w:'Chloe', a:'C', un:'Resident',ut:"When is my street cleaning this week?",      rt:"Thursday, 8am. Want a reminder the night before?"}
   ];
   function bub(cls,av,nm,msg){var d=document.createElement('div');d.className='cbub '+cls;d.innerHTML='<div class="who"><span class="av">'+av+'</span><span class="nm">'+nm+'</span></div><div class="msg">'+msg+'</div>';chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('in');});}

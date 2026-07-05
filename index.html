@@ -230,8 +230,31 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .cbub .tdots i:nth-child(2){animation-delay:.18s}
 .cbub .tdots i:nth-child(3){animation-delay:.36s}
 @keyframes tblink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}
+/* interface cards in the thread: the work itself, not just the chat about it */
+.cwid{width:100%;background:rgba(250,249,246,.94);-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px);border:1px solid rgba(255,255,255,.6);border-radius:16px;padding:13px 16px 12px;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease);box-shadow:0 18px 50px -24px rgba(0,0,0,.55);color:#1c2026}
+.cwid.in{opacity:1;transform:none}
+.cwid.out{opacity:0;transform:translateY(-14px)}
+.cw-h{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#6a7280;padding-bottom:9px}
+.cw-h .sdot{width:7px;height:7px;border-radius:50%;background:var(--status);animation:pulse 2.4s infinite;flex:none}
+.cw-h .cw-tag{margin-left:auto;color:#9aa0a8;letter-spacing:.06em;text-transform:none}
+.cw-row{display:flex;align-items:center;gap:9px;padding:6.5px 0;border-top:1px solid rgba(28,32,38,.08);font-size:13.5px;line-height:1.35;opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.cwid.in .cw-row{opacity:1;transform:none}
+.cw-row .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:#8a8f98;width:72px;flex:none}
+.cw-row .v{font-weight:600;color:#1c2026}
+.cw-row .ok{margin-left:auto;width:18px;height:18px;border-radius:50%;background:rgba(62,196,109,.16);color:#1e9450;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex:none}
+.cw-bar{flex:1;height:6px;border-radius:4px;background:rgba(28,32,38,.1);overflow:hidden;min-width:60px}
+.cw-bar b{display:block;height:100%;width:0;border-radius:4px;background:var(--wm,var(--status));transition:width 1s cubic-bezier(.22,.61,.36,1)}
+.cw-score{font-family:var(--mono);font-weight:700;font-size:15px;margin-left:auto;color:#1c2026;min-width:26px;text-align:right}
+.cw-stamp{display:flex;align-items:center;gap:7px;margin-top:9px;padding-top:9px;border-top:1px solid rgba(28,32,38,.08);font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#8a8f98;opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.cwid.in .cw-stamp{opacity:1;transform:none}
+.cw-stamp .gk{width:15px;height:15px;border-radius:50%;background:rgba(62,196,109,.16);color:#1e9450;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex:none}
+.cw-park{display:flex;align-items:center;gap:11px;padding-top:2px}
+.cw-park .pmk{width:36px;height:36px;border-radius:10px;background:var(--w-chloe);color:#fff;font-family:var(--mark);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.cw-park .pl{font-weight:700;font-size:14.5px}
+.cw-park .pi{font-size:12.5px;color:#6a7280}
+.cw-park .ok{margin-left:auto;width:18px;height:18px;border-radius:50%;background:rgba(62,196,109,.16);color:#1e9450;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex:none}
 @media(max-width:760px){.b-chat{display:none}}
-@media(prefers-reduced-motion:reduce){.cbub .tdots i,.cbub .lv i{animation:none}}
+@media(prefers-reduced-motion:reduce){.cbub .tdots i,.cbub .lv i,.cw-h .sdot{animation:none}.cbub,.cwid,.cw-row,.cw-stamp,.cw-bar b{transition:none}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.55)}70%{box-shadow:0 0 0 7px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
 
 /* transparent header over the reel, solidifies on scroll */
@@ -1233,41 +1256,135 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 </script>
 
 <script>
-/* ----- hero: worker conversation overlay, synced to each clip ----- */
+/* ----- hero: worker thread overlay, synced to each clip -----
+   One worker per clip: Bogan (downtown) / Clinic (virtual consult) / Harlo (warehouse) / Chloe (city at dusk).
+   Each segment plays a scripted sequence, chat plus the interface doing the work,
+   with copy grounded in the matching product page. Boundaries at the crossfade midpoints. */
 (function(){
   var chat=document.getElementById('bChat'),v=document.querySelector('.b-vid');
   if(!chat||!v) return;
-  /* one worker per clip: Bogan (downtown) / Clinic (virtual consult) / Harlo (warehouse) / Chloe (city at dusk) */
+  var W={
+    bogan:{w:'Bogan', rl:'Buy-side', a:'B', wm:'--w-bogan'},
+    clinic:{w:'Clinic',rl:'In-clinic',a:'CL',wm:'--w-clinic'},
+    harlo:{w:'Harlo', rl:'Freight',  a:'H', wm:'--w-harlo'},
+    chloe:{w:'Chloe', rl:'Civic',    a:'C', wm:'--w-chloe'}
+  };
+  function rows(list,step,base){return list.map(function(r,i){return r.replace('<div class="cw-row','<div style="transition-delay:'+((base||0)+i*step)+'ms" class="cw-row');}).join('');}
+  var WIDGETS={
+    bogan:function(){return '<div class="cw-h"><span class="sdot"></span>New signal<span class="cw-tag">Atlas Fabrication</span></div>'
+      +rows(['<div class="cw-row"><span class="k">Owner</span><span class="v">J. Marsh, founder</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="k">Trigger</span><span class="v">Ownership change filed</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="k">Verified</span><span class="v">6 public sources</span><span class="ok">&#10003;</span></div>'],260,120)
+      +'<div style="transition-delay:900ms" class="cw-row"><span class="k">Thesis fit</span><span class="cw-bar"><b data-fill="87%"></b></span><span class="cw-score" data-count="87">0</span></div>';},
+    clinic:function(){return '<div class="cw-h"><span class="sdot"></span>Clinical reasoning<span class="cw-tag">Consult in progress</span></div>'
+      +rows(['<div class="cw-row"><span class="v">Recurring headaches, 2 to 3 per week, three months</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="v">Red-flag screen so far: none reported</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="k">SOAP</span><span class="v">Note drafting, held for review</span><span class="ok">&#8230;</span></div>'],420,150)
+      +'<div style="transition-delay:1500ms" class="cw-stamp"><span class="gk">&#10003;</span>Drafted for the clinician, never sent on its own</div>';},
+    harlo:function(){return '<div class="cw-h"><span class="sdot"></span>Bill of Lading<span class="cw-tag">BOL-4417 &middot; page 2 of 6</span></div>'
+      +rows(['<div class="cw-row"><span class="k">Load</span><span class="v">4417</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="k">Lane</span><span class="v">Chicago to Dallas</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="k">Carrier</span><span class="v">Matched, MC-418922</span><span class="ok">&#10003;</span></div>',
+             '<div class="cw-row"><span class="k">Rate</span><span class="v">Confirmed, in policy</span><span class="ok">&#10003;</span></div>'],520,150)
+      +'<div style="transition-delay:2300ms" class="cw-stamp"><span class="gk">&#10003;</span>Confirmed &middot; 412 loads today</div>';},
+    chloe:function(){return '<div class="cw-h"><span class="sdot"></span>Live parking<span class="cw-tag">Downtown</span></div>'
+      +'<div class="cw-park"><span class="pmk">P</span><div><div class="pl">Garage 2, Main St</div><div class="pi">40 open &middot; 5 min walk</div></div><span class="ok">&#10003;</span></div>';}
+  };
+  /* beats: seconds from segment start; user asks, the worker answers, the interface shows the work */
   var segs=[
-    {end:4.2, w:'Bogan', rl:'Buy-side',  a:'B', wm:'--w-bogan', un:'Partner', ut:"Anyone ready to sell in industrials?",       rt:"Three owner-operators fit your thesis. Briefs drafted."},
-    {end:8.1, w:'Clinic',rl:'In-clinic', a:'CL',wm:'--w-clinic',un:'Patient', ut:"I keep waking up at night. Should I worry?", rt:"Let's walk through it together. Your clinician reviews everything we cover."},
-    {end:12.0,w:'Harlo', rl:'Freight',   a:'H', wm:'--w-harlo', un:'Dispatch',ut:"Did the paperwork on load 4417 clear?",      rt:"Read, checked against policy, confirmed. Three minutes flat."},
-    {end:99,  w:'Chloe', rl:'Civic',     a:'C', wm:'--w-chloe', un:'Resident',ut:"When is my street cleaning this week?",      rt:"Thursday, 8am. Want a reminder the night before?"}
+    {end:11.1,wk:'bogan',beats:[
+      {at:0.6,k:'user',un:'Partner',t:"Anyone ready to sell in industrials?"},
+      {at:1.9,k:'work',t:"One this morning. Ownership change filed at Atlas Fabrication, owner verified."},
+      {at:4.6,k:'wid'},
+      {at:8.3,k:'work',t:"First touch drafted in your voice. Say the word and it goes."}
+    ]},
+    {end:21.9,wk:'clinic',beats:[
+      {at:0.7,k:'user',un:'Patient',t:"I keep getting these headaches. Should I worry?"},
+      {at:2.1,k:'work',t:"Let's walk through it together. How often are they coming on?"},
+      {at:5.4,k:'user',un:'Patient',t:"Two or three times a week, for a few months now."},
+      {at:7.0,k:'wid'}
+    ]},
+    {end:32.7,wk:'harlo',beats:[
+      {at:0.7,k:'user',un:'Dispatch',t:"Did the paperwork on load 4417 clear?"},
+      {at:2.0,k:'wid'},
+      {at:7.6,k:'work',t:"Read, checked against your rules, confirmed. Three minutes flat."}
+    ]},
+    {end:99,wk:'chloe',beats:[
+      {at:0.5,k:'user',un:'Resident',t:"Where can I park downtown tonight?"},
+      {at:1.7,k:'work',t:"Garage 2 on Main has 40 open spots, about a five minute walk."},
+      {at:3.4,k:'wid'},
+      {at:5.6,k:'user',un:'Resident',lang:'Mandarin',t:"今晚市中心有什么活动？"},
+      {at:7.2,k:'work',t:"有的，河滨广场今晚七点有免费音乐会。"}
+    ]}
   ];
+  var MAXV=3,cur=-1,shown=0,timers=[];
+  function later(fn,ms){timers.push(setTimeout(fn,ms));}
+  function clearTimers(){timers.forEach(clearTimeout);timers=[];}
   function avHtml(s){return '<span class="av'+(s.a.length>1?' two':'')+'" style="--wm:var('+s.wm+')"><b>'+s.a+'</b></span>';}
-  function bub(cls,html){var d=document.createElement('div');d.className='cbub '+cls;d.innerHTML=html;chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('in');});return d;}
-  function userBub(s){return bub('user','<div class="who"><span class="av"><b>'+s.un.charAt(0)+'</b></span><span class="nm">'+s.un+'</span></div><div class="msg">'+s.ut+'</div>');}
-  function workBub(s,typing){return bub('work','<div class="who">'+avHtml(s)+'<span class="nm">'+s.w+'</span><span class="rl">'+s.rl+'</span><span class="lv"><i></i>Live</span></div><div class="msg">'+(typing?'<span class="tdots"><i></i><i></i><i></i></span>':s.rt)+'</div>');}
-  function segFor(t){for(var i=0;i<segs.length;i++){if(t<segs[i].end)return i;}return segs.length-1;}
-  var cur=-1,t1=null,t2=null;
-  function clearOut(cb){var kids=[].slice.call(chat.children);if(!kids.length){cb();return;}kids.forEach(function(k){k.classList.remove('in');k.classList.add('out');});setTimeout(function(){kids.forEach(function(k){k.remove();});cb();},420);}
-  function show(i){
-    cur=i;clearTimeout(t1);clearTimeout(t2);var s=segs[i];
-    clearOut(function(){
-      if(cur!==i)return;
-      userBub(s);
-      t1=setTimeout(function(){
-        if(cur!==i||v.paused)return;
-        var wb=workBub(s,true);
-        t2=setTimeout(function(){if(cur===i)wb.querySelector('.msg').textContent=s.rt;},850);
-      },650);
-    });
+  function prune(){
+    var live=[].slice.call(chat.children).filter(function(k){return !k.classList.contains('out');});
+    while(live.length>MAXV){var k=live.shift();k.classList.remove('in');k.classList.add('out');(function(el){setTimeout(function(){el.remove();},450);})(k);}
   }
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){var s=segs[0];userBub(s);workBub(s,false);return;}
-  function upd(){var i=segFor(v.currentTime);if(i!==cur)show(i);}
+  function put(el){chat.appendChild(el);prune();requestAnimationFrame(function(){el.classList.add('in');});return el;}
+  function userBub(b){
+    var d=document.createElement('div');d.className='cbub user';
+    d.innerHTML='<div class="who"><span class="av"><b>'+b.un.charAt(0)+'</b></span><span class="nm">'+b.un+'</span>'+(b.lang?'<span class="rl">'+b.lang+'</span>':'')+'</div><div class="msg">'+b.t+'</div>';
+    return put(d);
+  }
+  function workBub(s,b,instant){
+    var w=W[s.wk],d=document.createElement('div');d.className='cbub work';
+    d.innerHTML='<div class="who">'+avHtml(w)+'<span class="nm">'+w.w+'</span><span class="rl">'+w.rl+'</span><span class="lv"><i></i>Live</span></div><div class="msg">'+(instant?b.t:'<span class="tdots"><i></i><i></i><i></i></span>')+'</div>';
+    put(d);
+    if(!instant){var seg=cur;later(function(){if(cur===seg)d.querySelector('.msg').innerHTML=b.t;},800);}
+    return d;
+  }
+  function widget(s){
+    var w=W[s.wk],d=document.createElement('div');d.className='cwid';d.style.setProperty('--wm','var('+w.wm+')');
+    d.innerHTML=WIDGETS[s.wk]();
+    put(d);
+    var seg=cur;
+    later(function(){
+      if(cur!==seg)return;
+      var f=d.querySelector('[data-fill]');if(f)f.style.width=f.getAttribute('data-fill');
+      var c=d.querySelector('[data-count]');
+      if(c){var target=+c.getAttribute('data-count'),t0=null;
+        (function tick(ts){if(cur!==seg)return;if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/950);c.textContent=Math.round(target*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick);})(performance.now());}
+    },1000);
+    return d;
+  }
+  function addBeat(s,b,instant){
+    if(b.k==='user')userBub(b);
+    else if(b.k==='work')workBub(s,b,instant);
+    else widget(s);
+  }
+  function segStart(i){return i?segs[i-1].end:0;}
+  function segFor(t){for(var i=0;i<segs.length;i++){if(t<segs[i].end)return i;}return segs.length-1;}
+  function resetSeg(i){
+    cur=i;shown=0;clearTimers();
+    var kids=[].slice.call(chat.children);
+    kids.forEach(function(k){k.classList.remove('in');k.classList.add('out');});
+    setTimeout(function(){kids.forEach(function(k){if(k.classList.contains('out'))k.remove();});},420);
+  }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var s0=segs[0];
+    addBeat(s0,s0.beats[0],true);addBeat(s0,s0.beats[1],true);
+    var wd=widget(s0);var f=wd.querySelector('[data-fill]');if(f)f.style.width=f.getAttribute('data-fill');
+    var c=wd.querySelector('[data-count]');if(c)c.textContent=c.getAttribute('data-count');
+    return;
+  }
+  function upd(){
+    var t=v.currentTime,i=segFor(t);
+    if(i!==cur)resetSeg(i);
+    var s=segs[i],lt=t-segStart(i);
+    if(shown>0&&s.beats[shown-1].at>lt+0.05){resetSeg(i);}
+    while(shown<s.beats.length&&s.beats[shown].at<=lt){
+      addBeat(s,s.beats[shown],lt-s.beats[shown].at>1.4);
+      shown++;
+    }
+  }
   v.addEventListener('timeupdate',upd);
   v.addEventListener('seeked',upd);
-  show(0);
+  upd();
 })();
 
 /* ----- hero video: reduced-motion guard + play/pause ----- */
