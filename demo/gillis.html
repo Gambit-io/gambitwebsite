@@ -519,7 +519,7 @@
   .mixrow .pv3{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
 
   /* ===== Research: portfolio + hotel workspace ===== */
-  .rs-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+  .rs-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px 16px;margin-bottom:22px;flex-wrap:wrap}
   .rs-h1{font-family:'Sora';font-weight:600;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em}
   .rs-sub{margin-top:7px;font-size:14px;color:var(--muted);line-height:1.5;max-width:520px}
   .needs-strip{background:linear-gradient(120deg,var(--brand-soft),#fff);border:1px solid var(--brand-border);border-radius:16px;padding:16px 18px;margin-bottom:22px}
@@ -721,21 +721,35 @@
   .ladder-tx{font-size:13.5px;line-height:1.55;color:var(--text-soft);max-width:56ch}
   .ladder-tx b{color:var(--text)}
 
-  .desk-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
-  @media(max-width:860px){.desk-grid{grid-template-columns:1fr}}
-  .desk-chatcard{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(30,24,50,.04),0 14px 30px -24px rgba(30,24,50,.25)}
-  .desk-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
-  .dtile{font-size:13px;font-weight:600;color:var(--text);background:var(--c-desk-soft);border:1px solid var(--c-desk-border);border-radius:12px;padding:13px 12px;text-align:center;transition:transform .15s var(--ease),box-shadow .15s}
+  .pms-window{background:#232936;border-radius:18px;overflow:hidden;border:1px solid #313a4b;box-shadow:0 2px 6px rgba(30,24,50,.08),0 30px 60px -34px rgba(20,25,35,.6)}
+  .pms-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#1b202b;border-bottom:1px solid #313a4b}
+  .pms-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.14)}
+  .pms-title{margin-left:8px;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.65);font-weight:600}
+  .pms-user{margin-left:auto;font-size:11.5px;color:rgba(255,255,255,.45)}
+  .pms-body{display:grid;grid-template-columns:1fr 340px;align-items:stretch}
+  @media(max-width:860px){.pms-body{grid-template-columns:1fr}.pms-main{display:none}}
+  .pms-main{padding:18px 20px;opacity:.82}
+  .pms-sec{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+  .pms-row{display:grid;grid-template-columns:1.4fr 1fr .7fr .9fr;gap:10px;padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12.5px;color:rgba(255,255,255,.78)}
+  .pms-row.pms-h{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.12)}
+  .pms-st{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.55)}
+  .pms-st.ok{color:#5fd3a5}
+  .pms-st.warn{color:var(--m-gold)}
+  .pms-st.err{color:#ef8f6e}
+  .sidekick{background:var(--surface);border-left:1px solid var(--border);padding:16px;display:flex;flex-direction:column}
+  @media(max-width:860px){.sidekick{border-left:none}}
+  .sk-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border-soft);margin-bottom:12px}
+  .sk-name{font-family:'Sora';font-weight:600;font-size:14px}
+  .sk-sub{font-size:11.5px;color:var(--muted)}
+  .desk-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .dtile{font-size:12px;font-weight:600;line-height:1.35;color:var(--text);background:var(--c-desk-soft);border:1px solid var(--c-desk-border);border-radius:11px;padding:10px 10px;text-align:left;transition:transform .15s var(--ease),box-shadow .15s}
   .dtile:hover{transform:translateY(-2px);box-shadow:0 10px 20px -14px rgba(194,94,67,.5)}
-  .desk-chat{display:flex;flex-direction:column;gap:9px;min-height:170px;max-height:300px;overflow-y:auto;background:var(--bg);border-radius:12px;padding:13px}
-  .desk-chat .msg{font-size:13px}
-  .capture-card{background:var(--surface);border:1px solid var(--c-desk-border);border-radius:18px;padding:18px;box-shadow:0 1px 2px rgba(30,24,50,.04),0 14px 30px -24px rgba(30,24,50,.25)}
-  .cap-h{font-family:'Sora';font-weight:600;font-size:15.5px;letter-spacing:-.01em}
-  .cap-sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin:5px 0 13px}
-  .cap-fields{display:flex;flex-direction:column;gap:9px;margin-bottom:13px}
-  .cap-f .fgl{margin-bottom:4px}
-  .cap-in{width:100%;font-family:inherit;font-size:13px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 11px;outline:none}
-  .cap-in:focus{border-color:var(--c-desk-border)}
+  .desk-chat{display:flex;flex-direction:column;gap:9px;min-height:210px;max-height:320px;overflow-y:auto;background:var(--bg);border-radius:12px;padding:13px;flex:1}
+  .desk-chat .msg{font-size:12.5px;max-width:92%}
+  .desk-chat .steps{margin-top:7px;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px 11px 9px 26px;font-size:12px;color:var(--text-soft)}
+  .desk-chat .steps li{margin:3px 0}
+  .capchip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:10.5px;font-weight:700;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:14px;padding:4px 10px}
+  .capchip i{width:6px;height:6px;border-radius:50%;background:var(--teal)}
 
   .fade{animation:fadeUp .45s var(--ease) both}
   @media (max-width:560px){
@@ -953,43 +967,40 @@
       </div>
     </main>
 
-    <!-- ASKGILLIS FRONT DESK: the reception surface -->
+    <!-- ASKGILLIS FRONT DESK: the sidekick for frontline staff -->
     <main class="work-wrap work-pane" id="paneDesk">
       <div class="rs-head">
-        <div><h1 class="rs-h1">Front Desk</h1><p class="rs-sub">AskGillis at reception: answers for the guest in front of you, and every walk-in with a project becomes a lead.</p></div>
-        <span class="tier-chip desk">Comfort Inn Brooklyn Center · Desk mode</span>
+        <div><h1 class="rs-h1">Front Desk Sidekick</h1><p class="rs-sub">For the people at the desk. It sits over the systems they already work in and answers like a shift manager who has seen everything: complaints, comps, walks, and the system itself.</p></div>
+        <span class="tier-chip desk">Comfort Inn Brooklyn Center · Overnight shift</span>
       </div>
-      <div class="desk-grid">
-        <div class="desk-chatcard">
-          <div class="desk-tiles">
-            <button class="dtile" onclick="deskAsk('rates')">Weekly crew rates</button>
-            <button class="dtile" onclick="deskAsk('group')">Rooms for a group tonight</button>
-            <button class="dtile" onclick="deskAsk('late')">Late checkout policy</button>
-            <button class="dtile" onclick="deskAsk('local')">Open late nearby</button>
+      <div class="pms-window">
+        <div class="pms-bar"><span class="pms-dot"></span><span class="pms-dot"></span><span class="pms-dot"></span><span class="pms-title">Property system · Front desk</span><span class="pms-user">J. Okafor · Front Desk Associate</span></div>
+        <div class="pms-body">
+          <div class="pms-main">
+            <div class="pms-sec">Arrivals tonight</div>
+            <div class="pms-row pms-h"><span>Guest</span><span>Room</span><span>Nights</span><span>Status</span></div>
+            <div class="pms-row"><span>M. Torres</span><span>King · 214</span><span>3</span><span class="pms-st ok">Checked in</span></div>
+            <div class="pms-row"><span>Halvorsen crew (4)</span><span>Queens · 3rd fl</span><span>Walk-in</span><span class="pms-st warn">At the desk</span></div>
+            <div class="pms-row"><span>D. Okonkwo</span><span>King · 306</span><span>2</span><span class="pms-st">Due 11 PM</span></div>
+            <div class="pms-row"><span>S. Whitaker</span><span>Double · 118</span><span>1</span><span class="pms-st err">Rate dispute</span></div>
+            <div class="pms-sec" style="margin-top:16px">House tonight</div>
+            <div class="pms-row pms-h"><span>Available</span><span>Occupied</span><span>Arrivals</span><span>Overbooked</span></div>
+            <div class="pms-row"><span>3</span><span>112</span><span>7</span><span class="pms-st err">2</span></div>
           </div>
-          <div class="desk-chat" id="deskChat">
-            <div class="msg tam">Hi! I'm the desk assistant. Tap a question or type what the guest is asking.</div>
-          </div>
-          <div class="agc-input" style="margin:10px 0 0">
-            <input class="chat-input" id="deskInput" type="text" placeholder="Type the guest's question..." style="border:none;padding:4px 0" onkeydown="if(event.key==='Enter')deskSend()">
-            <span class="snd" onclick="deskSend()" style="cursor:pointer"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </div>
-        <div class="desk-side">
-          <div class="capture-card">
-            <div class="cap-h">Walk-in with a project?</div>
-            <p class="cap-sub">Capture it in 10 seconds. It lands in GillisOS and your RDOS follows up.</p>
-            <div class="cap-fields">
-              <div class="cap-f"><span class="fgl">Company</span><input class="cap-in" value="Halvorsen Roofing" aria-label="Company"></div>
-              <div class="cap-f"><span class="fgl">Need</span><input class="cap-in" value="8 rooms, about 6 weeks" aria-label="Need"></div>
-              <div class="cap-f"><span class="fgl">Contact</span><input class="cap-in" value="Foreman · 612 555 0148" aria-label="Contact"></div>
+          <div class="sidekick">
+            <div class="sk-head"><span class="tg-av" style="background:linear-gradient(140deg,var(--brand-bright),var(--brand));width:28px;height:28px;font-size:10px">AG</span><span><div class="sk-name">Sidekick</div><div class="sk-sub">Ask me anything on shift</div></span></div>
+            <div class="desk-tiles">
+              <button class="dtile" onclick="deskAsk('charge')">Guest says they were double charged</button>
+              <button class="dtile" onclick="deskAsk('comp')">How do I comp a night?</button>
+              <button class="dtile" onclick="deskAsk('oversold')">We're oversold tonight</button>
+              <button class="dtile" onclick="deskAsk('crew')">A crew foreman just walked in</button>
             </div>
-            <button class="run-btn" id="deskCapBtn" onclick="deskCapture()" style="width:100%;justify-content:center">Capture to GillisOS</button>
-          </div>
-          <div class="panel-card" style="margin-top:14px">
-            <div class="panel-head"><h3>Captured today</h3><span class="ph-meta"><i></i>flows to your RDOS</span></div>
-            <div id="deskCaptured">
-              <div class="rrow"><span class="rn">Neset Surveying</span><span class="rc">4 rooms, two weeks</span><span class="dstatus">In GillisOS</span><span class="rl2">9:20 AM</span></div>
+            <div class="desk-chat" id="deskChat">
+              <div class="msg tam">Hey J. Quiet so far. Tap a situation or ask me anything, the system, a policy, or a guest in front of you.</div>
+            </div>
+            <div class="agc-input" style="margin:10px 0 0">
+              <input class="chat-input" id="deskInput" type="text" placeholder="Ask your sidekick..." style="border:none;padding:4px 0" onkeydown="if(event.key==='Enter')deskSend()">
+              <span class="snd" onclick="deskSend()" style="cursor:pointer"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </div>
         </div>
@@ -1282,7 +1293,7 @@ const TENANTS = {
     values:[
       {icon:ic.outbound, t:"GillisOS", d:"Research and outreach, bundled"},
       {icon:ic.scout,    t:"Scout", d:"Self-serve, every property"},
-      {icon:ic.desk,     t:"Front Desk", d:"Walk-ins become leads"},
+      {icon:ic.desk,     t:"Front Desk", d:"A sidekick for frontline staff"},
       {icon:ic.anchor,   t:"Anchor", d:"National accounts, routed"},
       {icon:ic.coaching, t:"Coaching", d:"Tuned to the Choice playbook"},
     ],
@@ -1298,7 +1309,7 @@ const TENANTS = {
     pillars:[
       {space:"research", accent:"outbound", title:"GillisOS", desc:"Research and outreach, bundled. Signals within five miles of every property, verified contacts, and the first email written and sent.", icon:'search', meta:"85 live signals", live:true},
       {space:"scout", accent:"tools", title:"Scout", desc:"The self-serve entry point for every property. Enter your hotel, see the demand you're missing, at a price any GM can say yes to.", icon:'scope', meta:"Every property", live:true},
-      {space:"desk", accent:"desk", title:"AskGillis Front Desk", desc:"Reception, upgraded. Answers for the guest at the desk, and every walk-in with a project becomes a captured lead.", icon:'bell', meta:"Desk mode", live:true},
+      {space:"desk", accent:"desk", title:"AskGillis Front Desk", desc:"The sidekick for frontline staff. It overlays the desk systems and answers like a shift manager: complaints, comps, walks, and how to work the system.", icon:'bell', meta:"On every shift", live:true},
       {space:"anchor", accent:"anchor", title:"Anchor", desc:"Key national accounts, managed like assets. Routes Turner, Live Nation, and GSA demand down to the right properties.", icon:'anchor', meta:"28 accounts", live:true},
       {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment, tuned to the Choice playbook: outreach support, objections, role play, and the Daily Sharpener.", icon:'trend', meta:"Always on", live:true},
     ],
@@ -2049,10 +2060,14 @@ function scoutPush(){
   setTimeout(()=>{ setSpace('research'); b.innerHTML = 'Push to GillisOS <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>'; }, 700);
 }
 const DESK_ANSWERS = {
-  rates:"For 7 nights or more we apply the extended-stay rate automatically. For a crew of 4 or more rooms, I can hold a block right now and flag the sales team for a custom rate. Want me to start that hold?",
-  group:"Tonight we have 14 rooms available, 9 tomorrow. For 5 or more rooms I can open a group hold and price it as a block. How many do they need?",
-  late:"Late checkout is 1pm on request, 3pm for rewards members when the house allows. For night-shift crews we can flip the schedule entirely: quiet floors, daytime housekeeping holds.",
-  local:"Open late nearby: the 24 hour diner two blocks north, the grocery with a hot counter until 11, and the laundromat until midnight. Want me to print the crew card with all three?",
+  charge:{t:"Easy one to make right. Apologize once and fix it, do not relitigate how it happened.",
+    steps:["Open the folio, Adjustments, select the duplicate charge","Post the correcting credit and print the corrected folio","Offer a small gesture, late checkout or points","Log it as service recovery so the pattern is visible"]},
+  comp:{t:"Comps need a reason code, that is the whole trick. Under $150 you can post it yourself, above that flag the MOD.",
+    steps:["Folio, Adjustments, Comp night","Pick the reason: Service recovery or Manager goodwill","Add one line on why. The GM reads these weekly"]},
+  oversold:{t:"It happens, and there is a protocol. Walk the BEST candidate: a one-night stay arriving late, never a rewards member mid-stay. Apologize, do not explain the overbooking.",
+    steps:["Book them at the closest sister property","We pay the first night and arrange the ride","Note the folio for a priority upgrade next stay"]},
+  crew:{t:"Good catch, that is revenue standing at your desk. Quote the extended-stay rate for 7 plus nights, get the foreman's cell and the company name, and tell them the sales team calls today with a block rate.",
+    cap:"Halvorsen Roofing captured to GillisOS, your RDOS is flagged"},
 };
 function deskAppend(html, who){
   const el = document.getElementById('deskChat');
@@ -2063,29 +2078,20 @@ function deskAppend(html, who){
   el.scrollTop = el.scrollHeight;
 }
 function deskAsk(key){
-  const labels = {rates:'Weekly crew rates', group:'Rooms for a group tonight', late:'Late checkout policy', local:'Open late nearby'};
+  const labels = {charge:"Guest says they were double charged", comp:"How do I comp a night?", oversold:"We're oversold tonight", crew:"A crew foreman just walked in"};
   deskAppend(labels[key], 'me');
-  setTimeout(()=>deskAppend(DESK_ANSWERS[key], 'tam'), 500);
+  const a = DESK_ANSWERS[key];
+  let html = a.t;
+  if(a.steps) html += '<ol class="steps">' + a.steps.map(s=>'<li>'+s+'</li>').join('') + '</ol>';
+  if(a.cap) html += '<span class="capchip"><i></i>' + a.cap + '</span>';
+  setTimeout(()=>deskAppend(html, 'tam'), 550);
 }
 function deskSend(){
   const inp = document.getElementById('deskInput');
   const v = inp.value.trim(); if(!v) return;
   inp.value = '';
   deskAppend(v, 'me');
-  setTimeout(()=>deskAppend("This is a prototype, so I answer the four quick questions for now. In the live product this is where the desk assistant responds from your property's own policies and rates.", 'tam'), 500);
-}
-function deskCapture(){
-  const b = document.getElementById('deskCapBtn');
-  const co = document.querySelectorAll('.cap-in')[0].value || 'Walk-in lead';
-  const need = document.querySelectorAll('.cap-in')[1].value || '';
-  b.textContent = 'Captured. Routed to your RDOS.';
-  b.style.background = 'linear-gradient(140deg,var(--teal),var(--teal-dark))';
-  const list = document.getElementById('deskCaptured');
-  const row = document.createElement('div');
-  row.className = 'rrow';
-  row.innerHTML = '<span class="rn">'+co+'</span><span class="rc">'+need+'</span><span class="dstatus">In GillisOS</span><span class="rl2">Just now</span>';
-  list.prepend(row);
-  setTimeout(()=>{ b.textContent = 'Capture to GillisOS'; }, 2600);
+  setTimeout(()=>deskAppend("This is a prototype, so I answer the four situations for now. In the live product the sidekick answers from your property's own policies, rates, and system, in your brand's voice.", 'tam'), 550);
 }
 
 /* boot */
