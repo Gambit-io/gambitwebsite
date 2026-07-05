@@ -6,3 +6,9 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+
+# local tooling / scratch (never commit)
+.claude/
+.slidebuild/
+gambit-context-for-claude.md
+gambit-homepage-brief.md
