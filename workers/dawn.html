@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Harlo · Freight Coordinator · Gambit</title>
-<meta name="description" content="Harlo is the freight coordinator built with Logistics Alliance. It reads load documents with AI vision, validates every detail, matches the carrier, and confirms the load in about three minutes.">
+<title>Dawn · Recovery Companion · Gambit</title>
+<meta name="description" content="Dawn is the recovery companion built on lived experience. It meets people before they are ready to call a treatment center, without labels or pressure, and holds the door open. Live as Chaddict and AskEvaMarie.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/workers/harlo">
+<link rel="canonical" href="https://gambitco.io/workers/dawn">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Harlo · Freight Coordinator · Gambit">
-<meta property="og:description" content="The load, confirmed in three minutes. Documents read, validated, and confirmed at machine speed.">
-<meta property="og:image" content="https://gambitco.io/img/ind-freight.jpg">
-<meta property="og:url" content="https://gambitco.io/workers/harlo">
+<meta property="og:title" content="Dawn · Recovery Companion · Gambit">
+<meta property="og:description" content="There before they are ready. The conversation that happens before someone can call a treatment center.">
+<meta property="og:image" content="https://gambitco.io/img/ind-chaddict.jpg">
+<meta property="og:url" content="https://gambitco.io/workers/dawn">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,24 +54,24 @@
   --f-civic:#54697b;
   --f-log:#a0713a;
   --f-legal:#6b5d3f;
-  /* Harlo worker page: portal blue drawn from Harlo's own color */
-  --navy:#0b2540;
-  --navy-2:#123a5e;
-  --accent:#0f74c4;
-  --accent-2:#7db8e8;
-  --accent-deep:#0b5a99;
-  /* console surface tokens (portal blue on this page) */
-  --g-purple:#0b5a99;
-  --g-teal:#0f74c4;
-  --g-teal-d:#0b5a99;
+  /* Dawn worker page: warm coral drawn from Dawn's own color */
+  --navy:#38201a;
+  --navy-2:#4d2c22;
+  --accent:#cc6650;
+  --accent-2:#e8a893;
+  --accent-deep:#a84f3c;
+  /* console surface tokens (warm coral on this page) */
+  --g-purple:#a84f3c;
+  --g-teal:#cc6650;
+  --g-teal-d:#a84f3c;
   --g-orange:#E8875B;
   --g-gold:#D4A843;
-  --g-lilac:#6d95b8;
-  --g-bg:#f2f6fa;
-  --g-lav:#e8f0f8;
-  --g-line:#dfe8f1;
-  --g-text:#42525f;
-  --g-dark:#0b2540;
+  --g-lilac:#b58a7c;
+  --g-bg:#faf5f2;
+  --g-lav:#f5eae4;
+  --g-line:#eeded6;
+  --g-text:#55453f;
+  --g-dark:#38201a;
   --display:'General Sans','Helvetica Neue',Arial,sans-serif;
   --mark:'Orbitron',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -667,14 +667,26 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .crm-row .cv2 .hotp{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:#b0511f;background:rgba(232,135,91,.16);border-radius:14px;padding:2px 8px;margin-left:6px}
 
 
-/* ===== Harlo page overrides ===== */
-.gmark{background:var(--w-harlo)}
+/* ===== Dawn page overrides ===== */
+.gmark{background:var(--w-dawn)}
 .morph.s-icon .gmark{font-size:22px}
 .morph.s-input .gmark{font-size:19px}
 .morph.s-desk .gmark{font-size:10px}
-.hero .media{background:radial-gradient(130% 150% at 28% 18%,#155a92 0%,#0b2540 62%,#081c31 100%)}
-.dl-bar b{background:var(--accent)}
-.bst.flg{color:#c73a23;background:rgba(240,78,54,.12)}
+.hero .media{background:radial-gradient(130% 150% at 28% 18%,#8a4530 0%,#38201a 62%,#2a1712 100%)}
+/* companion conversation: transcript left, the reasoning right */
+.tr{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;overflow:hidden;margin-top:12px;min-height:0}
+.turn{max-width:88%;opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.turn.in{opacity:1;transform:none}
+.turn.vis{align-self:flex-end}
+.turn.co{align-self:flex-start}
+.turn .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#a08a80;margin-bottom:4px}
+.turn.vis .who{text-align:right}
+.turn .bub{display:inline-block;padding:9px 13px;font-size:clamp(12px,1.25vw,14px);line-height:1.48}
+.turn.vis .bub{background:var(--g-lav);color:var(--g-dark);border-radius:13px 13px 4px 13px}
+.turn.co .bub{background:#fff;color:var(--g-text);border:1px solid var(--g-line);border-radius:13px 13px 13px 4px}
+.turn.co .bub .txt{display:none}
+.turn.co.said .bub .txt{display:inline}
+.turn.co.said .bub .cb-dots{display:none}
 /* buyer triage rows: fit bar inline */
 .brow{display:grid;grid-template-columns:1.45fr .7fr 1fr .6fr;gap:10px;padding:12px 18px;border-bottom:1px solid var(--g-line);align-items:center;font-size:12.5px;background:#fff}
 .brow:last-child{border-bottom:0}
@@ -930,41 +942,42 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="wh-top fade-up d1"><span class="eyebrow">Freight coordinator</span><span class="wh-status"><span class="sd"></span>Live &middot; Logistics Alliance</span></div>
-    <h1 class="fade-up d1" style="margin:14px 0 0">The load, confirmed in three minutes.</h1>
-    <div class="tag fade-up d2" style="max-width:62ch">Harlo runs load confirmation start to finish: it reads the documents with AI vision, validates every detail against the order, matches the carrier, and routes the exceptions to a person. Built with Logistics Alliance.</div>
+    <div class="wh-top fade-up d1"><span class="eyebrow">Recovery companion</span><span class="wh-status"><span class="sd"></span>Live &middot; Infiniti Group &amp; NEM Recovery</span></div>
+    <h1 class="fade-up d1" style="margin:14px 0 0">There before they&rsquo;re ready.</h1>
+    <div class="tag fade-up d2" style="max-width:62ch">Dawn is a recovery companion built on lived experience. It meets people at 2am, without labels or pressure, and holds the door open until they are ready for more. Live as Chaddict for Infiniti Group and AskEvaMarie for NEM Recovery Centers.</div>
     <div class="media fade-up d3">
       <div class="hero-grain"></div>
       <div class="demo-stage2" id="dStage">
         <div class="morph s-icon" id="dMorph">
-          <span class="gmark" id="dG"><b>H</b></span>
-          <span class="m-word">HARLO</span>
+          <span class="gmark" id="dG"><b>D</b></span>
+          <span class="m-word">DAWN</span>
           <div class="m-input"><span class="mi-line"><span class="mi-text" id="dMandate"></span><i class="dcaret" id="dCaretM"></i></span><button class="mi-go" id="dSubmit" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
           <div class="m-desk">
-            <div class="demo-bar"><span class="demo-title">Harlo &middot; Load Confirmation</span><span class="demo-live"><span class="dot"></span> live</span></div>
+            <div class="demo-bar"><span class="demo-title">Dawn &middot; Chaddict &middot; Infiniti Group</span><span class="demo-live"><span class="dot"></span> 2:14am</span></div>
             <div class="demo-body">
               <div class="demo-left">
-                <div class="dl-sig" id="dSig"><span class="sd"></span> Documents received</div>
-                <div class="dl-head"><span class="dl-name">Load HR71307</span><span class="dl-sec">Dry van &middot; Laredo to Dallas</span></div>
-                <div class="dl-rows" id="dRows">
-                  <div class="dl-row"><span class="dk">BOL</span><span class="dv">Read, matches the order</span></div>
-                  <div class="dl-row"><span class="dk">Packing slip</span><span class="dv">48 of 48 units, quantities agree</span></div>
-                  <div class="dl-row"><span class="dk">Control form</span><span class="dv">Signed and complete</span></div>
-                  <div class="dl-row"><span class="dk">Carrier</span><span class="dv">Matched, Ridgeline Transport</span></div>
+                <div class="dl-sig" id="cSig"><span class="sd"></span> New conversation</div>
+                <div class="tr" id="cTrans">
+                  <div class="turn vis" id="cT1"><div class="who">Visitor</div><div class="bub">I don't think I have a problem. My wife does.</div></div>
+                  <div class="turn co" id="cT2"><div class="who">Chaddict</div><div class="bub"><span class="cb-dots"><i></i><i></i><i></i></span><span class="txt">Fair enough, and you don't have to put a label on any of it. I'm not here to talk you into something. What is going on at home that had you typing this at all?</span></div></div>
+                  <div class="turn vis" id="cT3"><div class="who">Visitor</div><div class="bub">Honestly? It has been bad for a while. I just don't want a lecture.</div></div>
+                  <div class="turn co" id="cT4"><div class="who">Chaddict</div><div class="bub"><span class="cb-dots"><i></i><i></i><i></i></span><span class="txt">No lecture here. Tell me what a bad week looks like, and we will take it from there.</span></div></div>
                 </div>
-                <div class="dl-fit"><span class="dl-fitk">Validation</span><span class="dl-bar"><b id="dBar"></b></span><span class="dl-score" id="dScore">0</span></div>
               </div>
               <div class="demo-right" id="dRight">
-                <div class="dr-head"><span class="dr-av">H</span> Prepared by Harlo <span class="dr-rdy"><span class="dot"></span> ready</span></div>
-                <div class="dr-to"><span class="dek">To</span>Dispatch &middot; Ridgeline Transport</div>
-                <div class="dr-subj"><span class="dek">Subj</span><span id="dSubj"></span><i class="dcaret" id="dCaretS"></i></div>
-                <div class="dr-body"><span id="dBody"></span><i class="dcaret" id="dCaretB"></i></div>
-                <div class="dr-foot"><span class="dr-q" id="dQueue">Send confirmation</span><span class="dr-done" id="dDone">&#10003; Confirmed &middot; TMS updated</span></div>
+                <div class="dr-head"><span class="dr-av">D</span> Behind the reply <span class="dr-rdy"><span class="dot"></span> steady</span></div>
+                <div class="dl-rows" id="cWork">
+                  <div class="dl-row"><span class="dk">Tone read</span><span class="dv">Defensive, testing the water</span></div>
+                  <div class="dl-row"><span class="dk">Approach</span><span class="dv">No labels, no pressure</span></div>
+                  <div class="dl-row"><span class="dk">Voice</span><span class="dv">Chad Carlsen, lived experience</span></div>
+                  <div class="dl-row"><span class="dk">Safety</span><span class="dv">Crisis signals watched, none present</span></div>
+                </div>
+                <div class="dr-foot"><span class="dr-q" id="dQueue">Hold the thread</span><span class="dr-done" id="dDone">&#10003; Door kept open &middot; on the record</span></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#0b2540" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#38201a" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
       </div>
       <button class="m-toggle2" id="gToggle" type="button" aria-label="Pause animation">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -979,7 +992,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="ll">Built with and live at</div>
     <div class="logobar">
-      <img class="lg" src="/img/LA.png" alt="Logistics Alliance" style="height:46px">
+      <img class="lg" src="/img/Infiniti Group.png" alt="Infiniti Group" style="height:34px">
+      <span class="lgt">NEM Recovery Centers</span>
     </div>
   </div>
 </section>
@@ -989,107 +1003,106 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">How it works</span>
-      <h2>From inbox to confirmed load.</h2>
-      <p class="lead">Send Harlo the load file. It runs the confirmation the way your best coordinator would on their best day: every document read, every detail checked, every exception in front of the right person.</p>
+      <h2>The conversation before the first call.</h2>
+      <p class="lead">Most people who need help are not ready to call a treatment center. Dawn meets them where they actually are, at whatever hour they find the nerve, and stays, so the door is open the moment they walk toward it.</p>
     </div>
     <div class="pipe">
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></div><div class="pl">Documents in</div><div class="ps">BOLs, control forms, packing slips, any format</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><div class="pl">They reach out</div><div class="ps">At 2am, ashamed, unsure, testing the water</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="pl">Read</div><div class="ps">AI vision pulls every field, no manual entry</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><div class="pl">Met, not managed</div><div class="ps">No labels, no pressure, no script</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="pl">Validate</div><div class="ps">Checked against the order, conflicts caught</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><div class="pl">The thread holds</div><div class="ps">A steady tone, however long it takes</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="6" r="2.4"/><path d="M8 17c5 0 3-9 8-9"/></svg></div><div class="pl">Match</div><div class="ps">The right carrier, on documented criteria</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M4 14v-3M8 16V8M12 18V6M16 16V8M20 14v-3"/></svg></div><div class="pl">Readiness heard</div><div class="ps">Signals noticed, never forced</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3 4.7-5"/></svg></div><div class="pl">Confirm</div><div class="ps">Written to the TMS, exceptions to a person</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div class="pl">Connected</div><div class="ps">A human and a real number, when they ask</div></div>
     </div>
-    <div class="flow-close">Your team takes the exceptions. Harlo takes everything else.</div>
+    <div class="flow-close">No pressure at 2am. A real path the moment they are ready.</div>
   </div>
 </section>
 
-<!-- FEATURE 1 · THE PAPERWORK -->
-<section class="feat-sec" id="documents">
+<!-- FEATURE 1 · LIVED EXPERIENCE -->
+<section class="feat-sec" id="voices">
   <div class="wrap">
     <div class="feat rev">
       <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Harlo &middot; Document Management</span><span class="gl"><span class="dot"></span> processing</span></div>
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Dawn &middot; Recovery platform</span><span class="gl"><span class="dot"></span> 2 companions live</span></div>
         <div class="gos-stats">
-          <div class="gs"><div class="gn">412</div><div class="gk">Documents today</div></div>
-          <div class="gs"><div class="gn">3 min</div><div class="gk">Avg per load</div></div>
-          <div class="gs"><div class="gn">6</div><div class="gk">Flagged for review</div></div>
+          <div class="gs"><div class="gn">2</div><div class="gk">Companions live</div></div>
+          <div class="gs"><div class="gn">Thousands</div><div class="gk">People supported</div></div>
+          <div class="gs"><div class="gn">24/7</div><div class="gk">Always on</div></div>
         </div>
-        <div class="brow bh"><span>Document</span><span>Type</span><span>Extraction</span><span>Status</span></div>
-        <div class="brow"><span class="bco">BOL_HR71307.pdf</span><span class="btp str">BOL</span><span class="bfit"><span class="bar"><b style="width:99%"></b></span><span class="fv">99</span></span><span class="bst">Complete</span></div>
-        <div class="brow"><span class="bco">Control Form_HR71307.pdf</span><span class="btp spn">Inbound</span><span class="bfit"><span class="bar"><b style="width:98%"></b></span><span class="fv">98</span></span><span class="bst">Complete</span></div>
-        <div class="brow"><span class="bco">Packing Slip_HR71307.pdf</span><span class="btp str">Packing</span><span class="bfit"><span class="bar"><b style="width:97%"></b></span><span class="fv">97</span></span><span class="bst">Extracted</span></div>
-        <div class="brow"><span class="bco">BOL_HR71308.pdf</span><span class="btp str">BOL</span><span class="bfit"><span class="bar"><b style="width:61%"></b></span><span class="fv">61</span></span><span class="bst flg">Flagged</span></div>
+        <div class="gco-row"><span class="nm">Chaddict &middot; built on Chad Carlsen</span><span class="st">Live</span><span class="ct">Infiniti Group</span></div>
+        <div class="gco-row"><span class="nm">AskEvaMarie &middot; built on Natalie Eva Marie</span><span class="st">Live</span><span class="ct">NEM Recovery</span></div>
+        <div class="gco-row"><span class="nm">Your companion &middot; built on your program's voice</span><span class="st">Next</span><span class="ct">your center</span></div>
+        <div class="pkg-total"><span class="pk">Underneath</span><span>One engine, one safety framework, one steady register</span></div>
       </div>
       <div class="ftxt">
-        <span class="flabel">01 &middot; The paperwork reads itself</span>
-        <h2>Every document, read on arrival.</h2>
-        <p>Harlo ingests the load file the moment it lands: BOLs, inbound control forms, packing slips, rate confirmations, in whatever shape they arrive. AI vision pulls the fields a coordinator would key in by hand and carries every document to a tracked status.</p>
+        <span class="flabel">01 &middot; Built on lived experience</span>
+        <h2>A real voice, with their blessing.</h2>
+        <p>Every Dawn deployment is a distinct personality built around a real person. Chaddict carries Chad Carlsen's twenty-plus years in behavioral health and the co-founding of Hope by the Sea. AskEvaMarie carries Natalie Eva Marie's own recovery. The warmth is not a script. It is a person, at scale.</p>
         <ul class="flist">
-          <li>Any format, straight from email or the portal</li>
-          <li>No manual data entry, ever</li>
-          <li>Every document tracked to completion</li>
+          <li>A distinct personality per program</li>
+          <li>Real backstories, shared with permission</li>
+          <li>The same steady approach underneath</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE 2 · VALIDATION -->
-<section class="feat-sec alt" id="validation">
+<!-- FEATURE 2 · THE REGISTER -->
+<section class="feat-sec alt" id="register">
   <div class="wrap">
     <div class="feat">
       <div class="ftxt">
-        <span class="flabel">02 &middot; Validation with judgment</span>
-        <h2>Errors caught before they cost a day.</h2>
-        <p>Every extracted detail is checked against the order and against the other documents in the load. Quantities, rates, dates, signatures: when everything agrees, the load moves. When something does not, Harlo names the conflict and puts it in front of the right person with context.</p>
+        <span class="flabel">02 &middot; The register that keeps people talking</span>
+        <h2>One wrong tone ends it. The tone never moves.</h2>
+        <p>People arrive carrying shame or fear, often braced to be told off. Dawn answers with empathy first and thoughtful questions second, and the register holds steady no matter what gets shared, because the moment it slips, the conversation is over.</p>
         <ul class="flist">
-          <li>Cross-checked against the order and each other</li>
-          <li>Conflicts named, not just flagged</li>
-          <li>Exceptions routed with the documents attached</li>
+          <li>Empathy first, questions second</li>
+          <li>Judgment-free, whatever gets shared</li>
+          <li>No push toward intake, ever</li>
         </ul>
       </div>
       <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Harlo &middot; Load HR71308 &middot; validation</span><span class="gl"><span class="dot"></span> flagged</span></div>
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Dawn &middot; The register</span><span class="gl"><span class="dot"></span> steady</span></div>
         <div class="dd">
-          <div class="dd-cell"><div class="dd-k">Quantities</div><div class="dd-v">Packing slip agrees with the order, <b>48 of 48</b></div></div>
-          <div class="dd-cell"><div class="dd-k">Rate</div><div class="dd-v">Matches the rate confirmation</div></div>
-          <div class="dd-cell"><div class="dd-k">Pickup date</div><div class="dd-v"><b>BOL says Jul 9, order says Jul 8</b>, one day apart</div></div>
-          <div class="dd-cell"><div class="dd-k">Routed to</div><div class="dd-v"><b>J. Alvarez</b>, both documents side by side</div></div>
+          <div class="dd-cell"><div class="dd-k">Tone</div><div class="dd-v">Steady, <b>no matter what gets shared</b></div></div>
+          <div class="dd-cell"><div class="dd-k">Labels</div><div class="dd-v">None, unless they bring one</div></div>
+          <div class="dd-cell"><div class="dd-k">Pressure</div><div class="dd-v">None. <b>The door just stays open</b></div></div>
+          <div class="dd-cell"><div class="dd-k">Memory</div><div class="dd-v">Holds the thread, picks it back up</div></div>
         </div>
-        <div class="pkg-total"><span class="pk">Result</span><span>Clean loads confirm themselves, conflicts reach a person in minutes</span></div>
+        <div class="pkg-total"><span class="pk">Result</span><span>People who came to argue stay to talk</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE 3 · THE PLATFORM -->
-<section class="feat-sec" id="platform">
+<!-- FEATURE 3 · SAFE BY DESIGN -->
+<section class="feat-sec" id="safety">
   <div class="wrap">
     <div class="feat rev">
       <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Harlo &middot; Supply Chain Solutions</span><span class="gl"><span class="dot"></span> live</span></div>
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Dawn &middot; Safety framework</span><span class="gl"><span class="dot"></span> always on</span></div>
         <div class="proc">
-          <div class="pc"><div class="pk2">Documents</div><div class="pv2">412</div></div>
-          <div class="pc"><div class="pk2">Packages</div><div class="pv2">86</div></div>
-          <div class="pc"><div class="pk2">Submissions</div><div class="pv2">37</div></div>
-          <div class="pc"><div class="pk2">TMS sync</div><div class="pv2">&#10003;<small>up to date</small></div></div>
+          <div class="pc"><div class="pk2">Crisis protocol</div><div class="pv2">&#10003;<small>immediate</small></div></div>
+          <div class="pc"><div class="pk2">Human handoff</div><div class="pv2">&#10003;<small>warm</small></div></div>
+          <div class="pc"><div class="pk2">Hours</div><div class="pv2">24/7</div></div>
+          <div class="pc"><div class="pk2">Every exchange</div><div class="pv2">&#10003;<small>logged</small></div></div>
         </div>
-        <div class="gco-row"><span class="nm">Load Confirmation</span><span class="st">Live</span><span class="ct">3 min avg</span></div>
-        <div class="gco-row"><span class="nm">Carrier Scorecard</span><span class="st">Live</span><span class="ct">per carrier</span></div>
-        <div class="gco-row"><span class="nm">Customer Scorecard</span><span class="st">Live</span><span class="ct">per account</span></div>
+        <div class="gco-row"><span class="nm">Crisis signal</span><span class="st">Routed</span><span class="ct">to a person, immediately</span></div>
+        <div class="gco-row"><span class="nm">Ready for help</span><span class="st">Connected</span><span class="ct">a number a human answers</span></div>
+        <div class="gco-row"><span class="nm">Not ready yet</span><span class="st">Held</span><span class="ct">the door stays open</span></div>
       </div>
       <div class="ftxt">
-        <span class="flabel">03 &middot; A platform, not a patch</span>
-        <h2>The portal your whole team runs in.</h2>
-        <p>Documents, apps, and answers in one place: the document manager, load confirmation, and live scorecards for every carrier and customer, all on the same foundation. Phase 2 is already underway, building Harlo into the operating system for how Logistics Alliance moves freight.</p>
+        <span class="flabel">03 &middot; Safe by design</span>
+        <h2>A companion, not a counselor.</h2>
+        <p>Dawn knows exactly what it is not. It never diagnoses and never prescribes. Crisis signals route to a person immediately, and when someone points toward readiness, the handoff is warm: a real phone number, a human voice, your program's own intake.</p>
         <ul class="flist">
-          <li>Carrier and customer scorecards, live</li>
-          <li>Confirmations written back to the TMS</li>
-          <li>Built to take on the next workflow</li>
+          <li>Never diagnoses, never prescribes</li>
+          <li>Crisis signals routed to a person, immediately</li>
+          <li>A warm handoff into your program, when they ask</li>
         </ul>
       </div>
     </div>
@@ -1100,28 +1113,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="results" id="results">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Built with Logistics Alliance</span>
-      <h2>The confirmation desk, cleared.</h2>
-      <p class="lead">Harlo runs live at Logistics Alliance, deployed within three months. The numbers below are the product, not a projection.</p>
+      <span class="eyebrow">Built with Infiniti Group and NEM Recovery</span>
+      <h2>The front door, open all night.</h2>
+      <p class="lead">Dawn runs live as Chaddict and AskEvaMarie. The numbers below are the product, not a projection.</p>
     </div>
     <div class="res-grid">
       <div class="res-card">
-        <div class="res-lg">Every day</div>
-        <div class="res-n">Hundreds</div>
-        <div class="res-nl">of loads processed</div>
-        <p class="res-p">At a high accuracy rate, across every document format a carrier can produce, without adding headcount.</p>
+        <div class="res-lg">Across both deployments</div>
+        <div class="res-n">Thousands</div>
+        <div class="res-nl">of people supported</div>
+        <p class="res-p">A consistent, human front door for people considering treatment, at whatever hour they find the nerve to type.</p>
       </div>
       <div class="res-card">
-        <div class="res-lg">Per load</div>
-        <div class="res-n">3 min</div>
-        <div class="res-nl">average processing time</div>
-        <p class="res-p">The confirmation cycle that used to gate the whole operation now clears before a person would have opened the PDF. Faster confirmation, faster payment.</p>
+        <div class="res-lg">One conversation</div>
+        <div class="res-n">350+</div>
+        <div class="res-nl">messages, from a no to a maybe</div>
+        <p class="res-p">One user arrived saying they did not want help and stayed for more than 350 messages. That almost never happens in a traditional intake flow.</p>
       </div>
       <div class="res-card">
-        <div class="res-lg">Kickoff to live</div>
-        <div class="res-n">3 months</div>
-        <div class="res-nl">to deployed in production</div>
-        <p class="res-p">Phase 1 removed the bottleneck. Phase 2 builds the full logistics platform on the foundation already running.</p>
+        <div class="res-lg">The window</div>
+        <div class="res-n">24/7</div>
+        <div class="res-nl">open when they are</div>
+        <p class="res-p">The moment someone is willing to talk does not wait for business hours. Dawn is there at 2am on a Tuesday, in your program's own voice.</p>
       </div>
     </div>
   </div>
@@ -1130,11 +1143,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>Put Harlo on your freight desk.</h2>
-    <p>Bring us the paperwork that slows your loads. We will show you what Harlo reads, validates, and confirms, on your documents, in two weeks.</p>
+    <h2>Put Dawn behind your program.</h2>
+    <p>Bring us the conversations your team cannot be awake for. We will show you what Dawn holds, in your program's voice, under your rules, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
-      <a href="/case-study/harlo" class="btn btn-ghost">Read the Logistics Alliance story</a>
+      <a href="/case-study/chaddict-and-askevamarie" class="btn btn-ghost">Read the Infiniti Group story</a>
+      <a href="/healthcare" class="btn btn-ghost">Gambit for Healthcare</a>
     </div>
   </div>
 </section>
@@ -1234,35 +1248,30 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
 </script>
 
 <script>
-/* ----- Harlo hero demo: mark, load file, confirmation ----- */
+/* ----- Dawn hero demo: mark, first message, held conversation ----- */
 (function(){
   var stage=document.getElementById('dStage'); if(!stage) return;
   function $(id){return document.getElementById(id);}
   var morph=$('dMorph'),gmark=$('dG'),mandateEl=$('dMandate'),caretM=$('dCaretM'),submit=$('dSubmit'),
-      cursor=$('dCursor'),sig=$('dSig'),rows=[].slice.call(document.querySelectorAll('#dRows .dl-row')),
-      bar=$('dBar'),score=$('dScore'),right=$('dRight'),subjEl=$('dSubj'),bodyEl=$('dBody'),
-      caretS=$('dCaretS'),caretB=$('dCaretB'),queue=$('dQueue'),done=$('dDone'),
-      subjBox=document.querySelector('.dr-subj');
-  var MANDATE="Confirm load HR71307. BOL, control form, and packing slip attached.";
-  var SUBJ="Load HR71307 confirmed, pickup Thu 8:00am";
-  var BODY="Hi Dispatch, load HR71307 is confirmed. The BOL matches the order, the packing slip agrees at 48 units, and the control form is signed.\n\nPickup Thursday 8:00am, Laredo TX. Driver details to follow.\n\nHarlo";
+      cursor=$('dCursor'),sig=$('cSig'),right=$('dRight'),queue=$('dQueue'),done=$('dDone'),
+      t1=$('cT1'),t2=$('cT2'),t3=$('cT3'),t4=$('cT4'),
+      work=[].slice.call(document.querySelectorAll('#cWork .dl-row'));
+  var MSG="I don't think I have a problem. My wife does.";
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var paused=false,waiters=[];
   function gate(){return paused?new Promise(function(r){waiters.push(r);}):Promise.resolve();}
   function resumeAll(){paused=false;stage.classList.remove('paused');var w=waiters;waiters=[];w.forEach(function(r){r();});}
   function sleep(ms){return new Promise(function(r){setTimeout(r,ms);}).then(gate);}
   function setState(st){morph.classList.remove('s-icon','s-input','s-desk');morph.classList.add(st);}
-  function moveTo(el){var d=stage.getBoundingClientRect(),t=el.getBoundingClientRect();cursor.style.transform='translate('+(t.left-d.left+t.width*0.5-5)+'px,'+(t.top-d.top+t.height*0.5-2)+'px)';}
+  function moveTo(el){var d=stage.getBoundingClientRect(),p=el.getBoundingClientRect();cursor.style.transform='translate('+(p.left-d.left+p.width*0.5-5)+'px,'+(p.top-d.top+p.height*0.5-2)+'px)';}
   function park(){var d=stage.getBoundingClientRect();cursor.style.transition='none';cursor.style.transform='translate('+(d.width*0.5)+'px,'+(d.height*0.74)+'px)';void cursor.offsetWidth;cursor.style.transition='';}
   function clickFx(){cursor.classList.add('click');setTimeout(function(){cursor.classList.remove('click');},420);}
   function type(el,text,speed,caret){return new Promise(function(res){caret&&caret.classList.add('on');var i=0;el.textContent='';(function st(){if(paused){waiters.push(st);return;}if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(st,speed);}else{caret&&caret.classList.remove('on');res();}})();});}
-  function countTo(el,to,dur){var t0=performance.now();(function f(now){var p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(p*to);if(p<1)requestAnimationFrame(f);})(t0);}
   function resetInner(){
-    rows.forEach(function(r){r.classList.remove('in');});
-    bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;bar.style.transition='';
-    score.textContent='0';sig.classList.remove('in');right.classList.remove('active');
+    [t1,t2,t3,t4].forEach(function(x){x.classList.remove('in','said');});
+    work.forEach(function(r){r.classList.remove('in');});
+    sig.classList.remove('in');right.classList.remove('active');
     queue.classList.remove('hide');done.classList.remove('show');
-    subjEl.textContent='';bodyEl.textContent='';caretS.classList.remove('on');caretB.classList.remove('on');
     mandateEl.textContent='';caretM.classList.remove('on');
   }
   async function loop(){
@@ -1270,27 +1279,31 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
     await sleep(600);cursor.style.opacity='1';
     moveTo(gmark);await sleep(780);clickFx();await sleep(300);
     setState('s-input');await sleep(660);
-    await type(mandateEl,MANDATE,24,caretM);await sleep(560);
+    await type(mandateEl,MSG,30,caretM);await sleep(560);
     moveTo(submit);await sleep(620);clickFx();await sleep(300);
-    setState('s-desk');await sleep(760);
-    sig.classList.add('in');await sleep(480);
-    for(var i=0;i<rows.length;i++){rows[i].classList.add('in');await sleep(320);}
-    await sleep(140);bar.style.width='98%';countTo(score,98,950);await sleep(1050);
-    right.classList.add('active');await sleep(430);
-    moveTo(subjBox);await sleep(620);
-    await type(subjEl,SUBJ,30,caretS);await sleep(230);
-    await type(bodyEl,BODY,14,caretB);await sleep(450);
-    moveTo(queue);await sleep(700);clickFx();await sleep(300);
-    queue.classList.add('hide');done.classList.add('show');await sleep(2200);
+    setState('s-desk');await sleep(720);
+    sig.classList.add('in');cursor.style.opacity='0';await sleep(430);
+    t1.classList.add('in');await sleep(900);
+    right.classList.add('active');work[0].classList.add('in');await sleep(380);
+    work[1].classList.add('in');await sleep(500);
+    t2.classList.add('in');await sleep(1500);
+    t2.classList.add('said');work[2].classList.add('in');await sleep(2100);
+    t3.classList.add('in');await sleep(1000);
+    work[3].classList.add('in');await sleep(600);
+    t4.classList.add('in');await sleep(1300);
+    t4.classList.add('said');await sleep(1400);
+    cursor.style.opacity='1';moveTo(queue);await sleep(680);clickFx();await sleep(300);
+    queue.classList.add('hide');done.classList.add('show');await sleep(2400);
     cursor.style.opacity='0';
     setState('s-icon');await sleep(760);
     loop();
   }
   function showStatic(){
     setState('s-desk');morph.style.transition='none';gmark.style.transition='none';
-    sig.classList.add('in');rows.forEach(function(r){r.classList.add('in');});
-    bar.style.transition='none';bar.style.width='98%';score.textContent='98';
-    right.classList.add('active');subjEl.textContent=SUBJ;bodyEl.textContent=BODY;
+    sig.classList.add('in');
+    [t1,t2,t3,t4].forEach(function(x){x.classList.add('in','said');});
+    work.forEach(function(r){r.classList.add('in');});
+    right.classList.add('active');
     queue.classList.add('hide');done.classList.add('show');cursor.style.display='none';
   }
   var btn=document.getElementById('gToggle');
