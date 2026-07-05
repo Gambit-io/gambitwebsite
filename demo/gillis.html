@@ -934,10 +934,10 @@
       </div>
     </main>
 
-    <!-- SCOUT: the low-cost, self-serve research door -->
+    <!-- SCOUT: market intelligence for every property (the Gillis take on the static tools) -->
     <main class="work-wrap work-pane" id="paneScout">
       <div class="rs-head">
-        <div><h1 class="rs-h1">Scout</h1><p class="rs-sub">Self-serve market intelligence for every property. Enter your hotel, see what you're missing.</p></div>
+        <div><h1 class="rs-h1">Scout</h1><p class="rs-sub">Market intelligence for every property: your market, the events, the comp set, and the prospects. The static tools stop at a description. Scout's read is rebuilt from live signals.</p></div>
         <span class="tier-chip">Included for every Choice property</span>
       </div>
       <div class="assess-run">
@@ -948,26 +948,82 @@
       </div>
       <div class="kpis">
         <div class="kpi"><div class="kn">6</div><div class="kl">Live signals near you</div><div class="kh"><i></i>2 are hot right now</div></div>
+        <div class="kpi"><div class="kn">4</div><div class="kl">Events on the calendar</div><div class="kh"><i></i>2 high impact</div></div>
         <div class="kpi"><div class="kn">23</div><div class="kl">Companies identified</div><div class="kh"><i></i>with a reason to book</div></div>
-        <div class="kpi"><div class="kn">3</div><div class="kl">Decision makers verified</div><div class="kh"><i></i>names, titles, and emails</div></div>
       </div>
-      <div class="panel-card">
-        <div class="panel-head"><h3>What's driving room nights within 5 miles</h3><span class="ph-meta"><i></i>live signals, not a static list</span></div>
-        <div class="rrow rh"><span>Signal</span><span>Why it books rooms</span><span>Priority</span><span class="rl2">Est. demand</span></div>
-        <button class="rrow"><span class="rn">I-694 Lighting Replacement</span><span class="rc">Night crews need day-sleeper rooms</span><span class="prio hot">Hot</span><span class="rl2">Multi-season</span></button>
-        <button class="rrow"><span class="rn">Hwy 252 Corridor Rebuild</span><span class="rc">Paving crews staging nearby</span><span class="prio hot">Hot</span><span class="rl2">2 seasons</span></button>
-        <button class="rrow"><span class="rn">Fall Conference Calendar</span><span class="rc">Q4 overflow on peak weeks</span><span class="prio warm">Warm</span><span class="rl2">Peak weeks</span></button>
+
+      <div class="subnav" id="scoutNav">
+        <button class="on" onclick="scoutBoard(0,this)">Market analysis</button>
+        <button onclick="scoutBoard(1,this)">Special events</button>
+        <button onclick="scoutBoard(2,this)">Competitors</button>
+        <button onclick="scoutBoard(3,this)">Companies &amp; contacts</button>
       </div>
-      <div class="panel-card">
-        <div class="panel-head"><h3>Verified decision makers</h3><span class="ph-meta"><i></i>real people, checked before you call</span></div>
-        <div class="rrow rh"><span>Contact</span><span>Company</span><span>Email</span><span class="rl2"></span></div>
-        <div class="rrow"><span class="rn">April Ryan · Project Manager</span><span class="rc">Short Elliott Hendrickson</span><span class="dstatus">april.ryan@sehinc.com</span><span class="rl2"></span></div>
-        <div class="rrow"><span class="rn">Marcus Alvarez · Field Super</span><span class="rc">Design Electric, Inc.</span><span class="lockchip">Included with GillisOS</span><span class="rl2"></span></div>
-        <div class="rrow"><span class="rn">Carl Denton · Project Director</span><span class="rc">Meridian Paving Group</span><span class="lockchip">Included with GillisOS</span><span class="rl2"></span></div>
+      <div id="scoutBoards">
+
+        <div class="board on">
+          <div class="panel-card">
+            <div class="panel-head"><h3>Your market read</h3><span class="ph-meta"><i></i>rebuilt from live signals</span></div>
+            <div class="fgrid" style="border:none;border-radius:0">
+              <div class="fg"><span class="fgl">Market type</span><span class="fgv">Suburban project corridor</span></div>
+              <div class="fg"><span class="fgl">Demand character</span><span class="fgv">Night-shift construction now, events in Q4</span></div>
+              <div class="fg"><span class="fgl">Best-fit segments</span><span class="fgv">Extended-stay crews, SMERF, corporate transient</span></div>
+              <div class="fg"><span class="fgl">Rate opportunity</span><span class="fgv">Day-sleeper blocks with monthly billing</span></div>
+            </div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-head"><h3>Strategic recommendations</h3><span class="ph-meta"><i></i>tied to what is actually happening</span></div>
+            <div class="rrow rh"><span>Move</span><span>Why now</span><span>Source</span><span class="rl2"></span></div>
+            <button class="rrow"><span class="rn">Target contractors within 5 miles</span><span class="rc">Two hot construction signals, crews on nights</span><span class="dstatus">Live signals</span><span class="rl2"></span></button>
+            <button class="rrow"><span class="rn">Hold quiet day-sleeper floors</span><span class="rc">Night work runs through November</span><span class="dstatus">Signal timing</span><span class="rl2"></span></button>
+            <button class="rrow"><span class="rn">Bid the Q4 conference room blocks</span><span class="rc">Two high-impact events, overflow demand</span><span class="dstatus">Event calendar</span><span class="rl2"></span></button>
+          </div>
+        </div>
+
+        <div class="board">
+          <div class="panel-card">
+            <div class="panel-head"><h3>Special events near you</h3><span class="ph-meta"><i></i>with the demand they bring</span></div>
+            <div class="rrow rh"><span>Event</span><span>When</span><span>Impact</span><span class="rl2">Demand</span></div>
+            <button class="rrow"><span class="rn">Regional Technology Summit</span><span class="rc">March 15 to 18</span><span class="prio hot">High</span><span class="rl2">2 to 3 night stays</span></button>
+            <button class="rrow"><span class="rn">State Medical Association Conference</span><span class="rc">April 22 to 25</span><span class="prio hot">High</span><span class="rl2">400+ room nights</span></button>
+            <button class="rrow"><span class="rn">Downtown Arts and Music Festival</span><span class="rc">May 9 to 11</span><span class="prio warm">Medium</span><span class="rl2">Weekend leisure</span></button>
+            <button class="rrow"><span class="rn">Regional Youth Soccer Tournament</span><span class="rc">June 20 to 22</span><span class="prio warm">Medium</span><span class="rl2">4 to 8 per room</span></button>
+          </div>
+        </div>
+
+        <div class="board">
+          <div class="panel-card">
+            <div class="panel-head"><h3>Your comp set, within a mile</h3><span class="ph-meta"><i></i>and where they are weak</span></div>
+            <div class="rrow rh"><span>Hotel</span><span>Distance</span><span>Read</span><span class="rl2"></span></div>
+            <button class="rrow"><span class="rn">Marriott Downtown City Center</span><span class="rc">0.3 miles</span><span class="dstatus">Renovating now</span><span class="rl2"></span></button>
+            <button class="rrow"><span class="rn">Hilton Garden Inn Business District</span><span class="rc">0.5 miles</span><span class="dstatus">Strong corporate base</span><span class="rl2"></span></button>
+            <button class="rrow"><span class="rn">Westin Grand Plaza</span><span class="rc">0.7 miles</span><span class="dstatus">Group house</span><span class="rl2"></span></button>
+          </div>
+          <div class="ladder" style="background:linear-gradient(120deg,var(--teal-soft),#fff);border-color:var(--teal-border)">
+            <div class="ladder-tx"><b>The window:</b> two competitors are mid-renovation. Scout reads that as 6 to 12 months to capture their displaced corporate and crew demand, and the signals board shows exactly who to take.</div>
+          </div>
+        </div>
+
+        <div class="board">
+          <div class="panel-card">
+            <div class="panel-head"><h3>Companies with a reason to book</h3><span class="ph-meta"><i></i>ranked by the signal behind them</span></div>
+            <div class="rrow rh"><span>Company</span><span>Profile</span><span>Why</span><span class="rl2"></span></div>
+            <button class="rrow"><span class="rn">Short Elliott Hendrickson (SEH)</span><span class="rc">Engineering · ~900 employees</span><span class="dstatus">I-694 project</span><span class="rl2">Find contacts</span></button>
+            <button class="rrow"><span class="rn">Design Electric, Inc.</span><span class="rc">Electrical · ~250 employees</span><span class="dstatus">I-694 project</span><span class="rl2">Find contacts</span></button>
+            <button class="rrow"><span class="rn">Meridian Paving Group</span><span class="rc">Paving · ~175 employees</span><span class="dstatus">Hwy 252 corridor</span><span class="rl2">Find contacts</span></button>
+          </div>
+          <div class="panel-card">
+            <div class="panel-head"><h3>Verified decision makers</h3><span class="ph-meta"><i></i>real people, checked before you call</span></div>
+            <div class="rrow rh"><span>Contact</span><span>Company</span><span>Email</span><span class="rl2"></span></div>
+            <div class="rrow"><span class="rn">April Ryan · Project Manager</span><span class="rc">Short Elliott Hendrickson</span><span class="dstatus">april.ryan@sehinc.com</span><span class="rl2"></span></div>
+            <div class="rrow"><span class="rn">Marcus Alvarez · Field Super</span><span class="rc">Design Electric, Inc.</span><span class="lockchip">Included with Research + Outreach</span><span class="rl2"></span></div>
+            <div class="rrow"><span class="rn">Carl Denton · Project Director</span><span class="rc">Meridian Paving Group</span><span class="lockchip">Included with Research + Outreach</span><span class="rl2"></span></div>
+          </div>
+        </div>
+
       </div>
-      <div class="ladder">
-        <div class="ladder-tx"><b>Ready to work these?</b> GillisOS adds the deep research, verified contact lists, and outreach written and sent for you.</div>
-        <button class="run-btn" id="scoutPushBtn" onclick="scoutPush()">Push to GillisOS
+      <div class="ladder" style="margin-top:16px">
+        <div class="ladder-tx"><b>Ready to work these?</b> Research + Outreach adds the deep research, the full verified contact lists, and outreach written and sent for you as Sam.</div>
+        <button class="run-btn" id="scoutPushBtn" onclick="scoutPush()">Upgrade to Research + Outreach
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
         </button>
       </div>
@@ -1016,7 +1072,7 @@
     <!-- ANCHOR: key national accounts -->
     <main class="work-wrap work-pane" id="paneAnchor">
       <div class="rs-head">
-        <div><h1 class="rs-h1">Anchor</h1><p class="rs-sub">Your key national accounts, managed like the assets they are. Anchor pushes their demand down to the right properties instead of hunting for it.</p></div>
+        <div><h1 class="rs-h1">Key Accounts</h1><p class="rs-sub">National accounts like Canadian Tire: one relationship, hundreds of locations, and travel in both directions. Managed once, with the demand routed to the right properties automatically.</p></div>
         <button class="run-btn" onclick="alert('Prototype: opens the new national account intake.')">Add account
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
@@ -1030,17 +1086,17 @@
         <div class="panel-head"><h3>Key accounts</h3><span class="ph-meta"><i></i>expand for the account plan</span></div>
         <div class="acc" style="border:none;border-radius:0;margin:0;border-bottom:1px solid var(--border-soft)">
           <button class="acc-head" onclick="accToggle(this)">
-            <span class="acc-t">Turner Construction<span class="acc-sub">Construction · 42 properties</span></span>
-            <span class="acc-r"><span class="dstatus">6,400 rn YTD</span><span class="prio warm">QBR due</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="acc-t">Canadian Tire<span class="acc-sub">National retail · 100+ properties touched</span></span>
+            <span class="acc-r"><span class="dstatus">7,900 rn YTD</span><span class="prio hot">Growing</span><svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
           </button>
           <div class="acc-body">
             <div class="cgrid">
               <div class="fg"><span class="fgl">Account owner</span><span class="fgv">Dana W., National Accounts</span></div>
-              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">T. Rios, Travel Program Lead</span></div>
-              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">National crew rate, renewed Jan</span></div>
-              <div class="fg"><span class="fgl">Next action</span><span class="fgv">QBR next week, growth plan attached</span></div>
+              <div class="fg"><span class="fgl">Primary contact</span><span class="fgv">National travel program manager</span></div>
+              <div class="fg"><span class="fgl">Rate program</span><span class="fgv">National negotiated rate, all brands</span></div>
+              <div class="fg"><span class="fgl">Next action</span><span class="fgv">Q3 store refresh calendar lands Friday</span></div>
             </div>
-            <div class="dfield"><span class="dfl">Live routing</span><p>Crew block for the Columbus hospital project routed to 3 Ohio properties this week. Two more projects breaking ground in Q3, mapped to nearby hotels.</p></div>
+            <div class="dfield"><span class="dfl">Travel in, travel out</span><p>One relationship, hundreds of reasons to travel. In: renovation crews spend 3 to 6 weeks per store on the refresh program, and DC maintenance teams rotate through distribution centers. Out: dealers and store managers travel to HQ trainings and the annual dealer convention. Key Accounts maps every one of those trips to the nearest property, both directions.</p></div>
           </div>
         </div>
         <div class="acc" style="border:none;border-radius:0;margin:0;border-bottom:1px solid var(--border-soft)">
@@ -1107,7 +1163,7 @@
       <div class="panel-card">
         <div class="panel-head"><h3>Routed this week</h3><span class="ph-meta"><i></i>national demand, delivered to properties</span></div>
         <div class="rrow rh"><span>Routing</span><span>Account</span><span>Properties</span><span class="rl2">Rooms</span></div>
-        <div class="rrow"><span class="rn">Columbus hospital project crew block</span><span class="rc">Turner Construction</span><span class="dstatus">3 in Ohio</span><span class="rl2">31 rooms</span></div>
+        <div class="rrow"><span class="rn">Store refresh wave, 14 Ontario stores</span><span class="rc">Canadian Tire</span><span class="dstatus">14 properties</span><span class="rl2">96 rooms</span></div>
         <div class="rrow"><span class="rn">Fall tour, midwest leg</span><span class="rc">Live Nation</span><span class="dstatus">4 markets</span><span class="rl2">48 rooms</span></div>
         <div class="rrow"><span class="rn">Fulfillment center launch, Savannah</span><span class="rc">Amazon Logistics</span><span class="dstatus">2 properties</span><span class="rl2">22 rooms</span></div>
       </div>
@@ -1266,25 +1322,22 @@ const TENANTS = {
     lede:"Find new business, sharpen your skills, and get answers in Tammy's voice. One login, one place.",
     signSub:"Use your work account to continue. Takes about 10 seconds.",
     values:[
-      {icon:ic.outbound, t:"Research", d:"Find and win new business"},
+      {icon:ic.outbound, t:"Research + Outreach", d:"The premium engine"},
       {icon:ic.assess,   t:"Market Assessment", d:"A live read on any market"},
-      {icon:ic.coaching, t:"Coaching", d:"Tammy, in the moment"},
-      {icon:ic.chat,     t:"AskGillis", d:"Answers, anytime"},
+      {icon:ic.chat,     t:"AskGillis", d:"Coaching and training in one"},
     ],
     user:{name:"Ryan", role:"Creative Director", initials:"RY"},
     spaces:[
-      {id:'research', label:'Research', icon:'search'},
+      {id:'research', label:'Research + Outreach', icon:'search'},
       {id:'assess', label:'Market Assessment', icon:'chart'},
-      {id:'coaching', label:'Coaching', icon:'trend'},
-      {id:'chat', label:'AskGillis', icon:'bubble'},
+      {id:'coaching', label:'AskGillis', icon:'bubble'},
     ],
     pillars:[
-      {space:"research", accent:"outbound", title:"Research", desc:"Backyard Search, signals, leads, and contacts. Find the demand within five miles of every hotel and reach out first.", icon:'search', meta:"85 live signals", live:true},
+      {space:"research", accent:"outbound", title:"Research + Outreach", desc:"The premium engine. Backyard Search signals, deep research, verified contacts, and the first email written and sent as Sam.", icon:'search', meta:"85 live signals", live:true},
       {space:"assess", accent:"tools", title:"Dynamic Market Assessment", desc:"A live read on any market: what is driving demand, where the room nights come from, and the moves to make next.", icon:'chart', meta:"Refreshed live", live:true},
-      {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment: outreach support, objection handling, role play, and the Daily Sharpener, built on Room to Grow.", icon:'trend', meta:"Always on", live:true},
-      {space:"chat", accent:"chat", title:"AskGillis", desc:"The open chat. Answers in Tammy's voice, on anything from a prospect to a policy, whenever you need a hand.", icon:'bubble', meta:"Always on", live:true},
+      {space:"coaching", accent:"coaching", title:"AskGillis", desc:"Coaching and training, all in one. Tammy's modules, role play, the Daily Sharpener, and open chat, built on Room to Grow.", icon:'bubble', meta:"Always on", live:true},
     ],
-    greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
+    greetSub:"GillisOS, the platform for hotel sales. Pick a door.",
     chatGreeting:"Hi Ryan! I'm here whenever you need a hand. Ask me about a prospect, a play, or anything from the Gillis library.",
     chips:["They already have a preferred hotel","Sharpen my cold email","What's a good follow-up cadence?"],
   },
@@ -1297,29 +1350,28 @@ const TENANTS = {
     lede:"Research, coaching, and an always-on assistant tuned to the Choice playbook, behind your own sign-in.",
     signSub:"Use your Choice Hotels work account to continue.",
     values:[
-      {icon:ic.outbound, t:"GillisOS", d:"Research and outreach, bundled"},
-      {icon:ic.scout,    t:"Scout", d:"Self-serve, every property"},
-      {icon:ic.desk,     t:"Front Desk", d:"Tammy, extended to the desk"},
-      {icon:ic.anchor,   t:"Anchor", d:"National accounts, routed"},
-      {icon:ic.coaching, t:"Coaching", d:"Tuned to the Choice playbook"},
+      {icon:ic.outbound, t:"Research + Outreach", d:"The premium engine"},
+      {icon:ic.scout,    t:"Scout", d:"Market intel, every property"},
+      {icon:ic.desk,     t:"Reception", d:"AskGillis at the front desk"},
+      {icon:ic.anchor,   t:"Key Accounts", d:"Managed once, routed everywhere"},
+      {icon:ic.chat,     t:"AskGillis", d:"Coaching and training in one"},
     ],
     user:{name:"Dana", role:"Brand Sales Manager", initials:"DA"},
     spaces:[
-      {id:'research', label:'GillisOS', icon:'search'},
+      {id:'research', label:'Research + Outreach', icon:'search'},
       {id:'scout', label:'Scout', icon:'scope'},
-      {id:'desk', label:'Front Desk', icon:'bell'},
-      {id:'anchor', label:'Anchor', icon:'anchor'},
-      {id:'coaching', label:'Coaching', icon:'trend'},
-      {id:'chat', label:'AskGillis', icon:'bubble'},
+      {id:'desk', label:'Reception', icon:'bell'},
+      {id:'anchor', label:'Key Accounts', icon:'anchor'},
+      {id:'coaching', label:'AskGillis', icon:'bubble'},
     ],
     pillars:[
-      {space:"research", accent:"outbound", title:"GillisOS", desc:"Research and outreach, bundled. Signals within five miles of every property, verified contacts, and the first email written and sent.", icon:'search', meta:"85 live signals", live:true},
-      {space:"scout", accent:"tools", title:"Scout", desc:"The self-serve entry point for every property. Enter your hotel, see the demand you're missing, at a price any GM can say yes to.", icon:'scope', meta:"Every property", live:true},
-      {space:"desk", accent:"desk", title:"AskGillis Front Desk", desc:"Tammy, extended to frontline staff as an extension over any desk system: complaints, comps, walks, and how to work the screen in front of them.", icon:'bell', meta:"On every shift", live:true},
-      {space:"anchor", accent:"anchor", title:"Anchor", desc:"Key national accounts, managed like assets. Routes Turner, Live Nation, and GSA demand down to the right properties.", icon:'anchor', meta:"28 accounts", live:true},
-      {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment, tuned to the Choice playbook: outreach support, objections, role play, and the Daily Sharpener.", icon:'trend', meta:"Always on", live:true},
+      {space:"research", accent:"outbound", title:"Research + Outreach", desc:"The premium engine. Everything Scout sees, plus deep research, verified contact lists, and the first email written and sent as Sam.", icon:'search', meta:"85 live signals", live:true},
+      {space:"scout", accent:"tools", title:"Scout", desc:"Market intelligence for every property: your market, events, comp set, and prospects. Self-serve, at a price any GM can say yes to.", icon:'scope', meta:"Every property", live:true},
+      {space:"desk", accent:"desk", title:"Reception", desc:"AskGillis extended to the front desk as an overlay extension: complaints, comps, walks, and the system itself, answered on every shift.", icon:'bell', meta:"On every shift", live:true},
+      {space:"anchor", accent:"anchor", title:"Key Accounts", desc:"One Canadian Tire relationship is hundreds of locations and travel both ways: crews in for store refreshes, dealers out to HQ. Managed once, routed everywhere.", icon:'anchor', meta:"28 accounts", live:true},
+      {space:"coaching", accent:"coaching", title:"AskGillis", desc:"Coaching and training, all in one, tuned to the Choice playbook: modules, role play, the Daily Sharpener, and open chat with Tammy.", icon:'bubble', meta:"Always on", live:true},
     ],
-    greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
+    greetSub:"The full GillisOS platform, in Choice colors. Five doors, one login.",
     chatGreeting:"Hi Dana! Ask me anything about Choice selling, your accounts, or what to do next on a lead.",
     chips:["Research a new lead","Draft an outreach email","They already have a preferred hotel"],
   },
@@ -2060,10 +2112,14 @@ function closeChat(){ panel.classList.remove('open'); }
 /* ============================================================
    SUITE INTERACTIONS: Scout, Front Desk, Anchor
    ============================================================ */
+function scoutBoard(i, btn){
+  document.querySelectorAll('#scoutNav button').forEach((b,k)=>b.classList.toggle('on',k===i));
+  document.querySelectorAll('#scoutBoards > .board').forEach((b,k)=>b.classList.toggle('on',k===i));
+}
 function scoutPush(){
   const b = document.getElementById('scoutPushBtn');
-  b.textContent = 'Pushed. Opening GillisOS...';
-  setTimeout(()=>{ setSpace('research'); b.innerHTML = 'Push to GillisOS <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>'; }, 700);
+  b.textContent = 'Opening Research + Outreach...';
+  setTimeout(()=>{ setSpace('research'); b.innerHTML = 'Upgrade to Research + Outreach <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>'; }, 700);
 }
 const DESK_ANSWERS = {
   charge:{t:"Easy one to make right. Apologize once and fix it, do not relitigate how it happened.",
