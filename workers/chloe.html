@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jericho · Support Worker · Gambit</title>
-<meta name="description" content="Jericho is the front-line conversation worker. It answers service questions, triages technical support, qualifies buyers, and routes what needs a human to your team, across web, SMS, and voice, around the clock.">
+<title>Chloe · Voice Concierge · Gambit</title>
+<meta name="description" content="Chloe is the voice concierge built with the Town of Vail. She answers the town's phone line around the clock: live parking, events, permits, and services, in more than 50 languages.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/workers/jericho">
+<link rel="canonical" href="https://gambitco.io/workers/chloe">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jericho · Support Worker · Gambit">
-<meta property="og:description" content="The first conversation, handled. Service, support, and sales inquiries answered across every channel, around the clock.">
-<meta property="og:image" content="https://gambitco.io/img/ind-gillis.jpg">
-<meta property="og:url" content="https://gambitco.io/workers/jericho">
+<meta property="og:title" content="Chloe · Voice Concierge · Gambit">
+<meta property="og:description" content="She picks up every time. Real-time answers by phone, in 50 plus languages, any hour.">
+<meta property="og:image" content="https://gambitco.io/img/ind-vail.jpg">
+<meta property="og:url" content="https://gambitco.io/workers/chloe">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,24 +54,24 @@
   --f-civic:#54697b;
   --f-log:#a0713a;
   --f-legal:#6b5d3f;
-  /* Jericho worker page: slate accent drawn from Jericho's own color */
-  --navy:#1d242e;
-  --navy-2:#28323f;
-  --accent:#48657f;
-  --accent-2:#9db4c8;
-  --accent-deep:#36506a;
-  /* console surface tokens (slate-neutral on this page) */
-  --g-purple:#33475c;
-  --g-teal:#48657f;
-  --g-teal-d:#36506a;
+  /* Chloe worker page: alpine teal drawn from Chloe's own color */
+  --navy:#0c272d;
+  --navy-2:#144049;
+  --accent:#2c8091;
+  --accent-2:#8ec4cf;
+  --accent-deep:#20616e;
+  /* console surface tokens (alpine teal on this page) */
+  --g-purple:#20616e;
+  --g-teal:#2c8091;
+  --g-teal-d:#20616e;
   --g-orange:#E8875B;
   --g-gold:#D4A843;
-  --g-lilac:#6a86a0;
-  --g-bg:#f2f4f6;
-  --g-lav:#e9edf2;
-  --g-line:#e2e7ec;
-  --g-text:#46505c;
-  --g-dark:#1d242e;
+  --g-lilac:#6da3ad;
+  --g-bg:#f2f7f8;
+  --g-lav:#e7f1f2;
+  --g-line:#dfeaec;
+  --g-text:#40545a;
+  --g-dark:#0c272d;
   --display:'General Sans','Helvetica Neue',Arial,sans-serif;
   --mark:'Orbitron',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -358,14 +358,14 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 @media(max-width:540px){.ftile{width:calc(50% - 7px)}}
 
 /* ---------- results ---------- */
-.results{padding:100px 0;background:var(--paper)}
+.results{padding:100px 0;background:var(--bone)}
 .results .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
 .results .section-head .eyebrow{margin-bottom:16px}
 .results .section-head h2{margin-bottom:14px}
 .results .section-head .lead{margin:0 auto}
 .res-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:760px;margin:0 auto}
 @media(max-width:820px){.res-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
-.res-card{background:var(--bone);border:1px solid #e4dac9;border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease}
+.res-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease}
 .res-card:hover{transform:translateY(-4px);box-shadow:0 26px 56px -38px rgba(21,17,13,.45);border-color:var(--sand-deep)}
 .res-lg{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.01em;color:var(--ink);margin-bottom:24px}
 .res-n{font-family:var(--display);font-weight:600;font-size:clamp(38px,4.6vw,52px);letter-spacing:-.03em;line-height:1;color:var(--navy)}
@@ -377,7 +377,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .res-card:hover .res-link .ar{transform:translateX(3px)}
 
 /* ---------- cta ---------- */
-.cta{padding:104px 0;background:var(--bone);text-align:center}
+.cta{padding:104px 0;background:var(--paper);text-align:center}
 .cta h2{margin-bottom:16px}
 .cta p{color:var(--muted);font-size:18px;max-width:52ch;margin:0 auto 32px;line-height:1.55}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -667,13 +667,56 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .crm-row .cv2 .hotp{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:#b0511f;background:rgba(232,135,91,.16);border-radius:14px;padding:2px 8px;margin-left:6px}
 
 
-/* ===== Jericho page overrides ===== */
-.gmark{background:var(--w-jericho)}
-.morph.s-icon .gmark{font-size:23px}
-.morph.s-input .gmark{font-size:20px}
-.morph.s-desk .gmark{font-size:11px}
-.hero .media{background:radial-gradient(130% 150% at 28% 18%,#37485c 0%,#1a222c 62%,#131a22 100%)}
+/* ===== Chloe page overrides ===== */
+.gmark{background:var(--w-chloe)}
+.morph.s-icon .gmark{font-size:22px}
+.morph.s-input .gmark{font-size:19px}
+.morph.s-desk .gmark{font-size:10px}
+.hero .media{background:radial-gradient(130% 150% at 28% 18%,#1a5c6b 0%,#0c272d 62%,#081d22 100%)}
 .dl-bar b{background:var(--accent)}
+.bst.flg{color:#c73a23;background:rgba(240,78,54,.12)}
+/* incoming-call state */
+.ci-ring{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none;margin-right:10px;animation:pulse 1.4s infinite}
+.ci-txt{color:#241f2e;font-weight:500}
+/* live-call console: transcript left, work log right */
+.c-lang{margin-left:14px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:2px 9px}
+.tr{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;overflow:hidden;margin-top:12px;min-height:0}
+.turn{max-width:88%;opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.turn.in{opacity:1;transform:none}
+.turn.caller{align-self:flex-end}
+.turn.chloe{align-self:flex-start}
+.turn .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#7f95a0;margin-bottom:4px}
+.turn.caller .who{text-align:right}
+.turn .bub{display:inline-block;padding:9px 13px;font-size:clamp(12px,1.25vw,14px);line-height:1.45}
+.turn.caller .bub{background:var(--g-lav);color:var(--g-dark);border-radius:13px 13px 4px 13px}
+.turn.chloe .bub{background:#fff;color:var(--g-text);border:1px solid var(--g-line);border-radius:13px 13px 13px 4px}
+.turn.chloe .bub .txt{display:none}
+.turn.chloe.said .bub .txt{display:inline}
+.turn.chloe.said .bub .wavebub{display:none}
+.wavebub{display:inline-flex;align-items:flex-end;gap:3px;height:14px}
+.wavebub i{width:3px;border-radius:2px;background:var(--accent);animation:weq2 1s infinite ease-in-out}
+.wavebub i:nth-child(1){height:7px}.wavebub i:nth-child(2){height:13px;animation-delay:.1s}.wavebub i:nth-child(3){height:9px;animation-delay:.2s}.wavebub i:nth-child(4){height:14px;animation-delay:.3s}.wavebub i:nth-child(5){height:8px;animation-delay:.4s}
+@keyframes weq2{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.wavebub i{animation:none}}
+.park-chip{display:inline-flex;align-items:center;gap:9px;margin-top:7px;background:#fff;border:1px solid var(--g-line);border-radius:10px;padding:7px 11px;box-shadow:0 10px 22px -12px rgba(12,39,45,.35);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.turn.said .park-chip{opacity:1;transform:none}
+.park-chip .pmk{width:22px;height:22px;border-radius:6px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.park-chip .ptx b{color:var(--g-dark);font-size:12px}
+.park-chip .ptx span{color:#7f95a0;font-family:var(--mono);font-size:9.5px;display:block;margin-top:1px}
+/* buyer triage rows: fit bar inline */
+.brow{display:grid;grid-template-columns:1.45fr .7fr 1fr .6fr;gap:10px;padding:12px 18px;border-bottom:1px solid var(--g-line);align-items:center;font-size:12.5px;background:#fff}
+.brow:last-child{border-bottom:0}
+.brow.bh{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a95a2;background:var(--g-bg);padding-top:9px;padding-bottom:9px}
+.brow .bco{font-weight:600;color:var(--g-dark)}
+.brow .btp{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:20px;justify-self:start;font-weight:600}
+.btp.str{color:#2b4568;background:rgba(58,90,134,.14)}
+.btp.spn{color:#8a6a17;background:rgba(212,168,67,.16)}
+.brow .bfit{display:flex;align-items:center;gap:8px}
+.brow .bfit .bar{flex:1;height:5px;border-radius:4px;background:#e2e9f0;overflow:hidden;min-width:34px}
+.brow .bfit .bar b{display:block;height:100%;background:var(--accent)}
+.brow .bfit .fv{font-family:var(--mono);font-size:11px;color:var(--g-dark);font-weight:700}
+.brow .bst{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--g-teal-d);background:rgba(58,90,134,.1);border-radius:20px;padding:3px 9px;justify-self:start;white-space:nowrap}
+@media(max-width:640px){.brow{grid-template-columns:1.5fr 1fr .6fr}.brow .btp{display:none}}
 /* channel hop console */
 .chn{border-radius:14px;overflow:hidden;background:var(--g-bg);border:1px solid var(--g-line);box-shadow:0 44px 90px -46px rgba(20,28,38,.55)}
 .chn-stage{padding:26px 26px 24px}
@@ -695,6 +738,15 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .pkg-total{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#fff;font-size:13px;font-weight:600;color:var(--g-dark)}
 .pkg-total .pk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep)}
 
+
+/* process stream strip */
+.proc{display:flex;align-items:stretch;gap:0;background:#fff}
+.proc .pc{flex:1;padding:16px 18px;border-right:1px solid var(--g-line)}
+.proc .pc:last-child{border-right:0}
+.proc .pk2{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a95a2;margin-bottom:6px}
+.proc .pv2{font-family:var(--display);font-weight:600;font-size:19px;color:var(--g-dark);letter-spacing:-.02em}
+.proc .pv2 small{font-size:11px;color:var(--g-teal-d);font-weight:600;margin-left:5px}
+@media(max-width:560px){.proc{flex-wrap:wrap}.proc .pc{flex:1 1 50%}}
 </style>
 </head>
 <body>
@@ -906,41 +958,43 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="wh-top fade-up d1"><span class="eyebrow">Support worker</span><span class="wh-status"><span class="sd"></span>Live &middot; Bobit Media and Geotab</span></div>
-    <h1 class="fade-up d1" style="margin:14px 0 0">The first conversation, handled.</h1>
-    <div class="tag fade-up d2" style="max-width:62ch">Jericho takes your front line: service questions answered, technical issues triaged, buyers qualified when that is what the inbound is, and everything else routed to the right person with context, across web, SMS, and voice, around the clock.</div>
+    <div class="wh-top fade-up d1"><span class="eyebrow">Voice concierge</span><span class="wh-status"><span class="sd"></span>Live &middot; Town of Vail</span></div>
+    <h1 class="fade-up d1" style="margin:14px 0 0">She picks up every time.</h1>
+    <div class="tag fade-up d2" style="max-width:62ch">Chloe answers your town's phone line: live parking, events, permits, and services, in more than 50 languages, any hour of the night. Built with the Town of Vail.</div>
     <div class="media fade-up d3">
       <div class="hero-grain"></div>
       <div class="demo-stage2" id="dStage">
         <div class="morph s-icon" id="dMorph">
-          <span class="gmark" id="dG"><b>J</b></span>
-          <span class="m-word">JERICHO</span>
-          <div class="m-input"><span class="mi-line"><span class="mi-text" id="dMandate"></span><i class="dcaret" id="dCaretM"></i></span><button class="mi-go" id="dSubmit" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <span class="gmark" id="dG"><b>C</b></span>
+          <span class="m-word">CHLOE</span>
+          <div class="m-input"><span class="mi-line" style="display:flex;align-items:center"><span class="ci-ring"></span><span class="ci-txt">Incoming call &middot; Town of Vail resident line</span></span><button class="mi-go" id="dAnswer" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></button></div>
           <div class="m-desk">
-            <div class="demo-bar"><span class="demo-title">Jericho &middot; Front Desk</span><span class="demo-live"><span class="dot"></span> live</span></div>
+            <div class="demo-bar"><span class="demo-title">Chloe &middot; Town of Vail &middot; live call</span><span class="c-lang" id="cLang">English</span><span class="demo-live"><span class="dot"></span> <span id="cTimer">on call 0:00</span></span></div>
             <div class="demo-body">
               <div class="demo-left">
-                <div class="dl-sig" id="dSig"><span class="sd"></span> Inbound &middot; 11:42 PM</div>
-                <div class="dl-head"><span class="dl-name">Billing question</span><span class="dl-sec">Web chat &middot; after hours</span></div>
-                <div class="dl-rows" id="dRows">
-                  <div class="dl-row"><span class="dk">Ask</span><span class="dv">Invoice shows a double charge</span></div>
-                  <div class="dl-row"><span class="dk">Account</span><span class="dv">Order 8841, second contact</span></div>
-                  <div class="dl-row"><span class="dk">Policy</span><span class="dv">Refund covered, self-serve</span></div>
-                  <div class="dl-row"><span class="dk">Action</span><span class="dv">Refund issued, reply drafted</span></div>
+                <div class="dl-sig" id="cSig"><span class="sd"></span> Call answered</div>
+                <div class="tr" id="cTrans">
+                  <div class="turn caller" id="cT1"><div class="who">Caller</div><div class="bub">Where can I park near the village tonight?</div></div>
+                  <div class="turn chloe" id="cT2"><div class="who">Chloe</div><div class="bub"><span class="wavebub"><i></i><i></i><i></i><i></i><i></i></span><span class="txt">Lot 3 has 12 open spots, about a 4 minute walk to the village.</span></div><div class="park-chip"><span class="pmk">P</span><span class="ptx"><b>Lot 3</b><span>12 open &middot; 4 min walk</span></span></div></div>
+                  <div class="turn caller" id="cT3"><div class="who">Caller &middot; Español</div><div class="bub">¿Y hay algún evento esta noche?</div></div>
+                  <div class="turn chloe" id="cT4"><div class="who">Chloe</div><div class="bub"><span class="wavebub"><i></i><i></i><i></i><i></i><i></i></span><span class="txt">Sí, hay música en vivo en Solaris Plaza a las 6.</span></div></div>
                 </div>
-                <div class="dl-fit"><span class="dl-fitk">Confidence</span><span class="dl-bar"><b id="dBar"></b></span><span class="dl-score" id="dScore">0</span></div>
               </div>
               <div class="demo-right" id="dRight">
-                <div class="dr-head"><span class="dr-av">J</span> Drafted by Jericho <span class="dr-rdy"><span class="dot"></span> ready</span></div>
-                <div class="dr-to"><span class="dek">To</span>M. Torres &middot; Order 8841</div>
-                <div class="dr-subj"><span class="dek">Subj</span><span id="dSubj"></span><i class="dcaret" id="dCaretS"></i></div>
-                <div class="dr-body"><span id="dBody"></span><i class="dcaret" id="dCaretB"></i></div>
-                <div class="dr-foot"><span class="dr-q" id="dQueue">Send reply</span><span class="dr-done" id="dDone">&#10003; Resolved</span></div>
+                <div class="dr-head"><span class="dr-av">C</span> Behind the answer <span class="dr-rdy"><span class="dot"></span> working</span></div>
+                <div class="dl-rows" id="cWork">
+                  <div class="dl-row"><span class="dk">Parking feed</span><span class="dv">Checked live, this minute</span></div>
+                  <div class="dl-row"><span class="dk">Best option</span><span class="dv">Lot 3, shortest walk in</span></div>
+                  <div class="dl-row"><span class="dk">Language</span><span class="dv">Switched to Spanish mid-call</span></div>
+                  <div class="dl-row"><span class="dk">Events</span><span class="dv">Live music, Solaris Plaza, 6pm</span></div>
+                </div>
+                <div class="dl-fit"><span class="dl-fitk">Resolution</span><span class="dl-bar"><b id="dBar"></b></span><span class="dl-score" id="dScore">0</span></div>
+                <div class="dr-foot"><span class="dr-q" id="dQueue">Log the call</span><span class="dr-done" id="dDone">&#10003; Resolved &middot; on the record</span></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#1d242e" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#0c272d" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
       </div>
       <button class="m-toggle2" id="gToggle" type="button" aria-label="Pause animation">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -953,10 +1007,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- LOGO STRIP -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Running front-line conversations at</div>
+    <div class="ll">Built with and live at</div>
     <div class="logobar">
-      <img class="lg" src="/img/bobit.png" alt="Bobit Business Media" style="height:30px">
-      <img class="lg" src="/img/geotab.png" alt="Geotab" style="height:22px">
+      <img class="lg" src="/img/Town of Vail.png" alt="Town of Vail" style="height:44px">
     </div>
   </div>
 </section>
@@ -966,144 +1019,109 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">How it works</span>
-      <h2>From the inbound to the right person.</h2>
-      <p class="lead">Every conversation runs the same loop, whether it lands at 2pm or 2am. Jericho resolves what your policies cover, answers what your docs answer, and hands the rest to your team with the context attached.</p>
+      <h2>From ring to resolved.</h2>
+      <p class="lead">No phone tree, no hold music. Chloe picks up, understands the question, pulls the answer from the town's own systems, says it back in the caller's language, and logs the whole thing.</p>
     </div>
     <div class="pipe">
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><div class="pl">Inbound</div><div class="ps">A question arrives on any channel</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div class="pl">The call comes in</div><div class="ps">Any hour, no phone tree, no hold music</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></div><div class="pl">Understand</div><div class="ps">Intent, audience, and budget qualified</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M4 14v-3M8 16V8M12 18V6M16 16V8M20 14v-3"/></svg></div><div class="pl">Understood</div><div class="ps">Speech to intent, the language from the first word</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div><div class="pl">Resolve</div><div class="ps">Answered in policy, on the spot</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><div class="pl">Looked up</div><div class="ps">Live parking, events, permits, the town's records</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M9 12a3 3 0 0 1 0-4l2-2a3 3 0 0 1 4 4l-1 1"/><path d="M15 12a3 3 0 0 1 0 4l-2 2a3 3 0 0 1-4-4l1-1"/></svg></div><div class="pl">Route</div><div class="ps">What needs a human gets handed over, with context</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><div class="pl">Answered</div><div class="ps">By voice, in the caller's own language</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><div class="pl">Log</div><div class="ps">Every exchange lands in your CRM</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="pl">Logged</div><div class="ps">Resolved on the record, or routed to staff</div></div>
     </div>
-    <div class="flow-close">No question waits for morning. No lead goes cold.</div>
+    <div class="flow-close">Residents get the answer now. Your staff get their mornings back.</div>
   </div>
 </section>
 
-<!-- FEATURE 1 · SERVICE -->
-<section class="feat-sec" id="service">
+<!-- FEATURE 1 · THE FRONT LINE -->
+<section class="feat-sec" id="frontline">
   <div class="wrap">
     <div class="feat rev">
       <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Jericho &middot; Service Desk</span><span class="gl"><span class="dot"></span> live</span></div>
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Chloe &middot; Resident Desk</span><span class="gl"><span class="dot"></span> live</span></div>
         <div class="gos-stats">
-          <div class="gs"><div class="gn">1,204</div><div class="gk">Resolved this week</div></div>
-          <div class="gs"><div class="gn">96%</div><div class="gk">In policy</div></div>
-          <div class="gs"><div class="gn">22s</div><div class="gk">First response</div></div>
+          <div class="gs"><div class="gn">1,340</div><div class="gk">Residents today</div></div>
+          <div class="gs"><div class="gn">27</div><div class="gk">Languages today</div></div>
+          <div class="gs"><div class="gn">8</div><div class="gk">Routed to staff</div></div>
         </div>
-        <div class="gco-row"><span class="nm">Where is order 8841?</span><span class="st">Answered</span><span class="ct">web chat</span></div>
-        <div class="gco-row"><span class="nm">Invoice charged twice</span><span class="st">Refunded</span><span class="ct">in policy</span></div>
-        <div class="gco-row"><span class="nm">API key stopped working</span><span class="st">Triaged</span><span class="ct">docs sent</span></div>
-        <div class="gco-row"><span class="nm">Custom contract question</span><span class="st">Routed</span><span class="ct">to a human</span></div>
-        <div class="pkg-total"><span class="pk">The rule</span><span>Resolve in policy, escalate with context</span></div>
+        <div class="brow bh"><span>Request</span><span>Channel</span><span>Resolution</span><span>Status</span></div>
+        <div class="brow"><span class="bco">Parking near the village</span><span class="btp str">Voice</span><span class="bfit"><span class="bar"><b style="width:97%"></b></span><span class="fv">97</span></span><span class="bst">Resolved</span></div>
+        <div class="brow"><span class="bco">Building permit status</span><span class="btp spn">SMS</span><span class="bfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="bst">Answered</span></div>
+        <div class="brow"><span class="bco">Event road closures</span><span class="btp str">Web</span><span class="bfit"><span class="bar"><b style="width:94%"></b></span><span class="fv">94</span></span><span class="bst">Resolved</span></div>
+        <div class="brow"><span class="bco">Water bill dispute</span><span class="btp str">Voice</span><span class="bfit"><span class="bar"><b style="width:61%"></b></span><span class="fv">61</span></span><span class="bst flg">Routed</span></div>
       </div>
       <div class="ftxt">
-        <span class="flabel">01 &middot; Customer service and technical support</span>
-        <h2>Most of the front line is not a sale.</h2>
-        <p>It is where is my order, a billing fix, and a setup question at midnight. Jericho answers from your knowledge base, acts inside your policies, and knows exactly when a conversation needs a person instead.</p>
+        <span class="flabel">01 &middot; Every channel, every hour</span>
+        <h2>The front desk that never closes.</h2>
+        <p>Chloe answers the moment a resident calls, texts, or types: parking, permits, events, services, all of it, at 2am on a Sunday as readily as 10am on a Tuesday. Voice first, with SMS and web on the same brain, so the answer is the same everywhere.</p>
         <ul class="flist">
-          <li>Answers from your docs and your policies</li>
-          <li>Refunds, fixes, and triage inside your rules</li>
-          <li>Escalations arrive with the full context</li>
+          <li>Voice first, SMS and web on the same brain</li>
+          <li>No phone tree, no voicemail box</li>
+          <li>Answered the first time, not called back</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE 2 · EVERY CHANNEL -->
-<section class="feat-sec alt" id="channels">
+<!-- FEATURE 2 · LANGUAGES -->
+<section class="feat-sec alt" id="languages">
   <div class="wrap">
     <div class="feat">
       <div class="ftxt">
-        <span class="flabel">02 &middot; Every channel</span>
-        <h2>One worker. Every door a customer walks through.</h2>
-        <p>Web chat, SMS, voice, and email, answered by the same worker with the same knowledge and the same register. The conversation follows the person, not the software, and it never keeps business hours.</p>
+        <span class="flabel">02 &middot; In the caller's language</span>
+        <h2>Fifty languages. Zero translation lines.</h2>
+        <p>Chloe hears the caller's language from the first word and answers in it, by voice. When a caller switches mid-sentence, she switches with them, and the answer stays the town's answer, accurate and in the town's own warm register.</p>
         <ul class="flist">
-          <li>Web, SMS, voice, and email in one thread</li>
-          <li>Your tone and your policies, every reply</li>
-          <li>Awake at trade shows and at 3am alike</li>
+          <li>Detected from the first word</li>
+          <li>Mid-call switching, no beat missed</li>
+          <li>The same accurate answer in every language</li>
         </ul>
       </div>
-      <div class="chn">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Jericho &middot; one conversation, moving channels</span><span class="gl"><span class="dot"></span> live</span></div>
-        <div class="chn-stage">
-          <div class="chn-row">
-            <span class="ch" data-ch="0"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></span>
-            <span class="ch" data-ch="1"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></span>
-            <span class="ch" data-ch="2"><svg viewBox="0 0 24 24"><path d="M6 5h3l2 5-2.5 1.5a12 12 0 0 0 4 4L14 13l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 4 7a2 2 0 0 1 2-2z"/></svg></span>
-            <span class="ch" data-ch="3"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1.5"/><path d="M4.5 7l7.5 6 7.5-6"/></svg></span>
-          </div>
-          <div class="chn-bub" id="chBub">
-            <div class="who" id="chWho">Jericho &middot; web chat</div>
-            <div class="msg"><span class="txt" id="chTxt">Your order 8841 left the warehouse this morning. Tracking is below.</span>
-              <span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-            </div>
-          </div>
+      <div class="gos">
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Chloe &middot; Live call &middot; language</span><span class="gl"><span class="dot"></span> on call</span></div>
+        <div class="dd">
+          <div class="dd-cell"><div class="dd-k">Detected</div><div class="dd-v"><b>Español</b>, from the caller's first word</div></div>
+          <div class="dd-cell"><div class="dd-k">Mid-call</div><div class="dd-v">Switched from English <b>without a beat</b></div></div>
+          <div class="dd-cell"><div class="dd-k">Coverage</div><div class="dd-v"><b>50 plus languages</b>, live by voice</div></div>
+          <div class="dd-cell"><div class="dd-k">Register</div><div class="dd-v">Warm and plain, the town's own voice</div></div>
         </div>
+        <div class="pkg-total"><span class="pk">Result</span><span>Every resident heard the first time, in their own words</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE 3 · WHEN THE BUYER IS READY -->
-<section class="feat-sec" id="assemble">
+<!-- FEATURE 3 · GROUNDED -->
+<section class="feat-sec" id="grounded">
   <div class="wrap">
     <div class="feat rev">
       <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Jericho &middot; proposal, assembled live</span><span class="gl"><span class="dot"></span> first conversation</span></div>
-        <div class="gos-stats">
-          <div class="gs"><div class="gn">3 min</div><div class="gk">Into the chat</div></div>
-          <div class="gs"><div class="gn">3</div><div class="gk">Properties combined</div></div>
-          <div class="gs"><div class="gn">Q1</div><div class="gk">Timed to the ask</div></div>
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Chloe &middot; Town systems</span><span class="gl"><span class="dot"></span> synced</span></div>
+        <div class="proc">
+          <div class="pc"><div class="pk2">Parking feed</div><div class="pv2">&#10003;<small>live</small></div></div>
+          <div class="pc"><div class="pk2">Event calendar</div><div class="pv2">&#10003;<small>today</small></div></div>
+          <div class="pc"><div class="pk2">Town records</div><div class="pv2">&#10003;<small>synced</small></div></div>
+          <div class="pc"><div class="pk2">Call log</div><div class="pv2">1,340</div></div>
         </div>
-        <div class="gco-row"><span class="nm">Fleet trade publication, quarter page</span><span class="st">Print</span><span class="ct">Jan to Mar</span></div>
-        <div class="gco-row"><span class="nm">Weekly newsletter placement</span><span class="st">Digital</span><span class="ct">12 sends</span></div>
-        <div class="gco-row"><span class="nm">Spring show booth activation</span><span class="st">Event</span><span class="ct">March</span></div>
-        <div class="pkg-total"><span class="pk">Cross-service package</span><span>Assembled from the full catalog, in the first conversation</span></div>
+        <div class="gco-row"><span class="nm">Street cleaning schedule</span><span class="st">Answered</span><span class="ct">in 8 seconds</span></div>
+        <div class="gco-row"><span class="nm">Building permit status</span><span class="st">Answered</span><span class="ct">from records</span></div>
+        <div class="gco-row"><span class="nm">Water bill dispute</span><span class="st">Routed</span><span class="ct">to staff, with context</span></div>
       </div>
       <div class="ftxt">
-        <span class="flabel">03 &middot; When the inbound is a buyer</span>
-        <h2>Discovery and proposal, compressed into one conversation.</h2>
-        <p>When the question is commercial, Jericho switches gears. It knows the whole catalog: every property, rate, and combination. It asks about objectives, audience, and budget, then assembles the cross-service package a stretched rep might never surface. Buyers who used to wait days for a proposal get one before the conversation ends.</p>
+        <span class="flabel">03 &middot; Grounded in the town's systems</span>
+        <h2>Your records answer. Not the open web.</h2>
+        <p>Chloe reads the live parking feed, the event calendar, and the town's own records, so what she tells a resident is what your office would tell them. Every call is logged and auditable, and anything outside her lane goes to staff with the full story attached.</p>
         <ul class="flist">
-          <li>Combinations human reps routinely miss</li>
-          <li>Budget-aware, from emerging to headline</li>
-          <li>Pre-qualified leads land with your team</li>
+          <li>Live parking and events, straight from the source</li>
+          <li>Answers grounded in town records and rules</li>
+          <li>Every call on the record, every handoff with context</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPLOYMENTS (proof) -->
-<section class="suite" id="deployments">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">In the field</span>
-      <h2>Two deployments, live today.</h2>
-      <p class="lead">Jericho runs under the client's own brand. Same worker, same engine, configured to each catalog and each register.</p>
-    </div>
-    <div class="suite-grid">
-
-      <a class="suite-card featured" href="/case-study/askbibi">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-jericho)"><b>J</b></span><div><div class="sc-name">AskBibi</div><div class="sc-role">Jericho &middot; Bobit Media</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Builds cross-service media packages across Bobit's publications, newsletters, and events, qualifying buyers in the first conversation and surfacing cross-sells reps had not considered.</p>
-        <div class="sc-tags"><span class="sc-tag">Media buying</span><span class="sc-tag">B2B media</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
-      </a>
-
-      <a class="suite-card" href="/case-study/geotab">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-jericho)"><b>J</b></span><div><div class="sc-name">Geotab Assistant</div><div class="sc-role">Jericho &middot; Geotab Connect</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Launched at Geotab Connect 2025 to build sponsorship packages in real time, turning days of exploratory email into a structured proposal within minutes of the first hello.</p>
-        <div class="sc-tags"><span class="sc-tag">Sponsorship</span><span class="sc-tag">Events</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
-      </a>
-
     </div>
   </div>
 </section>
@@ -1112,30 +1130,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="results" id="results">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The impact</span>
-      <h2>Minutes, not days.</h2>
-      <p class="lead">What changes when the first conversation is handled the moment it arrives.</p>
+      <span class="eyebrow">Built with the Town of Vail</span>
+      <h2>The phone line, answered.</h2>
+      <p class="lead">Chloe runs live for the Town of Vail. Do not take our word for it: call her right now at (970) 645-VAIL.</p>
     </div>
     <div class="res-grid">
-      <a class="res-card" href="/case-study/geotab">
-        <div class="res-lg">Time to proposal</div>
-        <div class="res-n">Minutes</div>
-        <div class="res-nl">from the first hello</div>
-        <p class="res-p">Prospects who would have spent days in email exchanges receive a personalized, structured proposal during their first interaction.</p>
-        <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
-      </a>
-      <a class="res-card" href="/case-study/askbibi">
-        <div class="res-lg">Deal quality</div>
-        <div class="res-n">Bigger</div>
-        <div class="res-nl">average deal size</div>
-        <p class="res-p">By making the full catalog visible in every conversation, Jericho surfaces combinations that grow the deal while reducing time to close.</p>
-        <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
-      </a>
       <div class="res-card">
-        <div class="res-lg">After hours</div>
-        <div class="res-n">Zero</div>
-        <div class="res-nl">leads gone cold</div>
-        <p class="res-p">At trade shows, on the website, and long after the team signs off, every inbound gets an answer while the interest is real.</p>
+        <div class="res-lg">Any hour</div>
+        <div class="res-n">24/7</div>
+        <div class="res-nl">on the town's phone line</div>
+        <p class="res-p">No hold music, no closed sign. The same clear answer at midnight as at the counter on a Tuesday morning.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-lg">By voice</div>
+        <div class="res-n">50+</div>
+        <div class="res-nl">languages, live on the call</div>
+        <p class="res-p">Detected from the first word and switched mid-call without a beat. No translation line, no callback the next business day.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-lg">On the record</div>
+        <div class="res-n">Every call</div>
+        <div class="res-nl">logged, resolved or routed</div>
+        <p class="res-p">Answered from the town's own records and live feeds, with the hard cases handed to staff carrying the full context.</p>
       </div>
     </div>
   </div>
@@ -1144,11 +1160,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>Put Jericho on your front line.</h2>
-    <p>Tell us where your inbound conversations land today. We will show you Jericho answering, qualifying, and routing them, in your register, in two weeks.</p>
+    <h2>Put Chloe on your phone line.</h2>
+    <p>Bring us the questions that fill your voicemail box. We will show you what Chloe answers, on your records and your rules, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
-      <a href="/case-study/askbibi" class="btn btn-ghost">Read the AskBibi story</a>
+      <a href="tel:+19706458245" class="btn btn-ghost">Call Chloe live: (970) 645-VAIL</a>
+      <a href="/vail-ai-voice-concierge-chloe" class="btn btn-ghost">Read the Vail story</a>
     </div>
   </div>
 </section>
@@ -1233,7 +1250,7 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.flow .section-head,.pipe,.flow-close,.ftxt,.gos,.chn,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.flow .section-head,.pipe,.flow-close,.ftxt,.gos,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
@@ -1246,65 +1263,71 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
   }
 })();
 </script>
+
 <script>
-/* ----- Jericho hero demo: logo, mandate, front desk ----- */
+/* ----- Chloe hero demo: mark, incoming call, live answer ----- */
 (function(){
   var stage=document.getElementById('dStage'); if(!stage) return;
   function $(id){return document.getElementById(id);}
-  var morph=$('dMorph'),gmark=$('dG'),mandateEl=$('dMandate'),caretM=$('dCaretM'),submit=$('dSubmit'),
-      cursor=$('dCursor'),sig=$('dSig'),rows=[].slice.call(document.querySelectorAll('#dRows .dl-row')),
-      bar=$('dBar'),score=$('dScore'),right=$('dRight'),subjEl=$('dSubj'),bodyEl=$('dBody'),
-      caretS=$('dCaretS'),caretB=$('dCaretB'),queue=$('dQueue'),done=$('dDone'),
-      subjBox=document.querySelector('.dr-subj');
-  var MANDATE="Take our front-line conversations, every channel, in our policies.";
-  var SUBJ="Your invoice is fixed";
-  var BODY="Hi Maria, you are right, order 8841 was charged twice. I have issued the refund to your card tonight, and you will see it in 2 to 3 business days.\n\nNothing else needed from you. Sorry for the extra step.\n\nJericho";
+  var morph=$('dMorph'),gmark=$('dG'),answer=$('dAnswer'),cursor=$('dCursor'),sig=$('cSig'),
+      lang=$('cLang'),timer=$('cTimer'),bar=$('dBar'),score=$('dScore'),right=$('dRight'),
+      queue=$('dQueue'),done=$('dDone'),
+      t1=$('cT1'),t2=$('cT2'),t3=$('cT3'),t4=$('cT4'),
+      work=[].slice.call(document.querySelectorAll('#cWork .dl-row'));
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var paused=false,waiters=[];
+  var paused=false,waiters=[],sec=0,tick=null;
   function gate(){return paused?new Promise(function(r){waiters.push(r);}):Promise.resolve();}
   function resumeAll(){paused=false;stage.classList.remove('paused');var w=waiters;waiters=[];w.forEach(function(r){r();});}
   function sleep(ms){return new Promise(function(r){setTimeout(r,ms);}).then(gate);}
   function setState(st){morph.classList.remove('s-icon','s-input','s-desk');morph.classList.add(st);}
-  function moveTo(el){var d=stage.getBoundingClientRect(),t=el.getBoundingClientRect();cursor.style.transform='translate('+(t.left-d.left+t.width*0.5-5)+'px,'+(t.top-d.top+t.height*0.5-2)+'px)';}
+  function moveTo(el){var d=stage.getBoundingClientRect(),p=el.getBoundingClientRect();cursor.style.transform='translate('+(p.left-d.left+p.width*0.5-5)+'px,'+(p.top-d.top+p.height*0.5-2)+'px)';}
   function park(){var d=stage.getBoundingClientRect();cursor.style.transition='none';cursor.style.transform='translate('+(d.width*0.5)+'px,'+(d.height*0.74)+'px)';void cursor.offsetWidth;cursor.style.transition='';}
   function clickFx(){cursor.classList.add('click');setTimeout(function(){cursor.classList.remove('click');},420);}
-  function type(el,text,speed,caret){return new Promise(function(res){caret&&caret.classList.add('on');var i=0;el.textContent='';(function st(){if(paused){waiters.push(st);return;}if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(st,speed);}else{caret&&caret.classList.remove('on');res();}})();});}
   function countTo(el,to,dur){var t0=performance.now();(function f(now){var p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(p*to);if(p<1)requestAnimationFrame(f);})(t0);}
+  function fmtTimer(){timer.textContent='on call '+Math.floor(sec/60)+':'+('0'+sec%60).slice(-2);}
+  function startTimer(){stopTimer();sec=0;fmtTimer();tick=setInterval(function(){if(!paused){sec++;fmtTimer();}},1000);}
+  function stopTimer(){if(tick){clearInterval(tick);tick=null;}}
   function resetInner(){
-    rows.forEach(function(r){r.classList.remove('in');});
+    [t1,t2,t3,t4].forEach(function(x){x.classList.remove('in','said');});
+    work.forEach(function(r){r.classList.remove('in');});
     bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;bar.style.transition='';
     score.textContent='0';sig.classList.remove('in');right.classList.remove('active');
     queue.classList.remove('hide');done.classList.remove('show');
-    subjEl.textContent='';bodyEl.textContent='';caretS.classList.remove('on');caretB.classList.remove('on');
-    mandateEl.textContent='';caretM.classList.remove('on');
+    lang.textContent='English';stopTimer();timer.textContent='on call 0:00';
   }
   async function loop(){
     setState('s-icon');resetInner();park();
     await sleep(600);cursor.style.opacity='1';
     moveTo(gmark);await sleep(780);clickFx();await sleep(300);
-    setState('s-input');await sleep(660);
-    await type(mandateEl,MANDATE,24,caretM);await sleep(560);
-    moveTo(submit);await sleep(620);clickFx();await sleep(300);
-    setState('s-desk');await sleep(760);
-    sig.classList.add('in');await sleep(480);
-    for(var i=0;i<rows.length;i++){rows[i].classList.add('in');await sleep(320);}
-    await sleep(140);bar.style.width='91%';countTo(score,91,950);await sleep(1050);
-    right.classList.add('active');await sleep(430);
-    moveTo(subjBox);await sleep(620);
-    await type(subjEl,SUBJ,30,caretS);await sleep(230);
-    await type(bodyEl,BODY,14,caretB);await sleep(450);
-    moveTo(queue);await sleep(700);clickFx();await sleep(300);
-    queue.classList.add('hide');done.classList.add('show');await sleep(2200);
-    cursor.style.opacity='0';
+    setState('s-input');await sleep(1150);
+    moveTo(answer);await sleep(680);clickFx();await sleep(300);
+    setState('s-desk');startTimer();await sleep(720);
+    sig.classList.add('in');cursor.style.opacity='0';await sleep(430);
+    t1.classList.add('in');await sleep(1150);
+    right.classList.add('active');work[0].classList.add('in');await sleep(380);
+    work[1].classList.add('in');await sleep(420);
+    t2.classList.add('in');await sleep(1250);
+    t2.classList.add('said');await sleep(1550);
+    t3.classList.add('in');lang.textContent='Español';await sleep(520);
+    work[2].classList.add('in');await sleep(650);
+    t4.classList.add('in');await sleep(1100);
+    t4.classList.add('said');work[3].classList.add('in');await sleep(850);
+    bar.style.width='97%';countTo(score,97,950);await sleep(1100);
+    cursor.style.opacity='1';moveTo(queue);await sleep(680);clickFx();await sleep(300);
+    queue.classList.add('hide');done.classList.add('show');await sleep(2300);
+    cursor.style.opacity='0';stopTimer();
     setState('s-icon');await sleep(760);
     loop();
   }
   function showStatic(){
     setState('s-desk');morph.style.transition='none';gmark.style.transition='none';
-    sig.classList.add('in');rows.forEach(function(r){r.classList.add('in');});
-    bar.style.transition='none';bar.style.width='91%';score.textContent='91';
-    right.classList.add('active');subjEl.textContent=SUBJ;bodyEl.textContent=BODY.replace(/\\n/g,'\n');
+    sig.classList.add('in');
+    [t1,t2,t3,t4].forEach(function(x){x.classList.add('in','said');});
+    work.forEach(function(r){r.classList.add('in');});
+    right.classList.add('active');lang.textContent='Español';
+    bar.style.transition='none';bar.style.width='97%';score.textContent='97';
     queue.classList.add('hide');done.classList.add('show');cursor.style.display='none';
+    timer.textContent='on call 0:42';
   }
   var btn=document.getElementById('gToggle');
   if(btn){
@@ -1313,30 +1336,6 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
   }
   if(RM){showStatic();if(btn)btn.style.display='none';return;}
   setTimeout(loop,400);
-})();
-
-/* ----- channel hop: the same conversation moving across channels ----- */
-(function(){
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var chs=[].slice.call(document.querySelectorAll('.chn .ch'));
-  if(!chs.length)return;
-  var bub=document.getElementById('chBub'),who=document.getElementById('chWho'),txt=document.getElementById('chTxt');
-  var steps=[
-    {who:'Jericho \u00B7 web chat', t:'Your order 8841 left the warehouse this morning. Tracking is below.',voice:false},
-    {who:'Jericho \u00B7 SMS',      t:'Refund issued to your card. You will see it in 2 to 3 business days.',voice:false},
-    {who:'Jericho \u00B7 voice',    t:'',voice:true},
-    {who:'Jericho \u00B7 email',    t:'Here is the setup guide, and I have opened a ticket with our engineer for the firmware question.',voice:false}
-  ];
-  var i=0;
-  function step(){
-    chs.forEach(function(c,k){c.classList.toggle('hot',k===i)});
-    who.textContent=steps[i].who;
-    txt.textContent=steps[i].t;
-    bub.classList.toggle('voice',steps[i].voice);
-    i=(i+1)%steps.length;
-  }
-  step();
-  if(!RM) setInterval(step,2600);
 })();
 </script>
 </body>
