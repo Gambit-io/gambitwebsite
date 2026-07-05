@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hospitality and Entertainment · Gambit</title>
-<meta name="description" content="Gambit for Hospitality and Entertainment. AI workers that find hotel demand within five miles, coach sales teams on a proven methodology, and answer fans in a real voice, around the clock.">
+<title>Gillis · Hotel Sales Worker · Gambit</title>
+<meta name="description" content="Gillis is the hotel sales worker built with Gillis Sales. It finds real demand within five miles of every hotel, opens the conversation as Sam, and coaches reps in the moment on Tammy Gillis's methodology.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/hospitality">
+<link rel="canonical" href="https://gambitco.io/workers/gillis">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hospitality and Entertainment · Gambit">
-<meta property="og:description" content="Less searching. More selling. AI workers for hotels and entertainment, around the clock.">
+<meta property="og:title" content="Gillis · Hotel Sales Worker · Gambit">
+<meta property="og:description" content="Research, outreach, and coaching in one hotel sales platform. Less searching. More selling.">
 <meta property="og:image" content="https://gambitco.io/img/ind-gillis.jpg">
-<meta property="og:url" content="https://gambitco.io/hospitality">
+<meta property="og:url" content="https://gambitco.io/workers/gillis">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,12 +54,23 @@
   --f-civic:#54697b;
   --f-log:#a0713a;
   --f-legal:#6b5d3f;
-  /* Hospitality accent: Gillis indigo + violet */
-  --navy:#1e1745;
-  --navy-2:#2a2060;
-  --accent:#5a48b0;
+  /* Gillis worker page: the Gillis product palette (purple + teal, from the AskGillis brand) */
+  --navy:#2d1f5e;
+  --navy-2:#3D2B6B;
+  --accent:#6a55c2;
   --accent-2:#a99bde;
-  --accent-deep:#443488;
+  --accent-deep:#4b3a9e;
+  --g-purple:#3D2B6B;
+  --g-teal:#1ABBA6;
+  --g-teal-d:#0E8A7A;
+  --g-orange:#E8875B;
+  --g-gold:#D4A843;
+  --g-lilac:#7C6BC4;
+  --g-bg:#F3F2F7;
+  --g-lav:#F0EDFA;
+  --g-line:#e4e1ec;
+  --g-text:#4a4560;
+  --g-dark:#1e1832;
   --display:'General Sans','Helvetica Neue',Arial,sans-serif;
   --mark:'Orbitron',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -416,6 +427,235 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   .menu-toggle{padding:10px;margin-right:-10px}
   .foot-links{gap:36px}
 }
+
+/* ===== Gillis worker page ===== */
+.wh-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.wh-status{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--status-d);background:rgba(62,196,109,.12);border-radius:20px;padding:5px 12px}
+.wh-status .sd{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.hero .media{aspect-ratio:2.05/1;background:radial-gradient(130% 150% at 28% 18%,#3b2c72 0%,#1c1440 62%,#140e30 100%)}
+@media(max-width:720px){.hero .media{aspect-ratio:1/1.05}}
+.hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(56% 78% at 50% 46%,rgba(255,255,255,.12),transparent 70%)}
+.m-toggle2{position:absolute;right:16px;bottom:16px;z-index:7;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(20,14,48,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:background .2s,transform .2s}
+.m-toggle2:hover{background:rgba(20,14,48,.72)}
+.m-toggle2 svg{width:16px;height:16px;fill:currentColor}
+.m-toggle2 .ic-play{display:none;margin-left:2px}
+.m-toggle2.paused .ic-pause{display:none}
+.m-toggle2.paused .ic-play{display:block}
+#dStage.paused *{animation-play-state:paused!important}
+.demo-stage2{position:absolute;inset:0;z-index:2}
+.morph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;overflow:hidden;box-shadow:0 2px 10px -2px rgba(0,0,0,.35),0 40px 90px -28px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.1);transition:width .58s cubic-bezier(.16,1,.3,1),height .58s cubic-bezier(.16,1,.3,1),border-radius .58s cubic-bezier(.16,1,.3,1)}
+.morph.s-icon{width:224px;height:76px;border-radius:38px}
+.morph.s-input{width:min(82%,620px);height:98px;border-radius:26px}
+.morph.s-desk,.morph.s-coach{width:90%;height:87%;border-radius:16px}
+.gmark{position:absolute;overflow:hidden;background:var(--w-gillis);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;z-index:4;letter-spacing:-.02em;transition:left .58s cubic-bezier(.16,1,.3,1),top .58s cubic-bezier(.16,1,.3,1),width .58s cubic-bezier(.16,1,.3,1),height .58s cubic-bezier(.16,1,.3,1),font-size .58s cubic-bezier(.16,1,.3,1),border-radius .58s cubic-bezier(.16,1,.3,1),transform .58s cubic-bezier(.16,1,.3,1)}
+.gmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.gmark b{position:relative;z-index:1}
+.morph.s-icon .gmark{left:14px;top:50%;transform:translate(0,-50%);width:50px;height:50px;font-size:19px;border-radius:14px}
+.morph.s-input .gmark{left:16px;top:50%;transform:translate(0,-50%);width:46px;height:46px;font-size:17px;border-radius:13px}
+.morph.s-desk .gmark,.morph.s-coach .gmark{left:15px;top:11px;transform:none;width:24px;height:24px;font-size:9px;border-radius:7px}
+.m-word{position:absolute;left:76px;top:50%;transform:translateY(-50%);font-family:var(--mark);font-weight:700;font-size:24px;letter-spacing:.04em;color:var(--ink);opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.morph.s-icon .m-word{opacity:1}
+.m-input{position:absolute;inset:0;display:flex;align-items:center;gap:12px;padding:0 18px 0 78px;opacity:0;transition:opacity .3s;pointer-events:none}
+.morph.s-input .m-input{opacity:1}
+.mi-line{flex:1;min-width:0;font-size:clamp(14.5px,1.5vw,17px);line-height:1.42;font-weight:500;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mi-text{color:#241f2e;font-weight:500}
+.mi-go{flex:none;width:48px;height:48px;border-radius:14px;background:var(--g-teal);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mi-go svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m-desk,.m-coach{position:absolute;inset:0;opacity:0;display:flex;flex-direction:column;transition:opacity .42s;pointer-events:none}
+.morph.s-desk .m-desk{opacity:1}
+.morph.s-coach .m-coach{opacity:1}
+.demo-bar{display:flex;align-items:center;gap:7px;padding:13px 18px;background:var(--navy);flex:none}
+.m-desk .demo-bar,.m-coach .demo-bar{padding-left:50px}
+.demo-bar .dtl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
+.demo-title{margin-left:8px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:rgba(255,255,255,.78)}
+.demo-live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7fd4a4}
+.demo-live .dot{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.demo-body{flex:1;display:grid;grid-template-columns:.92fr 1.08fr;min-height:0;background:var(--g-bg)}
+.demo-left{padding:20px 24px;border-right:1px solid var(--g-line);display:flex;flex-direction:column;min-width:0}
+.dl-sig{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--g-teal-d);background:rgba(26,187,166,.1);border:1px solid rgba(26,187,166,.3);border-radius:20px;padding:5px 11px;opacity:0;transition:opacity .3s}
+.dl-sig.in{opacity:1}
+.dl-sig .sd{width:6px;height:6px;border-radius:50%;background:var(--g-teal);animation:pulse 1.6s infinite}
+.dl-head{display:flex;align-items:baseline;gap:9px;margin:16px 0 12px;flex-wrap:wrap}
+.dl-name{font-weight:700;font-size:clamp(16px,1.7vw,20px);color:var(--g-dark);letter-spacing:-.01em}
+.dl-sec{font-family:var(--mono);font-size:10.5px;color:var(--g-lilac);text-transform:uppercase;letter-spacing:.08em}
+.dl-rows{display:flex;flex-direction:column;flex:1}
+.dl-row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--g-line);font-size:clamp(12.5px,1.3vw,15px);opacity:0;transform:translateY(4px);transition:opacity .4s,transform .4s}
+.dl-row.in{opacity:1;transform:none}
+.dl-row .dk{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8a839a;padding-top:2px;flex:none}
+.dl-row .dv{color:var(--g-text);font-weight:500;text-align:right}
+.dl-fit{display:flex;align-items:center;gap:11px;margin-top:14px;padding-top:14px;border-top:1px solid var(--g-line)}
+.dl-fitk{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8a839a;flex:none}
+.dl-bar{flex:1;height:8px;border-radius:4px;background:#e6e2f0;overflow:hidden}
+.dl-bar b{display:block;height:100%;width:0;background:var(--g-orange);border-radius:4px;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.dl-score{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--g-purple);min-width:52px;text-align:right}
+.demo-right{padding:20px 24px;display:flex;flex-direction:column;min-width:0;opacity:.4;filter:saturate(.35);transition:opacity .5s,filter .5s;background:#fff}
+.demo-right.active{opacity:1;filter:none}
+.dr-head{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8a839a;margin-bottom:14px}
+.dr-av{width:27px;height:27px;border-radius:7px;background:var(--g-purple);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:12px}
+.dr-rdy{margin-left:auto;display:none;align-items:center;gap:5px;color:var(--status-d)}
+.demo-right.active .dr-rdy{display:inline-flex}
+.dr-rdy .dot{width:5px;height:5px;border-radius:50%;background:var(--status)}
+.dr-to,.dr-subj{font-size:clamp(12.5px,1.3vw,15px);color:var(--g-text);padding:5px 0}
+.dek{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8a839a;margin-right:8px}
+.dr-subj{font-weight:600;color:var(--g-dark);border-bottom:1px solid var(--g-line);padding-bottom:11px;margin-bottom:11px}
+.dr-body{flex:1;font-size:clamp(12.5px,1.3vw,15px);line-height:1.55;color:var(--g-text);white-space:pre-wrap}
+.dcaret{display:none;width:1.5px;height:1em;background:var(--g-teal-d);vertical-align:-2px;margin-left:1px}
+.dcaret.on{display:inline-block;animation:cBlink 1s step-end infinite}
+@keyframes cBlink{50%{opacity:0}}
+.dr-foot{display:flex;align-items:center;gap:10px;margin-top:13px;padding-top:13px;border-top:1px solid var(--g-line)}
+.dr-q{font-size:13px;font-weight:600;color:#fff;background:var(--g-teal-d);padding:9px 16px;border-radius:8px}
+.dr-q.hide{display:none}
+.dr-done{display:none;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--status-d)}
+.dr-done.show{display:inline-flex;animation:popIn .3s var(--ease)}
+@keyframes popIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+/* coach state */
+.coach-body{flex:1;display:flex;flex-direction:column;min-height:0;background:var(--g-bg);padding:20px 26px;gap:12px;overflow:hidden}
+.cb-msg{max-width:78%;border-radius:15px;padding:12px 16px;font-size:clamp(13px,1.4vw,15.5px);line-height:1.5;opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.cb-msg.in{opacity:1;transform:none}
+.cb-msg .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;color:var(--g-lilac)}
+.cb-msg.rep{align-self:flex-end;background:var(--g-lav);color:var(--g-dark);border-bottom-right-radius:5px}
+.cb-msg.tam{align-self:flex-start;background:#fff;color:var(--g-text);border:1px solid var(--g-line);border-bottom-left-radius:5px;box-shadow:0 10px 24px -18px rgba(45,31,94,.5)}
+.cb-msg.tam .who{color:var(--g-teal-d)}
+.cb-dots{display:inline-flex;gap:4px;align-items:center;height:18px}
+.cb-dots i{width:6px;height:6px;border-radius:50%;background:var(--g-lilac);animation:tb 1.1s infinite}
+.cb-dots i:nth-child(2){animation-delay:.18s}.cb-dots i:nth-child(3){animation-delay:.36s}
+@keyframes tb{0%,60%,100%{opacity:.35}30%{opacity:1}}
+.coach-input{margin:auto 0 0;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--g-line);border-radius:30px;padding:9px 9px 9px 16px}
+.coach-input span{flex:1;font-size:13px;color:#b5b0c0}
+.coach-input .snd{width:32px;height:32px;border-radius:50%;background:var(--g-teal);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.coach-input .snd svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.demo-cursor{position:absolute;left:0;top:0;width:22px;height:22px;z-index:6;opacity:0;transition:transform .75s cubic-bezier(.5,0,.2,1),opacity .3s;pointer-events:none}
+.demo-cursor svg{width:100%;height:100%}
+.demo-cursor.click svg{animation:cPress .3s ease}
+@keyframes cPress{40%{transform:scale(.82)}}
+@media(max-width:720px){
+  .demo-body{grid-template-columns:1fr}
+  .demo-left{border-right:0}
+  .demo-right{display:none}
+  .dl-rows{flex:none}
+  .morph.s-input{height:124px;border-radius:22px}
+  .morph.s-input .gmark{width:38px;height:38px;left:14px}
+  .m-input{padding:0 14px 0 60px;gap:8px}
+  .mi-line{-webkit-line-clamp:4;font-size:13px;line-height:1.4}
+  .mi-go{width:40px;height:40px}
+  .morph.s-desk,.morph.s-coach{width:94%;height:92%}
+  .cb-msg{max-width:94%}
+}
+/* ===== modern selling loop ===== */
+.flow{padding:100px 0;background:var(--bone)}
+.flow .section-head{max-width:720px;margin:0 auto 42px;text-align:center}
+.flow .section-head .eyebrow{margin-bottom:16px}
+.flow .section-head h2{margin-bottom:14px}
+.flow .section-head .lead{margin:0 auto;max-width:60ch}
+.pipe{display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;max-width:980px;margin:0 auto}
+.pstep{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;width:168px;padding:0 6px}
+.pstep .pi{width:46px;height:46px;border-radius:13px;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent-deep);box-shadow:0 10px 22px -16px rgba(45,31,94,.4)}
+.pstep .pi svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pstep .pl{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.pstep .ps{font-size:12px;color:var(--muted);line-height:1.4}
+.pconn{flex:none;width:34px;height:2px;background:linear-gradient(90deg,var(--sand-deep),var(--sand));margin-top:22px}
+@media(max-width:900px){.pconn{display:none}.pipe{gap:14px}.pstep{width:150px}}
+.flow-close{text-align:center;margin-top:38px;font-size:clamp(17px,1.9vw,21px);font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+/* ===== feature rows ===== */
+.feat-sec{padding:100px 0;background:var(--paper)}
+.feat-sec.alt{background:var(--bone)}
+.feat{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(30px,4.5vw,60px);align-items:center}
+.feat.rev{grid-template-columns:1.18fr .82fr}
+@media(max-width:900px){.feat,.feat.rev{grid-template-columns:1fr;gap:30px}}
+.ftxt .flabel{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-deep);display:block;margin-bottom:14px}
+.ftxt h2{font-size:clamp(25px,3.2vw,38px);margin-bottom:14px}
+.ftxt p{font-size:15.5px;color:var(--muted);line-height:1.62;max-width:46ch}
+.flist{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.flist li{position:relative;padding-left:26px;font-size:14.5px;color:var(--ink-2)}
+.flist li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:2px;background:var(--g-teal)}
+/* GillisOS console (restyled to Gillis colors) */
+.gos{border-radius:14px;overflow:hidden;background:var(--g-bg);border:1px solid var(--g-line);box-shadow:0 44px 90px -46px rgba(30,24,50,.55)}
+.gos-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:var(--navy)}
+.gos-bar .dtl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
+.gos-bar .gt{margin-left:8px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.78)}
+.gos-bar .gl{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#7fd4a4}
+.gos-bar .gl .dot{width:6px;height:6px;border-radius:50%;background:var(--status)}
+.gos-stats{display:flex;border-bottom:1px solid var(--g-line);background:#fff}
+.gos-stats .gs{flex:1;padding:13px 18px;border-right:1px solid var(--g-line)}
+.gos-stats .gs:last-child{border-right:0}
+.gos-stats .gn{font-family:var(--display);font-weight:600;font-size:19px;color:var(--g-purple);letter-spacing:-.02em}
+.gos-stats .gk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8a839a;margin-top:3px}
+.grow{display:grid;grid-template-columns:1.5fr .75fr .62fr .5fr;gap:10px;padding:12px 18px;border-bottom:1px solid var(--g-line);align-items:center;font-size:12.5px;background:#fff}
+.grow:last-child{border-bottom:0}
+.grow.gh{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a839a;background:var(--g-bg);padding-top:9px;padding-bottom:9px}
+.grow .gco{font-weight:600;color:var(--g-dark)}
+.grow .gmut{color:#8a839a;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+.pri{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;text-align:center;white-space:nowrap;justify-self:start;font-weight:600}
+.pri.hot{color:#b0511f;background:rgba(232,135,91,.16)}
+.pri.warm{color:#8a6a17;background:rgba(212,168,67,.16)}
+.pri.pipe{color:var(--g-lilac);background:rgba(124,107,196,.13)}
+.grow .gld{font-family:var(--mono);font-size:12px;color:var(--g-text);text-align:right}
+@media(max-width:640px){.grow{grid-template-columns:1.5fr .7fr .5fr}.grow .gmut{display:none}}
+/* lead deep dive mini */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff}
+@media(max-width:640px){.dd{grid-template-columns:1fr}}
+.dd-cell{padding:15px 18px;border-bottom:1px solid var(--g-line)}
+.dd-cell:nth-child(odd){border-right:1px solid var(--g-line)}
+@media(max-width:640px){.dd-cell:nth-child(odd){border-right:0}}
+.dd-k{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g-lilac);margin-bottom:5px}
+.dd-v{font-size:13px;color:var(--g-text);line-height:1.5}
+.dd-v b{color:var(--g-dark);font-weight:600}
+.gco-row{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--g-line);font-size:13px;background:#fff}
+.gco-row:last-child{border-bottom:0}
+.gco-row .nm{font-weight:600;color:var(--g-dark);flex:1}
+.gco-row .st{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--g-teal-d);background:rgba(26,187,166,.1);border-radius:20px;padding:3px 9px}
+.gco-row .ct{font-family:var(--mono);font-size:11px;color:#8a839a}
+/* AskGillis console */
+.agc{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--g-line);box-shadow:0 44px 90px -46px rgba(30,24,50,.55);display:grid;grid-template-columns:212px 1fr}
+@media(max-width:720px){.agc{grid-template-columns:1fr}}
+.agc-rail{background:var(--g-purple);padding:18px 14px;display:flex;flex-direction:column;gap:2px}
+@media(max-width:720px){.agc-rail{flex-direction:row;overflow-x:auto;gap:8px;padding:12px}}
+.agc-logo{font-family:var(--display);font-weight:700;font-size:16px;color:#fff;padding:0 10px 14px;letter-spacing:-.01em}
+.agc-logo b{color:var(--g-teal);font-weight:700}
+.agc-logo .sub{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--g-teal);margin-top:3px}
+@media(max-width:720px){.agc-logo{display:none}}
+.agm{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;font-size:12.5px;color:rgba(255,255,255,.72);white-space:nowrap}
+.agm .md{width:7px;height:7px;border-radius:50%;flex:none}
+.agm.on{background:rgba(255,255,255,.1);color:#fff;font-weight:600}
+.agc-main{display:flex;flex-direction:column;min-height:0;background:var(--g-bg)}
+.agc-head{display:flex;align-items:center;gap:10px;padding:13px 20px;background:#fff;border-bottom:1px solid var(--g-line)}
+.agc-head .tg{width:30px;height:30px;border-radius:50%;background:var(--g-purple);color:#fff;font-family:var(--display);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none}
+.agc-head .tn{font-weight:600;font-size:14px;color:var(--g-dark)}
+.agc-head .tr{font-size:11.5px;color:#8a839a;margin-top:1px}
+.agc-chat{padding:18px 20px;display:flex;flex-direction:column;gap:11px}
+.agc-chat .cb-msg{opacity:1;transform:none}
+.ag-email{border-left:3px solid var(--g-teal);background:#fff;border-radius:8px;padding:11px 14px;margin-top:9px;font-size:12.5px;color:var(--g-text);line-height:1.5;box-shadow:0 8px 20px -14px rgba(45,31,94,.4)}
+.ag-email .es{font-weight:700;color:var(--g-dark);display:block;margin-bottom:4px}
+.agc-input{margin:2px 20px 16px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--g-line);border-radius:30px;padding:9px 9px 9px 16px}
+.agc-input span{flex:1;font-size:13px;color:#b5b0c0}
+.agc-input .snd{width:32px;height:32px;border-radius:50%;background:var(--g-teal);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.agc-input .snd svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.agc-foot{text-align:center;font-size:10.5px;color:#8a839a;padding:0 20px 14px}
+/* payoff timeline */
+.payoff{position:relative;background:radial-gradient(90% 130% at 82% 0%,#3b2c72 0%,var(--navy) 58%);color:#fff;padding:88px 24px;max-width:1240px;margin:14px auto;border-radius:28px;overflow:hidden}
+.payoff::after{content:"";position:absolute;inset:0;opacity:.2;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='gn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23gn)'/%3E%3C/svg%3E")}
+.payoff .fits-head{margin-bottom:44px}
+.payoff .eyebrow{color:var(--accent-2)}
+.tline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto;position:relative;z-index:1}
+@media(max-width:760px){.tline{grid-template-columns:1fr;max-width:440px}}
+.tcell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px 24px}
+.tcell .tt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g-teal);margin-bottom:12px}
+.tcell h3{font-size:17.5px;color:#fff;margin-bottom:9px;letter-spacing:-.01em}
+.tcell p{font-size:13.5px;color:rgba(235,230,245,.68);line-height:1.55}
+.tcell p q{font-style:italic;color:rgba(255,255,255,.9)}
+/* crm band */
+.crm{padding:100px 0;background:var(--paper)}
+.crm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4.5vw,60px);align-items:center}
+@media(max-width:860px){.crm-grid{grid-template-columns:1fr;gap:30px}}
+.crm-card{border:1px solid var(--g-line);border-radius:14px;overflow:hidden;box-shadow:0 34px 70px -44px rgba(30,24,50,.5)}
+.crm-card .gos-bar .gt{color:rgba(255,255,255,.78)}
+.crm-rows{background:#fff}
+.crm-row{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--g-line);font-size:13px}
+.crm-row:last-child{border-bottom:0}
+.crm-row .ck{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#8a839a;padding-top:2px}
+.crm-row .cv2{color:var(--g-dark);font-weight:600;text-align:right}
+.crm-row .cv2 .hotp{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:#b0511f;background:rgba(232,135,91,.16);border-radius:14px;padding:2px 8px;margin-left:6px}
+
 </style>
 </head>
 <body>
@@ -631,75 +871,243 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">Hospitality and Entertainment</h1>
-    <div class="tag fade-up d2">Less searching. More selling.</div>
+    <div class="wh-top fade-up d1"><span class="eyebrow">Hotel sales worker</span><span class="wh-status"><span class="sd"></span>Live &middot; Gillis Sales</span></div>
+    <h1 class="fade-up d1" style="margin:14px 0 0">Less searching. More selling.</h1>
+    <div class="tag fade-up d2" style="max-width:62ch">Gillis finds real demand within five miles of every hotel, opens the conversation as Sam, and coaches your reps in the moment. Built with Gillis Sales on Tammy Gillis's methodology.</div>
     <div class="media fade-up d3">
-      <img class="m-vid" src="/img/ind-gillis.jpg" alt="A resort at golden hour, the kind of property where GillisOS finds the demand nearby" loading="eager" decoding="async">
-      <div class="m-vig"></div>
-      <span class="m-tag"><span class="dot"></span> GillisOS · live for Gillis Sales</span>
-      <div class="m-cap">Demand within five miles, found while your reps sleep.</div>
+      <div class="hero-grain"></div>
+      <div class="demo-stage2" id="dStage">
+        <div class="morph s-icon" id="dMorph">
+          <span class="gmark" id="dG"><b>GI</b></span>
+          <span class="m-word">GILLIS</span>
+          <div class="m-input"><span class="mi-line"><span class="mi-text" id="dMandate"></span><i class="dcaret" id="dCaretM"></i></span><button class="mi-go" id="dSubmit" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <div class="m-desk">
+            <div class="demo-bar"><span class="demo-title">GillisOS &middot; Backyard Search</span><span class="demo-live"><span class="dot"></span> live</span></div>
+            <div class="demo-body">
+              <div class="demo-left">
+                <div class="dl-sig" id="dSig"><span class="sd"></span> New signal</div>
+                <div class="dl-head"><span class="dl-name">I-694 Lighting Replacement</span><span class="dl-sec">Construction &middot; Fridley</span></div>
+                <div class="dl-rows" id="dRows">
+                  <div class="dl-row"><span class="dk">Signal</span><span class="dv">MnDOT rebuild, night-shift crews</span></div>
+                  <div class="dl-row"><span class="dk">Why it matters</span><span class="dv">Night shifts mean day-sleeper rooms</span></div>
+                  <div class="dl-row"><span class="dk">Proximity</span><span class="dv">Under 2 miles from the hotel</span></div>
+                  <div class="dl-row"><span class="dk">Companies</span><span class="dv">SEH and 3 more, contacts verified</span></div>
+                </div>
+                <div class="dl-fit"><span class="dl-fitk">Priority</span><span class="dl-bar"><b id="dBar"></b></span><span class="dl-score" id="dScore">0</span></div>
+              </div>
+              <div class="demo-right" id="dRight">
+                <div class="dr-head"><span class="dr-av">S</span> Drafted as Sam <span class="dr-rdy"><span class="dot"></span> ready</span></div>
+                <div class="dr-to"><span class="dek">To</span>April Ryan &middot; Short Elliott Hendrickson</div>
+                <div class="dr-subj"><span class="dek">Subj</span><span id="dSubj"></span><i class="dcaret" id="dCaretS"></i></div>
+                <div class="dr-body"><span id="dBody"></span><i class="dcaret" id="dCaretB"></i></div>
+                <div class="dr-foot"><span class="dr-q" id="dQueue">Send as Sam</span><span class="dr-done" id="dDone">&#10003; Sent</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="m-coach">
+            <div class="demo-bar"><span class="demo-title">AskGillis &middot; Tammy, your sales coach</span><span class="demo-live"><span class="dot"></span> live</span></div>
+            <div class="coach-body">
+              <div class="cb-msg rep" id="cRep"><div class="who">Rep</div>They already have a preferred hotel. How do I respond?</div>
+              <div class="cb-msg tam" id="cTyping"><div class="who">Tammy</div><span class="cb-dots"><i></i><i></i><i></i></span></div>
+              <div class="cb-msg tam" id="cTam"><div class="who">Tammy</div><span id="cTamText"></span><i class="dcaret" id="dCaretC"></i></div>
+              <div class="coach-input"><span>Ask Tammy anything...</span><span class="snd"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#2d1f5e" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+      </div>
+      <button class="m-toggle2" id="gToggle" type="button" aria-label="Pause animation">
+        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- LOGO STRIP (real clients) -->
+<!-- LOGO STRIP -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Trusted across hospitality and entertainment</div>
+    <div class="ll">Built with and live at</div>
     <div class="logobar">
-      <!-- Gillis Sales wordmark as text until a licensed logo file lands -->
       <span class="lgt">Gillis Sales</span>
     </div>
   </div>
 </section>
 
-<!-- SUB-VERTICAL SHOWCASE -->
-<section class="showcase" id="showcase">
+<!-- THE MODERN SELLING LOOP -->
+<section class="flow" id="how">
   <div class="wrap">
-    <div class="sv-tabs" id="svTabs">
-      <button class="sv-tab on" data-seg="hotel">Hotel Sales Teams</button>
-      <button class="sv-tab" data-seg="brand">Brands and Portfolios</button>
-      <button class="sv-tab" data-seg="ent">Entertainment and Talent</button>
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>The modern selling loop.</h2>
+      <p class="lead">Five steps, one connected flow, on every opportunity. Gillis finds the signal, ranks it, opens the outreach, coaches the conversation, and keeps everything inside the CRM.</p>
     </div>
+    <div class="pipe">
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg></div><div class="pl">Signal</div><div class="ps">A real event surfaces near a hotel</div></div>
+      <div class="pconn"></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M4 17l4-6 4 3 4-8 4 5"/><path d="M4 21h16"/></svg></div><div class="pl">Prioritize</div><div class="ps">Ranked hot, warm, or pipeline</div></div>
+      <div class="pconn"></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div><div class="pl">Reach</div><div class="ps">Who to contact, and what to say</div></div>
+      <div class="pconn"></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 9h6M9 12h4"/></svg></div><div class="pl">Coach</div><div class="ps">Just in time guidance, in the moment</div></div>
+      <div class="pconn"></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><div class="pl">Close</div><div class="ps">The CRM becomes the live selling tool</div></div>
+    </div>
+    <div class="flow-close">AI does the busywork. Your reps do the selling.</div>
+  </div>
+</section>
 
-    <div class="sv-head on" data-seg="hotel"><h2>Your reps should be selling, not searching.</h2></div>
-    <div class="sv-head" data-seg="brand"><h2>One playbook, every flag.</h2></div>
-    <div class="sv-head" data-seg="ent"><h2>Every fan, answered personally.</h2></div>
-
-    <!-- GillisOS board, rebuilt from the real dashboard (85 signals / 478 contacts / 38 hot leads) -->
-    <div class="mock">
-      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">GillisOS · Sam's board</span><span class="ml"><span class="dot"></span> live</span></div>
-      <div class="mock-stats">
-        <div class="ms"><div class="mn">85</div><div class="mk">Signals</div></div>
-        <div class="ms"><div class="mn">478</div><div class="mk">Contacts</div></div>
-        <div class="ms"><div class="mn">38</div><div class="mk">Hot leads</div></div>
+<!-- FEATURE 1 · BACKYARD SEARCH -->
+<section class="feat-sec" id="research">
+  <div class="wrap">
+    <div class="feat">
+      <div class="ftxt">
+        <span class="flabel">01 &middot; Research</span>
+        <h2>Backyard Search: hotel-aware intelligence.</h2>
+        <p>Instead of buying a static list, Gillis watches the market within five miles of each hotel for demand it can act on, then ranks every signal by how close, how relevant, and how timely it is. Sellers work the hottest first.</p>
+        <ul class="flist">
+          <li>Active construction projects</li>
+          <li>Corporate relocations and moves</li>
+          <li>Government and project RFPs</li>
+          <li>Event and conference activity</li>
+        </ul>
       </div>
-      <div class="mrow mh"><span>Lead</span><span class="mmut">Demand signal</span><span class="c-fit">Fit</span><span>Worker</span><span>Status</span></div>
-      <div class="mrow"><span class="mco">NovaCare Rehab Partners</span><span class="mmut">Response crews need bulk lodging</span><span class="c-fit mfit"><span class="bar"><b style="width:94%"></b></span><span class="fv">94</span></span><span class="mtag">Sam</span><span class="mst dr">Hot</span></div>
-      <div class="mrow"><span class="mco">Gulf Coast Lakeside Hospital</span><span class="mmut">Fellowship program cohorts</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">Sam</span><span class="mst dr">Hot</span></div>
-      <div class="mrow"><span class="mco">Greenway STEM Center</span><span class="mmut">Visiting research teams</span><span class="c-fit mfit"><span class="bar"><b style="width:90%"></b></span><span class="fv">90</span></span><span class="mtag">Sam</span><span class="mst scr">Active</span></div>
-      <div class="mrow"><span class="mco">Apex Environmental</span><span class="mmut">Sustainability training cycles</span><span class="c-fit mfit"><span class="bar"><b style="width:87%"></b></span><span class="fv">87</span></span><span class="mtag">Sam</span><span class="mst nu">Nurture</span></div>
-    </div>
-
-    <div class="sv-caps on" data-seg="hotel">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Signals within five miles</h3><p>Construction projects, government contracts, expansions, and tourism activity near each property, spotted the moment they mean heads in beds.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Outreach that reads handwritten</h3><p>Every message references the actual reason for reaching out. The first reply Gillis Sales ever received addressed Sam by name and asked for a call.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg></div><h3>Warm handoff to your reps</h3><p>Replies route straight to the right rep with the context in hand. Everything else stays on a steady nurture until it warms up.</p></div>
-    </div>
-    <div class="sv-caps" data-seg="brand">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Built on your methodology</h3><p>The worker is shaped by your own playbook, the way GillisOS carries twenty years of Gillis Sales thinking into every message.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></div><h3>One engine, every flag</h3><p>Runs across a portfolio under each brand's own look and voice, so a group scales without rebuilding for every property.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5"/><path d="M16 8h5"/></svg></div><h3>Pipeline without headcount</h3><p>More reach for every director of sales, without the hiring that used to be the only way to grow output.</p></div>
-    </div>
-    <div class="sv-caps" data-seg="ent">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><h3>A real voice, faithfully</h3><p>Fans hear the personality's own story, in their own voice, the way AskAmber carries a real race car driver's world to every fan who asks.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>On at 3am after the race</h3><p>Fan engagement does not keep business hours. Every question gets a personal answer, whenever it arrives.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Guardrails built in</h3><p>The voice stays on-brand and sponsor-safe, and anything sensitive routes quietly to the team behind it.</p></div>
+      <div class="gos">
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">GillisOS &middot; Backyard Search &middot; 5 mi radius</span><span class="gl"><span class="dot"></span> completed</span></div>
+        <div class="gos-stats">
+          <div class="gs"><div class="gn">6</div><div class="gk">Signals</div></div>
+          <div class="gs"><div class="gn">23</div><div class="gk">Companies</div></div>
+          <div class="gs"><div class="gn">2</div><div class="gk">Hot signals</div></div>
+        </div>
+        <div class="grow gh"><span>Signal</span><span class="gmut">Category</span><span>Priority</span><span class="gld">Leads</span></div>
+        <div class="grow"><span class="gco">Highway 11 Interchange Replacement</span><span class="gmut">construction</span><span class="pri hot">Hot</span><span class="gld">10</span></div>
+        <div class="grow"><span class="gco">Vicarro Townhome Development</span><span class="gmut">construction</span><span class="pri hot">Hot</span><span class="gld">3</span></div>
+        <div class="grow"><span class="gco">Highway 1 Expansion Phase 4</span><span class="gmut">construction</span><span class="pri warm">Warm</span><span class="gld">5</span></div>
+        <div class="grow"><span class="gco">Long-Term Care Community Build</span><span class="gmut">construction</span><span class="pri warm">Warm</span><span class="gld">3</span></div>
+        <div class="grow"><span class="gco">Sumas Park Estates Development</span><span class="gmut">construction</span><span class="pri pipe">Pipeline</span><span class="gld">1</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL (published in the GillisOS case study, unattributed there; confirm the speaker before naming) -->
+<!-- FEATURE 2 · DEEP DIVE + OUTREACH -->
+<section class="feat-sec alt" id="outreach">
+  <div class="wrap">
+    <div class="feat rev">
+      <div class="gos">
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">GillisOS &middot; Lead deep dive</span><span class="gl"><span class="dot"></span> deep dived</span></div>
+        <div class="dd">
+          <div class="dd-cell"><div class="dd-k">Origin hotel</div><div class="dd-v"><b>Comfort Inn Brooklyn Center</b></div></div>
+          <div class="dd-cell"><div class="dd-k">Demand signal</div><div class="dd-v">MnDOT lighting rebuild with night-shift crews on I-694</div></div>
+          <div class="dd-cell"><div class="dd-k">Why it matters</div><div class="dd-v">Night work creates <b>day-sleeper lodging demand</b> near the zone</div></div>
+          <div class="dd-cell"><div class="dd-k">Est. room nights</div><div class="dd-v">Significant, multi-season through 2025</div></div>
+        </div>
+        <div class="gco-row"><span class="nm">Short Elliott Hendrickson (SEH)</span><span class="st">Reach out ready</span><span class="ct">5 contacts</span></div>
+        <div class="gco-row"><span class="nm">Design Electric, Inc.</span><span class="st">Reach out ready</span><span class="ct">5 contacts</span></div>
+        <div class="gco-row"><span class="nm">Traxler Construction Inc.</span><span class="st">Reach out ready</span><span class="ct">4 contacts</span></div>
+      </div>
+      <div class="ftxt">
+        <span class="flabel">02 &middot; Outreach</span>
+        <h2>Not a mail merge. A first message that reads handwritten.</h2>
+        <p>Gillis finds the companies tied to each signal, verifies the right people, and drafts every email as Sam, referencing the actual project and the nearby hotel. The first reply Gillis Sales ever received addressed Sam by name and asked for a call.</p>
+        <ul class="flist">
+          <li>Contacts verified before a single send</li>
+          <li>Every message tied to a real reason</li>
+          <li>Replies route straight to the right rep</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 3 · ASKGILLIS COACHING -->
+<section class="feat-sec" id="coaching">
+  <div class="wrap">
+    <div class="feat">
+      <div class="ftxt">
+        <span class="flabel">03 &middot; Coaching</span>
+        <h2>AskGillis: coaching moves into the selling moment.</h2>
+        <p>Coaching used to arrive after the call, in reviews and ride-alongs. AskGillis puts the right question, the right answer, and the right next step inside the conversation, in real time, built on Tammy Gillis's methodology and the Room to Grow curriculum.</p>
+        <ul class="flist">
+          <li>Prospecting, discovery, objections, closing</li>
+          <li>Role play a real scenario before the call</li>
+          <li>A daily sharpener to keep reps in shape</li>
+        </ul>
+      </div>
+      <div class="agc">
+        <div class="agc-rail">
+          <div class="agc-logo">Ask<b>Gillis</b><span class="sub">Sales platform</span></div>
+          <div class="agm"><span class="md" style="background:var(--g-teal)"></span>Onboarding</div>
+          <div class="agm"><span class="md" style="background:#8B5CF6"></span>Weekly Game Plan</div>
+          <div class="agm on"><span class="md" style="background:var(--g-teal)"></span>Outreach Support</div>
+          <div class="agm"><span class="md" style="background:var(--g-lilac)"></span>Situation</div>
+          <div class="agm"><span class="md" style="background:var(--g-orange)"></span>Role Play</div>
+          <div class="agm"><span class="md" style="background:var(--g-gold)"></span>Daily Sharpener</div>
+          <div class="agm"><span class="md" style="background:#3B82F6"></span>LinkedIn and Social</div>
+          <div class="agm"><span class="md" style="background:#8a839a"></span>Methodology</div>
+        </div>
+        <div class="agc-main">
+          <div class="agc-head"><span class="tg">TG</span><span><div class="tn">Tammy</div><div class="tr">Your AI sales coach</div></span></div>
+          <div class="agc-chat">
+            <div class="cb-msg rep"><div class="who">Julie</div>Can you sharpen up my cold email? Going to a VP of Ops bringing crews in for a nine month bridge project.</div>
+            <div class="cb-msg tam"><div class="who">Tammy</div>Good instinct reaching out early. Right now it reads like every other hotel email he deletes before his coffee. Lead with his project and what it costs him to get crew housing wrong. Two quick rules: drop the amenity list, nobody books on free breakfast. Here is a tighter version:
+              <div class="ag-email"><span class="es">Subject: Housing your bridge crew in Davenport</span>Hi Mark, saw your crews are heading to Davenport for the Route 61 work. Nine months on site means consistent rooms close to the job and billing that does not eat your PM's time. Worth a 10 minute call to see if we are a fit?</div>
+            </div>
+          </div>
+          <div class="agc-input"><span>Ask Tammy anything...</span><span class="snd"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div class="agc-foot">AskGillis, powered by Tammy's 28 years of hospitality sales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYOFF TIMELINE -->
+<section class="payoff" id="payoff">
+  <div class="wrap">
+    <div class="fits-head">
+      <span class="eyebrow">The payoff</span>
+      <h2>From a signal to a booked call.</h2>
+      <p class="fits-sub">The whole loop on one real opportunity, start to finish, with everything captured in the CRM along the way.</p>
+    </div>
+    <div class="tline">
+      <div class="tcell"><div class="tt">Mon &middot; 9:14 AM</div><h3>The signal is found.</h3><p>Backyard Search picks up the I-694 project, less than 2 miles from Comfort Inn Brooklyn Center.</p></div>
+      <div class="tcell"><div class="tt">Mon &middot; 9:17 AM</div><h3>Outreach goes out.</h3><p>The right contact is identified, the first email is sent as Sam, and the CRM record is created automatically.</p></div>
+      <div class="tcell"><div class="tt">Tue &middot; 2:31 PM</div><h3>The prospect replies.</h3><p><q>Yes, we'd love to discuss rates for the overnight crews.</q> A high-priority task lands in the rep's queue.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CRM -->
+<section class="crm" id="crm">
+  <div class="wrap">
+    <div class="crm-grid">
+      <div class="ftxt">
+        <span class="flabel">04 &middot; The system of record</span>
+        <h2>Your CRM becomes a live selling tool.</h2>
+        <p>Every step writes itself into Salesforce as it happens. Lead, contact, activity, and owner populate automatically, so the record is not an after-the-fact log. It is where the rep actually works the deal.</p>
+        <ul class="flist">
+          <li>Created automatically, owned by the rep</li>
+          <li>Full research context, one click away</li>
+          <li>Follow-ups and tasks land in the queue</li>
+        </ul>
+      </div>
+      <div class="crm-card">
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Salesforce &middot; Lead</span><span class="gl"><span class="dot"></span> synced</span></div>
+        <div class="crm-rows">
+          <div class="crm-row"><span class="ck">Lead</span><span class="cv2">April Ryan &middot; SEH</span></div>
+          <div class="crm-row"><span class="ck">Owner</span><span class="cv2">Shannon S., RDOS</span></div>
+          <div class="crm-row"><span class="ck">Hotel</span><span class="cv2">Comfort Inn Brooklyn Center</span></div>
+          <div class="crm-row"><span class="ck">Source</span><span class="cv2">Gillis Leads</span></div>
+          <div class="crm-row"><span class="ck">Priority</span><span class="cv2">1<span class="hotp">Hot</span></span></div>
+          <div class="crm-row"><span class="ck">Research</span><span class="cv2">Full project context, linked</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
 <section class="testi">
   <div class="wrap">
     <div class="testi-card">
@@ -714,91 +1122,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
-<!-- THE SUITE -->
-<section class="suite" id="suite">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">The suite</span>
-      <h2>Gambit for Hospitality and Entertainment.</h2>
-      <p class="lead">Three workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
-    </div>
-    <div class="suite-grid">
-
-      <a class="suite-card featured" href="/workers/gillis">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-gillisos)"><b>G</b></span><div><div class="sc-name">GillisOS</div><div class="sc-role">Hotel lead research</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Scans a five mile radius around each property for real demand, finds the right contact, and opens every conversation as Sam, with outreach that reads handwritten. Live for Gillis Sales.</p>
-        <div class="sc-tags"><span class="sc-tag">Hotel sales</span><span class="sc-tag">Outbound</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
-      </a>
-
-      <a class="suite-card" href="/workers/gillis">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-askgillis)"><b>AG</b></span><div><div class="sc-name">AskGillis</div><div class="sc-role">Sales coaching</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">A coach in every rep's corner, built on a proven hotel sales methodology. Guidance on live deals and outreach drafted in the rep's own voice, signed by them.</p>
-        <div class="sc-tags"><span class="sc-tag">Hotel sales</span><span class="sc-tag">Enablement</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">Learn more <span class="ar">&rarr;</span></span></div>
-      </a>
-
-      <a class="suite-card" href="https://askamber.io" target="_blank" rel="noopener noreferrer">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-askamber)"><b>AM</b></span><div><div class="sc-name">AskAmber</div><div class="sc-role">Fan engagement</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">A professional race car driver's story, told in her own voice, to every fan who asks, any hour. On-brand, sponsor-safe, and live today at askamber.io.</p>
-        <div class="sc-tags"><span class="sc-tag">Entertainment</span><span class="sc-tag">Talent</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">Meet Amber <span class="ar">&rarr;</span></span></div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT FITS -->
-<section class="fits" id="fits">
-  <div class="wrap">
-    <div class="fits-head">
-      <span class="eyebrow">How it fits</span>
-      <h2>Works inside the systems your sales team already runs.</h2>
-      <p class="fits-sub">Every opportunity, contact, and follow-up lands in the systems your team already runs, tasks created, replies routed, nothing to relearn. GillisOS runs on Salesforce today.</p>
-    </div>
-    <div class="fits-logos">
-      <!-- Salesforce is confirmed in the GillisOS case study; the rest are placeholder marks until logos are licensed -->
-      <div class="ftile"><span class="fic"><span class="dcmark">sf</span></span><span class="flb">Salesforce</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">hs</span></span><span class="flb">HubSpot</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">op</span></span><span class="flb">Opera PMS</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">tw</span></span><span class="flb">Twilio</span></div>
-    </div>
-    <div class="fits-claims">
-      <span>Runs on your infrastructure</span>
-      <span>On the model you choose</span>
-      <span>Every action auditable</span>
-      <span>SOC 2</span>
-    </div>
-  </div>
-</section>
-
 <!-- RESULTS -->
 <section class="results" id="results">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Customers</span>
-      <h2>The results speak for themselves.</h2>
-      <p class="lead">Real outcomes for a real sales organization, and a real fan base. Leads from the first days, at conversion rates cold outreach is not supposed to hit.</p>
+      <span class="eyebrow">The impact</span>
+      <h2>Leads from the first days.</h2>
+      <p class="lead">Real outcomes for a real sales organization, at conversion rates cold outreach is not supposed to hit.</p>
     </div>
     <div class="res-grid">
-
       <a class="res-card" href="/case-study/gillisos">
-        <div class="res-lg">Gillis Sales · GillisOS</div>
+        <div class="res-lg">Cold outreach conversion</div>
         <div class="res-n">5 to 8%</div>
-        <div class="res-nl">cold outreach conversion</div>
-        <p class="res-p">GillisOS started generating qualified leads within days of launch, and prospects reply to Sam by name, as though they were writing to a colleague.</p>
+        <div class="res-nl">depending on the hotel</div>
+        <p class="res-p">GillisOS started generating qualified leads within the first few days of launch, which exceeded expectations.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
-
-      <a class="res-card" href="https://askamber.io" target="_blank" rel="noopener noreferrer">
-        <div class="res-lg">AskAmber</div>
-        <div class="res-n">24/7</div>
-        <div class="res-nl">fans answered in her voice</div>
-        <p class="res-p">A professional race car driver's fans get her story, her way, any hour, on-brand and sponsor-safe, live today at askamber.io.</p>
-        <span class="res-link">Meet Amber <span class="ar">&rarr;</span></span>
-      </a>
-
+      <div class="res-card">
+        <div class="res-lg">The first reply ever received</div>
+        <div class="res-n">By name</div>
+        <div class="res-nl">a prospect wrote back to Sam</div>
+        <p class="res-p">Prospects engage with Sam like a colleague. The very first reply addressed Sam by name and asked to set up a call.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -806,8 +1151,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>See what a worker finds near your properties.</h2>
-    <p>Tell us your flags and your playbook. We will show you the demand sitting within five miles of your properties, in two weeks.</p>
+    <h2>Put Gillis to work on your hotels.</h2>
+    <p>Tell us your flags and your playbook. We will show you the demand within five miles of your properties, and the coach your reps get on day one.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
       <a href="/case-study/gillisos" class="btn btn-ghost">Read the GillisOS story</a>
@@ -895,7 +1240,7 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.sv-tabs,.mock,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.flow .section-head,.pipe,.flow-close,.ftxt,.gos,.agc,.fits-head,.tline,.crm-card,.testi-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
@@ -906,6 +1251,82 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
     const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});
     els.forEach(el=>ro.observe(el));
   }
+})();
+</script>
+<script>
+/* ----- Gillis hero demo: logo, mandate, research, outreach, then AskGillis coaching ----- */
+(function(){
+  var stage=document.getElementById('dStage'); if(!stage) return;
+  function $(id){return document.getElementById(id);}
+  var morph=$('dMorph'),gmark=$('dG'),mandateEl=$('dMandate'),caretM=$('dCaretM'),submit=$('dSubmit'),
+      cursor=$('dCursor'),sig=$('dSig'),rows=[].slice.call(document.querySelectorAll('#dRows .dl-row')),
+      bar=$('dBar'),score=$('dScore'),right=$('dRight'),subjEl=$('dSubj'),bodyEl=$('dBody'),
+      caretS=$('dCaretS'),caretB=$('dCaretB'),queue=$('dQueue'),done=$('dDone'),
+      subjBox=document.querySelector('.dr-subj'),
+      cRep=$('cRep'),cTyping=$('cTyping'),cTam=$('cTam'),cTamText=$('cTamText'),caretC=$('dCaretC');
+  var MANDATE="Find demand near the Comfort Inn Brooklyn Center.";
+  var SUBJ="I-694 crew accommodations";
+  var BODY="Hi April, saw SEH is managing the I-694 lighting replacement in Fridley. Our hotel is under two miles from the project zone, and we support night-shift crews on builds like this.\n\nWorth a quick call?\n\nSam \u00B7 Gillis Sales";
+  var COACH="Acknowledge it, do not fight it. Ask when housing for this project gets decided, then offer a one night crew stay so the choice is easy. Loyalty rarely survives a 2am check-in problem.";
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused=false,waiters=[];
+  function gate(){return paused?new Promise(function(r){waiters.push(r);}):Promise.resolve();}
+  function resumeAll(){paused=false;stage.classList.remove('paused');var w=waiters;waiters=[];w.forEach(function(r){r();});}
+  function sleep(ms){return new Promise(function(r){setTimeout(r,ms);}).then(gate);}
+  function setState(st){morph.classList.remove('s-icon','s-input','s-desk','s-coach');morph.classList.add(st);}
+  function moveTo(el){var d=stage.getBoundingClientRect(),t=el.getBoundingClientRect();cursor.style.transform='translate('+(t.left-d.left+t.width*0.5-5)+'px,'+(t.top-d.top+t.height*0.5-2)+'px)';}
+  function park(){var d=stage.getBoundingClientRect();cursor.style.transition='none';cursor.style.transform='translate('+(d.width*0.5)+'px,'+(d.height*0.74)+'px)';void cursor.offsetWidth;cursor.style.transition='';}
+  function clickFx(){cursor.classList.add('click');setTimeout(function(){cursor.classList.remove('click');},420);}
+  function type(el,text,speed,caret){return new Promise(function(res){caret&&caret.classList.add('on');var i=0;el.textContent='';(function st(){if(paused){waiters.push(st);return;}if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(st,speed);}else{caret&&caret.classList.remove('on');res();}})();});}
+  function countTo(el,to,dur,suffix){var t0=performance.now();(function f(now){var p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(p*to)+(p===1?(suffix||''):'');if(p<1)requestAnimationFrame(f);})(t0);}
+  function resetInner(){
+    rows.forEach(function(r){r.classList.remove('in');});
+    bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;bar.style.transition='';
+    score.textContent='0';sig.classList.remove('in');right.classList.remove('active');
+    queue.classList.remove('hide');done.classList.remove('show');
+    subjEl.textContent='';bodyEl.textContent='';caretS.classList.remove('on');caretB.classList.remove('on');
+    mandateEl.textContent='';caretM.classList.remove('on');
+    cRep.classList.remove('in');cTyping.classList.remove('in');cTam.classList.remove('in');cTamText.textContent='';caretC.classList.remove('on');
+    cTyping.style.display='';
+  }
+  async function loop(){
+    setState('s-icon');resetInner();park();
+    await sleep(600);cursor.style.opacity='1';
+    moveTo(gmark);await sleep(780);clickFx();await sleep(300);
+    setState('s-input');await sleep(660);
+    await type(mandateEl,MANDATE,24,caretM);await sleep(560);
+    moveTo(submit);await sleep(620);clickFx();await sleep(300);
+    setState('s-desk');await sleep(760);
+    sig.classList.add('in');await sleep(480);
+    for(var i=0;i<rows.length;i++){rows[i].classList.add('in');await sleep(320);}
+    await sleep(140);bar.style.width='94%';countTo(score,94,950,' HOT');await sleep(1050);
+    right.classList.add('active');await sleep(430);
+    moveTo(subjBox);await sleep(620);
+    await type(subjEl,SUBJ,30,caretS);await sleep(230);
+    await type(bodyEl,BODY,14,caretB);await sleep(450);
+    moveTo(queue);await sleep(700);clickFx();await sleep(300);
+    queue.classList.add('hide');done.classList.add('show');await sleep(1500);
+    cursor.style.opacity='0';
+    setState('s-coach');await sleep(700);
+    cRep.classList.add('in');await sleep(900);
+    cTyping.classList.add('in');await sleep(1100);
+    cTyping.style.display='none';cTam.classList.add('in');
+    await type(cTamText,COACH,13,caretC);await sleep(2600);
+    setState('s-icon');await sleep(760);
+    loop();
+  }
+  function showStatic(){
+    setState('s-coach');morph.style.transition='none';gmark.style.transition='none';
+    cRep.classList.add('in');cTyping.style.display='none';cTam.classList.add('in');cTamText.textContent=COACH;
+    cursor.style.display='none';
+  }
+  var btn=document.getElementById('gToggle');
+  if(btn){
+    var setBtn=function(p){btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play animation':'Pause animation');};
+    btn.addEventListener('click',function(){if(paused){resumeAll();setBtn(false);}else{paused=true;stage.classList.add('paused');setBtn(true);}});
+  }
+  if(RM){showStatic();if(btn)btn.style.display='none';return;}
+  setTimeout(loop,400);
 })();
 </script>
 </body>
