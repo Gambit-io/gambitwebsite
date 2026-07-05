@@ -605,32 +605,41 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .gco-row .nm{font-weight:600;color:var(--g-dark);flex:1}
 .gco-row .st{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--g-teal-d);background:rgba(26,187,166,.1);border-radius:20px;padding:3px 9px}
 .gco-row .ct{font-family:var(--mono);font-size:11px;color:#8a839a}
-/* AskGillis console */
-.agc{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--g-line);box-shadow:0 44px 90px -46px rgba(30,24,50,.55);display:grid;grid-template-columns:212px 1fr}
+/* AskGillis console (compact app density so it balances the text column) */
+#coaching .feat{grid-template-columns:1fr 1.04fr}
+@media(max-width:900px){#coaching .feat{grid-template-columns:1fr}}
+.agc{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--g-line);box-shadow:0 44px 90px -46px rgba(30,24,50,.55);display:grid;grid-template-columns:172px 1fr;align-self:center}
 @media(max-width:720px){.agc{grid-template-columns:1fr}}
-.agc-rail{background:var(--g-purple);padding:18px 14px;display:flex;flex-direction:column;gap:2px}
+.agc-rail{background:var(--g-purple);padding:13px 10px;display:flex;flex-direction:column;gap:1px}
 @media(max-width:720px){.agc-rail{flex-direction:row;overflow-x:auto;gap:8px;padding:12px}}
-.agc-logo{font-family:var(--display);font-weight:700;font-size:16px;color:#fff;padding:0 10px 14px;letter-spacing:-.01em}
+.agc-logo{font-family:var(--display);font-weight:700;font-size:14px;color:#fff;padding:0 9px 10px;letter-spacing:-.01em}
 .agc-logo b{color:var(--g-teal);font-weight:700}
-.agc-logo .sub{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--g-teal);margin-top:3px}
+.agc-logo .sub{display:block;font-family:var(--mono);font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--g-teal);margin-top:2px}
 @media(max-width:720px){.agc-logo{display:none}}
-.agm{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;font-size:12.5px;color:rgba(255,255,255,.72);white-space:nowrap}
-.agm .md{width:7px;height:7px;border-radius:50%;flex:none}
+.agm{display:flex;align-items:center;gap:8px;padding:5.5px 9px;border-radius:8px;font-size:11.5px;color:rgba(255,255,255,.72);white-space:nowrap}
+.agm .md{width:6px;height:6px;border-radius:50%;flex:none}
 .agm.on{background:rgba(255,255,255,.1);color:#fff;font-weight:600}
 .agc-main{display:flex;flex-direction:column;min-height:0;background:var(--g-bg)}
-.agc-head{display:flex;align-items:center;gap:10px;padding:13px 20px;background:#fff;border-bottom:1px solid var(--g-line)}
-.agc-head .tg{width:30px;height:30px;border-radius:50%;background:var(--g-purple);color:#fff;font-family:var(--display);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none}
-.agc-head .tn{font-weight:600;font-size:14px;color:var(--g-dark)}
-.agc-head .tr{font-size:11.5px;color:#8a839a;margin-top:1px}
-.agc-chat{padding:18px 20px;display:flex;flex-direction:column;gap:11px}
-.agc-chat .cb-msg{opacity:1;transform:none}
-.ag-email{border-left:3px solid var(--g-teal);background:#fff;border-radius:8px;padding:11px 14px;margin-top:9px;font-size:12.5px;color:var(--g-text);line-height:1.5;box-shadow:0 8px 20px -14px rgba(45,31,94,.4)}
+.agc-head{display:flex;align-items:center;gap:9px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--g-line)}
+.agc-head .tg{width:26px;height:26px;border-radius:50%;background:var(--g-purple);color:#fff;font-family:var(--display);font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.agc-head .tn{font-weight:600;font-size:13px;color:var(--g-dark)}
+.agc-head .tr{font-size:10.5px;color:#8a839a;margin-top:0}
+.agc-chat{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.agc-chat .cb-msg{opacity:1;transform:none;font-size:12.5px;padding:10px 13px;max-width:84%}
+.ag-email{border-left:3px solid var(--g-teal);background:#fff;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:11.5px;color:var(--g-text);line-height:1.5;box-shadow:0 8px 20px -14px rgba(45,31,94,.4)}
 .ag-email .es{font-weight:700;color:var(--g-dark);display:block;margin-bottom:4px}
-.agc-input{margin:2px 20px 16px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--g-line);border-radius:30px;padding:9px 9px 9px 16px}
-.agc-input span{flex:1;font-size:13px;color:#b5b0c0}
-.agc-input .snd{width:32px;height:32px;border-radius:50%;background:var(--g-teal);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
-.agc-input .snd svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.agc-foot{text-align:center;font-size:10.5px;color:#8a839a;padding:0 20px 14px}
+.agc-input{margin:2px 16px 12px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--g-line);border-radius:30px;padding:7px 7px 7px 14px}
+.agc-input span{flex:1;font-size:12px;color:#b5b0c0}
+.agc-input .snd{width:28px;height:28px;border-radius:50%;background:var(--g-teal);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.agc-input .snd svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.agc-foot{text-align:center;font-size:9.5px;color:#8a839a;padding:0 16px 11px}
+/* across-the-cycle rows (text column ballast) */
+.cyc{margin-top:22px;display:flex;flex-direction:column}
+.cyc-row{display:flex;gap:13px;padding:11px 0;border-top:1px solid var(--line-2)}
+.cyc-row .cn{font-family:var(--mono);font-size:10px;color:var(--accent-deep);font-weight:600;padding-top:3px;flex:none;width:20px}
+.cyc-row .ct2{min-width:0}
+.cyc-row .cl2{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.cyc-row .cq{font-size:12.5px;color:var(--muted);line-height:1.45;margin-top:2px;font-style:italic}
 /* payoff timeline */
 .payoff{position:relative;background:radial-gradient(90% 130% at 82% 0%,#3b2c72 0%,var(--navy) 58%);color:#fff;padding:88px 24px;max-width:1240px;margin:14px auto;border-radius:28px;overflow:hidden}
 .payoff::after{content:"";position:absolute;inset:0;opacity:.2;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='gn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23gn)'/%3E%3C/svg%3E")}
@@ -1027,12 +1036,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="ftxt">
         <span class="flabel">03 &middot; Coaching</span>
         <h2>AskGillis: coaching moves into the selling moment.</h2>
-        <p>Coaching used to arrive after the call, in reviews and ride-alongs. AskGillis puts the right question, the right answer, and the right next step inside the conversation, in real time, built on Tammy Gillis's methodology and the Room to Grow curriculum.</p>
-        <ul class="flist">
-          <li>Prospecting, discovery, objections, closing</li>
-          <li>Role play a real scenario before the call</li>
-          <li>A daily sharpener to keep reps in shape</li>
-        </ul>
+        <p>Coaching used to arrive after the call, in reviews and ride-alongs. AskGillis puts the right question, the right answer, and the right next step inside the conversation, in real time, built on Tammy Gillis's methodology and the Room to Grow curriculum. The same coach supports the full cycle:</p>
+        <div class="cyc">
+          <div class="cyc-row"><span class="cn">01</span><span class="ct2"><span class="cl2">Prospecting</span><div class="cq">"What's a strong opener for a night-shift construction crew?" A project-specific hook, not a generic intro.</div></span></div>
+          <div class="cyc-row"><span class="cn">02</span><span class="ct2"><span class="cl2">Discovery</span><div class="cq">"What should I ask to size the room block?" The right questions on crew size, dates, and shift pattern.</div></span></div>
+          <div class="cyc-row"><span class="cn">03</span><span class="ct2"><span class="cl2">Objection handling</span><div class="cq">"They already have a hotel partner. Now what?" A reframe that fits this project and this crew.</div></span></div>
+          <div class="cyc-row"><span class="cn">04</span><span class="ct2"><span class="cl2">Closing and role play</span><div class="cq">Rehearse the real scenario before the call, not after, with a daily sharpener to stay in shape.</div></span></div>
+        </div>
       </div>
       <div class="agc">
         <div class="agc-rail">
