@@ -352,16 +352,30 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .cta p{color:var(--muted);font-size:18px;max-width:52ch;margin:0 auto 32px;line-height:1.55}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-/* ---------- footer ---------- */
-footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line-soft)}
-.foot-brand .mark{font-size:22px}
-.foot-brand p{color:var(--muted-d);font-size:13px;margin-top:10px}
-.foot-links{display:flex;gap:64px;flex-wrap:wrap}
-.foot-col h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d);margin-bottom:14px;font-weight:500}
-.foot-col a{display:block;color:rgba(240,243,248,.7);text-decoration:none;font-size:14px;margin-bottom:9px;transition:.2s}
-.foot-col a:hover{color:var(--paper)}
-.foot-bottom{display:flex;justify-content:space-between;padding-top:26px;color:var(--muted-d);font-size:12.5px;flex-wrap:wrap;gap:10px}
+/* ---------- footer (consistent across all pages) ---------- */
+.site-footer{background:var(--ink);padding:44px 0}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-left{display:flex;align-items:center;gap:16px}
+.footer-logo-img{height:20px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.55}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.6)}
+.footer-center{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.footer-center a{font-size:13px;color:rgba(255,255,255,.7);transition:color .15s}
+.footer-center a:hover{color:rgba(255,255,255,.95)}
+.footer-right{display:flex;align-items:center;gap:16px}
+.footer-legal{display:flex;align-items:center;gap:8px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,.6);transition:color .15s}
+.footer-legal a:hover{color:rgba(255,255,255,.85)}
+.footer-legal span{font-size:12px;color:rgba(255,255,255,.4)}
+.footer-socials{display:flex;align-items:center;gap:10px}
+.footer-social{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);transition:background .15s}
+.footer-social:hover{background:rgba(255,255,255,.12)}
+.footer-social svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){
+  .footer-inner{flex-direction:column;gap:22px;text-align:center}
+  .footer-left{flex-direction:column;gap:6px}
+  .footer-center{flex-wrap:wrap;justify-content:center;gap:14px 18px}
+  .footer-right{flex-direction:column;gap:12px}
+}
 
 /* ---------- reveals ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease);will-change:transform,opacity}
@@ -790,32 +804,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="#top" class="mark">GAMBIT</a>
-        <p>We put AI to work.</p>
-      </div>
-      <div class="foot-links">
-        <div class="foot-col">
-          <h4>Business Services</h4>
-          <a href="#suite">The suite</a><a href="/factory">The Factory</a><a href="#results">Customers</a>
-        </div>
-        <div class="foot-col">
-          <h4>Company</h4>
-          <a href="/#work">Vision</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a>
-        </div>
-        <div class="foot-col">
-          <h4>Legal</h4>
-          <a href="/terms-of-service">Terms</a><a href="/privacy-policy">Privacy</a>
-        </div>
-      </div>
+<!-- FOOTER (consistent across all pages) -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
+    <div class="footer-center">
+      <a href="/workers">Workers</a>
+      <a href="/industries">Industries</a>
+      <a href="/partners">Partners</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/about-us">About</a>
+      <a href="/insights">Insights</a>
+      <a href="/get-started">Contact</a>
     </div>
-    <div class="foot-bottom">
-      <span>&copy; 2026 Gambit Co.</span>
-      <span>Forward-deployed teams. AI workers. The Factory.</span>
+    <div class="footer-right">
+      <div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
     </div>
   </div>
 </footer>

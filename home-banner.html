@@ -185,11 +185,30 @@ body.has-hero.scrolled .burger svg{stroke:var(--ink)}
 .cbub .msg{font-size:17px;line-height:1.45;color:#fff}
 @media(max-width:760px){.b-chat{display:none}}
 
-/* ============ FOOTER ============ */
-footer{background:var(--ink);color:rgba(255,255,255,.7);padding:48px 0}
-.foot-wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.foot-mark{font-family:var(--mark);font-weight:800;font-size:20px;letter-spacing:.16em;color:#fff}
-.foot-tag{font-size:14px;color:rgba(255,255,255,.6)}
+/* ---------- footer (consistent across all pages) ---------- */
+.site-footer{background:var(--ink);padding:44px 0}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-left{display:flex;align-items:center;gap:16px}
+.footer-logo-img{height:20px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.55}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.6)}
+.footer-center{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.footer-center a{font-size:13px;color:rgba(255,255,255,.7);transition:color .15s}
+.footer-center a:hover{color:rgba(255,255,255,.95)}
+.footer-right{display:flex;align-items:center;gap:16px}
+.footer-legal{display:flex;align-items:center;gap:8px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,.6);transition:color .15s}
+.footer-legal a:hover{color:rgba(255,255,255,.85)}
+.footer-legal span{font-size:12px;color:rgba(255,255,255,.4)}
+.footer-socials{display:flex;align-items:center;gap:10px}
+.footer-social{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);transition:background .15s}
+.footer-social:hover{background:rgba(255,255,255,.12)}
+.footer-social svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){
+  .footer-inner{flex-direction:column;gap:22px;text-align:center}
+  .footer-left{flex-direction:column;gap:6px}
+  .footer-center{flex-wrap:wrap;justify-content:center;gap:14px 18px}
+  .footer-right{flex-direction:column;gap:12px}
+}
 
 @media(max-width:920px){
   .nav-center,.nav-right{display:none}
@@ -441,11 +460,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
   </button>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="foot-wrap">
-    <span class="foot-mark">GAMBIT</span>
-    <span class="foot-tag">We put AI to work.</span>
+<!-- FOOTER (consistent across all pages) -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
+    <div class="footer-center">
+      <a href="/workers">Workers</a>
+      <a href="/industries">Industries</a>
+      <a href="/partners">Partners</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/about-us">About</a>
+      <a href="/insights">Insights</a>
+      <a href="/get-started">Contact</a>
+    </div>
+    <div class="footer-right">
+      <div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
   </div>
 </footer>
 
