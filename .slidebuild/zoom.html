@@ -1,0 +1,8 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><style>html,body{margin:0;background:#15110d}canvas{display:block}</style></head>
+<body><canvas id="z" width="1200" height="900"></canvas>
+<script>const img=new Image();img.onload=()=>{const x=document.getElementById('z').getContext('2d');
+ x.drawImage(img, 70,60, 820,560, 0,0, 1200,819);
+ // guide at source x=130 -> dest (130-70)/820*1200 = 87.8
+ x.strokeStyle='rgba(62,196,109,.9)';x.lineWidth=2;x.beginPath();x.moveTo(87.8,0);x.lineTo(87.8,819);x.stroke();
+ document.documentElement.setAttribute('data-ready','1');};
+img.src='file:///C:/Users/ryan/Documents/Projects%20-%20Github/gambitwebsite/.slidebuild/bogan-slide.png';</script></body></html>

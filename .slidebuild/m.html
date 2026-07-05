@@ -1,0 +1,7 @@
+<!DOCTYPE html><html><head><meta charset="utf8"></head><body><canvas id="g" width="3057" height="720"></canvas>
+<script>const gi=new Image();gi.onload=()=>{const gc=document.getElementById('g').getContext('2d');gc.drawImage(gi,0,0);
+ const d=gc.getImageData(0,0,3057,720).data;let L=3057,R=0;
+ for(let x=0;x<3057;x++){let any=false;for(let y=0;y<720;y+=2){if(d[(y*3057+x)*4+3]>30){any=true;break;}}if(any){if(x<L)L=x;if(x>R)R=x;}}
+ console.error('GAMBIT left='+L+' right='+R+' of 3057  leftFrac='+(L/3057).toFixed(4)+' dispInsetAt50h='+(L*50/720).toFixed(1)+'px');
+ document.documentElement.setAttribute('data-ready','1');};
+gi.src='file:///C:/Users/ryan/Documents/Projects%20-%20Github/gambitwebsite/img/gambit-logo.png';</script></body></html>
