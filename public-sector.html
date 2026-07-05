@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Legal · Gambit</title>
-<meta name="description" content="Gambit for Legal. AI workers for law firms: client intake, consultation preparation, practice-area routing, and research, around the clock. Turn visitors into clients.">
+<title>Public Sector · Gambit</title>
+<meta name="description" content="Gambit for the Public Sector. AI workers for resident services: parking, permits, events, and questions, answered the first time, any hour, in every language.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/legal">
+<link rel="canonical" href="https://gambitco.io/public-sector">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Legal · Gambit">
-<meta property="og:description" content="Turn visitors into clients. Prepare them before they arrive. AI workers for law firms.">
+<meta property="og:title" content="Public Sector · Gambit">
+<meta property="og:description" content="Every resident answered. The first time, any hour. AI workers for cities, around the clock.">
 <meta property="og:image" content="https://gambitco.io/og-homepage.png">
-<meta property="og:url" content="https://gambitco.io/legal">
+<meta property="og:url" content="https://gambitco.io/public-sector">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,9 +200,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .logobar .lg{width:auto;display:block;filter:grayscale(1);opacity:.55;transition:filter .25s var(--ease),opacity .25s var(--ease)}
 .logobar .lg.light{filter:grayscale(1) brightness(.62)}
 .logobar .lg:hover{filter:none;opacity:1}
-.logobar .lgword{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--muted-2);opacity:.7;display:inline-flex;align-items:baseline;gap:8px;transition:color .25s var(--ease),opacity .25s var(--ease)}
-.logobar .lgword b{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.16em;color:var(--sand-deep)}
-.logobar .lgword:hover{color:var(--ink);opacity:1}
 
 /* ---------- sub-vertical showcase ---------- */
 .showcase{padding:100px 0;background:var(--paper)}
@@ -351,6 +348,46 @@ footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
 .foot-col a{display:block;color:rgba(240,243,248,.7);text-decoration:none;font-size:14px;margin-bottom:9px;transition:.2s}
 .foot-col a:hover{color:var(--paper)}
 .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;color:var(--muted-d);font-size:12.5px;flex-wrap:wrap;gap:10px}
+
+/* ---------- chloe live (voice platform look) ---------- */
+.chloe{padding:100px 0;background:var(--paper)}
+.chloe .section-head{max-width:680px;margin:0 auto 40px;text-align:center}
+.chloe .section-head .eyebrow{margin-bottom:16px}
+.chloe .section-head h2{margin-bottom:14px}
+.chloe .section-head .lead{margin:0 auto;max-width:56ch}
+.chloe .phone{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--accent-deep);margin-top:16px;letter-spacing:.04em;font-weight:500}
+.callwrap{max-width:540px;margin:0 auto;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 44px 90px -46px rgba(14,26,44,.5)}
+.call-head{display:flex;align-items:center;gap:12px;padding:15px 20px;background:var(--navy);color:#fff}
+.call-head .cav{width:40px;height:40px;border-radius:12px;background:var(--accent);color:#fff;font-family:var(--mark);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
+.call-head .cnm{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.call-head .csub{font-size:11.5px;color:rgba(225,232,242,.6);margin-top:1px}
+.call-head .cstat{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7fd4a4;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.call-head .cstat .dot{width:7px;height:7px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.call-lang{display:flex;align-items:center;gap:8px;padding:9px 20px;background:#fbf9f6;border-bottom:1px solid var(--line-2);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+.call-lang b{color:var(--ink);font-weight:600}
+.call-body{height:290px;overflow:hidden;padding:18px 20px;display:flex;flex-direction:column;gap:12px;justify-content:flex-end}
+.turn{max-width:84%;opacity:0;transform:translateY(8px);animation:turnin .4s var(--ease) forwards}
+@keyframes turnin{to{opacity:1;transform:none}}
+.turn.caller{align-self:flex-end}
+.turn.chloe{align-self:flex-start}
+.turn .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px}
+.turn.caller .who{text-align:right}
+.turn .bub{display:inline-block;padding:10px 14px;font-size:13.5px;line-height:1.5}
+.turn.caller .bub{background:var(--bone-2);color:var(--ink-2);border-radius:14px 14px 4px 14px}
+.turn.chloe .bub{background:#eef2f7;color:var(--ink);border-radius:14px 14px 14px 4px}
+.wavebub{display:inline-flex;align-items:flex-end;gap:3px;height:16px}
+.wavebub i{width:3px;border-radius:2px;background:var(--navy);animation:weq 1s infinite ease-in-out}
+.wavebub i:nth-child(1){height:7px}
+.wavebub i:nth-child(2){height:14px;animation-delay:.1s}
+.wavebub i:nth-child(3){height:10px;animation-delay:.2s}
+.wavebub i:nth-child(4){height:16px;animation-delay:.3s}
+.wavebub i:nth-child(5){height:8px;animation-delay:.4s}
+@keyframes weq{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+.park-chip{display:inline-flex;align-items:center;gap:10px;margin-top:9px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px 13px;box-shadow:0 10px 22px -12px rgba(14,26,44,.4);opacity:0;transform:translateY(6px);animation:turnin .4s var(--ease) forwards}
+.park-chip .pmk{width:24px;height:24px;border-radius:7px;background:var(--status);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.park-chip .ptx b{color:var(--ink);font-size:12.5px}
+.park-chip .ptx span{color:var(--muted);font-family:var(--mono);font-size:10px;display:block;margin-top:1px}
+.call-foot{padding:12px 20px;border-top:1px solid var(--line-2);background:#fbf9f6;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
 
 /* ---------- reveals ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease);will-change:transform,opacity}
@@ -564,14 +601,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">Legal</h1>
-    <div class="tag fade-up d2">Turn visitors into clients. Prepare them before they arrive.</div>
+    <h1 class="fade-up d1">Public Sector</h1>
+    <div class="tag fade-up d2">Every resident answered. The first time, any hour.</div>
     <div class="media fade-up d3">
       <!-- hero video to be produced; wire the real path when it lands -->
-      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-legal.jpg">
-        <source src="/video/legal-hero.mp4" type="video/mp4">
+      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-vail.jpg">
+        <source src="/video/public-sector-hero.mp4" type="video/mp4">
       </video>
-      <button class="m-toggle" id="legalVidToggle" type="button" aria-label="Pause video">
+      <button class="m-toggle" id="psVidToggle" type="button" aria-label="Pause video">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
         <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       </button>
@@ -582,10 +619,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- LOGO STRIP (real clients) -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Trusted across legal</div>
+    <div class="ll">Trusted across the public sector</div>
     <div class="logobar">
-      <!-- interim text wordmark: no Pulse Law logo asset in the repo yet. Swap for <img class="lg" src="/img/<file>.png" alt="Pulse Law LLP" style="height:34px"> when the firm's logo lands. Add more firm logos as they go live. -->
-      <span class="lgword" aria-label="Pulse Law LLP">Pulse&nbsp;Law <b>LLP</b></span>
+      <!-- real logo file in repo: "Town of Vail.png" (confirm filename with Claude Code). Add more municipal logos as they go live. -->
+      <img class="lg" src="/img/Town of Vail.png" alt="Town of Vail" style="height:40px">
     </div>
   </div>
 </section>
@@ -594,58 +631,80 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="showcase" id="showcase">
   <div class="wrap">
     <div class="sv-tabs" id="svTabs">
-      <button class="sv-tab on" data-seg="firm">Law Firms</button>
-      <button class="sv-tab" data-seg="inhouse">In-house Legal</button>
-      <button class="sv-tab" data-seg="access">Access to Justice</button>
+      <button class="sv-tab on" data-seg="city">Cities and Towns</button>
+      <button class="sv-tab" data-seg="cnty">Counties and Agencies</button>
+      <button class="sv-tab" data-seg="tran">Transit and Utilities</button>
     </div>
 
-    <div class="sv-head on" data-seg="firm"><h2>Turn website visitors into consultations.</h2></div>
-    <div class="sv-head" data-seg="inhouse"><h2>Triage before it reaches counsel.</h2></div>
-    <div class="sv-head" data-seg="access"><h2>Legal help that does not keep office hours.</h2></div>
+    <div class="sv-head on" data-seg="city"><h2>The front desk that never closes.</h2></div>
+    <div class="sv-head" data-seg="cnty"><h2>Fewer forms. Faster answers.</h2></div>
+    <div class="sv-head" data-seg="tran"><h2>Every rider and ratepayer, answered.</h2></div>
 
     <!-- load-desk mockup (static, anchors the section) -->
     <div class="mock">
-      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Intake Desk</span><span class="ml"><span class="dot"></span> live</span></div>
+      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Resident Desk</span><span class="ml"><span class="dot"></span> live</span></div>
       <div class="mock-stats">
-        <div class="ms"><div class="mn">48</div><div class="mk">Intakes today</div></div>
-        <div class="ms"><div class="mn">80%</div><div class="mk">Converted</div></div>
-        <div class="ms"><div class="mn">6</div><div class="mk">Routed to a partner</div></div>
+        <div class="ms"><div class="mn">1,340</div><div class="mk">Residents helped today</div></div>
+        <div class="ms"><div class="mn">27</div><div class="mk">Languages today</div></div>
+        <div class="ms"><div class="mn">8</div><div class="mk">Routed to staff</div></div>
       </div>
-      <div class="mrow mh"><span>Inquiry</span><span class="mmut">Matter</span><span class="c-fit">Readiness</span><span>Worker</span><span>Status</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; Sun 9:12pm</span><span class="mmut">Employment dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
-      <div class="mrow"><span class="mco">Voice &middot; 11:20pm</span><span class="mmut">Shareholder dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:76%"></b></span><span class="fv">76</span></span><span class="mtag">AskTodd</span><span class="mst scr">Routing</span></div>
-      <div class="mrow"><span class="mco">SMS &middot; 7:05am</span><span class="mmut">IP and trademark</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; 10:48pm</span><span class="mmut">Contract review</span><span class="c-fit mfit"><span class="bar"><b style="width:69%"></b></span><span class="fv">69</span></span><span class="mtag">AskTodd</span><span class="mst dr">Prepared</span></div>
+      <div class="mrow mh"><span>Request</span><span class="mmut">Topic</span><span class="c-fit">Resolution</span><span>Worker</span><span>Status</span></div>
+      <div class="mrow"><span class="mco">Voice &middot; 8:12am</span><span class="mmut">Parking near the village</span><span class="c-fit mfit"><span class="bar"><b style="width:97%"></b></span><span class="fv">97</span></span><span class="mtag">Chloe</span><span class="mst new">Resolved</span></div>
+      <div class="mrow"><span class="mco">SMS &middot; 9:03am</span><span class="mmut">Building permit status</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">Chloe</span><span class="mst scr">Active</span></div>
+      <div class="mrow"><span class="mco">Web chat &middot; 9:18am</span><span class="mmut">Event road closures</span><span class="c-fit mfit"><span class="bar"><b style="width:94%"></b></span><span class="fv">94</span></span><span class="mtag">Chloe</span><span class="mst new">Resolved</span></div>
+      <div class="mrow"><span class="mco">Voice &middot; 9:26am</span><span class="mmut">Water bill dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:61%"></b></span><span class="fv">61</span></span><span class="mtag">Chloe</span><span class="mst dr">Routed</span></div>
     </div>
 
-    <div class="sv-caps on" data-seg="firm">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Convert the after-hours visitor</h3><p>Clients research their options on a Sunday night. AskTodd engages them the moment they land, so interest becomes a booked consultation instead of a closed tab.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>First hour on strategy, not orientation</h3><p>Clients arrive already understanding their position and what to ask, so your associates skip the foundations and go straight to substance.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><circle cx="12" cy="14" r="6"/><path d="M9.5 14l1.7 1.7 3.3-3.4"/></svg></div><h3>Routed to the right practice area</h3><p>Every inquiry sent to the right team, from a corporate dispute to an IP question, before it reaches a partner's desk.</p></div>
+    <div class="sv-caps on" data-seg="city">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Answered the first time</h3><p>Parking, permits, events, and services questions handled on first contact, so residents stop getting bounced between departments and voicemail.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Open at 2am, and on the weekend</h3><p>Residents get the same clear answer at midnight as they do at the counter on a Tuesday. No hold music, no closed sign.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M4 14v-3M8 16V8M12 18V6M16 16V8M20 14v-3"/></svg></div><h3>In every language spoken in town</h3><p>By voice, text, or web, in the resident's own language, without a translation line or a callback the next business day.</p></div>
     </div>
-    <div class="sv-caps" data-seg="inhouse">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2"/><path d="M4 10h16"/><path d="M8 15h5"/></svg></div><h3>Triage the legal inbox</h3><p>Routine questions answered and requests routed, so counsel's hours go to the matters that actually need a lawyer.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Grounded in your playbook</h3><p>Policies, templates, and precedent applied consistently, in the language your team already uses, not the open web.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>A record of every ask</h3><p>Each request logged and auditable, so nothing slips through and patterns surface while they still matter.</p></div>
+    <div class="sv-caps" data-seg="cnty">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></div><h3>Programs and benefits, explained</h3><p>Eligibility, applications, and status checks walked through in plain language, so residents reach the help they qualify for.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5"/><path d="M16 8h5"/></svg></div><h3>Staff freed for the hard cases</h3><p>Routine questions handled by a worker, so your people spend their day on the requests that actually need a person.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Routing with judgment</h3><p>The worker knows what belongs with a caseworker or an inspector, and hands it off with full context, logged and auditable.</p></div>
     </div>
-    <div class="sv-caps" data-seg="access">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Help that does not keep office hours</h3><p>People with legal questions get clear, plain-language guidance at midnight, not a callback in three weeks.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><h3>The process, without the jargon</h3><p>What they are facing and what to do next, explained simply, so the system stops being a maze.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></div><h3>Pointed to the right resource</h3><p>Connected to the right clinic, form, or service, with what they need to actually use it.</p></div>
+    <div class="sv-caps" data-seg="tran">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Real-time answers</h3><p>Schedules, outages, closures, and next arrivals answered the moment the question comes in, on whatever channel a rider uses.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></div><h3>Billing without the phone queue</h3><p>Ratepayers get bill questions, start and stop requests, and payment help resolved without waiting on hold through a rate hike.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Surge-proof</h3><p>A storm, an outage, or a service change floods the lines. The worker answers every one of them at once, calmly, on the record.</p></div>
+    </div>
+    </div>
+</section>
+
+<!-- CHLOE, LIVE (voice platform look) -->
+<section class="chloe" id="chloe">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Live now</span>
+      <h2>Meet Chloe. She picks up every time.</h2>
+      <p class="lead">A voice concierge for the Town of Vail. Real-time parking, events, and answers by phone, in 50 plus languages, any hour.</p>
+      <span class="phone">Call (970) 645-VAIL</span>
+    </div>
+    <div class="callwrap">
+      <div class="call-head">
+        <span class="cav">C</span>
+        <div><div class="cnm">Chloe</div><div class="csub">Town of Vail concierge</div></div>
+        <div class="cstat"><span class="dot"></span> <span id="callTimer">on call 0:11</span></div>
+      </div>
+      <div class="call-lang">Speaking <b id="callLang">English</b></div>
+      <div class="call-body" id="callBody"></div>
+      <div class="call-foot">Live now &middot; (970) 645-VAIL &middot; 50+ languages</div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL: quote is from the live AskTodd case study. Confirm the named spokesperson at Pulse Law before publishing an attributed name. -->
+<!-- TESTIMONIAL (DRAFT: quote and attribution pending approval from the Town of Vail; do not publish without sign-off) -->
 <section class="testi">
   <div class="wrap">
     <div class="testi-card">
-      <div class="testi-lg">PULSE LAW LLP</div>
-      <div class="testi-q">The best legal outcomes start with better-prepared clients. AskTodd makes that preparation accessible to everyone, not just those who already know how the system works.</div>
+      <div class="testi-lg">TOWN OF VAIL</div>
+      <div class="testi-q">Visitors and residents do not wait for office hours to have questions. Chloe answers by voice, day or night, in their language, and our staff walk in to fewer voicemails and happier residents.</div>
       <div class="testi-by">
-        <span class="testi-av">PL</span>
-        <span><span class="testi-n">Partner</span><span class="testi-r">Pulse Law LLP</span></span>
-        <a class="testi-link" href="/case-study/asktodd">Read the story <span class="ar">&rarr;</span></a>
+        <span class="testi-av">TV</span>
+        <span><span class="testi-n">Communications Lead</span><span class="testi-r">Town of Vail</span></span>
+        <a class="testi-link" href="/vail-ai-voice-concierge-chloe">Read the story <span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -656,35 +715,35 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The suite</span>
-      <h2>Gambit for Legal.</h2>
+      <h2>Gambit for the Public Sector.</h2>
       <p class="lead">Three workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
     </div>
     <div class="suite-grid">
 
-      <!-- AskTodd is deployed at Pulse Law LLP. /workers/asktodd page may not exist yet; link points to the live case study. -->
-      <a class="suite-card featured" href="/case-study/asktodd">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">T</span><div><div class="sc-name">AskTodd</div><div class="sc-role">Legal strategy</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Modeled on decades of practice at Pulse Law. Helps clients understand their situation, weigh their options, and arrive at the first consultation prepared. Around the clock, across web, SMS, and voice.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Client intake</span></div>
+      <!-- /workers/chloe product page does not exist yet; linking to the live Chloe/Vail story until it does -->
+      <a class="suite-card featured" href="/vail-ai-voice-concierge-chloe">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">C</span><div><div class="sc-name">Chloe</div><div class="sc-role">Resident services</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">A voice-first concierge for your residents. Answers parking, permits, events, and services questions by phone, text, and web, around the clock, in 50 plus languages. Live for the Town of Vail.</p>
+        <div class="sc-tags"><span class="sc-tag">Cities and towns</span><span class="sc-tag">Voice</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">View Chloe <span class="ar">&rarr;</span></span></div>
+      </a>
+
+      <!-- AskAshleigh: named worker, built with a U.S. Area Agency on Aging. Case study keeps the specific agency (UCPCOG) anonymous; see note on the proof card. -->
+      <a class="suite-card" href="/case-study/askashleigh">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">AS</span><div><div class="sc-name">AskAshleigh</div><div class="sc-role">Caregiver support</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">Round-the-clock benefits navigation, local resources, and a judgment-free ear for family caregivers. Built with a U.S. Area Agency on Aging, designed to scale across the national network.</p>
+        <div class="sc-tags"><span class="sc-tag">Counties and agencies</span><span class="sc-tag">Aging services</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
       </a>
 
       <a class="suite-card" href="/workers/reed">
         <div class="sc-top"><div class="sc-id"><span class="sc-av">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Client questions, intake, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits a law firm.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">In-house</span></div>
+        <p class="sc-desc">Intake, program questions, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits public service.</p>
+        <div class="sc-tags"><span class="sc-tag">Counties and agencies</span><span class="sc-tag">Utilities</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">View Reed <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/mira">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">M</span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Turns your practice areas and matters into live research: background, conflicts, and the landscape around a new client or a new case.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Corporate</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Mira <span class="ar">&rarr;</span></span></div>
-      </a>
-
-    </div>
-  </div>
+      </div>
 </section>
 
 <!-- HOW IT FITS -->
@@ -692,14 +751,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="fits-head">
       <span class="eyebrow">How it fits</span>
-      <h2>Works inside the systems your firm already runs.</h2>
-      <p class="fits-sub">Grounded in your practice management, your documents, and your firm's own approach, not the open web, so what a worker tells a client is what your firm would tell them. No rip and replace, and nothing for your team to relearn.</p>
+      <h2>Works inside the systems your departments already run.</h2>
+      <p class="fits-sub">Grounded in your municipal records, your permitting and 311 systems, and your rules, not the open web, so what a worker tells a resident is what your office would tell them. No rip and replace, and nothing for your staff to relearn.</p>
     </div>
     <div class="fits-logos">
-      <!-- placeholder monogram tiles: swap for real Clio / NetDocuments / iManage / Twilio logos when licensed; confirm the actual integration list with Chris -->
-      <div class="ftile"><span class="fic"><span class="dcmark">cl</span></span><span class="flb">Clio</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">nd</span></span><span class="flb">NetDocuments</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">im</span></span><span class="flb">iManage</span></div>
+      <!-- placeholder monogram tiles: swap for real Tyler Tech / Accela / Granicus / Twilio logos when licensed; confirm the actual integration list with Chris -->
+      <div class="ftile"><span class="fic"><span class="dcmark">ty</span></span><span class="flb">Tyler Tech</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">ac</span></span><span class="flb">Accela</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">gr</span></span><span class="flb">Granicus</span></div>
       <div class="ftile"><span class="fic"><span class="dcmark">tw</span></span><span class="flb">Twilio</span></div>
     </div>
     <div class="fits-claims">
@@ -717,23 +776,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="section-head">
       <span class="eyebrow">Customers</span>
       <h2>The results speak for themselves.</h2>
-      <p class="lead">Real outcomes at a real firm. The website visitors who used to leave now arrive as prepared, qualified consultations.</p>
+      <p class="lead">Real answers for real residents. The questions that used to fill a voicemail box are handled the moment they arrive.</p>
     </div>
     <div class="res-grid">
 
-      <a class="res-card" href="/case-study/asktodd">
-        <div class="res-lg">Pulse Law LLP</div>
-        <div class="res-n">80%</div>
-        <div class="res-nl">visitor to consultation</div>
-        <p class="res-p">Prospective clients who engage with AskTodd convert to booked consultations at a far higher rate than a traditional web form ever did.</p>
+      <!-- no /case-study/town-of-vail yet; linking to the live insights piece until one exists -->
+      <a class="res-card" href="/vail-ai-voice-concierge-chloe">
+        <div class="res-lg">Town of Vail</div>
+        <div class="res-n">50+</div>
+        <div class="res-nl">languages, by voice, 24/7</div>
+        <p class="res-p">Chloe answers parking, events, and services questions for residents and visitors of Vail, by phone, any hour, in more than 50 languages.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
-      <a class="res-card" href="/case-study/asktodd">
-        <div class="res-lg">Time on strategy</div>
-        <div class="res-n">20%</div>
-        <div class="res-nl">more internal efficiency</div>
-        <p class="res-p">Clients arrive prepared, so the legal team skips the first-hour orientation and goes straight to substantive strategy.</p>
+      <!-- AskAshleigh / Area Agency on Aging. NOTE: the public case study keeps the specific agency (UCPCOG) anonymous. Kept generic here to match; if UCPCOG is cleared to name publicly, swap the res-lg label. -->
+      <a class="res-card" href="/case-study/askashleigh">
+        <div class="res-lg">U.S. Area Agency on Aging</div>
+        <div class="res-n">24/7</div>
+        <div class="res-nl">caregiver support, built to scale</div>
+        <p class="res-p">AskAshleigh gives family caregivers round-the-clock benefits navigation, resources, and a judgment-free ear. Built with a U.S. Area Agency on Aging and designed to scale across the national network of 622 agencies.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
@@ -744,12 +805,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>See what a worker does for your firm.</h2>
-    <p>Tell us the outcome you need, from the first website visit to the booked consultation. We will show you what it does, on your practice, in two weeks.</p>
+    <h2>See what a worker does for your residents.</h2>
+    <p>Tell us the outcome you need, from the first resident call to the closed request. We will show you what it answers, on your records and your rules, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
       <!-- One-pager PDF to be generated next; wire this to the real file path -->
-      <a href="/legal-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
+      <a href="/public-sector-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
     </div>
   </div>
 </section>
@@ -764,7 +825,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       </div>
       <div class="foot-links">
         <div class="foot-col">
-          <h4>Gambit for Legal</h4>
+          <h4>Public Sector</h4>
           <a href="#suite">The suite</a><a href="/factory">The Factory</a><a href="#results">Customers</a>
         </div>
         <div class="foot-col">
@@ -796,7 +857,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
 /* ----- hero video: play/pause toggle ----- */
 (function(){
-  var v=document.querySelector('.m-vid'),btn=document.getElementById('legalVidToggle');
+  var v=document.querySelector('.m-vid'),btn=document.getElementById('psVidToggle');
   if(!v||!btn)return;
   function sync(){var p=v.paused;btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play video':'Pause video');}
   btn.addEventListener('click',function(){v.paused?v.play():v.pause();});
@@ -860,7 +921,7 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.sv-tabs,.mock,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.sv-tabs,.mock,.chloe .section-head,.callwrap,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
@@ -871,6 +932,53 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
     const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});
     els.forEach(el=>ro.observe(el));
   }
+})();
+</script>
+
+<script>
+(function(){
+  var body=document.getElementById('callBody'),langEl=document.getElementById('callLang'),timerEl=document.getElementById('callTimer');
+  if(!body) return;
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var script=[
+    {who:'caller',lang:'English',text:'Where can I park near the village?'},
+    {who:'chloe',text:'Lot 3 has 12 open spots, about a 4 minute walk to the village.',park:{lot:'Lot 3',info:'12 open &middot; 4 min walk'}},
+    {who:'caller',lang:'Español',text:'¿Y hay algún evento esta noche?'},
+    {who:'chloe',text:'Sí, hay música en vivo en Solaris Plaza a las 6.'}
+  ];
+  var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
+  function el(h){var d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild;}
+  function fmt(s){return 'on call '+Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);}
+  var sec=8,tick=null;
+  function startTimer(){if(tick)clearInterval(tick);sec=8;timerEl.textContent=fmt(sec);tick=setInterval(function(){sec++;timerEl.textContent=fmt(sec);},1000);}
+  async function run(){
+    body.innerHTML='';langEl.textContent='English';startTimer();
+    for(var i=0;i<script.length;i++){
+      var t=script[i];
+      if(t.lang)langEl.textContent=t.lang;
+      if(t.who==='caller'){
+        body.appendChild(el('<div class="turn caller"><div class="who">Caller</div><div class="bub">'+t.text+'</div></div>'));
+        await sleep(1400);
+      }else{
+        var turn=el('<div class="turn chloe"><div class="who">Chloe</div><div class="bub"><span class="wavebub"><i></i><i></i><i></i><i></i><i></i></span></div></div>');
+        body.appendChild(turn);
+        await sleep(1150);
+        turn.querySelector('.bub').innerHTML=t.text;
+        if(t.park){turn.appendChild(el('<div class="park-chip"><span class="pmk">P</span><span class="ptx"><b>'+t.park.lot+'</b><span>'+t.park.info+'</span></span></div>'));}
+        await sleep(1750);
+      }
+    }
+    await sleep(2600);
+    run();
+  }
+  function showStatic(){
+    langEl.textContent='Español';
+    script.forEach(function(t){
+      if(t.who==='caller'){body.appendChild(el('<div class="turn caller" style="opacity:1;transform:none"><div class="who">Caller</div><div class="bub">'+t.text+'</div></div>'));}
+      else{var turn=el('<div class="turn chloe" style="opacity:1;transform:none"><div class="who">Chloe</div><div class="bub">'+t.text+'</div></div>');body.appendChild(turn);if(t.park){turn.appendChild(el('<div class="park-chip" style="opacity:1;transform:none"><span class="pmk">P</span><span class="ptx"><b>'+t.park.lot+'</b><span>'+t.park.info+'</span></span></div>'));}}
+    });
+  }
+  if(RM){showStatic();}else{run();}
 })();
 </script>
 </body>

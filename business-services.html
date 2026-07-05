@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Legal · Gambit</title>
-<meta name="description" content="Gambit for Legal. AI workers for law firms: client intake, consultation preparation, practice-area routing, and research, around the clock. Turn visitors into clients.">
+<title>Business Services · Gambit</title>
+<meta name="description" content="Gambit for Business Services. AI workers for media sales, sponsorship, and HR: tailored proposals in minutes, qualified leads, and answers around the clock, without added headcount.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/legal">
+<link rel="canonical" href="https://gambitco.io/business-services">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Legal · Gambit">
-<meta property="og:description" content="Turn visitors into clients. Prepare them before they arrive. AI workers for law firms.">
+<meta property="og:title" content="Business Services · Gambit">
+<meta property="og:description" content="Turn inquiries into proposals. In minutes, not days. AI workers for business services.">
 <meta property="og:image" content="https://gambitco.io/og-homepage.png">
-<meta property="og:url" content="https://gambitco.io/legal">
+<meta property="og:url" content="https://gambitco.io/business-services">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,9 +200,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .logobar .lg{width:auto;display:block;filter:grayscale(1);opacity:.55;transition:filter .25s var(--ease),opacity .25s var(--ease)}
 .logobar .lg.light{filter:grayscale(1) brightness(.62)}
 .logobar .lg:hover{filter:none;opacity:1}
-.logobar .lgword{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--muted-2);opacity:.7;display:inline-flex;align-items:baseline;gap:8px;transition:color .25s var(--ease),opacity .25s var(--ease)}
-.logobar .lgword b{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.16em;color:var(--sand-deep)}
-.logobar .lgword:hover{color:var(--ink);opacity:1}
 
 /* ---------- sub-vertical showcase ---------- */
 .showcase{padding:100px 0;background:var(--paper)}
@@ -564,14 +561,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">Legal</h1>
-    <div class="tag fade-up d2">Turn visitors into clients. Prepare them before they arrive.</div>
+    <h1 class="fade-up d1">Business Services</h1>
+    <div class="tag fade-up d2">Turn inquiries into proposals. In minutes, not days.</div>
     <div class="media fade-up d3">
       <!-- hero video to be produced; wire the real path when it lands -->
-      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-legal.jpg">
-        <source src="/video/legal-hero.mp4" type="video/mp4">
+      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-demi.jpg">
+        <source src="/video/business-services-hero.mp4" type="video/mp4">
       </video>
-      <button class="m-toggle" id="legalVidToggle" type="button" aria-label="Pause video">
+      <button class="m-toggle" id="bsVidToggle" type="button" aria-label="Pause video">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
         <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       </button>
@@ -582,10 +579,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- LOGO STRIP (real clients) -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Trusted across legal</div>
+    <div class="ll">Trusted across business services</div>
     <div class="logobar">
-      <!-- interim text wordmark: no Pulse Law logo asset in the repo yet. Swap for <img class="lg" src="/img/<file>.png" alt="Pulse Law LLP" style="height:34px"> when the firm's logo lands. Add more firm logos as they go live. -->
-      <span class="lgword" aria-label="Pulse Law LLP">Pulse&nbsp;Law <b>LLP</b></span>
+      <img class="lg" src="/img/bobit.png" alt="Bobit Business Media" style="height:30px">
+      <img class="lg light" src="/img/geotab.png" alt="Geotab" style="height:26px">
     </div>
   </div>
 </section>
@@ -594,58 +591,58 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="showcase" id="showcase">
   <div class="wrap">
     <div class="sv-tabs" id="svTabs">
-      <button class="sv-tab on" data-seg="firm">Law Firms</button>
-      <button class="sv-tab" data-seg="inhouse">In-house Legal</button>
-      <button class="sv-tab" data-seg="access">Access to Justice</button>
+      <button class="sv-tab on" data-seg="media">Media and Publishing</button>
+      <button class="sv-tab" data-seg="events">Events and Sponsorship</button>
+      <button class="sv-tab" data-seg="people">People Services</button>
     </div>
 
-    <div class="sv-head on" data-seg="firm"><h2>Turn website visitors into consultations.</h2></div>
-    <div class="sv-head" data-seg="inhouse"><h2>Triage before it reaches counsel.</h2></div>
-    <div class="sv-head" data-seg="access"><h2>Legal help that does not keep office hours.</h2></div>
+    <div class="sv-head on" data-seg="media"><h2>Every inquiry answered with a proposal.</h2></div>
+    <div class="sv-head" data-seg="events"><h2>Sponsorship packages at the speed of conversation.</h2></div>
+    <div class="sv-head" data-seg="people"><h2>HR answers for every employee, any hour.</h2></div>
 
-    <!-- load-desk mockup (static, anchors the section) -->
+    <!-- sales-desk mockup (static, anchors the section) -->
     <div class="mock">
-      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Intake Desk</span><span class="ml"><span class="dot"></span> live</span></div>
+      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Sales Desk</span><span class="ml"><span class="dot"></span> live</span></div>
       <div class="mock-stats">
-        <div class="ms"><div class="mn">48</div><div class="mk">Intakes today</div></div>
-        <div class="ms"><div class="mn">80%</div><div class="mk">Converted</div></div>
-        <div class="ms"><div class="mn">6</div><div class="mk">Routed to a partner</div></div>
+        <div class="ms"><div class="mn">31</div><div class="mk">Proposals today</div></div>
+        <div class="ms"><div class="mn">6 min</div><div class="mk">Median to proposal</div></div>
+        <div class="ms"><div class="mn">12</div><div class="mk">Routed to a rep</div></div>
       </div>
-      <div class="mrow mh"><span>Inquiry</span><span class="mmut">Matter</span><span class="c-fit">Readiness</span><span>Worker</span><span>Status</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; Sun 9:12pm</span><span class="mmut">Employment dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
-      <div class="mrow"><span class="mco">Voice &middot; 11:20pm</span><span class="mmut">Shareholder dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:76%"></b></span><span class="fv">76</span></span><span class="mtag">AskTodd</span><span class="mst scr">Routing</span></div>
-      <div class="mrow"><span class="mco">SMS &middot; 7:05am</span><span class="mmut">IP and trademark</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; 10:48pm</span><span class="mmut">Contract review</span><span class="c-fit mfit"><span class="bar"><b style="width:69%"></b></span><span class="fv">69</span></span><span class="mtag">AskTodd</span><span class="mst dr">Prepared</span></div>
+      <div class="mrow mh"><span>Inquiry</span><span class="mmut">Objective</span><span class="c-fit">Fit</span><span>Worker</span><span>Status</span></div>
+      <div class="mrow"><span class="mco">Web chat &middot; 9:41am</span><span class="mmut">Fleet media campaign</span><span class="c-fit mfit"><span class="bar"><b style="width:92%"></b></span><span class="fv">92</span></span><span class="mtag">AskBibi</span><span class="mst new">Sent</span></div>
+      <div class="mrow"><span class="mco">Event floor &middot; 10:15am</span><span class="mmut">Keynote sponsorship</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">Geotab Asst</span><span class="mst scr">Building</span></div>
+      <div class="mrow"><span class="mco">Web chat &middot; Sun 8:30pm</span><span class="mmut">Aftermarket campaign</span><span class="c-fit mfit"><span class="bar"><b style="width:76%"></b></span><span class="fv">76</span></span><span class="mtag">AskBibi</span><span class="mst scr">Building</span></div>
+      <div class="mrow"><span class="mco">SMS &middot; 11:02pm</span><span class="mmut">Benefits question</span><span class="c-fit mfit"><span class="bar"><b style="width:95%"></b></span><span class="fv">95</span></span><span class="mtag">Demi</span><span class="mst new">Resolved</span></div>
     </div>
 
-    <div class="sv-caps on" data-seg="firm">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Convert the after-hours visitor</h3><p>Clients research their options on a Sunday night. AskTodd engages them the moment they land, so interest becomes a booked consultation instead of a closed tab.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>First hour on strategy, not orientation</h3><p>Clients arrive already understanding their position and what to ask, so your associates skip the foundations and go straight to substance.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><circle cx="12" cy="14" r="6"/><path d="M9.5 14l1.7 1.7 3.3-3.4"/></svg></div><h3>Routed to the right practice area</h3><p>Every inquiry sent to the right team, from a corporate dispute to an IP question, before it reaches a partner's desk.</p></div>
+    <div class="sv-caps on" data-seg="media">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16"/><path d="M8 14h5"/></svg></div><h3>The whole portfolio in every conversation</h3><p>Print, digital, events, and content combined into one coherent package, so prospects see options a stretched sales team never had time to assemble.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><circle cx="12" cy="14" r="6"/><path d="M9.5 14l1.7 1.7 3.3-3.4"/></svg></div><h3>Qualified before your reps pick up</h3><p>Budget, timeline, and decision-making authority gathered in the first conversation, so the sales team starts with a qualified buyer, not a cold form fill.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>No lead goes cold after hours</h3><p>Prospects who arrive at a trade show booth or on the website at 9pm get engaged on the spot, instead of waiting for a rep who is stretched across accounts.</p></div>
     </div>
-    <div class="sv-caps" data-seg="inhouse">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2"/><path d="M4 10h16"/><path d="M8 15h5"/></svg></div><h3>Triage the legal inbox</h3><p>Routine questions answered and requests routed, so counsel's hours go to the matters that actually need a lawyer.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Grounded in your playbook</h3><p>Policies, templates, and precedent applied consistently, in the language your team already uses, not the open web.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>A record of every ask</h3><p>Each request logged and auditable, so nothing slips through and patterns surface while they still matter.</p></div>
+    <div class="sv-caps" data-seg="events">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M9 9h6M9 12h4"/></svg></div><h3>Packages built in real time</h3><p>Sponsorship bundles assembled live from the full inventory, from keynotes and exhibition space to digital activations, matched to the sponsor's objectives.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></div><h3>Priced to the sponsor's budget</h3><p>Recommendations scale to the stated investment range, from an emerging partner's first activation to a headline sponsorship.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5"/><path d="M16 8h5"/></svg></div><h3>Proposals in minutes, not days</h3><p>A structured proposal with opportunities, reach, and pricing lands during the first interaction, so your team spends its time closing instead of qualifying.</p></div>
     </div>
-    <div class="sv-caps" data-seg="access">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Help that does not keep office hours</h3><p>People with legal questions get clear, plain-language guidance at midnight, not a callback in three weeks.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><h3>The process, without the jargon</h3><p>What they are facing and what to do next, explained simply, so the system stops being a maze.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></div><h3>Pointed to the right resource</h3><p>Connected to the right clinic, form, or service, with what they need to actually use it.</p></div>
+    <div class="sv-caps" data-seg="people">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>An HR advisor for every employee</h3><p>Policy, benefits, and workplace questions answered the moment they come up, without waiting on a stretched HR team's inbox.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Consistent answers from your playbook</h3><p>Grounded in your policies, your handbook, and your precedent, not the open web, so every employee hears the same answer HR would give.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Escalates with judgment</h3><p>Sensitive matters go to a human with full context, and every exchange is logged and auditable, so nothing slips through.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL: quote is from the live AskTodd case study. Confirm the named spokesperson at Pulse Law before publishing an attributed name. -->
+<!-- TESTIMONIAL: pull quote from the live AskBibi case study. Confirm a named spokesperson at Bobit before publishing an attributed name. -->
 <section class="testi">
   <div class="wrap">
     <div class="testi-card">
-      <div class="testi-lg">PULSE LAW LLP</div>
-      <div class="testi-q">The best legal outcomes start with better-prepared clients. AskTodd makes that preparation accessible to everyone, not just those who already know how the system works.</div>
+      <div class="testi-lg">BOBIT BUSINESS MEDIA</div>
+      <div class="testi-q">In media sales, the fastest path to a deal is showing a buyer exactly how your platform solves their problem. AskBibi does that in the first conversation.</div>
       <div class="testi-by">
-        <span class="testi-av">PL</span>
-        <span><span class="testi-n">Partner</span><span class="testi-r">Pulse Law LLP</span></span>
-        <a class="testi-link" href="/case-study/asktodd">Read the story <span class="ar">&rarr;</span></a>
+        <span class="testi-av">BB</span>
+        <span><span class="testi-n">Sales Team</span><span class="testi-r">Bobit Business Media</span></span>
+        <a class="testi-link" href="/case-study/askbibi">Read the story <span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -656,31 +653,32 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The suite</span>
-      <h2>Gambit for Legal.</h2>
+      <h2>Gambit for Business Services.</h2>
       <p class="lead">Three workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
     </div>
     <div class="suite-grid">
 
-      <!-- AskTodd is deployed at Pulse Law LLP. /workers/asktodd page may not exist yet; link points to the live case study. -->
-      <a class="suite-card featured" href="/case-study/asktodd">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">T</span><div><div class="sc-name">AskTodd</div><div class="sc-role">Legal strategy</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Modeled on decades of practice at Pulse Law. Helps clients understand their situation, weigh their options, and arrive at the first consultation prepared. Around the clock, across web, SMS, and voice.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Client intake</span></div>
+      <!-- AskBibi is deployed at Bobit Business Media. /workers/askbibi page may not exist yet; link points to the live case study. -->
+      <a class="suite-card featured" href="/case-study/askbibi">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">B</span><div><div class="sc-name">AskBibi</div><div class="sc-role">Media sales</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">Engages advertisers across Bobit Business Media's portfolio of publications, events, and digital platforms. Builds cross-service packages tailored to each buyer's goals and delivers pre-qualified leads to the sales team.</p>
+        <div class="sc-tags"><span class="sc-tag">B2B media</span><span class="sc-tag">Lead qualification</span></div>
         <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/reed">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">R</span><div><div class="sc-name">Reed</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Client questions, intake, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits a law firm.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">In-house</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Reed <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card" href="/case-study/geotab">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">G</span><div><div class="sc-name">Geotab Assistant</div><div class="sc-role">Sponsorship sales</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">Launched at Geotab Connect 2025. Builds customized sponsorship packages in real time from the event's full inventory, tuned to each brand's objectives, audience, and budget, with a structured proposal in minutes.</p>
+        <div class="sc-tags"><span class="sc-tag">Events</span><span class="sc-tag">Sponsorship</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/mira">
-        <div class="sc-top"><div class="sc-id"><span class="sc-av">M</span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Turns your practice areas and matters into live research: background, conflicts, and the landscape around a new client or a new case.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Corporate</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Mira <span class="ar">&rarr;</span></span></div>
+      <!-- Demi runs at Primary People Group; no dedicated worker page yet, linking to the partner announcement. -->
+      <a class="suite-card" href="/gambitco-primary-people-group-partner">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av">D</span><div><div class="sc-name">Demi</div><div class="sc-role">HR advisor</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">An HR advisor and coach built with Primary People Group. Answers policy, benefits, and workplace questions in the company's own voice, around the clock, and escalates the sensitive ones to a human with context.</p>
+        <div class="sc-tags"><span class="sc-tag">HR services</span><span class="sc-tag">Employee support</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">Read the story <span class="ar">&rarr;</span></span></div>
       </a>
 
     </div>
@@ -692,14 +690,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="fits-head">
       <span class="eyebrow">How it fits</span>
-      <h2>Works inside the systems your firm already runs.</h2>
-      <p class="fits-sub">Grounded in your practice management, your documents, and your firm's own approach, not the open web, so what a worker tells a client is what your firm would tell them. No rip and replace, and nothing for your team to relearn.</p>
+      <h2>Works inside the systems your team already sells in.</h2>
+      <p class="fits-sub">Grounded in your rate cards, your inventory, and your playbook, not the open web, so what a worker proposes is what your team would propose. No rip and replace, and nothing for your people to relearn.</p>
     </div>
     <div class="fits-logos">
-      <!-- placeholder monogram tiles: swap for real Clio / NetDocuments / iManage / Twilio logos when licensed; confirm the actual integration list with Chris -->
-      <div class="ftile"><span class="fic"><span class="dcmark">cl</span></span><span class="flb">Clio</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">nd</span></span><span class="flb">NetDocuments</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">im</span></span><span class="flb">iManage</span></div>
+      <!-- placeholder monogram tiles: swap for real Salesforce / HubSpot / Slack / Twilio logos when licensed; confirm the actual integration list with Chris -->
+      <div class="ftile"><span class="fic"><span class="dcmark">sf</span></span><span class="flb">Salesforce</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">hs</span></span><span class="flb">HubSpot</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">sl</span></span><span class="flb">Slack</span></div>
       <div class="ftile"><span class="fic"><span class="dcmark">tw</span></span><span class="flb">Twilio</span></div>
     </div>
     <div class="fits-claims">
@@ -717,23 +715,23 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="section-head">
       <span class="eyebrow">Customers</span>
       <h2>The results speak for themselves.</h2>
-      <p class="lead">Real outcomes at a real firm. The website visitors who used to leave now arrive as prepared, qualified consultations.</p>
+      <p class="lead">Real deals at real companies. The inquiries that used to cool off in an inbox now leave the first conversation with a proposal.</p>
     </div>
     <div class="res-grid">
 
-      <a class="res-card" href="/case-study/asktodd">
-        <div class="res-lg">Pulse Law LLP</div>
-        <div class="res-n">80%</div>
-        <div class="res-nl">visitor to consultation</div>
-        <p class="res-p">Prospective clients who engage with AskTodd convert to booked consultations at a far higher rate than a traditional web form ever did.</p>
+      <a class="res-card" href="/case-study/askbibi">
+        <div class="res-lg">Bobit Business Media</div>
+        <div class="res-n">Minutes</div>
+        <div class="res-nl">from inquiry to tailored proposal</div>
+        <p class="res-p">AskBibi compresses discovery and proposal into a single conversation, surfacing cross-sell combinations reps routinely missed, increasing average deal size while reducing time to close.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
-      <a class="res-card" href="/case-study/asktodd">
-        <div class="res-lg">Time on strategy</div>
-        <div class="res-n">20%</div>
-        <div class="res-nl">more internal efficiency</div>
-        <p class="res-p">Clients arrive prepared, so the legal team skips the first-hour orientation and goes straight to substantive strategy.</p>
+      <a class="res-card" href="/case-study/geotab">
+        <div class="res-lg">Geotab Connect 2025</div>
+        <div class="res-n">1st</div>
+        <div class="res-nl">proposal in the first conversation</div>
+        <p class="res-p">Prospects who would have spent days in email exchanges receive a personalized sponsorship package during their first interaction, so the sales team focuses on closing, not qualifying.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
@@ -744,12 +742,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>See what a worker does for your firm.</h2>
-    <p>Tell us the outcome you need, from the first website visit to the booked consultation. We will show you what it does, on your practice, in two weeks.</p>
+    <h2>See what a worker does for your pipeline.</h2>
+    <p>Tell us the outcome you need, from the first inquiry to the signed agreement. We will show you what it does, on your inventory and your pricing, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
       <!-- One-pager PDF to be generated next; wire this to the real file path -->
-      <a href="/legal-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
+      <a href="/business-services-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
     </div>
   </div>
 </section>
@@ -764,7 +762,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       </div>
       <div class="foot-links">
         <div class="foot-col">
-          <h4>Gambit for Legal</h4>
+          <h4>Business Services</h4>
           <a href="#suite">The suite</a><a href="/factory">The Factory</a><a href="#results">Customers</a>
         </div>
         <div class="foot-col">
@@ -796,7 +794,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
 /* ----- hero video: play/pause toggle ----- */
 (function(){
-  var v=document.querySelector('.m-vid'),btn=document.getElementById('legalVidToggle');
+  var v=document.querySelector('.m-vid'),btn=document.getElementById('bsVidToggle');
   if(!v||!btn)return;
   function sync(){var p=v.paused;btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play video':'Pause video');}
   btn.addEventListener('click',function(){v.paused?v.play():v.pause();});
