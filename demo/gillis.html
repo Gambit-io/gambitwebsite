@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 <style>
   /* =========================================================
      TOKENS. Only the --brand-* group swaps per tenant.
@@ -411,7 +411,7 @@
   .send-btn{
     width:42px;height:42px;border-radius:12px;flex:none;
     display:grid;place-items:center;color:#fff;
-    background:linear-gradient(140deg,var(--brand-bright),var(--brand));
+    background:linear-gradient(140deg,var(--teal),var(--teal-dark));
     transition:transform .15s var(--ease);
   }
   .send-btn:hover{transform:scale(1.05)}
@@ -433,15 +433,13 @@
   .chat-fab .pulse{position:absolute;top:3px;right:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2.5px solid #fff}
 
   .chat-panel{
-    position:fixed;right:22px;bottom:90px;z-index:80;
-    width:390px;max-width:calc(100vw - 32px);
-    height:540px;max-height:calc(100dvh - 120px);
+    position:fixed;right:0;top:0;bottom:0;z-index:80;
+    width:410px;max-width:calc(100vw - 20px);
     display:flex;flex-direction:column;
-    background:var(--surface);border:1px solid var(--border);
-    border-radius:20px;overflow:hidden;
-    box-shadow:0 8px 20px rgba(30,24,50,.15), 0 40px 90px -30px rgba(30,24,50,.55);
-    opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;
-    transition:opacity .22s var(--ease),transform .22s var(--ease);
+    background:var(--surface);border-left:1px solid var(--border);
+    box-shadow:-8px 0 20px rgba(30,24,50,.08), -40px 0 90px -30px rgba(30,24,50,.4);
+    opacity:0;transform:translateX(24px);pointer-events:none;
+    transition:opacity .24s var(--ease),transform .24s var(--ease);
   }
   .chat-panel.open{opacity:1;transform:none;pointer-events:auto}
   .chat-head{
@@ -476,6 +474,21 @@
   .seg button{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.7);padding:6px 14px;border-radius:18px;transition:all .18s var(--ease)}
   .seg button.on{background:#fff;color:#1a1020}
   @media (max-width:560px){.preview .lbl{display:none}}
+
+  /* Gillis product marks: Orbitron letter tiles with the Lift diagonal */
+  .gtile{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:-.02em}
+  .gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+  .gtile b{position:relative;z-index:1}
+  .rail-title{display:flex;align-items:center;gap:9px}
+  .rail-title .rt-tx{line-height:1.1}
+  .chat-head .tg-av{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:12px;font-family:'Sora';background:rgba(255,255,255,.18);color:#fff}
+  .ask-tam{
+    font-size:11.5px;font-weight:700;color:var(--teal-dark);
+    background:var(--teal-soft);border:1px solid var(--teal-border);
+    border-radius:16px;padding:5px 11px;justify-self:end;white-space:nowrap;
+    transition:transform .15s var(--ease),box-shadow .15s;cursor:pointer;
+  }
+  .ask-tam:hover{transform:translateY(-1px);box-shadow:0 4px 10px -6px rgba(14,138,122,.5)}
 
   .fade{animation:fadeUp .45s var(--ease) both}
   .stagger > *{animation:fadeUp .5s var(--ease) both}
@@ -624,29 +637,17 @@
   </section>
 
   <!-- ================= ASKGILLIS QUICK CHAT ================= -->
-  <button class="chat-fab" id="chatFab" onclick="toggleChat()" title="Ask Gillis" style="display:none">
-    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 6h26a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H17l-7 6v-6H7a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4z" fill="#fff" opacity=".95"/>
-      <rect x="11" y="11" width="6.4" height="6.4" rx="1.4" fill="var(--brand)" opacity=".9"/>
-      <rect x="22.6" y="11" width="6.4" height="6.4" rx="1.4" fill="var(--brand)" opacity=".5"/>
-      <rect x="11" y="20.4" width="6.4" height="6.4" rx="1.4" fill="var(--brand)" opacity=".5"/>
-      <path d="M22.6 27v-3.2a3.2 3.2 0 0 1 6.4 0V27z" fill="var(--brand)" opacity=".9"/>
-    </svg>
+  <button class="chat-fab" id="chatFab" onclick="toggleChat()" title="Ask Tammy" style="display:none">
+    <span style="font-family:'Sora';font-weight:700;font-size:16px;color:#fff">TG</span>
     <span class="pulse"></span>
   </button>
 
   <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AskGillis chat">
     <div class="chat-head">
-      <svg class="cmark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 6h26a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H17l-7 6v-6H7a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4z" fill="currentColor" opacity=".22"/>
-        <rect x="11" y="11" width="6.4" height="6.4" rx="1.4" fill="#fff" opacity=".95"/>
-        <rect x="22.6" y="11" width="6.4" height="6.4" rx="1.4" fill="#fff" opacity=".6"/>
-        <rect x="11" y="20.4" width="6.4" height="6.4" rx="1.4" fill="#fff" opacity=".6"/>
-        <path d="M22.6 27v-3.2a3.2 3.2 0 0 1 6.4 0V27z" fill="#fff" opacity=".95"/>
-      </svg>
+      <span class="tg-av">TG</span>
       <div class="cinfo">
-        <div class="cname">AskGillis</div>
-        <div class="cstatus"><i></i> Always on</div>
+        <div class="cname">Tammy</div>
+        <div class="cstatus"><i></i> Same conversation as Coaching</div>
       </div>
       <button class="hbtn" onclick="openCoaching()" title="Open full Coaching">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
@@ -716,14 +717,14 @@ function duskVisual(){return `
   <rect x="0" y="296" width="560" height="4" fill="var(--brand-ink)"/>
 </svg>`;}
 
-function markGillis(){return `
-<svg class="mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M7 6h26a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H17l-7 6v-6H7a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4z" fill="currentColor"/>
-  <rect x="11" y="11" width="6.4" height="6.4" rx="1.4" fill="#fff" opacity=".92"/>
-  <rect x="22.6" y="11" width="6.4" height="6.4" rx="1.4" fill="#fff" opacity=".55"/>
-  <rect x="11" y="20.4" width="6.4" height="6.4" rx="1.4" fill="#fff" opacity=".55"/>
-  <path d="M22.6 27v-3.2a3.2 3.2 0 0 1 6.4 0V27z" fill="#fff" opacity=".92"/>
-</svg>`;}
+/* Gillis product marks per the identity system:
+   GillisOS = G on indigo, AskGillis = AG on purple.
+   Orbitron letter, rounded tile, Lift diagonal. */
+function gTile(mark, bg, size, font){
+  return `<span class="gtile" style="background:${bg};width:${size}px;height:${size}px;font-size:${font}px"><b>${mark}</b></span>`;
+}
+function markGillis(){ return gTile('G', '#1e1745', 30, 13); }
+function markAskGillis(size, font){ return gTile('AG', '#4b3a9e', size||26, font||9); }
 function markChoice(){return `
 <svg class="mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="4" y="4" width="36" height="36" rx="10" fill="currentColor"/>
@@ -739,7 +740,7 @@ const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 const toolArrow = `<svg class="t-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>`;
 
 /* ============================================================
-   TENANT CONTENT. One platform, two pillars: Research + Coaching.
+   TENANT CONTENT
    ============================================================ */
 const TENANTS = {
   gillis:{
@@ -780,7 +781,6 @@ const TENANTS = {
   },
 };
 
-/* launcher pillars are the same two doors for every tenant */
 const PILLARS = [
   {space:"research", accent:"outbound", title:"Research", desc:"Backyard Search, signals, leads, and contacts. Find the demand within five miles of every hotel and reach out first.", icon:ic.outbound, meta:"85 live signals", live:true},
   {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment: outreach support, objection handling, role play, and the Daily Sharpener, built on Room to Grow.", icon:ic.coaching, meta:"Always on", live:true},
@@ -817,16 +817,16 @@ const R = {
     {n:"Push Technologies, Inc.",         c:"I-694 Lighting Replacement", s:"Contact enriched", ct:2},
   ],
   activity:[
-    {n:"Backyard search completed", c:"Clarion Hotel, 5 mi radius", s:"6 signals", ct:""},
-    {n:"Deep dive finished", c:"I-694 Lighting Replacement (Fridley)", s:"4 companies", ct:""},
-    {n:"Outreach drafted as Sam", c:"April Ryan, SEH", s:"Queued", ct:""},
-    {n:"Reply received", c:"Overnight crew rates inquiry", s:"Routed to rep", ct:""},
+    {n:"Backyard search completed", c:"Clarion Hotel, 5 mi radius", s:"6 signals"},
+    {n:"Deep dive finished", c:"I-694 Lighting Replacement (Fridley)", s:"4 companies"},
+    {n:"Outreach drafted as Sam", c:"April Ryan, SEH", s:"Queued"},
+    {n:"Reply received", c:"Overnight crew rates inquiry", s:"Routed to rep"},
   ],
 };
 const SUBTABS = ["Dashboard","Hotels","Leads","Contacts","Activity"];
 
 /* ============================================================
-   COACHING DATA (real modules from the AskGillis platform)
+   COACHING: modules, seeds per module, curated answers
    ============================================================ */
 const MODULES = [
   {id:"onboarding", l:"Onboarding", c:"var(--teal)"},
@@ -840,7 +840,26 @@ const MODULES = [
   {id:"hub",        l:"Gillis Hub", c:"var(--dim)"},
 ];
 
-/* curated Tammy answers so the prototype feels alive */
+/* each module reseeds the conversation with its own opener and chips */
+const MODULE_SEEDS = {
+  situation:{
+    greet:"Sales is a grind. Some days the calls don't land, the pipeline stalls, or the pressure builds. Pick what's closest to your situation and I'll coach you through it.",
+    chips:["Send me your info","We're happy with our current hotel","Prospect went cold"],
+  },
+  roleplay:{
+    greet:"Set the scene for me: who's the prospect, what property, and where are you in the deal? I'll play the prospect. Slightly guarded, objections included. Feedback after.",
+    chips:["A GM who keeps canceling on me","Cold call to a construction PM"],
+  },
+  sharpener:{
+    greet:"Quick workout, not a lecture. Pick a drill, or say surprise me.",
+    chips:["Surprise me","30 second opener drill"],
+  },
+  gameplan:{
+    greet:"Let's plan the week. What's on your plate across your properties? Tell me what's due and what's stuck, and we'll decide where the energy goes.",
+    chips:["Help me prioritize my accounts","Build my Monday plan"],
+  },
+};
+
 const COACH_ANSWERS = {
   "They already have a preferred hotel":
     {t:"Acknowledge it, do not fight it. Ask when housing for this project gets decided, then offer a one night crew stay so the choice is easy. Loyalty rarely survives a 2am check-in problem. Want to role play the next thing they say?"},
@@ -849,12 +868,93 @@ const COACH_ANSWERS = {
      q:{b:"Subject: Housing your crew in Davenport", t:"Hi Mark, saw your crews are heading to Davenport for the Route 61 work. Nine months on site means consistent rooms close to the job. Worth a 10 minute call to see if we are a fit?"}},
   "What's a good follow-up cadence?":
     {t:"Three touches over two weeks, and every touch earns its place. Day 3: one short note that gives them permission to say no. Day 8: a new piece of value, a rate hold or a crew review. Day 14: the close-the-loop note. Then stop and let the nurture do its work."},
+  "Prospect went cold":
+    {t:"Happens to everyone, and it usually isn't a no. They got busy and you slipped down the list. Don't chase with another just-checking-in. Send one short note that gives them permission to say no:",
+     q:{b:"The one-liner", t:"Has housing for the project come off your plate? Totally fine either way, just want to close the loop."},
+     t2:"Permission to say no is what gets replies. When did they actually go quiet, before pricing or after?"},
+  "Send me your info":
+    {t:"That's a brush-off, not a no. Send one page, not a brochure, and name the next step yourself: 'I'll send our crew rate sheet today. If housing isn't on your plate this quarter, tell me who owns it and I'll get out of your hair.' You keep control of the follow-up either way."},
+  "We're happy with our current hotel":
+    {t:"The loyalty objection. Don't argue with the relationship, ask about the edges of it: overflow nights, the weeks their hotel sells out, the project that needs a second property. You're not replacing anyone today, you're becoming the obvious second call."},
   "Research a new lead":
-    {t:"Open Research and run a backyard search on the hotel first. The engine will pull the signals within five miles and rank them. Bring the hottest one back here and we will build the opener together."},
+    {t:"Open Research and run a backyard search on the hotel first. The engine pulls the signals within five miles and ranks them. Bring the hottest one back here and we'll build the opener together."},
   "Draft an outreach email":
-    {t:"Give me the project, the hotel, and the person, and I will draft it in your voice. One rule going in: lead with their problem, not your property."},
+    {t:"Give me the project, the hotel, and the person, and I'll draft it in your voice. One rule going in: lead with their problem, not your property."},
 };
 const COACH_FALLBACK = "This is a prototype, so I answer a few scripted questions for now. In the live platform this is where Tammy responds, grounded in Room to Grow and the Gillis library.";
+
+/* the research-to-coaching handoff: ask Tammy about a lead */
+const LEAD_COACH = {
+  "Short Elliott Hendrickson (SEH)":
+    {t:"Night work on I-694 means day-sleeper rooms. That's your opener. Lead with the project, not the property:",
+     q:{b:"The opener", t:"Saw SEH is managing the I-694 lighting replacement. We're two miles from the zone and we run quiet daytime floors for night crews."},
+     t2:"Ask about crew size and shift pattern before you ever mention rate. Want me to draft the full email?"},
+};
+const LEAD_FALLBACK = "Good pick. Tell me what you see in this one, the project and the contact, and we'll build the opener together.";
+
+/* ============================================================
+   ONE TAMMY, ONE THREAD.
+   The docked panel and the Coaching tab render the same conversation.
+   ============================================================ */
+let thread = [];
+let hintChips = [];
+
+function escAttr(s){ return s.replace(/'/g, "\\'"); }
+function quoteHtml(q){ return `<div class="quote"><b>${q.b}</b>${q.t}</div>`; }
+
+function renderThreadInto(el){
+  if(!el) return;
+  el.innerHTML =
+    thread.map(m=>{
+      if(m.who==='typing') return `<div class="typing"><i></i><i></i><i></i></div>`;
+      return `<div class="msg ${m.who}">${m.html}</div>`;
+    }).join('') +
+    (hintChips.length ? `<div class="chat-hint">${hintChips.map(c=>`<button class="chip" onclick="askTammy('${escAttr(c)}')">${c}</button>`).join('')}</div>` : '');
+  const scroller = el.classList.contains('chat-body') ? el : el.parentElement;
+  scroller.scrollTop = scroller.scrollHeight;
+}
+function renderThreadAll(){
+  renderThreadInto(document.getElementById('chatBody'));
+  renderThreadInto(document.getElementById('coachBody'));
+}
+function seedThread(greet, chips){
+  thread = [{who:'tam', html:greet}];
+  hintChips = chips || [];
+  renderThreadAll();
+}
+function answerHtml(a){
+  let html = a.t;
+  if(a.q) html += quoteHtml(a.q);
+  if(a.t2) html += `<div style="margin-top:8px">${a.t2}</div>`;
+  return html;
+}
+function askTammy(text, curated){
+  hintChips = [];
+  thread.push({who:'me', html:text});
+  thread.push({who:'typing'});
+  renderThreadAll();
+  setTimeout(()=>{
+    thread = thread.filter(m=>m.who!=='typing');
+    const a = curated || COACH_ANSWERS[text];
+    thread.push({who:'tam', html: a ? answerHtml(a) : COACH_FALLBACK});
+    renderThreadAll();
+  }, 900);
+}
+function leadTammy(leadName, project){
+  openTammy();
+  const a = LEAD_COACH[leadName];
+  askTammy(`Looking at <b>${leadName}</b> on the ${project}. How do I open?`, a || {t:LEAD_FALLBACK});
+}
+function sendMsg(){
+  const inp = document.getElementById('chatInput');
+  const v = inp.value.trim(); if(!v) return;
+  inp.value=''; askTammy(v);
+}
+function sendCoach(){
+  const inp = document.getElementById('coachInput');
+  const v = inp.value.trim(); if(!v) return;
+  inp.value=''; askTammy(v);
+}
 
 /* ============================================================
    RENDER
@@ -867,7 +967,6 @@ function render(key){
   const t = TENANTS[key];
   app.setAttribute('data-tenant', key);
 
-  /* login */
   document.getElementById('loginLockup').innerHTML = t.mark()+t.word;
   document.getElementById('tagText').textContent = t.tag;
   document.getElementById('visual').innerHTML = duskVisual();
@@ -882,7 +981,6 @@ function render(key){
       <span class="vd">${v.d}</span>
     </div>`).join('');
 
-  /* chrome */
   document.getElementById('homeLockup').innerHTML = t.mark()+t.word;
   document.getElementById('workLockup').innerHTML = t.mark()+t.word;
   for(const [a,b] of [['avatar','avatar2'],['userName','userName2'],['userRole','userRole2']]){
@@ -896,7 +994,6 @@ function render(key){
   const h = new Date().getHours();
   document.getElementById('greetTime').textContent = h<12?'Good morning':h<18?'Good afternoon':'Good evening';
 
-  /* launcher */
   document.getElementById('pillarGrid').innerHTML = PILLARS.map(p=>`
     <button class="pillar" style="--accent:var(--c-${p.accent});--accent-soft:var(--c-${p.accent}-soft);--accent-border:var(--c-${p.accent}-border)" onclick="openWorkspace('${p.space}')">
       <div class="p-top"><span class="p-icon">${p.icon}</span></div>
@@ -915,12 +1012,9 @@ function render(key){
       ${toolArrow}
     </button>`).join('');
 
-  /* research workspace */
   renderResearch();
-  /* coaching workspace */
-  renderCoaching(t);
-  /* quick chat seed */
-  seedChat(t);
+  renderCoachRail();
+  seedThread(t.chatGreeting, t.chips);
 
   document.getElementById('segGillis').classList.toggle('on', key==='gillis');
   document.getElementById('segChoice').classList.toggle('on', key==='choice');
@@ -946,6 +1040,8 @@ function renderResearch(){
   const kpis = `<div class="kpis">${R.kpis.map(k=>`
     <div class="kpi"><div class="kn">${k.n}</div><div class="kl">${k.l}</div><div class="kh"><i></i>${k.h}</div></div>`).join('')}</div>`;
 
+  const askBtn = `<span class="ask-tam" title="Ask Tammy about this lead">Ask Tammy</span>`;
+
   const signals = `
   <div class="panel-card">
     <div class="panel-head"><h3>Backyard Search, signals near your hotels</h3><span class="ph-meta"><i></i>5 mi radius, live</span></div>
@@ -963,8 +1059,8 @@ function renderResearch(){
   const leads = `
   <div class="panel-card">
     <div class="panel-head"><h3>Leads, I-694 Lighting Replacement</h3><span class="ph-meta"><i></i>deep dived</span></div>
-    <div class="rrow rh"><span>Company</span><span>Project</span><span>Status</span><span class="rl2">Contacts</span></div>
-    ${R.leads.map(s=>`<button class="rrow"><span class="rn">${s.n}</span><span class="rc">${s.c}</span><span class="dstatus">${s.s}</span><span class="rl2">${s.ct}</span></button>`).join('')}
+    <div class="rrow rh"><span>Company</span><span>Status</span><span>Contacts</span><span class="rl2">Coach</span></div>
+    ${R.leads.map(s=>`<div class="rrow"><span class="rn">${s.n}</span><span class="dstatus">${s.s}</span><span class="rl2" style="text-align:left">${s.ct} contacts</span><button class="ask-tam" onclick="leadTammy('${escAttr(s.n)}','${escAttr(s.c)}')">Ask Tammy</button></div>`).join('')}
   </div>`;
 
   const contacts = `
@@ -998,56 +1094,19 @@ function setBoard(i, btn){
 /* ============================================================
    COACHING RENDERING
    ============================================================ */
-function renderCoaching(t){
+function renderCoachRail(){
   document.getElementById('modRail').innerHTML =
-    `<div class="rail-title">Ask<b>Gillis</b><span class="tsub">Sales platform</span></div>` +
-    MODULES.map(m=>`<button class="mod ${m.on?'on':''}" onclick="setModule(this,'${m.l}')"><span class="md" style="background:${m.c}"></span>${m.l}</button>`).join('');
-  const cb = document.getElementById('coachBody');
-  cb.innerHTML = `
-    <div class="msg tam">${t.chatGreeting}</div>
-    <div class="chat-hint">${t.chips.map(c=>`<button class="chip" onclick="coachChip('${c.replace(/'/g,"\\'")}')">${c}</button>`).join('')}</div>`;
+    `<div class="rail-title">${markAskGillis()}<span class="rt-tx">Ask<b>Gillis</b><span class="tsub">Sales platform</span></span></div>` +
+    MODULES.map(m=>`<button class="mod ${m.on?'on':''}" onclick="setModule(this,'${m.id}','${escAttr(m.l)}')"><span class="md" style="background:${m.c}"></span>${m.l}</button>`).join('');
 }
-function setModule(btn, label){
+function setModule(btn, id, label){
   document.querySelectorAll('.mod').forEach(m=>m.classList.remove('on'));
   btn.classList.add('on');
   document.getElementById('modeTag').textContent = label;
-}
-function coachAppend(html, who){
-  const cb = document.getElementById('coachBody');
-  const hint = cb.querySelector('.chat-hint');
-  if(hint) hint.remove();
-  const div = document.createElement('div');
-  div.className = who==='typing' ? 'typing' : 'msg '+who;
-  div.innerHTML = who==='typing' ? '<i></i><i></i><i></i>' : html;
-  cb.appendChild(div);
-  cb.parentElement.scrollTop = cb.parentElement.scrollHeight;
-  return div;
-}
-function coachReply(text){
-  const a = COACH_ANSWERS[text];
-  const typing = coachAppend('', 'typing');
-  setTimeout(()=>{
-    typing.remove();
-    if(a){
-      let html = a.t;
-      if(a.q) html += `<div class="quote"><b>${a.q.b}</b>${a.q.t}</div>`;
-      coachAppend(html, 'tam');
-    } else {
-      coachAppend(COACH_FALLBACK, 'tam');
-    }
-  }, 900);
-}
-function coachChip(text){
-  coachAppend(text, 'me');
-  coachReply(text);
-}
-function sendCoach(){
-  const inp = document.getElementById('coachInput');
-  const v = inp.value.trim();
-  if(!v) return;
-  coachAppend(v, 'me');
-  inp.value='';
-  coachReply(v);
+  const t = TENANTS[currentTenant];
+  const seed = MODULE_SEEDS[id];
+  if(seed) seedThread(seed.greet, seed.chips);
+  else seedThread(t.chatGreeting, t.chips);
 }
 
 /* ============================================================
@@ -1080,10 +1139,13 @@ function setSpace(space){
   document.getElementById('tabCoaching').classList.toggle('on', !research);
   document.getElementById('paneResearch').classList.toggle('on', research);
   document.getElementById('paneCoaching').classList.toggle('on', !research);
-  /* Coaching IS the chat, so the quick-chat bubble only lives on Research */
+  /* Coaching IS the conversation, so the side panel only lives outside it */
   closeChat();
   document.getElementById('chatFab').style.display = research ? 'grid' : 'none';
-  if(!research) setTimeout(()=>document.getElementById('coachInput').focus(), 250);
+  if(!research){
+    renderThreadAll();
+    setTimeout(()=>document.getElementById('coachInput').focus(), 250);
+  }
 }
 function openCoaching(){
   closeChat();
@@ -1091,61 +1153,27 @@ function openCoaching(){
 }
 
 /* ============================================================
-   QUICK CHAT (popup)
+   THE DOCKED TAMMY PANEL (same thread, following you around)
    ============================================================ */
 const panel = document.getElementById('chatPanel');
-const body = document.getElementById('chatBody');
-
-function seedChat(t){
-  body.innerHTML = `
-    <div class="msg tam">${t.chatGreeting}</div>
-    <div class="chat-hint">${t.chips.map(c=>`<button class="chip" onclick="sendChip('${c.replace(/'/g,"\\'")}')">${c}</button>`).join('')}</div>`;
+function openTammy(){
+  if(document.getElementById('paneCoaching').classList.contains('on') &&
+     document.getElementById('workScreen').classList.contains('is-active')) return;
+  panel.classList.add('open');
+  renderThreadAll();
 }
 function toggleChat(){
   panel.classList.toggle('open');
-  if(panel.classList.contains('open')) document.getElementById('chatInput').focus();
+  if(panel.classList.contains('open')){
+    renderThreadAll();
+    document.getElementById('chatInput').focus();
+  }
 }
 function closeChat(){ panel.classList.remove('open'); }
 
-function appendMsg(html, who){
-  const hint = body.querySelector('.chat-hint');
-  if(hint) hint.remove();
-  const div = document.createElement('div');
-  div.className = who==='typing' ? 'typing' : 'msg '+who;
-  div.innerHTML = who==='typing' ? '<i></i><i></i><i></i>' : html;
-  body.appendChild(div);
-  body.scrollTop = body.scrollHeight;
-  return div;
-}
-function quickReply(text){
-  const a = COACH_ANSWERS[text];
-  const typing = appendMsg('', 'typing');
-  setTimeout(()=>{
-    typing.remove();
-    if(a){
-      let html = a.t;
-      if(a.q) html += `<div class="quote"><b>${a.q.b}</b>${a.q.t}</div>`;
-      appendMsg(html, 'tam');
-    } else {
-      appendMsg(COACH_FALLBACK, 'tam');
-    }
-  }, 900);
-}
-function sendMsg(){
-  const inp = document.getElementById('chatInput');
-  const v = inp.value.trim();
-  if(!v) return;
-  appendMsg(v,'me');
-  inp.value='';
-  quickReply(v);
-}
-function sendChip(text){
-  appendMsg(text,'me');
-  quickReply(text);
-}
-
 /* boot */
 render('gillis');
+
 </script>
 </body>
 </html>
