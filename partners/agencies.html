@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Legal · Gambit</title>
-<meta name="description" content="Gambit for Legal. AI workers for law firms: client intake, consultation preparation, practice-area routing, and research, around the clock. Turn visitors into clients.">
+<title>Agencies and Consultancies · Partners · Gambit</title>
+<meta name="description" content="For agencies and consultancies: offer proven AI workers to your clients without building them. Turn a strategy engagement into a solution that keeps running, on a retainer. You own the relationship, we run the engine.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/legal">
+<link rel="canonical" href="https://gambitco.io/partners/agencies">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Legal · Gambit">
-<meta property="og:description" content="Turn visitors into clients. Prepare them before they arrive. AI workers for law firms.">
+<meta property="og:title" content="Agencies and Consultancies · Partners · Gambit">
+<meta property="og:description" content="The AI your clients ask for, without building it. Extend the engagement into a solution that runs after you deliver.">
 <meta property="og:image" content="https://gambitco.io/og-homepage.png">
-<meta property="og:url" content="https://gambitco.io/legal">
+<meta property="og:url" content="https://gambitco.io/partners/agencies">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +21,10 @@
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 :root{
-  /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
   --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
-  /* roster audit additions (reserve palette) */
   --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
   --w-gillis:#1e1745;
+
   --ink:#15110d;
   --ink-2:#1f1a14;
   --paper:#ffffff;
@@ -44,12 +43,18 @@
   --muted-d:rgba(240,243,248,.6);
   --status:#3ec46d;
   --status-d:#1f9e54;
-  /* Industry accent: deep navy + vermilion */
-  --navy:#0e1a2c;
-  --navy-2:#16263e;
-  --accent:#F04E36;
-  --accent-2:#ff8a72;
-  --accent-deep:#c73a23;
+  /* worker job-family hues (icon system; match the site scene palette) */
+  --f-core:#a07c61;
+  --f-ma:#2b3a54;
+  --f-sup:#57606e;
+  --f-care:#8a5560;
+  --f-civic:#54697b;
+  --f-log:#a0713a;
+  --f-legal:#6b5d3f;
+  /* Partners accent: warm clay (no navy / vermilion on this door) */
+  --accent:#a07c61;
+  --accent-2:#cbb49c;
+  --accent-deep:#8a6a52;
   --display:'General Sans','Helvetica Neue',Arial,sans-serif;
   --mark:'Orbitron',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -57,6 +62,23 @@
   --ease:cubic-bezier(.16,1,.3,1);
   --ease-hero:cubic-bezier(0,.55,.45,1);
 }
+
+/* ---------- worker icon system ---------- */
+/* monogram marks: Orbitron letterform on a family-colored tile (identity) */
+.wmark{border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--f-core))}
+.wmark.s56{width:56px;height:56px;font-size:24px}
+.wmark.s46{width:46px;height:46px;font-size:19px}
+.wmark.s36{width:36px;height:36px;font-size:15px}
+.wmark.s24{width:24px;height:24px;font-size:10.5px}
+.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}
+.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
+/* role glyphs: supporting language in the Products megamenu (never an avatar) */
+.mi.mi-w{display:flex;gap:11px;align-items:flex-start}
+.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi:hover .mi-glyph{color:var(--clay-deep)}
+.mi-w .mi-tx{min-width:0;display:block}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:74px}
@@ -78,7 +100,7 @@ h2{font-size:clamp(28px,3.8vw,44px)}
 .btn-dark{background:var(--ink);color:var(--paper)}
 .btn-dark:hover{background:var(--ink-2)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent-deep)}
+.btn-ghost:hover{border-color:var(--clay-deep);color:var(--clay-deep)}
 
 /* ---------- header (shared megamenu) ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -122,11 +144,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mi-role{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);font-weight:500}
 .mi:hover .mi-name{color:var(--clay-deep)}
 .mi-desc{font-size:12.5px;color:var(--muted);line-height:1.45;margin-top:3px}
-.mi.mi-w{display:flex;gap:10px;align-items:center}
-.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
-.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.mi:hover .mi-glyph{color:var(--clay-deep)}
-.mi-w .mi-tx{min-width:0;display:block}
 .livetag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--status-d);background:rgba(62,196,109,.13);padding:2px 7px;border-radius:20px}
 .livetag .sd{width:5px;height:5px;border-radius:50%;background:var(--status)}
 .grid-prod{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
@@ -170,111 +187,114 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 
 /* ---------- hero (light, simple) ---------- */
 .hero{padding:128px 0 0;background:var(--paper)}
+.hero .eyebrow{margin-bottom:16px}
 .hero h1{font-size:clamp(38px,5vw,58px);letter-spacing:-.03em;color:var(--ink)}
-.hero .tag{font-size:clamp(20px,2.4vw,28px);font-weight:400;color:var(--muted-2);letter-spacing:-.01em;margin-top:8px}
+.hero .tag{font-size:clamp(20px,2.4vw,28px);font-weight:400;color:var(--muted-2);letter-spacing:-.01em;margin-top:10px}
 .fade-up{opacity:0;transform:translateY(18px);animation:rise .9s var(--ease-hero) forwards}
 @keyframes rise{to{opacity:1;transform:none}}
 .d1{animation-delay:.04s}.d2{animation-delay:.14s}.d3{animation-delay:.26s}
 
-/* hero media slot (drop a video or premium photograph here; the caption and overlays sit on top) */
-.media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:2.4/1;background:radial-gradient(130% 150% at 28% 18%,#1d2f4a 0%,#0c1626 68%);box-shadow:0 50px 100px -42px rgba(14,26,44,.55);margin-top:40px}
-@media(max-width:720px){.media{aspect-ratio:1.15/1}}
-.m-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#0c1626}
-.m-toggle{position:absolute;right:16px;bottom:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(15,22,32,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:background .2s,transform .2s}
-.m-toggle:hover{background:rgba(15,22,32,.72)}
+/* hero media slot (real campaign image now; swap for a partner sizzle clip later) */
+.media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:radial-gradient(130% 150% at 28% 18%,#3a2c22 0%,#1a130d 68%);box-shadow:0 50px 100px -42px rgba(21,17,13,.5);margin-top:40px}
+.m-vid,.m-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;background:#1a130d}
+.m-toggle{position:absolute;right:16px;bottom:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(26,19,13,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:background .2s,transform .2s}
+.m-toggle:hover{background:rgba(26,19,13,.72)}
 .m-toggle:active{transform:scale(.94)}
 .m-toggle svg{width:16px;height:16px;fill:currentColor}
 .m-toggle .ic-play{display:none;margin-left:2px}
 .m-toggle.paused .ic-pause{display:none}
 .m-toggle.paused .ic-play{display:block}
-.m-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;z-index:1}
-.m-vig{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,26,.05) 30%,rgba(8,15,26,.62));z-index:1}
-.m-note,.m-tag,.m-play,.m-cap{z-index:2}
-.m-note{position:absolute;top:18px;left:22px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.32)}
-.m-tag{position:absolute;top:16px;right:20px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7fd4a4}
-.m-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
-.m-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.m-play svg{width:20px;height:20px;margin-left:3px;fill:#fff}
-.m-cap{position:absolute;left:32px;right:32px;bottom:30px;font-size:clamp(21px,3vw,38px);font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.16;max-width:19ch;text-shadow:0 2px 30px rgba(0,0,0,.3)}
-@media(max-width:720px){.m-cap{left:22px;right:22px;bottom:22px;font-size:22px}.m-play{width:52px;height:52px}}
 
 /* ---------- logo strip ---------- */
 .logos{padding:54px 0 8px;background:var(--paper)}
 .logos .ll{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:26px}
-.logobar{display:flex;justify-content:center;align-items:center;gap:clamp(34px,6vw,72px);flex-wrap:wrap}
+.logobar{display:flex;justify-content:center;align-items:center;gap:clamp(34px,6vw,66px);flex-wrap:wrap}
+/* real client logos: greyed, colorize on hover (shared pattern with the FS page) */
 .logobar .lg{width:auto;display:block;filter:grayscale(1);opacity:.55;transition:filter .25s var(--ease),opacity .25s var(--ease)}
 .logobar .lg.light{filter:grayscale(1) brightness(.62)}
 .logobar .lg:hover{filter:none;opacity:1}
-.logobar .lgword{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--muted-2);opacity:.7;display:inline-flex;align-items:baseline;gap:8px;transition:color .25s var(--ease),opacity .25s var(--ease)}
-.logobar .lgword b{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.16em;color:var(--sand-deep)}
-.logobar .lgword:hover{color:var(--ink);opacity:1}
 
-/* ---------- sub-vertical showcase ---------- */
-.showcase{padding:100px 0;background:var(--paper)}
-.sv-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.sv-tab{font-family:var(--display);font-size:13.5px;font-weight:500;color:var(--muted);background:var(--bone);border:1px solid var(--line);border-radius:30px;padding:9px 17px;cursor:pointer;transition:.2s}
-.sv-tab:hover{border-color:var(--accent);color:var(--ink)}
-.sv-tab.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-.sv-head{display:none;text-align:center;margin:6px auto 0}
-.sv-head.on{display:block;animation:fade .4s ease}
-.sv-head h2{font-size:clamp(26px,3.4vw,40px)}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ---------- alternating value rows ---------- */
+.showcase{padding:100px 0 70px;background:var(--paper)}
+.showcase .section-head{max-width:680px;margin:0 auto 20px;text-align:center}
+.showcase .section-head .eyebrow{margin-bottom:16px}
+.showcase .section-head h2{margin-bottom:14px}
+.feat{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,70px);align-items:center;padding:52px 0}
+.feat+.feat{border-top:1px solid var(--line-2)}
+.feat.rev .ftxt{order:2}
+.feat.rev .fmedia{order:1}
+@media(max-width:860px){.feat{grid-template-columns:1fr;gap:26px;padding:40px 0}.feat.rev .ftxt{order:1}.feat.rev .fmedia{order:2}}
+.ftxt .flabel{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
+.ftxt h3{font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin-bottom:14px}
+.ftxt p{font-size:15.5px;color:var(--muted);line-height:1.62;max-width:46ch}
+.flist{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.flist li{position:relative;padding-left:26px;font-size:14.5px;color:var(--ink-2)}
+.flist li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:2px;background:var(--clay)}
 
-/* load-desk mockup */
-.mock{margin:30px auto 0;max-width:880px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -44px rgba(14,26,44,.4)}
-.mock-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy);border-bottom:1px solid #1d3050}
-.mock-bar .tl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
-.mock-bar .mt{margin-left:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.74)}
-.mock-bar .ml{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#7fd4a4}
-.mock-bar .ml .dot{width:6px;height:6px;border-radius:50%;background:var(--status)}
-.mock-stats{display:flex;border-bottom:1px solid var(--line-2);background:#fcfbf9}
-.mock-stats .ms{flex:1;padding:13px 18px;border-right:1px solid var(--line-2)}
-.mock-stats .ms:last-child{border-right:0}
-.mock-stats .mn{font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy);letter-spacing:-.02em}
-.mock-stats .mk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
-.mrow{display:grid;grid-template-columns:1.2fr 1.5fr .9fr .9fr .9fr;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-2);align-items:center;font-size:12.5px}
-.mrow.mh{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);background:#fcfbf9;padding-top:10px;padding-bottom:10px}
-.mrow:last-child{border-bottom:0}
-.mrow .mco{font-weight:600;color:#231f1a}
-.mrow .mmut{color:var(--muted)}
-.mfit{display:flex;align-items:center;gap:8px}
-.mfit .bar{flex:1;height:5px;border-radius:4px;background:#eee6db;overflow:hidden;min-width:34px}
-.mfit .bar b{display:block;height:100%;background:var(--accent)}
-.mfit .fv{font-family:var(--mono);font-size:11px;color:#231f1a}
-.mtag{font-family:var(--mono);font-size:9.5px;color:var(--accent-deep);background:var(--accent-soft,rgba(240,78,54,.1));padding:3px 8px;border-radius:5px;white-space:nowrap}
-.mst{font-size:9.5px;padding:3px 8px;border-radius:20px;text-align:center;white-space:nowrap}
-.mst.new{background:rgba(62,196,109,.15);color:var(--status-d)}
-.mst.scr{background:rgba(46,108,180,.14);color:#2a6cb4}
-.mst.dr{background:rgba(240,78,54,.12);color:var(--accent-deep)}
-@media(max-width:640px){
-  .mrow{grid-template-columns:1.4fr .8fr .9fr;gap:8px}
-  .mrow .mmut,.mrow .c-fit{display:none}
+/* media panel: color-graded placeholder scene (swap for real photo/video) + animated overlay card */
+.fmedia{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3.1;box-shadow:0 44px 88px -44px rgba(21,17,13,.5)}
+.fscene{position:absolute;inset:0}
+.fx-meet{background:radial-gradient(80% 90% at 74% 20%,rgba(255,206,150,.5),transparent 58%),radial-gradient(110% 120% at 18% 88%,rgba(36,24,16,.7),transparent 62%),linear-gradient(160deg,#6b503a,#40301f 62%,#241812)}
+.fx-pitch{background:radial-gradient(85% 85% at 28% 18%,rgba(226,216,200,.4),transparent 58%),radial-gradient(110% 120% at 80% 88%,rgba(30,24,18,.66),transparent 62%),linear-gradient(160deg,#57504a,#38322a 62%,#221d17)}
+.fx-lab{background:radial-gradient(80% 90% at 70% 22%,rgba(255,236,210,.6),transparent 60%),radial-gradient(110% 120% at 20% 86%,rgba(120,96,72,.5),transparent 60%),linear-gradient(160deg,#c4b096,#95805f 62%,#5c4c38)}
+.fgrain{position:absolute;inset:0;opacity:.32;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='210'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='210' height='210' filter='url(%23fg)'/%3E%3C/svg%3E")}
+.fvig{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,13,.04) 40%,rgba(21,17,13,.4))}
+
+.fcard{position:absolute;background:rgba(255,255,255,.96);border:1px solid rgba(21,17,13,.07);border-radius:14px;box-shadow:0 24px 52px -20px rgba(21,17,13,.5);font-family:var(--display);padding:16px 18px}
+.fc-lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:12px}
+
+/* g1 · Monetize: deployments stack + revenue line draws */
+.g1{left:20px;bottom:20px;width:min(316px,calc(100% - 40px))}
+.g1 .row{display:flex;align-items:center;gap:9px;padding:7px 0;border-top:1px solid var(--line-2);font-size:12.5px;color:var(--ink-2);animation:rowpop 9s infinite}
+.g1 .row:nth-child(3){animation-delay:.9s}
+.g1 .row:nth-child(4){animation-delay:1.8s}
+.g1 .row .wv{width:22px;height:22px;border-radius:6px;background:var(--ink);color:#fff;font-family:var(--mark);font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.g1 .row .cl{font-weight:600}
+.g1 .row .ok{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--clay-deep);white-space:nowrap}
+.g1 svg{display:block;width:100%;height:54px;margin-bottom:4px}
+.g1 .cline{fill:none;stroke:var(--clay-deep);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:230;stroke-dashoffset:0;animation:cdraw 9s infinite}
+.g1 .carea{fill:rgba(184,149,122,.16);opacity:1;animation:cfade 9s infinite}
+@keyframes rowpop{0%{opacity:0;transform:translateY(7px)}7%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:translateY(7px)}}
+@keyframes cdraw{0%{stroke-dashoffset:230}42%,88%{stroke-dashoffset:0}96%,100%{stroke-dashoffset:230}}
+@keyframes cfade{0%,8%{opacity:0}46%,88%{opacity:1}96%,100%{opacity:0}}
+
+/* g2 · Differentiate: status flips In build -> Live */
+.g2{right:20px;top:20px;width:min(286px,calc(100% - 40px))}
+.g2 .wrow{display:flex;align-items:center;gap:11px}
+.g2 .wv{width:34px;height:34px;border-radius:9px;background:var(--ink);color:#fff;font-family:var(--mark);font-weight:700;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex:none}
+.g2 .wn{font-weight:600;font-size:15px;color:var(--ink)}
+.g2 .wr{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-top:2px}
+.g2 .stat{position:relative;margin-top:14px;height:26px}
+.g2 .pill{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:20px}
+.g2 .p-build{color:var(--clay-deep);background:rgba(184,149,122,.18);opacity:0;animation:pbuild 6.5s infinite}
+.g2 .p-live{color:var(--status-d);background:rgba(62,196,109,.14);opacity:1;animation:plive 6.5s infinite}
+.g2 .p-live .sd{width:6px;height:6px;border-radius:50%;background:var(--status)}
+.g2 .day{position:absolute;right:0;top:3px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted-2);opacity:1;animation:plive 6.5s infinite}
+@keyframes pbuild{0%,6%{opacity:1}44%,100%{opacity:0}}
+@keyframes plive{0%,48%{opacity:0;transform:translateY(4px)}56%,96%{opacity:1;transform:none}100%{opacity:0}}
+
+/* g3 · Co-create: two chips merge into a worker */
+.g3{left:50%;bottom:20px;transform:translateX(-50%);width:min(316px,calc(100% - 40px))}
+.g3 .chips{display:flex;align-items:center;justify-content:center;gap:10px}
+.g3 .chip{font-size:12px;font-weight:600;color:var(--ink);background:var(--bone);border:1px solid var(--line);border-radius:24px;padding:7px 13px;white-space:nowrap}
+.g3 .chip.a{animation:slidea 8s infinite}
+.g3 .chip.b{animation:slideb 8s infinite}
+.g3 .plus{font-size:14px;color:var(--muted-2);font-weight:500;animation:cfade3 8s infinite}
+.g3 .made{display:flex;align-items:center;gap:10px;margin-top:13px;padding-top:13px;border-top:1px solid var(--line-2);animation:madein 8s infinite}
+.g3 .wv{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-family:var(--mark);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.g3 .mt1{font-weight:600;font-size:13.5px;color:var(--ink)}
+.g3 .mt2{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-deep);margin-top:2px}
+@keyframes slidea{0%{opacity:0;transform:translateX(-16px)}9%,90%{opacity:1;transform:none}97%,100%{opacity:0}}
+@keyframes slideb{0%{opacity:0;transform:translateX(16px)}9%,90%{opacity:1;transform:none}97%,100%{opacity:0}}
+@keyframes cfade3{0%,4%{opacity:0}12%,90%{opacity:1}97%,100%{opacity:0}}
+@keyframes madein{0%,26%{opacity:0;transform:translateY(9px)}36%,90%{opacity:1;transform:none}97%,100%{opacity:0}}
+
+@media(prefers-reduced-motion:reduce){
+  .g1 .row,.g1 .cline,.g1 .carea,.g2 .pill,.g2 .day,.g3 .chip,.g3 .plus,.g3 .made{animation:none!important}
+  .g2 .p-build{opacity:0}
 }
 
-.sv-caps{display:none;margin-top:36px}
-.sv-caps.on{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;animation:fade .4s ease}
-@media(max-width:780px){.sv-caps.on{grid-template-columns:1fr;gap:24px;max-width:460px;margin-left:auto;margin-right:auto}}
-.cap .ci{width:30px;height:30px;border-radius:8px;background:var(--bone);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:14px}
-.cap .ci svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.cap h3{font-size:16px;margin-bottom:8px;letter-spacing:-.01em}
-.cap p{font-size:14px;color:var(--muted);line-height:1.55}
-
-/* ---------- testimonial ---------- */
-.testi{padding:96px 0;background:var(--bone)}
-.testi-card{max-width:820px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:44px 46px;box-shadow:0 30px 70px -50px rgba(21,17,13,.4)}
-@media(max-width:600px){.testi-card{padding:32px 26px}}
-.testi-lg{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.02em;color:var(--ink);margin-bottom:22px}
-.testi-q{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.4vw,27px);line-height:1.36;letter-spacing:-.02em;color:var(--ink);margin-bottom:28px}
-.testi-by{display:flex;align-items:center;gap:14px}
-.testi-av{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--display);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
-.testi-n{display:block;font-weight:600;font-size:15px;color:var(--ink)}
-.testi-r{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
-.testi-link{margin-left:auto;font-family:var(--display);font-weight:500;font-size:13px;color:var(--accent-deep);text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
-.testi-link .ar{transition:transform .22s}
-.testi-link:hover .ar{transform:translateX(3px)}
-@media(max-width:560px){.testi-link{display:none}}
-
-/* ---------- the suite ---------- */
+/* ---------- the suite (ways to partner) ---------- */
 .suite{padding:100px 0;background:var(--paper)}
 .suite .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
 .suite .section-head .eyebrow{margin-bottom:16px}
@@ -286,18 +306,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .suite-card.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
 .sc-id{display:flex;gap:13px;align-items:center}
-.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
-.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
-.wmark>b,.wmark>span.mk{position:relative;z-index:1;font-weight:700}
-.wmark.s56{width:56px;height:56px;font-size:24px}
-.wmark.s46{width:46px;height:46px;font-size:19px}
-.wmark.s36{width:36px;height:36px;font-size:15px}
-.wmark.s24{width:24px;height:24px;font-size:10.5px}
-.wmark.s20{width:20px;height:20px;font-size:9px}
-.wmark.two{letter-spacing:-.02em}
-.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
-.sc-name{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
-.sc-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
+.sc-av{width:46px;height:46px;border-radius:12px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sc-av svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sc-name{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.02em;color:var(--ink);line-height:1.15}
+.sc-role{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-top:6px}
 .sc-desc{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 18px;flex:1}
 .sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .sc-tag{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:4px 9px}
@@ -306,31 +318,22 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .suite-card:hover .sc-link{color:var(--accent)}
 .sc-link .ar{transition:transform .22s ease}
 .suite-card:hover .sc-link .ar{transform:translateX(3px)}
-.spill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:5px 10px;border-radius:20px;white-space:nowrap}
-.spill .sd{width:6px;height:6px;border-radius:50%}
-.spill.live{color:var(--status-d);background:rgba(62,196,109,.13)}
-.spill.live .sd{background:var(--status);animation:pulse 2s infinite}
-.spill.avail{color:var(--muted);background:var(--bone-2);border:1px solid var(--line)}
-.spill.avail .sd{display:none}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 6px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
 
-/* ---------- how it fits ---------- */
-.fits{background:var(--navy);color:#fff;padding:84px 0}
-.fits-head{max-width:640px;margin:0 auto 38px;text-align:center}
+/* ---------- the program (dark band) ---------- */
+.fits{background:var(--ink);color:#fff;padding:84px 0}
+.fits-head{max-width:660px;margin:0 auto 40px;text-align:center}
 .fits-head .eyebrow{color:var(--accent-2);margin-bottom:16px}
 .fits-head h2{font-size:clamp(25px,3.2vw,37px);color:#fff;margin-bottom:14px}
-.fits-sub{font-size:clamp(15px,1.4vw,17px);color:rgba(225,232,242,.66);max-width:54ch;margin:0 auto;line-height:1.55}
-.fits-logos{display:flex;justify-content:center;align-items:stretch;gap:14px;flex-wrap:wrap;margin-bottom:34px}
-.ftile{background:#fff;border-radius:14px;width:152px;padding:20px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px}
-.ftile .fic{height:34px;display:flex;align-items:center;justify-content:center}
-.ftile .fic svg{height:32px;width:auto;max-width:54px;display:block}
-.ftile .flb{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
-.ftile .dcmark{width:34px;height:34px;border-radius:8px;background:#1b2a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:-.01em}
-.fits-claims{display:flex;justify-content:center;align-items:center;gap:12px 24px;flex-wrap:wrap;text-align:center;max-width:760px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
-.fits-claims span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(225,232,242,.7)}
-@media(max-width:540px){.ftile{width:calc(50% - 7px)}}
+.fits-sub{font-size:clamp(15px,1.4vw,17px);color:rgba(245,240,232,.66);max-width:56ch;margin:0 auto;line-height:1.55}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:820px){.prog-grid{grid-template-columns:1fr;gap:18px;max-width:520px;margin:0 auto}}
+.prog-col{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 26px}
+.prog-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2);margin-bottom:16px}
+.prog-col h3{font-size:19px;color:#fff;margin-bottom:12px;letter-spacing:-.01em}
+.prog-col p{font-size:14.5px;color:rgba(245,240,232,.72);line-height:1.6}
 
-/* ---------- results ---------- */
+/* ---------- results / proof ---------- */
 .results{padding:100px 0;background:var(--bone)}
 .results .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
 .results .section-head .eyebrow{margin-bottom:16px}
@@ -338,21 +341,17 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .results .section-head .lead{margin:0 auto}
 .res-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:760px;margin:0 auto}
 @media(max-width:820px){.res-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
-.res-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease}
+.res-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease}
 .res-card:hover{transform:translateY(-4px);box-shadow:0 26px 56px -38px rgba(21,17,13,.45);border-color:var(--sand-deep)}
-.res-lg{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.01em;color:var(--ink);margin-bottom:24px}
-.res-n{font-family:var(--display);font-weight:600;font-size:clamp(38px,4.6vw,52px);letter-spacing:-.03em;line-height:1;color:var(--navy)}
+.res-lg{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:22px}
+.res-n{font-family:var(--display);font-weight:600;font-size:clamp(36px,4.4vw,50px);letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .res-nl{font-size:13.5px;color:var(--accent-deep);font-weight:500;margin-top:8px;margin-bottom:14px}
 .res-p{font-size:14px;color:var(--muted);line-height:1.55;flex:1}
-.res-link{font-family:var(--display);font-weight:500;font-size:13px;color:var(--ink);display:inline-flex;align-items:center;gap:7px;margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
-.res-card:hover .res-link{color:var(--accent)}
-.res-link .ar{transition:transform .22s}
-.res-card:hover .res-link .ar{transform:translateX(3px)}
 
 /* ---------- cta ---------- */
 .cta{padding:104px 0;background:var(--paper);text-align:center}
 .cta h2{margin-bottom:16px}
-.cta p{color:var(--muted);font-size:18px;max-width:52ch;margin:0 auto 32px;line-height:1.55}
+.cta p{color:var(--muted);font-size:18px;max-width:54ch;margin:0 auto 32px;line-height:1.55}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ---------- footer (consistent across all pages) ---------- */
@@ -383,7 +382,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 /* ---------- reveals ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease);will-change:transform,opacity}
 .reveal.in{opacity:1;transform:none}
-a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visible,.res-card:focus-visible,.sv-tab:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visible,.res-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
 .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:11px 18px;border-radius:0 0 10px 0;font-family:var(--display);font-size:14px;text-decoration:none}
 .skip:focus{left:0}
 @media(prefers-reduced-motion:reduce){
@@ -393,14 +392,23 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
 /* ---------- mobile pass ---------- */
 @media(max-width:760px){
-  .wrap,.header-inner{padding:0 20px}
+  .wrap{padding:0 20px}
   .hero{padding:104px 0 0}
-  .showcase,.testi,.suite,.results,.cta{padding:72px 0}
+  .showcase,.suite,.results,.cta{padding:72px 0}
   .logos{padding:44px 0 6px}
   .cta-btns .btn{width:100%;justify-content:center;padding:15px 22px;font-size:15px}
-  .menu-toggle{padding:10px;margin-right:-10px}
   .foot-links{gap:36px}
 }
+/* worker icon system (nav rollout) */
+.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
+.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.wmark>b{position:relative;z-index:1;font-weight:700}
+.wmark.s56{width:56px;height:56px;font-size:24px}.wmark.s46{width:46px;height:46px;font-size:19px}.wmark.s36{width:36px;height:36px;font-size:15px}.wmark.s24{width:24px;height:24px;font-size:10.5px}.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
+.mi.mi-w{display:flex;gap:10px;align-items:center}
+.mi-glyph{flex:none;width:18px;height:18px;color:var(--muted-2)}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi-w .mi-tx{min-width:0;display:block}
 </style>
 </head>
 <body>
@@ -611,178 +619,229 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">Legal</h1>
-    <div class="tag fade-up d2">Turn visitors into clients. Prepare them before they arrive.</div>
+    <span class="eyebrow fade-up d1">Partners &middot; Agencies and consultancies</span>
+    <h1 class="fade-up d1">The AI your clients ask for,<br>without building it.</h1>
+    <div class="tag fade-up d2">You bring the client and the domain. We build, run, and maintain the workers behind your engagement, and you stay the trusted partner.</div>
     <div class="media fade-up d3">
-      <!-- hero video to be produced; wire the real path when it lands -->
-      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-legal.jpg">
-        <source src="/video/legal-hero.mp4" type="video/mp4">
-      </video>
-      <button class="m-toggle" id="legalVidToggle" type="button" aria-label="Pause video">
-        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </button>
+      <!-- Real Gambit campaign image from HPE Discover 2026. Swap for a partner sizzle clip later:
+           replace this <img> with the <video class="m-vid"> block and re-enable the toggle. -->
+      <img class="m-still" src="/img/partners-hero-vegas.jpg" alt="Gambit AI workers on stand at HPE Discover 2026 in Las Vegas" width="1920" height="1078" loading="eager" decoding="async">
     </div>
   </div>
 </section>
 
-<!-- LOGO STRIP (real clients) -->
+<!-- LOGO STRIP (live deployments · placeholder wordmarks, swap for real logos) -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Trusted across legal</div>
+    <div class="ll">AI solutions already live across industries</div>
     <div class="logobar">
-      <!-- interim text wordmark: no Pulse Law logo asset in the repo yet. Swap for <img class="lg" src="/img/<file>.png" alt="Pulse Law LLP" style="height:34px"> when the firm's logo lands. Add more firm logos as they go live. -->
-      <span class="lgword" aria-label="Pulse Law LLP">Pulse&nbsp;Law <b>LLP</b></span>
+      <img class="lg" src="/img/Spearhead.png" alt="Spearhead" style="height:40px">
+      <img class="lg light" src="/img/OceanPark.png" alt="OceanPark" style="height:34px">
+      <img class="lg" src="/img/town-of-vail.png" alt="Town of Vail" style="height:52px">
+      <img class="lg" src="/img/geotab.png" alt="Geotab" style="height:24px">
     </div>
   </div>
 </section>
 
-<!-- SUB-VERTICAL SHOWCASE -->
+<!-- VALUE ROWS (alternating text / image) -->
 <section class="showcase" id="showcase">
   <div class="wrap">
-    <div class="sv-tabs" id="svTabs">
-      <button class="sv-tab on" data-seg="firm">Law Firms</button>
-      <button class="sv-tab" data-seg="inhouse">In-house Legal</button>
-      <button class="sv-tab" data-seg="access">Access to Justice</button>
+    <div class="section-head">
+      <span class="eyebrow">Why partner</span>
+      <h2>AI, finally packaged the way you sell.</h2>
     </div>
 
-    <div class="sv-head on" data-seg="firm"><h2>Turn website visitors into consultations.</h2></div>
-    <div class="sv-head" data-seg="inhouse"><h2>Triage before it reaches counsel.</h2></div>
-    <div class="sv-head" data-seg="access"><h2>Legal help that does not keep office hours.</h2></div>
-
-    <!-- load-desk mockup (static, anchors the section) -->
-    <div class="mock">
-      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Intake Desk</span><span class="ml"><span class="dot"></span> live</span></div>
-      <div class="mock-stats">
-        <div class="ms"><div class="mn">48</div><div class="mk">Intakes today</div></div>
-        <div class="ms"><div class="mn">80%</div><div class="mk">Converted</div></div>
-        <div class="ms"><div class="mn">6</div><div class="mk">Routed to a partner</div></div>
+    <!-- 01 · MONETIZE -->
+    <div class="feat">
+      <div class="ftxt">
+        <span class="flabel">01 · Recurring</span>
+        <h3>The engagement that keeps running.</h3>
+        <p>A strategy deck ends the day you present it. An AI worker keeps working. Turn the recommendation you already make into a solution your client runs every day, on a retainer, so the value compounds long after the project closes.</p>
+        <ul class="flist">
+          <li>A project becomes recurring revenue</li>
+          <li>Cost certainty on every deployment</li>
+          <li>Land with one team, expand across the account</li>
+        </ul>
       </div>
-      <div class="mrow mh"><span>Inquiry</span><span class="mmut">Matter</span><span class="c-fit">Readiness</span><span>Worker</span><span>Status</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; Sun 9:12pm</span><span class="mmut">Employment dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
-      <div class="mrow"><span class="mco">Voice &middot; 11:20pm</span><span class="mmut">Shareholder dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:76%"></b></span><span class="fv">76</span></span><span class="mtag">AskTodd</span><span class="mst scr">Routing</span></div>
-      <div class="mrow"><span class="mco">SMS &middot; 7:05am</span><span class="mmut">IP and trademark</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">AskTodd</span><span class="mst new">Booked</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; 10:48pm</span><span class="mmut">Contract review</span><span class="c-fit mfit"><span class="bar"><b style="width:69%"></b></span><span class="fv">69</span></span><span class="mtag">AskTodd</span><span class="mst dr">Prepared</span></div>
+      <div class="fmedia">
+        <!-- placeholder scene: swap for a real client-meeting photo or clip -->
+        <div class="fscene fx-meet"></div>
+        <div class="fgrain"></div>
+        <div class="fvig"></div>
+        <div class="fcard g1">
+          <div class="fc-lbl">Your recurring revenue</div>
+          <svg viewBox="0 0 280 54" preserveAspectRatio="none" aria-hidden="true">
+            <path class="carea" d="M4 48 L44 42 L92 38 L142 28 L196 18 L272 7 L272 52 L4 52 Z"/>
+            <path class="cline" d="M4 48 L44 42 L92 38 L142 28 L196 18 L272 7"/>
+          </svg>
+          <div class="row"><span class="wv">F</span><span class="cl">City of Fairview</span><span class="ok">SIGNED &middot; RESIDENT AI</span></div>
+          <div class="row"><span class="wv">M</span><span class="cl">Meridian Freight</span><span class="ok">SIGNED &middot; FREIGHT AI</span></div>
+          <div class="row"><span class="wv">C</span><span class="cl">Cedar Health Group</span><span class="ok">SIGNED &middot; CARE AI</span></div>
+        </div>
+      </div>
     </div>
 
-    <div class="sv-caps on" data-seg="firm">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Convert the after-hours visitor</h3><p>Clients research their options on a Sunday night. AskTodd engages them the moment they land, so interest becomes a booked consultation instead of a closed tab.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>First hour on strategy, not orientation</h3><p>Clients arrive already understanding their position and what to ask, so your associates skip the foundations and go straight to substance.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><circle cx="12" cy="14" r="6"/><path d="M9.5 14l1.7 1.7 3.3-3.4"/></svg></div><h3>Routed to the right practice area</h3><p>Every inquiry sent to the right team, from a corporate dispute to an IP question, before it reaches a partner's desk.</p></div>
+    <!-- 02 · DIFFERENTIATE -->
+    <div class="feat rev">
+      <div class="ftxt">
+        <span class="flabel">02 · Differentiate</span>
+        <h3>Show it working, not on a slide.</h3>
+        <p>Every firm pitches an AI point of view. You arrive with a worker already running on the client's own data in about two weeks, customized to their operation and improving after launch. A deliverable they can watch work, not a recommendation to revisit next quarter.</p>
+        <ul class="flist">
+          <li>Customized to each client, not off the shelf</li>
+          <li>Live on their data in about two weeks</li>
+          <li>Keeps improving after you hand it over</li>
+        </ul>
+      </div>
+      <div class="fmedia">
+        <!-- placeholder scene: swap for a real pitch-room photo or clip -->
+        <div class="fscene fx-pitch"></div>
+        <div class="fgrain"></div>
+        <div class="fvig"></div>
+        <div class="fcard g2">
+          <div class="fc-lbl">Client demo</div>
+          <div class="wrow"><span class="wv">AI</span><span><span class="wn">Resident services</span><div class="wr">Custom solution</div></span></div>
+          <div class="stat">
+            <span class="pill p-build">In build</span>
+            <span class="pill p-live"><span class="sd"></span> Live</span>
+            <span class="day">Day 14</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="sv-caps" data-seg="inhouse">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2"/><path d="M4 10h16"/><path d="M8 15h5"/></svg></div><h3>Triage the legal inbox</h3><p>Routine questions answered and requests routed, so counsel's hours go to the matters that actually need a lawyer.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Grounded in your playbook</h3><p>Policies, templates, and precedent applied consistently, in the language your team already uses, not the open web.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>A record of every ask</h3><p>Each request logged and auditable, so nothing slips through and patterns surface while they still matter.</p></div>
+
+    <!-- 03 · CO-CREATE -->
+    <div class="feat">
+      <div class="ftxt">
+        <span class="flabel">03 · Your name on it</span>
+        <h3>Built with your team, delivered as yours.</h3>
+        <p>You bring the domain and the relationship. We work alongside your team to design the worker, stand it up, and run it behind your engagement. You stay the face of the work, we stay the engine, and it is repeatable with the next client.</p>
+        <ul class="flist">
+          <li>Your expertise, our build, one team</li>
+          <li>You own the client relationship, always</li>
+          <li>Repeatable across your whole book</li>
+        </ul>
+      </div>
+      <div class="fmedia">
+        <!-- placeholder scene: swap for a real working-session photo or clip -->
+        <div class="fscene fx-lab"></div>
+        <div class="fgrain"></div>
+        <div class="fvig"></div>
+        <div class="fcard g3">
+          <div class="fc-lbl">Built together</div>
+          <div class="chips">
+            <span class="chip a">Your expertise</span>
+            <span class="plus">+</span>
+            <span class="chip b">The Factory</span>
+          </div>
+          <div class="made"><span class="wv">S</span><span><div class="mt1">A new solution</div><div class="mt2">Yours to deliver</div></span></div>
+        </div>
+      </div>
     </div>
-    <div class="sv-caps" data-seg="access">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Help that does not keep office hours</h3><p>People with legal questions get clear, plain-language guidance at midnight, not a callback in three weeks.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><h3>The process, without the jargon</h3><p>What they are facing and what to do next, explained simply, so the system stops being a maze.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.6-3.6"/></svg></div><h3>Pointed to the right resource</h3><p>Connected to the right clinic, form, or service, with what they need to actually use it.</p></div>
-    </div>
+
   </div>
 </section>
 
-<!-- TESTIMONIAL: quote is from the live AskTodd case study. Confirm the named spokesperson at Pulse Law before publishing an attributed name. -->
-<section class="testi">
-  <div class="wrap">
-    <div class="testi-card">
-      <div class="testi-lg">PULSE LAW LLP</div>
-      <div class="testi-q">The best legal outcomes start with better-prepared clients. AskTodd makes that preparation accessible to everyone, not just those who already know how the system works.</div>
-      <div class="testi-by">
-        <span class="testi-av">PL</span>
-        <span><span class="testi-n">Partner</span><span class="testi-r">Pulse Law LLP</span></span>
-        <a class="testi-link" href="/case-study/asktodd">Read the story <span class="ar">&rarr;</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THE SUITE -->
+<!-- WAYS TO PARTNER -->
 <section class="suite" id="suite">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The suite</span>
-      <h2>Gambit for Legal.</h2>
-      <p class="lead">Three workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
+      <span class="eyebrow">How agencies use Gambit</span>
+      <h2>Three ways to put it to work.</h2>
+      <p class="lead">However you sell, there is a way to put a working AI solution in front of your clients, without building or running it yourself.</p>
     </div>
     <div class="suite-grid">
 
-      <!-- AskTodd is deployed at Pulse Law LLP. /workers/asktodd page may not exist yet; link points to the live case study. -->
-      <a class="suite-card featured" href="/case-study/asktodd">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-asktodd)"><b>T</b></span><div><div class="sc-name">AskTodd</div><div class="sc-role">Legal strategy</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Modeled on decades of practice at Pulse Law. Helps clients understand their situation, weigh their options, and arrive at the first consultation prepared. Around the clock, across web, SMS, and voice.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Client intake</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card featured" href="#how">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av"><svg viewBox="0 0 24 24"><path d="M4 20V6a1 1 0 0 1 1-1h9l4 4v11a1 1 0 0 1-1 1z"/><path d="M13 5v4h4"/><path d="M8 13h6M8 16h4"/></svg></span><div><div class="sc-name">Extend the engagement</div><div class="sc-role">Strategy that ships</div></div></div></div>
+        <p class="sc-desc">You already tell clients what to do. Add the worker that does it. The recommendation becomes a running solution on their data, and the retainer runs with it.</p>
+        <div class="sc-tags"><span class="sc-tag">Retainer add-on</span><span class="sc-tag">Recurring</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">How it works <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/jericho">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-jericho)"><b>J</b></span><div><div class="sc-name">Jericho</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Client questions, intake, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits a law firm.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">In-house</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Jericho <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card" href="#how">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av"><svg viewBox="0 0 24 24"><path d="M12 3l2.3 4.7 5.2.8-3.7 3.6.9 5.1L12 15.8 7.3 17.2l.9-5.1L4.5 8.5l5.2-.8z"/></svg></span><div><div class="sc-name">Deliver it as yours</div><div class="sc-role">Your brand, our engine</div></div></div></div>
+        <p class="sc-desc">Put the work in front of the client under your name. You stay the trusted advisor and the face of the solution. We stay the engine behind it, out of sight.</p>
+        <div class="sc-tags"><span class="sc-tag">White-label</span><span class="sc-tag">Your relationship</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">How it works <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/mira">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-mira)"><b>M</b></span><div><div class="sc-name">Mira</div><div class="sc-role">Research</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Turns your practice areas and matters into live research: background, conflicts, and the landscape around a new client or a new case.</p>
-        <div class="sc-tags"><span class="sc-tag">Law firms</span><span class="sc-tag">Corporate</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Mira <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card" href="#how">
+        <div class="sc-top"><div class="sc-id"><span class="sc-av"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c2.5.5 4.5 2.6 4.5 5.3"/></svg></span><div><div class="sc-name">Co-build with us</div><div class="sc-role">Your domain, our build</div></div></div></div>
+        <p class="sc-desc">Bring deep expertise in a vertical? We build the worker with your team, then you take it across your whole book. Real partners, from first pitch to expansion.</p>
+        <div class="sc-tags"><span class="sc-tag">Co-created</span><span class="sc-tag">Repeatable</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">How it works <span class="ar">&rarr;</span></span></div>
       </a>
 
     </div>
   </div>
 </section>
 
-<!-- HOW IT FITS -->
-<section class="fits" id="fits">
+<!-- THE PROGRAM -->
+<section class="fits" id="program">
   <div class="wrap">
     <div class="fits-head">
-      <span class="eyebrow">How it fits</span>
-      <h2>Works inside the systems your firm already runs.</h2>
-      <p class="fits-sub">Grounded in your practice management, your documents, and your firm's own approach, not the open web, so what a worker tells a client is what your firm would tell them. No rip and replace, and nothing for your team to relearn.</p>
+      <span class="eyebrow">The program</span>
+      <h2>You own the client. We run the AI.</h2>
+      <p class="fits-sub">A partnership built to be simple. You bring the relationship, we bring the solutions and the engine behind them, and we share in what they create.</p>
     </div>
-    <div class="fits-logos">
-      <!-- placeholder monogram tiles: swap for real Clio / NetDocuments / iManage / Twilio logos when licensed; confirm the actual integration list with Chris -->
-      <div class="ftile"><span class="fic"><span class="dcmark">cl</span></span><span class="flb">Clio</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">nd</span></span><span class="flb">NetDocuments</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">im</span></span><span class="flb">iManage</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">tw</span></span><span class="flb">Twilio</span></div>
-    </div>
-    <div class="fits-claims">
-      <span>Runs on your infrastructure</span>
-      <span>On the model you choose</span>
-      <span>Every action auditable</span>
-      <span>SOC 2</span>
+    <div class="prog-grid">
+      <div class="prog-col" id="how">
+        <div class="prog-lbl">How it works</div>
+        <h3>You stay the trusted partner</h3>
+        <p>You own the client and the relationship. We build, run, and maintain the solution on their data and systems. You stay the face of it. We stay the engine behind it.</p>
+      </div>
+      <div class="prog-col" id="economics">
+        <div class="prog-lbl">Partner economics</div>
+        <h3>Paid on outcomes, shared</h3>
+        <p>Solutions are priced on the work they deliver, not seats or licenses, and we share in the value created together. The specifics flex to how you sell. Let's shape it to your model.</p>
+      </div>
+      <div class="prog-col" id="who">
+        <div class="prog-lbl">Who it is for</div>
+        <h3>Built for client-services firms</h3>
+        <p>Strategy consultancies, digital and marketing agencies, systems integrators, and advisory firms who want a working AI solution in their offering without building or running it themselves.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
+<!-- PROOF -->
 <section class="results" id="results">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Customers</span>
-      <h2>The results speak for themselves.</h2>
-      <p class="lead">Real outcomes at a real firm. The website visitors who used to leave now arrive as prepared, qualified consultations.</p>
+      <span class="eyebrow">Why partners win</span>
+      <h2>Proof, not promises.</h2>
+      <p class="lead">The reasons partners put Gambit solutions in front of their clients, and why the second deployment is easier than the first.</p>
     </div>
     <div class="res-grid">
 
-      <a class="res-card" href="/case-study/asktodd">
-        <div class="res-lg">Pulse Law LLP</div>
-        <div class="res-n">80%</div>
-        <div class="res-nl">visitor to consultation</div>
-        <p class="res-p">Prospective clients who engage with AskTodd convert to booked consultations at a far higher rate than a traditional web form ever did.</p>
-        <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
-      </a>
+      <div class="res-card">
+        <div class="res-lg">Time to value</div>
+        <div class="res-n">Two weeks</div>
+        <div class="res-nl">to a working solution</div>
+        <p class="res-p">We stand up a worker on your client's own data and show it running inside your engagement, not a slide about what it might do one day.</p>
+      </div>
 
-      <a class="res-card" href="/case-study/asktodd">
-        <div class="res-lg">Time on strategy</div>
-        <div class="res-n">20%</div>
-        <div class="res-nl">more internal efficiency</div>
-        <p class="res-p">Clients arrive prepared, so the legal team skips the first-hour orientation and goes straight to substantive strategy.</p>
-        <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
-      </a>
+      <div class="res-card">
+        <div class="res-lg">Your cost to build</div>
+        <div class="res-n">Zero</div>
+        <div class="res-nl">you sell, we build</div>
+        <p class="res-p">No engineering team, no infrastructure to run. We build, run, and maintain every solution behind your engagement.</p>
+      </div>
+
+      <div class="res-card">
+        <div class="res-lg">Live today</div>
+        <div class="res-n">Four</div>
+        <div class="res-nl">industries ready to resell</div>
+        <p class="res-p">Financial services, logistics, smart cities, and care are already deployed and running. More on the way.</p>
+      </div>
+
+      <div class="res-card">
+        <div class="res-lg">One engine</div>
+        <div class="res-n">The Factory</div>
+        <div class="res-nl">behind every solution</div>
+        <p class="res-p">Every solution runs on the same engine, so the second one is faster to stand up than the first, and it compounds from there.</p>
+      </div>
 
     </div>
   </div>
@@ -791,12 +850,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>See what a worker does for your firm.</h2>
-    <p>Tell us the outcome you need, from the first website visit to the booked consultation. We will show you what it does, on your practice, in two weeks.</p>
+    <h2>Bring the client. We'll bring the AI.</h2>
+    <p>Tell us who you advise. We will show you the workers you could put in front of them, and how we share the upside.</p>
     <div class="cta-btns">
-      <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
-      <!-- One-pager PDF to be generated next; wire this to the real file path -->
-      <a href="/legal-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
+      <a href="/get-started" class="btn btn-dark">Become a partner <span class="ar">&rarr;</span></a>
+      <!-- Partner one-pager PDF to be generated next; wire this to the real file path -->
+      <a href="/partner-program.pdf" class="btn btn-ghost">See the program</a>
     </div>
   </div>
 </section>
@@ -836,7 +895,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
 /* ----- hero video: play/pause toggle ----- */
 (function(){
-  var v=document.querySelector('.m-vid'),btn=document.getElementById('legalVidToggle');
+  var v=document.querySelector('.m-vid'),btn=document.getElementById('heroVidToggle');
   if(!v||!btn)return;
   function sync(){var p=v.paused;btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play video':'Pause video');}
   btn.addEventListener('click',function(){v.paused?v.play():v.pause();});
@@ -888,22 +947,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mob.classList.remove('open');document.body.style.overflow='';}));
 })();
 
-/* ----- sub-vertical tabs ----- */
-document.querySelectorAll('.sv-tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    const k=t.dataset.seg;
-    document.querySelectorAll('.sv-tab').forEach(q=>q.classList.toggle('on',q===t));
-    document.querySelectorAll('.sv-head,.sv-caps').forEach(p=>p.classList.toggle('on',p.dataset.seg===k));
-  });
-});
-
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.sv-tabs,.mock,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.showcase .section-head,.feat,.suite .section-head,.suite-card,.fits-head,.prog-col,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
-  document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
+  document.querySelectorAll('.suite-grid,.res-grid,.prog-grid').forEach(g=>{
     [...g.children].filter(c=>c.classList.contains('reveal')).forEach((c,i)=>c.style.transitionDelay=(i*70)+'ms');
   });
   if(RM){els.forEach(el=>el.classList.add('in'));}
