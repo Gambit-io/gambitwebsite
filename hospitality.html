@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Public Sector · Gambit</title>
-<meta name="description" content="Gambit for the Public Sector. AI workers for resident services: parking, permits, events, and questions, answered the first time, any hour, in every language.">
+<title>Hospitality and Entertainment · Gambit</title>
+<meta name="description" content="Gambit for Hospitality and Entertainment. AI workers that find hotel demand within five miles, coach sales teams on a proven methodology, and answer fans in a real voice, around the clock.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/public-sector">
+<link rel="canonical" href="https://gambitco.io/hospitality">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Public Sector · Gambit">
-<meta property="og:description" content="Every resident answered. The first time, any hour. AI workers for cities, around the clock.">
-<meta property="og:image" content="https://gambitco.io/og-homepage.png">
-<meta property="og:url" content="https://gambitco.io/public-sector">
+<meta property="og:title" content="Hospitality and Entertainment · Gambit">
+<meta property="og:description" content="Less searching. More selling. AI workers for hotels and entertainment, around the clock.">
+<meta property="og:image" content="https://gambitco.io/img/ind-gillis.jpg">
+<meta property="og:url" content="https://gambitco.io/hospitality">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,8 @@
   --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
   /* roster audit additions (reserve palette) */
   --w-bibi:#b8791f;--w-geotab:#2f4858;--w-demi:#7a2e3f;--w-evamarie:#a04a24;--w-chaddict:#6a4d78;--w-clinic:#5c4632;--w-sentry:#4a3b63;
+  /* Gillis brand tiles (Ryan's call) + provisional AskAmber pending its own mark */
+  --w-gillisos:#1e1745;--w-askgillis:#4b3a9e;--w-askamber:#4a4f57;
   --ink:#15110d;
   --ink-2:#1f1a14;
   --paper:#ffffff;
@@ -43,12 +45,20 @@
   --muted-d:rgba(240,243,248,.6);
   --status:#3ec46d;
   --status-d:#1f9e54;
-  /* Industry accent: deep navy + vermilion */
-  --navy:#0e1a2c;
-  --navy-2:#16263e;
-  --accent:#F04E36;
-  --accent-2:#ff8a72;
-  --accent-deep:#c73a23;
+  /* worker job-family hues (icon system; match the site scene palette) */
+  --f-core:#a07c61;
+  --f-ma:#2b3a54;
+  --f-sup:#57606e;
+  --f-care:#8a5560;
+  --f-civic:#54697b;
+  --f-log:#a0713a;
+  --f-legal:#6b5d3f;
+  /* Hospitality accent: Gillis indigo + violet */
+  --navy:#1e1745;
+  --navy-2:#2a2060;
+  --accent:#5a48b0;
+  --accent-2:#a99bde;
+  --accent-deep:#443488;
   --display:'General Sans','Helvetica Neue',Arial,sans-serif;
   --mark:'Orbitron',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -56,6 +66,25 @@
   --ease:cubic-bezier(.16,1,.3,1);
   --ease-hero:cubic-bezier(0,.55,.45,1);
 }
+
+/* ---------- worker icon system ---------- */
+/* monogram marks: Orbitron letterform on a family-colored tile (identity) */
+.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
+.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.wmark>b,.wmark>span.mk{position:relative;z-index:1;font-weight:700}
+.wmark.s56{width:56px;height:56px;font-size:24px}
+.wmark.s46{width:46px;height:46px;font-size:19px}
+.wmark.s36{width:36px;height:36px;font-size:15px}
+.wmark.s24{width:24px;height:24px;font-size:10.5px}
+.wmark.s20{width:20px;height:20px;font-size:9px}
+.wmark.two{letter-spacing:-.02em}
+.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
+/* role glyphs: supporting language in the Products megamenu (never an avatar) */
+.mi.mi-w{display:flex;gap:10px;align-items:center}
+.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
+.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mi:hover .mi-glyph{color:var(--clay-deep)}
+.mi-w .mi-tx{min-width:0;display:block}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:74px}
@@ -121,11 +150,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mi-role{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);font-weight:500}
 .mi:hover .mi-name{color:var(--clay-deep)}
 .mi-desc{font-size:12.5px;color:var(--muted);line-height:1.45;margin-top:3px}
-.mi.mi-w{display:flex;gap:10px;align-items:center}
-.mi-glyph{flex:none;width:18px;height:18px;margin-top:2px;color:var(--muted-2);transition:color .15s}
-.mi-glyph svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.mi:hover .mi-glyph{color:var(--clay-deep)}
-.mi-w .mi-tx{min-width:0;display:block}
 .livetag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--status-d);background:rgba(62,196,109,.13);padding:2px 7px;border-radius:20px}
 .livetag .sd{width:5px;height:5px;border-radius:50%;background:var(--status)}
 .grid-prod{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
@@ -204,6 +228,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .logobar .lg{width:auto;display:block;filter:grayscale(1);opacity:.55;transition:filter .25s var(--ease),opacity .25s var(--ease)}
 .logobar .lg.light{filter:grayscale(1) brightness(.62)}
 .logobar .lg:hover{filter:none;opacity:1}
+.logobar .lgt{font-family:var(--display);font-weight:600;font-size:clamp(17px,2vw,22px);letter-spacing:-.01em;color:var(--muted-2);opacity:.85;transition:color .25s var(--ease),opacity .25s var(--ease)}
+.logobar .lgt:hover{color:var(--ink);opacity:1}
 
 /* ---------- sub-vertical showcase ---------- */
 .showcase{padding:100px 0;background:var(--paper)}
@@ -216,7 +242,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .sv-head h2{font-size:clamp(26px,3.4vw,40px)}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* load-desk mockup */
+/* deal-desk mockup */
 .mock{margin:30px auto 0;max-width:880px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -44px rgba(14,26,44,.4)}
 .mock-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy);border-bottom:1px solid #1d3050}
 .mock-bar .tl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
@@ -228,7 +254,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mock-stats .ms:last-child{border-right:0}
 .mock-stats .mn{font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy);letter-spacing:-.02em}
 .mock-stats .mk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
-.mrow{display:grid;grid-template-columns:1.2fr 1.5fr .9fr .9fr .9fr;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-2);align-items:center;font-size:12.5px}
+.mrow{display:grid;grid-template-columns:1.5fr 1.4fr .8fr .9fr .8fr;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-2);align-items:center;font-size:12.5px}
 .mrow.mh{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);background:#fcfbf9;padding-top:10px;padding-bottom:10px}
 .mrow:last-child{border-bottom:0}
 .mrow .mco{font-weight:600;color:#231f1a}
@@ -242,6 +268,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mst.new{background:rgba(62,196,109,.15);color:var(--status-d)}
 .mst.scr{background:rgba(46,108,180,.14);color:#2a6cb4}
 .mst.dr{background:rgba(240,78,54,.12);color:var(--accent-deep)}
+.mst.nu{background:var(--bone-2);color:var(--muted)}
 @media(max-width:640px){
   .mrow{grid-template-columns:1.4fr .8fr .9fr;gap:8px}
   .mrow .mmut,.mrow .c-fit{display:none}
@@ -282,16 +309,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .suite-card.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
 .sc-id{display:flex;gap:13px;align-items:center}
-.wmark{position:relative;overflow:hidden;border-radius:26%;display:inline-flex;align-items:center;justify-content:center;flex:none;color:#fff;font-family:var(--mark);font-weight:700;line-height:1;background:var(--wm,var(--w-jericho))}
-.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
-.wmark>b,.wmark>span.mk{position:relative;z-index:1;font-weight:700}
-.wmark.s56{width:56px;height:56px;font-size:24px}
-.wmark.s46{width:46px;height:46px;font-size:19px}
-.wmark.s36{width:36px;height:36px;font-size:15px}
-.wmark.s24{width:24px;height:24px;font-size:10.5px}
-.wmark.s20{width:20px;height:20px;font-size:9px}
-.wmark.two{letter-spacing:-.02em}
-.wmark.two.s56{font-size:19px}.wmark.two.s46{font-size:15px}.wmark.two.s36{font-size:12px}.wmark.two.s24{font-size:8.5px}.wmark.two.s20{font-size:7px}
+.sc-av{width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:18px;flex:none}
 .sc-name{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
 .sc-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
 .sc-desc{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 18px;flex:1}
@@ -321,7 +339,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .ftile .fic{height:34px;display:flex;align-items:center;justify-content:center}
 .ftile .fic svg{height:32px;width:auto;max-width:54px;display:block}
 .ftile .flb{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
-.ftile .dcmark{width:34px;height:34px;border-radius:8px;background:#1b2a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:-.01em}
+.ftile .dcmark{width:34px;height:34px;border-radius:8px;background:#1b2a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:-.01em}
 .fits-claims{display:flex;justify-content:center;align-items:center;gap:12px 24px;flex-wrap:wrap;text-align:center;max-width:760px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
 .fits-claims span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(225,232,242,.7)}
 @media(max-width:540px){.ftile{width:calc(50% - 7px)}}
@@ -361,46 +379,6 @@ footer{background:var(--ink);color:var(--paper);padding:60px 0 40px}
 .foot-col a{display:block;color:rgba(240,243,248,.7);text-decoration:none;font-size:14px;margin-bottom:9px;transition:.2s}
 .foot-col a:hover{color:var(--paper)}
 .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;color:var(--muted-d);font-size:12.5px;flex-wrap:wrap;gap:10px}
-
-/* ---------- chloe live (voice platform look) ---------- */
-.chloe{padding:100px 0;background:var(--paper)}
-.chloe .section-head{max-width:680px;margin:0 auto 40px;text-align:center}
-.chloe .section-head .eyebrow{margin-bottom:16px}
-.chloe .section-head h2{margin-bottom:14px}
-.chloe .section-head .lead{margin:0 auto;max-width:56ch}
-.chloe .phone{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--accent-deep);margin-top:16px;letter-spacing:.04em;font-weight:500}
-.callwrap{max-width:540px;margin:0 auto;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 44px 90px -46px rgba(14,26,44,.5)}
-.call-head{display:flex;align-items:center;gap:12px;padding:15px 20px;background:var(--navy);color:#fff}
-.call-head .cav{width:40px;height:40px;border-radius:12px;background:var(--accent);color:#fff;font-family:var(--mark);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
-.call-head .cnm{font-weight:600;font-size:15px;letter-spacing:-.01em}
-.call-head .csub{font-size:11.5px;color:rgba(225,232,242,.6);margin-top:1px}
-.call-head .cstat{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7fd4a4;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.call-head .cstat .dot{width:7px;height:7px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
-.call-lang{display:flex;align-items:center;gap:8px;padding:9px 20px;background:#fbf9f6;border-bottom:1px solid var(--line-2);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
-.call-lang b{color:var(--ink);font-weight:600}
-.call-body{height:290px;overflow:hidden;padding:18px 20px;display:flex;flex-direction:column;gap:12px;justify-content:flex-end}
-.turn{max-width:84%;opacity:0;transform:translateY(8px);animation:turnin .4s var(--ease) forwards}
-@keyframes turnin{to{opacity:1;transform:none}}
-.turn.caller{align-self:flex-end}
-.turn.chloe{align-self:flex-start}
-.turn .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px}
-.turn.caller .who{text-align:right}
-.turn .bub{display:inline-block;padding:10px 14px;font-size:13.5px;line-height:1.5}
-.turn.caller .bub{background:var(--bone-2);color:var(--ink-2);border-radius:14px 14px 4px 14px}
-.turn.chloe .bub{background:#eef2f7;color:var(--ink);border-radius:14px 14px 14px 4px}
-.wavebub{display:inline-flex;align-items:flex-end;gap:3px;height:16px}
-.wavebub i{width:3px;border-radius:2px;background:var(--navy);animation:weq 1s infinite ease-in-out}
-.wavebub i:nth-child(1){height:7px}
-.wavebub i:nth-child(2){height:14px;animation-delay:.1s}
-.wavebub i:nth-child(3){height:10px;animation-delay:.2s}
-.wavebub i:nth-child(4){height:16px;animation-delay:.3s}
-.wavebub i:nth-child(5){height:8px;animation-delay:.4s}
-@keyframes weq{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
-.park-chip{display:inline-flex;align-items:center;gap:10px;margin-top:9px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px 13px;box-shadow:0 10px 22px -12px rgba(14,26,44,.4);opacity:0;transform:translateY(6px);animation:turnin .4s var(--ease) forwards}
-.park-chip .pmk{width:24px;height:24px;border-radius:7px;background:var(--status);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
-.park-chip .ptx b{color:var(--ink);font-size:12.5px}
-.park-chip .ptx span{color:var(--muted);font-family:var(--mono);font-size:10px;display:block;margin-top:1px}
-.call-foot{padding:12px 20px;border-top:1px solid var(--line-2);background:#fbf9f6;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
 
 /* ---------- reveals ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease);will-change:transform,opacity}
@@ -636,17 +614,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">Public Sector</h1>
-    <div class="tag fade-up d2">Every resident answered. The first time, any hour.</div>
+    <h1 class="fade-up d1">Hospitality and Entertainment</h1>
+    <div class="tag fade-up d2">Less searching. More selling.</div>
     <div class="media fade-up d3">
-      <!-- hero video to be produced; wire the real path when it lands -->
-      <video class="m-vid" autoplay muted loop playsinline preload="metadata" poster="/img/ind-vail.jpg">
-        <source src="/video/public-sector-hero.mp4" type="video/mp4">
-      </video>
-      <button class="m-toggle" id="psVidToggle" type="button" aria-label="Pause video">
-        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </button>
+      <img class="m-vid" src="/img/ind-gillis.jpg" alt="A resort at golden hour, the kind of property where GillisOS finds the demand nearby" loading="eager" decoding="async">
+      <div class="m-vig"></div>
+      <span class="m-tag"><span class="dot"></span> GillisOS · live for Gillis Sales</span>
+      <div class="m-cap">Demand within five miles, found while your reps sleep.</div>
     </div>
   </div>
 </section>
@@ -654,10 +628,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- LOGO STRIP (real clients) -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Trusted across the public sector</div>
+    <div class="ll">Trusted across hospitality and entertainment</div>
     <div class="logobar">
-      <!-- real logo file in repo: "Town of Vail.png" (confirm filename with Claude Code). Add more municipal logos as they go live. -->
-      <img class="lg" src="/img/Town of Vail.png" alt="Town of Vail" style="height:40px">
+      <!-- Gillis Sales wordmark as text until a licensed logo file lands -->
+      <span class="lgt">Gillis Sales</span>
     </div>
   </div>
 </section>
@@ -666,80 +640,58 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="showcase" id="showcase">
   <div class="wrap">
     <div class="sv-tabs" id="svTabs">
-      <button class="sv-tab on" data-seg="city">Cities and Towns</button>
-      <button class="sv-tab" data-seg="cnty">Counties and Agencies</button>
-      <button class="sv-tab" data-seg="tran">Transit and Utilities</button>
+      <button class="sv-tab on" data-seg="hotel">Hotel Sales Teams</button>
+      <button class="sv-tab" data-seg="brand">Brands and Portfolios</button>
+      <button class="sv-tab" data-seg="ent">Entertainment and Talent</button>
     </div>
 
-    <div class="sv-head on" data-seg="city"><h2>The front desk that never closes.</h2></div>
-    <div class="sv-head" data-seg="cnty"><h2>Fewer forms. Faster answers.</h2></div>
-    <div class="sv-head" data-seg="tran"><h2>Every rider and ratepayer, answered.</h2></div>
+    <div class="sv-head on" data-seg="hotel"><h2>Your reps should be selling, not searching.</h2></div>
+    <div class="sv-head" data-seg="brand"><h2>One playbook, every flag.</h2></div>
+    <div class="sv-head" data-seg="ent"><h2>Every fan, answered personally.</h2></div>
 
-    <!-- load-desk mockup (static, anchors the section) -->
+    <!-- GillisOS board, rebuilt from the real dashboard (85 signals / 478 contacts / 38 hot leads) -->
     <div class="mock">
-      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">Gambit · Resident Desk</span><span class="ml"><span class="dot"></span> live</span></div>
+      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">GillisOS · Sam's board</span><span class="ml"><span class="dot"></span> live</span></div>
       <div class="mock-stats">
-        <div class="ms"><div class="mn">1,340</div><div class="mk">Residents helped today</div></div>
-        <div class="ms"><div class="mn">27</div><div class="mk">Languages today</div></div>
-        <div class="ms"><div class="mn">8</div><div class="mk">Routed to staff</div></div>
+        <div class="ms"><div class="mn">85</div><div class="mk">Signals</div></div>
+        <div class="ms"><div class="mn">478</div><div class="mk">Contacts</div></div>
+        <div class="ms"><div class="mn">38</div><div class="mk">Hot leads</div></div>
       </div>
-      <div class="mrow mh"><span>Request</span><span class="mmut">Topic</span><span class="c-fit">Resolution</span><span>Worker</span><span>Status</span></div>
-      <div class="mrow"><span class="mco">Voice &middot; 8:12am</span><span class="mmut">Parking near the village</span><span class="c-fit mfit"><span class="bar"><b style="width:97%"></b></span><span class="fv">97</span></span><span class="mtag">Chloe</span><span class="mst new">Resolved</span></div>
-      <div class="mrow"><span class="mco">SMS &middot; 9:03am</span><span class="mmut">Building permit status</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">Chloe</span><span class="mst scr">Active</span></div>
-      <div class="mrow"><span class="mco">Web chat &middot; 9:18am</span><span class="mmut">Event road closures</span><span class="c-fit mfit"><span class="bar"><b style="width:94%"></b></span><span class="fv">94</span></span><span class="mtag">Chloe</span><span class="mst new">Resolved</span></div>
-      <div class="mrow"><span class="mco">Voice &middot; 9:26am</span><span class="mmut">Water bill dispute</span><span class="c-fit mfit"><span class="bar"><b style="width:61%"></b></span><span class="fv">61</span></span><span class="mtag">Chloe</span><span class="mst dr">Routed</span></div>
+      <div class="mrow mh"><span>Lead</span><span class="mmut">Demand signal</span><span class="c-fit">Fit</span><span>Worker</span><span>Status</span></div>
+      <div class="mrow"><span class="mco">NovaCare Rehab Partners</span><span class="mmut">Response crews need bulk lodging</span><span class="c-fit mfit"><span class="bar"><b style="width:94%"></b></span><span class="fv">94</span></span><span class="mtag">Sam</span><span class="mst dr">Hot</span></div>
+      <div class="mrow"><span class="mco">Gulf Coast Lakeside Hospital</span><span class="mmut">Fellowship program cohorts</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">Sam</span><span class="mst dr">Hot</span></div>
+      <div class="mrow"><span class="mco">Greenway STEM Center</span><span class="mmut">Visiting research teams</span><span class="c-fit mfit"><span class="bar"><b style="width:90%"></b></span><span class="fv">90</span></span><span class="mtag">Sam</span><span class="mst scr">Active</span></div>
+      <div class="mrow"><span class="mco">Apex Environmental</span><span class="mmut">Sustainability training cycles</span><span class="c-fit mfit"><span class="bar"><b style="width:87%"></b></span><span class="fv">87</span></span><span class="mtag">Sam</span><span class="mst nu">Nurture</span></div>
     </div>
 
-    <div class="sv-caps on" data-seg="city">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Answered the first time</h3><p>Parking, permits, events, and services questions handled on first contact, so residents stop getting bounced between departments and voicemail.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Open at 2am, and on the weekend</h3><p>Residents get the same clear answer at midnight as they do at the counter on a Tuesday. No hold music, no closed sign.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M4 14v-3M8 16V8M12 18V6M16 16V8M20 14v-3"/></svg></div><h3>In every language spoken in town</h3><p>By voice, text, or web, in the resident's own language, without a translation line or a callback the next business day.</p></div>
+    <div class="sv-caps on" data-seg="hotel">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Signals within five miles</h3><p>Construction projects, government contracts, expansions, and tourism activity near each property, spotted the moment they mean heads in beds.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><h3>Outreach that reads handwritten</h3><p>Every message references the actual reason for reaching out. The first reply Gillis Sales ever received addressed Sam by name and asked for a call.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg></div><h3>Warm handoff to your reps</h3><p>Replies route straight to the right rep with the context in hand. Everything else stays on a steady nurture until it warms up.</p></div>
     </div>
-    <div class="sv-caps" data-seg="cnty">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></div><h3>Programs and benefits, explained</h3><p>Eligibility, applications, and status checks walked through in plain language, so residents reach the help they qualify for.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5"/><path d="M16 8h5"/></svg></div><h3>Staff freed for the hard cases</h3><p>Routine questions handled by a worker, so your people spend their day on the requests that actually need a person.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Routing with judgment</h3><p>The worker knows what belongs with a caseworker or an inspector, and hands it off with full context, logged and auditable.</p></div>
+    <div class="sv-caps" data-seg="brand">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 15h6"/></svg></div><h3>Built on your methodology</h3><p>The worker is shaped by your own playbook, the way GillisOS carries twenty years of Gillis Sales thinking into every message.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M7 17l-4-4 4-4"/><path d="M3 13h11"/><path d="M17 7l4 4-4 4"/><path d="M21 11H14"/></svg></div><h3>One engine, every flag</h3><p>Runs across a portfolio under each brand's own look and voice, so a group scales without rebuilding for every property.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5"/><path d="M16 8h5"/></svg></div><h3>Pipeline without headcount</h3><p>More reach for every director of sales, without the hiring that used to be the only way to grow output.</p></div>
     </div>
-    <div class="sv-caps" data-seg="tran">
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><h3>Real-time answers</h3><p>Schedules, outages, closures, and next arrivals answered the moment the question comes in, on whatever channel a rider uses.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg></div><h3>Billing without the phone queue</h3><p>Ratepayers get bill questions, start and stop requests, and payment help resolved without waiting on hold through a rate hike.</p></div>
-      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Surge-proof</h3><p>A storm, an outage, or a service change floods the lines. The worker answers every one of them at once, calmly, on the record.</p></div>
-    </div>
-    </div>
-</section>
-
-<!-- CHLOE, LIVE (voice platform look) -->
-<section class="chloe" id="chloe">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Live now</span>
-      <h2>Meet Chloe. She picks up every time.</h2>
-      <p class="lead">A voice concierge for the Town of Vail. Real-time parking, events, and answers by phone, in 50 plus languages, any hour.</p>
-      <span class="phone">Call (970) 645-VAIL</span>
-    </div>
-    <div class="callwrap">
-      <div class="call-head">
-        <span class="cav">C</span>
-        <div><div class="cnm">Chloe</div><div class="csub">Town of Vail concierge</div></div>
-        <div class="cstat"><span class="dot"></span> <span id="callTimer">on call 0:11</span></div>
-      </div>
-      <div class="call-lang">Speaking <b id="callLang">English</b></div>
-      <div class="call-body" id="callBody"></div>
-      <div class="call-foot">Live now &middot; (970) 645-VAIL &middot; 50+ languages</div>
+    <div class="sv-caps" data-seg="ent">
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><h3>A real voice, faithfully</h3><p>Fans hear the personality's own story, in their own voice, the way AskAmber carries a real race car driver's world to every fan who asks.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><h3>On at 3am after the race</h3><p>Fan engagement does not keep business hours. Every question gets a personal answer, whenever it arrives.</p></div>
+      <div class="cap"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Guardrails built in</h3><p>The voice stays on-brand and sponsor-safe, and anything sensitive routes quietly to the team behind it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL (DRAFT: quote and attribution pending approval from the Town of Vail; do not publish without sign-off) -->
+<!-- TESTIMONIAL (published in the GillisOS case study, unattributed there; confirm the speaker before naming) -->
 <section class="testi">
   <div class="wrap">
     <div class="testi-card">
-      <div class="testi-lg">TOWN OF VAIL</div>
-      <div class="testi-q">Visitors and residents do not wait for office hours to have questions. Chloe answers by voice, day or night, in their language, and our staff walk in to fewer voicemails and happier residents.</div>
+      <div class="testi-lg">GILLIS SALES</div>
+      <div class="testi-q">For too long, hotel sales has relied on the same manual playbook. GillisOS shows what becomes possible when you give a great sales team the tools to reach far more people, without losing the human touch that makes those connections meaningful.</div>
       <div class="testi-by">
-        <span class="testi-av">TV</span>
-        <span><span class="testi-n">Communications Lead</span><span class="testi-r">Town of Vail</span></span>
-        <a class="testi-link" href="/vail-ai-voice-concierge-chloe">Read the story <span class="ar">&rarr;</span></a>
+        <span class="testi-av">GS</span>
+        <span><span class="testi-n">Gillis Sales</span><span class="testi-r">20 plus years in hotel sales</span></span>
+        <a class="testi-link" href="/case-study/gillisos">Read the story <span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -750,35 +702,34 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">The suite</span>
-      <h2>Gambit for the Public Sector.</h2>
+      <h2>Gambit for Hospitality and Entertainment.</h2>
       <p class="lead">Three workers, one engine. Each has a job title, a scope, and accountability to an outcome. Start with one. The next is faster to stand up.</p>
     </div>
     <div class="suite-grid">
 
-      <!-- /workers/chloe product page does not exist yet; linking to the live Chloe/Vail story until it does -->
-      <a class="suite-card featured" href="/vail-ai-voice-concierge-chloe">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-chloe)"><b>C</b></span><div><div class="sc-name">Chloe</div><div class="sc-role">Resident services</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">A voice-first concierge for your residents. Answers parking, permits, events, and services questions by phone, text, and web, around the clock, in 50 plus languages. Live for the Town of Vail.</p>
-        <div class="sc-tags"><span class="sc-tag">Cities and towns</span><span class="sc-tag">Voice</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Chloe <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card featured" href="/case-study/gillisos">
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-gillisos)"><b>G</b></span><div><div class="sc-name">GillisOS</div><div class="sc-role">Hotel lead research</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">Scans a five mile radius around each property for real demand, finds the right contact, and opens every conversation as Sam, with outreach that reads handwritten. Live for Gillis Sales.</p>
+        <div class="sc-tags"><span class="sc-tag">Hotel sales</span><span class="sc-tag">Outbound</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">Read the case study <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <!-- AskAshleigh: named worker, built with a U.S. Area Agency on Aging. Case study keeps the specific agency (UCPCOG) anonymous; see note on the proof card. -->
-      <a class="suite-card" href="/case-study/askashleigh">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-askashleigh)"><b>AS</b></span><div><div class="sc-name">AskAshleigh</div><div class="sc-role">Caregiver support</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
-        <p class="sc-desc">Round-the-clock benefits navigation, local resources, and a judgment-free ear for family caregivers. Built with a U.S. Area Agency on Aging, designed to scale across the national network.</p>
-        <div class="sc-tags"><span class="sc-tag">Counties and agencies</span><span class="sc-tag">Aging services</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">See it live <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card" href="/case-study/gillisos">
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-askgillis)"><b>AG</b></span><div><div class="sc-name">AskGillis</div><div class="sc-role">Sales coaching</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
+        <p class="sc-desc">A coach in every rep's corner, built on a proven hotel sales methodology. Guidance on live deals and outreach drafted in the rep's own voice, signed by them.</p>
+        <div class="sc-tags"><span class="sc-tag">Hotel sales</span><span class="sc-tag">Enablement</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">Learn more <span class="ar">&rarr;</span></span></div>
       </a>
 
-      <a class="suite-card" href="/workers/jericho">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-jericho)"><b>J</b></span><div><div class="sc-name">Jericho</div><div class="sc-role">Support</div></div></div><span class="spill avail"><span class="sd"></span>Available</span></div>
-        <p class="sc-desc">Intake, program questions, and inbound requests across web, SMS, and voice. The first answer, around the clock, in a register that fits public service.</p>
-        <div class="sc-tags"><span class="sc-tag">Counties and agencies</span><span class="sc-tag">Utilities</span></div>
-        <div class="sc-foot"><span></span><span class="sc-link">View Jericho <span class="ar">&rarr;</span></span></div>
+      <a class="suite-card" href="https://askamber.io" target="_blank" rel="noopener noreferrer">
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--w-askamber)"><b>AM</b></span><div><div class="sc-name">AskAmber</div><div class="sc-role">Fan engagement</div></div></div><span class="spill live"><span class="sd"></span>Live</span></div>
+        <p class="sc-desc">A professional race car driver's story, told in her own voice, to every fan who asks, any hour. On-brand, sponsor-safe, and live today at askamber.io.</p>
+        <div class="sc-tags"><span class="sc-tag">Entertainment</span><span class="sc-tag">Talent</span></div>
+        <div class="sc-foot"><span></span><span class="sc-link">Meet Amber <span class="ar">&rarr;</span></span></div>
       </a>
 
-      </div>
+    </div>
+  </div>
 </section>
 
 <!-- HOW IT FITS -->
@@ -786,14 +737,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="fits-head">
       <span class="eyebrow">How it fits</span>
-      <h2>Works inside the systems your departments already run.</h2>
-      <p class="fits-sub">Grounded in your municipal records, your permitting and 311 systems, and your rules, not the open web, so what a worker tells a resident is what your office would tell them. No rip and replace, and nothing for your staff to relearn.</p>
+      <h2>Works inside the systems your sales team already runs.</h2>
+      <p class="fits-sub">Every opportunity, contact, and follow-up lands in the systems your team already runs, tasks created, replies routed, nothing to relearn. GillisOS runs on Salesforce today.</p>
     </div>
     <div class="fits-logos">
-      <!-- placeholder monogram tiles: swap for real Tyler Tech / Accela / Granicus / Twilio logos when licensed; confirm the actual integration list with Chris -->
-      <div class="ftile"><span class="fic"><span class="dcmark">ty</span></span><span class="flb">Tyler Tech</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">ac</span></span><span class="flb">Accela</span></div>
-      <div class="ftile"><span class="fic"><span class="dcmark">gr</span></span><span class="flb">Granicus</span></div>
+      <!-- Salesforce is confirmed in the GillisOS case study; the rest are placeholder marks until logos are licensed -->
+      <div class="ftile"><span class="fic"><span class="dcmark">sf</span></span><span class="flb">Salesforce</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">hs</span></span><span class="flb">HubSpot</span></div>
+      <div class="ftile"><span class="fic"><span class="dcmark">op</span></span><span class="flb">Opera PMS</span></div>
       <div class="ftile"><span class="fic"><span class="dcmark">tw</span></span><span class="flb">Twilio</span></div>
     </div>
     <div class="fits-claims">
@@ -811,26 +762,24 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="section-head">
       <span class="eyebrow">Customers</span>
       <h2>The results speak for themselves.</h2>
-      <p class="lead">Real answers for real residents. The questions that used to fill a voicemail box are handled the moment they arrive.</p>
+      <p class="lead">Real outcomes for a real sales organization, and a real fan base. Leads from the first days, at conversion rates cold outreach is not supposed to hit.</p>
     </div>
     <div class="res-grid">
 
-      <!-- no /case-study/town-of-vail yet; linking to the live insights piece until one exists -->
-      <a class="res-card" href="/vail-ai-voice-concierge-chloe">
-        <div class="res-lg">Town of Vail</div>
-        <div class="res-n">50+</div>
-        <div class="res-nl">languages, by voice, 24/7</div>
-        <p class="res-p">Chloe answers parking, events, and services questions for residents and visitors of Vail, by phone, any hour, in more than 50 languages.</p>
+      <a class="res-card" href="/case-study/gillisos">
+        <div class="res-lg">Gillis Sales · GillisOS</div>
+        <div class="res-n">5 to 8%</div>
+        <div class="res-nl">cold outreach conversion</div>
+        <p class="res-p">GillisOS started generating qualified leads within days of launch, and prospects reply to Sam by name, as though they were writing to a colleague.</p>
         <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
       </a>
 
-      <!-- AskAshleigh / Area Agency on Aging. NOTE: the public case study keeps the specific agency (UCPCOG) anonymous. Kept generic here to match; if UCPCOG is cleared to name publicly, swap the res-lg label. -->
-      <a class="res-card" href="/case-study/askashleigh">
-        <div class="res-lg">U.S. Area Agency on Aging</div>
+      <a class="res-card" href="https://askamber.io" target="_blank" rel="noopener noreferrer">
+        <div class="res-lg">AskAmber</div>
         <div class="res-n">24/7</div>
-        <div class="res-nl">caregiver support, built to scale</div>
-        <p class="res-p">AskAshleigh gives family caregivers round-the-clock benefits navigation, resources, and a judgment-free ear. Built with a U.S. Area Agency on Aging and designed to scale across the national network of 622 agencies.</p>
-        <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
+        <div class="res-nl">fans answered in her voice</div>
+        <p class="res-p">A professional race car driver's fans get her story, her way, any hour, on-brand and sponsor-safe, live today at askamber.io.</p>
+        <span class="res-link">Meet Amber <span class="ar">&rarr;</span></span>
       </a>
 
     </div>
@@ -840,12 +789,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>See what a worker does for your residents.</h2>
-    <p>Tell us the outcome you need, from the first resident call to the closed request. We will show you what it answers, on your records and your rules, in two weeks.</p>
+    <h2>See what a worker finds near your properties.</h2>
+    <p>Tell us your flags and your playbook. We will show you the demand sitting within five miles of your properties, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
-      <!-- One-pager PDF to be generated next; wire this to the real file path -->
-      <a href="/public-sector-overview.pdf" class="btn btn-ghost">Download the one-pager</a>
+      <a href="/case-study/gillisos" class="btn btn-ghost">Read the GillisOS story</a>
     </div>
   </div>
 </section>
@@ -860,8 +808,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       </div>
       <div class="foot-links">
         <div class="foot-col">
-          <h4>Public Sector</h4>
-          <a href="#suite">The suite</a><a href="/factory">The Factory</a><a href="#results">Customers</a>
+          <h4>Hospitality</h4>
+          <a href="#showcase">Who it serves</a><a href="#suite">The suite</a><a href="/case-study/gillisos">GillisOS case study</a>
         </div>
         <div class="foot-col">
           <h4>Company</h4>
@@ -881,25 +829,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 </footer>
 
 <script>
-/* ----- hero video: respect reduced motion ----- */
-(function(){
-  var v=document.querySelector('.m-vid');
-  if(v&&matchMedia('(prefers-reduced-motion: reduce)').matches){
-    v.removeAttribute('autoplay');
-    v.pause();
-  }
-})();
-
-/* ----- hero video: play/pause toggle ----- */
-(function(){
-  var v=document.querySelector('.m-vid'),btn=document.getElementById('psVidToggle');
-  if(!v||!btn)return;
-  function sync(){var p=v.paused;btn.classList.toggle('paused',p);btn.setAttribute('aria-label',p?'Play video':'Pause video');}
-  btn.addEventListener('click',function(){v.paused?v.play():v.pause();});
-  v.addEventListener('play',sync);v.addEventListener('pause',sync);
-  sync();
-})();
-
 /* ----- shared header (megamenu) ----- */
 (function(){
   const header=document.getElementById('siteHeader');
@@ -956,7 +885,7 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.sv-tabs,.mock,.chloe .section-head,.callwrap,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.sv-tabs,.mock,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
@@ -967,53 +896,6 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
     const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});
     els.forEach(el=>ro.observe(el));
   }
-})();
-</script>
-
-<script>
-(function(){
-  var body=document.getElementById('callBody'),langEl=document.getElementById('callLang'),timerEl=document.getElementById('callTimer');
-  if(!body) return;
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var script=[
-    {who:'caller',lang:'English',text:'Where can I park near the village?'},
-    {who:'chloe',text:'Lot 3 has 12 open spots, about a 4 minute walk to the village.',park:{lot:'Lot 3',info:'12 open &middot; 4 min walk'}},
-    {who:'caller',lang:'Español',text:'¿Y hay algún evento esta noche?'},
-    {who:'chloe',text:'Sí, hay música en vivo en Solaris Plaza a las 6.'}
-  ];
-  var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
-  function el(h){var d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild;}
-  function fmt(s){return 'on call '+Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);}
-  var sec=8,tick=null;
-  function startTimer(){if(tick)clearInterval(tick);sec=8;timerEl.textContent=fmt(sec);tick=setInterval(function(){sec++;timerEl.textContent=fmt(sec);},1000);}
-  async function run(){
-    body.innerHTML='';langEl.textContent='English';startTimer();
-    for(var i=0;i<script.length;i++){
-      var t=script[i];
-      if(t.lang)langEl.textContent=t.lang;
-      if(t.who==='caller'){
-        body.appendChild(el('<div class="turn caller"><div class="who">Caller</div><div class="bub">'+t.text+'</div></div>'));
-        await sleep(1400);
-      }else{
-        var turn=el('<div class="turn chloe"><div class="who">Chloe</div><div class="bub"><span class="wavebub"><i></i><i></i><i></i><i></i><i></i></span></div></div>');
-        body.appendChild(turn);
-        await sleep(1150);
-        turn.querySelector('.bub').innerHTML=t.text;
-        if(t.park){turn.appendChild(el('<div class="park-chip"><span class="pmk">P</span><span class="ptx"><b>'+t.park.lot+'</b><span>'+t.park.info+'</span></span></div>'));}
-        await sleep(1750);
-      }
-    }
-    await sleep(2600);
-    run();
-  }
-  function showStatic(){
-    langEl.textContent='Español';
-    script.forEach(function(t){
-      if(t.who==='caller'){body.appendChild(el('<div class="turn caller" style="opacity:1;transform:none"><div class="who">Caller</div><div class="bub">'+t.text+'</div></div>'));}
-      else{var turn=el('<div class="turn chloe" style="opacity:1;transform:none"><div class="who">Chloe</div><div class="bub">'+t.text+'</div></div>');body.appendChild(turn);if(t.park){turn.appendChild(el('<div class="park-chip" style="opacity:1;transform:none"><span class="pmk">P</span><span class="ptx"><b>'+t.park.lot+'</b><span>'+t.park.info+'</span></span></div>'));}}
-    });
-  }
-  if(RM){showStatic();}else{run();}
 })();
 </script>
 </body>
