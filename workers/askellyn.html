@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gillis · Hotel Sales Worker · Gambit</title>
-<meta name="description" content="Gillis is the hotel sales worker built with Gillis Sales. It finds real demand within five miles of every hotel, opens the conversation as Sam, and coaches reps in the moment on Tammy Gillis's methodology.">
+<title>AskEllyn · Patient Companion · Gambit</title>
+<meta name="description" content="AskEllyn is an AI companion built on the lived experience of breast cancer survivor Ellyn Winters-Robinson. Non-medical support with warmth, in the patient's own language, any hour. Live on Cigna Healthcare.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="canonical" href="https://gambitco.io/workers/gillis">
+<link rel="canonical" href="https://gambitco.io/workers/askellyn">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gillis · Hotel Sales Worker · Gambit">
-<meta property="og:description" content="Research, outreach, and coaching in one hotel sales platform. Less searching. More selling.">
-<meta property="og:image" content="https://gambitco.io/img/ind-gillis.jpg">
-<meta property="og:url" content="https://gambitco.io/workers/gillis">
+<meta property="og:title" content="AskEllyn · Patient Companion · Gambit">
+<meta property="og:description" content="A companion that answers at 2am, in the patient's own language. Built on lived experience, live on Cigna Healthcare.">
+<meta property="og:image" content="https://gambitco.io/img/Article-Ask-Ellyn.png">
+<meta property="og:url" content="https://gambitco.io/workers/askellyn">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,23 +54,24 @@
   --f-civic:#54697b;
   --f-log:#a0713a;
   --f-legal:#6b5d3f;
-  /* Gillis worker page: the Gillis product palette (purple + teal, from the AskGillis brand) */
-  --navy:#2d1f5e;
-  --navy-2:#3D2B6B;
-  --accent:#6a55c2;
-  --accent-2:#a99bde;
-  --accent-deep:#4b3a9e;
-  --g-purple:#3D2B6B;
-  --g-teal:#1ABBA6;
-  --g-teal-d:#0E8A7A;
-  --g-orange:#E8875B;
-  --g-gold:#D4A843;
-  --g-lilac:#7C6BC4;
-  --g-bg:#F3F2F7;
-  --g-lav:#F0EDFA;
-  --g-line:#e4e1ec;
+  /* AskEllyn worker page: soft violet drawn from AskEllyn's own color */
+  --navy:#2c2743;
+  --navy-2:#3b3559;
+  --accent:#6e659f;
+  --accent-2:#b4accf;
+  --accent-deep:#554d80;
+  /* console surface tokens (soft violet on this page) */
+  --g-purple:#554d80;
+  --g-teal:#6e659f;
+  --g-teal-d:#554d80;
+  --g-orange:#8a7fb0;
+  --g-gold:#c9a24a;
+  --g-lilac:#a99fc7;
+  --g-bg:#f7f5fb;
+  --g-lav:#efeaf6;
+  --g-line:#e6e0f0;
   --g-text:#4a4560;
-  --g-dark:#1e1832;
+  --g-dark:#2c2743;
   --display:'General Sans','Helvetica Neue',Arial,sans-serif;
   --mark:'Orbitron',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -310,13 +311,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 @media(max-width:560px){.testi-link{display:none}}
 
 /* ---------- the suite ---------- */
-.suite{padding:100px 0;background:var(--paper)}
+.suite{padding:100px 0;background:var(--bone)}
 .suite .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
 .suite .section-head .eyebrow{margin-bottom:16px}
 .suite .section-head h2{margin-bottom:16px}
 .suite .section-head .lead{margin:0 auto;max-width:60ch}
 .suite-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
-.suite-card{flex:1 1 330px;max-width:349px;position:relative;background:var(--bone);border:1px solid #e4dac9;border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;box-shadow:0 16px 34px -26px rgba(21,17,13,.4);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease;overflow:hidden}
+.suite-card{flex:1 1 330px;max-width:349px;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;box-shadow:0 16px 34px -26px rgba(21,17,13,.4);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s ease;overflow:hidden}
 .suite-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(21,17,13,.5);border-color:var(--sand-deep)}
 .suite-card.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
@@ -665,6 +666,71 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .crm-row .cv2{color:var(--g-dark);font-weight:600;text-align:right}
 .crm-row .cv2 .hotp{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:#b0511f;background:rgba(232,135,91,.16);border-radius:14px;padding:2px 8px;margin-left:6px}
 
+
+/* ===== Dawn page overrides ===== */
+.gmark{background:var(--w-dawn)}
+.morph.s-icon .gmark{font-size:22px}
+.morph.s-input .gmark{font-size:19px}
+.morph.s-desk .gmark{font-size:10px}
+.hero .media{background:radial-gradient(130% 150% at 28% 18%,#8a4530 0%,#38201a 62%,#2a1712 100%)}
+/* companion conversation: transcript left, the reasoning right */
+.tr{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;overflow:hidden;margin-top:12px;min-height:0}
+.turn{max-width:88%;opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.turn.in{opacity:1;transform:none}
+.turn.vis{align-self:flex-end}
+.turn.co{align-self:flex-start}
+.turn .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#a08a80;margin-bottom:4px}
+.turn.vis .who{text-align:right}
+.turn .bub{display:inline-block;padding:9px 13px;font-size:clamp(12px,1.25vw,14px);line-height:1.48}
+.turn.vis .bub{background:var(--g-lav);color:var(--g-dark);border-radius:13px 13px 4px 13px}
+.turn.co .bub{background:#fff;color:var(--g-text);border:1px solid var(--g-line);border-radius:13px 13px 13px 4px}
+.turn.co .bub .txt{display:none}
+.turn.co.said .bub .txt{display:inline}
+.turn.co.said .bub .cb-dots{display:none}
+/* buyer triage rows: fit bar inline */
+.brow{display:grid;grid-template-columns:1.45fr .7fr 1fr .6fr;gap:10px;padding:12px 18px;border-bottom:1px solid var(--g-line);align-items:center;font-size:12.5px;background:#fff}
+.brow:last-child{border-bottom:0}
+.brow.bh{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a95a2;background:var(--g-bg);padding-top:9px;padding-bottom:9px}
+.brow .bco{font-weight:600;color:var(--g-dark)}
+.brow .btp{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:20px;justify-self:start;font-weight:600}
+.btp.str{color:#2b4568;background:rgba(58,90,134,.14)}
+.btp.spn{color:#8a6a17;background:rgba(212,168,67,.16)}
+.brow .bfit{display:flex;align-items:center;gap:8px}
+.brow .bfit .bar{flex:1;height:5px;border-radius:4px;background:#e2e9f0;overflow:hidden;min-width:34px}
+.brow .bfit .bar b{display:block;height:100%;background:var(--accent)}
+.brow .bfit .fv{font-family:var(--mono);font-size:11px;color:var(--g-dark);font-weight:700}
+.brow .bst{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--g-teal-d);background:rgba(58,90,134,.1);border-radius:20px;padding:3px 9px;justify-self:start;white-space:nowrap}
+@media(max-width:640px){.brow{grid-template-columns:1.5fr 1fr .6fr}.brow .btp{display:none}}
+/* channel hop console */
+.chn{border-radius:14px;overflow:hidden;background:var(--g-bg);border:1px solid var(--g-line);box-shadow:0 44px 90px -46px rgba(20,28,38,.55)}
+.chn-stage{padding:26px 26px 24px}
+.chn-row{display:flex;justify-content:center;gap:14px;margin-bottom:20px}
+.chn .ch{width:46px;height:46px;border-radius:13px;background:#fff;border:1px solid var(--g-line);display:flex;align-items:center;justify-content:center;color:#8a95a2;transition:.3s}
+.chn .ch svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.chn .ch.hot{color:#fff;background:var(--navy);border-color:var(--navy);box-shadow:0 12px 26px -12px rgba(20,28,38,.55)}
+.chn-bub{position:relative;margin:0 auto;width:min(340px,94%);background:#fff;border:1px solid var(--g-line);border-radius:13px;padding:13px 15px;box-shadow:0 18px 40px -22px rgba(20,28,38,.4)}
+.chn-bub .who{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:5px}
+.chn-bub .msg{font-size:13px;color:var(--g-text);line-height:1.5;min-height:40px}
+.chn-bub .msg .wave{display:none;align-items:flex-end;gap:3px;height:22px;padding-top:4px}
+.chn-bub .msg .wave i{width:4px;border-radius:2px;background:var(--accent);animation:weq 1s infinite ease-in-out}
+.chn-bub .msg .wave i:nth-child(1){height:8px}.chn-bub .msg .wave i:nth-child(2){height:16px;animation-delay:.12s}.chn-bub .msg .wave i:nth-child(3){height:11px;animation-delay:.24s}.chn-bub .msg .wave i:nth-child(4){height:18px;animation-delay:.36s}.chn-bub .msg .wave i:nth-child(5){height:9px;animation-delay:.48s}.chn-bub .msg .wave i:nth-child(6){height:14px;animation-delay:.6s}
+@keyframes weq{0%,100%{transform:scaleY(.6)}50%{transform:scaleY(1)}}
+.chn-bub.voice .msg .txt{display:none}
+.chn-bub.voice .msg .wave{display:flex}
+@media(prefers-reduced-motion:reduce){.chn-bub .msg .wave i{animation:none}}
+/* package rows */
+.pkg-total{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#fff;font-size:13px;font-weight:600;color:var(--g-dark)}
+.pkg-total .pk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep)}
+
+
+/* process stream strip */
+.proc{display:flex;align-items:stretch;gap:0;background:#fff}
+.proc .pc{flex:1;padding:16px 18px;border-right:1px solid var(--g-line)}
+.proc .pc:last-child{border-right:0}
+.proc .pk2{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a95a2;margin-bottom:6px}
+.proc .pv2{font-family:var(--display);font-weight:600;font-size:19px;color:var(--g-dark);letter-spacing:-.02em}
+.proc .pv2 small{font-size:11px;color:var(--g-teal-d);font-weight:600;margin-left:5px}
+@media(max-width:560px){.proc{flex-wrap:wrap}.proc .pc{flex:1 1 50%}}
 </style>
 </head>
 <body>
@@ -869,50 +935,42 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="wh-top fade-up d1"><span class="eyebrow">Hotel sales worker</span><span class="wh-status"><span class="sd"></span>Live &middot; Gillis Sales</span></div>
-    <h1 class="fade-up d1" style="margin:14px 0 0">Less searching. More selling.</h1>
-    <div class="tag fade-up d2" style="max-width:62ch">Gillis finds real demand within five miles of every hotel, opens the conversation as Sam, and coaches your reps in the moment. Built with Gillis Sales on Tammy Gillis's methodology.</div>
+    <div class="wh-top fade-up d1"><span class="eyebrow">Patient companion</span><span class="wh-status"><span class="sd"></span>Live &middot; Cigna Healthcare</span></div>
+    <h1 class="fade-up d1" style="margin:14px 0 0">A companion that answers at 2am.</h1>
+    <div class="tag fade-up d2" style="max-width:62ch">AskEllyn is a patient companion built on the lived experience of breast cancer survivor Ellyn Winters-Robinson. It meets patients with warmth, in their own language, at the hours when the clinic is closed and the questions are loudest. Live in Cigna Healthcare’s breast cancer community.</div>
     <div class="media fade-up d3">
       <div class="hero-grain"></div>
       <div class="demo-stage2" id="dStage">
         <div class="morph s-icon" id="dMorph">
-          <span class="gmark" id="dG"><b>GI</b></span>
-          <span class="m-word">GILLIS</span>
+          <span class="gmark" id="dG"><b>E</b></span>
+          <span class="m-word">ASKELLYN</span>
           <div class="m-input"><span class="mi-line"><span class="mi-text" id="dMandate"></span><i class="dcaret" id="dCaretM"></i></span><button class="mi-go" id="dSubmit" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
           <div class="m-desk">
-            <div class="demo-bar"><span class="demo-title">GillisOS &middot; Backyard Search</span><span class="demo-live"><span class="dot"></span> live</span></div>
+            <div class="demo-bar"><span class="demo-title">AskEllyn &middot; Cigna Healthcare</span><span class="demo-live"><span class="dot"></span> 3:02am</span></div>
             <div class="demo-body">
               <div class="demo-left">
-                <div class="dl-sig" id="dSig"><span class="sd"></span> New signal</div>
-                <div class="dl-head"><span class="dl-name">I-694 Lighting Replacement</span><span class="dl-sec">Construction &middot; Fridley</span></div>
-                <div class="dl-rows" id="dRows">
-                  <div class="dl-row"><span class="dk">Signal</span><span class="dv">MnDOT rebuild, night-shift crews</span></div>
-                  <div class="dl-row"><span class="dk">Why it matters</span><span class="dv">Night shifts mean day-sleeper rooms</span></div>
-                  <div class="dl-row"><span class="dk">Proximity</span><span class="dv">Under 2 miles from the hotel</span></div>
-                  <div class="dl-row"><span class="dk">Companies</span><span class="dv">SEH and 3 more, contacts verified</span></div>
+                <div class="dl-sig" id="cSig"><span class="sd"></span> New conversation</div>
+                <div class="tr" id="cTrans">
+                  <div class="turn vis" id="cT1"><div class="who">Patient</div><div class="bub">I just got diagnosed and I'm scared.</div></div>
+                  <div class="turn co" id="cT2"><div class="who">AskEllyn</div><div class="bub"><span class="cb-dots"><i></i><i></i><i></i></span><span class="txt">That fear is so normal, and you are allowed to feel every bit of it. When I was first diagnosed I could barely think straight. You do not have to figure it all out today. What is scaring you most right now?</span></div></div>
+                  <div class="turn vis" id="cT3"><div class="who">Patient</div><div class="bub">I don't even know what to ask my doctor.</div></div>
+                  <div class="turn co" id="cT4"><div class="who">AskEllyn</div><div class="bub"><span class="cb-dots"><i></i><i></i><i></i></span><span class="txt">We can sort that out together. I'll help you write down the questions that matter, in whatever language is easiest for you.</span></div></div>
                 </div>
-                <div class="dl-fit"><span class="dl-fitk">Priority</span><span class="dl-bar"><b id="dBar"></b></span><span class="dl-score" id="dScore">0</span></div>
               </div>
               <div class="demo-right" id="dRight">
-                <div class="dr-head"><span class="dr-av">S</span> Drafted as Sam <span class="dr-rdy"><span class="dot"></span> ready</span></div>
-                <div class="dr-to"><span class="dek">To</span>April Ryan &middot; Short Elliott Hendrickson</div>
-                <div class="dr-subj"><span class="dek">Subj</span><span id="dSubj"></span><i class="dcaret" id="dCaretS"></i></div>
-                <div class="dr-body"><span id="dBody"></span><i class="dcaret" id="dCaretB"></i></div>
-                <div class="dr-foot"><span class="dr-q" id="dQueue">Send as Sam</span><span class="dr-done" id="dDone">&#10003; Sent</span></div>
+                <div class="dr-head"><span class="dr-av">E</span> Behind the reply <span class="dr-rdy"><span class="dot"></span> with care</span></div>
+                <div class="dl-rows" id="cWork">
+                  <div class="dl-row"><span class="dk">Tone read</span><span class="dv">Frightened, newly diagnosed</span></div>
+                  <div class="dl-row"><span class="dk">Approach</span><span class="dv">Warmth first, then the questions</span></div>
+                  <div class="dl-row"><span class="dk">Voice</span><span class="dv">Ellyn Winters-Robinson, survivor</span></div>
+                  <div class="dl-row"><span class="dk">Boundary</span><span class="dv">Non-medical, clinician stays in charge</span></div>
+                </div>
+                <div class="dr-foot"><span class="dr-q" id="dQueue">Stay with her</span><span class="dr-done" id="dDone">&#10003; Held with care &middot; not medical advice</span></div>
               </div>
-            </div>
-          </div>
-          <div class="m-coach">
-            <div class="demo-bar"><span class="demo-title">AskGillis &middot; Tammy, your sales coach</span><span class="demo-live"><span class="dot"></span> live</span></div>
-            <div class="coach-body">
-              <div class="cb-msg rep" id="cRep"><div class="who">Rep</div>They already have a preferred hotel. How do I respond?</div>
-              <div class="cb-msg tam" id="cTyping"><div class="who">Tammy</div><span class="cb-dots"><i></i><i></i><i></i></span></div>
-              <div class="cb-msg tam" id="cTam"><div class="who">Tammy</div><span id="cTamText"></span><i class="dcaret" id="dCaretC"></i></div>
-              <div class="coach-input"><span>Ask Tammy anything...</span><span class="snd"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
             </div>
           </div>
         </div>
-        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#2d1f5e" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+        <div class="demo-cursor" id="dCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#38201a" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
       </div>
       <button class="m-toggle2" id="gToggle" type="button" aria-label="Pause animation">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -925,197 +983,119 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- LOGO STRIP -->
 <section class="logos">
   <div class="wrap">
-    <div class="ll">Built with and live at</div>
+    <div class="ll">Live on</div>
     <div class="logobar">
-      <span class="lgt">Gillis Sales</span>
+      <img class="lg" src="/img/Cigna.png" alt="Cigna Healthcare" style="height:46px">
     </div>
   </div>
 </section>
 
-<!-- THE MODERN SELLING LOOP -->
+<!-- HOW IT WORKS -->
 <section class="flow" id="how">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">How it works</span>
-      <h2>The modern selling loop.</h2>
-      <p class="lead">Five steps, one connected flow, on every opportunity. Gillis finds the signal, ranks it, opens the outreach, coaches the conversation, and keeps everything inside the CRM.</p>
+      <h2>Support at the hour the questions get loud.</h2>
+      <p class="lead">A diagnosis brings a flood of questions at the moment a patient is least able to process them, and the clinic is often closed. AskEllyn meets them right there, in their own language, and stays as long as they need.</p>
     </div>
     <div class="pipe">
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l6-4.5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg></div><div class="pl">Signal</div><div class="ps">A real event surfaces near a hotel</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4V7a1 1 0 0 1 1-1z"/></svg></div><div class="pl">They reach out</div><div class="ps">At 2am, scared, freshly diagnosed</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M4 17l4-6 4 3 4-8 4 5"/><path d="M4 21h16"/></svg></div><div class="pl">Prioritize</div><div class="ps">Ranked hot, warm, or pipeline</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.6A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.4C19 15.4 12 20 12 20z"/></svg></div><div class="pl">Met with warmth</div><div class="ps">Empathy first, from someone who lived it</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div><div class="pl">Reach</div><div class="ps">Who to contact, and what to say</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg></div><div class="pl">In their language</div><div class="ps">50+ languages, whatever feels natural</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 9h6M9 12h4"/></svg></div><div class="pl">Coach</div><div class="ps">Just in time guidance, in the moment</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M4 14v-3M8 16V8M12 18V6M16 16V8M20 14v-3"/></svg></div><div class="pl">Grounded, not clinical</div><div class="ps">Support, never diagnosis or advice</div></div>
       <div class="pconn"></div>
-      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><div class="pl">Close</div><div class="ps">The CRM becomes the live selling tool</div></div>
+      <div class="pstep"><div class="pi"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div><div class="pl">Care stays in charge</div><div class="ps">The clinician leads, always</div></div>
     </div>
-    <div class="flow-close">AI does the busywork. Your reps do the selling.</div>
+    <div class="flow-close">Warmth at 2am. The clinician in charge by day.</div>
   </div>
 </section>
 
-<!-- FEATURE 1 · BACKYARD SEARCH -->
-<section class="feat-sec" id="research">
-  <div class="wrap">
-    <div class="feat">
-      <div class="ftxt">
-        <span class="flabel">01 &middot; Research</span>
-        <h2>Backyard Search: hotel-aware intelligence.</h2>
-        <p>Instead of buying a static list, Gillis watches the market within five miles of each hotel for demand it can act on, then ranks every signal by how close, how relevant, and how timely it is. Sellers work the hottest first.</p>
-        <ul class="flist">
-          <li>Active construction projects</li>
-          <li>Corporate relocations and moves</li>
-          <li>Government and project RFPs</li>
-          <li>Event and conference activity</li>
-        </ul>
-      </div>
-      <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">GillisOS &middot; Backyard Search &middot; 5 mi radius</span><span class="gl"><span class="dot"></span> completed</span></div>
-        <div class="gos-stats">
-          <div class="gs"><div class="gn">6</div><div class="gk">Signals</div></div>
-          <div class="gs"><div class="gn">23</div><div class="gk">Companies</div></div>
-          <div class="gs"><div class="gn">2</div><div class="gk">Hot signals</div></div>
-        </div>
-        <div class="grow gh"><span>Signal</span><span class="gmut">Category</span><span>Priority</span><span class="gld">Leads</span></div>
-        <div class="grow"><span class="gco">Highway 11 Interchange Replacement</span><span class="gmut">construction</span><span class="pri hot">Hot</span><span class="gld">10</span></div>
-        <div class="grow"><span class="gco">Vicarro Townhome Development</span><span class="gmut">construction</span><span class="pri hot">Hot</span><span class="gld">3</span></div>
-        <div class="grow"><span class="gco">Highway 1 Expansion Phase 4</span><span class="gmut">construction</span><span class="pri warm">Warm</span><span class="gld">5</span></div>
-        <div class="grow"><span class="gco">Long-Term Care Community Build</span><span class="gmut">construction</span><span class="pri warm">Warm</span><span class="gld">3</span></div>
-        <div class="grow"><span class="gco">Sumas Park Estates Development</span><span class="gmut">construction</span><span class="pri pipe">Pipeline</span><span class="gld">1</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURE 2 · DEEP DIVE + OUTREACH -->
-<section class="feat-sec alt" id="outreach">
+<!-- FEATURE 1 · LIVED EXPERIENCE -->
+<section class="feat-sec" id="voices">
   <div class="wrap">
     <div class="feat rev">
       <div class="gos">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">GillisOS &middot; Lead deep dive</span><span class="gl"><span class="dot"></span> deep dived</span></div>
-        <div class="dd">
-          <div class="dd-cell"><div class="dd-k">Origin hotel</div><div class="dd-v"><b>Comfort Inn Brooklyn Center</b></div></div>
-          <div class="dd-cell"><div class="dd-k">Demand signal</div><div class="dd-v">MnDOT lighting rebuild with night-shift crews on I-694</div></div>
-          <div class="dd-cell"><div class="dd-k">Why it matters</div><div class="dd-v">Night work creates <b>day-sleeper lodging demand</b> near the zone</div></div>
-          <div class="dd-cell"><div class="dd-k">Est. room nights</div><div class="dd-v">Significant, multi-season through 2025</div></div>
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">AskEllyn &middot; Lived experience</span><span class="gl"><span class="dot"></span> one real story</span></div>
+        <div class="gos-stats">
+          <div class="gs"><div class="gn">100k+</div><div class="gk">Conversations</div></div>
+          <div class="gs"><div class="gn">100+</div><div class="gk">Countries</div></div>
+          <div class="gs"><div class="gn">50+</div><div class="gk">Languages</div></div>
         </div>
-        <div class="gco-row"><span class="nm">Short Elliott Hendrickson (SEH)</span><span class="st">Reach out ready</span><span class="ct">5 contacts</span></div>
-        <div class="gco-row"><span class="nm">Design Electric, Inc.</span><span class="st">Reach out ready</span><span class="ct">5 contacts</span></div>
-        <div class="gco-row"><span class="nm">Traxler Construction Inc.</span><span class="st">Reach out ready</span><span class="ct">4 contacts</span></div>
+        <div class="gco-row"><span class="nm">Ellyn Winters-Robinson</span><span class="st">Survivor</span><span class="ct">author, Flat Please</span></div>
+        <div class="gco-row"><span class="nm">Cigna Healthcare</span><span class="st">Live</span><span class="ct">patient community</span></div>
+        <div class="gco-row"><span class="nm">Brock University study</span><span class="st">Ongoing</span><span class="ct">Canadian Cancer Society</span></div>
+        <div class="pkg-total"><span class="pk">Underneath</span><span>One companion, grounded in a real journey, not clinical data</span></div>
       </div>
       <div class="ftxt">
-        <span class="flabel">02 &middot; Outreach</span>
-        <h2>Not a mail merge. A first message that reads handwritten.</h2>
-        <p>Gillis finds the companies tied to each signal, verifies the right people, and drafts every email as Sam, referencing the actual project and the nearby hotel. The first reply Gillis Sales ever received addressed Sam by name and asked for a call.</p>
+        <span class="flabel">01 &middot; Built on lived experience</span>
+        <h2>Built on a life, not a dataset.</h2>
+        <p>AskEllyn is built on the lived experience of Ellyn Winters-Robinson, a breast cancer survivor and author of Flat Please, Hold the Shame. Trained on real patient conversations and Ellyn's own narrative, the warmth is not a script. It is a person who has been there, at scale.</p>
         <ul class="flist">
-          <li>Contacts verified before a single send</li>
-          <li>Every message tied to a real reason</li>
-          <li>Replies route straight to the right rep</li>
+          <li>Grounded in one survivor's real journey</li>
+          <li>Trained on real patient conversations</li>
+          <li>Warmth that only lived experience carries</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE 3 · ASKGILLIS COACHING -->
-<section class="feat-sec" id="coaching">
+<!-- FEATURE 2 · THE REGISTER -->
+<section class="feat-sec alt" id="register">
   <div class="wrap">
     <div class="feat">
       <div class="ftxt">
-        <span class="flabel">03 &middot; Coaching</span>
-        <h2>AskGillis: coaching moves into the selling moment.</h2>
-        <p>Coaching used to arrive after the call, in reviews and ride-alongs. AskGillis puts the right question, the right answer, and the right next step inside the conversation, in real time, built on Tammy Gillis's methodology and the Room to Grow curriculum. The same coach supports the full cycle:</p>
-        <div class="cyc">
-          <div class="cyc-row"><span class="cn">01</span><span class="ct2"><span class="cl2">Prospecting</span><div class="cq">"What's a strong opener for a night-shift construction crew?" A project-specific hook, not a generic intro.</div></span></div>
-          <div class="cyc-row"><span class="cn">02</span><span class="ct2"><span class="cl2">Discovery</span><div class="cq">"What should I ask to size the room block?" The right questions on crew size, dates, and shift pattern.</div></span></div>
-          <div class="cyc-row"><span class="cn">03</span><span class="ct2"><span class="cl2">Objection handling</span><div class="cq">"They already have a hotel partner. Now what?" A reframe that fits this project and this crew.</div></span></div>
-          <div class="cyc-row"><span class="cn">04</span><span class="ct2"><span class="cl2">Closing and role play</span><div class="cq">Rehearse the real scenario before the call, not after, with a daily sharpener to stay in shape.</div></span></div>
-        </div>
-      </div>
-      <div class="agc">
-        <div class="agc-rail">
-          <div class="agc-logo">Ask<b>Gillis</b><span class="sub">Sales platform</span></div>
-          <div class="agm"><span class="md" style="background:var(--g-teal)"></span>Onboarding</div>
-          <div class="agm"><span class="md" style="background:#8B5CF6"></span>Weekly Game Plan</div>
-          <div class="agm on"><span class="md" style="background:var(--g-teal)"></span>Outreach Support</div>
-          <div class="agm"><span class="md" style="background:var(--g-lilac)"></span>Situation</div>
-          <div class="agm"><span class="md" style="background:var(--g-orange)"></span>Role Play</div>
-          <div class="agm"><span class="md" style="background:var(--g-gold)"></span>Daily Sharpener</div>
-          <div class="agm"><span class="md" style="background:#3B82F6"></span>LinkedIn and Social</div>
-          <div class="agm"><span class="md" style="background:#8a839a"></span>Methodology</div>
-        </div>
-        <div class="agc-main">
-          <div class="agc-head"><span class="tg">TG</span><span><div class="tn">Tammy</div><div class="tr">Your AI sales coach</div></span></div>
-          <div class="agc-chat">
-            <div class="cb-msg rep"><div class="who">Julie</div>Can you sharpen up my cold email? Going to a VP of Ops bringing crews in for a nine month bridge project.</div>
-            <div class="cb-msg tam"><div class="who">Tammy</div>Good instinct reaching out early. Right now it reads like every other hotel email he deletes before his coffee. Lead with his project and what it costs him to get crew housing wrong. Two quick rules: drop the amenity list, nobody books on free breakfast. Here is a tighter version:
-              <div class="ag-email"><span class="es">Subject: Housing your bridge crew in Davenport</span>Hi Mark, saw your crews are heading to Davenport for the Route 61 work. Nine months on site means consistent rooms close to the job and billing that does not eat your PM's time. Worth a 10 minute call to see if we are a fit?</div>
-            </div>
-          </div>
-          <div class="agc-input"><span>Ask Tammy anything...</span><span class="snd"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-          <div class="agc-foot">AskGillis, powered by Tammy's 28 years of hospitality sales</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PAYOFF TIMELINE -->
-<section class="payoff" id="payoff">
-  <div class="wrap">
-    <div class="fits-head">
-      <span class="eyebrow">The payoff</span>
-      <h2>From a signal to a booked call.</h2>
-      <p class="fits-sub">The whole loop on one real opportunity, start to finish, with everything captured in the CRM along the way.</p>
-    </div>
-    <div class="tline">
-      <div class="tcell"><div class="tt">Mon &middot; 9:14 AM</div><h3>The signal is found.</h3><p>Backyard Search picks up the I-694 project, less than 2 miles from Comfort Inn Brooklyn Center.</p></div>
-      <div class="tcell"><div class="tt">Mon &middot; 9:17 AM</div><h3>Outreach goes out.</h3><p>The right contact is identified, the first email is sent as Sam, and the CRM record is created automatically.</p></div>
-      <div class="tcell"><div class="tt">Tue &middot; 2:31 PM</div><h3>The prospect replies.</h3><p><q>Yes, we'd love to discuss rates for the overnight crews.</q> A high-priority task lands in the rep's queue.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CRM -->
-<section class="crm" id="crm">
-  <div class="wrap">
-    <div class="crm-grid">
-      <div class="ftxt">
-        <span class="flabel">04 &middot; The system of record</span>
-        <h2>Your CRM becomes a live selling tool.</h2>
-        <p>Every step writes itself into Salesforce as it happens. Lead, contact, activity, and owner populate automatically, so the record is not an after-the-fact log. It is where the rep actually works the deal.</p>
+        <span class="flabel">02 &middot; Any language, any hour</span>
+        <h2>Warm, in her own words, whenever she needs it.</h2>
+        <p>Patients arrive at any hour, in any language, carrying fear that is hard to say out loud. AskEllyn answers with empathy first, in the language that feels most natural, so nobody has to wait for business hours or a translator to be heard.</p>
         <ul class="flist">
-          <li>Created automatically, owned by the rep</li>
-          <li>Full research context, one click away</li>
-          <li>Follow-ups and tasks land in the queue</li>
+          <li>50+ languages, the patient's own words</li>
+          <li>Any hour, when the clinic is closed</li>
+          <li>Free to the patient, no appointment</li>
         </ul>
       </div>
-      <div class="crm-card">
-        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">Salesforce &middot; Lead</span><span class="gl"><span class="dot"></span> synced</span></div>
-        <div class="crm-rows">
-          <div class="crm-row"><span class="ck">Lead</span><span class="cv2">April Ryan &middot; SEH</span></div>
-          <div class="crm-row"><span class="ck">Owner</span><span class="cv2">Shannon S., RDOS</span></div>
-          <div class="crm-row"><span class="ck">Hotel</span><span class="cv2">Comfort Inn Brooklyn Center</span></div>
-          <div class="crm-row"><span class="ck">Source</span><span class="cv2">Gillis Leads</span></div>
-          <div class="crm-row"><span class="ck">Priority</span><span class="cv2">1<span class="hotp">Hot</span></span></div>
-          <div class="crm-row"><span class="ck">Research</span><span class="cv2">Full project context, linked</span></div>
+      <div class="gos">
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">AskEllyn &middot; Reach</span><span class="gl"><span class="dot"></span> always on</span></div>
+        <div class="dd">
+          <div class="dd-cell"><div class="dd-k">Languages</div><div class="dd-v">50+, <b>in her own words</b></div></div>
+          <div class="dd-cell"><div class="dd-k">Hours</div><div class="dd-v">Any hour, the clinic closed</div></div>
+          <div class="dd-cell"><div class="dd-k">Access</div><div class="dd-v">Free. <b>No appointment, no wait</b></div></div>
+          <div class="dd-cell"><div class="dd-k">Reach</div><div class="dd-v">100+ countries, day or night</div></div>
         </div>
+        <div class="pkg-total"><span class="pk">Result</span><span>Nobody waits for business hours to be heard</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="testi">
+<!-- FEATURE 3 · SAFE BY DESIGN -->
+<section class="feat-sec" id="safety">
   <div class="wrap">
-    <div class="testi-card">
-      <div class="testi-lg">GILLIS SALES</div>
-      <div class="testi-q">For too long, hotel sales has relied on the same manual playbook. GillisOS shows what becomes possible when you give a great sales team the tools to reach far more people, without losing the human touch that makes those connections meaningful.</div>
-      <div class="testi-by">
-        <span class="testi-av">GS</span>
-        <span><span class="testi-n">Gillis Sales</span><span class="testi-r">20 plus years in hotel sales</span></span>
-        <a class="testi-link" href="/case-study/gillisos">Read the story <span class="ar">&rarr;</span></a>
+    <div class="feat rev">
+      <div class="gos">
+        <div class="gos-bar"><span class="dtl"></span><span class="dtl"></span><span class="dtl"></span><span class="gt">AskEllyn &middot; Safe by design</span><span class="gl"><span class="dot"></span> always on</span></div>
+        <div class="proc">
+          <div class="pc"><div class="pk2">Medical advice</div><div class="pv2">&#10005;<small>never</small></div></div>
+          <div class="pc"><div class="pk2">Clinician</div><div class="pv2">&#10003;<small>in charge</small></div></div>
+          <div class="pc"><div class="pk2">Hours</div><div class="pv2">24/7</div></div>
+          <div class="pc"><div class="pk2">Every chat</div><div class="pv2">&#10003;<small>private</small></div></div>
+        </div>
+        <div class="gco-row"><span class="nm">Clear disclaimers</span><span class="st">Always</span><span class="ct">support, not medical advice</span></div>
+        <div class="gco-row"><span class="nm">Clinical questions</span><span class="st">Handed</span><span class="ct">to the patient's care team</span></div>
+        <div class="gco-row"><span class="nm">Not for minors</span><span class="st">Gated</span><span class="ct">adults navigating diagnosis</span></div>
+      </div>
+      <div class="ftxt">
+        <span class="flabel">03 &middot; Safe by design</span>
+        <h2>A companion, not a clinician.</h2>
+        <p>AskEllyn knows exactly what it is not. It never diagnoses and never prescribes, and it says so plainly. It is emotional support that meets patients with warmth, then keeps the clinician firmly in charge of the care.</p>
+        <ul class="flist">
+          <li>Never diagnoses, never prescribes</li>
+          <li>Clear disclaimers, support not advice</li>
+          <li>Clinical questions handed to the care team</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1125,23 +1105,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="results" id="results">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The impact</span>
-      <h2>Leads from the first days.</h2>
-      <p class="lead">Real outcomes for a real sales organization, at conversion rates cold outreach is not supposed to hit.</p>
+      <span class="eyebrow">Live on Cigna Healthcare</span>
+      <h2>Support that scaled to the world.</h2>
+      <p class="lead">AskEllyn runs live in Cigna Healthcare’s breast cancer community. The numbers below are the product, not a projection.</p>
     </div>
     <div class="res-grid">
-      <a class="res-card" href="/case-study/gillisos">
-        <div class="res-lg">Cold outreach conversion</div>
-        <div class="res-n">5 to 8%</div>
-        <div class="res-nl">depending on the hotel</div>
-        <p class="res-p">GillisOS started generating qualified leads within the first few days of launch, which exceeded expectations.</p>
-        <span class="res-link">Read the story <span class="ar">&rarr;</span></span>
-      </a>
       <div class="res-card">
-        <div class="res-lg">The first reply ever received</div>
-        <div class="res-n">By name</div>
-        <div class="res-nl">a prospect wrote back to Sam</div>
-        <p class="res-p">Prospects engage with Sam like a colleague. The very first reply addressed Sam by name and asked to set up a call.</p>
+        <div class="res-lg">Since launch</div>
+        <div class="res-n">100k+</div>
+        <div class="res-nl">conversations held</div>
+        <p class="res-p">A warm, human presence for patients and families navigating breast cancer, at whatever hour the questions arrive.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-lg">Reach</div>
+        <div class="res-n">100+</div>
+        <div class="res-nl">countries, 50+ languages</div>
+        <p class="res-p">Patients meet AskEllyn in their own language, wherever they are in the world, without an appointment or a waitlist.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-lg">Studied</div>
+        <div class="res-n">Brock</div>
+        <div class="res-nl">University research</div>
+        <p class="res-p">AskEllyn is part of a Canadian Cancer Society-funded study at Brock University on how AI companions can support patients and caregivers at scale.</p>
       </div>
     </div>
   </div>
@@ -1150,11 +1135,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>Put Gillis to work on your hotels.</h2>
-    <p>Tell us your flags and your playbook. We will show you the demand within five miles of your properties, and the coach your reps get on day one.</p>
+    <h2>Put AskEllyn in your patient community.</h2>
+    <p>Bring us the moments your team cannot be awake for. We will show you what AskEllyn holds for your patients, in their own language, under your rules, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-accent">Contact sales <span class="ar">&rarr;</span></a>
-      <a href="/case-study/gillisos" class="btn btn-ghost">Read the GillisOS story</a>
+      <a href="/case-study/askellyn" class="btn btn-ghost">Read the AskEllyn story</a>
+      <a href="/healthcare" class="btn btn-ghost">Gambit for Healthcare</a>
     </div>
   </div>
 </section>
@@ -1239,7 +1225,7 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.flow .section-head,.pipe,.flow-close,.ftxt,.gos,.agc,.fits-head,.tline,.crm-card,.testi-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.flow .section-head,.pipe,.flow-close,.ftxt,.gos,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
@@ -1252,72 +1238,65 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
   }
 })();
 </script>
+
 <script>
-/* ----- Gillis hero demo: logo, mandate, research, outreach, then AskGillis coaching ----- */
+/* ----- Dawn hero demo: mark, first message, held conversation ----- */
 (function(){
   var stage=document.getElementById('dStage'); if(!stage) return;
   function $(id){return document.getElementById(id);}
   var morph=$('dMorph'),gmark=$('dG'),mandateEl=$('dMandate'),caretM=$('dCaretM'),submit=$('dSubmit'),
-      cursor=$('dCursor'),sig=$('dSig'),rows=[].slice.call(document.querySelectorAll('#dRows .dl-row')),
-      bar=$('dBar'),score=$('dScore'),right=$('dRight'),subjEl=$('dSubj'),bodyEl=$('dBody'),
-      caretS=$('dCaretS'),caretB=$('dCaretB'),queue=$('dQueue'),done=$('dDone'),
-      subjBox=document.querySelector('.dr-subj'),
-      cRep=$('cRep'),cTyping=$('cTyping'),cTam=$('cTam'),cTamText=$('cTamText'),caretC=$('dCaretC');
-  var MANDATE="Find demand near the Comfort Inn Brooklyn Center.";
-  var SUBJ="I-694 crew accommodations";
-  var BODY="Hi April, saw SEH is managing the I-694 lighting replacement in Fridley. Our hotel is under two miles from the project zone, and we support night-shift crews on builds like this.\n\nWorth a quick call?\n\nSam \u00B7 Gillis Sales";
-  var COACH="Acknowledge it, do not fight it. Ask when housing for this project gets decided, then offer a one night crew stay so the choice is easy. Loyalty rarely survives a 2am check-in problem.";
+      cursor=$('dCursor'),sig=$('cSig'),right=$('dRight'),queue=$('dQueue'),done=$('dDone'),
+      t1=$('cT1'),t2=$('cT2'),t3=$('cT3'),t4=$('cT4'),
+      work=[].slice.call(document.querySelectorAll('#cWork .dl-row'));
+  var MSG="I just got diagnosed and I'm scared.";
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var paused=false,waiters=[];
   function gate(){return paused?new Promise(function(r){waiters.push(r);}):Promise.resolve();}
   function resumeAll(){paused=false;stage.classList.remove('paused');var w=waiters;waiters=[];w.forEach(function(r){r();});}
   function sleep(ms){return new Promise(function(r){setTimeout(r,ms);}).then(gate);}
-  function setState(st){morph.classList.remove('s-icon','s-input','s-desk','s-coach');morph.classList.add(st);}
-  function moveTo(el){var d=stage.getBoundingClientRect(),t=el.getBoundingClientRect();cursor.style.transform='translate('+(t.left-d.left+t.width*0.5-5)+'px,'+(t.top-d.top+t.height*0.5-2)+'px)';}
+  function setState(st){morph.classList.remove('s-icon','s-input','s-desk');morph.classList.add(st);}
+  function moveTo(el){var d=stage.getBoundingClientRect(),p=el.getBoundingClientRect();cursor.style.transform='translate('+(p.left-d.left+p.width*0.5-5)+'px,'+(p.top-d.top+p.height*0.5-2)+'px)';}
   function park(){var d=stage.getBoundingClientRect();cursor.style.transition='none';cursor.style.transform='translate('+(d.width*0.5)+'px,'+(d.height*0.74)+'px)';void cursor.offsetWidth;cursor.style.transition='';}
   function clickFx(){cursor.classList.add('click');setTimeout(function(){cursor.classList.remove('click');},420);}
   function type(el,text,speed,caret){return new Promise(function(res){caret&&caret.classList.add('on');var i=0;el.textContent='';(function st(){if(paused){waiters.push(st);return;}if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(st,speed);}else{caret&&caret.classList.remove('on');res();}})();});}
-  function countTo(el,to,dur,suffix){var t0=performance.now();(function f(now){var p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(p*to)+(p===1?(suffix||''):'');if(p<1)requestAnimationFrame(f);})(t0);}
   function resetInner(){
-    rows.forEach(function(r){r.classList.remove('in');});
-    bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;bar.style.transition='';
-    score.textContent='0';sig.classList.remove('in');right.classList.remove('active');
+    [t1,t2,t3,t4].forEach(function(x){x.classList.remove('in','said');});
+    work.forEach(function(r){r.classList.remove('in');});
+    sig.classList.remove('in');right.classList.remove('active');
     queue.classList.remove('hide');done.classList.remove('show');
-    subjEl.textContent='';bodyEl.textContent='';caretS.classList.remove('on');caretB.classList.remove('on');
     mandateEl.textContent='';caretM.classList.remove('on');
-    cRep.classList.remove('in');cTyping.classList.remove('in');cTam.classList.remove('in');cTamText.textContent='';caretC.classList.remove('on');
-    cTyping.style.display='';
   }
   async function loop(){
     setState('s-icon');resetInner();park();
     await sleep(600);cursor.style.opacity='1';
     moveTo(gmark);await sleep(780);clickFx();await sleep(300);
     setState('s-input');await sleep(660);
-    await type(mandateEl,MANDATE,24,caretM);await sleep(560);
+    await type(mandateEl,MSG,30,caretM);await sleep(560);
     moveTo(submit);await sleep(620);clickFx();await sleep(300);
-    setState('s-desk');await sleep(760);
-    sig.classList.add('in');await sleep(480);
-    for(var i=0;i<rows.length;i++){rows[i].classList.add('in');await sleep(320);}
-    await sleep(140);bar.style.width='94%';countTo(score,94,950,' HOT');await sleep(1050);
-    right.classList.add('active');await sleep(430);
-    moveTo(subjBox);await sleep(620);
-    await type(subjEl,SUBJ,30,caretS);await sleep(230);
-    await type(bodyEl,BODY,14,caretB);await sleep(450);
-    moveTo(queue);await sleep(700);clickFx();await sleep(300);
-    queue.classList.add('hide');done.classList.add('show');await sleep(1500);
+    setState('s-desk');await sleep(720);
+    sig.classList.add('in');cursor.style.opacity='0';await sleep(430);
+    t1.classList.add('in');await sleep(900);
+    right.classList.add('active');work[0].classList.add('in');await sleep(380);
+    work[1].classList.add('in');await sleep(500);
+    t2.classList.add('in');await sleep(1500);
+    t2.classList.add('said');work[2].classList.add('in');await sleep(2100);
+    t3.classList.add('in');await sleep(1000);
+    work[3].classList.add('in');await sleep(600);
+    t4.classList.add('in');await sleep(1300);
+    t4.classList.add('said');await sleep(1400);
+    cursor.style.opacity='1';moveTo(queue);await sleep(680);clickFx();await sleep(300);
+    queue.classList.add('hide');done.classList.add('show');await sleep(2400);
     cursor.style.opacity='0';
-    setState('s-coach');await sleep(700);
-    cRep.classList.add('in');await sleep(900);
-    cTyping.classList.add('in');await sleep(1100);
-    cTyping.style.display='none';cTam.classList.add('in');
-    await type(cTamText,COACH,13,caretC);await sleep(2600);
     setState('s-icon');await sleep(760);
     loop();
   }
   function showStatic(){
-    setState('s-coach');morph.style.transition='none';gmark.style.transition='none';
-    cRep.classList.add('in');cTyping.style.display='none';cTam.classList.add('in');cTamText.textContent=COACH;
-    cursor.style.display='none';
+    setState('s-desk');morph.style.transition='none';gmark.style.transition='none';
+    sig.classList.add('in');
+    [t1,t2,t3,t4].forEach(function(x){x.classList.add('in','said');});
+    work.forEach(function(r){r.classList.add('in');});
+    right.classList.add('active');
+    queue.classList.add('hide');done.classList.add('show');cursor.style.display='none';
   }
   var btn=document.getElementById('gToggle');
   if(btn){
