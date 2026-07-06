@@ -3,7 +3,7 @@
   "redirects": [
     {
       "source": "/#solutions",
-      "destination": "/#work",
+      "destination": "/vision",
       "permanent": true
     },
     {

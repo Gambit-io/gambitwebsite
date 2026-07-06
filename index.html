@@ -289,21 +289,6 @@ header.onhero .burger svg{stroke:#fff}
 .thesis .t-link:hover{color:var(--accent-deep)}
 .thesis .term{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:430px;margin:0 auto;box-shadow:0 40px 80px -36px rgba(21,17,13,.55)}
 
-/* ---------- vision section ---------- */
-.vision{padding:104px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
-.vision::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='gn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23gn)'/%3E%3C/svg%3E")}
-.vision .wrap{position:relative;z-index:1}
-.vision .eyebrow{color:var(--accent-2)}
-.vision h2{color:#fff}
-.vision .lead{color:rgba(245,240,232,.72)}
-.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px}
-.vcell{padding:26px 22px;border:1px solid rgba(255,255,255,.13);border-radius:16px;background:rgba(255,255,255,.04)}
-.vcell .vn{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2);margin-bottom:12px}
-.vcell h3{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em;margin-bottom:8px;color:#fff}
-.vcell p{font-size:13.5px;line-height:1.5;color:rgba(245,240,232,.62)}
-@media(max-width:820px){.vgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.vgrid{grid-template-columns:1fr}.vision{padding:72px 0}}
-
 /* ---------- outcomes section ---------- */
 .outcomes{padding:100px 0;background:var(--paper)}
 .section-head{max-width:700px;margin:0 auto 52px;text-align:center}
@@ -668,7 +653,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         <span class="lbl">Company <svg class="cv" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span>
         <div class="dropdown" data-panel="company">
           <a class="dd-link" href="/about-us">About</a>
-          <a class="dd-link" href="/#work">Vision</a>
+          <a class="dd-link" href="/vision">Vision</a>
           <a class="dd-link" href="/case-studies">Case studies</a>
           <a class="dd-link" href="/insights">Insights</a>
         </div>
@@ -833,7 +818,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <button class="msec-h">Company <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
     <div class="msec-body">
       <a href="/about-us"><span class="mn">About</span></a>
-      <a href="/#work"><span class="mn">Vision</span></a>
+      <a href="/vision"><span class="mn">Vision</span></a>
       <a href="/case-studies"><span class="mn">Case studies</span></a>
       <a href="/insights"><span class="mn">Insights</span></a>
     </div>
@@ -905,39 +890,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="tl"><span class="ts">07:12:18</span><span>First touch drafted in your voice</span></div>
           <div class="tl-done"><span class="sd"></span> SENT &middot; OWNER REACHED FIRST</div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VISION -->
-<section class="vision" id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Our vision</span>
-      <h2>Own your AI. Grow without a ceiling.</h2>
-      <p class="lead">We help companies do ten times more with the teams they already have, and we build that AI so it belongs to you. Not locked to one vendor. Not tied to one model. Yours to keep as the technology keeps moving. Gambit is the partner that puts it to work intelligently and grows with you as you scale, giving you the freedom to change anything and the support to never do it alone.</p>
-    </div>
-    <div class="vgrid">
-      <div class="vcell">
-        <div class="vn">01</div>
-        <h3>10x your operations</h3>
-        <p>Put workers on the jobs your team cannot get to, and do far more of the work that matters without adding headcount.</p>
-      </div>
-      <div class="vcell">
-        <div class="vn">02</div>
-        <h3>Own your AI</h3>
-        <p>The workers, the knowledge they run on, and the value they create stay yours. You are building an asset, not renting one.</p>
-      </div>
-      <div class="vcell">
-        <div class="vn">03</div>
-        <h3>No vendor or model lock-in</h3>
-        <p>Never married to one provider or one model. Swap either as the field moves, so your leverage always stays with you.</p>
-      </div>
-      <div class="vcell">
-        <div class="vn">04</div>
-        <h3>A partner as you scale</h3>
-        <p>We grow with you, from the first worker to a full floor, with the freedom to change course and the support to move fast.</p>
       </div>
     </div>
   </div>
@@ -1234,7 +1186,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         <div class="fcol"><div class="fcol-h">Product</div><a href="/workers">Workers</a><a href="/factory">The Factory</a></div>
         <div class="fcol"><div class="fcol-h">Industries</div><a href="/financial-services">Financial Services</a><a href="/healthcare">Healthcare</a><a href="/public-sector">Public Sector</a><a href="/legal">Legal</a><a href="/logistics">Logistics</a><a href="/hospitality">Hospitality</a><a href="/business-services">Business Services</a></div>
         <div class="fcol"><div class="fcol-h">Partners</div><a href="/partners">Resellers and VARs</a><a href="/partners-agencies">Agencies</a><a href="/gambitco-joins-hpe-unleash-ai-partner-program">HPE Unleash AI</a><a href="/gambit-td-synnex-hpe-unleash-ai-isv">TD SYNNEX</a></div>
-        <div class="fcol"><div class="fcol-h">Company</div><a href="/about-us">About</a><a href="/#work">Vision</a><a href="/case-studies">Case studies</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
+        <div class="fcol"><div class="fcol-h">Company</div><a href="/about-us">About</a><a href="/vision">Vision</a><a href="/case-studies">Case studies</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
       </nav>
     </div>
     <div class="footer-bottom">
