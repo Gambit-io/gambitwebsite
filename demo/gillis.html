@@ -722,7 +722,7 @@
   .ws-grid.full .ws-detail{position:static}
   /* grids self-adapt via auto-fit in every mode */
 
-  /* ===== suite panes: Scout, Front Desk, Anchor ===== */
+  /* ===== suite panes: Leads, Reception, Key Accounts ===== */
   .tier-chip{flex:none;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:16px;padding:6px 13px;white-space:nowrap}
   .tier-chip.desk{color:var(--c-desk);background:var(--c-desk-soft);border-color:var(--c-desk-border)}
   .lockchip{font-size:10.5px;font-weight:700;color:var(--muted);background:var(--bg);border:1px dashed var(--border);border-radius:14px;padding:4px 10px;justify-self:start;white-space:nowrap}
@@ -1059,7 +1059,7 @@
     </main>
 
     <!-- LEADS: the self-serve prospecting module (LeadShark structure, GillisOS depth) -->
-    <main class="work-wrap work-pane" id="paneScout">
+    <main class="work-wrap work-pane" id="paneLeads">
       <div class="rs-head">
         <div><h1 class="rs-h1">Leads</h1><p class="rs-sub">Self-serve prospecting for every property. The market read, the events, the comp set, and the companies with a reason to book, all rebuilt from live demand signals.</p></div>
         <span class="tier-chip">Included for every property &middot; <b id="savedCount">0</b> / 3 saved</span>
@@ -1333,7 +1333,7 @@ const ic = {
   coaching:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>`,
   assess:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 4 3 4-7"/></svg>`,
   chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-  scout:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>`,
+  leads:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>`,
   desk:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16v2H4z"/><path d="M12 6a7 7 0 0 1 7 7v4H5v-4a7 7 0 0 1 7-7z"/><path d="M12 3v3"/></svg>`,
   anchor:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><path d="M12 8v13"/><path d="M4 13a8 8 0 0 0 16 0"/><path d="M9 13H4M20 13h-5"/></svg>`,
 };
@@ -1395,7 +1395,7 @@ const TENANTS = {
     signSub:"Use your Choice Hotels work account to continue.",
     values:[
       {icon:ic.outbound, t:"Research + Outreach", d:"The premium engine"},
-      {icon:ic.scout,    t:"Leads", d:"Self-serve prospecting"},
+      {icon:ic.leads,    t:"Leads", d:"Self-serve prospecting"},
       {icon:ic.desk,     t:"Reception", d:"AskGillis at the front desk"},
       {icon:ic.anchor,   t:"Key Accounts", d:"Managed once, routed everywhere"},
       {icon:ic.chat,     t:"AskGillis", d:"Coaching and training in one"},
@@ -1403,14 +1403,14 @@ const TENANTS = {
     user:{name:"Dana", role:"Brand Sales Manager", initials:"DA"},
     spaces:[
       {id:'research', label:'Research + Outreach', icon:'search'},
-      {id:'scout', label:'Leads', icon:'scope'},
+      {id:'leads', label:'Leads', icon:'scope'},
       {id:'desk', label:'Reception', icon:'bell'},
       {id:'anchor', label:'Key Accounts', icon:'anchor'},
       {id:'coaching', label:'AskGillis', icon:'bubble'},
     ],
     pillars:[
-      {space:"research", accent:"outbound", title:"Research + Outreach", desc:"The premium engine. Everything Scout sees, plus deep research, verified contact lists, and the first email written and sent as Sam.", icon:'search', meta:"85 live signals", live:true},
-      {space:"scout", accent:"tools", title:"Leads", desc:"Self-serve prospecting for every property: market read, events, comp set, and the companies with a reason to book, all from live signals.", icon:'scope', meta:"Every property", live:true},
+      {space:"research", accent:"outbound", title:"Research + Outreach", desc:"The premium engine. Everything Leads sees, plus deep research, verified contact lists, and the first email written and sent as Sam.", icon:'search', meta:"85 live signals", live:true},
+      {space:"leads", accent:"tools", title:"Leads", desc:"Self-serve prospecting for every property: market read, events, comp set, and the companies with a reason to book, all from live signals.", icon:'scope', meta:"Every property", live:true},
       {space:"desk", accent:"desk", title:"Reception", desc:"AskGillis extended to the front desk as an overlay extension: complaints, comps, walks, and the system itself, answered on every shift.", icon:'bell', meta:"On every shift", live:true},
       {space:"anchor", accent:"anchor", title:"Key Accounts", desc:"One Canadian Tire relationship is hundreds of locations and travel both ways: crews in for store refreshes, dealers out to HQ. Managed once, routed everywhere.", icon:'anchor', meta:"28 accounts", live:true},
       {space:"coaching", accent:"coaching", title:"AskGillis", desc:"Coaching and training, all in one, tuned to the Choice playbook: modules, role play, the Daily Sharpener, and open chat with Tammy.", icon:'bubble', meta:"Always on", live:true},
@@ -1422,7 +1422,7 @@ const TENANTS = {
 };
 
 const TOOLS = [
-  {icon:ic.scout, name:"Scout Search", desc:"Prospect and research"},
+  {icon:ic.leads, name:"Leads search", desc:"Self-serve prospecting"},
 ];
 
 /* ============================================================
@@ -2156,7 +2156,7 @@ function openWorkspace(space){
 const PANES = {
   research:{pane:'paneResearch', fab:true},
   assess:{pane:'paneAssess', fab:true},
-  scout:{pane:'paneScout', fab:true},
+  leads:{pane:'paneLeads', fab:true},
   desk:{pane:'paneDesk', fab:false},
   anchor:{pane:'paneAnchor', fab:true},
   coaching:{pane:'paneCoaching', fab:false, focus:'coachInput'},
@@ -2210,7 +2210,7 @@ function toggleChat(){
 function closeChat(){ panel.classList.remove('open'); }
 
 /* ============================================================
-   SUITE INTERACTIONS: Scout, Front Desk, Anchor
+   SUITE INTERACTIONS: Leads, Reception, Key Accounts
    ============================================================ */
 /* ============================================================
    LEADS: the Choice self-serve module. LeadShark's structure
@@ -2429,7 +2429,7 @@ function leadSave(kind, id){
   renderLeadsRail(); leadsGo(leadsSec);
 }
 
-function scoutPush(){
+function leadsUpgrade(){
   setSpace('research');
 }
 
