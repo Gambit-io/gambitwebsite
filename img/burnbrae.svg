@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 244 110" width="244" height="110" role="img" aria-label="Burnbrae Farms">
-  <rect x="2" y="2" width="240" height="106" rx="16" fill="#123a74"/>
-  <text x="122" y="52" text-anchor="middle" font-family="'Arial Narrow',Arial,'Helvetica Neue',sans-serif" font-weight="700" font-size="42" letter-spacing="1" fill="#ffffff">BURNBRAE</text>
-  <line x1="34" y1="76" x2="70" y2="76" stroke="#ffffff" stroke-width="2"/>
-  <line x1="174" y1="76" x2="210" y2="76" stroke="#ffffff" stroke-width="2"/>
-  <text x="122" y="82" text-anchor="middle" font-family="Arial,'Helvetica Neue',sans-serif" font-weight="600" font-size="15" letter-spacing="3" fill="#ffffff">FARMS &#183; FERMES</text>
-</svg>

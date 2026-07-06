@@ -219,8 +219,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .logos{padding:54px 0 8px;background:var(--paper)}
 .logos .ll{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:26px}
 .logobar{display:flex;justify-content:center;align-items:center;gap:clamp(28px,5vw,64px);flex-wrap:wrap}
-.logobar .lg{font-family:var(--display);font-weight:600;font-size:clamp(16px,2vw,21px);letter-spacing:-.01em;color:#a7a097;transition:color .2s}
-.logobar .lg:hover{color:var(--ink)}
+.logobar .lg{width:auto;display:block;filter:grayscale(1);opacity:.6;transition:filter .25s var(--ease),opacity .25s var(--ease)}
+.logobar .lg.light{filter:grayscale(1) brightness(.62)}
+.logobar .lg:hover{filter:none;opacity:1}
 
 /* ---------- sub-vertical showcase ---------- */
 .showcase{padding:100px 0;background:var(--paper)}
@@ -1187,9 +1188,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="ll">Trusted by buy-side teams</div>
     <div class="logobar">
-      <span class="lg">OceanPark</span>
-      <span class="lgdot"></span>
-      <span class="lg">Spearhead</span>
+      <img class="lg light" src="/img/OceanPark.png" alt="OceanPark" style="height:32px">
+      <img class="lg" src="/img/Spearhead.png" alt="Spearhead" style="height:40px">
     </div>
     <div class="lsub">Live buy-side origination, in production today.</div>
   </div>
