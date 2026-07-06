@@ -205,11 +205,203 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
 .btn-outline-h:focus-visible, .btn-solid-h:focus-visible { outline-offset: 3px; }
 </style>
+  <link rel="stylesheet" href="/lib/site-chrome.css">
 </head>
 <body>
 
 <!-- HEADER -->
-<header><div class="header-inner"><a href="/" class="logo"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy"></a><nav id="mainNav"><a href="/vision">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a></nav><div class="header-actions"><a href="/get-started" class="btn-outline-h">Contact</a><a href="/#askgambit" class="btn-solid-h">Ask Gambit</a><button class="menu-toggle" id="menuToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></div></div></header>
+<header id="siteHeader">
+  <div class="nav-inner">
+    <a href="/" class="brand"><img src="/img/gambit-logo.png" alt="Gambit"></a>
+
+    <nav class="nav-center">
+      <button class="nav-item" data-menu="products">
+        <span class="lbl">Products <svg class="cv" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span>
+      </button>
+      <button class="nav-item" data-menu="solutions">
+        <span class="lbl">Solutions <svg class="cv" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span>
+      </button>
+      <button class="nav-item" data-menu="partners">
+        <span class="lbl">Partners <svg class="cv" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span>
+      </button>
+      <button class="nav-item" data-menu="company">
+        <span class="lbl">Company <svg class="cv" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span>
+        <div class="dropdown" data-panel="company">
+          <a class="dd-link" href="/about-us">About</a>
+          <a class="dd-link" href="/vision">Vision</a>
+          <a class="dd-link" href="/case-studies">Case studies</a>
+          <a class="dd-link" href="/insights">Insights</a>
+        </div>
+      </button>
+    </nav>
+
+    <div class="nav-right">
+      <a href="/get-started" class="nav-link">Contact</a>
+      <a href="/#askgambit" class="btn-ask"><span class="dot"></span> Ask Gambit</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+
+  <div class="mega-wrap">
+
+    <!-- PRODUCTS -->
+    <div class="mega" data-panel="products">
+      <div class="mega-head">
+        <div>
+          <div class="mh-t">Workers</div>
+          <div class="mh-s">AI workers with a job title, a scope, and accountability to an outcome. One engine, configured per deployment.</div>
+        </div>
+      </div>
+      <div class="grid-prod">
+        <div class="mcol">
+          <div class="collabel">Growth</div>
+          <a class="mi mi-w" href="/workers/mira"><span class="wmark s24" style="--wm:var(--w-mira)"><b>M</b></span><span class="mi-tx"><span class="mi-name">Mira <span class="mi-role">Research</span></span></span></a>
+          <a class="mi mi-w" href="/workers/bogan"><span class="wmark s24" style="--wm:var(--w-bogan)"><b>B</b></span><span class="mi-tx"><span class="mi-name">Bogan <span class="mi-role">Buy-side</span></span></span></a>
+          <a class="mi mi-w" href="/workers/atlas"><span class="wmark s24 two" style="--wm:var(--w-atlas)"><b>AT</b></span><span class="mi-tx"><span class="mi-name">Atlas <span class="mi-role">Sell-side</span></span></span></a>
+          <a class="mi mi-w" href="/workers/dealio"><span class="wmark s24 two" style="--wm:var(--w-dealio)"><b>DE</b></span><span class="mi-tx"><span class="mi-name">Dealio <span class="mi-role">Post-LOI</span></span></span></a>
+          <a class="mi mi-w" href="/workers/gillis"><span class="wmark s24 two" style="--wm:var(--w-gillis)"><b>GI</b></span><span class="mi-tx"><span class="mi-name">Gillis <span class="mi-role">Hotel sales</span></span></span></a>
+        </div>
+        <div class="mcol">
+          <div class="collabel">Operations</div>
+          <a class="mi mi-w" href="/workers/jericho"><span class="wmark s24" style="--wm:var(--w-jericho)"><b>J</b></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span></span></a>
+          <a class="mi mi-w" href="/workers/chloe"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
+          <a class="mi mi-w" href="/workers/harlo"><span class="wmark s24" style="--wm:var(--w-harlo)"><b>H</b></span><span class="mi-tx"><span class="mi-name">Harlo <span class="mi-role">Freight</span></span></span></a>
+          <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
+          <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
+        </div>
+        <div class="mcol">
+          <div class="collabel">Care</div>
+          <a class="mi mi-w" href="/workers/askellyn"><span class="wmark s24" style="--wm:var(--w-askellyn)"><b>E</b></span><span class="mi-tx"><span class="mi-name">AskEllyn <span class="mi-role">Breast cancer</span></span></span></a>
+          <a class="mi mi-w" href="/workers/dawn"><span class="wmark s24" style="--wm:var(--w-dawn)"><b>D</b></span><span class="mi-tx"><span class="mi-name">Dawn <span class="mi-role">Recovery</span></span></span></a>
+          <a class="mi mi-w" href="/introducing-askayla-ai-companion-parents-children-disabilities"><span class="wmark s24 two" style="--wm:var(--w-ayla)"><b>AY</b></span><span class="mi-tx"><span class="mi-name">Ayla <span class="mi-role">Disabilities</span></span></span></a>
+          <a class="mi mi-w" href="/case-study/askashleigh"><span class="wmark s24 two" style="--wm:var(--w-askashleigh)"><b>AS</b></span><span class="mi-tx"><span class="mi-name">AskAshleigh <span class="mi-role">Caregiving</span></span></span></a>
+          <a class="mi mi-w" href="/healthcare#clinic"><span class="wmark s24 two" style="--wm:var(--w-clinic)"><b>CL</b></span><span class="mi-tx"><span class="mi-name">Clinic <span class="mi-role">In-clinic</span></span></span></a>
+        </div>
+        <div class="mcol">
+          <div class="collabel">Platform</div>
+          <a class="mi" href="/factory"><span class="mi-name">The Factory</span><span class="mi-desc">The engine every worker runs on.</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLUTIONS -->
+    <div class="mega" data-panel="solutions">
+      <div class="mega-head">
+        <div>
+          <div class="mh-t">Industries</div>
+          <div class="mh-s">One suite, configured for the way your industry works. Find the workers built for your buyers and your data.</div>
+        </div>
+        <a href="/industries" class="mh-btn">All industries <span class="ar">&rarr;</span></a>
+      </div>
+      <div class="grid-sol">
+        <a class="mi" href="/financial-services"><span class="mi-name">Financial Services <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Find more deals, win them faster, keep clients longer.</span></a>
+        <a class="mi" href="/healthcare"><span class="mi-name">Healthcare <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Warm, non-medical support at the moment it is needed most.</span></a>
+        <a class="mi" href="/public-sector"><span class="mi-name">Public Sector <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Resident services that answer the first time, any hour.</span></a>
+        <a class="mi" href="/legal"><span class="mi-name">Legal <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Intake, research, and client questions, without the wait.</span></a>
+        <a class="mi" href="/logistics"><span class="mi-name">Logistics <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Freight documents read, validated, and confirmed at machine speed.</span></a>
+        <a class="mi" href="/hospitality"><span class="mi-name">Hospitality and Entertainment <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Hotel demand found and fans answered, around the clock.</span></a>
+        <a class="mi" href="/business-services"><span class="mi-name">Business Services <span class="livetag"><span class="sd"></span>Live</span></span><span class="mi-desc">Outbound, qualification, and support without added headcount.</span></a>
+      </div>
+    </div>
+
+    <!-- PARTNERS -->
+    <div class="mega" data-panel="partners">
+      <div class="mega-head">
+        <div>
+          <div class="mh-t">Partners</div>
+          <div class="mh-s">Build, run, and bill Gambit workers for your clients. You own the relationship. We run the engine.</div>
+        </div>
+        <a href="/partners" class="mh-btn">Partner program <span class="ar">&rarr;</span></a>
+      </div>
+      <div class="grid-prt">
+        <div class="mcol">
+          <div class="collabel">Ways to partner</div>
+          <a class="mi" href="/partners"><span class="mi-name">Resellers and VARs</span><span class="mi-desc">Deploy and bill workers under your own engagements, with nothing to build or run.</span></a>
+          <a class="mi" href="/partners-agencies"><span class="mi-name">Agencies and consultancies</span><span class="mi-desc">Offer proven AI workers to your clients without building them. You own the relationship.</span></a>
+        </div>
+        <div class="mcol">
+          <div class="collabel">Our partnerships</div>
+          <a class="mi" href="/gambitco-joins-hpe-unleash-ai-partner-program"><span class="mi-name">HPE Unleash AI</span><span class="mi-desc">A member of the HPE Unleash AI program. Workers run on the infrastructure you already trust.</span></a>
+          <a class="mi" href="/gambit-td-synnex-hpe-unleash-ai-isv"><span class="mi-name">TD SYNNEX</span><span class="mi-desc">An approved ISV in the TD SYNNEX and HPE channel.</span></a>
+        </div>
+        <div class="prt-cta">
+          <h4>Become a partner</h4>
+          <p>Bring the client relationship. We bring the workers and the engine behind them.</p>
+          <a href="/partners" class="pc-btn">Get started <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div id="mobileMenu">
+  <div class="msec">
+    <button class="msec-h">Products <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="msec-body">
+      <div class="msec-lbl">Growth</div>
+      <a href="/workers/mira"><span class="mn">Mira</span> &middot; Research</a>
+      <a href="/workers/bogan"><span class="mn">Bogan</span> &middot; Buy-side</a>
+      <a href="/workers/atlas"><span class="mn">Atlas</span> &middot; Sell-side</a>
+      <a href="/workers/dealio"><span class="mn">Dealio</span> &middot; Post-LOI</a>
+      <a href="/workers/gillis"><span class="mn">Gillis</span> &middot; Hotel sales</a>
+      <div class="msec-lbl">Operations</div>
+      <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
+      <a href="/workers/chloe"><span class="mn">Chloe</span> &middot; Civic</a>
+      <a href="/workers/harlo"><span class="mn">Harlo</span> &middot; Freight</a>
+      <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
+      <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
+      <div class="msec-lbl">Care</div>
+      <a href="/workers/askellyn"><span class="mn">AskEllyn</span> &middot; Breast cancer</a>
+      <a href="/workers/dawn"><span class="mn">Dawn</span> &middot; Recovery</a>
+      <a href="/introducing-askayla-ai-companion-parents-children-disabilities"><span class="mn">Ayla</span> &middot; Disabilities</a>
+      <a href="/case-study/askashleigh"><span class="mn">AskAshleigh</span> &middot; Caregiving</a>
+      <a href="/healthcare#clinic"><span class="mn">Clinic</span> &middot; In-clinic</a>
+      <div class="msec-lbl">Platform</div>
+      <a href="/factory"><span class="mn">The Factory</span></a>
+    </div>
+  </div>
+  <div class="msec">
+    <button class="msec-h">Solutions <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="msec-body">
+      <a href="/financial-services"><span class="mn">Financial Services</span> &middot; Live</a>
+      <a href="/healthcare"><span class="mn">Healthcare</span> &middot; Live</a>
+      <a href="/public-sector"><span class="mn">Public Sector</span> &middot; Live</a>
+      <a href="/legal"><span class="mn">Legal</span> &middot; Live</a>
+      <a href="/logistics"><span class="mn">Logistics</span> &middot; Live</a>
+      <a href="/hospitality"><span class="mn">Hospitality and Entertainment</span> &middot; Live</a>
+      <a href="/business-services"><span class="mn">Business Services</span> &middot; Live</a>
+    </div>
+  </div>
+  <div class="msec">
+    <button class="msec-h">Partners <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="msec-body">
+      <div class="msec-lbl">Ways to partner</div>
+      <a href="/partners"><span class="mn">Resellers and VARs</span></a>
+      <a href="/partners-agencies"><span class="mn">Agencies and consultancies</span></a>
+      <div class="msec-lbl">Our partnerships</div>
+      <a href="/gambitco-joins-hpe-unleash-ai-partner-program"><span class="mn">HPE Unleash AI</span></a>
+      <a href="/gambit-td-synnex-hpe-unleash-ai-isv"><span class="mn">TD SYNNEX</span></a>
+      <a href="/partners"><span class="mn">Become a partner &rarr;</span></a>
+    </div>
+  </div>
+  <div class="msec">
+    <button class="msec-h">Company <svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="msec-body">
+      <a href="/about-us"><span class="mn">About</span></a>
+      <a href="/vision"><span class="mn">Vision</span></a>
+      <a href="/case-studies"><span class="mn">Case studies</span></a>
+      <a href="/insights"><span class="mn">Insights</span></a>
+    </div>
+  </div>
+  <div class="m-actions">
+    <a href="/get-started" class="m-ghost">Contact</a>
+    <a href="/#askgambit" class="m-dark">Ask Gambit</a>
+  </div>
+</div>
 
 <!-- ARTICLE -->
 <main class="article-page">
@@ -446,9 +638,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-left"><img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img"><p class="footer-tagline">We put AI to work.</p></div>
-    <div class="footer-center"><a href="/vision">Vision</a><a href="/#workers">Workers</a><a href="/case-studies">Case Studies</a><a href="/about-us">About</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
-    <div class="footer-right"><div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div><div class="footer-socials"><a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/img/gambit-logo.png" alt="Gambit" loading="lazy" class="footer-logo-img">
+        <p class="footer-tagline">We put AI to work.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/gambit-co/" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="LinkedIn"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://www.instagram.com/gambitco" target="_blank" rel="noopener noreferrer" class="footer-social"><svg viewBox="0 0 24 24" aria-label="Instagram"><title>Instagram</title><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-cols">
+        <div class="fcol"><div class="fcol-h">Product</div><a href="/workers">Workers</a><a href="/factory">The Factory</a></div>
+        <div class="fcol"><div class="fcol-h">Industries</div><a href="/financial-services">Financial Services</a><a href="/healthcare">Healthcare</a><a href="/public-sector">Public Sector</a><a href="/legal">Legal</a><a href="/logistics">Logistics</a><a href="/hospitality">Hospitality</a><a href="/business-services">Business Services</a></div>
+        <div class="fcol"><div class="fcol-h">Partners</div><a href="/partners">Resellers and VARs</a><a href="/partners-agencies">Agencies</a><a href="/gambitco-joins-hpe-unleash-ai-partner-program">HPE Unleash AI</a><a href="/gambit-td-synnex-hpe-unleash-ai-isv">TD SYNNEX</a></div>
+        <div class="fcol"><div class="fcol-h">Company</div><a href="/about-us">About</a><a href="/vision">Vision</a><a href="/case-studies">Case studies</a><a href="/insights">Insights</a><a href="/get-started">Contact</a></div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Gambit Technologies. We put AI to work.</span>
+      <div class="footer-legal"><a href="/terms-of-service">Terms</a><span>&middot;</span><a href="/privacy-policy">Privacy</a></div>
+    </div>
   </div>
 </footer>
 
@@ -456,5 +665,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
 document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
 </script>
+<script src="/lib/site-chrome.js" defer></script>
 </body>
 </html>
