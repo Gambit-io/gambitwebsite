@@ -1,245 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gambit | Ask Dr. Fleshner – BPH</title>
-<meta name="description" content="Try Ask Dr. Fleshner, a Gambit AI worker demo for BPH patient education. Experience AI-powered healthcare conversations.">
-<meta name="robots" content="noindex, follow">
-<meta name="author" content="Gambit Technology Inc.">
-<link rel="canonical" href="https://www.gambitco.io/drneil">
-
-<!-- OPEN GRAPH -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="GambitCo">
-<meta property="og:title" content="Gambit | Ask Dr. Fleshner – BPH">
-<meta property="og:description" content="Try Ask Dr. Fleshner, a Gambit AI worker demo for BPH patient education powered by conversational AI.">
-<meta property="og:url" content="https://gambitco.io/drneil">
-<meta property="og:image" content="https://gambitco.io/img/gambit-logo.png">
-<meta property="og:image:alt" content="Gambit - Ask Dr. Fleshner AI worker demo">
-
-<!-- TWITTER CARD -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gambit | Ask Dr. Fleshner – BPH">
-<meta name="twitter:description" content="Try Ask Dr. Fleshner, a Gambit AI worker demo for BPH patient education powered by conversational AI.">
-<meta name="twitter:image" content="https://gambitco.io/img/gambit-logo.png">
-<meta name="twitter:image:alt" content="Gambit - Ask Dr. Fleshner AI worker demo">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clinic · In-clinic · Gambit</title>
+<meta name="description" content="Clinic, a Gambit in-clinic worker. Runs the specialist consult, shows the clinician its reasoning as it goes, and drafts the clinical note for review. The clinician stays in charge.">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://gambitco.io/workers/clinic">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clinic · In-clinic · Gambit">
+<meta property="og:description" content="Runs the specialist consult, shows the clinician its reasoning as it goes, and drafts the clinical note for review. The clinician stays in charge.">
+<meta property="og:image" content="https://gambitco.io/og-homepage.png">
+<meta property="og:url" content="https://gambitco.io/workers/clinic">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --black: #0a0a0a; --ink: #141414; --secondary: #52525b;
-  --muted: #a1a1aa; --border: #e4e4e7; --border-light: #f0f0f2;
-  --page: #fafafa; --white: #ffffff;
-  --hero-dark: #1e293b;
-  --font: 'General Sans', sans-serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-fleet:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
+  --w-gillis:#1e1745;
+  /* roster audit additions (reserve palette) */
+  --ink:#15110d;
+  --ink-2:#1f1a14;
+  --paper:#ffffff;
+  --bone:#f8f5ef;
+  --bone-2:#f1ebe2;
+  --sand:#d8cebd;
+  --sand-deep:#cabca6;
+  --clay:#b8957a;
+  --clay-deep:#a07c61;
+  --line:#e8e1d6;
+  --line-2:#efeae1;
+  --line-soft:rgba(255,255,255,.10);
+  --line-soft-2:rgba(255,255,255,.16);
+  --muted:#6f675c;
+  --muted-2:#938b7f;
+  --muted-d:rgba(240,243,248,.6);
+  --status:#3ec46d;
+  --status-d:#1f9e54;
+  /* worker job-family hues (icon system; match the site scene palette) */
+  --f-core:#a07c61;
+  --f-ma:#2b3a54;
+  --f-sup:#57606e;
+  --f-care:#8a5560;
+  --f-civic:#54697b;
+  --f-log:#a0713a;
+  --f-legal:#6b5d3f;
+  /* Partners accent: warm clay (no navy / vermilion on this door) */
+  --accent:#a07c61;
+  --accent-2:#cbb49c;
+  --accent-deep:#8a6a52;
+  --display:'General Sans','Helvetica Neue',Arial,sans-serif;
+  --mark:'Orbitron',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1140px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-hero:cubic-bezier(0,.55,.45,1);
 }
-html { font-family: var(--font); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; }
-body { min-height: 100vh; display: flex; flex-direction: column; }
-
-/* HEADER */
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; background: var(--white); border-bottom: 1px solid var(--border); }
-.header-inner { max-width: 1280px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
-.logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; display: inline-block; transition: transform 0.3s var(--ease); }
-.logo:hover { transform: translateX(6px); }
-.logo img { height: 24px; width: auto; display: block; }
-.footer-logo-img { height: 20px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.5; }
-nav { display: flex; align-items: center; gap: 4px; }
-nav a { font-size: 14px; font-weight: 450; color: var(--secondary); text-decoration: none; padding: 6px 16px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
-nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
-.header-actions { display: flex; align-items: center; gap: 10px; }
-.btn-outline-h { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 100px; background: transparent; border: 1px solid var(--border); color: var(--secondary); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
-.btn-outline-h:hover { opacity: 0.75; }
-.btn-solid-h { display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 100px; background: var(--ink); border: 1px solid var(--ink); color: var(--white); font-size: 13.5px; font-weight: 500; font-family: var(--font); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
-.btn-solid-h:hover { opacity: 0.75; }
-
-/* HERO BANNER */
-.worker-hero {
-  margin-top: 60px;
-  background: var(--hero-dark);
-  padding: 80px 32px 180px;
-  text-align: center;
-}
-.worker-hero h1 {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: #fafafa;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* EMBED AREA */
-.worker-embed {
-  flex: 1;
-  max-width: 1080px;
-  margin: -140px auto 0;
-  padding: 0 32px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
-
-.embed-container {
-  position: relative;
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 600px;
-  
-}
-
-/* When using an actual iframe */
-.embed-container iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-}
-
-/* Mock chat styles */
-.mock-chat { display: flex; flex-direction: column; flex: 1; }
-
-.mock-chat-body {
-  flex: 1; padding: 24px; min-height: 460px;
-}
-
-.mock-msg {
-  display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;
-}
-
-.mock-avatar {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #e2e8f0; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 600; color: var(--secondary);
-  overflow: hidden;
-}
-
-.mock-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-.mock-bubble {
-  background: var(--white); border-radius: 12px;
-  padding: 12px 16px; font-size: 14px; color: var(--ink);
-  line-height: 1.5; max-width: 540px;
-}
-
-.mock-footer {
-  padding: 16px 20px;
-  border-top: 1px solid var(--border-light);
-  display: flex; align-items: center; gap: 10px;
-}
-
-.mock-btn {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: var(--ink); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--white); font-size: 14px;
-  transition: opacity 0.15s;
-}
-.mock-btn:hover { opacity: 0.75; }
-
-.mock-input {
-  flex: 1; padding: 10px 14px; border-radius: 8px;
-  border: none; font-size: 13px;
-  font-family: var(--font); outline: none; background: transparent;
-  color: var(--ink);
-}
-.mock-input::placeholder { color: var(--muted); }
-
-.mock-send {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: var(--ink); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--white); font-size: 14px;
-  transition: opacity 0.15s;
-}
-.mock-send:hover { opacity: 0.75; }
-
-.mock-legal {
-  padding: 8px 20px 14px;
-  font-size: 10px; color: var(--muted);
-  border-top: 1px solid var(--border-light);
-}
-.mock-legal a { color: var(--secondary); text-decoration: underline; }
-
-/* Bottom spacing */
-.worker-spacer { height: 80px; }
-
-/* FOOTER */
-.site-footer { background: var(--black); padding: 40px 32px; }
-.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-.footer-left { display: flex; align-items: center; gap: 16px; }
-.footer-logo { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
-.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.6); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: rgba(255,255,255,0.9); }
-.footer-legal { display: flex; align-items: center; gap: 8px; }
-.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
-.footer-legal a:hover { color: rgba(255,255,255,0.8); }
-.footer-legal span { font-size: 12px; color: rgba(255,255,255,0.4); }
-.footer-center { display: flex; align-items: center; gap: 24px; }
-.footer-center a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
-.footer-center a:hover { color: rgba(255,255,255,0.9); }
-.footer-right { display: flex; align-items: center; gap: 16px; }
-.footer-socials { display: flex; align-items: center; gap: 10px; }
-.footer-social { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); transition: background 0.15s; text-decoration: none; }
-.footer-social:hover { background: rgba(255,255,255,0.1); }
-.footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-
-/* ═══ RESPONSIVE ═══ */
-.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-.menu-toggle svg { width: 22px; height: 22px; stroke: var(--ink); stroke-width: 1.5; }
-
-@media (max-width: 1024px) {
-  .header-inner { padding: 0 24px; }
-}
-
-@media (max-width: 768px) {
-  .menu-toggle { display: block; }
-  nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px 24px 24px; border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.06); z-index: 99; }
-  nav.open { display: flex; }
-  nav a { padding: 12px 0; font-size: 16px; }
-  .header-actions { gap: 8px; }
-  .btn-outline-h { display: none; }
-  .header-inner { padding: 0 20px; }
-  .site-footer { padding: 32px 20px; }
-  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
-  .footer-left { flex-direction: column; gap: 6px; }
-  .footer-center { flex-wrap: wrap; justify-content: center; gap: 16px; }
-  .footer-right { flex-direction: column; gap: 12px; align-items: center; }
-  .footer-socials { justify-content: center; }
-  .cta-section { padding: 60px 20px; margin-top: 48px; }
-  .cta-inner h2 { font-size: 28px; }
-  .cta-buttons { flex-direction: column; gap: 8px; }
-  .cta-primary, .cta-outline { text-align: center; justify-content: center; }
-}
-@media (max-width: 768px) {
-  .worker-hero { padding: 60px 20px 140px; }
-  .worker-hero h1 { font-size: 28px; }
-  .worker-embed { margin: -100px auto 0; padding: 0 20px; }
-}
-@media (max-width: 480px) {
-  .worker-hero h1 { font-size: 24px; }
-}
-/* FOCUS STATES */
-a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
-.btn-outline-h:focus-visible, .btn-solid-h:focus-visible, .hero-btn-primary:focus-visible, .hero-btn-ghost:focus-visible, .cta-primary:focus-visible, .cta-outline:focus-visible { outline-offset: 3px; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--display);color:var(--ink);background:var(--bone);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-size:14.5px;font-weight:500;padding:13px 22px;border-radius:40px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:.22s ease;white-space:nowrap}
+.btn .ar{transition:transform .22s ease}.btn:hover .ar{transform:translateX(3px)}
+.btn-accent{background:var(--accent-deep);color:#fff}.btn-accent:hover{opacity:.9}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn-ghost:hover{border-color:var(--clay-deep);color:var(--clay-deep)}
+.cs{min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:150px 24px 110px}
+.cs-in{max-width:640px;display:flex;flex-direction:column;align-items:center}
+.cs-mark{position:relative;overflow:hidden;width:78px;height:78px;border-radius:22%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--mark);font-weight:700;font-size:30px;background:var(--wm);margin-bottom:26px}
+.cs-mark.two{font-size:24px;letter-spacing:-.02em}
+.cs-mark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.17) 0 50%,rgba(255,255,255,0) 50%)}
+.cs-mark b{position:relative;z-index:1}
+.cs .eyebrow{display:block;margin-bottom:14px}
+.cs h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,6vw,62px);letter-spacing:-.03em;line-height:1.02;color:var(--ink)}
+.cs-status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);border:1px solid var(--line);border-radius:30px;padding:6px 14px;margin:18px 0 4px}
+.cs-status .sd{width:7px;height:7px;border-radius:50%;background:var(--wm)}
+.cs-lead{font-size:clamp(16px,1.5vw,18px);color:var(--muted);line-height:1.6;margin:18px auto 30px;max-width:52ch}
+.cs-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+@media(max-width:620px){.cs{padding:120px 20px 80px}.cs-cta .btn{width:100%;justify-content:center}}
 </style>
-  <link rel="stylesheet" href="/lib/site-chrome.css">
+<link rel="stylesheet" href="/lib/site-chrome.css">
 </head>
 <body>
-
-<!-- HEADER -->
 <header id="siteHeader">
   <div class="nav-inner">
     <a href="/" class="brand"><img src="/img/gambit-logo.png" alt="Gambit"></a>
@@ -433,30 +282,19 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
   </div>
 </div>
 
-<!-- HERO BANNER. Change the title here -->
-<div class="worker-hero">
-  <h1>Ask Dr. Fleshner – BPH</h1>
-</div>
-
-<!-- EMBED AREA -->
-<div class="worker-embed">
-  <div class="embed-container">
-
-    <iframe
-      src="https://chat.gambitco.io/embed/901018f0-e6ef-4cd4-9bc6-2c0c8d2c150b?surface=60ed261d-5573-4e30-b337-1b99fe323599"
-      width="100%"
-      style="height: 600px; min-height: 400px; border-radius: 16px;"
-      frameborder="0"
-      sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-      loading="lazy"
-    ></iframe>
-
+<!-- COMING SOON -->
+<section class="cs" id="top"><div class="wrap"><div class="cs-in">
+  <span class="cs-mark two" style="--wm:var(--w-clinic)"><b>CL</b></span>
+  <span class="eyebrow">In-clinic</span>
+  <h1>Clinic</h1>
+  <span class="cs-status"><span class="sd"></span> Worker page coming soon</span>
+  <p class="cs-lead">Runs the specialist consult, shows the clinician its reasoning as it goes, and drafts the clinical note for review. The clinician stays in charge.</p>
+  <div class="cs-cta">
+    <a href="/get-started" class="btn btn-accent">Get started <span class="ar">&rarr;</span></a>
+    <a href="/healthcare#clinic" class="btn btn-ghost">See Clinic on Gambit for Healthcare</a>
   </div>
-</div>
+</div></div></section>
 
-<div class="worker-spacer"></div>
-
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
@@ -481,11 +319,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     </div>
   </div>
 </footer>
-
-<script>
-document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
-document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
-</script>
 <script src="/lib/site-chrome.js" defer></script>
 </body>
 </html>
