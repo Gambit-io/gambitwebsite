@@ -594,8 +594,9 @@
   .crow:hover{background:var(--brand-soft)}
   .crow.sel{background:var(--brand-soft);box-shadow:inset 3px 0 0 var(--brand)}
   .cr-main{flex:1;min-width:0}
-  .cr-name{display:block;font-weight:600;font-size:13.5px;color:var(--text)}
-  .cr-sub{font-size:12px;color:var(--muted)}
+  .cr-name{display:block;font-weight:600;font-size:13.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25}
+  .cr-sub{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
+  .cr-badges{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
   .prio{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:14px;white-space:nowrap;flex:none}
   .prio.hot{color:var(--hot-ink);background:rgba(232,135,91,.16)}
   .prio.warm{color:var(--warm-ink);background:rgba(212,168,67,.2)}
@@ -615,7 +616,7 @@
   .det-fit{text-align:center;flex:none;background:var(--brand-soft);border-radius:12px;padding:7px 12px}
   .det-fitn{display:block;font-family:'Sora';font-weight:700;font-size:20px;color:var(--brand);line-height:1}
   .det-fitl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-bright)}
-  .det-badges{display:flex;gap:7px;margin:12px 0 4px}
+  .det-badges{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px}
   .det-sec-l{display:flex;align-items:center;gap:8px;margin:20px 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .det-sec-n{font-size:10px;color:var(--brand);background:var(--brand-soft);border-radius:10px;padding:2px 8px}
   .sig-card{background:var(--bg);border:1px solid var(--border-soft);border-radius:12px;padding:12px 14px;margin-bottom:8px}
@@ -786,7 +787,7 @@
   .ob.replied{color:#fff;background:var(--brand)}
 
   /* cross-signal intelligence */
-  .xbadge{display:inline-block;margin-left:8px;font-size:9.5px;font-weight:700;letter-spacing:.02em;color:var(--c-tools);background:var(--c-tools-soft);border:1px solid var(--c-tools-border);border-radius:12px;padding:2px 8px;vertical-align:middle}
+  .xbadge{display:inline-block;margin-left:7px;font-size:9.5px;font-weight:700;letter-spacing:.02em;color:var(--c-tools);background:var(--c-tools-soft);border:1px solid var(--c-tools-border);border-radius:11px;padding:1px 7px}
   .htag{margin-left:8px;font-size:11px;color:var(--brand);opacity:.85}
   .htag::before{content:"also at ";color:var(--muted)}
   .grp-at{font-size:10.5px;font-weight:600;color:var(--brand);background:var(--brand-soft);border-radius:10px;padding:2px 7px;margin-left:6px}
@@ -795,7 +796,7 @@
 
   /* Sam automated-outreach block (informational, never a to-do) */
   .sam-out{margin-top:6px;background:var(--bg);border:1px solid var(--border-soft);border-radius:11px;padding:11px 12px}
-  .sam-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .sam-h{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:9px}
   .sam-tag{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:12px;padding:3px 9px}
   .sam-cc{font-size:10.5px;color:var(--muted)}
 
@@ -804,6 +805,7 @@
     .ws-kpis{grid-template-columns:1fr 1fr}
     .crow{flex-wrap:wrap}
     .crow .cr-main{flex:1 1 100%}
+    .cr-badges{flex-direction:row;align-self:flex-start}
   }
   .stagger > *{animation:fadeUp .5s var(--ease) both}
   .stagger > *:nth-child(1){animation-delay:.03s}
@@ -1585,7 +1587,8 @@ function hotelsForCompany(c){ return [...new Set(c.signals.map(sid=>signalById(s
 const prioLabel = p => p==='pipe'?'Pipeline':(p.charAt(0).toUpperCase()+p.slice(1));
 const prioTag = c => `<span class="prio ${c.prio}">${c.pnum} &middot; ${prioLabel(c.prio)}</span>`;
 const LEAD = { researching:'Researching', researched:'Researched', emailed:'Emailed by Sam', replied:'Reply in' };
-const leadTag = c => `<span class="ob ${c.lead}">${LEAD[c.lead]}</span>`;
+const LEAD_SHORT = { researching:'Researching', researched:'Researched', emailed:'Emailed', replied:'Reply in' };
+const leadTag = (c,short) => `<span class="ob ${c.lead}">${(short?LEAD_SHORT:LEAD)[c.lead]}</span>`;
 const chev = `<svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
 
 function hotelStats(hid){
@@ -1673,7 +1676,7 @@ function renderWorkspaceShell(){
       <div class="kpi"><div class="kn">${s.signals}</div><div class="kl">Signals</div></div>
       <div class="kpi"><div class="kn">${s.companies}</div><div class="kl">Companies</div></div>
       <div class="kpi"><div class="kn">${s.hot}</div><div class="kl">Hot leads</div></div>
-      <div class="kpi"><div class="kn">${s.emailed}</div><div class="kl">Emailed by Sam</div></div>
+      <div class="kpi"><div class="kn">${s.emailed}</div><div class="kl">Emailed</div></div>
     </div>
     <div class="ctrlbar">
       <div class="ctrl-line">
@@ -1730,8 +1733,8 @@ function htag(c){
 function companyRow(c){
   const ct = contactsForCompany(c.id).length;
   return `<button class="crow ${wsState.selected===c.id?'sel':''}" onclick="wsSelect('${c.id}')">
-    <span class="cr-main"><span class="cr-name">${c.name}${xbadge(c)}</span><span class="cr-sub">${c.industry} &middot; ${ct} contact${ct===1?'':'s'}${htag(c)}</span></span>
-    ${prioTag(c)}${leadTag(c)}</button>`;
+    <span class="cr-main"><span class="cr-name">${c.name}</span><span class="cr-sub">${c.industry} &middot; ${ct} contact${ct===1?'':'s'}${xbadge(c)}${htag(c)}</span></span>
+    <span class="cr-badges">${prioTag(c)}${leadTag(c,true)}</span></button>`;
 }
 function renderWorkspaceList(){
   const el = document.getElementById('wsList'); if(!el) return;
@@ -1744,7 +1747,7 @@ function renderWorkspaceList(){
     const sigIds = base.filter(sid=> !wsState.sigFilter.size || wsState.sigFilter.has(sid));
     const ordered = sigIds.map(signalById).filter(Boolean).sort((a,b)=>({hot:0,warm:1,pipe:2}[a.prio]-{hot:0,warm:1,pipe:2}[b.prio]));
     ordered.forEach(sg=>{
-      const rows=comps.filter(c=>c.signals.includes(sg.id)); if(!rows.length) return;
+      const rows=comps.filter(c=>c.signals.includes(sg.id)).sort((a,b)=>a.pnum-b.pnum); if(!rows.length) return;
       const at = sg.hotel!==wsHotel.id ? ` <span class="grp-at">${hotelById(sg.hotel).name.split(' ').slice(0,2).join(' ')}</span>` : '';
       html+=`<div class="grp"><div class="grp-head"><span class="grp-t"><span class="fdot ${sg.prio}"></span>${sg.name}${at}</span><span class="grp-meta"><span class="prio ${sg.prio}">${prioLabel(sg.prio)}</span> ${rows.length} co.</span></div><div class="grp-body">${rows.map(companyRow).join('')}</div></div>`;
     });
@@ -1753,7 +1756,7 @@ function renderWorkspaceList(){
     html = `<div class="grp"><div class="grp-head"><span class="grp-t">Companies</span><span class="grp-meta">${sorted.length}, cross-signal first</span></div><div class="grp-body">${sorted.map(companyRow).join('')}</div></div>`;
   } else {
     [['hot','Hot &middot; priority 1'],['warm','Warm &middot; priority 2'],['pipe','Pipeline &middot; 3 to 4']].forEach(([k,label])=>{
-      const rows=comps.filter(c=>c.prio===k); if(!rows.length) return;
+      const rows=comps.filter(c=>c.prio===k).sort((a,b)=>a.pnum-b.pnum); if(!rows.length) return;
       html+=`<div class="grp"><div class="grp-head"><span class="grp-t"><span class="fdot ${k}"></span>${label}</span><span class="grp-meta">${rows.length} co.</span></div><div class="grp-body">${rows.map(companyRow).join('')}</div></div>`;
     });
   }
