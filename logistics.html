@@ -335,8 +335,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .ftile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;width:172px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center}
 .ftile .fic{width:38px;height:38px;border-radius:10px;border:1px solid rgba(232,154,82,.4);display:flex;align-items:center;justify-content:center;color:var(--accent-2)}
 .ftile .fic svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.ftile .flb{font-size:13px;font-weight:600;color:#fff;letter-spacing:-.01em}
-.ftile .fds{font-size:11.5px;color:rgba(225,232,242,.6);line-height:1.45}
+.ftile .flb{display:block;font-size:13px;font-weight:600;color:#fff;letter-spacing:-.01em;margin-bottom:6px}
+.ftile .fds{display:block;font-size:11.5px;color:rgba(225,232,242,.6);line-height:1.45}
 .fits-claims{display:flex;justify-content:center;align-items:center;gap:12px 24px;flex-wrap:wrap;text-align:center;max-width:760px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
 .fits-claims span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(225,232,242,.7)}
 @media(max-width:540px){.ftile{width:calc(50% - 7px)}}
@@ -427,6 +427,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1)}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.45)}
 @media(max-width:820px){.footer-top{grid-template-columns:1fr;gap:30px}.footer-cols{grid-template-columns:1fr 1fr;gap:24px 20px}.footer-brand{align-items:center;text-align:center}.footer-bottom{justify-content:center}}
+/* mobile: trim tall section padding (QA) */
+@media(max-width:640px){
+.showcase,.suite,.fits,.results,.cta,.testi,.flow,.ellyn,.dawn-sec,.clinic-sec,.mtesti,.feat-sec,.process{padding-top:60px;padding-bottom:60px}
+}
 </style>
 </head>
 <body>
@@ -632,7 +636,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="hero" id="top">
   <div class="wrap">
     <h1 class="fade-up d1">Logistics</h1>
-    <div class="tag fade-up d2">Every load confirmed. In about three minutes.</div>
+    <div class="tag fade-up d2">Loads confirmed in minutes, not an afternoon, so freight never waits on paperwork to catch up.</div>
     <div class="media fade-up d3">
       <img class="m-img" src="/img/ind-freight.jpg" alt="Freight yard at dusk, where Fleet runs load confirmation for Logistics Alliance" loading="eager" decoding="async">
       <div class="m-vig"></div>
@@ -688,7 +692,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
-<!-- HOW HARLO RUNS A LOAD -->
+<!-- HOW FLEET RUNS A LOAD -->
 <section class="flow" id="flow">
   <div class="wrap">
     <div class="section-head">
