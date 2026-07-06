@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gambit · We put AI to work</title>
-<meta name="description" content="Gambit builds AI workers that run business operations. Custom to your business, accountable to an outcome, live across healthcare, finance, logistics, legal, and civic life.">
+<meta name="description" content="Gambit builds AI workers that run business operations. Custom to your business, accountable to an outcome, live across healthcare, finance, logistics, legal, and smart cities.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="canonical" href="https://gambitco.io/">
@@ -318,9 +318,10 @@ header.onhero .burger svg{stroke:#fff}
 .term .tl:nth-child(2){animation-delay:.7s}
 .term .tl:nth-child(3){animation-delay:1.4s}
 .term .tl:nth-child(4){animation-delay:2.1s}
-.tl-done{margin-top:9px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--status);background:rgba(62,196,109,.12);border:1px solid rgba(62,196,109,.3);border-radius:7px;padding:6px 10px;opacity:0;animation:tlin 9s infinite;animation-delay:3s}
+.tl-done{margin-top:9px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--status);background:rgba(62,196,109,.12);border:1px solid rgba(62,196,109,.3);border-radius:7px;padding:6px 10px;opacity:0;animation:tldone 9s infinite}
 .tl-done .sd{width:6px;height:6px;border-radius:50%;background:var(--status)}
 @keyframes tlin{0%{opacity:0;transform:translateY(5px)}6%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes tldone{0%,30%{opacity:0;transform:translateY(5px)}38%{opacity:1;transform:none}82%{opacity:1}90%,100%{opacity:0}}
 
 /* ============ CARD 2 · channels ============ */
 .a2{background:linear-gradient(180deg,rgba(20,31,54,.52),rgba(14,22,40,.85)),url('/img/ind-vail.jpg') center/cover,radial-gradient(90% 110% at 22% 0%,#31425e 0%,#141f36 62%)}
@@ -579,12 +580,12 @@ header.onhero .burger svg{stroke:#fff}
 }
 
 /* ---------- news ---------- */
-.news{padding:100px 0;background:var(--bone)}
-.news-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:10px}
+.news{padding:44px 0 100px;background:var(--bone)}
+.news-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:22px}
 .news-head h2{font-weight:600;letter-spacing:-.02em;font-size:clamp(24px,3vw,34px)}
 .news-head a{font-size:14px;font-weight:500;color:var(--ink);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .news-head a:hover{color:var(--accent-deep)}
-.news-row{display:grid;grid-template-columns:92px 1fr auto;gap:20px;align-items:baseline;padding:19px 0;border-top:1px solid var(--line);text-decoration:none;color:inherit}
+.news-row{display:grid;grid-template-columns:92px 1fr auto;gap:20px;align-items:baseline;padding:24px 0;border-top:1px solid var(--line);text-decoration:none;color:inherit}
 .news-row:hover .nt{color:var(--accent-deep)}
 .news-row .nd{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted-2);white-space:nowrap}
 .news-row .nt{font-size:15.5px;font-weight:600;letter-spacing:-.01em;color:var(--ink);transition:color .15s}
@@ -655,7 +656,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 }
 
 /* ---------- ask gambit ---------- */
-.askgambit{padding:100px 0;background:var(--bone)}
+.askgambit{padding:96px 0 40px;background:var(--bone)}
 .askgambit .section-head{max-width:680px;margin:0 auto 40px;text-align:center}
 .askgambit .section-head .eyebrow{display:inline-block;margin-bottom:16px}
 .askgambit .lead{margin:0 auto}
@@ -735,7 +736,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         <div class="mcol">
           <div class="collabel">Operations</div>
           <a class="mi mi-w" href="/workers/jericho"><span class="wmark s24" style="--wm:var(--w-jericho)"><b>J</b></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span></span></a>
-          <a class="mi mi-w" href="/workers/chloe"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
+          <a class="mi mi-w" href="/workers/chloe"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Smart Cities</span></span></span></a>
           <a class="mi mi-w" href="/workers/fleet"><span class="wmark s24" style="--wm:var(--w-fleet)"><b>F</b></span><span class="mi-tx"><span class="mi-name">Fleet <span class="mi-role">Freight</span></span></span></a>
           <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
           <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
@@ -819,7 +820,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <a href="/workers/gillis"><span class="mn">Gillis</span> &middot; Hotel sales</a>
       <div class="msec-lbl">Operations</div>
       <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
-      <a href="/workers/chloe"><span class="mn">Chloe</span> &middot; Civic</a>
+      <a href="/workers/chloe"><span class="mn">Chloe</span> &middot; Smart Cities</a>
       <a href="/workers/fleet"><span class="mn">Fleet</span> &middot; Freight</a>
       <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
       <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
@@ -882,7 +883,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="banner-inner">
     <h1>Delivering outcomes<br>that matter.</h1>
     <div class="b-cta">
-      <a href="/get-started" class="b-btn b-white">Book a 30-min scope call <span class="ar">&rarr;</span></a>
+      <a href="/get-started" class="b-btn b-white">Get started <span class="ar">&rarr;</span></a>
       <a href="#thesis" class="b-btn b-ghost">See how it works</a>
     </div>
   </div>
@@ -1112,7 +1113,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="section-head">
       <span class="eyebrow">The Factory</span>
       <h2>The floor never closes.</h2>
-      <p class="lead">A live look at Gambit workers on shift right now, across healthcare, finance, logistics, legal, and civic life. This is what a factory looks like.</p>
+      <p class="lead">A live look at Gambit workers on shift right now, across healthcare, finance, logistics, legal, and smart cities. This is what a factory looks like.</p>
     </div>
     <div class="factory-frame floorframe">
       <div class="app-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="app-title">Gambit Factory &middot; Spearhead</span><span class="app-live"><span class="dot"></span> operational</span></div>
@@ -1137,7 +1138,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="moat-cell">
         <div class="mi"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7 7l4 9M17 7l-4 9"/></svg></div>
         <h3>Build one, build many</h3>
-        <p>Workers share one engine and compound. Bogan is the first of a roster, not the whole story.</p>
+        <p>Every worker shares one engine and compounds. Start with one, and each new worker on the floor stands up faster than the last.</p>
       </div>
       <div class="moat-cell">
         <div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></div>
@@ -1214,12 +1215,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <h2>The latest from Gambit</h2>
       <a href="/insights">View all <span class="ar">&rarr;</span></a>
     </div>
-    <a class="news-row" href="/insights"><span class="nd">Jun 2026</span><span><span class="nt">We took two AI workers to Vegas</span><div class="np">Gambit brought Chloe and Bogan to HPE Discover in Las Vegas. Here is what happened when two AI workers hit the conference floor.</div></span><span class="na">&rarr;</span></a>
-    <a class="news-row" href="/insights"><span class="nd">Jun 2026</span><span><span class="nt">Gambit joins TD SYNNEX's expanded HPE Unleash AI offering</span><div class="np">Onboarded as an ISV in the expanded partnership supporting enterprise AI deployments.</div></span><span class="na">&rarr;</span></a>
-    <a class="news-row" href="/insights"><span class="nd">Apr 2026</span><span><span class="nt">Gambit named a Top 100 Company to Watch in 2026</span><div class="np">Recognized on the FoundersBeta list of the most promising companies building the future.</div></span><span class="na">&rarr;</span></a>
-    <a class="news-row" href="/insights"><span class="nd">Apr 2026</span><span><span class="nt">Introducing AskAyla</span><div class="np">A free companion for parents raising a child with a disability. Built with lived experience, available 24/7.</div></span><span class="na">&rarr;</span></a>
-    <a class="news-row" href="/insights"><span class="nd">Mar 2026</span><span><span class="nt">Meet Chloe: the Town of Vail's AI voice concierge</span><div class="np">Real-time parking, events, and services for residents and visitors, in 50 plus languages.</div></span><span class="na">&rarr;</span></a>
-    <a class="news-row" href="/insights"><span class="nd">Sep 2025</span><span><span class="nt">AskEllyn now live on Cigna Healthcare</span><div class="np">Breast cancer support, deployed in Cigna's patient community.</div></span><span class="na">&rarr;</span></a>
+    <a class="news-row" href="/we-took-two-ai-workers-to-vegas"><span class="nd">Jun 2026</span><span><span class="nt">We took two AI workers to Vegas</span><div class="np">Gambit brought Chloe and Bogan to HPE Discover in Las Vegas. Here is what happened when two AI workers hit the conference floor.</div></span><span class="na">&rarr;</span></a>
+    <a class="news-row" href="/gambit-td-synnex-hpe-unleash-ai-isv"><span class="nd">Jun 2026</span><span><span class="nt">Gambit joins TD SYNNEX's expanded HPE Unleash AI offering</span><div class="np">Onboarded as an ISV in the expanded partnership supporting enterprise AI deployments.</div></span><span class="na">&rarr;</span></a>
+    <a class="news-row" href="/foundersbeta-top-100-companies-to-watch-2026"><span class="nd">Apr 2026</span><span><span class="nt">Gambit named a Top 100 Company to Watch in 2026</span><div class="np">Recognized on the FoundersBeta list of the most promising companies building the future.</div></span><span class="na">&rarr;</span></a>
+    <a class="news-row" href="/introducing-askayla-ai-companion-parents-children-disabilities"><span class="nd">Apr 2026</span><span><span class="nt">Introducing AskAyla</span><div class="np">A free companion for parents raising a child with a disability. Built with lived experience, available 24/7.</div></span><span class="na">&rarr;</span></a>
+    <a class="news-row" href="/vail-ai-voice-concierge-chloe"><span class="nd">Mar 2026</span><span><span class="nt">Meet Chloe: the Town of Vail's AI voice concierge</span><div class="np">Real-time parking, events, and services for residents and visitors, in 50 plus languages.</div></span><span class="na">&rarr;</span></a>
+    <a class="news-row" href="/askellyn-launches-with-cigna"><span class="nd">Sep 2025</span><span><span class="nt">AskEllyn now live on Cigna Healthcare</span><div class="np">Breast cancer support, deployed in Cigna's patient community.</div></span><span class="na">&rarr;</span></a>
   </div>
 </section>
 
@@ -1229,7 +1230,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <h2>Ready to put AI to work?</h2>
     <p>Tell us what is not working. We will show you what a worker would do about it, on your data, in two weeks.</p>
     <div class="cta-btns">
-      <a href="/get-started" class="btn btn-dark">Book a 30-min scope call <span class="ar">&rarr;</span></a>
+      <a href="/get-started" class="btn btn-dark">Get started <span class="ar">&rarr;</span></a>
       <a href="/#askgambit" class="btn btn-ghost">Ask Gambit first</a>
     </div>
   </div>
@@ -1348,7 +1349,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     bogan:{w:'Bogan', rl:'Buy-side', a:'B', wm:'--w-bogan'},
     clinic:{w:'Clinic',rl:'In-clinic',a:'CL',wm:'--w-clinic'},
     harlo:{w:'Fleet', rl:'Freight',  a:'F', wm:'--w-fleet'},
-    chloe:{w:'Chloe', rl:'Civic',    a:'C', wm:'--w-chloe'}
+    chloe:{w:'Chloe', rl:'Smart Cities',    a:'C', wm:'--w-chloe'}
   };
   function rows(list,step,base){return list.map(function(r,i){return r.replace('<div class="cw-row','<div style="transition-delay:'+((base||0)+i*step)+'ms" class="cw-row');}).join('');}
   var WIDGETS={
@@ -1386,9 +1387,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       {at:7.0,k:'wid'}
     ]},
     {end:32.7,wk:'harlo',beats:[
-      {at:0.7,k:'user',un:'Dispatch',t:"Did the paperwork on load 4417 clear?"},
-      {at:2.0,k:'wid'},
-      {at:7.6,k:'work',t:"Read, checked against your rules, confirmed. Three minutes flat."}
+      {at:0.5,k:'user',un:'Dispatch',t:"Did the paperwork on load 4417 clear?"},
+      {at:1.6,k:'wid'},
+      {at:4.4,k:'work',t:"Read, checked against your rules, confirmed. Three minutes flat."}
     ]},
     {end:99,wk:'chloe',beats:[
       {at:0.5,k:'user',un:'Resident',t:"Where can I park downtown tonight?"},
@@ -1531,7 +1532,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 (function(){
   const FWORKERS=[
     {id:'bogan',href:'/workers/bogan',name:'Bogan',mark:'B',wm:'--w-bogan',title:'Buy-side Worker',status:'live',k:'Owners reached',v:'38',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
-    {id:'chloe',href:'/workers',name:'Chloe',mark:'C',wm:'--w-chloe',title:'Civic Concierge',status:'live',k:'Residents answered',v:'1,904',tasks:9310,verbs:['answered a parking question','confirmed an event detail','replied in Spanish','routed a permit request']},
+    {id:'chloe',href:'/workers',name:'Chloe',mark:'C',wm:'--w-chloe',title:'Smart Cities',status:'live',k:'Residents answered',v:'1,904',tasks:9310,verbs:['answered a parking question','confirmed an event detail','replied in Spanish','routed a permit request']},
     {id:'fleet',href:'/workers',name:'Fleet',mark:'F',wm:'--w-fleet',title:'Freight Coordinator',status:'live',k:'Loads confirmed',v:'412',tasks:8420,verbs:['confirmed a load','re-routed a shipment','replied to a carrier','scheduled a pickup']},
     {id:'ellyn',href:'/workers',name:'AskEllyn',mark:'E',wm:'--w-askellyn',title:'Patient Support',status:'live',k:'Patients supported',v:'96',tasks:4070,verbs:['supported a patient at 3am','answered in Portuguese','shared a resource','connected a nurse line']},
     {id:'todd',href:'/workers',name:'AskTodd',mark:'T',wm:'--w-asktodd',title:'Legal Strategist',status:'live',k:'Consultations',v:'450',tasks:2940,verbs:['ran an intake','drafted a strategy note','answered a client question','scheduled a consult']},
