@@ -643,7 +643,15 @@
   .mail-body{font-size:12.5px;line-height:1.6;color:var(--text-soft)}
   .mail-reply{margin-top:11px;padding-top:11px;border-top:1px dashed var(--border);font-size:12.5px;line-height:1.55;color:var(--text)}
   .mr-h{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:4px}
-  .det-actions{margin-top:18px;padding-top:16px;border-top:1px solid var(--border-soft)}
+  .det-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border-soft)}
+  .sf-btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:13px;font-weight:600;color:var(--text);background:#fff;border:1px solid #c9def0;border-radius:11px;padding:9px 15px;cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s,transform .15s}
+  .sf-btn .sfc{color:#00A1E0}
+  .sf-btn .ext{color:var(--dim)}
+  .sf-btn:hover{background:#eff8fd;border-color:#9fcdea;box-shadow:0 8px 18px -12px rgba(0,161,224,.5);transform:translateY(-1px)}
+  .sf-btn:hover .ext{color:#00A1E0}
+  .sf-pending{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px dashed var(--border);border-radius:11px;padding:9px 14px}
+  .run-btn.ghost{background:none;color:var(--brand);border:1px solid var(--brand-border);box-shadow:none}
+  .run-btn.ghost:hover{background:var(--brand-soft);transform:none}
 
   /* ===== detail dossier: progressive disclosure ===== */
   .det-head-r{display:flex;align-items:flex-start;gap:10px}
@@ -1859,7 +1867,12 @@ function renderDetail(){
       <div class="acc-sec-body">${cts.map(contactAcc).join('')}</div>
     </div>
 
-    <div class="det-actions"><button class="run-btn sm" onclick="companyTammy('${escAttr(c.name)}','${escAttr(sigs[0]?sigs[0].name:'')}')">Ask Tammy how to work this</button></div>`;
+    <div class="det-actions">
+      ${c.lead==='researching'
+        ? `<span class="sf-pending"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.3A3.5 3.5 0 0 1 18 18z"/></svg>Salesforce record is created when research completes</span>`
+        : `<button class="sf-btn" onclick="openSF('${c.id}')"><svg class="sfc" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.3A3.5 3.5 0 0 1 18 18z"/></svg>Open in Salesforce<svg class="ext" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>`}
+      <button class="run-btn sm ghost" onclick="companyTammy('${escAttr(c.name)}','${escAttr(sigs[0]?sigs[0].name:'')}')">Ask Tammy how to work this</button>
+    </div>`;
 }
 
 /* interactions */
@@ -1872,6 +1885,20 @@ function wsPrio(v){ wsState.prio=v; renderWorkspaceList(); }
 function wsLead(v){ wsState.lead=v; renderWorkspaceList(); }
 function wsQuery(v){ wsState.q=v; renderWorkspaceList(); }
 function wsSig(id){ if(id==='all'){wsState.sigFilter.clear();} else {wsState.sigFilter.has(id)?wsState.sigFilter.delete(id):wsState.sigFilter.add(id);} renderWorkspaceShell(); renderWorkspaceList(); renderDetail(); }
+function openSF(cid){
+  const c=companyById(cid); const cts=contactsForCompany(cid); const p=cts.find(x=>x.primary)||cts[0];
+  alert([
+    "Opens this lead in Salesforce (prototype).",
+    "",
+    "Lead: "+(p?p.name:"n/a")+" · "+c.name,
+    "Status: Open · Gillis OS",
+    "Priority: "+c.pnum+" · "+prioLabel(c.prio),
+    "Owner: "+(wsHotel?wsHotel.rdos:"RDOS"),
+    "Hotel: "+(wsHotel?wsHotel.name:"n/a"),
+    "",
+    "Every Sam decision is logged here. This is where you work the lead."
+  ].join("\n"));
+}
 function companyTammy(name, signal){ leadTammy(name, signal || 'this hotel'); }
 
 
