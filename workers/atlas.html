@@ -739,6 +739,13 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 @media(max-width:640px){
 .flow,.feat-sec,.results,.thesis,.outcomes,.inds,.approach,.moat,.gos,.cta{padding-top:64px;padding-bottom:64px}
 }
+/* mobile: stack the deal-desk output and follow the interaction (QA) */
+@media(max-width:720px){
+.demo-body{grid-template-columns:1fr;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.demo-body::-webkit-scrollbar{width:0;height:0}
+.demo-left{border-right:0}
+.demo-right{display:flex;opacity:1;filter:none;border-top:1px solid var(--g-line)}
+}
 </style>
 </head>
 <body>
@@ -1317,6 +1324,9 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
   if(RM){showStatic();if(btn)btn.style.display='none';return;}
   setTimeout(loop,400);
 })();
+</script>
+<script>/* deal-desk demo follow (mobile) */
+(function(){var body=document.querySelector('.demo-body'),desk=document.querySelector('.m-desk');if(!body||!desk||!window.MutationObserver)return;var mq=window.matchMedia('(max-width:720px)');var pending=null,raf=0;function run(){raf=0;var el=pending;pending=null;if(!el||!el.getBoundingClientRect)return;var br=body.getBoundingClientRect(),er=el.getBoundingClientRect();if(er.bottom>br.bottom-6){body.scrollTo({top:body.scrollTop+(er.bottom-br.bottom)+20,behavior:'smooth'});}else if(er.top<br.top+6){body.scrollTo({top:body.scrollTop+(er.top-br.top)-16,behavior:'smooth'});}}function follow(el){pending=el;if(!raf)raf=requestAnimationFrame(run);}new MutationObserver(function(muts){if(!mq.matches)return;var m=muts[muts.length-1],t=m.target,el=t.nodeType===1?t:t.parentElement;if(el)follow(el);}).observe(desk,{subtree:true,attributes:true,attributeFilter:['class'],characterData:true,childList:true});})();
 </script>
 </body>
 </html>
