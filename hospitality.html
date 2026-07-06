@@ -245,7 +245,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* deal-desk mockup */
-.mock{margin:30px auto 0;max-width:880px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -44px rgba(14,26,44,.4)}
+.mock-wrap{margin:30px auto 0;max-width:880px}
+.mock{display:none;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -44px rgba(14,26,44,.4)}
+.mock.on{display:block;animation:fade .4s ease}
 .mock-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--navy);border-bottom:1px solid #1d3050}
 .mock-bar .tl{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
 .mock-bar .mt{margin-left:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.74)}
@@ -706,8 +708,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="sv-head" data-seg="brand"><h2>One playbook, every flag.</h2></div>
     <div class="sv-head" data-seg="ent"><h2>Every fan, answered personally.</h2></div>
 
-    <!-- GillisOS board, rebuilt from the real dashboard (85 signals / 478 contacts / 38 hot leads) -->
-    <div class="mock">
+    <!-- Sub-vertical boards: one per tab, toggled with the tabs above -->
+    <div class="mock-wrap">
+
+    <!-- HOTEL: GillisOS demand board (real dashboard: 85 signals / 478 contacts / 38 hot leads) -->
+    <div class="mock on" data-seg="hotel">
       <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">GillisOS · Sam's board</span><span class="ml"><span class="dot"></span> live</span></div>
       <div class="mock-stats">
         <div class="ms"><div class="mn">85</div><div class="mk">Signals</div></div>
@@ -719,6 +724,38 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="mrow"><span class="mco">Gulf Coast Lakeside Hospital</span><span class="mmut">Fellowship program cohorts</span><span class="c-fit mfit"><span class="bar"><b style="width:91%"></b></span><span class="fv">91</span></span><span class="mtag">Sam</span><span class="mst dr">Hot</span></div>
       <div class="mrow"><span class="mco">Greenway STEM Center</span><span class="mmut">Visiting research teams</span><span class="c-fit mfit"><span class="bar"><b style="width:90%"></b></span><span class="fv">90</span></span><span class="mtag">Sam</span><span class="mst scr">Active</span></div>
       <div class="mrow"><span class="mco">Apex Environmental</span><span class="mmut">Sustainability training cycles</span><span class="c-fit mfit"><span class="bar"><b style="width:87%"></b></span><span class="fv">87</span></span><span class="mtag">Sam</span><span class="mst nu">Nurture</span></div>
+    </div>
+
+    <!-- BRAND: one engine running across a portfolio of flags -->
+    <div class="mock" data-seg="brand">
+      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">GillisOS · Portfolio view</span><span class="ml"><span class="dot"></span> live</span></div>
+      <div class="mock-stats">
+        <div class="ms"><div class="mn">6</div><div class="mk">Properties</div></div>
+        <div class="ms"><div class="mn">3</div><div class="mk">Brands</div></div>
+        <div class="ms"><div class="mn">1</div><div class="mk">Engine</div></div>
+      </div>
+      <div class="mrow mh"><span>Property</span><span class="mmut">Brand</span><span class="c-fit">Fit</span><span>Worker</span><span>Status</span></div>
+      <div class="mrow"><span class="mco">Harborview Suites</span><span class="mmut">Marquis Collection</span><span class="c-fit mfit"><span class="bar"><b style="width:92%"></b></span><span class="fv">92</span></span><span class="mtag">Sam</span><span class="mst dr">Hot</span></div>
+      <div class="mrow"><span class="mco">Summit Lodge &amp; Spa</span><span class="mmut">Alpine Hotels</span><span class="c-fit mfit"><span class="bar"><b style="width:89%"></b></span><span class="fv">89</span></span><span class="mtag">Sam</span><span class="mst scr">Active</span></div>
+      <div class="mrow"><span class="mco">Cityline Downtown</span><span class="mmut">Marquis Collection</span><span class="c-fit mfit"><span class="bar"><b style="width:86%"></b></span><span class="fv">86</span></span><span class="mtag">Sam</span><span class="mst scr">Active</span></div>
+      <div class="mrow"><span class="mco">Bayside Resort</span><span class="mmut">Coastal Group</span><span class="c-fit mfit"><span class="bar"><b style="width:84%"></b></span><span class="fv">84</span></span><span class="mtag">Sam</span><span class="mst nu">Nurture</span></div>
+    </div>
+
+    <!-- ENT: AskAmber answering fans, faithfully and around the clock -->
+    <div class="mock" data-seg="ent">
+      <div class="mock-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="mt">AskAmber · Fan desk</span><span class="ml"><span class="dot"></span> live</span></div>
+      <div class="mock-stats">
+        <div class="ms"><div class="mn">2,140</div><div class="mk">Asked today</div></div>
+        <div class="ms"><div class="mn">18</div><div class="mk">Languages</div></div>
+        <div class="ms"><div class="mn">24/7</div><div class="mk">On</div></div>
+      </div>
+      <div class="mrow mh"><span>Fan</span><span class="mmut">Question</span><span class="c-fit">Match</span><span>Worker</span><span>Status</span></div>
+      <div class="mrow"><span class="mco">Marcus D.</span><span class="mmut">Meet and greet at Daytona?</span><span class="c-fit mfit"><span class="bar"><b style="width:96%"></b></span><span class="fv">96</span></span><span class="mtag">AskAmber</span><span class="mst new">Replied</span></div>
+      <div class="mrow"><span class="mco">Priya S.</span><span class="mmut">Signed merch restock date</span><span class="c-fit mfit"><span class="bar"><b style="width:93%"></b></span><span class="fv">93</span></span><span class="mtag">AskAmber</span><span class="mst new">Replied</span></div>
+      <div class="mrow"><span class="mco">Diego R.</span><span class="mmut">Race-day playlist request</span><span class="c-fit mfit"><span class="bar"><b style="width:90%"></b></span><span class="fv">90</span></span><span class="mtag">AskAmber</span><span class="mst new">Replied</span></div>
+      <div class="mrow"><span class="mco">Tomas K.</span><span class="mmut">Charity stream, sensitive</span><span class="c-fit mfit"><span class="bar"><b style="width:88%"></b></span><span class="fv">88</span></span><span class="mtag">AskAmber</span><span class="mst dr">Routed</span></div>
+    </div>
+
     </div>
 
     <div class="sv-caps on" data-seg="hotel">
@@ -895,14 +932,14 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
   t.addEventListener('click',()=>{
     const k=t.dataset.seg;
     document.querySelectorAll('.sv-tab').forEach(q=>q.classList.toggle('on',q===t));
-    document.querySelectorAll('.sv-head,.sv-caps').forEach(p=>p.classList.toggle('on',p.dataset.seg===k));
+    document.querySelectorAll('.sv-head,.sv-caps,.mock').forEach(p=>p.classList.toggle('on',p.dataset.seg===k));
   });
 });
 
 /* ----- composed reveals ----- */
 (function(){
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sel='.logos,.sv-tabs,.mock,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
+  const sel='.logos,.sv-tabs,.mock-wrap,.testi-card,.fits-head,.ftile,.fits-claims,.suite .section-head,.suite-card,.results .section-head,.res-card,.cta h2,.cta p,.cta-btns';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll('.suite-grid,.res-grid,.fits-logos,.cta .wrap').forEach(g=>{
