@@ -757,6 +757,48 @@
   .pms-user{margin-left:14px}
   .capchip i{width:6px;height:6px;border-radius:50%;background:var(--teal)}
 
+  /* ===== research review: runs, scope, cross-signal ===== */
+  .runs-strip{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:15px 18px;margin-bottom:22px;box-shadow:0 1px 2px rgba(30,24,50,.04),0 12px 26px -24px rgba(30,24,50,.2)}
+  .rs-strip-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:11px}
+  .rs-strip-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px}
+  .run-item{text-align:left;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:11px 13px;transition:transform .15s var(--ease),box-shadow .15s,border-color .15s}
+  .run-item:hover{transform:translateY(-2px);box-shadow:0 12px 24px -18px rgba(30,24,50,.4);border-color:var(--brand-border)}
+  .run-item.running{border-color:var(--teal-border);background:var(--teal-soft)}
+  .ri-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+  .ri-name{font-weight:600;font-size:13px;color:var(--text)}
+  .ri-when{font-size:11px;color:var(--muted)}
+  .ri-live{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--teal-dark)}
+  .ri-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulseDot 1.4s infinite}
+  @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+  .ri-found{font-size:12px;color:var(--muted)}
+  .hc-run{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:14px;padding:4px 10px;white-space:nowrap}
+  .hc-foot{display:flex;align-items:center;justify-content:space-between}
+  .hc-fresh{font-size:11.5px;color:var(--muted)}
+
+  .ws-running{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:16px;padding:5px 12px}
+  .ws-fresh{font-size:12.5px;color:var(--muted)}
+
+  /* lead status badges (research lifecycle, not to-dos) */
+  .ob{font-size:10px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:14px;white-space:nowrap;flex:none}
+  .ob.researching{color:#8a6a17;background:rgba(212,168,67,.2)}
+  .ob.researched{color:var(--text-soft);background:var(--bg);border:1px solid var(--border)}
+  .ob.emailed{color:var(--teal-dark);background:var(--teal-soft)}
+  .ob.replied{color:#fff;background:var(--brand)}
+
+  /* cross-signal intelligence */
+  .xbadge{display:inline-block;margin-left:8px;font-size:9.5px;font-weight:700;letter-spacing:.02em;color:var(--c-tools);background:var(--c-tools-soft);border:1px solid var(--c-tools-border);border-radius:12px;padding:2px 8px;vertical-align:middle}
+  .htag{margin-left:8px;font-size:11px;color:var(--brand);opacity:.85}
+  .htag::before{content:"also at ";color:var(--muted)}
+  .grp-at{font-size:10.5px;font-weight:600;color:var(--brand);background:var(--brand-soft);border-radius:10px;padding:2px 7px;margin-left:6px}
+  .cross-note{margin:12px 0 2px;font-size:12.5px;line-height:1.55;color:var(--c-tools);background:var(--c-tools-soft);border:1px solid var(--c-tools-border);border-radius:12px;padding:11px 13px}
+  .cross-note b{color:#8a5a08}
+
+  /* Sam automated-outreach block (informational, never a to-do) */
+  .sam-out{margin-top:6px;background:var(--bg);border:1px solid var(--border-soft);border-radius:11px;padding:11px 12px}
+  .sam-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .sam-tag{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-soft);border:1px solid var(--teal-border);border-radius:12px;padding:3px 9px}
+  .sam-cc{font-size:10.5px;color:var(--muted)}
+
   .fade{animation:fadeUp .45s var(--ease) both}
   @media (max-width:560px){
     .ws-kpis{grid-template-columns:1fr 1fr}
@@ -1388,14 +1430,16 @@ const TOOLS = [
    RESEARCH DATA (from the real GillisOS screens, demo data)
    ============================================================ */
 /* ============================================================
-   RESEARCH DATA. The connected model an RDOS works, at the depth
-   GillisOS actually captures: Hotel -> Signal -> Company -> Contact
-   -> Outreach thread. Detail is progressively disclosed in the UI.
+   RESEARCH DATA. The review surface an RDOS opens to READ research.
+   Outreach is automated by Sam (see the training deck), so nothing
+   here is a to-do. Hotel -> Signal -> Company (lead) -> Contact.
+   A company can surface from signals across several hotels/runs.
    ============================================================ */
 const HOTELS = [
-  {id:'brooklyn', name:'Comfort Inn Brooklyn Center', city:'Brooklyn Center, MN'},
-  {id:'clarion',  name:'Clarion Hotel & Conference Center', city:'Abbotsford, BC'},
-  {id:'cedar',    name:'Cedar Ridge Inn & Suites', city:'Davenport, IA'},
+  {id:'brooklyn', name:'Comfort Inn Brooklyn Center', city:'Brooklyn Center, MN', mine:true,  rdos:'Shannon S.', run:{when:'2 days ago', status:'done'}},
+  {id:'clarion',  name:'Clarion Hotel & Conference Center', city:'Abbotsford, BC', mine:true, rdos:'Shannon S.', run:{when:'running now', status:'running'}},
+  {id:'cedar',    name:'Cedar Ridge Inn & Suites', city:'Davenport, IA', mine:true, rdos:'Shannon S.', run:{when:'5 days ago', status:'done'}},
+  {id:'sundeck',  name:'Sundeck Inn Fridley', city:'Fridley, MN', mine:false, rdos:'Darin K.', run:{when:'yesterday', status:'done'}},
 ];
 
 const SIGNALS = [
@@ -1411,94 +1455,94 @@ const SIGNALS = [
   {id:'hwy252', hotel:'brooklyn', name:'Hwy 252 Corridor Rebuild', cat:'Construction', subjectType:'Project', prio:'hot', confidence:'Medium', status:'Deep dived',
     trigger:"Freeway-to-expressway conversion of Hwy 252 with staged interchange work. Multiple paving and grading contractors mobilizing.",
     why:"Multi-season civil work with rotating crews staging locally. Paving windows run overnight, matching day-sleeper demand.",
-    timing:"Active now, staged through two construction seasons.",
-    proximity:"Roughly 3 miles, staging yard closer.",
-    roomNights:"Moderate to significant across the two seasons.",
-    strategicFacts:"State-led corridor project; general contractor not yet public, subs identifiable from bid tabs.",
-    recentNews:"Design phase wrapped; early grading underway this season.",
-    source:"mndot.gov · Hwy 252"},
+    timing:"Active now, staged through two construction seasons.", proximity:"Roughly 3 miles, staging yard closer.", roomNights:"Moderate to significant across the two seasons.",
+    strategicFacts:"State-led corridor project; general contractor not yet public, subs identifiable from bid tabs.", recentNews:"Design phase wrapped; early grading underway this season.", source:"mndot.gov · Hwy 252"},
   {id:'confs', hotel:'brooklyn', name:'Fall Conference Calendar', cat:'Events', subjectType:'Event', prio:'warm', confidence:'Medium', status:'Enriched',
     trigger:"Three citywide events booked in the market in Q4, two of them room-block driven.",
     why:"Overflow demand on peak weeks the primary hotels can't absorb. Group housing coordinators book blocks weeks out.",
-    timing:"Q4, peak weeks in October and November.",
-    proximity:"Within the market, 4 to 6 miles.",
-    roomNights:"Peak-week overflow, block-driven.",
-    strategicFacts:"Two events used overflow properties last year; contacts carried over.",
-    recentNews:"Convention calendar published for Q4.",
-    source:"Meet Minneapolis calendar"},
+    timing:"Q4, peak weeks in October and November.", proximity:"Within the market, 4 to 6 miles.", roomNights:"Peak-week overflow, block-driven.",
+    strategicFacts:"Two events used overflow properties last year; contacts carried over.", recentNews:"Convention calendar published for Q4.", source:"Meet Minneapolis calendar"},
   {id:'target', hotel:'brooklyn', name:'Corporate Vendor Rotations', cat:'Corporate', subjectType:'Company', prio:'pipe', confidence:'Low', status:'Discovered',
-    trigger:"Vendor onsite rotations flagged at a nearby corporate HQ.",
-    why:"Recurring midweek transient demand if the cadence firms up.",
-    timing:"Cadence unconfirmed, monitoring.",
-    proximity:"About 5 miles.",
-    roomNights:"Unknown, likely midweek transient.",
-    strategicFacts:"Single source so far; needs corroboration before working.",
-    recentNews:"None.",
-    source:"Web mention"},
+    trigger:"Vendor onsite rotations flagged at a nearby corporate HQ.", why:"Recurring midweek transient demand if the cadence firms up.",
+    timing:"Cadence unconfirmed, monitoring.", proximity:"About 5 miles.", roomNights:"Unknown, likely midweek transient.",
+    strategicFacts:"Single source so far; needs corroboration before it is worked.", recentNews:"None.", source:"Web mention"},
   {id:'hwy11', hotel:'clarion', name:'Highway 11 Interchange Replacement', cat:'Construction', subjectType:'Project', prio:'hot', confidence:'High', status:'Deep dived',
-    trigger:"Interchange rebuild with a large contractor footprint inside the 5 mile radius.",
-    why:"Big crews, long duration, right in the backyard.",
+    trigger:"Interchange rebuild with a large contractor footprint inside the 5 mile radius.", why:"Big crews, long duration, right in the backyard.",
     timing:"Active, multi-season.", proximity:"Within 5 miles.", roomNights:"Significant.",
-    strategicFacts:"Primary contractor confirmed on the provincial registry.",
-    recentNews:"Stage 2 mobilized this quarter.", source:"BC MoTI"},
+    strategicFacts:"Primary contractor confirmed on the provincial registry.", recentNews:"Stage 2 mobilized this quarter.", source:"BC MoTI"},
   {id:'vicarro', hotel:'clarion', name:'Vicarro Townhome Development', cat:'Construction', subjectType:'Project', prio:'warm', confidence:'Medium', status:'Enriched',
-    trigger:"Multi-phase residential build with trades on site through next year.",
-    why:"Steady trades presence, some traveling supers.",
+    trigger:"Multi-phase residential build with trades on site through next year.", why:"Steady trades presence, some traveling supers.",
     timing:"Through next year.", proximity:"Within 5 miles.", roomNights:"Moderate.",
     strategicFacts:"Developer active on three regional sites.", recentNews:"Phase 1 framing underway.", source:"Permit filing"},
   {id:'ltc', hotel:'cedar', name:'Long-Term Care Community Build', cat:'Construction', subjectType:'Project', prio:'warm', confidence:'Medium', status:'Enriched',
-    trigger:"New care community under construction with an out-of-town project management team.",
-    why:"PM team and specialty trades need medium-term rooms.",
+    trigger:"New care community under construction with an out-of-town project management team.", why:"PM team and specialty trades need medium-term rooms.",
     timing:"12 to 18 month build.", proximity:"Within 5 miles.", roomNights:"Moderate, steady.",
     strategicFacts:"Healthcare developer, repeat builder in the region.", recentNews:"Groundbreaking last month.", source:"County records"},
+  {id:'i35', hotel:'sundeck', name:'I-35W Bridge Approach Work', cat:'Construction', subjectType:'Project', prio:'hot', confidence:'High', status:'Deep dived',
+    trigger:"Approach and deck rehabilitation with night closures. Large GC plus electrical and paving subs.",
+    why:"Night closures mean day-sleeper demand at the nearest properties.", timing:"Active this season.", proximity:"Under 3 miles from Sundeck Inn.", roomNights:"Significant.",
+    strategicFacts:"Kraus-Anderson confirmed as GC on the provincial bid tab.", recentNews:"Lane shifts began this month.", source:"mndot.gov · I-35W"},
 ];
 
-/* companies: firmographics + deal-viability intel + the fit reasoning */
+/* companies carry the signal ids they surfaced from (can span hotels).
+   pnum = Sam's 1 to 4 lead priority. lead = research lifecycle status. */
 const COMPANIES = [
-  {id:'seh', name:'Short Elliott Hendrickson (SEH)', hotel:'brooklyn', signals:['i694','hwy252'], fit:92, prio:'hot',
+  {id:'kraus', name:'Kraus-Anderson', signals:['i694','hwy11','i35'], pnum:1, prio:'hot', lead:'emailed',
+    industry:'General contractor', size:'1,000+ employees', hq:'Minneapolis, MN', website:'krausanderson.com',
+    ownership:'Employee-owned', revenue:'~$1.6B est.', decisionMaker:'Managed via project super', bookingDept:'Field operations', projectStatus:'Active on 3 projects', enrichedAt:'1 day ago',
+    fitReason:"Surfaced from three separate projects across the region: I-694, Highway 11, and the I-35W approach work. One relationship, crews staging near three of our hotels. The strongest lead in the portfolio because the demand is not a single project, it is a pattern."},
+  {id:'seh', name:'Short Elliott Hendrickson (SEH)', signals:['i694','hwy252'], pnum:1, prio:'hot', lead:'replied',
     industry:'Engineering & construction management', size:'900 to 1,000 employees', hq:'St. Paul, MN', website:'sehinc.com',
     ownership:'Employee-owned', revenue:'~$180M est.', decisionMaker:'Managed via project PM (April Ryan)', bookingDept:'Project operations', projectStatus:'Active', enrichedAt:'2 days ago',
-    fitReason:"Managing the I-694 project directly, and tied to the Hwy 252 corridor too. Night-shift management presence under 2 miles, a verified PM who already replied, and multi-season duration. This is the anchor account for the corridor."},
-  {id:'design', name:'Design Electric, Inc.', hotel:'brooklyn', signals:['i694'], fit:88, prio:'hot',
+    fitReason:"Managing the I-694 project directly, and tied to the Hwy 252 corridor too. A verified PM, night-shift management presence under 2 miles, and multi-season duration. April replied to Sam's first email."},
+  {id:'design', name:'Design Electric, Inc.', signals:['i694'], pnum:1, prio:'hot', lead:'emailed',
     industry:'Electrical contracting', size:'200 to 300 employees', hq:'St. Cloud, MN', website:'designelectricinc.com',
     ownership:'Founder / family-owned', revenue:'~$60M est.', decisionMaker:'Field super (Marcus Alvarez)', bookingDept:'Field operations', projectStatus:'Active', enrichedAt:'2 days ago',
-    fitReason:"Likely primary electrical contractor on I-694, based in St. Cloud so crews need Twin Cities lodging. Founder-owned means a fast yes, and night electrical work is exactly the day-sleeper guest we run quiet floors for."},
-  {id:'traxler', name:'Traxler Construction Inc.', hotel:'brooklyn', signals:['i694'], fit:84, prio:'warm',
+    fitReason:"Likely primary electrical contractor on I-694, based in St. Cloud so crews need Twin Cities lodging. Founder-owned, and night electrical work is exactly the day-sleeper guest we run quiet floors for."},
+  {id:'traxler', name:'Traxler Construction Inc.', signals:['i694'], pnum:2, prio:'warm', lead:'researched',
     industry:'Heavy civil construction', size:'100 to 150 employees', hq:'Mendota Heights, MN', website:'traxlerconstruction.com',
     ownership:'Founder / family-owned', revenue:'~$35M est.', decisionMaker:'Estimator (Tom Nguyen)', bookingDept:'Operations', projectStatus:'Bidding', enrichedAt:'3 days ago',
-    fitReason:"Named on I-694 sub lists with a nearby yard. Warm rather than hot because the crew size and shift pattern aren't confirmed yet, worth a qualifying call."},
-  {id:'push', name:'Push Technologies, Inc.', hotel:'brooklyn', signals:['i694'], fit:71, prio:'pipe',
+    fitReason:"Named on I-694 sub lists with a nearby yard. Warm because the crew size and shift pattern are not confirmed yet."},
+  {id:'push', name:'Push Technologies, Inc.', signals:['i694'], pnum:3, prio:'pipe', lead:'researching',
     industry:'Traffic technology', size:'50 to 100 employees', hq:'Roseville, MN', website:'pushtechinc.com',
-    ownership:'Private', revenue:'~$18M est.', decisionMaker:'Ops lead (Priya Shah)', bookingDept:'Unknown', projectStatus:'Peripheral', enrichedAt:'3 days ago',
-    fitReason:"Adjacent to the corridor tech scope but local, so lodging need is low. Parked in pipeline unless a traveling install crew shows up."},
-  {id:'meridian', name:'Meridian Paving Group', hotel:'brooklyn', signals:['hwy252'], fit:86, prio:'hot',
+    ownership:'Private', revenue:'~$18M est.', decisionMaker:'Ops lead (Priya Shah)', bookingDept:'Unknown', projectStatus:'Peripheral', enrichedAt:'in progress',
+    fitReason:"Adjacent to the corridor tech scope but local, so lodging need is low. Still enriching contact quality before it is worked."},
+  {id:'meridian', name:'Meridian Paving Group', signals:['hwy252'], pnum:1, prio:'hot', lead:'emailed',
     industry:'Asphalt paving', size:'150 to 200 employees', hq:'Rochester, MN', website:'meridianpaving.com',
     ownership:'Sponsor-backed platform', revenue:'~$70M est.', decisionMaker:'Project director (Carl Denton)', bookingDept:'Operations', projectStatus:'Active', enrichedAt:'1 day ago',
-    fitReason:"Rochester-based paving crews on the Hwy 252 corridor need consistent rooms near the staging yard. Sponsor-backed and acquisitive, they run multiple crews and value block billing."},
-  {id:'valley', name:'Valley Grading & Excavation', hotel:'brooklyn', signals:['hwy252'], fit:79, prio:'warm',
+    fitReason:"Rochester-based paving crews on the Hwy 252 corridor need consistent rooms near the staging yard. They run multiple crews and value block billing."},
+  {id:'valley', name:'Valley Grading & Excavation', signals:['hwy252'], pnum:2, prio:'warm', lead:'researched',
     industry:'Grading & excavation', size:'40 to 80 employees', hq:'Shakopee, MN', website:'valleygrading.com',
     ownership:'Founder-owned', revenue:'~$22M est.', decisionMaker:'Owner (Rick Halloran)', bookingDept:'Owner-run', projectStatus:'Active', enrichedAt:'2 days ago',
     fitReason:"Early-stage grading on Hwy 252 with a nearby base. Shorter room need at this phase, so warm."},
-  {id:'northstar', name:'Northstar Event Group', hotel:'brooklyn', signals:['confs'], fit:68, prio:'warm',
+  {id:'northstar', name:'Northstar Event Group', signals:['confs'], pnum:2, prio:'warm', lead:'researched',
     industry:'Event production', size:'20 to 40 employees', hq:'Minneapolis, MN', website:'northstarevents.com',
     ownership:'Founder-owned', revenue:'~$9M est.', decisionMaker:'Producer (Beth Cardoza)', bookingDept:'Housing coordinator', projectStatus:'Planning', enrichedAt:'4 days ago',
-    fitReason:"Produces two of the Q4 citywide events and booked overflow rooms last year. Block-driven, so worth locking early."},
-  {id:'acme', name:'Acme Facilities Services', hotel:'clarion', signals:['hwy11'], fit:83, prio:'hot',
+    fitReason:"Produces two of the Q4 citywide events and booked overflow rooms last year. Block-driven, worth locking early."},
+  {id:'acme', name:'Acme Facilities Services', signals:['hwy11'], pnum:1, prio:'hot', lead:'emailed',
     industry:'Facilities & infrastructure', size:'300 to 400 employees', hq:'Surrey, BC', website:'acmefacilities.com',
     ownership:'Public subsidiary', revenue:'~$90M est.', decisionMaker:'Regional manager (Devin Park)', bookingDept:'Regional operations', projectStatus:'Active', enrichedAt:'1 day ago',
     fitReason:"Crews on the Highway 11 interchange, inside the backyard. Larger org means process, but the regional manager owns lodging decisions."},
-  {id:'ridge', name:'Ridgeline Contractors', hotel:'clarion', signals:['hwy11','vicarro'], fit:77, prio:'warm',
+  {id:'ridge', name:'Ridgeline Contractors', signals:['hwy11','vicarro'], pnum:2, prio:'warm', lead:'researched',
     industry:'General contracting', size:'80 to 120 employees', hq:'Abbotsford, BC', website:'ridgelinecontractors.com',
     ownership:'Founder-owned', revenue:'~$28M est.', decisionMaker:'Superintendent (Owen Brady)', bookingDept:'Site operations', projectStatus:'Active', enrichedAt:'3 days ago',
-    fitReason:"On both the Highway 11 and Vicarro jobs, so double exposure. Local HQ trims the lodging need, hence warm."},
-  {id:'careco', name:'CareCo Construction', hotel:'cedar', signals:['ltc'], fit:80, prio:'warm',
+    fitReason:"On both the Highway 11 and Vicarro jobs, so double exposure at this hotel. Local HQ trims the lodging need, hence warm."},
+  {id:'careco', name:'CareCo Construction', signals:['ltc'], pnum:2, prio:'warm', lead:'researched',
     industry:'Healthcare construction', size:'120 to 180 employees', hq:'Cedar Rapids, IA', website:'careco.build',
     ownership:'Founder-owned', revenue:'~$40M est.', decisionMaker:'Project manager (Nina Patel)', bookingDept:'Operations', projectStatus:'Active', enrichedAt:'2 days ago',
     fitReason:"Out-of-town PM team on a 12 to 18 month care build. Steady medium-term room need, a good base-load account."},
+  {id:'holt', name:'Holt Electric', signals:['i35'], pnum:2, prio:'warm', lead:'emailed',
+    industry:'Electrical contracting', size:'60 to 100 employees', hq:'Blaine, MN', website:'holtelectric.com',
+    ownership:'Founder-owned', revenue:'~$25M est.', decisionMaker:'Foreman (rotating)', bookingDept:'Field', projectStatus:'Active', enrichedAt:'yesterday',
+    fitReason:"Electrical sub on the I-35W approach work near the Sundeck Inn. Night closures, day-sleeper crews."},
 ];
 
-/* contacts: fuller roster with quality signals, primary flag, and an outreach thread */
+/* contacts: quality + primary flag. Outreach on a company's primary is
+   the automated Sam thread (informational, never a to-do). */
 const CONTACTS = [
+  {id:'k1', company:'kraus', name:'Ed Sorensen', title:'Project Superintendent', seniority:'Manager', dept:'Field operations', email:'esorensen@krausanderson.com', emailConf:'High · 96%', phone:'+1 612 555 0180', verified:true, primary:true, foundFor:'i694',
+    outreach:{status:'emailed', thread:[{dir:'out', when:'1 day ago', subject:'Rooms for your I-694 and I-35W crews', body:"Hi Ed, Kraus-Anderson is running crews on both the I-694 lighting work and the I-35W approach job, and both are inside our backyard. We hold blocks for multi-project GCs and keep the billing simple.\n\nWorth a quick call?\n\nSam · Gillis Sales"}]}},
+  {id:'k2', company:'kraus', name:'Rhonda Metz', title:'Regional Ops Manager', seniority:'Director', dept:'Operations', email:'rmetz@krausanderson.com', emailConf:'High · 92%', phone:'+1 612 555 0181', verified:true, primary:false, foundFor:'hwy11', outreach:{status:'none', thread:[]}},
   {id:'c1', company:'seh', name:'April Ryan', title:'Project Manager', seniority:'Manager', dept:'Project operations', email:'april.ryan@sehinc.com', emailConf:'High · 98%', phone:'+1 651 555 0142', verified:true, primary:true, foundFor:'i694',
     outreach:{status:'replied', thread:[
       {dir:'out', when:'2 days ago', subject:'I-694 crew accommodations', body:"Hi April, saw SEH is managing the I-694 lighting replacement in Fridley. We're under two miles from the project zone and run quiet daytime floors for night crews.\n\nWorth a quick call?\n\nSam · Gillis Sales"},
@@ -1506,96 +1550,98 @@ const CONTACTS = [
   {id:'c2', company:'seh', name:'Shannon Strobusch', title:'Operations Coordinator', seniority:'Individual contributor', dept:'Operations', email:'shannon.s@sehinc.com', emailConf:'High · 95%', phone:'+1 651 555 0177', verified:true, primary:false, foundFor:'i694', outreach:{status:'none', thread:[]}},
   {id:'c2b', company:'seh', name:'Dale Frantz', title:'VP, Field Services', seniority:'Executive', dept:'Field services', email:'dfrantz@sehinc.com', emailConf:'Medium · 82%', phone:'', verified:false, primary:false, foundFor:'hwy252', outreach:{status:'none', thread:[]}},
   {id:'c3', company:'design', name:'Marcus Alvarez', title:'Field Superintendent', seniority:'Manager', dept:'Field operations', email:'malvarez@designelectricinc.com', emailConf:'High · 96%', phone:'+1 320 555 0110', verified:true, primary:true, foundFor:'i694',
-    outreach:{status:'draft', thread:[
-      {dir:'out', when:'drafted today', subject:'Housing your I-694 crews', body:"Hi Marcus, Design Electric's crews on the I-694 rebuild are working nights, which is exactly the guest we're built for. Quiet daytime floors, two miles from the zone, and billing that doesn't eat your PM's time.\n\nWorth a 10 minute call?\n\nSam · Gillis Sales"}]}},
+    outreach:{status:'emailed', thread:[{dir:'out', when:'2 days ago', subject:'Housing your I-694 crews', body:"Hi Marcus, Design Electric's crews on the I-694 rebuild are working nights, which is exactly the guest we're built for. Quiet daytime floors, two miles from the zone, and billing that doesn't eat your PM's time.\n\nWorth a 10 minute call?\n\nSam · Gillis Sales"}]}},
   {id:'c4', company:'design', name:'Dana Whitfield', title:'Office Manager', seniority:'Manager', dept:'Administration', email:'dwhitfield@designelectricinc.com', emailConf:'High · 94%', phone:'+1 320 555 0143', verified:true, primary:false, foundFor:'i694', outreach:{status:'none', thread:[]}},
   {id:'c4b', company:'design', name:'Greg Sowada', title:'Owner / President', seniority:'Executive', dept:'Executive', email:'gsowada@designelectricinc.com', emailConf:'Medium · 80%', phone:'', verified:false, primary:false, foundFor:'i694', outreach:{status:'none', thread:[]}},
   {id:'c5', company:'traxler', name:'Tom Nguyen', title:'Estimator', seniority:'Individual contributor', dept:'Preconstruction', email:'tnguyen@traxlerconstruction.com', emailConf:'High · 91%', phone:'+1 651 555 0190', verified:true, primary:true, foundFor:'i694', outreach:{status:'none', thread:[]}},
   {id:'c5b', company:'traxler', name:'Beth Traxler', title:'Owner', seniority:'Executive', dept:'Executive', email:'btraxler@traxlerconstruction.com', emailConf:'Medium · 78%', phone:'', verified:false, primary:false, foundFor:'i694', outreach:{status:'none', thread:[]}},
   {id:'c6', company:'push', name:'Priya Shah', title:'Operations Lead', seniority:'Manager', dept:'Operations', email:'pshah@pushtechinc.com', emailConf:'Low · 61% · unverified', phone:'', verified:false, primary:true, foundFor:'i694', outreach:{status:'none', thread:[]}},
   {id:'c7', company:'meridian', name:'Carl Denton', title:'Project Director', seniority:'Director', dept:'Operations', email:'cdenton@meridianpaving.com', emailConf:'High · 97%', phone:'+1 507 555 0120', verified:true, primary:true, foundFor:'hwy252',
-    outreach:{status:'sent', thread:[
-      {dir:'out', when:'yesterday', subject:'Hwy 252 crew rooms', body:"Hi Carl, Meridian's paving crews on the Hwy 252 corridor need consistent rooms close to the staging area. We hold blocks for multi-season projects and bill monthly.\n\nCan I send our crew rate sheet?\n\nSam · Gillis Sales"}]}},
+    outreach:{status:'emailed', thread:[{dir:'out', when:'yesterday', subject:'Hwy 252 crew rooms', body:"Hi Carl, Meridian's paving crews on the Hwy 252 corridor need consistent rooms close to the staging area. We hold blocks for multi-season projects and bill monthly.\n\nCan I send our crew rate sheet?\n\nSam · Gillis Sales"}]}},
   {id:'c8', company:'meridian', name:'Lena Ortiz', title:'Scheduler', seniority:'Individual contributor', dept:'Operations', email:'lortiz@meridianpaving.com', emailConf:'High · 93%', phone:'+1 507 555 0155', verified:true, primary:false, foundFor:'hwy252', outreach:{status:'none', thread:[]}},
-  {id:'c8b', company:'meridian', name:'Marcus Reidel', title:'VP Operations', seniority:'Executive', dept:'Operations', email:'mreidel@meridianpaving.com', emailConf:'Medium · 84%', phone:'', verified:false, primary:false, foundFor:'hwy252', outreach:{status:'none', thread:[]}},
   {id:'c9', company:'valley', name:'Rick Halloran', title:'Owner', seniority:'Executive', dept:'Executive', email:'rick@valleygrading.com', emailConf:'High · 90%', phone:'+1 952 555 0132', verified:true, primary:true, foundFor:'hwy252', outreach:{status:'none', thread:[]}},
   {id:'c10', company:'northstar', name:'Beth Cardoza', title:'Event Producer', seniority:'Manager', dept:'Production', email:'beth@northstarevents.com', emailConf:'High · 92%', phone:'+1 612 555 0166', verified:true, primary:true, foundFor:'confs', outreach:{status:'none', thread:[]}},
   {id:'c11', company:'acme', name:'Devin Park', title:'Regional Manager', seniority:'Manager', dept:'Regional operations', email:'dpark@acmefacilities.com', emailConf:'High · 95%', phone:'+1 604 555 0121', verified:true, primary:true, foundFor:'hwy11',
-    outreach:{status:'draft', thread:[
-      {dir:'out', when:'drafted today', subject:'Rooms for your Highway 11 crews', body:"Hi Devin, Acme's crews on the Highway 11 interchange are inside our backyard. Quiet floors, held blocks, simple monthly billing.\n\nWorth a look?\n\nSam · Gillis Sales"}]}},
+    outreach:{status:'emailed', thread:[{dir:'out', when:'yesterday', subject:'Rooms for your Highway 11 crews', body:"Hi Devin, Acme's crews on the Highway 11 interchange are inside our backyard. Quiet floors, held blocks, simple monthly billing.\n\nWorth a look?\n\nSam · Gillis Sales"}]}},
   {id:'c12', company:'acme', name:'Sara Lin', title:'Coordinator', seniority:'Individual contributor', dept:'Operations', email:'slin@acmefacilities.com', emailConf:'High · 90%', phone:'+1 604 555 0188', verified:true, primary:false, foundFor:'hwy11', outreach:{status:'none', thread:[]}},
   {id:'c13', company:'ridge', name:'Owen Brady', title:'Superintendent', seniority:'Manager', dept:'Site operations', email:'obrady@ridgelinecontractors.com', emailConf:'High · 89%', phone:'+1 604 555 0143', verified:true, primary:true, foundFor:'hwy11', outreach:{status:'none', thread:[]}},
   {id:'c14', company:'careco', name:'Nina Patel', title:'Project Manager', seniority:'Manager', dept:'Operations', email:'npatel@careco.build', emailConf:'High · 94%', phone:'+1 319 555 0119', verified:true, primary:true, foundFor:'ltc', outreach:{status:'none', thread:[]}},
   {id:'c14b', company:'careco', name:'Joel Vance', title:'Superintendent', seniority:'Manager', dept:'Field', email:'jvance@careco.build', emailConf:'Medium · 83%', phone:'', verified:false, primary:false, foundFor:'ltc', outreach:{status:'none', thread:[]}},
+  {id:'h1', company:'holt', name:'Marco Ruiz', title:'General Foreman', seniority:'Manager', dept:'Field', email:'mruiz@holtelectric.com', emailConf:'High · 90%', phone:'+1 763 555 0134', verified:true, primary:true, foundFor:'i35',
+    outreach:{status:'emailed', thread:[{dir:'out', when:'yesterday', subject:'Rooms near the I-35W approach work', body:"Hi Marco, Holt's crews on the I-35W approach job are working night closures under 3 miles from us. Quiet floors and held blocks for the season.\n\nWorth a call?\n\nSam · Gillis Sales"}]}},
 ];
 
 /* ---- helpers over the connected model ---- */
-function signalsForHotel(hid){ return SIGNALS.filter(s=>s.hotel===hid); }
-function companiesForHotel(hid){ return COMPANIES.filter(c=>c.hotel===hid); }
-function contactsForCompany(cid){ return CONTACTS.filter(c=>c.company===cid); }
+function hotelById(id){ return HOTELS.find(h=>h.id===id); }
 function signalById(id){ return SIGNALS.find(s=>s.id===id); }
 function companyById(id){ return COMPANIES.find(c=>c.id===id); }
+function contactsForCompany(cid){ return CONTACTS.filter(c=>c.company===cid); }
+function signalsForHotel(hid){ return SIGNALS.filter(s=>s.hotel===hid); }
+/* companies that surfaced from a signal at this hotel */
+function companiesForHotel(hid){ return COMPANIES.filter(c=>c.signals.some(sid=>signalById(sid) && signalById(sid).hotel===hid)); }
+/* every hotel a company reaches, via its signals */
+function hotelsForCompany(c){ return [...new Set(c.signals.map(sid=>signalById(sid)&&signalById(sid).hotel).filter(Boolean))]; }
 
-function companyOutreach(company){
-  const cs = contactsForCompany(company.id);
-  const has = st => cs.some(c=>c.outreach.status===st);
-  if(has('replied')) return {state:'replied', label:'Reply waiting', needs:true};
-  if(has('draft'))   return {state:'draft',   label:'Draft ready',  needs:true};
-  if(has('sent'))    return {state:'sent',    label:'Sent',         needs:false};
-  return {state:'none', label:'No outreach', needs:false};
-}
+const prioLabel = p => p==='pipe'?'Pipeline':(p.charAt(0).toUpperCase()+p.slice(1));
+const prioTag = c => `<span class="prio ${c.prio}">${c.pnum} &middot; ${prioLabel(c.prio)}</span>`;
+const LEAD = { researching:'Researching', researched:'Researched', emailed:'Emailed by Sam', replied:'Reply in' };
+const leadTag = c => `<span class="ob ${c.lead}">${LEAD[c.lead]}</span>`;
+const chev = `<svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
+
 function hotelStats(hid){
   const comps = companiesForHotel(hid);
-  return {signals:signalsForHotel(hid).length, companies:comps.length, hot:comps.filter(c=>c.prio==='hot').length, needs:comps.filter(c=>companyOutreach(c).needs).length};
+  return {
+    signals:signalsForHotel(hid).length,
+    companies:comps.length,
+    hot:comps.filter(c=>c.prio==='hot').length,
+    emailed:comps.filter(c=>c.lead==='emailed'||c.lead==='replied').length,
+  };
 }
-const prioLabel = p => p==='pipe'?'Pipeline':(p.charAt(0).toUpperCase()+p.slice(1));
-const OBADGE = { none:'No outreach', draft:'Draft ready', sent:'Sent', replied:'Replied' };
-const chev = `<svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
 
 /* workspace state */
 let wsHotel = null;
-let wsState = { group:'signal', sigFilter:new Set(), prio:'all', outreach:'all', q:'', selected:null };
+let wsState = { group:'signal', scope:'hotel', sigFilter:new Set(), prio:'all', lead:'all', q:'', selected:null, full:false };
 
 /* ============================================================
-   PORTFOLIO ("My hotels" + needs you)
+   PORTFOLIO ("My hotels" + latest runs)
    ============================================================ */
 function renderResearch(){
   const portfolio = document.getElementById('researchPortfolio');
   document.getElementById('researchWorkspace').style.display='none';
   portfolio.style.display='block';
 
-  const needList = [];
-  HOTELS.forEach(h=>companiesForHotel(h.id).forEach(c=>{ const o=companyOutreach(c); if(o.needs) needList.push({hotel:h, company:c, o}); }));
+  const mine = HOTELS.filter(h=>h.mine);
+  const runs = mine.map(h=>({h, st:hotelStats(h.id)}));
 
-  const strip = needList.length ? `
-    <div class="needs-strip">
-      <div class="ns-head"><span class="ns-dot"></span>${needList.length} ${needList.length===1?'company needs':'companies need'} you</div>
-      <div class="ns-items">
-        ${needList.slice(0,4).map(n=>`
-          <button class="ns-item" onclick="openHotel('${n.hotel.id}','${n.company.id}')">
-            <span class="ns-co">${n.company.name}</span>
-            <span class="ns-meta">${n.hotel.name.split(' ').slice(0,2).join(' ')} · <b class="ob ${n.o.state}">${n.o.label}</b></span>
+  const runStrip = `
+    <div class="runs-strip">
+      <div class="rs-strip-h">Latest backyard searches</div>
+      <div class="rs-strip-items">
+        ${runs.map(r=>`
+          <button class="run-item ${r.h.run.status==='running'?'running':''}" onclick="openHotel('${r.h.id}')">
+            <span class="ri-top"><span class="ri-name">${r.h.name.split(' ').slice(0,2).join(' ')}</span>${r.h.run.status==='running'?'<span class="ri-live"><span class="ri-dot"></span>Running</span>':`<span class="ri-when">${r.h.run.when}</span>`}</span>
+            <span class="ri-found">${r.st.signals} signals &middot; ${r.st.companies} companies</span>
           </button>`).join('')}
       </div>
-    </div>` : '';
+    </div>`;
 
-  const cards = HOTELS.map(h=>{
+  const cards = mine.map(h=>{
     const s = hotelStats(h.id);
     return `
     <button class="hcard" onclick="openHotel('${h.id}')">
-      <div class="hc-top"><div><div class="hc-name">${h.name}</div><div class="hc-city">${h.city}</div></div>${s.needs?`<span class="hc-need">${s.needs} need you</span>`:''}</div>
+      <div class="hc-top"><div><div class="hc-name">${h.name}</div><div class="hc-city">${h.city}</div></div>${h.run.status==='running'?'<span class="hc-run"><span class="ri-dot"></span>Researching</span>':''}</div>
       <div class="hc-stats"><span class="hc-st"><b>${s.signals}</b>Signals</span><span class="hc-st"><b>${s.companies}</b>Companies</span><span class="hc-st hot"><b>${s.hot}</b>Hot</span></div>
-      <div class="hc-foot"><span class="hc-open">Open workspace ${arrow}</span></div>
+      <div class="hc-foot"><span class="hc-fresh">Updated ${h.run.when}</span><span class="hc-open">Open ${arrow}</span></div>
     </button>`;
   }).join('');
 
   portfolio.innerHTML = `
     <div class="rs-head">
-      <div><h1 class="rs-h1">My hotels</h1><p class="rs-sub">Your book of business, hottest first. Open a hotel to work its signals, companies, and outreach in one place.</p></div>
-      <button class="run-btn" onclick="alert('Prototype: opens the backyard search intake for a hotel.')">Run a search
+      <div><h1 class="rs-h1">My hotels</h1><p class="rs-sub">Your research, hotel by hotel. Sam finds the leads and sends the first email automatically. This is where you read what it found.</p></div>
+      <button class="run-btn" onclick="alert('Prototype: runs are automated. This would show run history and let you queue a fresh backyard search.')">Run a search
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
     </div>
-    ${strip}
+    ${runStrip}
     <div class="hz-grid">${cards}</div>`;
 }
 
@@ -1603,8 +1649,8 @@ function renderResearch(){
    HOTEL WORKSPACE
    ============================================================ */
 function openHotel(hid, selectCompanyId){
-  wsHotel = HOTELS.find(h=>h.id===hid);
-  wsState = { group:'signal', sigFilter:new Set(), prio:'all', outreach:'all', q:'', selected:selectCompanyId||null, full:false };
+  wsHotel = hotelById(hid);
+  wsState = { group:'signal', scope:'hotel', sigFilter:new Set(), prio:'all', lead:'all', q:'', selected:selectCompanyId||null, full:false };
   if(!wsState.selected){ const comps=companiesForHotel(hid); wsState.selected = comps.length?comps[0].id:null; }
   renderWorkspaceShell(); renderWorkspaceList(); renderDetail();
   document.getElementById('researchPortfolio').style.display='none';
@@ -1620,23 +1666,27 @@ function renderWorkspaceShell(){
   document.getElementById('researchWorkspace').innerHTML = `
     <div class="ws-head">
       <button class="ws-back" onclick="backToPortfolio()">${arrowL} My hotels</button>
-      <button class="run-btn sm" onclick="alert('Prototype: run a fresh backyard search for this hotel.')">Run a search
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      ${wsHotel.run.status==='running'?'<span class="ws-running"><span class="ri-dot"></span>Backyard search running</span>':`<span class="ws-fresh">Last search ${wsHotel.run.when}</span>`}
     </div>
-    <div class="ws-title"><h1 class="rs-h1">${wsHotel.name}</h1><p class="rs-sub">${wsHotel.city} · 5 mile backyard</p></div>
+    <div class="ws-title"><h1 class="rs-h1">${wsHotel.name}</h1><p class="rs-sub">${wsHotel.city} &middot; 5 mile backyard &middot; ${wsHotel.rdos}</p></div>
     <div class="kpis ws-kpis">
       <div class="kpi"><div class="kn">${s.signals}</div><div class="kl">Signals</div></div>
       <div class="kpi"><div class="kn">${s.companies}</div><div class="kl">Companies</div></div>
-      <div class="kpi"><div class="kn">${s.hot}</div><div class="kl">Hot</div></div>
-      <div class="kpi ${s.needs?'kpi-need':''}"><div class="kn">${s.needs}</div><div class="kl">Need you</div></div>
+      <div class="kpi"><div class="kn">${s.hot}</div><div class="kl">Hot leads</div></div>
+      <div class="kpi"><div class="kn">${s.emailed}</div><div class="kl">Emailed by Sam</div></div>
     </div>
     <div class="ctrlbar">
       <div class="ctrl-line">
         <span class="ctrl-lbl">Group by</span>
-        <div class="segbtns">${['signal','company','outreach'].map(g=>`<button class="seg2 ${wsState.group===g?'on':''}" onclick="wsGroup('${g}')">${g==='signal'?'Signal':g==='company'?'Company':'Outreach'}</button>`).join('')}</div>
+        <div class="segbtns">${['signal','company','priority'].map(g=>`<button class="seg2 ${wsState.group===g?'on':''}" onclick="wsGroup('${g}')">${g==='signal'?'Signal':g==='company'?'Company':'Priority'}</button>`).join('')}</div>
         <span class="ctrl-sp"></span>
+        <select class="ctrl-sel" title="Scope" onchange="wsScope(this.value)">
+          <option value="hotel"${wsState.scope==='hotel'?' selected':''}>This hotel</option>
+          <option value="mine"${wsState.scope==='mine'?' selected':''}>All my hotels</option>
+          <option value="all"${wsState.scope==='all'?' selected':''}>All research</option>
+        </select>
         <select class="ctrl-sel" onchange="wsPrio(this.value)"><option value="all"${wsState.prio==='all'?' selected':''}>All priority</option><option value="hot"${wsState.prio==='hot'?' selected':''}>Hot</option><option value="warm"${wsState.prio==='warm'?' selected':''}>Warm</option><option value="pipe"${wsState.prio==='pipe'?' selected':''}>Pipeline</option></select>
-        <select class="ctrl-sel" onchange="wsOut(this.value)"><option value="all"${wsState.outreach==='all'?' selected':''}>All outreach</option><option value="needs"${wsState.outreach==='needs'?' selected':''}>Needs you</option><option value="none"${wsState.outreach==='none'?' selected':''}>No outreach</option><option value="sent"${wsState.outreach==='sent'?' selected':''}>Sent</option><option value="replied"${wsState.outreach==='replied'?' selected':''}>Replied</option></select>
+        <select class="ctrl-sel" onchange="wsLead(this.value)"><option value="all"${wsState.lead==='all'?' selected':''}>All status</option><option value="researching"${wsState.lead==='researching'?' selected':''}>Researching</option><option value="researched"${wsState.lead==='researched'?' selected':''}>Researched</option><option value="emailed"${wsState.lead==='emailed'?' selected':''}>Emailed</option><option value="replied"${wsState.lead==='replied'?' selected':''}>Reply in</option></select>
         <input class="ctrl-q" type="text" placeholder="Search company or contact" value="${wsState.q}" oninput="wsQuery(this.value)">
       </div>
       <div class="ctrl-chips">${sigChips}</div>
@@ -1647,20 +1697,41 @@ function renderWorkspaceShell(){
     </div>`;
 }
 
+/* which companies are in scope, then filtered */
+function wsScoped(){
+  if(wsState.scope==='hotel') return companiesForHotel(wsHotel.id);
+  if(wsState.scope==='mine'){ const mine=new Set(HOTELS.filter(h=>h.mine).map(h=>h.id)); return COMPANIES.filter(c=>hotelsForCompany(c).some(h=>mine.has(h))); }
+  return COMPANIES.slice();
+}
 function wsFiltered(){
-  let comps = companiesForHotel(wsHotel.id);
+  let comps = wsScoped();
   if(wsState.sigFilter.size) comps = comps.filter(c=>c.signals.some(sid=>wsState.sigFilter.has(sid)));
   if(wsState.prio!=='all') comps = comps.filter(c=>c.prio===wsState.prio);
-  if(wsState.outreach!=='all') comps = comps.filter(c=>{ const o=companyOutreach(c); return wsState.outreach==='needs'?o.needs:o.state===wsState.outreach; });
+  if(wsState.lead!=='all') comps = comps.filter(c=>c.lead===wsState.lead);
   if(wsState.q){ const q=wsState.q.toLowerCase(); comps = comps.filter(c=> c.name.toLowerCase().includes(q) || contactsForCompany(c.id).some(ct=>ct.name.toLowerCase().includes(q))); }
   return comps;
 }
+/* cross badge: a company on more than one signal, and how many hotels it reaches */
+function xbadge(c){
+  if(c.signals.length<2) return '';
+  const hn = hotelsForCompany(c).length;
+  const label = hn>1 ? `In ${c.signals.length} signals &middot; ${hn} hotels` : `In ${c.signals.length} signals`;
+  return `<span class="xbadge" title="This company surfaced from ${c.signals.length} projects">${label}</span>`;
+}
+/* hotel tag when a row is not from the hotel you opened */
+function htag(c){
+  if(wsState.scope==='hotel') return '';
+  const hs = hotelsForCompany(c);
+  if(hs.includes(wsHotel.id) && hs.length===1) return '';
+  const others = hs.filter(h=>h!==wsHotel.id).map(h=>hotelById(h).name.split(' ').slice(0,2).join(' '));
+  if(!others.length) return '';
+  return `<span class="htag">${others.join(', ')}</span>`;
+}
 function companyRow(c){
-  const o = companyOutreach(c);
   const ct = contactsForCompany(c.id).length;
   return `<button class="crow ${wsState.selected===c.id?'sel':''}" onclick="wsSelect('${c.id}')">
-    <span class="cr-main"><span class="cr-name">${c.name}</span><span class="cr-sub">${c.industry} · ${ct} contact${ct===1?'':'s'} · fit ${c.fit}</span></span>
-    <span class="prio ${c.prio}">${prioLabel(c.prio)}</span><span class="ob ${o.state}">${o.label}</span></button>`;
+    <span class="cr-main"><span class="cr-name">${c.name}${xbadge(c)}</span><span class="cr-sub">${c.industry} &middot; ${ct} contact${ct===1?'':'s'}${htag(c)}</span></span>
+    ${prioTag(c)}${leadTag(c)}</button>`;
 }
 function renderWorkspaceList(){
   const el = document.getElementById('wsList'); if(!el) return;
@@ -1668,17 +1739,20 @@ function renderWorkspaceList(){
   if(!comps.length){ el.innerHTML = `<div class="ws-empty">No companies match these filters.</div>`; return; }
   let html='';
   if(wsState.group==='signal'){
-    signalsForHotel(wsHotel.id).filter(sg=>!wsState.sigFilter.size||wsState.sigFilter.has(sg.id)).forEach(sg=>{
+    /* this-hotel scope groups only by this hotel's signals; wider scopes show every signal in the set */
+    const base = wsState.scope==='hotel' ? signalsForHotel(wsHotel.id).map(s=>s.id) : [...new Set(comps.flatMap(c=>c.signals))];
+    const sigIds = base.filter(sid=> !wsState.sigFilter.size || wsState.sigFilter.has(sid));
+    const ordered = sigIds.map(signalById).filter(Boolean).sort((a,b)=>({hot:0,warm:1,pipe:2}[a.prio]-{hot:0,warm:1,pipe:2}[b.prio]));
+    ordered.forEach(sg=>{
       const rows=comps.filter(c=>c.signals.includes(sg.id)); if(!rows.length) return;
-      html+=`<div class="grp"><div class="grp-head"><span class="grp-t"><span class="fdot ${sg.prio}"></span>${sg.name}</span><span class="grp-meta"><span class="prio ${sg.prio}">${prioLabel(sg.prio)}</span> ${rows.length} co.</span></div><div class="grp-body">${rows.map(companyRow).join('')}</div></div>`;
+      const at = sg.hotel!==wsHotel.id ? ` <span class="grp-at">${hotelById(sg.hotel).name.split(' ').slice(0,2).join(' ')}</span>` : '';
+      html+=`<div class="grp"><div class="grp-head"><span class="grp-t"><span class="fdot ${sg.prio}"></span>${sg.name}${at}</span><span class="grp-meta"><span class="prio ${sg.prio}">${prioLabel(sg.prio)}</span> ${rows.length} co.</span></div><div class="grp-body">${rows.map(companyRow).join('')}</div></div>`;
     });
-  } else if(wsState.group==='outreach'){
-    [['needs','Needs you'],['sent','Sent'],['none','Not started']].forEach(([k,label])=>{
-      const rows=comps.filter(c=>{const o=companyOutreach(c); return k==='needs'?o.needs:(k==='sent'?o.state==='sent':o.state==='none');}); if(!rows.length) return;
-      html+=`<div class="grp"><div class="grp-head"><span class="grp-t">${label}</span><span class="grp-meta">${rows.length} co.</span></div><div class="grp-body">${rows.map(companyRow).join('')}</div></div>`;
-    });
+  } else if(wsState.group==='company'){
+    const sorted = comps.slice().sort((a,b)=> (b.signals.length-a.signals.length) || (a.pnum-b.pnum));
+    html = `<div class="grp"><div class="grp-head"><span class="grp-t">Companies</span><span class="grp-meta">${sorted.length}, cross-signal first</span></div><div class="grp-body">${sorted.map(companyRow).join('')}</div></div>`;
   } else {
-    [['hot','Hot'],['warm','Warm'],['pipe','Pipeline']].forEach(([k,label])=>{
+    [['hot','Hot &middot; priority 1'],['warm','Warm &middot; priority 2'],['pipe','Pipeline &middot; 3 to 4']].forEach(([k,label])=>{
       const rows=comps.filter(c=>c.prio===k); if(!rows.length) return;
       html+=`<div class="grp"><div class="grp-head"><span class="grp-t"><span class="fdot ${k}"></span>${label}</span><span class="grp-meta">${rows.length} co.</span></div><div class="grp-body">${rows.map(companyRow).join('')}</div></div>`;
     });
@@ -1686,16 +1760,17 @@ function renderWorkspaceList(){
   el.innerHTML = html;
 }
 
-/* ---- the detail dossier, progressively disclosed ---- */
+/* ---- detail dossier ---- */
 function fgField(label, val, isLink){
   if(!val) return '';
   const v = isLink ? `<a href="https://${val}" target="_blank" rel="noopener">${val}</a>` : val;
   return `<div class="fg"><span class="fgl">${label}</span><span class="fgv">${v}</span></div>`;
 }
 function signalAcc(sg){
+  const at = sg.hotel!==wsHotel.id ? ` <span class="grp-at">${hotelById(sg.hotel).name.split(' ').slice(0,2).join(' ')}</span>` : '';
   return `<div class="acc">
     <button class="acc-head" onclick="accToggle(this)">
-      <span class="acc-t"><span class="fdot ${sg.prio}"></span>${sg.name}</span>
+      <span class="acc-t"><span class="fdot ${sg.prio}"></span>${sg.name}${at}</span>
       <span class="acc-r"><span class="chip">${sg.confidence}</span><span class="prio ${sg.prio}">${prioLabel(sg.prio)}</span>${chev}</span>
     </button>
     <div class="acc-body">
@@ -1703,7 +1778,7 @@ function signalAcc(sg){
         <span class="qcell"><span class="ql">Timing</span>${sg.timing}</span>
         <span class="qcell"><span class="ql">Proximity</span>${sg.proximity}</span>
         <span class="qcell"><span class="ql">Est. room nights</span>${sg.roomNights}</span>
-        <span class="qcell"><span class="ql">Type</span>${sg.subjectType} · ${sg.cat}</span>
+        <span class="qcell"><span class="ql">Type</span>${sg.subjectType} &middot; ${sg.cat}</span>
       </div>
       <div class="dfield"><span class="dfl">Demand signal</span><p>${sg.trigger}</p></div>
       <div class="dfield"><span class="dfl">Why it matters</span><p>${sg.why}</p></div>
@@ -1716,17 +1791,17 @@ function signalAcc(sg){
 function contactAcc(ct){
   const st = ct.outreach.status;
   const thread = ct.outreach.thread||[];
-  const threadHtml = thread.length ? `<div class="thread">${thread.map(m=>`
+  const threadHtml = thread.length ? `<div class="sam-out"><div class="sam-h"><span class="sam-tag">Automated by Sam</span><span class="sam-cc">You are CC'd</span></div><div class="thread">${thread.map(m=>`
       <div class="tmsg ${m.dir}">
         ${m.subject?`<div class="tmsg-subj">${m.subject}</div>`:''}
         <div class="tmsg-body">${m.body.replace(/\n/g,'<br>')}</div>
-        <div class="tmsg-when">${m.dir==='out'?'Sam · Gillis':ct.name.split(' ')[0]} · ${m.when}</div>
-      </div>`).join('')}</div>`
-    : `<div class="no-mail">No email written yet. <button class="lnk" onclick="companyTammy('${escAttr(companyById(ct.company).name)}','${escAttr((signalById(ct.foundFor)||{}).name||'')}')">Ask Tammy to draft one</button></div>`;
+        <div class="tmsg-when">${m.dir==='out'?'Sam &middot; Gillis':ct.name.split(' ')[0]+' &middot; replied, routed to you'} &middot; ${m.when}</div>
+      </div>`).join('')}</div></div>`
+    : `<div class="no-mail">Not the contact Sam emailed. Reachable if you want to work this one directly.</div>`;
   return `<div class="acc">
     <button class="acc-head" onclick="accToggle(this)">
       <span class="acc-t">${ct.name}${ct.primary?'<span class="pill-primary">Primary</span>':''}<span class="acc-sub">${ct.title}</span></span>
-      <span class="acc-r"><span class="ob ${st}">${OBADGE[st]}</span>${chev}</span>
+      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">Emailed</span>':''}${chev}</span>
     </button>
     <div class="acc-body">
       <div class="cgrid">
@@ -1744,22 +1819,23 @@ function contactAcc(ct){
 function renderDetail(){
   const el = document.getElementById('wsDetail'); if(!el) return;
   const c = companyById(wsState.selected);
-  if(!c){ el.innerHTML = `<div class="det-empty">Select a company to see its profile, signals, contacts, and outreach.</div>`; return; }
-  const o = companyOutreach(c);
-  const sigs = c.signals.map(signalById);
+  if(!c){ el.innerHTML = `<div class="det-empty">Select a company to read its research: profile, signals, and contacts.</div>`; return; }
+  const sigs = c.signals.map(signalById).filter(Boolean);
   const cts = contactsForCompany(c.id);
   const expIc = wsState.full
     ? `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/></svg>`
     : `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>`;
+  const crossNote = c.signals.length>1 ? `<div class="cross-note"><b>Why this is strong:</b> ${c.name} surfaced from ${c.signals.length} projects${hotelsForCompany(c).length>1?` across ${hotelsForCompany(c).length} of your hotels`:''}. One relationship, ${c.signals.length} reasons to book.</div>` : '';
 
   el.innerHTML = `
     <div class="det-head">
-      <div><div class="det-name">${c.name}</div><div class="det-sub">${c.industry} · ${c.size} · ${c.hq}</div></div>
-      <div class="det-head-r"><div class="det-fit"><span class="det-fitn">${c.fit}</span><span class="det-fitl">fit</span></div>
+      <div><div class="det-name">${c.name}</div><div class="det-sub">${c.industry} &middot; ${c.size} &middot; ${c.hq}</div></div>
+      <div class="det-head-r"><div class="det-fit"><span class="det-fitn">${c.pnum}</span><span class="det-fitl">priority</span></div>
         <button class="det-exp" onclick="toggleDetailFull()" title="${wsState.full?'Exit full width':'Expand to full width'}">${expIc}</button></div>
     </div>
-    <div class="det-badges"><span class="prio ${c.prio}">${prioLabel(c.prio)}</span><span class="chip own">${c.ownership}</span><span class="ob ${o.state}">${o.label}</span></div>
-    <div class="det-reason"><b>Why ${c.fit}</b> ${c.fitReason}</div>
+    <div class="det-badges">${prioTag(c)}<span class="chip own">${c.ownership}</span>${leadTag(c)}</div>
+    <div class="det-reason"><b>Why it surfaced</b> ${c.fitReason}</div>
+    ${crossNote}
 
     <div class="acc-sec">
       <button class="acc-sec-head" onclick="accToggle(this)"><span class="ash-t">Company profile</span>${chev}</button>
@@ -1780,7 +1856,7 @@ function renderDetail(){
       <div class="acc-sec-body">${cts.map(contactAcc).join('')}</div>
     </div>
 
-    <div class="det-actions"><button class="run-btn sm" onclick="companyTammy('${escAttr(c.name)}','${escAttr(sigs[0]?sigs[0].name:'')}')">Ask Tammy about this company</button></div>`;
+    <div class="det-actions"><button class="run-btn sm" onclick="companyTammy('${escAttr(c.name)}','${escAttr(sigs[0]?sigs[0].name:'')}')">Ask Tammy how to work this</button></div>`;
 }
 
 /* interactions */
@@ -1788,8 +1864,9 @@ function accToggle(btn){ btn.parentElement.classList.toggle('open'); }
 function toggleDetailFull(){ wsState.full=!wsState.full; const g=document.getElementById('wsGrid'); g.classList.toggle('full', wsState.full); renderDetail(); }
 function wsSelect(id){ wsState.selected=id; renderWorkspaceList(); renderDetail(); if(wsState.full){ document.getElementById('wsDetail').scrollIntoView({block:'start'}); } }
 function wsGroup(g){ wsState.group=g; renderWorkspaceShell(); renderWorkspaceList(); renderDetail(); }
+function wsScope(v){ wsState.scope=v; if(!wsFiltered().some(c=>c.id===wsState.selected)){ const f=wsFiltered(); wsState.selected=f.length?f[0].id:null; } renderWorkspaceShell(); renderWorkspaceList(); renderDetail(); }
 function wsPrio(v){ wsState.prio=v; renderWorkspaceList(); }
-function wsOut(v){ wsState.outreach=v; renderWorkspaceList(); }
+function wsLead(v){ wsState.lead=v; renderWorkspaceList(); }
 function wsQuery(v){ wsState.q=v; renderWorkspaceList(); }
 function wsSig(id){ if(id==='all'){wsState.sigFilter.clear();} else {wsState.sigFilter.has(id)?wsState.sigFilter.delete(id):wsState.sigFilter.add(id);} renderWorkspaceShell(); renderWorkspaceList(); renderDetail(); }
 function companyTammy(name, signal){ leadTammy(name, signal || 'this hotel'); }
