@@ -23,7 +23,10 @@ createServer(async (req, res) => {
     if (p === '/') p = '/index.html';
     let fp = normalize(join(ROOT, p));
     if (!fp.startsWith(ROOT)) { res.writeHead(403); return res.end('forbidden'); }
-    try { await stat(fp); }
+    try {
+      const st = await stat(fp);
+      if (st.isDirectory()) fp = join(fp, 'index.html');
+    }
     catch {
       if (!extname(fp)) { try { await stat(fp + '.html'); fp += '.html'; } catch {} }
     }
