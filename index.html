@@ -185,6 +185,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,2
 .mark{font-family:var(--mark);font-weight:800;font-size:19px;letter-spacing:.16em;color:var(--paper);text-decoration:none}
 @media(max-width:920px){
   .nav-center,.nav-right{display:none}
+  .mega-wrap{display:none}
   .burger{display:block}
 }
 
@@ -628,6 +629,24 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1)}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.45)}
 @media(max-width:820px){.footer-top{grid-template-columns:1fr;gap:30px}.footer-cols{grid-template-columns:1fr 1fr;gap:24px 20px}.footer-brand{align-items:center;text-align:center}.footer-bottom{justify-content:center}}
+
+/* ---------- ask gambit ---------- */
+.askgambit{padding:100px 0;background:var(--bone)}
+.askgambit .section-head{max-width:680px;margin:0 auto 40px;text-align:center}
+.askgambit .section-head .eyebrow{display:inline-block;margin-bottom:16px}
+.askgambit .lead{margin:0 auto}
+.ag-card{max-width:760px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 34px 70px -44px rgba(21,17,13,.4)}
+.ag-bar{display:flex;align-items:center;gap:9px;padding:14px 20px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ag-dot{width:8px;height:8px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.ag-on{margin-left:auto;color:var(--status-d);text-transform:none;letter-spacing:.04em}
+.ag-embed{width:100%;height:560px;border:0;display:block;background:var(--paper)}
+.ag-chips{max-width:760px;margin:22px auto 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+.ag-try{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.ag-chip{font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:8px 15px}
+.ag-faq{font-size:13px;font-weight:500;color:var(--accent-deep);display:inline-flex;align-items:center;gap:6px;padding:8px 6px}
+.ag-faq .ar{transition:transform .2s}.ag-faq:hover .ar{transform:translateX(3px)}
+.pt-hotel{background:linear-gradient(180deg,rgba(22,16,38,.2) 30%,rgba(16,12,28,.82)),url('/img/ind-gillis.jpg') center/cover,linear-gradient(160deg,#4a3b8a,#191233)}
+@media(max-width:620px){.ag-embed{height:520px}.askgambit{padding:72px 0}}
 </style>
 </head>
 <body>
@@ -662,7 +681,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
     <div class="nav-right">
       <a href="/get-started" class="nav-link">Contact</a>
-      <a href="/get-started" class="btn-ask"><span class="dot"></span> Ask Gambit</a>
+      <a href="/#askgambit" class="btn-ask"><span class="dot"></span> Ask Gambit</a>
     </div>
 
     <button class="burger" id="burger" aria-label="Menu">
@@ -825,7 +844,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
   <div class="m-actions">
     <a href="/get-started" class="m-ghost">Contact</a>
-    <a href="/get-started" class="m-dark">Ask Gambit</a>
+    <a href="/#askgambit" class="m-dark">Ask Gambit</a>
   </div>
 </div>
 
@@ -1031,10 +1050,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         <div class="pt-stat">Loads confirmed at machine speed.</div>
         <div class="pt-p">Harlo coordinates freight and confirms loads around the clock, carrier by carrier.</div>
       </div>
-      <div class="ptile pt-law">
-        <div class="pt-mark">Pulse Law</div>
-        <div class="pt-stat">450 consultations in a week.</div>
-        <div class="pt-p">AskTodd runs legal strategy and intake for Pulse Law, without the wait.</div>
+      <div class="ptile pt-hotel">
+        <div class="pt-mark">Gillis Sales</div>
+        <div class="pt-stat">Real demand found within five miles of every hotel.</div>
+        <div class="pt-p">Gillis opens the conversation and coaches reps in the moment. Less searching, more selling.</div>
       </div>
       <div class="ptile pt-atlas">
         <div class="pt-mark">OceanPark</div>
@@ -1158,6 +1177,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
+<!-- ASK GAMBIT -->
+<section class="askgambit" id="askgambit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Ask Gambit</span>
+      <h2>Have a question? Just ask.</h2>
+      <p class="lead">Our AI worker knows everything about what we do and how we work. Ask it anything, at any hour. Available 24/7.</p>
+    </div>
+    <div class="ag-card">
+      <div class="ag-bar"><span class="ag-dot"></span> Ask Gambit <span class="ag-on">online</span></div>
+      <iframe class="ag-embed" src="https://chat.gambitco.io/embed/05da54e4-a111-4b4f-a37b-39e432b8595f?surface=4ab45acd-1f49-4239-942a-fb8b88d75125" title="Ask Gambit" loading="lazy" frameborder="0" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+    </div>
+    <div class="ag-chips">
+      <span class="ag-try">Try asking</span>
+      <span class="ag-chip">Tell me about your technology.</span>
+      <span class="ag-chip">How can we work together?</span>
+      <span class="ag-chip">I want this for my company!</span>
+      <a class="ag-faq" href="/faqs">Read our FAQs <span class="ar">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
@@ -1165,7 +1206,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <p>Tell us what is not working. We will show you what a worker would do about it, on your data, in two weeks.</p>
     <div class="cta-btns">
       <a href="/get-started" class="btn btn-dark">Book a 30-min scope call <span class="ar">&rarr;</span></a>
-      <a href="/get-started" class="btn btn-ghost">Ask Gambit first</a>
+      <a href="/#askgambit" class="btn btn-ghost">Ask Gambit first</a>
     </div>
   </div>
 </section>
