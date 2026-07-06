@@ -767,6 +767,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 @media(max-width:640px){
 .flow,.feat-sec,.results,.thesis,.outcomes,.inds,.approach,.moat,.gos,.cta{padding-top:64px;padding-bottom:64px}
 }
+/* mobile: hero transcript follows the interaction (QA) */
+@media(max-width:720px){
+.demo-left{min-height:0}
+.tr{justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tr::-webkit-scrollbar{width:0;height:0}
+}
 </style>
 </head>
 <body>
@@ -1352,6 +1358,9 @@ document.querySelectorAll('.sv-tab').forEach(t=>{
   if(RM){showStatic();if(btn)btn.style.display='none';return;}
   setTimeout(loop,400);
 })();
+</script>
+<script>/* hero transcript autoscroll (mobile) */
+(function(){var tr=document.getElementById('cTrans');if(!tr||!window.MutationObserver)return;var mq=window.matchMedia('(max-width:720px)');function toBottom(){try{tr.scrollTo({top:tr.scrollHeight,behavior:'smooth'});}catch(e){tr.scrollTop=tr.scrollHeight;}}new MutationObserver(function(){if(mq.matches)toBottom();}).observe(tr,{subtree:true,attributes:true,attributeFilter:['class']});})();
 </script>
 </body>
 </html>
