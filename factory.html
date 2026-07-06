@@ -22,7 +22,7 @@
 
 :root{
   /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
-  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-fleet:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
   /* roster audit additions (reserve palette) */
   --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
   --w-gillis:#1e1745;
@@ -1002,7 +1002,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="collabel">Operations</div>
           <a class="mi mi-w" href="/workers/jericho"><span class="wmark s24" style="--wm:var(--w-jericho)"><b>J</b></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span></span></a>
           <a class="mi mi-w" href="/workers/chloe"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
-          <a class="mi mi-w" href="/workers/harlo"><span class="wmark s24" style="--wm:var(--w-harlo)"><b>H</b></span><span class="mi-tx"><span class="mi-name">Harlo <span class="mi-role">Freight</span></span></span></a>
+          <a class="mi mi-w" href="/workers/fleet"><span class="wmark s24" style="--wm:var(--w-fleet)"><b>F</b></span><span class="mi-tx"><span class="mi-name">Fleet <span class="mi-role">Freight</span></span></span></a>
           <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
           <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
         </div>
@@ -1086,7 +1086,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="msec-lbl">Operations</div>
       <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
       <a href="/workers/chloe"><span class="mn">Chloe</span> &middot; Civic</a>
-      <a href="/workers/harlo"><span class="mn">Harlo</span> &middot; Freight</a>
+      <a href="/workers/fleet"><span class="mn">Fleet</span> &middot; Freight</a>
       <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
       <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
       <div class="msec-lbl">Care</div>
@@ -1380,7 +1380,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     {id:'gillis',href:'/workers/gillis',name:'Gillis',mark:'GI',wm:'--w-gillis',title:'Hotel sales',status:'live',k:'Leads worked',v:'206',tasks:520,verbs:['researched an inbound lead','drafted a proposal','coached a rep on a reply','followed up on a hold']},
     {id:'jericho',href:'/workers/jericho',name:'Jericho',mark:'J',wm:'--w-jericho',title:'Support',status:'live',k:'Replies handled',v:'880',tasks:1120,verbs:['answered a customer question','routed a ticket','logged a warm reply','scheduled a call']},
     {id:'chloe',href:'/workers/chloe',name:'Chloe',mark:'C',wm:'--w-chloe',title:'Civic concierge',status:'live',k:'Residents helped',v:'1,340',tasks:1010,verbs:['answered a parking question','confirmed an event detail','replied in Spanish','routed a permit request']},
-    {id:'harlo',href:'/workers/harlo',name:'Harlo',mark:'H',wm:'--w-harlo',title:'Freight',status:'live',k:'Loads confirmed',v:'412',tasks:760,verbs:['read a load document','validated a BOL','matched a carrier','flagged an exception']},
+    {id:'fleet',href:'/workers/fleet',name:'Fleet',mark:'F',wm:'--w-fleet',title:'Freight',status:'live',k:'Loads confirmed',v:'412',tasks:760,verbs:['read a load document','validated a BOL','matched a carrier','flagged an exception']},
     {id:'dawn',href:'/workers/dawn',name:'Dawn',mark:'D',wm:'--w-dawn',title:'Recovery',status:'live',k:'People supported',v:'2,100',tasks:430,verbs:['met someone at 2am','held a hard conversation','shared a resource','kept the door open']}
   ];
   const wgrid=document.getElementById('wgrid');

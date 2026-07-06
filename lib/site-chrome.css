@@ -4,7 +4,7 @@
 
 #siteHeader,#mobileMenu,.site-footer{
   /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
-  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-fleet:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
   --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
   --w-gillis:#1e1745;
   /* roster audit additions (reserve palette) */

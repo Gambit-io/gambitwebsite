@@ -22,7 +22,7 @@
 
 :root{
   /* worker colors: unique per worker (icon spec); family hues retired as tile fills */
-  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-fleet:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
   --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
   --w-gillis:#1e1745;
   /* roster audit additions (reserve palette) */
@@ -726,7 +726,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="collabel">Operations</div>
           <a class="mi mi-w" href="/workers/jericho"><span class="wmark s24" style="--wm:var(--w-jericho)"><b>J</b></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span></span></a>
           <a class="mi mi-w" href="/workers/chloe"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
-          <a class="mi mi-w" href="/workers/harlo"><span class="wmark s24" style="--wm:var(--w-harlo)"><b>H</b></span><span class="mi-tx"><span class="mi-name">Harlo <span class="mi-role">Freight</span></span></span></a>
+          <a class="mi mi-w" href="/workers/fleet"><span class="wmark s24" style="--wm:var(--w-fleet)"><b>F</b></span><span class="mi-tx"><span class="mi-name">Fleet <span class="mi-role">Freight</span></span></span></a>
           <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
           <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
         </div>
@@ -810,7 +810,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="msec-lbl">Operations</div>
       <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
       <a href="/workers/chloe"><span class="mn">Chloe</span> &middot; Civic</a>
-      <a href="/workers/harlo"><span class="mn">Harlo</span> &middot; Freight</a>
+      <a href="/workers/fleet"><span class="mn">Fleet</span> &middot; Freight</a>
       <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
       <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
       <div class="msec-lbl">Care</div>
@@ -996,7 +996,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 
 <script>
 /* ----- hero: worker thread overlay, synced to each clip -----
-   One worker per clip: Bogan (downtown) / Clinic (virtual consult) / Harlo (warehouse) / Chloe (city at dusk).
+   One worker per clip: Bogan (downtown) / Clinic (virtual consult) / Fleet (warehouse) / Chloe (city at dusk).
    Each segment plays a scripted sequence, chat plus the interface doing the work,
    with copy grounded in the matching product page. Boundaries at the crossfade midpoints. */
 (function(){
@@ -1005,7 +1005,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   var W={
     bogan:{w:'Bogan', rl:'Buy-side', a:'B', wm:'--w-bogan'},
     clinic:{w:'Clinic',rl:'In-clinic',a:'CL',wm:'--w-clinic'},
-    harlo:{w:'Harlo', rl:'Freight',  a:'H', wm:'--w-harlo'},
+    harlo:{w:'Fleet', rl:'Freight',  a:'F', wm:'--w-fleet'},
     chloe:{w:'Chloe', rl:'Civic',    a:'C', wm:'--w-chloe'}
   };
   function rows(list,step,base){return list.map(function(r,i){return r.replace('<div class="cw-row','<div style="transition-delay:'+((base||0)+i*step)+'ms" class="cw-row');}).join('');}
@@ -1190,7 +1190,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   const FWORKERS=[
     {id:'bogan',href:'/workers/bogan',name:'Bogan',mark:'B',wm:'--w-bogan',title:'Buy-side Worker',status:'live',k:'Owners reached',v:'38',tasks:6240,verbs:['surfaced a seller signal','sent first-touch outreach','verified an owner','flagged a liquidity event']},
     {id:'chloe',href:'/workers',name:'Chloe',mark:'C',wm:'--w-chloe',title:'Civic Concierge',status:'live',k:'Residents answered',v:'1,904',tasks:9310,verbs:['answered a parking question','confirmed an event detail','replied in Spanish','routed a permit request']},
-    {id:'harlo',href:'/workers',name:'Harlo',mark:'H',wm:'--w-harlo',title:'Freight Coordinator',status:'live',k:'Loads confirmed',v:'412',tasks:8420,verbs:['confirmed a load','re-routed a shipment','replied to a carrier','scheduled a pickup']},
+    {id:'fleet',href:'/workers',name:'Fleet',mark:'F',wm:'--w-fleet',title:'Freight Coordinator',status:'live',k:'Loads confirmed',v:'412',tasks:8420,verbs:['confirmed a load','re-routed a shipment','replied to a carrier','scheduled a pickup']},
     {id:'ellyn',href:'/workers',name:'AskEllyn',mark:'E',wm:'--w-askellyn',title:'Patient Support',status:'live',k:'Patients supported',v:'96',tasks:4070,verbs:['supported a patient at 3am','answered in Portuguese','shared a resource','connected a nurse line']},
     {id:'todd',href:'/workers',name:'AskTodd',mark:'T',wm:'--w-asktodd',title:'Legal Strategist',status:'live',k:'Consultations',v:'450',tasks:2940,verbs:['ran an intake','drafted a strategy note','answered a client question','scheduled a consult']},
     {id:'ayla',href:'/workers',name:'Ayla',mark:'AY',wm:'--w-ayla',title:'Caregiver Support',status:'live',k:'Caregivers guided',v:'61',tasks:1830,verbs:['guided a caregiver','shared a navigation step','answered after midnight','connected a resource']},

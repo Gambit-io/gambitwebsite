@@ -13,7 +13,7 @@
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 
 :root{
-  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-harlo:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;--w-chloe:#2c8091;--w-fleet:#0f74c4;--w-asktodd:#3f4380;--w-askellyn:#6e659f;--w-ayla:#8e5878;--w-dawn:#cc6650;--w-askashleigh:#b06450;
   --w-sam:#b8791f;--w-demi:#2f4858;--w-askshan:#7a2e3f;--w-clinic:#5c4632;
   --w-gillis:#1e1745;
 
@@ -310,7 +310,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
           <div class="collabel">Operations</div>
           <a class="mi mi-w" href="/workers/jericho"><span class="wmark s24" style="--wm:var(--w-jericho)"><b>J</b></span><span class="mi-tx"><span class="mi-name">Jericho <span class="mi-role">Support</span></span></span></a>
           <a class="mi mi-w" href="/workers/chloe"><span class="wmark s24" style="--wm:var(--w-chloe)"><b>C</b></span><span class="mi-tx"><span class="mi-name">Chloe <span class="mi-role">Civic</span></span></span></a>
-          <a class="mi mi-w" href="/workers/harlo"><span class="wmark s24" style="--wm:var(--w-harlo)"><b>H</b></span><span class="mi-tx"><span class="mi-name">Harlo <span class="mi-role">Freight</span></span></span></a>
+          <a class="mi mi-w" href="/workers/fleet"><span class="wmark s24" style="--wm:var(--w-fleet)"><b>F</b></span><span class="mi-tx"><span class="mi-name">Fleet <span class="mi-role">Freight</span></span></span></a>
           <a class="mi mi-w" href="/legal"><span class="wmark s24" style="--wm:var(--w-asktodd)"><b>T</b></span><span class="mi-tx"><span class="mi-name">AskTodd <span class="mi-role">Legal</span></span></span></a>
           <a class="mi mi-w" href="/business-services"><span class="wmark s24 two" style="--wm:var(--w-demi)"><b>DM</b></span><span class="mi-tx"><span class="mi-name">Demi <span class="mi-role">HR</span></span></span></a>
         </div>
@@ -394,7 +394,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
       <div class="msec-lbl">Operations</div>
       <a href="/workers/jericho"><span class="mn">Jericho</span> &middot; Support</a>
       <a href="/workers/chloe"><span class="mn">Chloe</span> &middot; Civic</a>
-      <a href="/workers/harlo"><span class="mn">Harlo</span> &middot; Freight</a>
+      <a href="/workers/fleet"><span class="mn">Fleet</span> &middot; Freight</a>
       <a href="/legal"><span class="mn">AskTodd</span> &middot; Legal</a>
       <a href="/business-services"><span class="mn">Demi</span> &middot; HR</a>
       <div class="msec-lbl">Care</div>
@@ -553,7 +553,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--clay-deep);outline-
   var segs=[
     {end:11.1,w:'Bogan', a:'B', un:'Partner', ut:"Anyone ready to sell in industrials?",       rt:"Three owner-operators fit your thesis. Briefs drafted."},
     {end:21.9,w:'Clinic',a:'CL',un:'Patient', ut:"I keep waking up at night. Should I worry?", rt:"Let's walk through it together. Your clinician reviews everything we cover."},
-    {end:32.7,w:'Harlo', a:'H', un:'Dispatch',ut:"Did the paperwork on load 4417 clear?",      rt:"Read, checked against policy, confirmed. Three minutes flat."},
+    {end:32.7,w:'Fleet', a:'F', un:'Dispatch',ut:"Did the paperwork on load 4417 clear?",      rt:"Read, checked against policy, confirmed. Three minutes flat."},
     {end:99,  w:'Chloe', a:'C', un:'Resident',ut:"When is my street cleaning this week?",      rt:"Thursday, 8am. Want a reminder the night before?"}
   ];
   function bub(cls,av,nm,msg){var d=document.createElement('div');d.className='cbub '+cls;d.innerHTML='<div class="who"><span class="av">'+av+'</span><span class="nm">'+nm+'</span></div><div class="msg">'+msg+'</div>';chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('in');});}

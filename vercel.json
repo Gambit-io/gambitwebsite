@@ -2,6 +2,11 @@
   "rewrites": [],
   "redirects": [
     {
+      "source": "/workers/harlo",
+      "destination": "/workers/fleet",
+      "permanent": true
+    },
+    {
       "source": "/#solutions",
       "destination": "/vision",
       "permanent": true
