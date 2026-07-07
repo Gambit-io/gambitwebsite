@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /img/
 
-Sitemap: https://www.gambitco.io/sitemap.xml
+Sitemap: https://gambitco.io/sitemap.xml
