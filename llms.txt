@@ -1,71 +1,88 @@
-# GambitCo
+# Gambit
 
-> Gambit Technology Inc. (GambitCo) builds custom AI workers that solve complex business problems. Founded in 2023 and headquartered in Canada, Gambit deploys AI workers across healthcare, government, logistics, legal, entertainment, and business services.
+> Gambit (Gambit Technology Inc.) builds AI workers that run business operations. Not chatbots, not copilots: AI workers with a job title, a scope, and accountability to an outcome. Founded in 2023, headquartered in Canada, live across financial services, healthcare, public sector, legal, logistics, hospitality, and business services. Tagline: We put AI to work.
 
-## What We Do
+## What Gambit Does
 
-Gambit builds AI workers — not chatbots, not copilots. AI workers with a job title, a scope, and accountability to an outcome. Each worker is custom-built for a specific business operation and runs 24/7 across web, SMS, voice, and phone channels.
+Gambit builds and runs custom AI workers alongside your team. Each worker is built for a specific job, runs 24/7 across web, SMS, voice, and phone, and is accountable to a business outcome, not a seat license. Workers run on The Factory, Gambit's platform: your infrastructure, any model routed per task, every action auditable, SOC 2, and no vendor or model lock-in. Gambit's vision: help companies do ten times more with the teams they already have, and build AI that the customer owns.
 
 ## Key Facts
 
 - 15+ AI workers deployed in production
-- Operations in 100+ countries
-- 100,000+ conversations handled
-- Clients include Cigna, HPE, Town of Vail, Primary People Group, Logistics Alliance, Pulse Law
-- Member of NVIDIA Inception Program
-- SOC 2 compliant infrastructure
-- Founded: 2023
+- AskEllyn: 100,000+ conversations across 100+ countries in 50+ languages, live on Cigna Healthcare
+- Fleet confirms freight loads in about 3 minutes each for Logistics Alliance
+- Clients include Cigna Healthcare, Town of Vail, Spearhead Corporate Development, OceanPark, Geotab, Logistics Alliance, Burnbrae Farms, Infiniti Group, Gillis Sales, Pulse Law LLP
+- Partnerships: HPE Unleash AI program member, TD SYNNEX approved ISV, NVIDIA Inception Program
+- Named a FoundersBeta Top 100 Company to Watch in 2026
+- SOC 2 compliant, runs on customer infrastructure, model-agnostic
 
-## Products & AI Workers
+## AI Workers
 
-- **AskEllyn**: AI health benefits navigator for Cigna members. Handles coverage questions, plan comparisons, and claims guidance 24/7.
-- **AskTodd**: AI legal assistant for Pulse Law LLP. Reviews documents, drafts analysis, and supports legal workflows.
-- **AskBibi**: AI educational assistant. Provides tutoring and learning support.
-- **AskEvaMarie**: AI concierge for entertainment and hospitality.
-- **AskAshleigh**: AI assistant for Primary People Group (recruitment/HR).
-- **Harlo**: AI logistics operations worker for Logistics Alliance. Processes freight loads, carrier scorecards, and customer reporting.
-- **Chloe**: AI voice concierge for Vail hospitality (Town of Vail).
-- **Bogan**: AI M&A outreach worker for Spearhead Corporate Development. Researches targets, drafts personalized outreach, and manages follow-up cadences.
-- **Demi**: AI assistant for Primary People Group strategic operations.
-- **AskGambit**: General Gambit AI assistant available at [gambitco.io](http://gambitco.io).
+### Growth and M&A
+- [Mira](https://gambitco.io/workers/mira): Research worker. Works up any company or market on demand, verifies primary sources, scores fit against your thesis, and delivers a cited brief.
+- [Bogan](https://gambitco.io/workers/bogan): Buy-side origination worker for Spearhead Corporate Development. Reads public signals, finds owners likely to sell, verifies decision makers, and drafts first-touch outreach.
+- [Atlas](https://gambitco.io/workers/atlas): Sell-side worker built with OceanPark. Maps every strategic and financial buyer for a mandate, scores fit, and runs the process.
+- [Dealio](https://gambitco.io/workers/dealio): Post-LOI deal room worker. Runs diligence and coordinates lawyers, accountants, and lenders so a signed LOI reaches close in weeks.
+- [Gillis](https://gambitco.io/workers/gillis): Hotel sales worker (GillisOS) for Gillis Sales. Finds hotel demand within five miles of each property and opens conversations with outreach that reads handwritten.
+
+### Operations
+- [Jericho](https://gambitco.io/workers/jericho): Support worker. Answers inbound across web, SMS, and voice around the clock.
+- [Chloe](https://gambitco.io/workers/chloe): Smart Cities voice concierge, live for the Town of Vail. Answers residents and visitors by phone at (970) 645-VAIL, in multiple languages.
+- [Fleet](https://gambitco.io/workers/fleet): Freight coordinator for Logistics Alliance. Reads load documents with AI vision, validates them, matches carriers, and confirms loads in about 3 minutes.
+- [AskTodd](https://gambitco.io/legal): Legal intake and research worker built with Pulse Law LLP. Client orientation, consultation preparation, and research, 24/7.
+- [Demi](https://gambitco.io/workers/demi): HR advisor. Policy and benefits questions, onboarding, and HR case handling.
+
+### Care
+- [AskEllyn](https://gambitco.io/workers/askellyn): Patient companion for breast cancer support, built on the lived experience of survivor Ellyn Winters-Robinson. Live on Cigna Healthcare and open to anyone at askellyn.ai.
+- [Dawn](https://gambitco.io/workers/dawn): Recovery platform behind Chaddict (chaddict.com, for Infiniti Group) and AskEvaMarie (askevamarie.com, for NEM Recovery Centers), companions for addiction and recovery built on real lived experience.
+- [Ayla](https://gambitco.io/workers/ayla): Free companion for parents and caregivers raising a child with a disability.
+- [AskAshleigh](https://gambitco.io/workers/askashleigh): Around-the-clock caregiver support built for the U.S. Area Agency on Aging network.
+- [Clinic](https://gambitco.io/workers/clinic): Hospital pilot. Runs the specialist consult, shows its reasoning, and drafts the clinical note while the clinician stays in charge.
+
+### Also live
+- AskAmber (askamber.io): A professional race car driver's fan companion, on-brand and sponsor-safe.
+- AskBibi: Sales assistant for Bobit Business Media that builds cross-service advertising packages.
+- Geotab Assistant: Builds customized sponsorship packages in real time, launched at Geotab Connect.
+
+## Industries
+
+- [Financial Services](https://gambitco.io/financial-services): Private equity, investment banking, and wealth. Origination, sell-side, post-LOI execution, research, and support.
+- [Healthcare](https://gambitco.io/healthcare): Care companions grounded in lived experience, non-medical by design, with clinical guardrails.
+- [Public Sector](https://gambitco.io/public-sector): Resident services answered the first time, any hour.
+- [Legal](https://gambitco.io/legal): Intake, research, and client questions without the wait.
+- [Logistics](https://gambitco.io/logistics): Freight documents read, validated, and confirmed at machine speed.
+- [Hospitality and Entertainment](https://gambitco.io/hospitality): Hotel demand found and fans answered around the clock.
+- [Business Services](https://gambitco.io/business-services): Outbound, qualification, and support without added headcount.
+
+## Platform
+
+- [The Factory](https://gambitco.io/factory): The engine every worker runs on. Build one worker, then many. Runs on your infrastructure, any model routed per task, every action auditable.
+- [Vision](https://gambitco.io/vision): 10x your operations, own your AI, no vendor or model lock-in, a partner as you scale.
 
 ## How It Works
 
-1. Discovery: Gambit identifies the business operation that needs an AI worker.
-2. Build: Custom AI worker is trained on domain knowledge, business rules, and workflows.
-3. Deploy: Worker goes live across chosen channels (web, SMS, voice, phone).
-4. Operate: Worker handles operations 24/7 with human oversight and continuous improvement.
-
-## Industries Served
-
-- Health & Wellness (Cigna, healthcare providers)
-- Government (Town of Vail)
-- Legal & Finance (Pulse Law LLP)
-- Logistics (Logistics Alliance)
-- Entertainment & Hospitality
-- Business Services (recruitment, HR, consulting)
-- M&A Advisory (Spearhead Corporate Development)
-
-## Technology
-
-- Multi-channel deployment: web chat, SMS, voice, phone
-- Enterprise-grade security and compliance
-- Custom knowledge bases per worker
-- Real-time analytics and conversation monitoring
-- Integration with existing business systems
+1. Tell Gambit the problem: the task or workflow that eats your team's time.
+2. Gambit scopes the worker: what it would do, on your data and your channels.
+3. See a working proof in weeks, judged on real output.
+4. The worker runs 24/7 with human oversight, and Gambit operates it with you as you scale.
 
 ## Contact
 
 - Website: https://gambitco.io
-- Get Started: https://gambitco.io/get-started
+- Get started: https://gambitco.io/get-started
+- Ask Gambit (AI assistant, 24/7): https://gambitco.io/#askgambit
+- Email: AI@gambitco.io
 - LinkedIn: https://www.linkedin.com/company/gambit-co/
-- Instagram: https://www.instagram.com/gambitco/
-- YouTube: https://www.youtube.com/@GambitCo
+- Instagram: https://www.instagram.com/gambitco
 
 ## Further Reading
 
-- Case Studies: https://gambitco.io/case-studies
-- About Us: https://gambitco.io/about-us
-- What is an AI Worker: https://gambitco.io/what-is-an-ai-worker
-- FAQs: https://gambitco.io/faqs
-- Insights: https://gambitco.io/insights
+- [All workers](https://gambitco.io/workers)
+- [All industries](https://gambitco.io/industries)
+- [Case studies](https://gambitco.io/case-studies)
+- [About us](https://gambitco.io/about-us)
+- [What is an AI worker](https://gambitco.io/what-is-an-ai-worker)
+- [FAQs](https://gambitco.io/faqs)
+- [Insights](https://gambitco.io/insights)
+- [Partners: resellers and VARs](https://gambitco.io/partners)
+- [Partners: agencies](https://gambitco.io/partners-agencies)
