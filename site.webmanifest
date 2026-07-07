@@ -1,0 +1,13 @@
+{
+  "name": "Gambit",
+  "short_name": "Gambit",
+  "description": "AI workers that run business operations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f5ef",
+  "theme_color": "#15110d",
+  "icons": [
+    { "src": "/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "/img/favicon.png", "sizes": "32x32", "type": "image/png" }
+  ]
+}
