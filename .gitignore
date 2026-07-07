@@ -12,3 +12,5 @@ Thumbs.db
 .slidebuild/
 gambit-context-for-claude.md
 gambit-homepage-brief.md
+
+.claude-seo-audit.json
