@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /img/
-
 Sitemap: https://gambitco.io/sitemap.xml
