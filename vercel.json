@@ -117,11 +117,5 @@
     }
   ],
   "trailingSlash": false,
-  "cleanUrls": true,
-  "crons": [
-    {
-      "path": "/api/ga4-sync",
-      "schedule": "0 8 * * *"
-    }
-  ]
+  "cleanUrls": true
 }
