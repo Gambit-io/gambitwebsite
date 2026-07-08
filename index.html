@@ -702,7 +702,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .ag-copy h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,3vw,34px);letter-spacing:-.025em;line-height:1.1;color:var(--ink);margin-bottom:12px}
 .ag-copy .lead{color:var(--ink-2);opacity:.75;max-width:44ch;margin-bottom:26px}
 .ag-prompts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px}
-.ag-prompt{padding:13px 15px;border-radius:11px;font-size:13.5px;line-height:1.35;text-align:left;color:var(--ink);background:rgba(21,17,13,.06);border:1px solid rgba(21,17,13,.05);transition:background .18s}
+.ag-prompt{padding:13px 15px;border-radius:11px;font-size:13.5px;line-height:1.35;text-align:left;color:var(--ink);background:rgba(21,17,13,.06);border:1px solid rgba(21,17,13,.05);cursor:pointer;transition:background .18s}
 .ag-prompt:hover{background:rgba(21,17,13,.1)}
 .ag-faq{font-family:var(--display);font-size:14px;font-weight:500;color:var(--accent-deep);display:inline-flex;align-items:center;gap:7px}
 .ag-faq .ar{transition:transform .2s}.ag-faq:hover .ar{transform:translateX(3px)}
@@ -1231,7 +1231,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="askgambit" id="askgambit">
   <div class="ag-inner">
     <div>
-      <iframe class="ag-embed" src="https://dm78pdaamzrpr.cloudfront.net/embed/dfb100ff-812a-4528-a862-38ef2bcdd1c7?surface=bf89a6b4-d025-4a65-aff0-7b38307cc436" title="Ask Gambit" loading="lazy" allow="clipboard-read; clipboard-write" style="border:none;border-radius:16px;background:transparent"></iframe>
+      <iframe id="askgambit-embed" class="ag-embed" src="https://dm78pdaamzrpr.cloudfront.net/embed/dfb100ff-812a-4528-a862-38ef2bcdd1c7?surface=bf89a6b4-d025-4a65-aff0-7b38307cc436" title="Ask Gambit" loading="lazy" allow="clipboard-read; clipboard-write" style="border:none;border-radius:16px;background:transparent"></iframe>
     </div>
     <div class="ag-copy">
       <span class="eyebrow">Ask Gambit</span>
@@ -1611,6 +1611,22 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     elT.textContent=tasks.toLocaleString();elR.textContent=resolved.toLocaleString();elE.textContent=esc.toLocaleString();
   }
   tick(); if(!RM) setInterval(tick,950);
+})();
+</script>
+<script>
+/* Ask Gambit prompt chips: prefill the chat embed */
+(function(){
+  var frame=document.getElementById('askgambit-embed');
+  var chips=document.querySelectorAll('.ag-prompt');
+  if(!frame||!chips.length) return;
+  var ORIGIN='https://dm78pdaamzrpr.cloudfront.net';
+  function send(el){var msg=el.textContent.trim();if(frame.contentWindow){frame.contentWindow.postMessage({query:msg},ORIGIN);}}
+  chips.forEach(function(el){
+    el.setAttribute('role','button');
+    el.setAttribute('tabindex','0');
+    el.addEventListener('click',function(){send(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();send(el);}});
+  });
 })();
 </script>
 </body>
