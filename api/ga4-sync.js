@@ -42,12 +42,22 @@ function withTimeout(fn) {
 
 const b64url = (input) => Buffer.from(input).toString('base64url');
 
+// Normalize a pasted service-account key into valid PEM. Tolerates the common
+// paste mistakes: wrapping quotes copied from the JSON, literal \n escapes, and
+// stray carriage returns.
+function normalizePrivateKey(raw) {
+  let k = String(raw).trim();
+  if ((k.startsWith('"') && k.endsWith('"')) || (k.startsWith("'") && k.endsWith("'"))) k = k.slice(1, -1);
+  k = k.replace(/\\n/g, '\n').replace(/\r/g, '');
+  return k.trim() + '\n';
+}
+
 // Sign a service-account JWT and exchange it for a short-lived access token.
 async function getAccessToken(signal) {
   const email = process.env.GA4_CLIENT_EMAIL;
   const rawKey = process.env.GA4_PRIVATE_KEY;
   if (!email || !rawKey) throw new Error('GA4_CLIENT_EMAIL / GA4_PRIVATE_KEY not set');
-  const privateKey = rawKey.replace(/\\n/g, '\n');
+  const privateKey = normalizePrivateKey(rawKey);
 
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: 'RS256', typ: 'JWT' };
@@ -141,6 +151,24 @@ export default async function handler(req, res) {
   const auth = req.headers.authorization || '';
   const provided = auth.startsWith('Bearer ') ? auth.slice(7) : req.headers['x-cron-key'];
   if (!secret || provided !== secret) return res.status(401).json({ error: 'Unauthorized' });
+
+  // Safe key diagnostics (no key material) to debug PEM paste issues.
+  if (new URL(req.url, 'http://x').searchParams.get('debug')) {
+    const k = process.env.GA4_PRIVATE_KEY || '';
+    const norm = k ? normalizePrivateKey(k) : '';
+    return res.status(200).json({
+      has_property: !!process.env.GA4_PROPERTY_ID,
+      has_email: !!process.env.GA4_CLIENT_EMAIL,
+      has_key: !!k,
+      raw_len: k.length,
+      raw_wrapped_in_quotes: k.startsWith('"') || k.startsWith("'"),
+      raw_has_literal_backslash_n: k.includes('\\n'),
+      raw_has_real_newlines: k.includes('\n'),
+      norm_starts_with_begin: norm.startsWith('-----BEGIN'),
+      norm_ends_with_end: norm.trimEnd().endsWith('-----END PRIVATE KEY-----'),
+      norm_newline_count: (norm.match(/\n/g) || []).length,
+    });
+  }
 
   const sb = getSupabase();
   if (!sb) return res.status(503).json({ error: 'Supabase not configured' });
