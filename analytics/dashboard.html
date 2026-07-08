@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gambit · Analytics</title>
+<style>
+  :root{
+    --bg:#f4efe4; --card:#fffdf7; --ink:#2b2620; --muted:#8a8073;
+    --line:#e7dfd0; --accent:#c8622d; --accent-soft:#f0d9c8;
+    --good:#4b7d5b; --track:#ece4d5;
+    --radius:14px; --shadow:0 1px 2px rgba(43,38,32,.05),0 8px 24px rgba(43,38,32,.05);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+    -webkit-font-smoothing:antialiased;line-height:1.45}
+  a{color:var(--accent)}
+  header.top{display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;border-bottom:1px solid var(--line);background:var(--card);
+    position:sticky;top:0;z-index:5}
+  .brand{display:flex;align-items:baseline;gap:10px;font-weight:700;letter-spacing:-.01em}
+  .brand .dot{color:var(--accent)}
+  .brand small{font-weight:500;color:var(--muted);letter-spacing:.02em;text-transform:uppercase;font-size:11px}
+  .top-right{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted)}
+  button{font-family:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);
+    color:var(--ink);padding:7px 14px;border-radius:9px;cursor:pointer;transition:.15s}
+  button:hover{border-color:var(--accent);color:var(--accent)}
+  main{max-width:1120px;margin:0 auto;padding:26px 24px 60px}
+  .grid{display:grid;gap:16px}
+  .stats{grid-template-columns:repeat(4,1fr);margin-bottom:22px}
+  .cols{grid-template-columns:1fr 1fr;align-items:start}
+  @media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:20px}
+  .card h2{margin:0 0 16px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--muted);font-weight:600}
+  .stat .n{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1}
+  .stat .l{margin-top:8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  /* bars */
+  .bar-row{display:grid;grid-template-columns:96px 1fr 46px;align-items:center;gap:12px;margin:9px 0;font-size:13px}
+  .bar-row .lab{color:var(--muted);text-transform:capitalize}
+  .track{background:var(--track);border-radius:6px;height:10px;overflow:hidden}
+  .fill{height:100%;background:var(--accent);border-radius:6px}
+  .fill.good{background:var(--good)}
+  .bar-row .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+  /* spark */
+  .spark{display:flex;align-items:flex-end;gap:3px;height:56px;margin-top:6px}
+  .spark span{flex:1;background:var(--accent-soft);border-radius:3px 3px 0 0;min-height:2px;position:relative}
+  .spark span:last-child{background:var(--accent)}
+  .chan{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+  .chan:first-child{border-top:0;padding-top:0;margin-top:0}
+  .chan-head{display:flex;justify-content:space-between;align-items:baseline}
+  .chan-head .name{font-weight:600;text-transform:capitalize}
+  .chan-head .latest{font-size:12px;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{font-size:11px;background:var(--track);border-radius:20px;padding:3px 10px;color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:600}
+  /* feed */
+  .feed{list-style:none;margin:0;padding:0;font-size:13px}
+  .feed li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .feed li:last-child{border-bottom:0}
+  .tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--accent-soft);
+    color:var(--accent);white-space:nowrap}
+  .feed .when{margin-left:auto;color:var(--muted);font-size:12px;white-space:nowrap}
+  .feed .who{color:var(--muted)}
+  .empty{color:var(--muted);font-size:13px;padding:8px 0}
+  /* gate */
+  .gate{position:fixed;inset:0;background:rgba(244,239,228,.9);backdrop-filter:blur(3px);
+    display:none;align-items:center;justify-content:center;z-index:20}
+  .gate.show{display:flex}
+  .gate .box{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);padding:28px;width:min(360px,90vw);text-align:center}
+  .gate h3{margin:0 0 6px}
+  .gate p{margin:0 0 18px;color:var(--muted);font-size:13px}
+  .gate input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+    font-size:14px;font-family:inherit;margin-bottom:12px}
+  .gate button{width:100%;background:var(--accent);color:#fff;border-color:var(--accent);padding:11px}
+  .gate button:hover{opacity:.92;color:#fff}
+  .gate .err{color:var(--accent);font-size:12px;min-height:16px;margin-bottom:8px}
+  .loading{text-align:center;color:var(--muted);padding:80px 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">Gambit<span class="dot">.</span><small>Analytics</small></div>
+  <div class="top-right">
+    <span id="updated"></span>
+    <button id="refresh">Refresh</button>
+  </div>
+</header>
+
+<main id="app">
+  <div class="loading">Loading…</div>
+</main>
+
+<div class="gate" id="gate">
+  <div class="box">
+    <h3>Analytics</h3>
+    <p>Enter the access key to view the dashboard.</p>
+    <div class="err" id="gateErr"></div>
+    <input id="gateInput" type="password" placeholder="Access key" autocomplete="off">
+    <button id="gateBtn">Unlock</button>
+  </div>
+</div>
+
+<script>
+const KEY_STORE='gambit_dash_key';
+const app=document.getElementById('app');
+const gate=document.getElementById('gate');
+const STAGES=['contacted','replied','meeting','applied','won','lost'];
+
+const fmt=n=>Number(n||0).toLocaleString('en-US');
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function ago(iso){
+  const d=(Date.now()-new Date(iso).getTime())/1000;
+  if(d<60)return'just now'; if(d<3600)return Math.floor(d/60)+'m ago';
+  if(d<86400)return Math.floor(d/3600)+'h ago'; return Math.floor(d/86400)+'d ago';
+}
+function getKey(){return localStorage.getItem(KEY_STORE)||''}
+function showGate(msg){document.getElementById('gateErr').textContent=msg||'';gate.classList.add('show');document.getElementById('gateInput').focus()}
+
+async function load(){
+  const key=getKey();
+  if(!key){showGate();return}
+  try{
+    const r=await fetch('/api/dashboard',{headers:{'x-dashboard-key':key}});
+    if(r.status===401){localStorage.removeItem(KEY_STORE);showGate('That key was not accepted.');return}
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    gate.classList.remove('show');
+    render(await r.json());
+  }catch(e){app.innerHTML='<div class="loading">Could not load data ('+esc(e.message)+').</div>'}
+}
+
+function statCard(n,l){return '<div class="card stat"><div class="n">'+fmt(n)+'</div><div class="l">'+l+'</div></div>'}
+
+function pipelineCard(rows){
+  const byStage={}; STAGES.forEach(s=>byStage[s]=0);
+  (rows||[]).forEach(r=>{byStage[r.stage]=(byStage[r.stage]||0)+Number(r.deals||0)});
+  const max=Math.max(1,...Object.values(byStage));
+  const body=STAGES.map(s=>{
+    const v=byStage[s]||0, w=Math.round(v/max*100);
+    const good=(s==='won'||s==='applied'||s==='meeting');
+    return '<div class="bar-row"><span class="lab">'+s+'</span>'+
+      '<span class="track"><span class="fill'+(good?' good':'')+'" style="width:'+w+'%"></span></span>'+
+      '<span class="val">'+fmt(v)+'</span></div>';
+  }).join('');
+  const total=Object.values(byStage).reduce((a,b)=>a+b,0);
+  return '<div class="card"><h2>Pipeline by stage</h2>'+(total?body:'<div class="empty">No deals yet.</div>')+'</div>';
+}
+
+function replyCard(rows){
+  rows=(rows||[]).filter(r=>r.actor);
+  if(!rows.length)return '<div class="card"><h2>Reply rate by sender</h2><div class="empty">No outbound yet.</div></div>';
+  const body=rows.map(r=>{
+    const pct=Number(r.reply_rate_pct||0);
+    return '<div class="bar-row"><span class="lab">'+esc(r.actor)+'</span>'+
+      '<span class="track"><span class="fill" style="width:'+Math.min(100,pct)+'%"></span></span>'+
+      '<span class="val">'+pct+'%</span></div>'+
+      '<div class="empty" style="margin:-4px 0 6px 108px;padding:0">'+fmt(r.replied)+' / '+fmt(r.sent)+' replied</div>';
+  }).join('');
+  return '<div class="card"><h2>Reply rate by sender</h2>'+body+'</div>';
+}
+
+function channelsCard(rows){
+  const byChan={};
+  (rows||[]).forEach(r=>{(byChan[r.channel]=byChan[r.channel]||[]).push(r)});
+  const names=Object.keys(byChan);
+  if(!names.length)return '<div class="card"><h2>Channels</h2><div class="empty">No channel data yet. Set GA4 creds or push Supermetrics data via /api/metrics.</div></div>';
+  const blocks=names.map(ch=>{
+    const series=byChan[ch].slice().sort((a,b)=>a.metric_date<b.metric_date?-1:1);
+    const latest=series[series.length-1]||{};
+    const m=latest.metrics||{};
+    const primary=Object.keys(m)[0];
+    const spark=primary?('<div class="spark">'+(()=>{
+      const vals=series.slice(-14).map(s=>Number((s.metrics||{})[primary]||0));
+      const mx=Math.max(1,...vals);
+      return vals.map(v=>'<span style="height:'+Math.max(4,Math.round(v/mx*100))+'%"></span>').join('');
+    })()+'</div>'):'';
+    const chips=Object.entries(m).slice(0,5).map(([k,v])=>
+      '<span class="chip">'+esc(k)+' <b>'+fmt(Math.round(Number(v)*100)/100)+'</b></span>').join('');
+    return '<div class="chan"><div class="chan-head"><span class="name">'+esc(ch)+'</span>'+
+      '<span class="latest">latest '+esc(latest.metric_date||'')+'</span></div>'+
+      spark+'<div class="chips">'+chips+'</div></div>';
+  }).join('');
+  return '<div class="card"><h2>Channels</h2>'+blocks+'</div>';
+}
+
+function feedCard(rows){
+  rows=rows||[];
+  if(!rows.length)return '<div class="card"><h2>Recent activity</h2><div class="empty">No events yet.</div></div>';
+  const items=rows.map(e=>'<li><span class="tag">'+esc(e.type||'event')+'</span>'+
+    '<span class="who">'+esc(e.actor||'')+(e.channel?' · '+esc(e.channel):'')+'</span>'+
+    '<span class="when">'+ago(e.occurred_at)+'</span></li>').join('');
+  return '<div class="card"><h2>Recent activity</h2><ul class="feed">'+items+'</ul></div>';
+}
+
+function render(d){
+  document.getElementById('updated').textContent='Updated '+ago(d.generated_at);
+  const t=d.totals||{};
+  app.innerHTML=
+    '<div class="grid stats">'+
+      statCard(t.companies,'Companies')+statCard(t.contacts,'Contacts')+
+      statCard(t.deals,'Deals')+statCard(t.events,'Events')+
+    '</div>'+
+    '<div class="grid cols" style="margin-bottom:16px">'+
+      pipelineCard(d.pipeline)+replyCard(d.reply_rate)+
+    '</div>'+
+    '<div class="grid cols">'+
+      channelsCard(d.channels)+feedCard(d.recent_events)+
+    '</div>';
+}
+
+document.getElementById('refresh').onclick=load;
+document.getElementById('gateBtn').onclick=()=>{
+  const v=document.getElementById('gateInput').value.trim();
+  if(v){localStorage.setItem(KEY_STORE,v);load()}
+};
+document.getElementById('gateInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('gateBtn').click()});
+load();
+</script>
+</body>
+</html>
