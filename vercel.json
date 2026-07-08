@@ -78,7 +78,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.gambitco.io https://script.google.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com; font-src https://api.fontshare.com https://fonts.gstatic.com; img-src 'self' https://gambitco.io data:; frame-src https://chat.gambitco.io https://dm78pdaamzrpr.cloudfront.net https://formspree.io; connect-src 'self' https://chat.gambitco.io https://embed.gambitco.io https://formspree.io https://script.google.com https://script.googleusercontent.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.gambitco.io https://script.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com; font-src https://api.fontshare.com https://fonts.gstatic.com; img-src 'self' https://gambitco.io data: https://www.googletagmanager.com https://www.google-analytics.com; frame-src https://chat.gambitco.io https://dm78pdaamzrpr.cloudfront.net https://formspree.io; connect-src 'self' https://chat.gambitco.io https://embed.gambitco.io https://formspree.io https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io"
         }
       ]
     },
