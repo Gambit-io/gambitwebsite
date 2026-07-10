@@ -234,6 +234,31 @@
 
   .fade { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
   @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 640px) {
+    .wrap { padding: 0 18px; }
+    section { margin: 48px 0; }
+    .card { padding: 22px; }
+
+    /* color roles: tighter chip column so labels keep room */
+    .role { grid-template-columns: 84px 1fr; }
+    .role .txt { padding-right: 4px; }
+
+    /* type rows: stack the label above its example */
+    .typerow { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
+
+    /* applied-moment mockups fill the card instead of overflowing it */
+    .phone, .summary-card, .letter { max-width: 100%; }
+    .summary-card, .letter { padding: 24px; }
+
+    /* gate scales down on small screens */
+    .gate { padding: 22px; }
+    .gate-wm { font-size: 38px; }
+    .gate-row { flex-wrap: wrap; }
+    .gate-input { flex-basis: 100%; }
+    .gate-btn { flex: 1; }
+  }
 </style>
 </head>
 <body class="gated">
