@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Ridley — Identity v1 (Direction B: Fresh Clarity)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=Inter+Tight:wght@300..600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pine: #0F4C42;
+    --pine-ink: #123B33;
+    --mint: #6FE3BB;
+    --mint-hot: #57DDB0;
+    --pink: #F79CB4;
+    --lilac: #C77BEB;
+    --plum: #3D1152;
+    --paper: #EDFBF4;
+    --white: #FFFFFF;
+    --mist: #CBEEDD;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--pine-ink);
+    font-family: "Inter Tight", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  h1,h2,h3,h4,.disp { font-family: "Schibsted Grotesk", sans-serif; }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+  .lbl {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 600; opacity: 0.55; margin-bottom: 18px;
+  }
+
+  section { margin: 70px 0; }
+
+  /* ---------- GATE ---------- */
+  body.gated { background: var(--pine); overflow: hidden; }
+  .gate {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--pine);
+    display: flex; align-items: center; justify-content: center;
+    padding: 28px;
+  }
+  .gate-box { width: 100%; max-width: 380px; text-align: center; }
+  .gate-wm {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 700; font-size: 44px; letter-spacing: -0.03em;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .gate-wm .wm-i { position: relative; display: inline-block; }
+  .gate-wm .wm-i .comp {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    top: 0.045em; width: 0.155em; height: 0.155em; border-radius: 50%;
+    background: var(--pink);
+    animation: breathe-c 3.4s ease-in-out infinite;
+  }
+  .gate-sub { font-size: 14px; color: #BFE9D8; margin-bottom: 28px; }
+  .gate-row { display: flex; gap: 10px; }
+  .gate-input {
+    flex: 1; min-width: 0;
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(237,251,244,0.25);
+    border-radius: 100px; padding: 12px 20px;
+    font-family: "Inter Tight", sans-serif; font-size: 15px;
+    color: var(--white); outline: none;
+  }
+  .gate-input:focus { border-color: var(--mint); }
+  .gate-input::placeholder { color: rgba(237,251,244,0.4); }
+  .gate-btn {
+    background: var(--mint); color: var(--pine);
+    border: none; border-radius: 100px; padding: 12px 24px;
+    font-family: "Inter Tight", sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer;
+  }
+  .gate-btn:hover { background: var(--mint-hot); }
+  .gate-err { margin-top: 16px; font-size: 13px; color: var(--pink); }
+
+  /* ---------- HERO : the wordmark, full size ---------- */
+  .hero {
+    background: var(--pine);
+    color: var(--paper);
+    padding: clamp(60px, 9vw, 120px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .blob { position: absolute; pointer-events: none; }
+  .hero .kick {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--mint); font-weight: 600; margin-bottom: 40px;
+  }
+  .wordmark-hero {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(72px, 16vw, 190px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    color: var(--white);
+    position: relative; z-index: 1;
+  }
+  .wordmark-hero .i { position: relative; display: inline-block; }
+  .wordmark-hero .i .stem::first-letter { }
+  .wm-i { position: relative; display: inline-block; }
+  .wm-i .dotless { display: inline-block; }
+  .wm-i .comp {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    top: 0.045em;
+    width: 0.155em; height: 0.155em; border-radius: 50%;
+    background: var(--pink);
+    animation: breathe-c 3.4s ease-in-out infinite;
+  }
+  .hero .strap {
+    margin-top: 36px; font-size: clamp(17px, 2.2vw, 22px);
+    color: #BFE9D8; max-width: 42ch; position: relative; z-index: 1;
+  }
+  .hero .strap b { color: var(--white); font-weight: 600; }
+
+  /* ---------- section head ---------- */
+  .shead { margin-bottom: 30px; }
+  .shead h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -0.015em; color: var(--pine); }
+  .shead p { margin-top: 10px; max-width: 58ch; font-size: 16px; }
+
+  .grid { display: grid; gap: 24px; }
+  @media (min-width: 780px) { .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: 1fr 1fr 1fr; } }
+
+  .card { background: var(--white); border-radius: 18px; padding: 30px; }
+
+  /* ---------- logo system ---------- */
+  .lockup { display: flex; align-items: center; justify-content: center; min-height: 150px; border-radius: 14px; }
+  .lockup .wm { font-family: "Schibsted Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.03em; }
+  .caption { margin-top: 14px; font-size: 13px; opacity: 0.7; }
+
+  .markonly {
+    width: 84px; height: 84px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .markonly .inner { width: 26px; height: 26px; border-radius: 50%; }
+
+  /* clearspace demo */
+  .clearspace { position: relative; display: inline-block; padding: 34px; border: 1px dashed rgba(15,76,66,0.35); border-radius: 8px; }
+
+  /* ---------- color system ---------- */
+  .roles { display: grid; gap: 14px; }
+  .role { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: stretch; border-radius: 14px; overflow: hidden; background: var(--white); }
+  .role .chip { min-height: 92px; }
+  .role .txt { padding: 16px 20px 16px 0; }
+  .role .txt .nm { font-weight: 600; font-size: 15px; color: var(--pine); }
+  .role .txt .hx { font-size: 12px; opacity: 0.6; letter-spacing: 0.03em; }
+  .role .txt .use { font-size: 14px; margin-top: 6px; }
+
+  /* ---------- type system ---------- */
+  .typerow { display: grid; grid-template-columns: 150px 1fr; gap: 22px; padding: 22px 0; border-top: 1px solid var(--mist); align-items: baseline; }
+  .typerow:first-of-type { border-top: none; }
+  .typerow .tl { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; opacity: 0.55; }
+
+  /* ---------- voice ---------- */
+  .voice-pair { display: grid; gap: 18px; }
+  @media (min-width: 720px) { .voice-pair { grid-template-columns: 1fr 1fr; } }
+  .vcard { border-radius: 16px; padding: 26px; }
+  .vcard.no { background: #F4E9EE; color: #6B2039; }
+  .vcard.yes { background: var(--pine); color: var(--paper); }
+  .vcard .vt { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; opacity: 0.8; }
+  .vcard p { font-size: 16px; line-height: 1.5; }
+
+  /* ---------- applied moments ---------- */
+  .moments { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .moments { grid-template-columns: 1fr 1fr; } }
+
+  .phone {
+    background: var(--pine); border-radius: 30px; padding: 22px;
+    max-width: 360px; margin: 0 auto;
+  }
+  .stamp { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #D8F5EA; }
+  .stamp .dot { width: 15px; height: 15px; border-radius: 50%; background: var(--mint); animation: breathe 3.4s ease-in-out infinite; }
+  .bubble { border-radius: 18px 18px 18px 6px; padding: 15px 17px; font-size: 15px; line-height: 1.45; max-width: 90%; background: #E6F7EF; color: var(--pine-ink); }
+  .bubble.you { border-radius: 18px 18px 6px 18px; margin-left: auto; background: var(--lilac); color: var(--plum); margin-top: 12px; }
+  .bubble + .bubble { margin-top: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip-btn {
+    background: transparent; border: 1.5px solid var(--mint);
+    color: var(--mint); border-radius: 100px; padding: 8px 16px;
+    font-family: "Inter Tight", sans-serif; font-size: 14px; font-weight: 500;
+  }
+
+  .summary-card { background: var(--white); border-radius: 22px; padding: 30px; max-width: 420px; margin: 0 auto; }
+  .summary-card .stitle { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--pine); opacity: 0.6; }
+  .summary-card h4 { font-size: 22px; margin: 10px 0 16px; letter-spacing: -0.01em; color: var(--pine); }
+  .sline { display: flex; gap: 12px; padding: 13px 0; border-top: 1px solid var(--mist); font-size: 15px; }
+  .sline .k { opacity: 0.55; min-width: 92px; font-weight: 500; }
+  .pill-row { margin-top: 18px; display: flex; gap: 10px; }
+  .pill { border-radius: 100px; padding: 10px 18px; font-size: 14px; font-weight: 600; }
+  .pill.primary { background: var(--pine); color: var(--paper); }
+  .pill.ghost { border: 1.5px solid var(--pine); color: var(--pine); }
+
+  /* letter */
+  .letter { background: var(--white); border-radius: 22px; padding: 34px; max-width: 440px; margin: 0 auto; }
+  .letter .lmark { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .letter .lmark .d { width: 14px; height: 14px; border-radius: 50%; background: var(--pink); }
+  .letter .lmark .n { font-family: "Schibsted Grotesk", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: var(--pine); }
+  .letter p { font-size: 15px; margin-bottom: 14px; }
+  .letter .sig { margin-top: 20px; font-size: 15px; font-weight: 600; color: var(--pine); }
+
+  /* icon wall */
+  .iconwall { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; padding: 10px 0; }
+  .ai { border-radius: 22%; width: 92px; height: 92px; display: flex; align-items: center; justify-content: center; }
+  .ai .d { width: 28px; height: 28px; border-radius: 50%; }
+
+  /* tagline close */
+  .close {
+    background: var(--pine); border-radius: 26px; color: var(--paper);
+    padding: clamp(40px, 6vw, 70px); text-align: left; margin-bottom: 100px;
+    position: relative; overflow: hidden;
+  }
+  .close h2 { font-size: clamp(30px, 4.6vw, 52px); letter-spacing: -0.02em; line-height: 1.05; max-width: 18ch; position: relative; z-index: 1; }
+  .close h2 .hl { color: var(--mint); }
+  .close .next { margin-top: 30px; font-size: 15px; color: #BFE9D8; max-width: 52ch; position: relative; z-index: 1; }
+  .close .next b { color: var(--white); }
+
+  @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+  @keyframes breathe-c { 0%,100% { transform: translateX(-50%) scale(1);} 50% { transform: translateX(-50%) scale(1.1);} }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+
+  .fade { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body class="gated">
+
+  <!-- ============ GATE ============ -->
+  <div class="gate" id="gate">
+    <div class="gate-box">
+      <div class="gate-wm">r<span class="wm-i"><span class="comp"></span>&#305;</span>dley</div>
+      <p class="gate-sub">Enter the access code to continue</p>
+      <div class="gate-row">
+        <input class="gate-input" id="gate-input" type="password" placeholder="Access code" autocomplete="off">
+        <button class="gate-btn" id="gate-btn">Enter</button>
+      </div>
+      <div class="gate-err" id="gate-err" hidden>Invalid access code</div>
+    </div>
+  </div>
+
+  <div id="page" hidden>
+
+  <!-- ============ HERO ============ -->
+  <div class="hero fade">
+    <svg class="blob" style="right:-140px; top:-120px; width:520px; opacity:0.35" viewBox="0 0 200 200"><path fill="#6FE3BB" d="M46,-64C58,-53,64,-36,68,-19C72,-2,74,15,68,29C61,43,46,54,30,61C14,68,-4,71,-21,66C-38,62,-54,51,-63,36C-72,20,-73,1,-68,-16C-62,-33,-50,-48,-36,-59C-21,-70,-4,-77,12,-76C29,-74,34,-74,46,-64Z" transform="translate(100 100)"/></svg>
+    <svg class="blob" style="left:-160px; bottom:-140px; width:480px; opacity:0.28" viewBox="0 0 200 200"><path fill="#C77BEB" d="M39,-54C52,-46,64,-36,69,-23C74,-9,72,7,66,22C59,36,48,48,34,57C21,66,5,71,-12,70C-29,68,-46,60,-56,46C-66,32,-69,13,-67,-5C-64,-24,-56,-41,-44,-50C-31,-59,-15,-59,-1,-58C14,-56,26,-62,39,-54Z" transform="translate(100 100)"/></svg>
+    <div class="wrap">
+      <div class="kick">Ridley &middot; Identity v1 &middot; Direction B, Fresh Clarity</div>
+      <div class="wordmark-hero">r<span class="wm-i"><span class="comp"></span><span class="dotless">&#305;</span></span>dley</div>
+      <p class="strap">The dot on the i is <b>the companion</b>. It is the only place the wordmark breaks pattern, and it is the whole brand in one gesture: a bright point of presence, always beside the patient.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ============ LOGO SYSTEM ============ -->
+    <section class="fade">
+      <div class="shead">
+        <h2>The logo system</h2>
+        <p>One wordmark, one mark, four sanctioned colourways. The pink companion is constant wherever the wordmark sits on pine or white; on mint surfaces it deepens to pine so it never fights the background.</p>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <div class="lbl">Primary &middot; on pine</div>
+          <div class="lockup" style="background: var(--pine);">
+            <span class="wm" style="font-size:52px; color:#fff;">r<span class="wm-i" style="position:relative"><span class="comp" style="position:absolute;left:50%;transform:translateX(-50%);top:0.045em;width:0.155em;height:0.155em;border-radius:50%;background:var(--pink)"></span>&#305;</span>dley</span>
+          </div>
+          <div class="caption">The lead lockup. White wordmark, pink companion, deep pine field.</div>
+        </div>
+        <div class="card">
+          <div class="lbl">Secondary &middot; on white</div>
+          <div class="lockup" style="background:#fff; border:1px solid var(--mist);">
+            <span class="wm" style="font-size:52px; color:var(--pine);">r<span class="wm-i" style="position:relative"><span style="position:absolute;left:50%;transform:translateX(-50%);top:0.045em;width:0.155em;height:0.155em;border-radius:50%;background:var(--pink)"></span>&#305;</span>dley</span>
+          </div>
+          <div class="caption">Documents, email, anywhere print-clean.</div>
+        </div>
+        <div class="card">
+          <div class="lbl">On mint</div>
+          <div class="lockup" style="background: var(--mint);">
+            <span class="wm" style="font-size:52px; color:var(--pine);">r<span class="wm-i" style="position:relative"><span style="position:absolute;left:50%;transform:translateX(-50%);top:0.045em;width:0.155em;height:0.155em;border-radius:50%;background:var(--pine)"></span>&#305;</span>dley</span>
+          </div>
+          <div class="caption">Companion flips to pine so it stays the darkest point in the name.</div>
+        </div>
+        <div class="card">
+          <div class="lbl">The mark alone</div>
+          <div class="lockup" style="background:#fff; border:1px solid var(--mist); gap:26px;">
+            <span class="markonly" style="background:var(--pine)"><span class="inner" style="background:var(--mint)"></span></span>
+            <span class="markonly" style="background:var(--mint)"><span class="inner" style="background:var(--pine)"></span></span>
+            <span class="markonly" style="background:var(--pink)"><span class="inner" style="background:var(--plum)"></span></span>
+          </div>
+          <div class="caption">The companion in its circle: avatar, favicon, app tile, the pulsing "Ridley is here" indicator.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLOR SYSTEM ============ -->
+    <section class="fade">
+      <div class="shead">
+        <h2>Colour, with jobs</h2>
+        <p>Every colour has a role, so the palette stays vibrant without becoming noisy. Pine leads, mint breathes, pink is reserved for the companion and moments of warmth, lilac belongs to the patient.</p>
+      </div>
+      <div class="roles">
+        <div class="role"><div class="chip" style="background:var(--pine)"></div><div class="txt" style="padding-top:16px"><div class="nm">Deep pine</div><div class="hx">#0F4C42</div><div class="use">The brand's home. Headers, primary buttons, the chat surface. Trust lives here.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--mint)"></div><div class="txt" style="padding-top:16px"><div class="nm">Fresh mint</div><div class="hx">#6FE3BB</div><div class="use">Light, air, and progress. Backgrounds, highlights, positive states, Ridley's presence dot.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--pink)"></div><div class="txt" style="padding-top:16px"><div class="nm">Bright pink</div><div class="hx">#F79CB4</div><div class="use">The companion's colour. The dot on the i, moments of reassurance. Used sparingly so it always means warmth.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--lilac)"></div><div class="txt" style="padding-top:16px"><div class="nm">Lilac</div><div class="hx">#C77BEB</div><div class="use">The patient's colour. Their messages, their choices, their side of the conversation.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--paper); border-right:1px solid var(--mist)"></div><div class="txt" style="padding-top:16px"><div class="nm">Mint paper</div><div class="hx">#EDFBF4</div><div class="use">The default page. Never stark white, never cold.</div></div></div>
+      </div>
+    </section>
+
+    <!-- ============ TYPE ============ -->
+    <section class="fade">
+      <div class="shead">
+        <h2>Type</h2>
+        <p>Two faces, four levels. Nothing decorative; the palette carries the personality, so the type stays honest and readable, especially for older patients and worried families reading on phones.</p>
+      </div>
+      <div class="card">
+        <div class="typerow">
+          <div class="tl">Display</div>
+          <div class="disp" style="font-size:clamp(30px,4.4vw,46px);font-weight:700;letter-spacing:-0.02em;color:var(--pine);line-height:1.05">Here is what your doctor found.</div>
+        </div>
+        <div class="typerow">
+          <div class="tl">Heading</div>
+          <div class="disp" style="font-size:24px;font-weight:600;color:var(--pine)">Your next appointment, explained</div>
+        </div>
+        <div class="typerow">
+          <div class="tl">Body</div>
+          <div style="font-size:17px;max-width:52ch">Your symptoms point to an enlarged prostate, which is common and treatable. It is not cancer. Your doctor wants to try a medication first, and I will check in with you along the way.</div>
+        </div>
+        <div class="typerow">
+          <div class="tl">Detail</div>
+          <div style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;opacity:0.6">Reviewed with Dr. Fleshner &middot; July 2026</div>
+        </div>
+        <div class="typerow" style="align-items:center">
+          <div class="tl">Faces</div>
+          <div style="font-size:14px;opacity:0.75">Schibsted Grotesk for display and headings &middot; Inter Tight for body and interface</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VOICE ============ -->
+    <section class="fade">
+      <div class="shead">
+        <h2>Voice</h2>
+        <p>The visual identity promises calm clarity; the words have to keep that promise. Plain language, short sentences, the patient always addressed directly. Never clinical distance, never false cheer.</p>
+      </div>
+      <div class="voice-pair">
+        <div class="vcard no">
+          <div class="vt">Never this</div>
+          <p>"Patient education materials indicate that benign prostatic hyperplasia affects approximately 50% of males over the age of 50. Treatment modalities may include pharmacological intervention."</p>
+        </div>
+        <div class="vcard yes">
+          <div class="vt">Always this</div>
+          <p>"About half of men over fifty have this. It is common, it is treatable, and it is not cancer. Your doctor wants to start with a medication, and here is what it does."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPLIED ============ -->
+    <section class="fade">
+      <div class="shead">
+        <h2>Ridley in the moments that matter</h2>
+        <p>Four touchpoints, one continuous companion: the conversation, the plain-language summary, the follow-up at home, and the presence on the phone itself.</p>
+      </div>
+      <div class="moments">
+        <div class="card">
+          <div class="lbl">The conversation</div>
+          <div class="phone">
+            <div class="stamp"><span class="dot"></span> Ridley</div>
+            <div class="bubble">Before your appointment on Thursday, I have three short questions from Dr. Fleshner. They take about two minutes.</div>
+            <div class="bubble you">ok go ahead</div>
+            <div class="bubble">Over the past month, how often have you had a sensation of not emptying your bladder completely after finishing?</div>
+            <div class="chips">
+              <span class="chip-btn">Not at all</span>
+              <span class="chip-btn">Less than half the time</span>
+              <span class="chip-btn">About half the time</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="lbl">The plain-language summary</div>
+          <div class="summary-card">
+            <div class="stitle">After your appointment</div>
+            <h4>Here is what your doctor found.</h4>
+            <div class="sline"><span class="k">In short</span><span>Your symptoms point to an enlarged prostate, not cancer.</span></div>
+            <div class="sline"><span class="k">Next step</span><span>A medication to try for six weeks.</span></div>
+            <div class="sline"><span class="k">Watch for</span><span>Trouble passing water. Message me if it happens.</span></div>
+            <div class="pill-row">
+              <span class="pill primary">Read the full note</span>
+              <span class="pill ghost">Ask Ridley</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="lbl">The follow-up at home</div>
+          <div class="letter">
+            <div class="lmark"><span class="d"></span><span class="n">ridley</span></div>
+            <p>Hi Margaret, it has been two weeks since you started the new medication.</p>
+            <p>Most people notice a difference around now. How have things been for you? Tap below and I will pass anything important to Dr. Fleshner's team before your next visit.</p>
+            <div class="sig">Ridley, checking in</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="lbl">Presence on the phone</div>
+          <div class="iconwall">
+            <span class="ai" style="background:var(--mint)"><span class="d" style="background:var(--pine)"></span></span>
+            <span class="ai" style="background:var(--pine)"><span class="d" style="background:var(--mint)"></span></span>
+            <span class="ai" style="background:var(--pink)"><span class="d" style="background:var(--plum)"></span></span>
+          </div>
+          <div class="caption" style="text-align:center">The mark scales from favicon to app tile. Mint-and-pine is the default; pink is reserved for patient-facing surfaces where warmth leads.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSE ============ -->
+    <section class="close fade">
+      <svg style="position:absolute; right:-120px; bottom:-140px; width:460px; opacity:0.3" viewBox="0 0 200 200"><path fill="#F79CB4" d="M39,-54C52,-46,64,-36,69,-23C74,-9,72,7,66,22C59,36,48,48,34,57C21,66,5,71,-12,70C-29,68,-46,60,-56,46C-66,32,-69,13,-67,-5C-64,-24,-56,-41,-44,-50C-31,-59,-15,-59,-1,-58C14,-56,26,-62,39,-54Z" transform="translate(100 100)"/></svg>
+      <h2>Understand what is happening. <span class="hl">Know what is next.</span></h2>
+      <p class="next"><b>Where this goes from here:</b> confirm the wordmark direction and the companion behaviour, then the mark gets drawn as real vector artwork with proper optical corrections, and the system gets pressure-tested against Neil's two open questions, whether his clinical authority appears in the brand, and what equity his practice already carries.</p>
+    </section>
+
+  </div>
+
+  </div>
+
+  <script>
+  (function () {
+    var PASS = 'ridley2026';
+    var STORAGE_KEY = 'ridley_identity_auth_v1';
+
+    var gate = document.getElementById('gate');
+    var page = document.getElementById('page');
+    var input = document.getElementById('gate-input');
+    var btn = document.getElementById('gate-btn');
+    var err = document.getElementById('gate-err');
+
+    function unlock() {
+      gate.remove();
+      document.body.classList.remove('gated');
+      page.hidden = false;
+    }
+
+    function attempt() {
+      if (input.value.trim().toLowerCase() === PASS) {
+        try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+        unlock();
+      } else {
+        err.hidden = false;
+        setTimeout(function () { err.hidden = true; }, 2000);
+      }
+    }
+
+    var alreadyIn = false;
+    try { alreadyIn = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+    if (alreadyIn) {
+      unlock();
+    } else {
+      btn.addEventListener('click', attempt);
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') attempt();
+      });
+      input.focus();
+    }
+  })();
+  </script>
+
+</body>
+</html>
