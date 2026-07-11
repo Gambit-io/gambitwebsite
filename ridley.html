@@ -181,35 +181,22 @@
   #f0 { background: var(--pine-deep); }
   #f0 .wm { font-size: clamp(64px, 14vw, 170px); color: var(--white); }
   #f1 { background: var(--pine); }
-  #f1 .words, #f9 .words { position: relative; z-index: 2; }
-  #f1::after {
+  #f2 { background: var(--pine-deep); }
+  #f3 { background: var(--pine); }
+  #f4 { background: var(--pine); }
+  #f5 { background: var(--pine-deep); }
+  #f6 { background: var(--pine-deep); }
+  #f7 { background: var(--pine); }
+  #f8 { background: var(--pine-deep); text-align: center; }
+  #f1 .words, #f7 .words { position: relative; z-index: 2; margin-top: auto; padding-bottom: clamp(60px, 12vh, 130px); }
+  #f1::after, #f7::after {
     content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 52%;
     background: linear-gradient(to top, rgba(15,76,66,0.92) 22%, rgba(15,76,66,0));
     z-index: 1; pointer-events: none;
   }
-  #f9::after {
-    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 52%;
-    background: linear-gradient(to top, rgba(11,59,51,0.92) 22%, rgba(11,59,51,0));
-    z-index: 1; pointer-events: none;
-  }
-  #f1 .words { margin-top: auto; padding-bottom: clamp(60px, 12vh, 130px); }
-  #f2 { background: var(--pine-deep); }
-  #f3 { background: var(--pine-deep); }
-  #f4 { background: var(--pine); }
-  #f5 { background: var(--paper); color: var(--pine); }
-  #f5 .t { color: var(--pine); }
-  #f5 .s { color: #3E5F57; }
-  #f6 { background: var(--pine-deep); }
-  #f7 { background: var(--pine); }
-  #f8 { background: var(--paper); color: var(--pine); }
-  #f8 .t { color: var(--pine); }
-  #f8 .s { color: #3E5F57; }
-  #f9 { background: var(--pine-deep); }
-  #f9 .words { margin-top: auto; padding-bottom: clamp(60px, 12vh, 130px); }
-  #f10 { background: var(--pine-deep); text-align: center; }
-  #f10 .words { display: flex; flex-direction: column; align-items: center; }
-  #f10 .t { max-width: 18ch; }
-  #f10 .wm { font-size: clamp(44px, 8vw, 90px); color: var(--white); margin-top: 48px; }
+  #f8 .words { display: flex; flex-direction: column; align-items: center; }
+  #f8 .t { max-width: 20ch; }
+  #f8 .wm { font-size: clamp(44px, 8vw, 90px); color: var(--white); margin-top: 40px; }
 
   .bigchips { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; opacity: 0; transform: translateY(20px); transition: opacity 1s ease 1.3s, transform 1s ease 1.3s; max-width: 560px; }
   .frame.active .bigchips { opacity: 1; transform: none; }
@@ -243,6 +230,59 @@
     width: min(360px, 86vw);
     box-shadow: 0 40px 100px rgba(0,0,0,0.3);
   }
+
+  /* ---- shared reveal ---- */
+  .rise2 { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
+  .frame.active .rise2 { opacity: 1; transform: none; }
+
+  /* ---- journey rail (intake / conversation / outcome) ---- */
+  .jstage { display: grid; gap: 34px; grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .jstage { grid-template-columns: 1.05fr auto; column-gap: 56px; } }
+  .jstage .jbody { min-width: 0; }
+  .jrail { max-width: 480px; margin-bottom: 30px; }
+  .jr-row { display: flex; align-items: center; }
+  .jr-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; box-sizing: border-box; border: 1.5px solid rgba(191,233,216,0.45); }
+  .jr-dot.done { background: var(--mint); border-color: var(--mint); }
+  .jr-dot.active { width: 18px; height: 18px; background: var(--pink); border-color: var(--pink); box-shadow: 0 0 0 6px rgba(247,156,180,0.14); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin: center; }
+  .jr-seg { flex: 1; height: 2px; background: rgba(191,233,216,0.18); }
+  .jr-seg.done { background: var(--mint); }
+  .jr-labels { display: flex; margin-top: 12px; }
+  .jr-labels span { flex: 1; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: rgba(191,233,216,0.5); }
+  .jr-labels span:nth-child(2) { text-align: center; }
+  .jr-labels span:nth-child(3) { text-align: right; }
+  .jr-labels span.on { color: var(--pink); }
+  .jr-labels span.was { color: rgba(191,233,216,0.85); }
+
+  /* ---- overview montage (introducing) ---- */
+  .ovgrid { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: 32px; max-width: 660px; }
+  @media (min-width: 820px) { .ovgrid { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+  .ovcard { background: rgba(237,251,244,0.05); border: 1px solid rgba(237,251,244,0.12); border-radius: 16px; padding: 15px; min-height: 132px; }
+  .ovcard .ovh { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); font-weight: 600; margin-bottom: 12px; }
+  .ovbub { background: rgba(237,251,244,0.9); color: var(--pine-ink); border-radius: 9px 9px 9px 3px; padding: 6px 9px; font-size: 11px; line-height: 1.3; margin-bottom: 6px; }
+  .ovbub.you { background: var(--lilac); color: var(--plum); border-radius: 9px 9px 3px 9px; margin-left: 20px; }
+  .ovchip { display: inline-block; border: 1.5px solid var(--mint); color: var(--mint); border-radius: 100px; padding: 4px 11px; font-size: 11px; margin: 0 5px 7px 0; }
+  .ovline { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: #D8F5EA; padding: 6px 0; border-top: 1px solid rgba(237,251,244,0.1); }
+  .ovline:first-of-type { border-top: none; }
+  .ovline .ok { color: rgba(216,245,234,0.55); flex: none; }
+  .ovmono { font-family: ui-monospace, Consolas, monospace; font-size: 10px; line-height: 1.6; color: #BFE9D8; white-space: pre-wrap; }
+
+  /* ---- human conversation, clinical outcomes ---- */
+  #f6 .t { font-size: clamp(26px, 3.6vw, 44px); }
+  #f6 .s { max-width: 54ch; }
+  .hcgrid { display: grid; gap: 26px; grid-template-columns: 1fr; align-items: center; margin-top: 24px; }
+  @media (min-width: 860px) { .hcgrid { grid-template-columns: auto 1fr; column-gap: 48px; } }
+  .hccirc { width: min(170px, 46vw); aspect-ratio: 1; border-radius: 50%; background: var(--pink); margin: 0 auto; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin: center; }
+  .hclbl { text-align: center; margin-top: 14px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
+  .calc { background: rgba(237,251,244,0.05); border: 1px solid rgba(237,251,244,0.12); border-radius: 18px; padding: 16px 22px; max-width: 430px; }
+  .calc .ch { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); font-weight: 600; margin-bottom: 2px; }
+  .crow { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 13px; color: #D8F5EA; border-top: 1px solid rgba(237,251,244,0.08); }
+  .crow .cv { font-variant-numeric: tabular-nums; font-weight: 600; color: #fff; flex: none; }
+  .ctot { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; padding-top: 10px; border-top: 2px solid rgba(111,227,187,0.45); }
+  .ctot .ctl { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #D8F5EA; font-weight: 600; }
+  .ctot .cbig { font-family: "Fraunces", serif; font-variation-settings: "opsz" 144; font-size: 30px; color: var(--mint); line-height: 1; }
+  .cdx { margin-top: 10px; font-size: 13px; color: var(--mint); }
+  .cdx b { color: #fff; }
+  @media (max-width: 700px) { #f6 .hccirc, #f6 .hclbl { display: none; } }
   .stamp { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #D8F5EA; }
   .stamp .sdot { width: 14px; height: 14px; border-radius: 50%; background: var(--pink); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
   .fbubble { border-radius: 18px 18px 18px 6px; padding: 14px 16px; font-size: 14.5px; line-height: 1.45; max-width: 90%; width: fit-content; background: #E6F7EF; color: #123B33; opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -313,6 +353,7 @@
   .screen {
     background: var(--pine-deep); border-radius: 26px; padding: 20px;
     width: min(340px, 100%); margin: 0 auto;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.28);
   }
   .screen.light { background: var(--paper); border: 1px solid var(--mist); }
   .pstamp { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-size: 12.5px; font-weight: 600; color: #D8F5EA; }
@@ -382,6 +423,12 @@
     #film .art text { display: none; }
     #f6 .art { opacity: 0.35; }
     #scrollcue { display: none; }
+    .jstage { gap: 20px; }
+    .jrail { margin-bottom: 20px; }
+    .filmphone { padding: 18px; }
+    .filmphone .fbubble { font-size: 13.5px; padding: 12px 14px; }
+    #film .frame.active .s { margin-top: 14px; }
+    .ovgrid { margin-top: 22px; }
   }
   @media (max-width: 640px) {
     .wrap { padding: 0 18px; }
@@ -466,119 +513,163 @@
       </div>
     </div>
 
-    <!-- F2 : INTRODUCING -->
-    <div class="frame" id="f2" data-hold="7500">
+    <!-- F2 : INTRODUCING + OVERVIEW -->
+    <div class="frame" id="f2" data-hold="10000">
       <div class="words">
-        <div class="s" style="transition-delay:0.3s; letter-spacing:0.26em; text-transform:uppercase; font-size:13px; color:var(--mint); font-weight:600;">Introducing</div>
-        <div class="t" style="max-width:none; transition-delay:0.6s;">
+        <div class="s" style="letter-spacing:0.26em; text-transform:uppercase; font-size:13px; color:var(--mint); font-weight:600;">Introducing</div>
+        <div class="t" style="max-width:none; margin-top:6px;">
           <span class="wm breathe">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
         </div>
-        <div class="s serif" style="font-style:italic; color:var(--mint); font-size:clamp(17px,2.4vw,24px); transition-delay:1.2s;">Better triage. Better experiences. For patients, and the doctors who care for them.</div>
-      </div>
-    </div>
-
-    <!-- F3 : THE QUESTIONS -->
-    <div class="frame" id="f3" data-hold="9000">
-      <div class="words">
-        <div class="t">Your clinic's questions. Word for word.</div>
-        <div class="s">Written and approved by Dr. Fleshner's team. Delivered exactly as written, never improvised.</div>
-        <div class="bigchips">
-          <span class="bigchip">Not at all</span>
-          <span class="bigchip">Less than half the time</span>
-          <span class="bigchip">About half the time</span>
-          <span class="bigchip">More than half</span>
+        <div class="s serif" style="font-style:italic; color:var(--mint); font-size:clamp(17px,2.4vw,24px);">One companion, the whole visit. From the first question to the note your clinic acts on.</div>
+        <div class="ovgrid rise2" style="transition-delay:0.5s;">
+          <div class="ovcard">
+            <div class="ovh">Intake</div>
+            <div><span class="ovchip">Not at all</span><span class="ovchip">About half</span></div>
+          </div>
+          <div class="ovcard">
+            <div class="ovh">Conversation</div>
+            <div class="ovbub">Three short questions.</div>
+            <div class="ovbub you">ok go ahead</div>
+          </div>
+          <div class="ovcard">
+            <div class="ovh">Outcome</div>
+            <div class="ovline"><span class="ok">In short</span><span>Not cancer</span></div>
+            <div class="ovline"><span class="ok">Next</span><span>Medication</span></div>
+          </div>
+          <div class="ovcard">
+            <div class="ovh">The note</div>
+            <div class="ovmono">SOAP note
+IPSS 18
+Plan: Rx
+&rarr; the clinic</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- F4 : THE OUTCOME -->
-    <div class="frame" id="f4" data-hold="9000">
-      <div class="statblock">
-        <div class="statnum">18</div>
-        <div class="statlbl">IPSS &middot; scored, structured, routed</div>
-      </div>
-      <div class="words">
-        <div class="t">Human conversation. Clinical outcomes.</div>
-        <div class="s">Every consultation ends somewhere real: referral, prescription pathway, reassurance, or urgent escalation. With a note the clinic can act on.</div>
-      </div>
-    </div>
-
-    <!-- F5 : THE SUMMARY -->
-    <div class="frame" id="f5" data-hold="8500">
-      <div class="words">
-        <div class="t serif">Here is what your doctor found.</div>
-        <div class="s">Every visit ends in plain language. What it means, what happens next, what to watch for.</div>
-      </div>
-    </div>
-
-    <!-- F6 : THE PERSONALITY -->
-    <div class="frame" id="f6" data-hold="9000">
-      <div class="art">
-        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <circle class="pulse" cx="700" cy="240" r="130" fill="#F79CB4"/>
-        </svg>
-      </div>
-      <div class="words">
-        <div class="t">Human on the outside. Deterministic underneath.</div>
-        <div class="s">The warmth is real, and so are the rails. The dot breathes at the rate of calm, five seconds, in and out.</div>
+    <!-- F3 : INTAKE -->
+    <div class="frame" id="f3" data-hold="9000">
+      <div class="words jstage">
+        <div class="jbody">
+          <div class="jrail rise2">
+            <div class="jr-row"><span class="jr-dot active"></span><span class="jr-seg"></span><span class="jr-dot"></span><span class="jr-seg"></span><span class="jr-dot"></span></div>
+            <div class="jr-labels"><span class="on">Intake</span><span>Conversation</span><span>Outcome</span></div>
+          </div>
+          <div class="t">It starts at home, before the visit.</div>
+          <div class="s">Your clinic's questions, word for word. Written and approved by Dr. Fleshner's team, delivered exactly as written, never improvised.</div>
+        </div>
+        <div class="screen rise2" style="transition-delay:0.25s;">
+          <div class="pstamp"><span class="pdot"></span> Ridley &middot; Intake</div>
+          <div class="pbubble">Over the past month, how often have you had a sensation of not emptying your bladder completely?</div>
+          <div class="schips" style="margin-top:10px">
+            <span class="schip"><span class="sb">a</span> Not at all</span>
+            <span class="schip"><span class="sb">c</span> Less than half the time</span>
+            <span class="schip sel"><span class="sb">d</span> About half the time</span>
+            <span class="schip"><span class="sb">f</span> Almost always</span>
+          </div>
+          <div class="pprog"><div class="ptxt"><span>Your intake</span><span>Question 1 of 8</span></div><div class="ptrack"><div class="pfill" style="width:12%"></div></div></div>
+        </div>
       </div>
     </div>
 
-    <!-- F7 : THE CONVERSATION -->
-    <div class="frame" id="f7" data-hold="12000">
-      <div class="words f7grid">
-        <div>
-          <div class="t" style="font-size:clamp(28px,4.6vw,56px);">A conversation, not a form.</div>
-          <div class="s">Tap to answer. Two minutes. Done from the couch.</div>
+    <!-- F4 : CONVERSATION -->
+    <div class="frame" id="f4" data-hold="12000">
+      <div class="words jstage">
+        <div class="jbody">
+          <div class="jrail rise2">
+            <div class="jr-row"><span class="jr-dot done"></span><span class="jr-seg done"></span><span class="jr-dot active"></span><span class="jr-seg"></span><span class="jr-dot"></span></div>
+            <div class="jr-labels"><span class="was">Intake</span><span class="on">Conversation</span><span>Outcome</span></div>
+          </div>
+          <div class="t">A conversation, not a form.</div>
+          <div class="s">Tap to answer. Two minutes, from the couch. Warm on the surface, deterministic underneath.</div>
         </div>
         <div class="filmphone" id="chatdemo">
           <div class="stamp"><span class="sdot"></span> Ridley</div>
-          <div class="fbubble">Hi Margaret. I'd like to understand what's been going on, so we can get you to the right care. A few short questions.</div>
+          <div class="fbubble">Hi Margaret. A few short questions from Dr. Fleshner's team, so we can get you to the right care.</div>
           <div class="fbubble you">ok go ahead</div>
           <div class="fbubble">Over the past month, how often have you had a sensation of not emptying your bladder completely?</div>
-          <div class="fbubble">Thank you. Your answers go to Dr. Fleshner's team exactly as you gave them. Nothing is guessed.</div>
+          <div class="fbubble">Thank you. Your answers go to the team exactly as you gave them. Nothing is guessed.</div>
         </div>
       </div>
     </div>
 
-    <!-- F8 : THE TRUST MODEL -->
-    <div class="frame" id="f8" data-hold="9000">
-      <div class="words">
-        <div class="t">The warmth is the brand's. The medicine is the clinic's.</div>
-        <div class="s">No invented questions. Deterministic routing on clinician-approved logic. Locked clinical wording. Ridley never diagnoses, never improvises. That split is the trust model.</div>
+    <!-- F5 : OUTCOME -->
+    <div class="frame" id="f5" data-hold="10000">
+      <div class="words jstage">
+        <div class="jbody">
+          <div class="jrail rise2">
+            <div class="jr-row"><span class="jr-dot done"></span><span class="jr-seg done"></span><span class="jr-dot done"></span><span class="jr-seg done"></span><span class="jr-dot active"></span></div>
+            <div class="jr-labels"><span class="was">Intake</span><span class="was">Conversation</span><span class="on">Outcome</span></div>
+          </div>
+          <div class="t serif">Here is where we landed.</div>
+          <div class="s">Plain language for the patient. A SOAP note for the clinic. Every consultation ends somewhere real.</div>
+        </div>
+        <div class="summary-card rise2" style="transition-delay:0.25s;">
+          <div class="stitle">After your consultation</div>
+          <h4>Your results, explained.</h4>
+          <div class="sline"><span class="k">In short</span><span>An enlarged prostate, not cancer.</span></div>
+          <div class="sline"><span class="k">Next step</span><span>A medication to try, follow-up in six to eight weeks.</span></div>
+          <div class="sline"><span class="k">For the clinic</span><span>A SOAP note, sent to Dr. Fleshner's team.</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- F9 : TOMORROW -->
-    <div class="frame" id="f9" data-hold="10000">
+    <!-- F6 : HUMAN CONVERSATION, CLINICAL OUTCOMES -->
+    <div class="frame" id="f6" data-hold="12000">
+      <div class="words">
+        <div class="t">Human conversation. <em>Clinical outcomes.</em></div>
+        <div class="s">The warmth is real, and so are the rails. Ridley never diagnoses; the protocol does, one approved question at a time.</div>
+        <div class="hcgrid">
+          <div class="rise2">
+            <div class="hccirc"></div>
+            <div class="hclbl">The companion</div>
+          </div>
+          <div class="calc">
+            <div class="ch rise2"><span>IPSS &middot; live scoring</span><span>0&ndash;35</span></div>
+            <div class="crow rise2" style="transition-delay:0.25s;"><span>Incomplete emptying</span><span class="cv">3</span></div>
+            <div class="crow rise2" style="transition-delay:0.4s;"><span>Frequency</span><span class="cv">2</span></div>
+            <div class="crow rise2" style="transition-delay:0.55s;"><span>Intermittency</span><span class="cv">2</span></div>
+            <div class="crow rise2" style="transition-delay:0.7s;"><span>Urgency</span><span class="cv">4</span></div>
+            <div class="crow rise2" style="transition-delay:0.85s;"><span>Weak stream</span><span class="cv">3</span></div>
+            <div class="crow rise2" style="transition-delay:1s;"><span>Straining</span><span class="cv">1</span></div>
+            <div class="crow rise2" style="transition-delay:1.15s;"><span>Nocturia</span><span class="cv">3</span></div>
+            <div class="ctot rise2" style="transition-delay:1.4s;"><span class="ctl">IPSS total</span><span class="cbig">18</span></div>
+            <div class="cdx rise2" style="transition-delay:1.6s;">Moderate. Routed to the <b>medication pathway</b>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- F7 : THE FUTURE -->
+    <div class="frame" id="f7" data-hold="10000">
       <div class="art">
         <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
-                fill="none" stroke="#0F4C42" stroke-width="34" stroke-linecap="round" opacity="0.8"/>
-          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
+          <path d="M -60 450 C 150 450, 290 250, 430 250 C 545 250, 545 350, 630 350 C 715 350, 730 180, 830 178 C 960 176, 1150 172, 1300 170"
+                fill="none" stroke="#0B3B33" stroke-width="34" stroke-linecap="round" opacity="0.55"/>
+          <path d="M -60 450 C 150 450, 290 250, 430 250 C 545 250, 545 350, 630 350 C 715 350, 730 180, 830 178 C 960 176, 1150 172, 1300 170"
                 fill="none" stroke="#6FE3BB" stroke-width="14" stroke-linecap="round"
-                stroke-dasharray="1700" stroke-dashoffset="1700">
-            <animate id="vtrailDraw" attributeName="stroke-dashoffset" from="1700" to="0" dur="8s" begin="indefinite" fill="freeze"/>
+                stroke-dasharray="1650" stroke-dashoffset="1650">
+            <animate id="vtrailDraw" attributeName="stroke-dashoffset" from="1650" to="0" dur="8s" begin="indefinite" fill="freeze"/>
           </path>
-          <circle cx="420" cy="250" r="11" fill="#F79CB4" class="pulse"/>
-          <circle cx="620" cy="410" r="9" fill="#EDFBF4"/>
-          <circle cx="820" cy="170" r="9" fill="#EDFBF4"/>
-          <text x="420" y="216" fill="#F79CB4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
-          <text x="620" y="452" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">between visits</text>
-          <text x="820" y="136" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">beyond urology</text>
+          <circle class="pulse" cx="430" cy="250" r="11" fill="#F79CB4"/>
+          <circle cx="630" cy="350" r="9" fill="#EDFBF4"/>
+          <circle cx="830" cy="178" r="9" fill="#EDFBF4"/>
+          <text x="430" y="216" fill="#F79CB4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
+          <text x="630" y="316" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">between visits</text>
+          <text x="830" y="144" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">beyond urology</text>
         </svg>
       </div>
       <div class="words">
         <div class="t">Today, triage. <em>Tomorrow, the in between.</em></div>
-        <div class="s">Check-ins, medications in plain language, booking without the phone tree. The same companion, when we get there.</div>
+        <div class="s">Check-ins, medications in plain language, booking without the phone tree. The same companion, further down the path.</div>
       </div>
     </div>
 
-    <!-- F10 : CLOSE -->
-    <div class="frame" id="f10" data-hold="12000">
+    <!-- F8 : CLOSE -->
+    <div class="frame" id="f8" data-hold="12000">
       <div class="words">
         <div class="t serif">Understand what is happening. <em>Know what is next.</em></div>
-        <span class="wm breathe">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
+        <span class="wm breathe" id="closewm">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
         <div class="s" style="letter-spacing:0.2em; text-transform:uppercase; font-size:11.5px; color:#6FA79A; font-weight:600; max-width:none;">With Dr. Fleshner &middot; Toronto</div>
       </div>
     </div>
@@ -598,7 +689,7 @@
       <button class="hbtn" id="nextBtn" aria-label="Next">
         <svg width="14" height="14" viewBox="0 0 14 14"><path d="M4.5 2 L9.5 7 L4.5 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <span id="counter">1 / 11</span>
+      <span id="counter">1 / 9</span>
     </div>
 
     <button id="soundbtn"><span class="sd"></span><span id="soundlbl">Sound</span></button>
@@ -1044,6 +1135,26 @@ Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side e
         return true;
       }
 
+      function runBridgeClose() {
+        var dot = document.querySelector('#f8 .wm .i .dot');
+        if (!bridge || !dot) return;
+        var fr = film.getBoundingClientRect();
+        var d = dot.getBoundingClientRect();
+        if (!d.width) return;
+        var tx = d.left + d.width / 2 - fr.left, ty = d.top + d.height / 2 - fr.top;
+        var size = Math.max(14, d.width);
+        if (reducedMotion) { dot.style.opacity = ''; return; }
+        dot.style.opacity = '0';
+        bridge.style.transition = 'none';
+        bridge.style.width = size + 'px'; bridge.style.height = size + 'px';
+        bridge.style.left = tx + 'px'; bridge.style.top = (ty + 220) + 'px';
+        bridge.style.opacity = '1';
+        void bridge.offsetWidth;
+        bridge.style.transition = 'left 1s cubic-bezier(.5,0,.2,1), top 1s cubic-bezier(.34,1.08,.64,1)';
+        bridge.style.left = tx + 'px'; bridge.style.top = ty + 'px';
+        setTimeout(function () { bridge.style.opacity = '0'; dot.style.opacity = ''; }, 1050);
+      }
+
       function frameAnimations(f) {
         if (f.id === 'f1') {
           var wd = document.querySelector('#f1 .walkdot');
@@ -1056,13 +1167,16 @@ Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side e
             setTimeout(beginWalk, 500);
           }
         }
-        if (f.id === 'f9') {
-          setTimeout(function () { try { document.getElementById('vtrailDraw').beginElement(); } catch (e) {} }, 700);
-        }
-        if (f.id === 'f7') {
+        if (f.id === 'f4') {
           var items = f.querySelectorAll('.fbubble');
           items.forEach(function (el) { el.classList.remove('show'); });
           items.forEach(function (el, i) { setTimeout(function () { el.classList.add('show'); }, 1200 + i * 1400); });
+        }
+        if (f.id === 'f7') {
+          setTimeout(function () { try { document.getElementById('vtrailDraw').beginElement(); } catch (e) {} }, 700);
+        }
+        if (f.id === 'f8') {
+          runBridgeClose();
         }
       }
 
