@@ -171,9 +171,27 @@
   #zoneL, #zoneR { position: absolute; top: 0; bottom: 90px; width: 26%; z-index: 40; cursor: pointer; }
   #zoneL { left: 0; } #zoneR { right: 0; width: 40%; }
 
+  #bridgedot {
+    position: absolute; z-index: 45; left: 0; top: 0;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--pink); transform: translate(-50%, -50%);
+    opacity: 0; pointer-events: none;
+  }
+
   #f0 { background: var(--pine-deep); }
   #f0 .wm { font-size: clamp(64px, 14vw, 170px); color: var(--white); }
   #f1 { background: var(--pine); }
+  #f1 .words, #f9 .words { position: relative; z-index: 2; }
+  #f1::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 52%;
+    background: linear-gradient(to top, rgba(15,76,66,0.92) 22%, rgba(15,76,66,0));
+    z-index: 1; pointer-events: none;
+  }
+  #f9::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 52%;
+    background: linear-gradient(to top, rgba(11,59,51,0.92) 22%, rgba(11,59,51,0));
+    z-index: 1; pointer-events: none;
+  }
   #f1 .words { margin-top: auto; padding-bottom: clamp(60px, 12vh, 130px); }
   #f2 { background: var(--pine-deep); }
   #f3 { background: var(--pine-deep); }
@@ -408,6 +426,7 @@
   <!-- ============ FILM ============ -->
   <div id="film">
     <div id="progress"><div class="fill"></div></div>
+    <div id="bridgedot"></div>
 
     <!-- F0 : ARRIVAL -->
     <div class="frame" id="f0" data-hold="6500">
@@ -422,22 +441,22 @@
     <div class="frame" id="f1" data-hold="11000">
       <div class="art">
         <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
+          <path d="M -60 450 C 150 450, 290 250, 430 250 C 545 250, 545 350, 630 350 C 715 350, 730 180, 830 178 C 960 176, 1150 172, 1300 170"
                 fill="none" stroke="#0B3B33" stroke-width="34" stroke-linecap="round" opacity="0.55"/>
-          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
+          <path id="trailPath" d="M 430 250 C 545 250, 545 350, 630 350 C 715 350, 730 180, 830 178 C 960 176, 1150 172, 1300 170"
                 fill="none" stroke="#6FE3BB" stroke-width="14" stroke-linecap="round"
-                stroke-dasharray="1700" stroke-dashoffset="1700">
-            <animate id="trailDraw" attributeName="stroke-dashoffset" from="1700" to="0" dur="7.5s" begin="indefinite" fill="freeze"/>
+                stroke-dasharray="1200" stroke-dashoffset="1200">
+            <animate id="trailDraw" attributeName="stroke-dashoffset" from="1200" to="0" dur="6s" begin="indefinite" fill="freeze"/>
           </path>
-          <circle cx="420" cy="250" r="9" fill="#EDFBF4"/>
-          <circle cx="620" cy="410" r="9" fill="#EDFBF4"/>
-          <circle cx="820" cy="170" r="9" fill="#EDFBF4"/>
-          <text x="420" y="216" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">your symptoms, heard</text>
-          <text x="620" y="452" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the conversation</text>
-          <text x="820" y="136" fill="#BFE9D4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the right care</text>
-          <circle r="16" fill="#F79CB4">
-            <animateMotion id="walk" dur="7.5s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.37 0 0.63 1" keyPoints="0;1" keyTimes="0;1"
-              path="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"/>
+          <circle cx="430" cy="250" r="9" fill="#EDFBF4"/>
+          <circle cx="630" cy="350" r="9" fill="#EDFBF4"/>
+          <circle cx="830" cy="178" r="9" fill="#EDFBF4"/>
+          <text x="430" y="216" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">your symptoms, heard</text>
+          <text x="630" y="316" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the conversation</text>
+          <text x="830" y="144" fill="#BFE9D4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the right care</text>
+          <circle class="walkdot" r="16" fill="#F79CB4" opacity="0">
+            <animateMotion id="walk" dur="6s" begin="indefinite" fill="freeze" calcMode="linear"
+              path="M 430 250 C 545 250, 545 350, 630 350 C 715 350, 730 180, 830 178 C 960 176, 1150 172, 1300 170"/>
           </circle>
         </svg>
       </div>
@@ -983,7 +1002,7 @@ Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side e
     // ---------- FILM ----------
     function startFilm() {
       var frames = Array.prototype.slice.call(document.querySelectorAll('#film .frame'));
-      var idx = 0, playing = true, holdTimer = null, tickTimer = null, holdStart = 0, holdLen = 0, holdElapsed = 0;
+      var idx = 0, prevIdx = -1, playing = true, holdTimer = null, tickTimer = null, holdStart = 0, holdLen = 0, holdElapsed = 0;
 
       var fill = document.querySelector('#progress .fill');
       var counter = document.getElementById('counter');
@@ -992,11 +1011,50 @@ Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side e
       var playIcon = document.getElementById('playIcon');
       var scrollcue = document.getElementById('scrollcue');
 
+      var bridge = document.getElementById('bridgedot');
+      var reducedMotion = false;
+      try { reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+      function beginWalk() {
+        var wd = document.querySelector('#f1 .walkdot');
+        if (wd) wd.setAttribute('opacity', '1');
+        try { document.getElementById('trailDraw').beginElement(); document.getElementById('walk').beginElement(); } catch (e) {}
+      }
+
+      function runBridge() {
+        var src = document.querySelector('#f0 .i .dot');
+        var node1 = document.querySelector('#f1 .art svg circle');
+        if (!bridge || !src || !node1) return false;
+        var fr = film.getBoundingClientRect();
+        var a = src.getBoundingClientRect();
+        var b = node1.getBoundingClientRect();
+        if (!a.width || !b.width) return false;
+        var ax = a.left + a.width / 2 - fr.left, ay = a.top + a.height / 2 - fr.top;
+        var bx = b.left + b.width / 2 - fr.left, by = b.top + b.height / 2 - fr.top;
+        var startSize = Math.max(16, a.width), endSize = b.width || 30;
+        bridge.style.transition = 'none';
+        bridge.style.width = startSize + 'px'; bridge.style.height = startSize + 'px';
+        bridge.style.left = ax + 'px'; bridge.style.top = ay + 'px';
+        bridge.style.opacity = '1';
+        void bridge.offsetWidth; // force reflow so the next change transitions
+        bridge.style.transition = 'left .95s cubic-bezier(.5,0,.2,1), top .95s cubic-bezier(.34,1.08,.64,1), width .95s ease, height .95s ease';
+        bridge.style.left = bx + 'px'; bridge.style.top = by + 'px';
+        bridge.style.width = endSize + 'px'; bridge.style.height = endSize + 'px';
+        setTimeout(function () { bridge.style.opacity = '0'; beginWalk(); }, 1050);
+        return true;
+      }
+
       function frameAnimations(f) {
         if (f.id === 'f1') {
-          setTimeout(function () {
-            try { document.getElementById('trailDraw').beginElement(); document.getElementById('walk').beginElement(); } catch (e) {}
-          }, 700);
+          var wd = document.querySelector('#f1 .walkdot');
+          if (wd) wd.setAttribute('opacity', '0');
+          var tp = document.getElementById('trailPath');
+          if (tp) tp.setAttribute('stroke-dashoffset', '1200');
+          if (prevIdx === 0 && !reducedMotion && runBridge()) {
+            // bridge handles the walk handoff
+          } else {
+            setTimeout(beginWalk, 500);
+          }
         }
         if (f.id === 'f9') {
           setTimeout(function () { try { document.getElementById('vtrailDraw').beginElement(); } catch (e) {} }, 700);
@@ -1009,7 +1067,9 @@ Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side e
       }
 
       function show(n) {
+        prevIdx = idx;
         idx = Math.max(0, Math.min(frames.length - 1, n));
+        if (bridge && !(idx === 1 && prevIdx === 0)) bridge.style.opacity = '0';
         frames.forEach(function (f, i) { f.classList.toggle('active', i === idx); });
         counter.textContent = (idx + 1) + ' / ' + frames.length;
         frameAnimations(frames[idx]);
