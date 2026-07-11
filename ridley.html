@@ -60,7 +60,8 @@
     display: flex; align-items: center; justify-content: center;
     padding: 28px; overflow: hidden;
   }
-  #gate .gshape { position: absolute; right: -60px; top: -50px; width: 340px; opacity: 0.22; pointer-events: none; }
+  #gate .gshape { position: absolute; right: -60px; top: -50px; width: 340px; pointer-events: none; }
+  @media (max-width: 640px) { #gate .gshape { width: 190px; right: -46px; top: -36px; } }
   .gate-box { width: 100%; max-width: 420px; text-align: center; position: relative; z-index: 1; }
   .gate-box .wm { font-size: clamp(56px, 12vw, 96px); color: var(--white); }
   .gate-box .wm .L { display: inline-block; opacity: 0; transform: translateY(0.35em); animation: lrise 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
@@ -156,14 +157,16 @@
   #soundbtn.on .sd { animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
 
   #scrollcue {
-    position: absolute; bottom: 88px; left: 50%; transform: translateX(-50%); z-index: 50;
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: var(--mint); font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
-    opacity: 0; transition: opacity 1s ease; pointer-events: none;
+    position: absolute; bottom: 26px; left: 26px; z-index: 50;
+    display: flex; align-items: center; gap: 9px;
+    color: var(--paper); font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+    opacity: 0.75; cursor: pointer;
+    background: rgba(11,59,51,0.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(237,251,244,0.25); border-radius: 100px; padding: 12px 17px;
   }
-  #scrollcue.show { opacity: 1; pointer-events: auto; cursor: pointer; }
+  #scrollcue:hover { opacity: 1; }
   #scrollcue svg { animation: nudge 2s ease-in-out infinite; }
-  @keyframes nudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+  @keyframes nudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 
   #zoneL, #zoneR { position: absolute; top: 0; bottom: 90px; width: 26%; z-index: 40; cursor: pointer; }
   #zoneL { left: 0; } #zoneR { right: 0; width: 40%; }
@@ -197,6 +200,24 @@
     padding: 14px 26px; font-size: clamp(14px, 1.9vw, 18px); font-weight: 500;
   }
 
+  .statblock {
+    position: absolute; right: clamp(28px, 9vw, 130px); top: 50%;
+    transform: translateY(-50%); text-align: center; z-index: 1;
+  }
+  .statnum {
+    font-family: "Fraunces", serif; font-variation-settings: "opsz" 144;
+    font-size: clamp(140px, 20vw, 280px); color: var(--mint);
+    line-height: 0.9; letter-spacing: -0.03em;
+  }
+  .statlbl { margin-top: 12px; font-size: 12.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #BFE9D8; font-weight: 600; }
+  #f4 .words { max-width: 50%; }
+  @media (max-width: 960px) {
+    .statblock { display: none; }
+    #f4 .words { max-width: none; }
+  }
+
+  .f7grid { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .f7grid { grid-template-columns: 1fr auto; column-gap: 60px; } }
   .filmphone {
     background: var(--pine-deep); border-radius: 30px; padding: 22px;
     width: min(360px, 86vw);
@@ -204,7 +225,7 @@
   }
   .stamp { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #D8F5EA; }
   .stamp .sdot { width: 14px; height: 14px; border-radius: 50%; background: var(--pink); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
-  .fbubble { border-radius: 18px 18px 18px 6px; padding: 14px 16px; font-size: 14.5px; line-height: 1.45; max-width: 90%; background: #E6F7EF; color: #123B33; opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fbubble { border-radius: 18px 18px 18px 6px; padding: 14px 16px; font-size: 14.5px; line-height: 1.45; max-width: 90%; width: fit-content; background: #E6F7EF; color: #123B33; opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fbubble.you { border-radius: 18px 18px 6px 18px; margin-left: auto; background: var(--lilac); color: var(--plum); }
   .fbubble + .fbubble { margin-top: 11px; }
   .fbubble.show { opacity: 1; transform: none; }
@@ -215,7 +236,8 @@
   .kicker { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pine); opacity: 0.55; font-weight: 600; margin-bottom: 14px; }
 
   .grid { display: grid; gap: 22px; margin-top: 26px; }
-  @media (min-width: 780px) { .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: 1fr 1fr 1fr; } }
+  @media (min-width: 780px) { .g2 { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 980px) { .g3 { grid-template-columns: 1fr 1fr 1fr; } }
 
   .card { background: var(--white); border-radius: 18px; padding: 26px; }
   .caption { margin-top: 14px; font-size: 13px; opacity: 0.72; }
@@ -225,7 +247,8 @@
   .lockup { display: flex; align-items: center; justify-content: center; min-height: 150px; border-radius: 14px; }
 
   .ratio { display: flex; border-radius: 14px; overflow: hidden; height: 88px; margin-top: 26px; }
-  .ratio > div { display: flex; align-items: flex-end; padding: 12px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; }
+  .ratio > div { display: flex; align-items: flex-end; padding: 12px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap; overflow: hidden; }
+  @media (max-width: 900px) { .ratio .rname { display: none; } .ratio > div { padding: 10px 8px; } }
   .ratio-note { margin-top: 14px; font-size: 14px; max-width: 62ch; }
   .ratio-note b { color: var(--pine); }
 
@@ -274,7 +297,7 @@
   .screen.light { background: var(--paper); border: 1px solid var(--mist); }
   .pstamp { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-size: 12.5px; font-weight: 600; color: #D8F5EA; }
   .pstamp .pdot { width: 13px; height: 13px; border-radius: 50%; background: var(--pink); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
-  .pbubble { border-radius: 16px 16px 16px 5px; padding: 12px 14px; font-size: 13.5px; line-height: 1.45; max-width: 92%; background: #E6F7EF; color: var(--pine-ink); }
+  .pbubble { border-radius: 16px 16px 16px 5px; padding: 12px 14px; font-size: 13.5px; line-height: 1.45; max-width: 92%; width: fit-content; background: #E6F7EF; color: var(--pine-ink); }
   .pbubble.you { border-radius: 16px 16px 5px 16px; margin-left: auto; background: var(--lilac); color: var(--plum); }
   .pbubble + .pbubble, .pbubble + .schips, .schips + .pbubble { margin-top: 10px; }
   .schips { display: grid; gap: 7px; }
@@ -307,8 +330,7 @@
   .pprog .ptrack { height: 5px; border-radius: 100px; background: rgba(237,251,244,0.12); overflow: hidden; }
   .pprog .pfill { height: 100%; border-radius: 100px; background: var(--mint); }
   .wait { text-align: center; padding: 26px 10px 18px; }
-  .wait .wavatar { position: relative; width: 84px; height: 84px; margin: 0 auto 18px; }
-  .wait .wavatar .ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--pink); opacity: 0.5; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  .wait .wavatar { width: 84px; height: 84px; margin: 0 auto 18px; }
   .wait h4 { font-size: 21px; color: var(--pine); margin-bottom: 6px; }
   .wait .wsub { font-size: 13px; color: #3E5F57; max-width: 26ch; margin: 0 auto 20px; }
   .wsteps { text-align: left; display: grid; gap: 9px; max-width: 240px; margin: 0 auto; }
@@ -337,6 +359,9 @@
   /* ---------- mobile ---------- */
   @media (max-width: 700px) {
     .frame .t { font-size: clamp(30px, 8.5vw, 44px); }
+    #film .art text { display: none; }
+    #f6 .art { opacity: 0.35; }
+    #scrollcue { display: none; }
   }
   @media (max-width: 640px) {
     .wrap { padding: 0 18px; }
@@ -348,7 +373,9 @@
     .gate-row { flex-wrap: wrap; }
     .gate-input { flex-basis: 100%; }
     .gate-btn { flex: 1; }
-    #soundbtn { bottom: 84px; right: 50%; transform: translateX(50%); }
+    #hud { left: 14px; transform: none; }
+    #soundbtn { bottom: 26px; right: 14px; padding: 12px 13px; }
+    #f1 .words, #f9 .words { padding-bottom: 130px; }
   }
 </style>
 </head>
@@ -358,8 +385,8 @@
   <div id="gate">
     <svg class="gshape" viewBox="0 0 300 260">
       <defs><mask id="gm"><rect width="300" height="260" fill="#fff"/><circle cx="216" cy="84" r="92" fill="#000"/></mask></defs>
-      <rect width="300" height="260" rx="84" fill="#6FE3BB" mask="url(#gm)"/>
-      <circle cx="216" cy="84" r="34" fill="#F79CB4"/>
+      <rect width="300" height="260" rx="84" fill="#6FE3BB" fill-opacity="0.18" mask="url(#gm)"/>
+      <circle cx="216" cy="84" r="34" fill="#F79CB4" fill-opacity="0.5"/>
     </svg>
     <div class="gate-box">
       <span class="wm">
@@ -393,22 +420,22 @@
     <div class="frame" id="f1" data-hold="11000">
       <div class="art">
         <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <path d="M -60 560 C 160 560, 240 300, 400 300 C 560 300, 600 460, 760 460 C 920 460, 960 200, 1140 210 C 1220 214, 1260 214, 1300 210"
+          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
                 fill="none" stroke="#0B3B33" stroke-width="34" stroke-linecap="round" opacity="0.55"/>
-          <path d="M -60 560 C 160 560, 240 300, 400 300 C 560 300, 600 460, 760 460 C 920 460, 960 200, 1140 210 C 1220 214, 1260 214, 1300 210"
+          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
                 fill="none" stroke="#6FE3BB" stroke-width="14" stroke-linecap="round"
                 stroke-dasharray="1700" stroke-dashoffset="1700">
             <animate id="trailDraw" attributeName="stroke-dashoffset" from="1700" to="0" dur="7.5s" begin="indefinite" fill="freeze"/>
           </path>
-          <circle cx="400" cy="300" r="9" fill="#EDFBF4"/>
-          <circle cx="760" cy="460" r="9" fill="#EDFBF4"/>
-          <circle cx="1140" cy="210" r="9" fill="#EDFBF4"/>
-          <text x="400" y="266" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">your symptoms, heard</text>
-          <text x="760" y="502" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the conversation</text>
-          <text x="1140" y="176" fill="#BFE9D4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the right care</text>
+          <circle cx="420" cy="250" r="9" fill="#EDFBF4"/>
+          <circle cx="620" cy="410" r="9" fill="#EDFBF4"/>
+          <circle cx="820" cy="170" r="9" fill="#EDFBF4"/>
+          <text x="420" y="216" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">your symptoms, heard</text>
+          <text x="620" y="452" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the conversation</text>
+          <text x="820" y="136" fill="#BFE9D4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the right care</text>
           <circle r="16" fill="#F79CB4">
             <animateMotion id="walk" dur="7.5s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.37 0 0.63 1" keyPoints="0;1" keyTimes="0;1"
-              path="M -60 560 C 160 560, 240 300, 400 300 C 560 300, 600 460, 760 460 C 920 460, 960 200, 1140 210 C 1220 214, 1260 214, 1300 210"/>
+              path="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"/>
           </circle>
         </svg>
       </div>
@@ -445,11 +472,9 @@
 
     <!-- F4 : THE OUTCOME -->
     <div class="frame" id="f4" data-hold="9000">
-      <div class="art">
-        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <text x="870" y="470" fill="#6FE3BB" font-family="Fraunces" font-size="330" text-anchor="middle" letter-spacing="-8" opacity="0.92">18</text>
-          <text x="870" y="530" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="4">IPSS &middot; SCORED, STRUCTURED, ROUTED</text>
-        </svg>
+      <div class="statblock">
+        <div class="statnum">18</div>
+        <div class="statlbl">IPSS &middot; scored, structured, routed</div>
       </div>
       <div class="words">
         <div class="t">Human conversation. Clinical outcomes.</div>
@@ -469,7 +494,7 @@
     <div class="frame" id="f6" data-hold="9000">
       <div class="art">
         <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <circle class="pulse" cx="850" cy="330" r="140" fill="#F79CB4"/>
+          <circle class="pulse" cx="700" cy="240" r="130" fill="#F79CB4"/>
         </svg>
       </div>
       <div class="words">
@@ -480,7 +505,7 @@
 
     <!-- F7 : THE CONVERSATION -->
     <div class="frame" id="f7" data-hold="12000">
-      <div class="words" style="display:grid; gap:40px; grid-template-columns:1fr; align-items:center;">
+      <div class="words f7grid">
         <div>
           <div class="t" style="font-size:clamp(28px,4.6vw,56px);">A conversation, not a form.</div>
           <div class="s">Tap to answer. Two minutes. Done from the couch.</div>
@@ -507,21 +532,19 @@
     <div class="frame" id="f9" data-hold="10000">
       <div class="art">
         <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <path d="M -60 520 C 180 520, 260 280, 440 280 C 620 280, 660 440, 840 420 C 1020 400, 1080 220, 1300 200"
+          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
                 fill="none" stroke="#0F4C42" stroke-width="34" stroke-linecap="round" opacity="0.8"/>
-          <path d="M -60 520 C 180 520, 260 280, 440 280 C 620 280, 660 440, 840 420 C 1020 400, 1080 220, 1300 200"
+          <path d="M -60 500 C 140 500, 280 250, 420 250 C 540 250, 540 410, 620 410 C 700 410, 720 175, 820 170 C 940 166, 1150 160, 1300 158"
                 fill="none" stroke="#6FE3BB" stroke-width="14" stroke-linecap="round"
                 stroke-dasharray="1700" stroke-dashoffset="1700">
             <animate id="vtrailDraw" attributeName="stroke-dashoffset" from="1700" to="0" dur="8s" begin="indefinite" fill="freeze"/>
           </path>
-          <circle cx="180" cy="497" r="10" fill="#F79CB4" class="pulse"/>
-          <circle cx="440" cy="280" r="9" fill="#EDFBF4"/>
-          <circle cx="840" cy="420" r="9" fill="#EDFBF4"/>
-          <circle cx="1140" cy="238" r="9" fill="#EDFBF4"/>
-          <text x="180" y="560" fill="#F79CB4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
-          <text x="440" y="246" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">between visits</text>
-          <text x="840" y="464" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">meds &middot; booking</text>
-          <text x="1140" y="204" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">beyond urology</text>
+          <circle cx="420" cy="250" r="11" fill="#F79CB4" class="pulse"/>
+          <circle cx="620" cy="410" r="9" fill="#EDFBF4"/>
+          <circle cx="820" cy="170" r="9" fill="#EDFBF4"/>
+          <text x="420" y="216" fill="#F79CB4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
+          <text x="620" y="452" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">between visits</text>
+          <text x="820" y="136" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">beyond urology</text>
         </svg>
       </div>
       <div class="words">
@@ -560,8 +583,8 @@
     <button id="soundbtn"><span class="sd"></span><span id="soundlbl">Sound</span></button>
 
     <div id="scrollcue">
-      <span>Scroll to explore the brand</span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 6 L8 11 L13 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Scroll for the brand</span>
+      <svg width="14" height="14" viewBox="0 0 16 16"><path d="M3 6 L8 11 L13 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
   </div>
 
@@ -574,10 +597,11 @@
         <h2>The companion is the dot on the i</h2>
         <p>It is the only place the wordmark breaks pattern, and it is the whole brand in one gesture: a bright point of presence, always beside the patient. It breathes at a resting rate, five seconds per cycle. Wherever the dot appears, it means the same thing: Ridley is with you.</p>
       </div>
-      <div class="card" style="margin-top:26px; display:flex; gap:36px; align-items:center; flex-wrap:wrap;">
-        <span style="position:relative; font-family:'Fraunces',serif; font-variation-settings:'opsz' 144; font-weight:430; font-size:124px; line-height:0.8; color:var(--pine); display:inline-block; padding-top:44px;">
-          <span style="position:absolute; top:12px; left:50%; transform:translateX(-50%); width:21px; height:21px; border-radius:50%; background:var(--pink); animation:breath 5s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin:center;">&#8203;</span>&#305;</span>
-        <span style="font-size:15px; max-width:44ch;">
+      <div class="card" style="margin-top:26px; display:flex; gap:40px; align-items:center; flex-wrap:wrap; padding:34px;">
+        <span class="wm breathe" style="font-size:110px; color:var(--pine); padding-top:0.12em;">
+          <span class="i"><span class="dot" style="bottom:0.58em;"></span>&#305;</span>
+        </span>
+        <span style="font-size:15px; max-width:44ch; flex:1; min-width:240px;">
           <b style="color:var(--pine)">One gesture, everywhere.</b> In the name, on a shape, on the journey line, in the app icon. The companion is never decoration; it marks where Ridley is. Scarcity is what makes it land.
         </span>
       </div>
@@ -659,17 +683,17 @@
         <div class="card">
           <div class="lbl">At the extremes: the app icon</div>
           <div class="stage" style="background:var(--paper); border:1px solid var(--mist); display:flex; align-items:center; justify-content:center; padding:30px; gap:28px; flex-wrap:wrap; min-height:172px;">
-            <svg width="76" height="76" viewBox="0 0 76 76">
+            <svg width="76" height="76" viewBox="0 0 76 76" style="width:76px;height:76px;flex:none;">
               <defs><mask id="i1"><rect width="76" height="76" fill="#fff"/><circle cx="58" cy="18" r="20" fill="#000"/></mask></defs>
               <rect width="76" height="76" rx="18" fill="#0F4C42" mask="url(#i1)"/>
               <circle cx="58" cy="18" r="7.5" fill="#F79CB4"/>
             </svg>
-            <svg width="40" height="40" viewBox="0 0 40 40">
+            <svg width="40" height="40" viewBox="0 0 40 40" style="width:40px;height:40px;flex:none;">
               <defs><mask id="i2"><rect width="40" height="40" fill="#fff"/><circle cx="29" cy="11" r="12.1" fill="#000"/></mask></defs>
               <rect width="40" height="40" rx="11" fill="#0F4C42" mask="url(#i2)"/>
               <circle cx="29" cy="11" r="5" fill="#F79CB4"/>
             </svg>
-            <svg width="22" height="22" viewBox="0 0 22 22">
+            <svg width="22" height="22" viewBox="0 0 22 22" style="width:22px;height:22px;flex:none;">
               <defs><mask id="i3"><rect width="22" height="22" fill="#fff"/><circle cx="15.5" cy="6.5" r="7.2" fill="#000"/></mask></defs>
               <rect width="22" height="22" rx="6.5" fill="#0F4C42" mask="url(#i3)"/>
               <circle cx="15.5" cy="6.5" r="3.2" fill="#F79CB4"/>
@@ -691,13 +715,13 @@
         <div class="role"><div class="chip" style="background:var(--mint)"></div><div class="txt" style="padding-top:14px"><div class="nm">Fresh mint &middot; #6FE3BB</div><div class="use">Light, air, progress. Backgrounds, highlights, positive states.</div></div></div>
         <div class="role"><div class="chip" style="background:var(--pink)"></div><div class="txt" style="padding-top:14px"><div class="nm">Bright pink &middot; #F79CB4</div><div class="use">The companion's colour, and only the companion's. Wherever it appears, Ridley is there.</div></div></div>
         <div class="role"><div class="chip" style="background:var(--lilac)"></div><div class="txt" style="padding-top:14px"><div class="nm">Lilac &middot; #C77BEB</div><div class="use">The patient's colour. Their messages, their choices, their side of the conversation.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--paper);border-right:1px solid var(--mist)"></div><div class="txt" style="padding-top:14px"><div class="nm">Mint paper &middot; #EDFBF4</div><div class="use">The default page. Never stark white, never cold.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--paper);border:1px solid var(--mist);border-radius:14px 0 0 14px;"></div><div class="txt" style="padding-top:14px"><div class="nm">Mint paper &middot; #EDFBF4</div><div class="use">The default page. Never stark white, never cold.</div></div></div>
       </div>
       <div class="ratio">
-        <div style="flex:55; background:var(--paper); color:var(--pine-ink); border:1px solid var(--mist); border-right:none;">55 &middot; Mint paper</div>
-        <div style="flex:25; background:var(--pine); color:#D8F5EA;">25 &middot; Pine</div>
-        <div style="flex:12; background:var(--mint); color:var(--pine);">12 &middot; Mint</div>
-        <div style="flex:6; background:var(--lilac); color:var(--plum);">6 &middot; Lilac</div>
+        <div style="flex:55; background:var(--paper); color:var(--pine-ink); border:1px solid var(--mist); border-right:none;">55<span class="rname"> &middot; Mint paper</span></div>
+        <div style="flex:25; background:var(--pine); color:#D8F5EA;">25<span class="rname"> &middot; Pine</span></div>
+        <div style="flex:12; background:var(--mint); color:var(--pine);">12<span class="rname"> &middot; Mint</span></div>
+        <div style="flex:6; background:var(--lilac); color:var(--plum);">6<span class="rname"> &middot; Lilac</span></div>
         <div style="flex:2; background:var(--pink); color:#56142B; padding:12px 8px;">2</div>
       </div>
       <p class="ratio-note"><b>Pink is two percent.</b> Scarcity keeps the companion precious: the warmest colour appears exactly where Ridley is, and almost nowhere else.</p>
@@ -761,11 +785,10 @@
           <div class="screen light">
             <div class="wait">
               <div class="wavatar">
-                <span class="ring"></span>
                 <svg width="84" height="84" viewBox="0 0 84 84">
                   <defs><mask id="wa"><rect width="84" height="84" fill="#fff"/><circle cx="63" cy="21" r="22" fill="#000"/></mask></defs>
                   <rect width="84" height="84" rx="26" fill="#0F4C42" mask="url(#wa)"/>
-                  <circle cx="63" cy="21" r="8.5" fill="#F79CB4"/>
+                  <circle class="pulse" cx="63" cy="21" r="8.5" fill="#F79CB4"/>
                 </svg>
               </div>
               <h4 class="disp">The virtual waiting room</h4>
@@ -863,18 +886,13 @@
 Lower urinary tract symptoms, 4 months.
 
 HISTORY OF PRESENT ILLNESS
-IPSS 18 (moderate-severe). QoL: mostly
-dissatisfied. Nocturia x2. No hematuria,
-no fever, no retention.
+IPSS 18 (moderate-severe). QoL: mostly dissatisfied. Nocturia x2. No hematuria, no fever, no retention.
 
 ASSESSMENT
-Symptoms consistent with BPH. No red
-flags elicited on safety screen.
+Symptoms consistent with BPH. No red flags elicited on safety screen.
 
 PLAN
-Outcome B: medication eligible.
-Follow up in 6-8 weeks; contact office
-if side effects.</pre>
+Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side effects.</pre>
             <div class="sfoot">
               <span class="sbtn">Send to physician</span>
               <span class="snote">Reviewed before anything is actioned.</span>
@@ -906,10 +924,10 @@ if side effects.</pre>
 
     <!-- ============ CLOSE ============ -->
     <div class="close">
-      <svg style="position:absolute; right:-50px; bottom:-70px; width:300px; opacity:0.22" viewBox="0 0 300 260">
+      <svg style="position:absolute; right:-50px; bottom:-70px; width:300px;" viewBox="0 0 300 260">
         <defs><mask id="clm"><rect width="300" height="260" fill="#fff"/><circle cx="216" cy="84" r="92" fill="#000"/></mask></defs>
-        <rect width="300" height="260" rx="84" fill="#6FE3BB" mask="url(#clm)"/>
-        <circle cx="216" cy="84" r="34" fill="#F79CB4"/>
+        <rect width="300" height="260" rx="84" fill="#6FE3BB" fill-opacity="0.18" mask="url(#clm)"/>
+        <circle cx="216" cy="84" r="34" fill="#F79CB4" fill-opacity="0.5"/>
       </svg>
       <h2>Understand what is happening. <em>Know what is next.</em></h2>
       <p><b>Where this goes from here:</b> the brand is ready to pressure-test with Neil, the product is heading into resident pilots, and the two meet in the screens above. Better triage, better experiences, one companion.</p>
@@ -986,7 +1004,6 @@ if side effects.</pre>
           items.forEach(function (el) { el.classList.remove('show'); });
           items.forEach(function (el, i) { setTimeout(function () { el.classList.add('show'); }, 1200 + i * 1400); });
         }
-        if (f.id === 'f10') { scrollcue.classList.add('show'); }
       }
 
       function show(n) {
