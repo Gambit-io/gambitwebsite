@@ -50,6 +50,11 @@
       "source": "/outbound-worker",
       "destination": "/workers/bogan",
       "permanent": true
+    },
+    {
+      "source": "/fresno",
+      "destination": "/frezno",
+      "permanent": true
     }
   ],
   "headers": [
