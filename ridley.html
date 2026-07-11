@@ -4,28 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Ridley — Identity v1 (Direction B: Fresh Clarity)</title>
+<title>Ridley — A companion, introduced</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=Inter+Tight:wght@300..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@300..600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --pine: #0F4C42;
+    --pine-deep: #0B3B33;
     --pine-ink: #123B33;
     --mint: #6FE3BB;
-    --mint-hot: #57DDB0;
     --pink: #F79CB4;
     --lilac: #C77BEB;
     --plum: #3D1152;
     --paper: #EDFBF4;
     --white: #FFFFFF;
     --mist: #CBEEDD;
+    --dot-size: 0.165em;
+    --dot-lift: 0.81em;
   }
 
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--paper);
     color: var(--pine-ink);
@@ -33,46 +34,56 @@
     -webkit-font-smoothing: antialiased;
     line-height: 1.55;
   }
+  body.gated { overflow: hidden; background: var(--pine-deep); }
 
-  h1,h2,h3,h4,.disp { font-family: "Schibsted Grotesk", sans-serif; }
+  h1,h2,h3,h4,.disp,.serif { font-family: "Fraunces", serif; font-weight: 400; font-variation-settings: "opsz" 144; }
 
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-
-  .lbl {
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    font-weight: 600; opacity: 0.55; margin-bottom: 18px;
-  }
-
+  .lbl { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; opacity: 0.55; margin-bottom: 16px; }
   section { margin: 70px 0; }
 
+  /* ---------- wordmark ---------- */
+  .wm { font-family: "Fraunces", serif; font-variation-settings: "opsz" 144; font-weight: 430; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; display: inline-block; }
+  .wm .i { position: relative; display: inline-block; }
+  .wm .i .dot { position: absolute; left: 50%; transform: translateX(-50%); bottom: var(--dot-lift); width: var(--dot-size); height: var(--dot-size); border-radius: 50%; background: var(--pink); }
+  .wm.breathe .i .dot { animation: breath-t 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+
+  @keyframes breath { 0%,100% { transform: scale(1); } 42% { transform: scale(1.055); } 58% { transform: scale(1.055); } }
+  @keyframes breath-t { 0%,100% { transform: translateX(-50%) scale(1); } 42% { transform: translateX(-50%) scale(1.055); } 58% { transform: translateX(-50%) scale(1.055); } }
+  .pulse { transform-origin: center; transform-box: fill-box; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01s !important; } }
+
   /* ---------- GATE ---------- */
-  body.gated { background: var(--pine); overflow: hidden; }
-  .gate {
-    position: fixed; inset: 0; z-index: 100;
-    background: var(--pine);
+  #gate {
+    position: fixed; inset: 0; z-index: 200;
+    background: var(--pine-deep);
     display: flex; align-items: center; justify-content: center;
-    padding: 28px;
+    padding: 28px; overflow: hidden;
   }
-  .gate-box { width: 100%; max-width: 380px; text-align: center; }
-  .gate-wm {
-    font-family: "Schibsted Grotesk", sans-serif;
-    font-weight: 700; font-size: 44px; letter-spacing: -0.03em;
-    color: var(--white); margin-bottom: 10px;
+  #gate .gshape { position: absolute; right: -60px; top: -50px; width: 340px; opacity: 0.22; pointer-events: none; }
+  .gate-box { width: 100%; max-width: 420px; text-align: center; position: relative; z-index: 1; }
+  .gate-box .wm { font-size: clamp(56px, 12vw, 96px); color: var(--white); }
+  .gate-box .wm .L { display: inline-block; opacity: 0; transform: translateY(0.35em); animation: lrise 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+  @keyframes lrise { to { opacity: 1; transform: none; } }
+  .gate-box .wm .i .dot {
+    opacity: 0;
+    animation:
+      dotfall 0.9s cubic-bezier(0.34, 1.4, 0.64, 1) 1.35s forwards,
+      breath-t 5s cubic-bezier(0.37,0,0.63,1) 2.4s infinite;
   }
-  .gate-wm .wm-i { position: relative; display: inline-block; }
-  .gate-wm .wm-i .comp {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    top: 0.045em; width: 0.155em; height: 0.155em; border-radius: 50%;
-    background: var(--pink);
-    animation: breathe-c 3.4s ease-in-out infinite;
+  @keyframes dotfall {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(-2.2em); }
+    62%  { opacity: 1; transform: translateX(-50%) translateY(0.06em); }
+    82%  { transform: translateX(-50%) translateY(-0.03em); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
-  .gate-sub { font-size: 14px; color: #BFE9D8; margin-bottom: 28px; }
-  .gate-row { display: flex; gap: 10px; }
+  .gate-sub { margin-top: 20px; font-size: 14px; color: #9FC9BB; opacity: 0; animation: lrise 0.8s ease 1.9s forwards; }
+  .gate-row { display: flex; gap: 10px; margin-top: 26px; opacity: 0; animation: lrise 0.8s ease 2.2s forwards; }
   .gate-input {
     flex: 1; min-width: 0;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.07);
     border: 1.5px solid rgba(237,251,244,0.25);
-    border-radius: 100px; padding: 12px 20px;
+    border-radius: 100px; padding: 13px 22px;
     font-family: "Inter Tight", sans-serif; font-size: 15px;
     color: var(--white); outline: none;
   }
@@ -80,93 +91,157 @@
   .gate-input::placeholder { color: rgba(237,251,244,0.4); }
   .gate-btn {
     background: var(--mint); color: var(--pine);
-    border: none; border-radius: 100px; padding: 12px 24px;
+    border: none; border-radius: 100px; padding: 13px 26px;
     font-family: "Inter Tight", sans-serif; font-size: 15px; font-weight: 600;
     cursor: pointer;
   }
-  .gate-btn:hover { background: var(--mint-hot); }
+  .gate-btn:hover { background: #57DDB0; }
   .gate-err { margin-top: 16px; font-size: 13px; color: var(--pink); }
 
-  /* ---------- HERO : the wordmark, full size ---------- */
-  .hero {
-    background: var(--pine);
-    color: var(--paper);
-    padding: clamp(60px, 9vw, 120px) 0;
+  /* ---------- FILM ---------- */
+  #film {
     position: relative;
+    height: 100vh; height: 100svh;
+    background: var(--pine-deep);
+    color: var(--paper);
     overflow: hidden;
   }
-  .hero .blob { position: absolute; pointer-events: none; }
-  .hero .kick {
-    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--mint); font-weight: 600; margin-bottom: 40px;
+  .frame {
+    position: absolute; inset: 0;
+    opacity: 0; visibility: hidden;
+    transition: opacity 1.1s ease;
+    display: flex; flex-direction: column; justify-content: center;
   }
-  .wordmark-hero {
-    font-family: "Schibsted Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: clamp(72px, 16vw, 190px);
-    line-height: 0.9;
-    letter-spacing: -0.035em;
-    color: var(--white);
-    position: relative; z-index: 1;
+  .frame.active { opacity: 1; visibility: visible; }
+  .frame .art { position: absolute; inset: 0; overflow: hidden; }
+  .frame .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .frame .words { position: relative; z-index: 2; padding: 0 clamp(28px, 7vw, 110px); max-width: 1200px; }
+  .frame .t {
+    font-family: "Fraunces", serif; font-variation-settings: "opsz" 144;
+    font-size: clamp(34px, 6.2vw, 80px); line-height: 1.02; letter-spacing: -0.015em;
+    max-width: 16ch;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
   }
-  .wordmark-hero .i { position: relative; display: inline-block; }
-  .wordmark-hero .i .stem::first-letter { }
-  .wm-i { position: relative; display: inline-block; }
-  .wm-i .dotless { display: inline-block; }
-  .wm-i .comp {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    top: 0.045em;
-    width: 0.155em; height: 0.155em; border-radius: 50%;
-    background: var(--pink);
-    animation: breathe-c 3.4s ease-in-out infinite;
+  .frame .s {
+    margin-top: 22px; font-size: clamp(15px, 1.8vw, 19px); max-width: 42ch;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 1s ease 0.9s, transform 1s ease 0.9s;
   }
-  .hero .strap {
-    margin-top: 36px; font-size: clamp(17px, 2.2vw, 22px);
-    color: #BFE9D8; max-width: 42ch; position: relative; z-index: 1;
-  }
-  .hero .strap b { color: var(--white); font-weight: 600; }
+  .frame.active .t, .frame.active .s { opacity: 1; transform: none; }
+  .frame .t em { font-style: italic; }
 
-  /* ---------- section head ---------- */
-  .shead { margin-bottom: 30px; }
-  .shead h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -0.015em; color: var(--pine); }
-  .shead p { margin-top: 10px; max-width: 58ch; font-size: 16px; }
+  #progress { position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 50; background: rgba(237,251,244,0.12); }
+  #progress .fill { height: 100%; width: 0%; background: var(--pink); transition: width 0.3s linear; }
 
-  .grid { display: grid; gap: 24px; }
+  #hud { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 18px; }
+  .hbtn {
+    background: rgba(11,59,51,0.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(237,251,244,0.25); color: var(--paper);
+    border-radius: 100px; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  #counter { font-size: 12px; letter-spacing: 0.2em; color: rgba(237,251,244,0.65); font-variant-numeric: tabular-nums; min-width: 54px; text-align: center; }
+
+  #soundbtn {
+    position: absolute; bottom: 26px; right: 26px; z-index: 50;
+    display: flex; align-items: center; gap: 9px;
+    background: rgba(11,59,51,0.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(237,251,244,0.25); color: var(--paper);
+    border-radius: 100px; padding: 12px 17px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    font-family: "Inter Tight", sans-serif;
+  }
+  #soundbtn .sd { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
+  #soundbtn.on .sd { animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+
+  #scrollcue {
+    position: absolute; bottom: 88px; left: 50%; transform: translateX(-50%); z-index: 50;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--mint); font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+    opacity: 0; transition: opacity 1s ease; pointer-events: none;
+  }
+  #scrollcue.show { opacity: 1; pointer-events: auto; cursor: pointer; }
+  #scrollcue svg { animation: nudge 2s ease-in-out infinite; }
+  @keyframes nudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+
+  #zoneL, #zoneR { position: absolute; top: 0; bottom: 90px; width: 26%; z-index: 40; cursor: pointer; }
+  #zoneL { left: 0; } #zoneR { right: 0; width: 40%; }
+
+  #f0 { background: var(--pine-deep); }
+  #f0 .wm { font-size: clamp(64px, 14vw, 170px); color: var(--white); }
+  #f1 { background: var(--pine); }
+  #f1 .words { margin-top: auto; padding-bottom: clamp(60px, 12vh, 130px); }
+  #f2 { background: var(--pine-deep); }
+  #f3 { background: var(--pine-deep); }
+  #f4 { background: var(--pine); }
+  #f5 { background: var(--paper); color: var(--pine); }
+  #f5 .t { color: var(--pine); }
+  #f5 .s { color: #3E5F57; }
+  #f6 { background: var(--pine-deep); }
+  #f7 { background: var(--pine); }
+  #f8 { background: var(--paper); color: var(--pine); }
+  #f8 .t { color: var(--pine); }
+  #f8 .s { color: #3E5F57; }
+  #f9 { background: var(--pine-deep); }
+  #f9 .words { margin-top: auto; padding-bottom: clamp(60px, 12vh, 130px); }
+  #f10 { background: var(--pine-deep); text-align: center; }
+  #f10 .words { display: flex; flex-direction: column; align-items: center; }
+  #f10 .t { max-width: 18ch; }
+  #f10 .wm { font-size: clamp(44px, 8vw, 90px); color: var(--white); margin-top: 48px; }
+
+  .bigchips { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; opacity: 0; transform: translateY(20px); transition: opacity 1s ease 1.3s, transform 1s ease 1.3s; max-width: 560px; }
+  .frame.active .bigchips { opacity: 1; transform: none; }
+  .bigchip {
+    border: 2px solid var(--mint); color: var(--mint); border-radius: 100px;
+    padding: 14px 26px; font-size: clamp(14px, 1.9vw, 18px); font-weight: 500;
+  }
+
+  .filmphone {
+    background: var(--pine-deep); border-radius: 30px; padding: 22px;
+    width: min(360px, 86vw);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+  }
+  .stamp { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #D8F5EA; }
+  .stamp .sdot { width: 14px; height: 14px; border-radius: 50%; background: var(--pink); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  .fbubble { border-radius: 18px 18px 18px 6px; padding: 14px 16px; font-size: 14.5px; line-height: 1.45; max-width: 90%; background: #E6F7EF; color: #123B33; opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fbubble.you { border-radius: 18px 18px 6px 18px; margin-left: auto; background: var(--lilac); color: var(--plum); }
+  .fbubble + .fbubble { margin-top: 11px; }
+  .fbubble.show { opacity: 1; transform: none; }
+
+  /* ---------- PAGE SECTIONS ---------- */
+  .shead h2 { font-size: clamp(25px,3.2vw,36px); color: var(--pine); letter-spacing: -0.01em; }
+  .shead p { margin-top: 10px; max-width: 60ch; font-size: 15.5px; }
+  .kicker { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pine); opacity: 0.55; font-weight: 600; margin-bottom: 14px; }
+
+  .grid { display: grid; gap: 22px; margin-top: 26px; }
   @media (min-width: 780px) { .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: 1fr 1fr 1fr; } }
 
-  .card { background: var(--white); border-radius: 18px; padding: 30px; }
-
-  /* ---------- logo system ---------- */
+  .card { background: var(--white); border-radius: 18px; padding: 26px; }
+  .caption { margin-top: 14px; font-size: 13px; opacity: 0.72; }
+  .caption b { color: var(--pine); opacity: 1; }
+  .stage { border-radius: 14px; overflow: hidden; }
+  .stage svg { display: block; width: 100%; }
   .lockup { display: flex; align-items: center; justify-content: center; min-height: 150px; border-radius: 14px; }
-  .lockup .wm { font-family: "Schibsted Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.03em; }
-  .caption { margin-top: 14px; font-size: 13px; opacity: 0.7; }
 
-  .markonly {
-    width: 84px; height: 84px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-  .markonly .inner { width: 26px; height: 26px; border-radius: 50%; }
+  .ratio { display: flex; border-radius: 14px; overflow: hidden; height: 88px; margin-top: 26px; }
+  .ratio > div { display: flex; align-items: flex-end; padding: 12px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; }
+  .ratio-note { margin-top: 14px; font-size: 14px; max-width: 62ch; }
+  .ratio-note b { color: var(--pine); }
 
-  /* clearspace demo */
-  .clearspace { position: relative; display: inline-block; padding: 34px; border: 1px dashed rgba(15,76,66,0.35); border-radius: 8px; }
-
-  /* ---------- color system ---------- */
-  .roles { display: grid; gap: 14px; }
-  .role { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: stretch; border-radius: 14px; overflow: hidden; background: var(--white); }
-  .role .chip { min-height: 92px; }
-  .role .txt { padding: 16px 20px 16px 0; }
+  .roles { display: grid; gap: 14px; margin-top: 22px; }
+  .role { display: grid; grid-template-columns: 110px 1fr; gap: 18px; border-radius: 14px; overflow: hidden; background: var(--white); }
+  .role .chip { min-height: 86px; }
+  .role .txt { padding: 14px 20px 14px 0; }
   .role .txt .nm { font-weight: 600; font-size: 15px; color: var(--pine); }
-  .role .txt .hx { font-size: 12px; opacity: 0.6; letter-spacing: 0.03em; }
-  .role .txt .use { font-size: 14px; margin-top: 6px; }
+  .role .txt .use { font-size: 14px; margin-top: 4px; }
 
-  /* ---------- type system ---------- */
-  .typerow { display: grid; grid-template-columns: 150px 1fr; gap: 22px; padding: 22px 0; border-top: 1px solid var(--mist); align-items: baseline; }
-  .typerow:first-of-type { border-top: none; }
-  .typerow .tl { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; opacity: 0.55; }
+  .typecard { background: var(--white); border-radius: 18px; padding: 30px; margin-top: 26px; }
+  .trow { display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 20px 0; border-top: 1px solid var(--mist); align-items: baseline; }
+  .trow:first-child { border-top: none; padding-top: 0; }
+  .trow .tl { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; opacity: 0.5; }
 
-  /* ---------- voice ---------- */
-  .voice-pair { display: grid; gap: 18px; }
+  .voice-pair { display: grid; gap: 18px; margin-top: 26px; }
   @media (min-width: 720px) { .voice-pair { grid-template-columns: 1fr 1fr; } }
   .vcard { border-radius: 16px; padding: 26px; }
   .vcard.no { background: #F4E9EE; color: #6B2039; }
@@ -174,100 +249,123 @@
   .vcard .vt { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; opacity: 0.8; }
   .vcard p { font-size: 16px; line-height: 1.5; }
 
-  /* ---------- applied moments ---------- */
-  .moments { display: grid; gap: 24px; }
-  @media (min-width: 900px) { .moments { grid-template-columns: 1fr 1fr; } }
+  .close { background: var(--pine); border-radius: 26px; color: var(--paper); padding: clamp(36px,5.5vw,60px); margin: 60px 0 100px; position: relative; overflow: hidden; }
+  .close h2 { font-size: clamp(26px,3.8vw,42px); letter-spacing: -0.01em; line-height: 1.08; max-width: 22ch; position: relative; z-index: 1; }
+  .close h2 em { color: var(--mint); font-style: italic; }
+  .close p { margin-top: 18px; font-size: 15px; color: #BFE9D8; max-width: 60ch; position: relative; z-index: 1; }
+  .close b { color: #fff; }
 
-  .phone {
-    background: var(--pine); border-radius: 30px; padding: 22px;
-    max-width: 360px; margin: 0 auto;
-  }
-  .stamp { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #D8F5EA; }
-  .stamp .dot { width: 15px; height: 15px; border-radius: 50%; background: var(--mint); animation: breathe 3.4s ease-in-out infinite; }
-  .bubble { border-radius: 18px 18px 18px 6px; padding: 15px 17px; font-size: 15px; line-height: 1.45; max-width: 90%; background: #E6F7EF; color: var(--pine-ink); }
-  .bubble.you { border-radius: 18px 18px 6px 18px; margin-left: auto; background: var(--lilac); color: var(--plum); margin-top: 12px; }
-  .bubble + .bubble { margin-top: 12px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .chip-btn {
-    background: transparent; border: 1.5px solid var(--mint);
-    color: var(--mint); border-radius: 100px; padding: 8px 16px;
-    font-family: "Inter Tight", sans-serif; font-size: 14px; font-weight: 500;
-  }
-
-  .summary-card { background: var(--white); border-radius: 22px; padding: 30px; max-width: 420px; margin: 0 auto; }
-  .summary-card .stitle { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--pine); opacity: 0.6; }
-  .summary-card h4 { font-size: 22px; margin: 10px 0 16px; letter-spacing: -0.01em; color: var(--pine); }
+  /* ---------- summary card ---------- */
+  .summary-card { background: var(--white); border-radius: 22px; padding: 28px; max-width: 420px; margin: 0 auto; border: 1px solid var(--mist); }
+  .summary-card .stitle { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--pine); opacity: 0.6; }
+  .summary-card h4 { font-size: 24px; margin: 10px 0 16px; letter-spacing: -0.01em; color: var(--pine); }
   .sline { display: flex; gap: 12px; padding: 13px 0; border-top: 1px solid var(--mist); font-size: 15px; }
   .sline .k { opacity: 0.55; min-width: 92px; font-weight: 500; }
-  .pill-row { margin-top: 18px; display: flex; gap: 10px; }
+  .pill-row { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
   .pill { border-radius: 100px; padding: 10px 18px; font-size: 14px; font-weight: 600; }
   .pill.primary { background: var(--pine); color: var(--paper); }
   .pill.ghost { border: 1.5px solid var(--pine); color: var(--pine); }
 
-  /* letter */
-  .letter { background: var(--white); border-radius: 22px; padding: 34px; max-width: 440px; margin: 0 auto; }
-  .letter .lmark { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
-  .letter .lmark .d { width: 14px; height: 14px; border-radius: 50%; background: var(--pink); }
-  .letter .lmark .n { font-family: "Schibsted Grotesk", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: var(--pine); }
-  .letter p { font-size: 15px; margin-bottom: 14px; }
-  .letter .sig { margin-top: 20px; font-size: 15px; font-weight: 600; color: var(--pine); }
-
-  /* icon wall */
-  .iconwall { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; padding: 10px 0; }
-  .ai { border-radius: 22%; width: 92px; height: 92px; display: flex; align-items: center; justify-content: center; }
-  .ai .d { width: 28px; height: 28px; border-radius: 50%; }
-
-  /* tagline close */
-  .close {
-    background: var(--pine); border-radius: 26px; color: var(--paper);
-    padding: clamp(40px, 6vw, 70px); text-align: left; margin-bottom: 100px;
-    position: relative; overflow: hidden;
+  /* ---------- screens ---------- */
+  .screen {
+    background: var(--pine-deep); border-radius: 26px; padding: 20px;
+    width: min(340px, 100%); margin: 0 auto;
   }
-  .close h2 { font-size: clamp(30px, 4.6vw, 52px); letter-spacing: -0.02em; line-height: 1.05; max-width: 18ch; position: relative; z-index: 1; }
-  .close h2 .hl { color: var(--mint); }
-  .close .next { margin-top: 30px; font-size: 15px; color: #BFE9D8; max-width: 52ch; position: relative; z-index: 1; }
-  .close .next b { color: var(--white); }
-
-  @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-  @keyframes breathe-c { 0%,100% { transform: translateX(-50%) scale(1);} 50% { transform: translateX(-50%) scale(1.1);} }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
-
-  .fade { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
+  .screen.light { background: var(--paper); border: 1px solid var(--mist); }
+  .pstamp { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-size: 12.5px; font-weight: 600; color: #D8F5EA; }
+  .pstamp .pdot { width: 13px; height: 13px; border-radius: 50%; background: var(--pink); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  .pbubble { border-radius: 16px 16px 16px 5px; padding: 12px 14px; font-size: 13.5px; line-height: 1.45; max-width: 92%; background: #E6F7EF; color: var(--pine-ink); }
+  .pbubble.you { border-radius: 16px 16px 5px 16px; margin-left: auto; background: var(--lilac); color: var(--plum); }
+  .pbubble + .pbubble, .pbubble + .schips, .schips + .pbubble { margin-top: 10px; }
+  .schips { display: grid; gap: 7px; }
+  .schip {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(237,251,244,0.06); border: 1.5px solid rgba(111,227,187,0.5);
+    color: #D8F5EA; border-radius: 14px; padding: 9px 12px; font-size: 13px; font-weight: 500;
+  }
+  .schip .sb {
+    width: 22px; height: 22px; border-radius: 7px; flex: none;
+    background: rgba(237,251,244,0.12); color: var(--mint);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600;
+  }
+  .schip.sel { background: var(--mint); border-color: var(--mint); color: var(--pine); }
+  .schip.sel .sb { background: var(--pine); color: var(--mint); }
+  .mchip {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid var(--mint); color: var(--mint);
+    border-radius: 100px; padding: 8px 14px; font-size: 13px; font-weight: 500;
+  }
+  .mchip .box { width: 16px; height: 16px; border-radius: 5px; border: 1.5px solid var(--mint); flex: none; display: inline-flex; align-items: center; justify-content: center; }
+  .mchip.sel { background: var(--mint); color: var(--pine); }
+  .mchip.sel .box { border-color: var(--pine); background: var(--pine); color: var(--mint); font-size: 10px; }
+  .pausebar { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(237,251,244,0.14); }
+  .pausebar .plabel { font-size: 11px; color: rgba(237,251,244,0.5); letter-spacing: 0.06em; }
+  .pausebar .plink { font-size: 12px; color: var(--mint); font-weight: 600; }
+  .pprog { margin-top: 14px; }
+  .pprog .ptxt { display: flex; justify-content: space-between; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(237,251,244,0.55); font-weight: 600; margin-bottom: 6px; }
+  .pprog .ptrack { height: 5px; border-radius: 100px; background: rgba(237,251,244,0.12); overflow: hidden; }
+  .pprog .pfill { height: 100%; border-radius: 100px; background: var(--mint); }
+  .wait { text-align: center; padding: 26px 10px 18px; }
+  .wait .wavatar { position: relative; width: 84px; height: 84px; margin: 0 auto 18px; }
+  .wait .wavatar .ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--pink); opacity: 0.5; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  .wait h4 { font-size: 21px; color: var(--pine); margin-bottom: 6px; }
+  .wait .wsub { font-size: 13px; color: #3E5F57; max-width: 26ch; margin: 0 auto 20px; }
+  .wsteps { text-align: left; display: grid; gap: 9px; max-width: 240px; margin: 0 auto; }
+  .wstep { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--pine-ink); }
+  .wstep .wnum { width: 24px; height: 24px; border-radius: 50%; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+  .wstep.done .wnum { background: var(--mint); color: var(--pine); }
+  .wstep.now .wnum { background: var(--pink); color: #56142B; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  .wstep.todo { opacity: 0.45; }
+  .wstep.todo .wnum { border: 1.5px solid var(--mist); color: var(--pine); }
+  .outrow { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+  .outpill { border-radius: 100px; padding: 8px 15px; font-size: 12.5px; font-weight: 600; background: var(--white); color: var(--pine); border: 1.5px solid var(--mist); }
+  .outpill.hot { background: var(--pine); color: var(--paper); border-color: var(--pine); }
+  .soap { background: var(--white); border-radius: 22px; border: 1px solid var(--mist); padding: 24px; max-width: 440px; margin: 0 auto; }
+  .soap .shd { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .soap .shd .stitle2 { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--pine); opacity: 0.65; }
+  .soap pre {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 11.5px; line-height: 1.65; color: var(--pine-ink);
+    background: var(--paper); border: 1px solid var(--mist); border-radius: 12px;
+    padding: 16px; overflow-x: auto; white-space: pre-wrap;
+  }
+  .soap .sfoot { display: flex; gap: 10px; margin-top: 14px; align-items: center; }
+  .soap .sfoot .sbtn { background: var(--pine); color: var(--paper); border-radius: 100px; padding: 9px 18px; font-size: 13px; font-weight: 600; }
+  .soap .sfoot .snote { font-size: 11.5px; opacity: 0.6; }
 
   /* ---------- mobile ---------- */
+  @media (max-width: 700px) {
+    .frame .t { font-size: clamp(30px, 8.5vw, 44px); }
+  }
   @media (max-width: 640px) {
     .wrap { padding: 0 18px; }
     section { margin: 48px 0; }
     .card { padding: 22px; }
-
-    /* color roles: tighter chip column so labels keep room */
     .role { grid-template-columns: 84px 1fr; }
     .role .txt { padding-right: 4px; }
-
-    /* type rows: stack the label above its example */
-    .typerow { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
-
-    /* applied-moment mockups fill the card instead of overflowing it */
-    .phone, .summary-card, .letter { max-width: 100%; }
-    .summary-card, .letter { padding: 24px; }
-
-    /* gate scales down on small screens */
-    .gate { padding: 22px; }
-    .gate-wm { font-size: 38px; }
+    .trow { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
     .gate-row { flex-wrap: wrap; }
     .gate-input { flex-basis: 100%; }
     .gate-btn { flex: 1; }
+    #soundbtn { bottom: 84px; right: 50%; transform: translateX(50%); }
   }
 </style>
 </head>
 <body class="gated">
 
   <!-- ============ GATE ============ -->
-  <div class="gate" id="gate">
+  <div id="gate">
+    <svg class="gshape" viewBox="0 0 300 260">
+      <defs><mask id="gm"><rect width="300" height="260" fill="#fff"/><circle cx="216" cy="84" r="92" fill="#000"/></mask></defs>
+      <rect width="300" height="260" rx="84" fill="#6FE3BB" mask="url(#gm)"/>
+      <circle cx="216" cy="84" r="34" fill="#F79CB4"/>
+    </svg>
     <div class="gate-box">
-      <div class="gate-wm">r<span class="wm-i"><span class="comp"></span>&#305;</span>dley</div>
-      <p class="gate-sub">Enter the access code to continue</p>
+      <span class="wm">
+        <span class="L" style="animation-delay:0.15s">r</span><span class="i"><span class="dot"></span><span class="L" style="animation-delay:0.3s">&#305;</span></span><span class="L" style="animation-delay:0.45s">d</span><span class="L" style="animation-delay:0.6s">l</span><span class="L" style="animation-delay:0.75s">e</span><span class="L" style="animation-delay:0.9s">y</span>
+      </span>
+      <p class="gate-sub">A companion, introduced. Enter the access code to continue.</p>
       <div class="gate-row">
         <input class="gate-input" id="gate-input" type="password" placeholder="Access code" autocomplete="off">
         <button class="gate-btn" id="gate-btn">Enter</button>
@@ -278,109 +376,364 @@
 
   <div id="page" hidden>
 
-  <!-- ============ HERO ============ -->
-  <div class="hero fade">
-    <svg class="blob" style="right:-140px; top:-120px; width:520px; opacity:0.35" viewBox="0 0 200 200"><path fill="#6FE3BB" d="M46,-64C58,-53,64,-36,68,-19C72,-2,74,15,68,29C61,43,46,54,30,61C14,68,-4,71,-21,66C-38,62,-54,51,-63,36C-72,20,-73,1,-68,-16C-62,-33,-50,-48,-36,-59C-21,-70,-4,-77,12,-76C29,-74,34,-74,46,-64Z" transform="translate(100 100)"/></svg>
-    <svg class="blob" style="left:-160px; bottom:-140px; width:480px; opacity:0.28" viewBox="0 0 200 200"><path fill="#C77BEB" d="M39,-54C52,-46,64,-36,69,-23C74,-9,72,7,66,22C59,36,48,48,34,57C21,66,5,71,-12,70C-29,68,-46,60,-56,46C-66,32,-69,13,-67,-5C-64,-24,-56,-41,-44,-50C-31,-59,-15,-59,-1,-58C14,-56,26,-62,39,-54Z" transform="translate(100 100)"/></svg>
-    <div class="wrap">
-      <div class="kick">Ridley &middot; Identity v1 &middot; Direction B, Fresh Clarity</div>
-      <div class="wordmark-hero">r<span class="wm-i"><span class="comp"></span><span class="dotless">&#305;</span></span>dley</div>
-      <p class="strap">The dot on the i is <b>the companion</b>. It is the only place the wordmark breaks pattern, and it is the whole brand in one gesture: a bright point of presence, always beside the patient.</p>
+  <!-- ============ FILM ============ -->
+  <div id="film">
+    <div id="progress"><div class="fill"></div></div>
+
+    <!-- F0 : ARRIVAL -->
+    <div class="frame" id="f0" data-hold="6500">
+      <div style="display:flex; align-items:center; justify-content:center; height:100%;">
+        <span class="wm">
+          <span class="L" style="animation-delay:0.15s">r</span><span class="i"><span class="dot"></span><span class="L" style="animation-delay:0.3s">&#305;</span></span><span class="L" style="animation-delay:0.45s">d</span><span class="L" style="animation-delay:0.6s">l</span><span class="L" style="animation-delay:0.75s">e</span><span class="L" style="animation-delay:0.9s">y</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- F1 : THE PATHWAY -->
+    <div class="frame" id="f1" data-hold="11000">
+      <div class="art">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <path d="M -60 560 C 160 560, 240 300, 400 300 C 560 300, 600 460, 760 460 C 920 460, 960 200, 1140 210 C 1220 214, 1260 214, 1300 210"
+                fill="none" stroke="#0B3B33" stroke-width="34" stroke-linecap="round" opacity="0.55"/>
+          <path d="M -60 560 C 160 560, 240 300, 400 300 C 560 300, 600 460, 760 460 C 920 460, 960 200, 1140 210 C 1220 214, 1260 214, 1300 210"
+                fill="none" stroke="#6FE3BB" stroke-width="14" stroke-linecap="round"
+                stroke-dasharray="1700" stroke-dashoffset="1700">
+            <animate id="trailDraw" attributeName="stroke-dashoffset" from="1700" to="0" dur="7.5s" begin="indefinite" fill="freeze"/>
+          </path>
+          <circle cx="400" cy="300" r="9" fill="#EDFBF4"/>
+          <circle cx="760" cy="460" r="9" fill="#EDFBF4"/>
+          <circle cx="1140" cy="210" r="9" fill="#EDFBF4"/>
+          <text x="400" y="266" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">your symptoms, heard</text>
+          <text x="760" y="502" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the conversation</text>
+          <text x="1140" y="176" fill="#BFE9D4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the right care</text>
+          <circle r="16" fill="#F79CB4">
+            <animateMotion id="walk" dur="7.5s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.37 0 0.63 1" keyPoints="0;1" keyTimes="0;1"
+              path="M -60 560 C 160 560, 240 300, 400 300 C 560 300, 600 460, 760 460 C 920 460, 960 200, 1140 210 C 1220 214, 1260 214, 1300 210"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="words">
+        <div class="t">The right care starts with the right questions.</div>
+        <div class="s">Not a waiting list. A conversation that starts moving you toward the care you need.</div>
+      </div>
+    </div>
+
+    <!-- F2 : INTRODUCING -->
+    <div class="frame" id="f2" data-hold="7500">
+      <div class="words">
+        <div class="s" style="transition-delay:0.3s; letter-spacing:0.26em; text-transform:uppercase; font-size:13px; color:var(--mint); font-weight:600;">Introducing</div>
+        <div class="t" style="max-width:none; transition-delay:0.6s;">
+          <span class="wm breathe">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
+        </div>
+        <div class="s serif" style="font-style:italic; color:var(--mint); font-size:clamp(17px,2.4vw,24px); transition-delay:1.2s;">Better triage. Better experiences. For patients, and the doctors who care for them.</div>
+      </div>
+    </div>
+
+    <!-- F3 : THE QUESTIONS -->
+    <div class="frame" id="f3" data-hold="9000">
+      <div class="words">
+        <div class="t">Your clinic's questions. Word for word.</div>
+        <div class="s">Written and approved by Dr. Fleshner's team. Delivered exactly as written, never improvised.</div>
+        <div class="bigchips">
+          <span class="bigchip">Not at all</span>
+          <span class="bigchip">Less than half the time</span>
+          <span class="bigchip">About half the time</span>
+          <span class="bigchip">More than half</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- F4 : THE OUTCOME -->
+    <div class="frame" id="f4" data-hold="9000">
+      <div class="art">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <text x="870" y="470" fill="#6FE3BB" font-family="Fraunces" font-size="330" text-anchor="middle" letter-spacing="-8" opacity="0.92">18</text>
+          <text x="870" y="530" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="4">IPSS &middot; SCORED, STRUCTURED, ROUTED</text>
+        </svg>
+      </div>
+      <div class="words">
+        <div class="t">Human conversation. Clinical outcomes.</div>
+        <div class="s">Every consultation ends somewhere real: referral, prescription pathway, reassurance, or urgent escalation. With a note the clinic can act on.</div>
+      </div>
+    </div>
+
+    <!-- F5 : THE SUMMARY -->
+    <div class="frame" id="f5" data-hold="8500">
+      <div class="words">
+        <div class="t serif">Here is what your doctor found.</div>
+        <div class="s">Every visit ends in plain language. What it means, what happens next, what to watch for.</div>
+      </div>
+    </div>
+
+    <!-- F6 : THE PERSONALITY -->
+    <div class="frame" id="f6" data-hold="9000">
+      <div class="art">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <circle class="pulse" cx="850" cy="330" r="140" fill="#F79CB4"/>
+        </svg>
+      </div>
+      <div class="words">
+        <div class="t">Human on the outside. Deterministic underneath.</div>
+        <div class="s">The warmth is real, and so are the rails. The dot breathes at the rate of calm, five seconds, in and out.</div>
+      </div>
+    </div>
+
+    <!-- F7 : THE CONVERSATION -->
+    <div class="frame" id="f7" data-hold="12000">
+      <div class="words" style="display:grid; gap:40px; grid-template-columns:1fr; align-items:center;">
+        <div>
+          <div class="t" style="font-size:clamp(28px,4.6vw,56px);">A conversation, not a form.</div>
+          <div class="s">Tap to answer. Two minutes. Done from the couch.</div>
+        </div>
+        <div class="filmphone" id="chatdemo">
+          <div class="stamp"><span class="sdot"></span> Ridley</div>
+          <div class="fbubble">Hi Margaret. I'd like to understand what's been going on, so we can get you to the right care. A few short questions.</div>
+          <div class="fbubble you">ok go ahead</div>
+          <div class="fbubble">Over the past month, how often have you had a sensation of not emptying your bladder completely?</div>
+          <div class="fbubble">Thank you. Your answers go to Dr. Fleshner's team exactly as you gave them. Nothing is guessed.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- F8 : THE TRUST MODEL -->
+    <div class="frame" id="f8" data-hold="9000">
+      <div class="words">
+        <div class="t">The warmth is the brand's. The medicine is the clinic's.</div>
+        <div class="s">No invented questions. Deterministic routing on clinician-approved logic. Locked clinical wording. Ridley never diagnoses, never improvises. That split is the trust model.</div>
+      </div>
+    </div>
+
+    <!-- F9 : TOMORROW -->
+    <div class="frame" id="f9" data-hold="10000">
+      <div class="art">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <path d="M -60 520 C 180 520, 260 280, 440 280 C 620 280, 660 440, 840 420 C 1020 400, 1080 220, 1300 200"
+                fill="none" stroke="#0F4C42" stroke-width="34" stroke-linecap="round" opacity="0.8"/>
+          <path d="M -60 520 C 180 520, 260 280, 440 280 C 620 280, 660 440, 840 420 C 1020 400, 1080 220, 1300 200"
+                fill="none" stroke="#6FE3BB" stroke-width="14" stroke-linecap="round"
+                stroke-dasharray="1700" stroke-dashoffset="1700">
+            <animate id="vtrailDraw" attributeName="stroke-dashoffset" from="1700" to="0" dur="8s" begin="indefinite" fill="freeze"/>
+          </path>
+          <circle cx="180" cy="497" r="10" fill="#F79CB4" class="pulse"/>
+          <circle cx="440" cy="280" r="9" fill="#EDFBF4"/>
+          <circle cx="840" cy="420" r="9" fill="#EDFBF4"/>
+          <circle cx="1140" cy="238" r="9" fill="#EDFBF4"/>
+          <text x="180" y="560" fill="#F79CB4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
+          <text x="440" y="246" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">between visits</text>
+          <text x="840" y="464" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">meds &middot; booking</text>
+          <text x="1140" y="204" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">beyond urology</text>
+        </svg>
+      </div>
+      <div class="words">
+        <div class="t">Today, triage. <em>Tomorrow, the in between.</em></div>
+        <div class="s">Check-ins, medications in plain language, booking without the phone tree. The same companion, when we get there.</div>
+      </div>
+    </div>
+
+    <!-- F10 : CLOSE -->
+    <div class="frame" id="f10" data-hold="12000">
+      <div class="words">
+        <div class="t serif">Understand what is happening. <em>Know what is next.</em></div>
+        <span class="wm breathe">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
+        <div class="s" style="letter-spacing:0.2em; text-transform:uppercase; font-size:11.5px; color:#6FA79A; font-weight:600; max-width:none;">With Dr. Fleshner &middot; Toronto</div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div id="zoneL" title="Back"></div>
+    <div id="zoneR" title="Next"></div>
+
+    <div id="hud">
+      <button class="hbtn" id="prevBtn" aria-label="Previous">
+        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M9.5 2 L4.5 7 L9.5 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="hbtn" id="playBtn" aria-label="Pause">
+        <svg id="pauseIcon" width="13" height="13" viewBox="0 0 13 13"><path d="M3.5 2 v9 M9.5 2 v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg id="playIcon" width="13" height="13" viewBox="0 0 13 13" style="display:none"><path d="M3 1.8 L11 6.5 L3 11.2 Z" fill="currentColor"/></svg>
+      </button>
+      <button class="hbtn" id="nextBtn" aria-label="Next">
+        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M4.5 2 L9.5 7 L4.5 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span id="counter">1 / 11</span>
+    </div>
+
+    <button id="soundbtn"><span class="sd"></span><span id="soundlbl">Sound</span></button>
+
+    <div id="scrollcue">
+      <span>Scroll to explore the brand</span>
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 6 L8 11 L13 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
   </div>
 
   <div class="wrap">
 
-    <!-- ============ LOGO SYSTEM ============ -->
-    <section class="fade">
+    <!-- ============ BRAND : THE COMPANION ============ -->
+    <section>
+      <div class="kicker">The brand</div>
+      <div class="shead">
+        <h2>The companion is the dot on the i</h2>
+        <p>It is the only place the wordmark breaks pattern, and it is the whole brand in one gesture: a bright point of presence, always beside the patient. It breathes at a resting rate, five seconds per cycle. Wherever the dot appears, it means the same thing: Ridley is with you.</p>
+      </div>
+      <div class="card" style="margin-top:26px; display:flex; gap:36px; align-items:center; flex-wrap:wrap;">
+        <span style="position:relative; font-family:'Fraunces',serif; font-variation-settings:'opsz' 144; font-weight:430; font-size:124px; line-height:0.8; color:var(--pine); display:inline-block; padding-top:44px;">
+          <span style="position:absolute; top:12px; left:50%; transform:translateX(-50%); width:21px; height:21px; border-radius:50%; background:var(--pink); animation:breath 5s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin:center;">&#8203;</span>&#305;</span>
+        <span style="font-size:15px; max-width:44ch;">
+          <b style="color:var(--pine)">One gesture, everywhere.</b> In the name, on a shape, on the journey line, in the app icon. The companion is never decoration; it marks where Ridley is. Scarcity is what makes it land.
+        </span>
+      </div>
+    </section>
+
+    <!-- ============ BRAND : LOGO SYSTEM ============ -->
+    <section>
       <div class="shead">
         <h2>The logo system</h2>
-        <p>One wordmark, one mark, four sanctioned colourways. The pink companion is constant wherever the wordmark sits on pine or white; on mint surfaces it deepens to pine so it never fights the background.</p>
+        <p>Wordmark in Fraunces at the display end of its optical axis. Pink companion on pine and white; pine companion on mint, so it stays the darkest point in the name.</p>
       </div>
       <div class="grid g2">
         <div class="card">
           <div class="lbl">Primary &middot; on pine</div>
-          <div class="lockup" style="background: var(--pine);">
-            <span class="wm" style="font-size:52px; color:#fff;">r<span class="wm-i" style="position:relative"><span class="comp" style="position:absolute;left:50%;transform:translateX(-50%);top:0.045em;width:0.155em;height:0.155em;border-radius:50%;background:var(--pink)"></span>&#305;</span>dley</span>
+          <div class="lockup" style="background:var(--pine)">
+            <span class="wm breathe" style="font-size:50px;color:#fff;">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
           </div>
           <div class="caption">The lead lockup. White wordmark, pink companion, deep pine field.</div>
         </div>
         <div class="card">
           <div class="lbl">Secondary &middot; on white</div>
-          <div class="lockup" style="background:#fff; border:1px solid var(--mist);">
-            <span class="wm" style="font-size:52px; color:var(--pine);">r<span class="wm-i" style="position:relative"><span style="position:absolute;left:50%;transform:translateX(-50%);top:0.045em;width:0.155em;height:0.155em;border-radius:50%;background:var(--pink)"></span>&#305;</span>dley</span>
+          <div class="lockup" style="background:#fff;border:1px solid var(--mist)">
+            <span class="wm" style="font-size:50px;color:var(--pine);">r<span class="i"><span class="dot"></span>&#305;</span>dley</span>
           </div>
           <div class="caption">Documents, email, anywhere print-clean.</div>
         </div>
         <div class="card">
           <div class="lbl">On mint</div>
-          <div class="lockup" style="background: var(--mint);">
-            <span class="wm" style="font-size:52px; color:var(--pine);">r<span class="wm-i" style="position:relative"><span style="position:absolute;left:50%;transform:translateX(-50%);top:0.045em;width:0.155em;height:0.155em;border-radius:50%;background:var(--pine)"></span>&#305;</span>dley</span>
+          <div class="lockup" style="background:var(--mint)">
+            <span class="wm" style="font-size:50px;color:var(--pine);">r<span class="i"><span class="dot" style="background:var(--pine)"></span>&#305;</span>dley</span>
           </div>
-          <div class="caption">Companion flips to pine so it stays the darkest point in the name.</div>
+          <div class="caption">Companion flips to pine so it never fights the background.</div>
         </div>
         <div class="card">
           <div class="lbl">The mark alone</div>
-          <div class="lockup" style="background:#fff; border:1px solid var(--mist); gap:26px;">
-            <span class="markonly" style="background:var(--pine)"><span class="inner" style="background:var(--mint)"></span></span>
-            <span class="markonly" style="background:var(--mint)"><span class="inner" style="background:var(--pine)"></span></span>
-            <span class="markonly" style="background:var(--pink)"><span class="inner" style="background:var(--plum)"></span></span>
+          <div class="lockup" style="background:#fff;border:1px solid var(--mist);gap:26px">
+            <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--pine)"><span style="width:24px;height:24px;border-radius:50%;background:var(--mint)"></span></span>
+            <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--mint)"><span style="width:24px;height:24px;border-radius:50%;background:var(--pine)"></span></span>
+            <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--pink)"><span style="width:24px;height:24px;border-radius:50%;background:var(--plum)"></span></span>
           </div>
-          <div class="caption">The companion in its circle: avatar, favicon, app tile, the pulsing "Ridley is here" indicator.</div>
+          <div class="caption">The companion in its circle: avatar, favicon, the pulsing "Ridley is here" indicator.</div>
         </div>
       </div>
     </section>
 
-    <!-- ============ COLOR SYSTEM ============ -->
-    <section class="fade">
+    <!-- ============ BRAND : BESIDE ============ -->
+    <section>
       <div class="shead">
-        <h2>Colour, with jobs</h2>
-        <p>Every colour has a role, so the palette stays vibrant without becoming noisy. Pine leads, mint breathes, pink is reserved for the companion and moments of warmth, lilac belongs to the patient.</p>
+        <h2>Beside: the shape language</h2>
+        <p>Every Ridley container makes room for the companion, by geometry, not by eye. Corner radius R, notch 1.1R, companion 0.4R, one shared center. The shape is never cut; it yields, and the companion stays quiet within it.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <div class="lbl">The core shape, with construction</div>
+          <div class="stage" style="background:var(--pine)">
+            <svg viewBox="0 0 320 240">
+              <defs><mask id="cs"><rect width="320" height="240" fill="#fff"/><circle cx="182" cy="92" r="59" fill="#000"/></mask></defs>
+              <rect x="56" y="38" width="180" height="150" rx="54" fill="#6FE3BB" mask="url(#cs)"/>
+              <circle cx="182" cy="92" r="59" fill="none" stroke="#EDFBF4" stroke-width="1" stroke-dasharray="3 5" opacity="0.3"/>
+              <circle class="pulse" cx="182" cy="92" r="22" fill="#F79CB4"/>
+            </svg>
+          </div>
+          <div class="caption"><b>One center, three circles.</b> The breathing room is even everywhere, and the companion never overpowers the moment it sits beside.</div>
+        </div>
+        <div class="card">
+          <div class="lbl">As a content card</div>
+          <div class="stage" style="background:var(--paper);border:1px solid var(--mist)">
+            <svg viewBox="0 0 320 240">
+              <defs><mask id="cc"><rect width="320" height="240" fill="#fff"/><circle cx="246" cy="74" r="48" fill="#000"/></mask></defs>
+              <rect x="30" y="30" width="260" height="180" rx="44" fill="#0F4C42" mask="url(#cc)"/>
+              <circle cx="246" cy="74" r="18" fill="#F79CB4"/>
+              <text x="62" y="120" fill="#EDFBF4" font-family="Fraunces" font-size="20">Your results,</text>
+              <text x="62" y="146" fill="#EDFBF4" font-family="Fraunces" font-size="20">explained simply</text>
+              <text x="62" y="182" fill="#6FE3BB" font-family="Inter Tight" font-size="10.5" letter-spacing="1.8">READ WITH RIDLEY</text>
+            </svg>
+          </div>
+          <div class="caption">Content lives in the shape; the companion holds the corner.</div>
+        </div>
+        <div class="card">
+          <div class="lbl">At the extremes: the app icon</div>
+          <div class="stage" style="background:var(--paper); border:1px solid var(--mist); display:flex; align-items:center; justify-content:center; padding:30px; gap:28px; flex-wrap:wrap; min-height:172px;">
+            <svg width="76" height="76" viewBox="0 0 76 76">
+              <defs><mask id="i1"><rect width="76" height="76" fill="#fff"/><circle cx="58" cy="18" r="20" fill="#000"/></mask></defs>
+              <rect width="76" height="76" rx="18" fill="#0F4C42" mask="url(#i1)"/>
+              <circle cx="58" cy="18" r="7.5" fill="#F79CB4"/>
+            </svg>
+            <svg width="40" height="40" viewBox="0 0 40 40">
+              <defs><mask id="i2"><rect width="40" height="40" fill="#fff"/><circle cx="29" cy="11" r="12.1" fill="#000"/></mask></defs>
+              <rect width="40" height="40" rx="11" fill="#0F4C42" mask="url(#i2)"/>
+              <circle cx="29" cy="11" r="5" fill="#F79CB4"/>
+            </svg>
+            <svg width="22" height="22" viewBox="0 0 22 22">
+              <defs><mask id="i3"><rect width="22" height="22" fill="#fff"/><circle cx="15.5" cy="6.5" r="7.2" fill="#000"/></mask></defs>
+              <rect width="22" height="22" rx="6.5" fill="#0F4C42" mask="url(#i3)"/>
+              <circle cx="15.5" cy="6.5" r="3.2" fill="#F79CB4"/>
+            </svg>
+          </div>
+          <div class="caption">Same geometry, three sizes, down to favicon. No letter needed; the notched tile is the signature.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRAND : COLOUR ============ -->
+    <section>
+      <div class="shead">
+        <h2>Colour: roles, then the law</h2>
+        <p>Every colour has a job, and every surface has a ratio. Both rules together are what keep a vibrant palette calm.</p>
       </div>
       <div class="roles">
-        <div class="role"><div class="chip" style="background:var(--pine)"></div><div class="txt" style="padding-top:16px"><div class="nm">Deep pine</div><div class="hx">#0F4C42</div><div class="use">The brand's home. Headers, primary buttons, the chat surface. Trust lives here.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--mint)"></div><div class="txt" style="padding-top:16px"><div class="nm">Fresh mint</div><div class="hx">#6FE3BB</div><div class="use">Light, air, and progress. Backgrounds, highlights, positive states, Ridley's presence dot.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--pink)"></div><div class="txt" style="padding-top:16px"><div class="nm">Bright pink</div><div class="hx">#F79CB4</div><div class="use">The companion's colour. The dot on the i, moments of reassurance. Used sparingly so it always means warmth.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--lilac)"></div><div class="txt" style="padding-top:16px"><div class="nm">Lilac</div><div class="hx">#C77BEB</div><div class="use">The patient's colour. Their messages, their choices, their side of the conversation.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--paper); border-right:1px solid var(--mist)"></div><div class="txt" style="padding-top:16px"><div class="nm">Mint paper</div><div class="hx">#EDFBF4</div><div class="use">The default page. Never stark white, never cold.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--pine)"></div><div class="txt" style="padding-top:14px"><div class="nm">Deep pine &middot; #0F4C42</div><div class="use">The brand's home. Headers, primary buttons, the chat surface. Trust lives here.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--mint)"></div><div class="txt" style="padding-top:14px"><div class="nm">Fresh mint &middot; #6FE3BB</div><div class="use">Light, air, progress. Backgrounds, highlights, positive states.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--pink)"></div><div class="txt" style="padding-top:14px"><div class="nm">Bright pink &middot; #F79CB4</div><div class="use">The companion's colour, and only the companion's. Wherever it appears, Ridley is there.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--lilac)"></div><div class="txt" style="padding-top:14px"><div class="nm">Lilac &middot; #C77BEB</div><div class="use">The patient's colour. Their messages, their choices, their side of the conversation.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--paper);border-right:1px solid var(--mist)"></div><div class="txt" style="padding-top:14px"><div class="nm">Mint paper &middot; #EDFBF4</div><div class="use">The default page. Never stark white, never cold.</div></div></div>
       </div>
+      <div class="ratio">
+        <div style="flex:55; background:var(--paper); color:var(--pine-ink); border:1px solid var(--mist); border-right:none;">55 &middot; Mint paper</div>
+        <div style="flex:25; background:var(--pine); color:#D8F5EA;">25 &middot; Pine</div>
+        <div style="flex:12; background:var(--mint); color:var(--pine);">12 &middot; Mint</div>
+        <div style="flex:6; background:var(--lilac); color:var(--plum);">6 &middot; Lilac</div>
+        <div style="flex:2; background:var(--pink); color:#56142B; padding:12px 8px;">2</div>
+      </div>
+      <p class="ratio-note"><b>Pink is two percent.</b> Scarcity keeps the companion precious: the warmest colour appears exactly where Ridley is, and almost nowhere else.</p>
     </section>
 
-    <!-- ============ TYPE ============ -->
-    <section class="fade">
+    <!-- ============ BRAND : TYPE ============ -->
+    <section>
       <div class="shead">
         <h2>Type</h2>
-        <p>Two faces, four levels. Nothing decorative; the palette carries the personality, so the type stays honest and readable, especially for older patients and worried families reading on phones.</p>
+        <p>Fraunces for display, the drawn-by-hand quality at size; Inter Tight for body and interface, plain and highly legible for older patients reading on phones.</p>
       </div>
-      <div class="card">
-        <div class="typerow">
+      <div class="typecard">
+        <div class="trow">
           <div class="tl">Display</div>
-          <div class="disp" style="font-size:clamp(30px,4.4vw,46px);font-weight:700;letter-spacing:-0.02em;color:var(--pine);line-height:1.05">Here is what your doctor found.</div>
+          <div class="disp" style="font-size:clamp(28px,4.2vw,44px);color:var(--pine);line-height:1.06;letter-spacing:-0.01em;">Here is what your doctor found.</div>
         </div>
-        <div class="typerow">
+        <div class="trow">
           <div class="tl">Heading</div>
-          <div class="disp" style="font-size:24px;font-weight:600;color:var(--pine)">Your next appointment, explained</div>
+          <div class="disp" style="font-size:25px;color:var(--pine)">Your next appointment, explained</div>
         </div>
-        <div class="typerow">
+        <div class="trow">
           <div class="tl">Body</div>
           <div style="font-size:17px;max-width:52ch">Your symptoms point to an enlarged prostate, which is common and treatable. It is not cancer. Your doctor wants to try a medication first, and I will check in with you along the way.</div>
         </div>
-        <div class="typerow">
-          <div class="tl">Detail</div>
-          <div style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;opacity:0.6">Reviewed with Dr. Fleshner &middot; July 2026</div>
-        </div>
-        <div class="typerow" style="align-items:center">
-          <div class="tl">Faces</div>
-          <div style="font-size:14px;opacity:0.75">Schibsted Grotesk for display and headings &middot; Inter Tight for body and interface</div>
+        <div class="trow">
+          <div class="tl">Label</div>
+          <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;color:var(--pine);opacity:0.75">Reviewed with Dr. Fleshner &middot; July 2026</div>
         </div>
       </div>
     </section>
 
-    <!-- ============ VOICE ============ -->
-    <section class="fade">
+    <!-- ============ BRAND : VOICE ============ -->
+    <section>
       <div class="shead">
         <h2>Voice</h2>
-        <p>The visual identity promises calm clarity; the words have to keep that promise. Plain language, short sentences, the patient always addressed directly. Never clinical distance, never false cheer.</p>
+        <p>Plain language, short sentences, the patient addressed directly. Never clinical distance, never false cheer.</p>
       </div>
       <div class="voice-pair">
         <div class="vcard no">
@@ -394,71 +747,173 @@
       </div>
     </section>
 
-    <!-- ============ APPLIED ============ -->
-    <section class="fade">
+    <!-- ============ THE SCREENS ============ -->
+    <section>
+      <div class="kicker">The product</div>
       <div class="shead">
-        <h2>Ridley in the moments that matter</h2>
-        <p>Four touchpoints, one continuous companion: the conversation, the plain-language summary, the follow-up at home, and the presence on the phone itself.</p>
+        <h2>The screens: the brand at work</h2>
+        <p>The consultation that exists today, wearing its new name. Every question comes from a registry approved by Dr. Fleshner's team, every answer routes through deterministic branching, and every consultation ends in a clinical outcome with a note the clinic can act on. The warmth is Ridley's; the medicine never is.</p>
       </div>
-      <div class="moments">
+
+      <div class="grid g2">
         <div class="card">
-          <div class="lbl">The conversation</div>
-          <div class="phone">
-            <div class="stamp"><span class="dot"></span> Ridley</div>
-            <div class="bubble">Before your appointment on Thursday, I have three short questions from Dr. Fleshner. They take about two minutes.</div>
-            <div class="bubble you">ok go ahead</div>
-            <div class="bubble">Over the past month, how often have you had a sensation of not emptying your bladder completely after finishing?</div>
-            <div class="chips">
-              <span class="chip-btn">Not at all</span>
-              <span class="chip-btn">Less than half the time</span>
-              <span class="chip-btn">About half the time</span>
+          <div class="lbl">Arriving &middot; the waiting room</div>
+          <div class="screen light">
+            <div class="wait">
+              <div class="wavatar">
+                <span class="ring"></span>
+                <svg width="84" height="84" viewBox="0 0 84 84">
+                  <defs><mask id="wa"><rect width="84" height="84" fill="#fff"/><circle cx="63" cy="21" r="22" fill="#000"/></mask></defs>
+                  <rect width="84" height="84" rx="26" fill="#0F4C42" mask="url(#wa)"/>
+                  <circle cx="63" cy="21" r="8.5" fill="#F79CB4"/>
+                </svg>
+              </div>
+              <h4 class="disp">The virtual waiting room</h4>
+              <p class="wsub">Please hold. Your consultation will begin shortly.</p>
+              <div class="wsteps">
+                <div class="wstep done"><span class="wnum">&#10003;</span> Reviewing your chart</div>
+                <div class="wstep now"><span class="wnum">2</span> Preparing your questions</div>
+                <div class="wstep todo"><span class="wnum">3</span> Starting the conversation</div>
+              </div>
             </div>
           </div>
+          <div class="caption">The wait made honest: three steps, the companion breathing beside them. No spinners, no mystery.</div>
         </div>
 
         <div class="card">
-          <div class="lbl">The plain-language summary</div>
+          <div class="lbl">The consultation &middot; a scored question</div>
+          <div class="screen">
+            <div class="pstamp"><span class="pdot"></span> Ridley &middot; Virtual consultation</div>
+            <div class="pbubble">How often have you had the sensation of not emptying your bladder?</div>
+            <div class="schips" style="margin-top:10px">
+              <span class="schip"><span class="sb">a</span> Not at all</span>
+              <span class="schip"><span class="sb">b</span> Less than 1 in 5 times</span>
+              <span class="schip sel"><span class="sb">d</span> About half the time</span>
+              <span class="schip"><span class="sb">f</span> Almost always</span>
+            </div>
+            <div class="pausebar"><span class="plabel">TAP TO ANSWER</span><span class="plink">Need to pause?</span></div>
+            <div class="pprog">
+              <div class="ptxt"><span>Your consultation</span><span>Question 4 of 8</span></div>
+              <div class="ptrack"><div class="pfill" style="width:50%"></div></div>
+            </div>
+          </div>
+          <div class="caption"><b>The deterministic turn, visible.</b> On a chip question the free-text input steps aside: answers come from the registry's own options, worded by the clinic, scored as written. "Need to pause" stays one tap away.</div>
+        </div>
+
+        <div class="card">
+          <div class="lbl">The safety screen &middot; multi-select</div>
+          <div class="screen">
+            <div class="pstamp"><span class="pdot"></span> Ridley</div>
+            <div class="pbubble">Which one(s) have you been experiencing? You can pick more than one.</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+              <span class="mchip sel"><span class="box">&#10003;</span> Fever</span>
+              <span class="mchip"><span class="box"></span> Blood in urine</span>
+              <span class="mchip sel"><span class="box">&#10003;</span> Burning when I pee</span>
+              <span class="mchip"><span class="box"></span> Bad pain</span>
+            </div>
+            <div style="display:flex; justify-content:flex-end; margin-top:14px;">
+              <span style="background:var(--mint); color:var(--pine); border-radius:100px; padding:9px 20px; font-size:13px; font-weight:600;">Done (2)</span>
+            </div>
+          </div>
+          <div class="caption">Red flags get their own pattern: pick everything that applies, confirm once. Safety questions are never a single hurried tap.</div>
+        </div>
+
+        <div class="card">
+          <div class="lbl">The landing &middot; plain language</div>
           <div class="summary-card">
-            <div class="stitle">After your appointment</div>
-            <h4>Here is what your doctor found.</h4>
+            <div class="stitle">After your consultation</div>
+            <h4>Here is where we landed.</h4>
             <div class="sline"><span class="k">In short</span><span>Your symptoms point to an enlarged prostate, not cancer.</span></div>
-            <div class="sline"><span class="k">Next step</span><span>A medication to try for six weeks.</span></div>
+            <div class="sline"><span class="k">Next step</span><span>A medication to try, with a follow-up in six to eight weeks.</span></div>
             <div class="sline"><span class="k">Watch for</span><span>Trouble passing water. Message me if it happens.</span></div>
             <div class="pill-row">
               <span class="pill primary">Read the full note</span>
               <span class="pill ghost">Ask Ridley</span>
             </div>
           </div>
+          <div class="caption">Every consultation ends in plain language for the patient, on one screen, nothing hidden.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <div class="lbl">Every consultation ends somewhere real</div>
+        <p style="font-size:14.5px; max-width:60ch;">Deterministic branching drives each conversation to exactly one clinical outcome. Not AI judgment, registry logic:</p>
+        <div class="outrow">
+          <span class="outpill">Watchful waiting</span>
+          <span class="outpill hot">Medication pathway</span>
+          <span class="outpill">In-person referral</span>
+          <span class="outpill">Walk-in clinic</span>
+          <span class="outpill">Emergency escalation</span>
+        </div>
+      </div>
+
+      <div class="grid g2" style="align-items:start">
+        <div class="card">
+          <div class="lbl">For the clinician &middot; the SOAP note</div>
+          <div class="soap">
+            <div class="shd">
+              <svg width="26" height="26" viewBox="0 0 26 26">
+                <defs><mask id="sn"><rect width="26" height="26" fill="#fff"/><circle cx="19" cy="7" r="8" fill="#000"/></mask></defs>
+                <rect width="26" height="26" rx="8" fill="#0F4C42" mask="url(#sn)"/>
+                <circle cx="19" cy="7" r="3.4" fill="#F79CB4"/>
+              </svg>
+              <span class="stitle2">Consultation summary &middot; M. Whitfield &middot; MRN 40213</span>
+            </div>
+            <pre>CHIEF COMPLAINT
+Lower urinary tract symptoms, 4 months.
+
+HISTORY OF PRESENT ILLNESS
+IPSS 18 (moderate-severe). QoL: mostly
+dissatisfied. Nocturia x2. No hematuria,
+no fever, no retention.
+
+ASSESSMENT
+Symptoms consistent with BPH. No red
+flags elicited on safety screen.
+
+PLAN
+Outcome B: medication eligible.
+Follow up in 6-8 weeks; contact office
+if side effects.</pre>
+            <div class="sfoot">
+              <span class="sbtn">Send to physician</span>
+              <span class="snote">Reviewed before anything is actioned.</span>
+            </div>
+          </div>
+          <div class="caption">The clinician's half of the promise: structured, auditable, in the format their day already runs on.</div>
         </div>
 
         <div class="card">
-          <div class="lbl">The follow-up at home</div>
-          <div class="letter">
-            <div class="lmark"><span class="d"></span><span class="n">ridley</span></div>
-            <p>Hi Margaret, it has been two weeks since you started the new medication.</p>
-            <p>Most people notice a difference around now. How have things been for you? Tap below and I will pass anything important to Dr. Fleshner's team before your next visit.</p>
-            <div class="sig">Ridley, checking in</div>
+          <div class="lbl">Why this holds &middot; the three locks</div>
+          <div style="display:grid; gap:14px; margin-top:4px;">
+            <div style="background:var(--paper); border:1px solid var(--mist); border-radius:14px; padding:18px 20px;">
+              <div style="font-weight:600; color:var(--pine); font-size:15px;">01 &middot; No invented questions</div>
+              <div style="font-size:14px; margin-top:4px;">Ridley reads from a registry of clinically approved questions. It cannot invent new ones.</div>
+            </div>
+            <div style="background:var(--paper); border:1px solid var(--mist); border-radius:14px; padding:18px 20px;">
+              <div style="font-weight:600; color:var(--pine); font-size:15px;">02 &middot; Deterministic routing</div>
+              <div style="font-size:14px; margin-top:4px;">Outcomes are reached through registry-defined branching logic. Not AI judgment.</div>
+            </div>
+            <div style="background:var(--paper); border:1px solid var(--mist); border-radius:14px; padding:18px 20px;">
+              <div style="font-weight:600; color:var(--pine); font-size:15px;">03 &middot; Locked clinical wording</div>
+              <div style="font-size:14px; margin-top:4px;">Verbatim delivery of the clinic's approved phrasing. Ridley never paraphrases clinical content.</div>
+            </div>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="lbl">Presence on the phone</div>
-          <div class="iconwall">
-            <span class="ai" style="background:var(--mint)"><span class="d" style="background:var(--pine)"></span></span>
-            <span class="ai" style="background:var(--pine)"><span class="d" style="background:var(--mint)"></span></span>
-            <span class="ai" style="background:var(--pink)"><span class="d" style="background:var(--plum)"></span></span>
-          </div>
-          <div class="caption" style="text-align:center">The mark scales from favicon to app tile. Mint-and-pine is the default; pink is reserved for patient-facing surfaces where warmth leads.</div>
+          <div class="caption"><b>Three condition pathways live today:</b> BPH, erectile dysfunction, and microscopic hematuria. Each built on accepted instruments (IPSS, SHIM) and each ending in an outcome plus a SOAP note.</div>
         </div>
       </div>
     </section>
 
     <!-- ============ CLOSE ============ -->
-    <section class="close fade">
-      <svg style="position:absolute; right:-120px; bottom:-140px; width:460px; opacity:0.3" viewBox="0 0 200 200"><path fill="#F79CB4" d="M39,-54C52,-46,64,-36,69,-23C74,-9,72,7,66,22C59,36,48,48,34,57C21,66,5,71,-12,70C-29,68,-46,60,-56,46C-66,32,-69,13,-67,-5C-64,-24,-56,-41,-44,-50C-31,-59,-15,-59,-1,-58C14,-56,26,-62,39,-54Z" transform="translate(100 100)"/></svg>
-      <h2>Understand what is happening. <span class="hl">Know what is next.</span></h2>
-      <p class="next"><b>Where this goes from here:</b> confirm the wordmark direction and the companion behaviour, then the mark gets drawn as real vector artwork with proper optical corrections, and the system gets pressure-tested against Neil's two open questions, whether his clinical authority appears in the brand, and what equity his practice already carries.</p>
-    </section>
+    <div class="close">
+      <svg style="position:absolute; right:-50px; bottom:-70px; width:300px; opacity:0.22" viewBox="0 0 300 260">
+        <defs><mask id="clm"><rect width="300" height="260" fill="#fff"/><circle cx="216" cy="84" r="92" fill="#000"/></mask></defs>
+        <rect width="300" height="260" rx="84" fill="#6FE3BB" mask="url(#clm)"/>
+        <circle cx="216" cy="84" r="34" fill="#F79CB4"/>
+      </svg>
+      <h2>Understand what is happening. <em>Know what is next.</em></h2>
+      <p><b>Where this goes from here:</b> the brand is ready to pressure-test with Neil, the product is heading into resident pilots, and the two meet in the screens above. Better triage, better experiences, one companion.</p>
+    </div>
 
   </div>
 
@@ -467,18 +922,20 @@
   <script>
   (function () {
     var PASS = 'ridley2026';
-    var STORAGE_KEY = 'ridley_identity_auth_v1';
+    var STORAGE_KEY = 'ridley_auth_v2';
 
     var gate = document.getElementById('gate');
     var page = document.getElementById('page');
     var input = document.getElementById('gate-input');
     var btn = document.getElementById('gate-btn');
     var err = document.getElementById('gate-err');
+    var filmStarted = false;
 
     function unlock() {
       gate.remove();
       document.body.classList.remove('gated');
       page.hidden = false;
+      if (!filmStarted) { filmStarted = true; startFilm(); }
     }
 
     function attempt() {
@@ -501,6 +958,137 @@
         if (e.key === 'Enter') attempt();
       });
       input.focus();
+    }
+
+    // ---------- FILM ----------
+    function startFilm() {
+      var frames = Array.prototype.slice.call(document.querySelectorAll('#film .frame'));
+      var idx = 0, playing = true, holdTimer = null, tickTimer = null, holdStart = 0, holdLen = 0, holdElapsed = 0;
+
+      var fill = document.querySelector('#progress .fill');
+      var counter = document.getElementById('counter');
+      var playBtn = document.getElementById('playBtn');
+      var pauseIcon = document.getElementById('pauseIcon');
+      var playIcon = document.getElementById('playIcon');
+      var scrollcue = document.getElementById('scrollcue');
+
+      function frameAnimations(f) {
+        if (f.id === 'f1') {
+          setTimeout(function () {
+            try { document.getElementById('trailDraw').beginElement(); document.getElementById('walk').beginElement(); } catch (e) {}
+          }, 700);
+        }
+        if (f.id === 'f9') {
+          setTimeout(function () { try { document.getElementById('vtrailDraw').beginElement(); } catch (e) {} }, 700);
+        }
+        if (f.id === 'f7') {
+          var items = f.querySelectorAll('.fbubble');
+          items.forEach(function (el) { el.classList.remove('show'); });
+          items.forEach(function (el, i) { setTimeout(function () { el.classList.add('show'); }, 1200 + i * 1400); });
+        }
+        if (f.id === 'f10') { scrollcue.classList.add('show'); }
+      }
+
+      function show(n) {
+        idx = Math.max(0, Math.min(frames.length - 1, n));
+        frames.forEach(function (f, i) { f.classList.toggle('active', i === idx); });
+        counter.textContent = (idx + 1) + ' / ' + frames.length;
+        frameAnimations(frames[idx]);
+        scheduleHold();
+      }
+
+      function scheduleHold() {
+        clearTimeout(holdTimer); clearInterval(tickTimer);
+        holdLen = parseInt(frames[idx].dataset.hold || '8000', 10);
+        holdElapsed = 0; holdStart = Date.now();
+        fill.style.width = '0%';
+        if (!playing) return;
+        tickTimer = setInterval(function () {
+          var p = Math.min(1, (Date.now() - holdStart + holdElapsed) / holdLen);
+          fill.style.width = (p * 100) + '%';
+        }, 120);
+        holdTimer = setTimeout(function () {
+          if (idx < frames.length - 1) show(idx + 1);
+          else { playing = false; updatePlayUI(); clearInterval(tickTimer); fill.style.width = '100%'; }
+        }, holdLen);
+      }
+
+      function updatePlayUI() {
+        pauseIcon.style.display = playing ? 'block' : 'none';
+        playIcon.style.display = playing ? 'none' : 'block';
+      }
+
+      function togglePlay() {
+        playing = !playing;
+        updatePlayUI();
+        if (playing) { holdStart = Date.now(); resumeHold(); }
+        else { holdElapsed += Date.now() - holdStart; clearTimeout(holdTimer); clearInterval(tickTimer); }
+      }
+      function resumeHold() {
+        clearTimeout(holdTimer); clearInterval(tickTimer);
+        var remaining = Math.max(600, holdLen - holdElapsed);
+        tickTimer = setInterval(function () {
+          var p = Math.min(1, (Date.now() - holdStart + holdElapsed) / holdLen);
+          fill.style.width = (p * 100) + '%';
+        }, 120);
+        holdTimer = setTimeout(function () {
+          if (idx < frames.length - 1) show(idx + 1);
+          else { playing = false; updatePlayUI(); }
+        }, remaining);
+      }
+
+      document.getElementById('nextBtn').addEventListener('click', function () { show(idx + 1); });
+      document.getElementById('prevBtn').addEventListener('click', function () { show(idx - 1); });
+      document.getElementById('zoneR').addEventListener('click', function () { show(idx + 1); });
+      document.getElementById('zoneL').addEventListener('click', function () { show(idx - 1); });
+      playBtn.addEventListener('click', togglePlay);
+      window.addEventListener('keydown', function (e) {
+        if (e.target.tagName === 'INPUT') return;
+        if (e.key === 'ArrowRight') show(idx + 1);
+        if (e.key === 'ArrowLeft') show(idx - 1);
+        if (e.key === ' ' && window.scrollY < 40) { e.preventDefault(); togglePlay(); }
+      });
+      scrollcue.addEventListener('click', function () {
+        document.querySelector('.wrap').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      show(0);
+
+      // sound: warm breath
+      var audioCtx = null, master = null, breathingSnd = false, loopId = null;
+      var sbtn = document.getElementById('soundbtn');
+      var lbl = document.getElementById('soundlbl');
+
+      function breatheOnce() {
+        if (!audioCtx) return;
+        var now = audioCtx.currentTime;
+        [[220.0, 0.028], [277.18, 0.022], [329.63, 0.016], [440.0, 0.007]].forEach(function (pair) {
+          var o = audioCtx.createOscillator();
+          var g = audioCtx.createGain();
+          o.type = 'sine'; o.frequency.value = pair[0];
+          g.gain.setValueAtTime(0.0001, now);
+          g.gain.exponentialRampToValueAtTime(pair[1], now + 2.1);
+          g.gain.setValueAtTime(pair[1], now + 2.9);
+          g.gain.exponentialRampToValueAtTime(0.0001, now + 5.0);
+          o.connect(g); g.connect(master);
+          o.start(now); o.stop(now + 5.1);
+        });
+      }
+
+      sbtn.addEventListener('click', function () {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          master = audioCtx.createGain(); master.gain.value = 0.75;
+          master.connect(audioCtx.destination);
+        }
+        if (!breathingSnd) {
+          breathingSnd = true; sbtn.classList.add('on'); lbl.textContent = 'Breathing';
+          audioCtx.resume().then(function () { breatheOnce(); loopId = setInterval(breatheOnce, 5000); });
+        } else {
+          breathingSnd = false; sbtn.classList.remove('on'); lbl.textContent = 'Sound';
+          clearInterval(loopId);
+        }
+      });
     }
   })();
   </script>
