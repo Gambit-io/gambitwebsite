@@ -362,6 +362,15 @@
     min-height:calc(100dvh - 220px);
   }
   @media (max-width:760px){.coach-grid{grid-template-columns:1fr}}
+  /* full-screen chat: hide the module rail, let the conversation fill the pane */
+  .coach-grid.full{grid-template-columns:1fr}
+  .coach-grid.full .mod-rail{display:none}
+  .coach-exp{
+    flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:8px;
+    color:var(--muted);background:var(--surface);border:1px solid var(--border);
+    transition:color .15s,border-color .15s,background .15s;
+  }
+  .coach-exp:hover{color:var(--brand);border-color:var(--brand-border);background:var(--brand-soft)}
   .mod-rail{background:var(--brand);padding:18px 12px;display:flex;flex-direction:column;gap:2px}
   @media (max-width:760px){.mod-rail{flex-direction:row;overflow-x:auto;padding:12px}}
   .rail-title{font-family:'Sora';font-weight:600;font-size:15px;color:#fff;padding:2px 10px 14px}
@@ -1225,8 +1234,9 @@
         <div class="coach-main">
           <div class="coach-head">
             <span class="tg">TG</span>
-            <span><div class="cn2">Tammy</div><div class="cs2"><i></i> Your AI sales coach</div></span>
+            <span><div class="cn2">AskGillis</div><div class="cs2"><i></i> Coaching and open chat, in Tammy's voice</div></span>
             <span class="mode-tag" id="modeTag">Outreach Support</span>
+            <button class="coach-exp" id="coachExpBtn" onclick="toggleCoachFull(this)" title="Expand chat" aria-label="Expand chat"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></button>
           </div>
           <div class="coach-body"><div class="inner" id="coachBody"></div></div>
           <div class="coach-input-row"><div class="inner-row">
@@ -1252,9 +1262,9 @@
       <span class="tg-av">TG</span>
       <div class="cinfo">
         <div class="cname">Tammy</div>
-        <div class="cstatus"><i></i> Same conversation as Coaching</div>
+        <div class="cstatus"><i></i> Same conversation as AskGillis</div>
       </div>
-      <button class="hbtn" onclick="openCoaching()" title="Open full Coaching">
+      <button class="hbtn" onclick="openCoaching()" title="Open full AskGillis">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
       </button>
       <button class="hbtn" onclick="closeChat()" title="Close">
@@ -1373,23 +1383,20 @@ const TENANTS = {
     values:[
       {icon:ic.outbound, t:"Research", d:"Find and win new business"},
       {icon:ic.assess,   t:"Market Assessment", d:"A live read on any market"},
-      {icon:ic.coaching, t:"Coaching", d:"Tammy, in the moment"},
-      {icon:ic.chat,     t:"AskGillis", d:"Answers, anytime"},
+      {icon:ic.chat,     t:"AskGillis", d:"Coaching, training, and answers"},
     ],
     user:{name:"Ryan", role:"Creative Director", initials:"RY"},
     spaces:[
       {id:'research', label:'Research', icon:'search'},
       {id:'assess', label:'Market Assessment', icon:'chart'},
-      {id:'coaching', label:'Coaching', icon:'trend'},
-      {id:'chat', label:'AskGillis', icon:'bubble'},
+      {id:'coaching', label:'AskGillis', icon:'bubble'},
     ],
     pillars:[
       {space:"research", accent:"outbound", title:"Research", desc:"Backyard Search, signals, leads, and contacts. Find the demand within five miles of every hotel and reach out first.", icon:'search', meta:"84 live signals", live:true},
       {space:"assess", accent:"tools", title:"Dynamic Market Assessment", desc:"A live read on any market: what is driving demand, where the room nights come from, and the moves to make next.", icon:'chart', meta:"Refreshed live", live:true},
-      {space:"coaching", accent:"coaching", title:"Coaching", desc:"Tammy in the moment: outreach support, objection handling, role play, and the Daily Sharpener, built on Room to Grow.", icon:'trend', meta:"Always on", live:true},
-      {space:"chat", accent:"chat", title:"AskGillis", desc:"The open chat. Answers in Tammy's voice, on anything from a prospect to a policy, whenever you need a hand.", icon:'bubble', meta:"Always on", live:true},
+      {space:"coaching", accent:"coaching", title:"AskGillis", desc:"Coaching and open chat in one: outreach support, objection handling, role play, the Daily Sharpener, and answers in Tammy's voice, built on Room to Grow.", icon:'bubble', meta:"Always on", live:true},
     ],
-    greetSub:"Two doors, one platform. Research finds the business. Coaching helps you win it.",
+    greetSub:"Two doors, one platform. Research finds the business. AskGillis helps you win it.",
     chatGreeting:"Hi Ryan! I'm here whenever you need a hand. Ask me about a prospect, a play, or anything from the Gillis library.",
     chips:["They already have a preferred hotel","Sharpen my cold email","What's a good follow-up cadence?"],
   },
@@ -8494,6 +8501,16 @@ function ensureSpace(){
 function openCoaching(){
   closeChat();
   openWorkspace('coaching');
+}
+/* AskGillis: collapse the module rail so the conversation fills the screen */
+function toggleCoachFull(btn){
+  const grid = document.querySelector('#paneCoaching .coach-grid');
+  const full = grid.classList.toggle('full');
+  btn.title = full ? 'Show modules' : 'Expand chat';
+  btn.setAttribute('aria-label', btn.title);
+  btn.innerHTML = full
+    ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/></svg>`
+    : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>`;
 }
 
 /* ============================================================
