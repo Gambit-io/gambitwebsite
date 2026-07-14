@@ -8418,6 +8418,59 @@ function scriptedAnswer(text, curated){
   const a = curated || COACH_ANSWERS[text];
   return a ? answerHtml(a) : COACH_FALLBACK;
 }
+/* ============================================================
+   SCREEN CONTEXT: hand Tammy the live Research record on screen
+   (the selected company, its project signals, and its real
+   contacts) so she can draft outreach to a specific target.
+   ============================================================ */
+function ctxTrim(s, n){ s = String(s||'').replace(/\s+/g,' ').trim(); return s.length>n ? s.slice(0,n-1)+'…' : s; }
+function companyContextBlock(c){
+  if(!c) return '';
+  const L = [];
+  L.push(`Company: ${c.name}${c.industry?` (${c.industry}${c.size?', '+c.size:''})`:''}`);
+  const props = hotelsForCompany(c).map(h=>{const hh=hotelById(h);return hh?hh.name:null;}).filter(Boolean);
+  if(props.length) L.push(`Property in play: ${props.join(', ')}`);
+  if(c.fitReason) L.push(`Why it's a fit: ${ctxTrim(c.fitReason,320)}`);
+  if(c.decisionMaker) L.push(`Likely decision maker: ${ctxTrim(c.decisionMaker,160)}`);
+  if(c.projectStatus) L.push(`Project status: ${c.projectStatus}`);
+  const sigs = (c.signals||[]).map(signalById).filter(Boolean).slice(0,3);
+  if(sigs.length){
+    L.push('Project signals:');
+    sigs.forEach(sg=> L.push(` - ${sg.name} (${sg.cat}, ${prioLabel(sg.prio)}/${sg.confidence}). What: ${ctxTrim(sg.trigger,280)} Why now: ${ctxTrim(sg.why,200)}${sg.timing?` Timing: ${ctxTrim(sg.timing,120)}`:''}${sg.proximity?` Proximity: ${ctxTrim(sg.proximity,160)}`:''}`));
+  }
+  const cts = contactsForCompany(c.id);
+  if(cts.length){
+    L.push('Contacts on screen (real names, titles, verified emails):');
+    cts.slice(0,6).forEach(ct=>{
+      const flags = [];
+      if(ct.primary) flags.push('primary contact');
+      const d = ct.outreach && ct.outreach.status && ct.outreach.status!=='none' && ct.outreach.thread && ct.outreach.thread[0];
+      if(d) flags.push(`Sam already drafted: "${ctxTrim(d.subject,80)}"`);
+      L.push(` - ${ct.name} — ${ct.title}${ct.email?` — ${ct.email}`:''}${flags.length?` [${flags.join('; ')}]`:''}`);
+    });
+  }
+  return L.join('\n');
+}
+function buildScreenContext(){
+  if(typeof wsHotel==='undefined' || !wsHotel || !COMPANIES.length) return '';
+  const sel = wsState.selected ? COMPANIES.find(c=>c.id===wsState.selected) : null;
+  let visible = [];
+  try{ visible = wsFiltered(); }catch(e){ visible = companiesForHotel(wsHotel.id); }
+  const parts = [];
+  if(sel) parts.push('RECORD IN VIEW (the company the seller is looking at):\n'+companyContextBlock(sel));
+  const others = visible.filter(c=>!sel || c.id!==sel.id).slice(0,24);
+  if(others.length){
+    const roster = others.map(c=>{
+      const cs = contactsForCompany(c.id);
+      const prim = cs.find(x=>x.primary) || cs[0];
+      const sg = (c.signals||[]).map(signalById).filter(Boolean)[0];
+      return ` - ${c.name}${prim?` — ${prim.name}, ${prim.title}${prim.email?` (${prim.email})`:''}`:''}${sg?` — Project: ${sg.name}`:''}`;
+    }).join('\n');
+    parts.push('OTHER LEADS ON SCREEN (ask me to draft outreach to any of these):\n'+roster);
+  }
+  const out = parts.join('\n\n');
+  return out.length>7000 ? out.slice(0,7000)+'\n…(truncated)' : out;
+}
 async function askTammy(text, curated){
   hintChips = [];
   thread.push({who:'me', html: escHtml(text)});
@@ -8427,12 +8480,13 @@ async function askTammy(text, curated){
   const mt = document.getElementById('modeTag');
   const inCoach = document.getElementById('paneCoaching') && document.getElementById('paneCoaching').classList.contains('on');
   const mode = (inCoach && mt) ? mt.textContent.trim() : '';
+  const context = buildScreenContext();
   try{
     let hist = convo.slice(-20);
     while(hist.length && hist[0].role !== 'user') hist = hist.slice(1); /* API must start on a user turn */
     const res = await fetch('/api/gillis-chat', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ messages: hist, mode })
+      body: JSON.stringify({ messages: hist, mode, context })
     });
     if(!res.ok) throw new Error('status '+res.status);
     const data = await res.json();
@@ -8452,6 +8506,10 @@ async function askTammy(text, curated){
   }
 }
 function leadTammy(leadName, project){
+  /* point the in-view record at the clicked company so Tammy's screen
+     context matches what the seller just tapped */
+  const co = COMPANIES.find(c=>c.name===leadName);
+  if(co && typeof wsState!=='undefined') wsState.selected = co.id;
   openTammy();
   const a = LEAD_COACH[leadName];
   askTammy(`Looking at <b>${leadName}</b> on the ${project}. How do I open?`, a || {t:LEAD_FALLBACK});

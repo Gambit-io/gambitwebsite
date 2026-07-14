@@ -7,7 +7,7 @@
 //
 //   POST /api/gillis-chat  { messages: [{role,content}...], mode?: string }
 //   -> { text }
-import { buildGillisSystem } from '../lib/gillis-context.js';
+import { buildGillisSystem, buildScreenBlock } from '../lib/gillis-context.js';
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = 'claude-sonnet-5'; // swap to claude-opus-4-8 for max quality
@@ -86,6 +86,9 @@ export default async function handler(req, res) {
   if (!messages) return res.status(400).json({ error: 'Invalid messages' });
 
   const mode = typeof body.mode === 'string' && body.mode.length < 60 ? body.mode : '';
+  // Live on-screen Research record (company + signals + contacts) the seller is
+  // viewing, so Tammy can draft outreach to a real named contact. Capped.
+  const context = typeof body.context === 'string' ? body.context.slice(0, 8000) : '';
 
   if (!ANTHROPIC_API_KEY) {
     console.error('ANTHROPIC_API_KEY not configured');
@@ -101,6 +104,11 @@ export default async function handler(req, res) {
     text: buildGillisSystem({ mode, today }),
     cache_control: { type: 'ephemeral' },
   }];
+  // Append the volatile on-screen record as a separate, uncached block so it
+  // doesn't invalidate the cached persona prefix as the seller navigates.
+  if (context) {
+    system.push({ type: 'text', text: buildScreenBlock(context) });
+  }
 
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
