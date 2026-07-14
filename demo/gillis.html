@@ -8365,9 +8365,24 @@ const LEAD_FALLBACK = "Good pick. Tell me what you see in this one, the project 
    ============================================================ */
 let thread = [];
 let hintChips = [];
+let convo = [];   /* role/content history sent to the live AskGillis endpoint */
 
 function escAttr(s){ return s.replace(/'/g, "\\'"); }
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function quoteHtml(q){ return `<div class="quote"><b>${q.b}</b>${q.t}</div>`; }
+/* light, safe markdown -> html for Tammy's live replies (escaped first) */
+function tammyHtml(text){
+  let t = escHtml(text).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  const blocks = t.split(/\n\s*\n/).map(b=>b.trim()).filter(Boolean);
+  return blocks.map(b=>{
+    const lines = b.split('\n');
+    if(lines.length>1 && lines.every(l=>/^\s*[-•]\s+/.test(l)))
+      return '<ul style="margin:8px 0 0;padding-left:20px">'+lines.map(l=>'<li>'+l.replace(/^\s*[-•]\s+/,'')+'</li>').join('')+'</ul>';
+    if(lines.length>1 && lines.every(l=>/^\s*\d+[.)]\s+/.test(l)))
+      return '<ol style="margin:8px 0 0;padding-left:20px">'+lines.map(l=>'<li>'+l.replace(/^\s*\d+[.)]\s+/,'')+'</li>').join('')+'</ol>';
+    return lines.join('<br>');
+  }).join('<br><br>');
+}
 
 function renderThreadInto(el){
   if(!el) return;
@@ -8388,6 +8403,7 @@ function renderThreadAll(){
 function seedThread(greet, chips){
   thread = [{who:'tam', html:greet}];
   hintChips = chips || [];
+  convo = [];
   renderThreadAll();
 }
 function answerHtml(a){
@@ -8396,17 +8412,44 @@ function answerHtml(a){
   if(a.t2) html += `<div style="margin-top:8px">${a.t2}</div>`;
   return html;
 }
-function askTammy(text, curated){
+/* scripted answer, used only as a graceful fallback when the live chat is
+   unavailable (no API key / offline / upstream error) */
+function scriptedAnswer(text, curated){
+  const a = curated || COACH_ANSWERS[text];
+  return a ? answerHtml(a) : COACH_FALLBACK;
+}
+async function askTammy(text, curated){
   hintChips = [];
-  thread.push({who:'me', html:text});
+  thread.push({who:'me', html: escHtml(text)});
   thread.push({who:'typing'});
   renderThreadAll();
-  setTimeout(()=>{
+  convo.push({ role:'user', content:text });
+  const mt = document.getElementById('modeTag');
+  const inCoach = document.getElementById('paneCoaching') && document.getElementById('paneCoaching').classList.contains('on');
+  const mode = (inCoach && mt) ? mt.textContent.trim() : '';
+  try{
+    let hist = convo.slice(-20);
+    while(hist.length && hist[0].role !== 'user') hist = hist.slice(1); /* API must start on a user turn */
+    const res = await fetch('/api/gillis-chat', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ messages: hist, mode })
+    });
+    if(!res.ok) throw new Error('status '+res.status);
+    const data = await res.json();
+    const reply = ((data && data.text) || '').trim();
+    if(!reply) throw new Error('empty');
     thread = thread.filter(m=>m.who!=='typing');
-    const a = curated || COACH_ANSWERS[text];
-    thread.push({who:'tam', html: a ? answerHtml(a) : COACH_FALLBACK});
+    thread.push({ who:'tam', html: tammyHtml(reply) });
+    convo.push({ role:'assistant', content: reply });
     renderThreadAll();
-  }, 900);
+  }catch(err){
+    /* fall back to the curated answer so the demo still responds */
+    thread = thread.filter(m=>m.who!=='typing');
+    const html = scriptedAnswer(text, curated);
+    thread.push({ who:'tam', html });
+    convo.push({ role:'assistant', content: String(html).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,600) });
+    renderThreadAll();
+  }
 }
 function leadTammy(leadName, project){
   openTammy();
