@@ -1424,7 +1424,7 @@ const TENANTS = {
       {id:'coaching', label:'AskGillis', icon:'bubble'},
     ],
     pillars:[
-      {space:"research", accent:"outbound", title:"Research + Outreach", desc:"The premium engine. Everything Leads sees, plus deep research, verified contact lists, and the first email written and sent as Sam.", icon:'search', meta:"84 live signals", live:true},
+      {space:"research", accent:"outbound", title:"Research + Outreach", desc:"The premium engine. Everything Leads sees, plus deep research, verified contact lists, and the first email drafted as Sam, ready to send.", icon:'search', meta:"84 live signals", live:true},
       {space:"leads", accent:"tools", title:"Leads", desc:"Self-serve prospecting for every property: market read, events, comp set, and the companies with a reason to book, all from live signals.", icon:'scope', meta:"Every property", live:true},
       {space:"desk", accent:"desk", title:"Reception", desc:"AskGillis extended to the front desk as an overlay extension: complaints, comps, walks, and the system itself, answered on every shift.", icon:'bell', meta:"On every shift", live:true},
       {space:"anchor", accent:"anchor", title:"Key Accounts", desc:"One Canadian Tire relationship is hundreds of locations and travel both ways: crews in for store refreshes, dealers out to HQ. Managed once, routed everywhere.", icon:'anchor', meta:"28 accounts", live:true},
@@ -7898,8 +7898,8 @@ function hotelsForCompany(c){ return [...new Set(c.signals.map(sid=>signalById(s
 
 const prioLabel = p => p==='pipe'?'Pipeline':(p.charAt(0).toUpperCase()+p.slice(1));
 const prioTag = c => `<span class="prio ${c.prio}">${c.pnum} &middot; ${prioLabel(c.prio)}</span>`;
-const LEAD = { researching:'Researching', researched:'Researched', emailed:'Emailed by Sam', replied:'Reply in' };
-const LEAD_SHORT = { researching:'Researching', researched:'Researched', emailed:'Emailed', replied:'Reply in' };
+const LEAD = { researching:'Researching', researched:'Researched', emailed:'Drafted by Sam', replied:'Reply in' };
+const LEAD_SHORT = { researching:'Researching', researched:'Researched', emailed:'Drafted', replied:'Reply in' };
 const leadTag = (c,short) => `<span class="ob ${c.lead}">${(short?LEAD_SHORT:LEAD)[c.lead]}</span>`;
 const chev = `<svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
 
@@ -7952,7 +7952,7 @@ function renderResearch(){
 
   portfolio.innerHTML = `
     <div class="rs-head">
-      <div><h1 class="rs-h1">My hotels</h1><p class="rs-sub">Your research, hotel by hotel. Sam finds the leads and sends the first email automatically. This is where you read what it found.</p></div>
+      <div><h1 class="rs-h1">My hotels</h1><p class="rs-sub">Your research, hotel by hotel. Sam finds the leads and drafts the first email, ready to send. This is where you read what it found.</p></div>
       <button class="run-btn" onclick="alert('Prototype: runs are automated. This would show run history and let you queue a fresh backyard search.')">Run a search
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
     </div>
@@ -7988,7 +7988,7 @@ function renderWorkspaceShell(){
       <div class="kpi"><div class="kn">${s.signals}</div><div class="kl">Signals</div></div>
       <div class="kpi"><div class="kn">${s.companies}</div><div class="kl">Companies</div></div>
       <div class="kpi"><div class="kn">${s.hot}</div><div class="kl">Hot leads</div></div>
-      <div class="kpi"><div class="kn">${s.emailed}</div><div class="kl">Emailed</div></div>
+      <div class="kpi"><div class="kn">${s.emailed}</div><div class="kl">Drafted</div></div>
     </div>
     <div class="ctrlbar">
       <div class="ctrl-line">
@@ -8001,7 +8001,7 @@ function renderWorkspaceShell(){
           <option value="all"${wsState.scope==='all'?' selected':''}>All research</option>
         </select>
         <select class="ctrl-sel" onchange="wsPrio(this.value)"><option value="all"${wsState.prio==='all'?' selected':''}>All priority</option><option value="hot"${wsState.prio==='hot'?' selected':''}>Hot</option><option value="warm"${wsState.prio==='warm'?' selected':''}>Warm</option><option value="pipe"${wsState.prio==='pipe'?' selected':''}>Pipeline</option></select>
-        <select class="ctrl-sel" onchange="wsLead(this.value)"><option value="all"${wsState.lead==='all'?' selected':''}>All status</option><option value="researching"${wsState.lead==='researching'?' selected':''}>Researching</option><option value="researched"${wsState.lead==='researched'?' selected':''}>Researched</option><option value="emailed"${wsState.lead==='emailed'?' selected':''}>Emailed</option><option value="replied"${wsState.lead==='replied'?' selected':''}>Reply in</option></select>
+        <select class="ctrl-sel" onchange="wsLead(this.value)"><option value="all"${wsState.lead==='all'?' selected':''}>All status</option><option value="researching"${wsState.lead==='researching'?' selected':''}>Researching</option><option value="researched"${wsState.lead==='researched'?' selected':''}>Researched</option><option value="emailed"${wsState.lead==='emailed'?' selected':''}>Drafted</option><option value="replied"${wsState.lead==='replied'?' selected':''}>Reply in</option></select>
         <input class="ctrl-q" type="text" placeholder="Search company or contact" value="${wsState.q}" oninput="wsQuery(this.value)">
       </div>
       <div class="ctrl-chips">${sigChips}</div>
@@ -8106,17 +8106,17 @@ function signalAcc(sg){
 function contactAcc(ct){
   const st = ct.outreach.status;
   const thread = ct.outreach.thread||[];
-  const threadHtml = thread.length ? `<div class="sam-out"><div class="sam-h"><span class="sam-tag">Automated by Sam</span><span class="sam-cc">You are CC'd</span></div><div class="thread">${thread.map(m=>`
+  const threadHtml = thread.length ? `<div class="sam-out"><div class="sam-h"><span class="sam-tag">Drafted by Sam</span><span class="sam-cc">Ready to send</span></div><div class="thread">${thread.map(m=>`
       <div class="tmsg ${m.dir}">
         ${m.subject?`<div class="tmsg-subj">${m.subject}</div>`:''}
         <div class="tmsg-body">${m.body.replace(/\n/g,'<br>')}</div>
-        <div class="tmsg-when">${m.dir==='out'?'Sam &middot; Gillis':ct.name.split(' ')[0]+' &middot; replied, routed to you'} &middot; ${m.when}</div>
+        <div class="tmsg-when">${m.dir==='out'?'Sam &middot; Gillis &middot; drafted':ct.name.split(' ')[0]+' &middot; replied, routed to you'} &middot; ${m.when}</div>
       </div>`).join('')}</div></div>`
-    : `<div class="no-mail">Not the contact Sam emailed. Reachable if you want to work this one directly.</div>`;
+    : `<div class="no-mail">Not the contact Sam drafted for. Reachable if you want to work this one directly.</div>`;
   return `<div class="acc">
     <button class="acc-head" onclick="accToggle(this)">
       <span class="acc-t">${ct.name}${ct.primary?'<span class="pill-primary">Primary</span>':''}<span class="acc-sub">${ct.title}</span></span>
-      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">Emailed</span>':''}${chev}</span>
+      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">Drafted</span>':''}${chev}</span>
     </button>
     <div class="acc-body">
       <div class="cgrid">
