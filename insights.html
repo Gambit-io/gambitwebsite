@@ -89,11 +89,32 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 .insight-item:hover { background: rgba(0,0,0,0.02); }
 
 .insight-date { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); padding-top: 3px; }
-.insight-title { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 6px; }
+.insight-title { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 6px; }
 .insight-desc { font-size: 14px; color: var(--muted); line-height: 1.45; margin-bottom: 8px; }
 .insight-author { font-size: 12px; color: var(--border); }
 .insight-arrow { font-size: 16px; color: var(--border); transition: color 0.15s, transform 0.2s; padding-top: 4px; }
 .insight-item:hover .insight-arrow { color: var(--ink); transform: translateX(3px); }
+
+.insight-item.has-thumb { grid-template-columns: 80px 112px 1fr 24px; }
+.insight-thumb { width: 112px; height: 63px; border-radius: 8px; overflow: hidden; background: var(--border-light); flex-shrink: 0; }
+.insight-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Featured article */
+.insight-featured {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px;
+  align-items: center;
+  padding-bottom: 32px; margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+}
+.insight-featured-img { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: var(--border-light); }
+.insight-featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s var(--ease); }
+.insight-featured:hover .insight-featured-img img { transform: scale(1.03); }
+.insight-featured-date { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 8px; }
+.insight-featured-title { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 10px; }
+.insight-featured:hover .insight-featured-title { color: var(--accent-deep); }
+.insight-featured-desc { font-size: 15px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+.insight-featured-author { font-size: 12.5px; color: var(--muted); }
 
 /* FOOTER */
 .site-footer { background: var(--black); padding: 40px 32px; margin-top: 80px; }
@@ -144,9 +165,12 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
   .cta-primary, .cta-outline { text-align: center; justify-content: center; }
   .insights-page { padding: 100px 20px 0; }
   .insights-header h1 { font-size: 32px; }
-  .insight-item { grid-template-columns: 56px 1fr 20px; gap: 12px; padding: 18px 8px; }
+  .insight-item, .insight-item.has-thumb { grid-template-columns: 56px 1fr 20px; gap: 12px; padding: 18px 8px; }
   .insight-title { font-size: 15px; }
   .insight-desc { display: none; }
+  .insight-thumb { display: none; }
+  .insight-featured { grid-template-columns: 1fr; gap: 16px; }
+  .insight-featured-title { font-size: 21px; }
 }
 @media (max-width: 480px) {
   .insights-header h1 { font-size: 28px; }
@@ -363,20 +387,21 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     <p class="insights-sub">The latest news, product updates, and insights from Gambit.</p>
   </div>
 
+  <a href="/we-took-two-ai-workers-to-vegas" class="insight-featured">
+    <div class="insight-featured-img"><img src="/img/Chloe%20and%20Bogan%20AI%20Workers%20Vegas.png" alt="We Took Two AI Workers to Vegas" loading="lazy"></div>
+    <div>
+      <div class="insight-featured-date">Jun 2026</div>
+      <div class="insight-featured-title">We Took Two AI Workers to Vegas</div>
+      <div class="insight-featured-desc">Gambit brought Chloe and Bogan to HPE Discover in Las Vegas. Here's what happened when two AI workers hit the conference floor.</div>
+      <div class="insight-featured-author">Alex Bukowski</div>
+    </div>
+  </a>
+
   <div class="insights-list">
 
-    <a href="/we-took-two-ai-workers-to-vegas" class="insight-item">
+    <a href="/gambit-td-synnex-hpe-unleash-ai-isv" class="insight-item has-thumb">
       <div class="insight-date">Jun 2026</div>
-      <div>
-        <div class="insight-title">We Took Two AI Workers to Vegas</div>
-        <div class="insight-desc">Gambit brought Chloe and Bogan to HPE Discover in Las Vegas. Here's what happened when two AI workers hit the conference floor.</div>
-        <div class="insight-author">Alex Bukowski</div>
-      </div>
-      <span class="insight-arrow">→</span>
-    </a>
-
-    <a href="/gambit-td-synnex-hpe-unleash-ai-isv" class="insight-item">
-      <div class="insight-date">Jun 2026</div>
+      <div class="insight-thumb"><img src="/img/June%2016%202026%20Announcement.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Gambit Named Among Newly Onboarded ISVs in TD SYNNEX's Expanded HPE Unleash AI Offerings</div>
         <div class="insight-desc">TD SYNNEX announced an expanded partnership with HPE Unleash AI, calling out Gambit as part of the newly onboarded ISV portfolio supporting enterprise AI deployments powered by NVIDIA AI Computing by HPE.</div>
@@ -385,8 +410,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/ai-terms-explained" class="insight-item">
+    <a href="/ai-terms-explained" class="insight-item has-thumb">
       <div class="insight-date">May 2026</div>
+      <div class="insight-thumb"><img src="/img/AI%20Terms%20Blog%20Featured%20Image.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">AI Terms Explained Like You're Talking To A Friend</div>
         <div class="insight-desc">Confused by AI jargon? Here's a plain-language breakdown of the most common AI terms you're probably hearing right now, so you don't have to keep Googling them.</div>
@@ -395,8 +421,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/where-to-start-with-ai" class="insight-item">
+    <a href="/where-to-start-with-ai" class="insight-item has-thumb">
       <div class="insight-date">May 2026</div>
+      <div class="insight-thumb"><img src="/img/Where%20To%20Start%20With%20AI.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">AI Is Everywhere. But Where Should Your Business Start?</div>
         <div class="insight-desc">Everyone knows they should be doing something with AI. Not everyone knows where to start. Here's how to find the right entry point for your business.</div>
@@ -405,8 +432,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/foundersbeta-top-100-companies-to-watch-2026" class="insight-item">
+    <a href="/foundersbeta-top-100-companies-to-watch-2026" class="insight-item has-thumb">
       <div class="insight-date">Apr 2026</div>
+      <div class="insight-thumb"><img src="/img/Gambit%20Co%20Named%20a%20Top%20100%20Company%20to%20Watch%20in%202026.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Gambit Co Named a Top 100 Company to Watch in 2026</div>
         <div class="insight-desc">Gambit Co has been named on the FoundersBeta Top 100 Companies to Watch in 2026, recognizing the most promising companies building the future across industries.</div>
@@ -415,8 +443,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/introducing-askayla-ai-companion-parents-children-disabilities" class="insight-item">
+    <a href="/introducing-askayla-ai-companion-parents-children-disabilities" class="insight-item has-thumb">
       <div class="insight-date">Apr 2026</div>
+      <div class="insight-thumb"><img src="/img/AskAyla%20Feature%20Image.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Introducing AskAyla: The World's First AI Companion for Parents Raising a Child with a Disability</div>
         <div class="insight-desc">No parent raising a child with a disability should ever feel alone. AskAyla is free, available 24/7, and built from lived experience.</div>
@@ -425,8 +454,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/what-is-an-ai-worker" class="insight-item">
+    <a href="/what-is-an-ai-worker" class="insight-item has-thumb">
       <div class="insight-date">Apr 2026</div>
+      <div class="insight-thumb"><img src="/img/AI%20Workers%20Blog%20Featured%20Image.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">What Is an AI Worker? And Why It Changes Everything</div>
         <div class="insight-desc">Copilots. Assistants. Agents. Gambit defines what actually separates an AI worker from the rest, and why the distinction changes everything about how you deploy AI.</div>
@@ -435,8 +465,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/openclaw-ai-assistant-open-source-agent" class="insight-item">
+    <a href="/openclaw-ai-assistant-open-source-agent" class="insight-item has-thumb">
       <div class="insight-date">Mar 2026</div>
+      <div class="insight-thumb"><img src="/img/article-openclaw.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">OpenClaw Is Kind of a Big Deal: Here's Why</div>
         <div class="insight-desc">OpenClaw is the open-source AI assistant changing how enterprises think about autonomous agents. Here's what it does and how we use it at Gambit.</div>
@@ -445,8 +476,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/vail-ai-voice-concierge-chloe" class="insight-item">
+    <a href="/vail-ai-voice-concierge-chloe" class="insight-item has-thumb">
       <div class="insight-date">Mar 2026</div>
+      <div class="insight-thumb"><img src="/img/article-chloe-vail.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Meet Chloe: The Town of Vail's AI Voice Concierge</div>
         <div class="insight-desc">Gambit introduces Chloe, a voice-based AI concierge for the Town of Vail. Real-time parking, events, and 50+ languages.</div>
@@ -455,8 +487,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/gambitco-joins-hpe-unleash-ai-partner-program" class="insight-item">
+    <a href="/gambitco-joins-hpe-unleash-ai-partner-program" class="insight-item has-thumb">
       <div class="insight-date">Dec 2025</div>
+      <div class="insight-thumb"><img src="/img/article-hpe.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">GambitCo Joins HPE Unleash AI Partner Program</div>
         <div class="insight-desc">Operationalizing AI across the enterprise through Hewlett Packard Enterprise's partner ecosystem.</div>
@@ -465,8 +498,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/gambit-featured-canadian-startup-documentary" class="insight-item">
+    <a href="/gambit-featured-canadian-startup-documentary" class="insight-item has-thumb">
       <div class="insight-date">Dec 2025</div>
+      <div class="insight-thumb"><img src="/img/Article-Documentary.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Featured in First-Ever Canadian Startup Documentary</div>
         <div class="insight-desc">Gambit's story captured in a documentary following Canada's emerging AI companies.</div>
@@ -475,8 +509,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/askellyn-launches-with-cigna" class="insight-item">
+    <a href="/askellyn-launches-with-cigna" class="insight-item has-thumb">
       <div class="insight-date">Sep 2025</div>
+      <div class="insight-thumb"><img src="/img/Article-Ask-Ellyn.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">AskEllyn Now Live on Cigna Healthcare</div>
         <div class="insight-desc">The world's first AI companion for breast cancer support, deployed on Cigna's patient community.</div>
@@ -485,8 +520,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/gambitco-primary-people-group-partner" class="insight-item">
+    <a href="/gambitco-primary-people-group-partner" class="insight-item has-thumb">
       <div class="insight-date">Aug 2025</div>
+      <div class="insight-thumb"><img src="/img/Article-NewPartner.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Primary People Group Becomes First Channel Partner</div>
         <div class="insight-desc">Expanding Gambit's reach through a dedicated channel partner focused on enterprise AI adoption.</div>
@@ -495,8 +531,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/foundersbeta-top-100-companies-to-watch-2025" class="insight-item">
+    <a href="/foundersbeta-top-100-companies-to-watch-2025" class="insight-item has-thumb">
       <div class="insight-date">Jul 2025</div>
+      <div class="insight-thumb"><img src="/img/Article-FoundersBeta.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Top 10 in FoundersBeta's 100 Companies to Watch</div>
         <div class="insight-desc">Recognized among the most promising emerging technology companies in 2025.</div>
@@ -505,8 +542,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
       <span class="insight-arrow">→</span>
     </a>
 
-    <a href="/gambit-technologies-joins-nvidia-inception-program" class="insight-item">
+    <a href="/gambit-technologies-joins-nvidia-inception-program" class="insight-item has-thumb">
       <div class="insight-date">Jun 2025</div>
+      <div class="insight-thumb"><img src="/img/Article-Inception.png" alt="" loading="lazy"></div>
       <div>
         <div class="insight-title">Gambit Technologies Joins NVIDIA Inception Program</div>
         <div class="insight-desc">Accelerating AI innovation for enterprises through NVIDIA's startup program.</div>
