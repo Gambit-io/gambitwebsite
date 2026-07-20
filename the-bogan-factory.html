@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81TPJZNKQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-81TPJZNKQ1");
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Bogan Factory · A Gambit worker, built like a factory floor</title>
+<meta name="description" content="A 90-second look inside Bogan: the mandate that turns it on, the orchestrator, the 89 specialist workers, the research fan-out, and the outbound queue.">
+<meta name="theme-color" content="#0e1a2c">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="canonical" href="https://gambitco.io/the-bogan-factory">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Bogan Factory · A Gambit worker, built like a factory floor">
+<meta property="og:description" content="Mandate in. Conversation out. A 90-second look inside how Bogan actually works.">
+<meta property="og:image" content="https://gambitco.io/og-homepage.png">
+<meta property="og:url" content="https://gambitco.io/the-bogan-factory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+
+:root{
+  --navy:#0b1626;
+  --navy-2:#101f36;
+  --ink:#0b1626;
+  --paper:#ffffff;
+  --accent:#dc4530;
+  --accent-2:#f2836f;
+  --accent-deep:#b23a26;
+  --status:#3ec46d;
+  --status-d:#1f9e54;
+  --mut:rgba(233,238,247,.62);
+  --mut-2:rgba(233,238,247,.4);
+  --line:rgba(255,255,255,.1);
+  --line-2:rgba(255,255,255,.16);
+  --display:'General Sans','Helvetica Neue',Arial,sans-serif;
+  --mark:'Orbitron',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--display);color:#fff;background:var(--navy);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow:hidden;-webkit-tap-highlight-color:transparent;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ---------- top chrome ---------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 22px;pointer-events:none}
+.topbar a{pointer-events:auto}
+.tb-logo{height:16px;width:auto;filter:brightness(0) invert(1);opacity:.7;transition:opacity .2s}
+.tb-logo:hover{opacity:1}
+.tb-tag{pointer-events:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-2);border:1px solid var(--line);border-radius:20px;padding:5px 11px}
+
+.scrub{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.08);z-index:60}
+.scrub b{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+/* ---------- stage ---------- */
+.player{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.stage{position:relative;width:min(1180px,92vw);height:min(680px,84vh);border-radius:20px;overflow:hidden;background:
+  radial-gradient(75% 90% at 50% 0%,rgba(220,69,48,.14),transparent 55%),
+  radial-gradient(120% 130% at 50% 100%,#152741 0%,#0b1626 60%);
+  box-shadow:0 60px 140px -60px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06);
+}
+.grain{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;pointer-events:none}
+
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .6s var(--ease);padding:0 40px}
+.scene.on{opacity:1;visibility:visible}
+
+/* caption bar */
+.capbar{position:absolute;left:0;right:0;bottom:0;padding:26px 44px 30px;background:linear-gradient(180deg,transparent,rgba(6,11,20,.72) 40%);opacity:0;transition:opacity .4s var(--ease);z-index:5;text-align:center}
+.capbar.show{opacity:1}
+.cap-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+.cap-main{font-size:clamp(17px,2vw,22px);font-weight:600;letter-spacing:-.01em;color:#fff;line-height:1.35}
+.cap-sub{font-size:clamp(12.5px,1.2vw,14px);color:var(--mut);margin-top:6px;line-height:1.5}
+.hide-cap .capbar{display:none}
+
+/* ---------- controls ---------- */
+.ctl{position:absolute;right:16px;bottom:16px;z-index:20;display:flex;gap:8px}
+.ctl button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-2);background:rgba(11,22,38,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s}
+.ctl button:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+.ctl svg{width:15px;height:15px;fill:#fff;stroke:#fff}
+.ic-play{display:none}
+.paused .ic-pause{display:none}
+.paused .ic-play{display:block}
+
+/* ================= SCENE 0 · TITLE ================= */
+#s0 .t-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-2);opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+#s0 h1{font-size:clamp(34px,6vw,64px);letter-spacing:-.03em;line-height:1.02;text-align:center;margin-top:16px;opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease) .12s,transform .8s var(--ease) .12s}
+#s0 .t-sub{font-size:clamp(14px,1.6vw,17px);color:var(--mut);text-align:center;margin-top:16px;max-width:44ch;opacity:0;transform:translateY(12px);transition:opacity .8s var(--ease) .26s,transform .8s var(--ease) .26s}
+#s0.on .t-eyebrow,#s0.on h1,#s0.on .t-sub{opacity:1;transform:none}
+
+/* ================= SCENE 1 · MANDATE ================= */
+.pill{width:min(84%,640px);background:rgba(255,255,255,.05);border:1px solid var(--line-2);border-radius:34px;padding:8px 8px 8px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 30px 70px -40px rgba(0,0,0,.6);opacity:0;transform:scale(.95);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.scene.on .pill{opacity:1;transform:none}
+.pill.sent{border-color:var(--accent);background:rgba(220,69,48,.08)}
+.pill-txt{flex:1;font-family:var(--mono);font-size:clamp(12.5px,1.5vw,15px);color:#fff;min-height:1.4em;white-space:pre-wrap}
+.pill-caret{display:inline-block;width:2px;height:1.1em;background:var(--accent-2);vertical-align:-2px;animation:blink 1s step-end infinite}
+.pill-go{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent);border:0;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .2s}
+.pill-go svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.pill.sent .pill-go{transform:scale(1.12)}
+@keyframes blink{50%{opacity:0}}
+
+/* ================= SCENE 2 · ORCHESTRATOR ================= */
+.orc-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.orc-node{position:relative;width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#22364f,#0e1c30);border:1px solid var(--line-2);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(.8);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.scene.on .orc-node{opacity:1;transform:none}
+.orc-node .om{font-family:var(--mark);font-weight:700;font-size:22px;color:var(--accent-2)}
+.orc-node .ol{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:4px}
+.orc-ring{position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(220,69,48,.35);opacity:0}
+.scene.on .orc-ring{animation:ring 2.6s var(--ease) infinite}
+.orc-ring.r2{animation-delay:.7s}
+@keyframes ring{0%{opacity:.7;transform:scale(.86)}100%{opacity:0;transform:scale(1.5)}}
+.orc-status{font-family:var(--mono);font-size:11px;color:var(--status-d);background:rgba(62,196,109,.13);border-radius:20px;padding:5px 12px;display:inline-flex;align-items:center;gap:7px;opacity:0;transition:opacity .5s var(--ease) .4s}
+.scene.on .orc-status{opacity:1}
+.orc-status .d{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 6px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
+
+/* ================= SCENE 3 · ASSEMBLE + TEST ================= */
+.line-wrap{display:flex;flex-direction:column;align-items:center;gap:22px}
+.chip-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:760px}
+.wchip{font-family:var(--mono);font-size:11.5px;color:#fff;background:rgba(255,255,255,.06);border:1px solid var(--line-2);border-radius:20px;padding:8px 15px;opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.scene.on .wchip{opacity:1;transform:none}
+.wchip:nth-child(1){transition-delay:.05s}.wchip:nth-child(2){transition-delay:.15s}.wchip:nth-child(3){transition-delay:.25s}
+.wchip:nth-child(4){transition-delay:.35s}.wchip:nth-child(5){transition-delay:.45s}.wchip:nth-child(6){transition-delay:.55s}
+.badge{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:20px;opacity:0;transition:opacity .35s ease;display:inline-flex;align-items:center;gap:8px}
+.badge.show{opacity:1}
+.badge.fail{color:#ff9a86;background:rgba(220,69,48,.14)}
+.badge.pass{color:var(--status-d);background:rgba(62,196,109,.14)}
+
+/* ================= SCENE 4 · THE FLOOR ================= */
+.floor-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;max-width:900px}
+.floor-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+@media(max-width:760px){.floor-grid{grid-template-columns:repeat(4,1fr)}}
+.fchip{font-family:var(--mono);font-size:9.5px;color:var(--mut);background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 6px;text-align:center;line-height:1.35;opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.scene.on .fchip{opacity:1;transform:none}
+.fchip b{display:block;color:#fff;font-size:10.5px;font-weight:600;font-family:var(--display)}
+.floor-strip{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);text-align:center;opacity:0;transition:opacity .5s ease .9s}
+.scene.on .floor-strip{opacity:1}
+
+/* ================= SCENE 5 · FAN-OUT ================= */
+.tree{position:relative;width:min(640px,86vw);height:230px}
+.tnode{position:absolute;font-family:var(--mono);font-size:10.5px;color:#fff;background:rgba(255,255,255,.06);border:1px solid var(--line-2);border-radius:10px;padding:7px 11px;white-space:nowrap;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.scene.on .tnode{opacity:1;transform:none}
+.tnode.root{left:50%;top:0;transform:translateX(-50%);border-color:var(--accent);color:var(--accent-2)}
+.scene.on .tnode.root{transform:translateX(-50%)}
+.tnode.c1{left:12%;top:92px}.tnode.c2{left:41%;top:92px}.tnode.c3{left:70%;top:92px}
+.tnode.g1{left:2%;top:180px}.tnode.g2{left:26%;top:180px}.tnode.g3{left:52%;top:180px}.tnode.g4{left:76%;top:180px}
+.tree svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tree svg path{fill:none;stroke:rgba(220,69,48,.55);stroke-width:1.4;stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1s var(--ease)}
+.scene.on .tree svg path{stroke-dashoffset:0}
+
+/* ================= SCENE 6 · DRAFT ================= */
+.draft{width:min(86%,460px);background:#0e1c30;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .55s var(--ease),transform .55s var(--ease);box-shadow:0 40px 90px -50px rgba(0,0,0,.6)}
+.scene.on .draft{opacity:1;transform:none}
+.draft-bar{display:flex;align-items:center;gap:9px;padding:11px 15px;background:rgba(255,255,255,.04);border-bottom:1px solid var(--line)}
+.draft-bar .da{width:24px;height:24px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:11px;flex:none}
+.draft-bar .dt{font-weight:600;font-size:12px}
+.draft-bar .dl{margin-left:auto;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#7fd4a4;display:inline-flex;align-items:center;gap:5px}
+.draft-bar .dl .d{width:5px;height:5px;border-radius:50%;background:var(--status)}
+.draft-row{display:flex;gap:9px;font-size:12px;padding:10px 15px;border-bottom:1px solid rgba(255,255,255,.06)}
+.draft-row .dk{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut-2);width:48px;flex:none;padding-top:1px}
+.draft-row .dv{color:#e9eef7}
+.draft-body{padding:14px 15px 18px;font-size:12.5px;line-height:1.6;color:rgba(233,238,247,.86);min-height:64px}
+
+/* ================= SCENE 7 · SEND ================= */
+.send-wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
+.senders{display:flex;gap:14px}
+.snode{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:var(--mut);transition:background .25s,border-color .25s,color .25s}
+.snode.hit{background:rgba(62,196,109,.16);border-color:rgba(62,196,109,.5);color:#8ef0b0}
+.send-ctr{font-family:var(--mono);font-size:13px;color:#fff}
+.send-ctr b{color:var(--accent-2);font-size:17px}
+.send-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut-2);border:1px dashed var(--line-2);border-radius:20px;padding:4px 11px}
+
+/* ================= SCENE 8 · CLOSE ================= */
+#s8 .close-mark{height:20px;width:auto;filter:brightness(0) invert(1);opacity:.85;margin-bottom:26px;opacity:0;transition:opacity .6s ease}
+.scene.on .close-mark{opacity:.85}
+#s8 h2{font-size:clamp(28px,4.4vw,46px);letter-spacing:-.02em;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease) .1s,transform .7s var(--ease) .1s}
+#s8 .close-sub{font-size:clamp(13px,1.4vw,15px);color:var(--mut);margin-top:12px;text-align:center;opacity:0;transition:opacity .7s var(--ease) .25s}
+#s8.on h2, #s8.on .close-sub{opacity:1;transform:none}
+.close-btns{display:flex;gap:12px;margin-top:30px;opacity:0;transition:opacity .7s var(--ease) .4s}
+.scene.on .close-btns{opacity:1}
+.cbtn{font-family:var(--display);font-size:13.5px;font-weight:500;padding:11px 20px;border-radius:30px;cursor:pointer;border:1px solid var(--line-2);background:transparent;color:#fff;display:inline-flex;align-items:center;gap:7px;transition:.2s}
+.cbtn:hover{background:rgba(255,255,255,.08)}
+.cbtn.solid{background:var(--accent);border-color:var(--accent)}
+.cbtn.solid:hover{background:var(--accent-deep)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* ---------- static fallback for small screens (portrait phones) ---------- */
+@media(max-width:640px){
+  .stage{width:100vw;height:100vh;border-radius:0}
+}
+</style>
+</head>
+<body>
+
+<div class="scrub"><b id="scrub"></b></div>
+<div class="topbar">
+  <a href="/"><img src="/img/gambit-logo.png" alt="Gambit" class="tb-logo"></a>
+  <span class="tb-tag">The Bogan Factory · Film</span>
+</div>
+
+<div class="player">
+  <div class="stage" id="stage">
+    <div class="grain"></div>
+
+    <!-- S0 : TITLE -->
+    <div class="scene" id="s0">
+      <span class="t-eyebrow">Gambit · Worker factory</span>
+      <h1>The Bogan Factory</h1>
+      <p class="t-sub">How one mandate turns into a working AI factory floor &mdash; and an inbox conversation.</p>
+    </div>
+
+    <!-- S1 : MANDATE -->
+    <div class="scene" id="s1">
+      <div class="pill" id="pill">
+        <span class="pill-txt" id="pillTxt"><span class="pill-caret"></span></span>
+        <button class="pill-go" type="button"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- S2 : ORCHESTRATOR -->
+    <div class="scene" id="s2">
+      <div class="orc-wrap">
+        <div class="orc-node">
+          <span class="orc-ring r1"></span><span class="orc-ring r2"></span>
+          <span class="om">O</span><span class="ol">Orchestrator</span>
+        </div>
+        <span class="orc-status"><span class="d"></span> Reading mandate &middot; selecting workers</span>
+      </div>
+    </div>
+
+    <!-- S3 : ASSEMBLE + TEST -->
+    <div class="scene" id="s3">
+      <div class="line-wrap">
+        <div class="chip-row">
+          <span class="wchip">Researcher</span><span class="wchip">Scorer</span><span class="wchip">Auditor</span>
+          <span class="wchip">Contact enricher</span><span class="wchip">Web scraper</span><span class="wchip">Geo worker</span>
+        </div>
+        <span class="badge" id="s3badge">Test run</span>
+      </div>
+    </div>
+
+    <!-- S4 : THE FLOOR -->
+    <div class="scene" id="s4">
+      <div class="floor-wrap">
+        <div class="floor-grid" id="floorGrid"></div>
+        <span class="floor-strip">Open-source hardware. Open-source models. Private by design.</span>
+      </div>
+    </div>
+
+    <!-- S5 : FAN-OUT -->
+    <div class="scene" id="s5">
+      <div class="tree">
+        <svg viewBox="0 0 640 230" preserveAspectRatio="none">
+          <path d="M320 24 L166 92"/><path d="M320 24 L326 92"/><path d="M320 24 L448 92"/>
+          <path d="M166 116 L26 180"/><path d="M166 116 L192 180"/>
+          <path d="M448 116 L344 180"/><path d="M448 116 L500 180"/>
+        </svg>
+        <div class="tnode root">Mandate</div>
+        <div class="tnode c1">Research agent</div>
+        <div class="tnode c2">Enrichment agent</div>
+        <div class="tnode c3">Scoring agent</div>
+        <div class="tnode g1">Revenue (proxy)</div>
+        <div class="tnode g2">Fleet size &middot; filings</div>
+        <div class="tnode g3">List exists?</div>
+        <div class="tnode g4">Contact match</div>
+      </div>
+    </div>
+
+    <!-- S6 : DRAFT -->
+    <div class="scene" id="s6">
+      <div class="draft">
+        <div class="draft-bar"><span class="da">B</span><span class="dt">Drafted by Bogan</span><span class="dl"><span class="d"></span>ready</span></div>
+        <div class="draft-row"><span class="dk">To</span><span class="dv">J. Marsh &middot; Atlas Fabrication</span></div>
+        <div class="draft-row"><span class="dk">Subj</span><span class="dv" id="draftSubj"></span></div>
+        <div class="draft-body" id="draftBody"></div>
+      </div>
+    </div>
+
+    <!-- S7 : SEND -->
+    <div class="scene" id="s7">
+      <div class="send-wrap">
+        <div class="senders" id="senders">
+          <div class="snode">S1</div><div class="snode">S2</div><div class="snode">S3</div><div class="snode">S4</div>
+        </div>
+        <div class="send-ctr"><b id="sendCount">0</b> queued &middot; round robin</div>
+        <span class="send-tag">Throttled, not blasted</span>
+      </div>
+    </div>
+
+    <!-- S8 : CLOSE -->
+    <div class="scene hide-cap" id="s8">
+      <img src="/img/gambit-logo.png" alt="Gambit" class="close-mark">
+      <h2>That&rsquo;s the Bogan factory.</h2>
+      <p class="close-sub">Mandate in. Conversation out.</p>
+      <div class="close-btns">
+        <button class="cbtn" id="replayBtn" type="button">&#8635; Watch again</button>
+        <a class="cbtn solid" href="/workers/bogan">See Bogan &rarr;</a>
+      </div>
+    </div>
+
+    <div class="capbar" id="capbar">
+      <div class="cap-lbl" id="capLbl"></div>
+      <div class="cap-main" id="capMain"></div>
+      <div class="cap-sub" id="capSub"></div>
+    </div>
+
+    <div class="ctl">
+      <button id="playToggle" type="button" aria-label="Pause">
+        <svg class="ic-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- static fallback content for reduced motion / no-js: same story, just listed -->
+<noscript>
+  <div style="position:fixed;inset:0;overflow:auto;background:#0b1626;color:#fff;padding:60px 24px;font-family:sans-serif;line-height:1.6">
+    <h1>The Bogan Factory</h1>
+    <p>A user hands Bogan a mandate. An orchestrator reads it and assembles a line of specialist workers, test-runs it, and retools until it's right. Workers fan out into sub-agents to proxy hard signals. Research becomes a drafted email. Sender workers queue it and round-robin it out.</p>
+    <p><a href="/workers/bogan" style="color:#f2836f">See Bogan &rarr;</a></p>
+  </div>
+</noscript>
+
+<script>
+(function(){
+  var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var floorWorkers = [
+    ['Auditor','compliance'],['Researcher','primary source'],['Scorer','thesis fit'],
+    ['Contact enricher','who to email'],['Web scraper','public signal'],['Geo worker','satellite scan'],
+    ['Filing reader','legal record'],['Fleet estimator','asset count'],['List finder','does it exist?'],
+    ['Revenue proxy','estimate'],['Owner finder','decision maker'],['Draft agent','the email'],
+    ['Sender','round robin'],['Queue manager','throttling'],['Dedupe worker','no repeats'],
+    ['Domain checker','deliverability'],['Signal ranker','priority'],['Sub-agent spawner','child tasks']
+  ];
+  var grid = document.getElementById('floorGrid');
+  floorWorkers.forEach(function(w,i){
+    var d = document.createElement('div');
+    d.className='fchip';
+    d.style.transitionDelay=(i*0.045)+'s';
+    d.innerHTML='<b>'+w[0]+'</b>'+w[1];
+    grid.appendChild(d);
+  });
+
+  function typeInto(el, text, speed){
+    return new Promise(function(res){
+      var i=0, caret=el.querySelector('.pill-caret');
+      (function step(){
+        if(i<=text.length){
+          el.textContent = text.slice(0,i);
+          if(caret){ el.appendChild(caret); }
+          i++; setTimeout(step, speed);
+        } else { res(); }
+      })();
+    });
+  }
+
+  var scenes = [
+    { id:'s0', at:0, label:'', caption:'', sub:'', hideCap:true },
+    { id:'s1', at:5200, label:'01 · Mandate', caption:'A user hands Bogan a mandate.', sub:'One thesis. That’s what turns the factory on.',
+      activate:function(){
+        var txt=document.getElementById('pillTxt'), pill=document.getElementById('pill');
+        pill.classList.remove('sent'); txt.textContent='';
+        var caret=document.createElement('span'); caret.className='pill-caret'; txt.appendChild(caret);
+        typeInto(txt, 'Founder-owned industrials, $3–8M EBITDA, ownership change filed in last 90 days.', 26).then(function(){
+          setTimeout(function(){ pill.classList.add('sent'); }, 500);
+        });
+      }
+    },
+    { id:'s2', at:15600, label:'02 · Orchestrator', caption:'An orchestrator reads it — call it a senior manager.', sub:'It decides which of ~89 workers this job actually needs.' },
+    { id:'s3', at:24800, label:'03 · Assemble + test', caption:'It assembles a line and runs a test pass.', sub:'Right result → scale it. Not yet → retool the line.',
+      activate:function(){
+        var b=document.getElementById('s3badge');
+        b.className='badge show'; b.textContent='Test run';
+        setTimeout(function(){ b.className='badge fail show'; b.textContent='Retool'; },1900);
+        setTimeout(function(){ b.className='badge show'; b.textContent='Test run'; },3400);
+        setTimeout(function(){ b.className='badge pass show'; b.textContent='Scale'; },5000);
+      }
+    },
+    { id:'s4', at:35000, label:'04 · The floor', caption:'89 specialists. Each one very good at one job.', sub:'Open-source hardware, open-source models — private, and fast.' },
+    { id:'s5', at:47500, label:'05 · Research fan-out', caption:'Workers fan out into sub-agents of their own.', sub:'Proxying revenue, fleet size, whatever signal the mandate needs.' },
+    { id:'s6', at:58000, label:'06 · Draft', caption:'All of it lands with a drafting agent.', sub:'One email, written for the one person it’s going to.',
+      activate:function(){
+        document.getElementById('draftSubj').textContent='';
+        document.getElementById('draftBody').textContent='';
+        typeInto(document.getElementById('draftSubj'), 'Ownership change at Atlas Fabrication', 22);
+        setTimeout(function(){
+          typeInto(document.getElementById('draftBody'), 'Saw the filing on Atlas Fabrication — congrats on the transition. Given the fit with what we’re building toward, would love 15 minutes this week.', 14);
+        }, 900);
+      }
+    },
+    { id:'s7', at:69000, label:'07 · Send', caption:'Sender workers queue it and round-robin it out.', sub:'You can’t blast a thousand emails from one line and stay quiet.',
+      activate:function(){
+        var nodes=[].slice.call(document.querySelectorAll('#senders .snode'));
+        var count=document.getElementById('sendCount');
+        nodes.forEach(function(n){ n.classList.remove('hit'); });
+        count.textContent='0';
+        var n=0, total=0, iv=setInterval(function(){
+          nodes.forEach(function(x){ x.classList.remove('hit'); });
+          nodes[n % nodes.length].classList.add('hit');
+          n++; total++; count.textContent=total;
+          if(total>=14){ clearInterval(iv); }
+        }, 420);
+      }
+    },
+    { id:'s8', at:80500, label:'', caption:'', sub:'', hideCap:true }
+  ];
+  var TOTAL = 87500;
+
+  var capbar=document.getElementById('capbar'), capLbl=document.getElementById('capLbl'),
+      capMain=document.getElementById('capMain'), capSub=document.getElementById('capSub'),
+      scrub=document.getElementById('scrub'), stage=document.getElementById('stage'),
+      playBtn=document.getElementById('playToggle'), replayBtn=document.getElementById('replayBtn');
+
+  if(REDUCED){
+    // show every scene stacked/static, skip the timed playback entirely
+    document.querySelectorAll('.scene').forEach(function(el){ el.classList.add('on'); el.style.position='relative'; });
+    capbar.style.display='none';
+    document.querySelector('.ctl').style.display='none';
+    return;
+  }
+
+  var startTime=null, pauseStart=null, pausedTotal=0, playing=true, activatedIdx=-1, raf=null;
+
+  function elapsed(){
+    if(startTime===null) return 0;
+    var pt = pausedTotal + (pauseStart!==null ? (performance.now()-pauseStart) : 0);
+    return performance.now() - startTime - pt;
+  }
+
+  function showScene(i){
+    document.querySelectorAll('.scene').forEach(function(el){ el.classList.remove('on'); });
+    var s = scenes[i];
+    document.getElementById(s.id).classList.add('on');
+    if(s.hideCap){ capbar.classList.remove('show'); }
+    else {
+      capLbl.textContent=s.label; capMain.textContent=s.caption; capSub.textContent=s.sub;
+      capbar.classList.remove('show');
+      requestAnimationFrame(function(){ capbar.classList.add('show'); });
+    }
+    if(s.activate) s.activate();
+  }
+
+  function tick(){
+    var t = elapsed();
+    scrub.style.width = Math.min(100, (t/TOTAL)*100) + '%';
+    for(var i=0;i<scenes.length;i++){
+      if(t>=scenes[i].at && activatedIdx<i){ activatedIdx=i; showScene(i); }
+    }
+    if(t < TOTAL + 4000){ raf = requestAnimationFrame(tick); }
+  }
+
+  function start(){
+    startTime = performance.now(); pausedTotal=0; pauseStart=null; activatedIdx=-1; playing=true;
+    stage.classList.remove('paused');
+    if(raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(tick);
+  }
+
+  playBtn.addEventListener('click', function(){
+    if(playing){
+      playing=false; pauseStart=performance.now(); stage.classList.add('paused');
+    } else {
+      playing=true; pausedTotal += performance.now()-pauseStart; pauseStart=null; stage.classList.remove('paused');
+    }
+  });
+
+  replayBtn.addEventListener('click', function(){ start(); });
+
+  start();
+})();
+</script>
+</body>
+</html>
