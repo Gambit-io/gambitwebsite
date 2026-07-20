@@ -12,7 +12,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Bogan Factory · A Gambit worker, built like a factory floor</title>
-<meta name="description" content="A 90-second look inside Bogan: the mandate that turns it on, the orchestrator, the 89 specialist workers, the research fan-out, and the outbound queue.">
+<meta name="description" content="A quick look inside Bogan: the mandate that turns it on, the manager that runs it, the floor of workers that do the research, and the emails that go out.">
 <meta name="theme-color" content="#0e1a2c">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -21,7 +21,7 @@
 <link rel="canonical" href="https://gambitco.io/the-bogan-factory">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Bogan Factory · A Gambit worker, built like a factory floor">
-<meta property="og:description" content="Mandate in. Conversation out. A 90-second look inside how Bogan actually works.">
+<meta property="og:description" content="Mandate in. Conversation out. A quick look inside how Bogan actually works.">
 <meta property="og:image" content="https://gambitco.io/og-homepage.png">
 <meta property="og:url" content="https://gambitco.io/the-bogan-factory">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@ button{font-family:inherit}
     <div class="scene" id="s0">
       <span class="t-eyebrow">Gambit · Worker factory</span>
       <h1>The Bogan Factory</h1>
-      <p class="t-sub">How one mandate turns into a working AI factory floor &mdash; and an inbox conversation.</p>
+      <p class="t-sub">See how one mandate becomes a working AI factory, and an email that starts a conversation.</p>
     </div>
 
     <!-- S1 : MANDATE -->
@@ -241,7 +241,7 @@ button{font-family:inherit}
       <div class="orc-wrap">
         <div class="orc-node">
           <span class="orc-ring r1"></span><span class="orc-ring r2"></span>
-          <span class="om">O</span><span class="ol">Orchestrator</span>
+          <span class="om">M</span><span class="ol">Manager</span>
         </div>
         <span class="orc-status"><span class="d"></span> Reading mandate &middot; selecting workers</span>
       </div>
@@ -276,9 +276,9 @@ button{font-family:inherit}
         </svg>
         <div class="tnode root">Mandate</div>
         <div class="tnode c1">Research agent</div>
-        <div class="tnode c2">Enrichment agent</div>
+        <div class="tnode c2">Contact agent</div>
         <div class="tnode c3">Scoring agent</div>
-        <div class="tnode g1">Revenue (proxy)</div>
+        <div class="tnode g1">Revenue (estimate)</div>
         <div class="tnode g2">Fleet size &middot; filings</div>
         <div class="tnode g3">List exists?</div>
         <div class="tnode g4">Contact match</div>
@@ -301,8 +301,8 @@ button{font-family:inherit}
         <div class="senders" id="senders">
           <div class="snode">S1</div><div class="snode">S2</div><div class="snode">S3</div><div class="snode">S4</div>
         </div>
-        <div class="send-ctr"><b id="sendCount">0</b> queued &middot; round robin</div>
-        <span class="send-tag">Throttled, not blasted</span>
+        <div class="send-ctr"><b id="sendCount">0</b> sent &middot; going out steadily</div>
+        <span class="send-tag">Steady, not all at once</span>
       </div>
     </div>
 
@@ -336,7 +336,7 @@ button{font-family:inherit}
 <noscript>
   <div style="position:fixed;inset:0;overflow:auto;background:#0b1626;color:#fff;padding:60px 24px;font-family:sans-serif;line-height:1.6">
     <h1>The Bogan Factory</h1>
-    <p>A user hands Bogan a mandate. An orchestrator reads it and assembles a line of specialist workers, test-runs it, and retools until it's right. Workers fan out into sub-agents to proxy hard signals. Research becomes a drafted email. Sender workers queue it and round-robin it out.</p>
+    <p>A user gives Bogan a mandate. A manager reads it and builds a line of specialist workers, does a test run, and adjusts until it is right. Workers spin up their own helper agents to estimate hard-to-find signals. The research becomes a written email. Sender workers line the emails up and send them out steadily.</p>
     <p><a href="/workers/bogan" style="color:#f2836f">See Bogan &rarr;</a></p>
   </div>
 </noscript>
@@ -349,8 +349,8 @@ button{font-family:inherit}
     ['Auditor','compliance'],['Researcher','primary source'],['Scorer','thesis fit'],
     ['Contact enricher','who to email'],['Web scraper','public signal'],['Geo worker','satellite scan'],
     ['Filing reader','legal record'],['Fleet estimator','asset count'],['List finder','does it exist?'],
-    ['Revenue proxy','estimate'],['Owner finder','decision maker'],['Draft agent','the email'],
-    ['Sender','round robin'],['Queue manager','throttling'],['Dedupe worker','no repeats'],
+    ['Revenue est.','estimate'],['Owner finder','decision maker'],['Draft agent','the email'],
+    ['Sender','sends email'],['Queue manager','paces sends'],['Dedupe worker','no repeats'],
     ['Domain checker','deliverability'],['Signal ranker','priority'],['Sub-agent spawner','child tasks']
   ];
   var grid = document.getElementById('floorGrid');
@@ -375,41 +375,48 @@ button{font-family:inherit}
     });
   }
 
+  var timers = [];
+  function later(fn, ms){ var id=setTimeout(fn, ms); timers.push(id); return id; }
+  function clearTimers(){
+    timers.forEach(function(t){ if(t && t.stop){ t.stop(); } else { clearTimeout(t); } });
+    timers=[];
+  }
+
   var scenes = [
     { id:'s0', at:0, label:'', caption:'', sub:'', hideCap:true },
-    { id:'s1', at:5200, label:'01 · Mandate', caption:'A user hands Bogan a mandate.', sub:'One thesis. That’s what turns the factory on.',
+    { id:'s1', at:3200, label:'01 · The mandate', caption:'A user gives Bogan a mandate.', sub:'One idea of what to look for. That is what turns the factory on.',
       activate:function(){
         var txt=document.getElementById('pillTxt'), pill=document.getElementById('pill');
         pill.classList.remove('sent'); txt.textContent='';
         var caret=document.createElement('span'); caret.className='pill-caret'; txt.appendChild(caret);
-        typeInto(txt, 'Founder-owned industrials, $3–8M EBITDA, ownership change filed in last 90 days.', 26).then(function(){
-          setTimeout(function(){ pill.classList.add('sent'); }, 500);
+        typeInto(txt, 'Founder-owned industrials, $3 to 8M EBITDA, ownership change filed in the last 90 days.', 16).then(function(){
+          later(function(){ pill.classList.add('sent'); }, 400);
         });
       }
     },
-    { id:'s2', at:15600, label:'02 · Orchestrator', caption:'An orchestrator reads it — call it a senior manager.', sub:'It decides which of ~89 workers this job actually needs.' },
-    { id:'s3', at:24800, label:'03 · Assemble + test', caption:'It assembles a line and runs a test pass.', sub:'Right result → scale it. Not yet → retool the line.',
+    { id:'s2', at:9600, label:'02 · The manager', caption:'A manager reads it, like a senior manager on a floor.', sub:'It works out which workers the job needs.' },
+    { id:'s3', at:14600, label:'03 · Build and test', caption:'It builds a line of workers and does a test run.', sub:'Good result? Scale it up. Not yet? Adjust it and run again.',
       activate:function(){
         var b=document.getElementById('s3badge');
         b.className='badge show'; b.textContent='Test run';
-        setTimeout(function(){ b.className='badge fail show'; b.textContent='Retool'; },1900);
-        setTimeout(function(){ b.className='badge show'; b.textContent='Test run'; },3400);
-        setTimeout(function(){ b.className='badge pass show'; b.textContent='Scale'; },5000);
+        later(function(){ b.className='badge fail show'; b.textContent='Adjust'; },1200);
+        later(function(){ b.className='badge show'; b.textContent='Test run'; },2200);
+        later(function(){ b.className='badge pass show'; b.textContent='Scale up'; },3200);
       }
     },
-    { id:'s4', at:35000, label:'04 · The floor', caption:'89 specialists. Each one very good at one job.', sub:'Open-source hardware, open-source models — private, and fast.' },
-    { id:'s5', at:47500, label:'05 · Research fan-out', caption:'Workers fan out into sub-agents of their own.', sub:'Proxying revenue, fleet size, whatever signal the mandate needs.' },
-    { id:'s6', at:58000, label:'06 · Draft', caption:'All of it lands with a drafting agent.', sub:'One email, written for the one person it’s going to.',
+    { id:'s4', at:20200, label:'04 · The floor', caption:'A whole floor of specialists, each very good at one job.', sub:'Running on open models and open hardware, so it stays private and fast.' },
+    { id:'s5', at:25800, label:'05 · The research', caption:'Workers spin up their own helper agents.', sub:'Estimating revenue, fleet size, whatever the mandate needs.' },
+    { id:'s6', at:31600, label:'06 · The draft', caption:'All of it goes to a writing agent.', sub:'One email, written for the exact person it is going to.',
       activate:function(){
         document.getElementById('draftSubj').textContent='';
         document.getElementById('draftBody').textContent='';
-        typeInto(document.getElementById('draftSubj'), 'Ownership change at Atlas Fabrication', 22);
-        setTimeout(function(){
-          typeInto(document.getElementById('draftBody'), 'Saw the filing on Atlas Fabrication — congrats on the transition. Given the fit with what we’re building toward, would love 15 minutes this week.', 14);
-        }, 900);
+        typeInto(document.getElementById('draftSubj'), 'Ownership change at Atlas Fabrication', 18);
+        later(function(){
+          typeInto(document.getElementById('draftBody'), 'Saw the filing on Atlas Fabrication. Congrats on the transition. Given the fit with what we are building, I would love 15 minutes this week.', 11);
+        }, 800);
       }
     },
-    { id:'s7', at:69000, label:'07 · Send', caption:'Sender workers queue it and round-robin it out.', sub:'You can’t blast a thousand emails from one line and stay quiet.',
+    { id:'s7', at:38200, label:'07 · The send', caption:'Sender workers line the emails up and send them out.', sub:'You cannot send thousands at once, so they go out steadily.',
       activate:function(){
         var nodes=[].slice.call(document.querySelectorAll('#senders .snode'));
         var count=document.getElementById('sendCount');
@@ -419,13 +426,14 @@ button{font-family:inherit}
           nodes.forEach(function(x){ x.classList.remove('hit'); });
           nodes[n % nodes.length].classList.add('hit');
           n++; total++; count.textContent=total;
-          if(total>=14){ clearInterval(iv); }
-        }, 420);
+          if(total>=10){ clearInterval(iv); }
+        }, 300);
+        timers.push({stop:function(){clearInterval(iv);}});
       }
     },
-    { id:'s8', at:80500, label:'', caption:'', sub:'', hideCap:true }
+    { id:'s8', at:43800, label:'', caption:'', sub:'', hideCap:true }
   ];
-  var TOTAL = 87500;
+  var TOTAL = 49000;
 
   var capbar=document.getElementById('capbar'), capLbl=document.getElementById('capLbl'),
       capMain=document.getElementById('capMain'), capSub=document.getElementById('capSub'),
@@ -461,17 +469,25 @@ button{font-family:inherit}
     if(s.activate) s.activate();
   }
 
+  var LOOP_END = TOTAL + 1200; // brief hold on the closing card, then loop
+
   function tick(){
     var t = elapsed();
     scrub.style.width = Math.min(100, (t/TOTAL)*100) + '%';
     for(var i=0;i<scenes.length;i++){
       if(t>=scenes[i].at && activatedIdx<i){ activatedIdx=i; showScene(i); }
     }
-    if(t < TOTAL + 4000){ raf = requestAnimationFrame(tick); }
+    if(t >= LOOP_END){ reset(); }
+    raf = requestAnimationFrame(tick);
+  }
+
+  function reset(){
+    clearTimers();
+    startTime = performance.now(); pausedTotal=0; pauseStart=null; activatedIdx=-1;
   }
 
   function start(){
-    startTime = performance.now(); pausedTotal=0; pauseStart=null; activatedIdx=-1; playing=true;
+    reset(); playing=true;
     stage.classList.remove('paused');
     if(raf) cancelAnimationFrame(raf);
     raf = requestAnimationFrame(tick);
