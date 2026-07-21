@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81TPJZNKQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-81TPJZNKQ1");
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Bogan Factory · A Gambit worker, built like a factory floor</title>
+<meta name="description" content="Click through how Bogan works: the mandate that turns it on, the crew of specialists, the research, the one email that goes out, and how one worker grows into a floor.">
+<meta name="theme-color" content="#0b1626">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="canonical" href="https://gambitco.io/the-bogan-factory">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Bogan Factory · A Gambit worker, built like a factory floor">
+<meta property="og:description" content="Mandate in. Conversation out. Click through how Bogan actually works.">
+<meta property="og:image" content="https://gambitco.io/og-homepage.png">
+<meta property="og:url" content="https://gambitco.io/the-bogan-factory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+
+:root{
+  --navy:#0b1626;
+  --ink:#15110d;
+  --ink-2:#241f1a;
+  --paper:#ffffff;
+  --bone:#f8f5ef;
+  --line-card:#e9e2d6;
+  --line-2:#efeae1;
+  --muted:#6f675c;
+  --muted-2:#8a8175;
+  --accent:#dc4530;
+  --accent-2:#f2836f;
+  --accent-deep:#b23a26;
+  --status:#3ec46d;
+  --status-d:#1f9e54;
+  /* brighter foreground on dark for projector readability */
+  --mut:rgba(233,238,247,.74);
+  --mut-2:rgba(233,238,247,.54);
+  --line:rgba(255,255,255,.12);
+  --line-b:rgba(255,255,255,.2);
+  /* worker palette (from the site) */
+  --w-bogan:#dc4530;--w-atlas:#3a5a86;--w-dealio:#1f4e5f;--w-mira:#8c7038;--w-jericho:#556575;
+  --w-chloe:#2c8091;--w-fleet:#0f74c4;--w-dawn:#cc6650;--w-gillis:#1e1745;
+  --display:'General Sans','Helvetica Neue',Arial,sans-serif;
+  --mark:'Orbitron',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--display);color:#fff;background:#070f1c;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;color:inherit}
+
+/* ---------- top chrome ---------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;pointer-events:none}
+.topbar a,.topbar span{pointer-events:auto}
+.tb-logo{height:16px;width:auto;filter:brightness(0) invert(1);opacity:.72}
+.tb-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut-2);border:1px solid var(--line);border-radius:20px;padding:5px 12px}
+
+/* segmented step bar */
+.steps{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;display:flex;gap:3px;padding:0 2px}
+.steps .seg{flex:1;height:100%;background:rgba(255,255,255,.08);transition:background .3s ease}
+.steps .seg.done{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+/* ---------- stage ---------- */
+.player{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.stage{position:relative;width:min(1200px,93vw);height:min(700px,86vh);border-radius:22px;overflow:hidden;cursor:pointer;background:
+  radial-gradient(70% 80% at 50% -6%,rgba(220,69,48,.16),transparent 55%),
+  radial-gradient(120% 130% at 50% 108%,#172a4c 0%,#0b1626 58%);
+  box-shadow:0 70px 160px -60px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.grain{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:46px 46px;pointer-events:none;-webkit-mask-image:radial-gradient(80% 80% at 50% 45%,#000 40%,transparent 100%);mask-image:radial-gradient(80% 80% at 50% 45%,#000 40%,transparent 100%)}
+.vig{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 160px 30px rgba(6,11,20,.5)}
+
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .55s var(--ease);padding:74px 48px 132px}
+.scene.on{opacity:1;visibility:visible}
+
+/* reusable light card (readability) */
+.card{background:var(--paper);color:var(--ink);border-radius:16px;box-shadow:0 50px 110px -50px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.07);
+  opacity:0;transform:translateY(16px) scale(.99);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.scene.on .card{opacity:1;transform:none}
+
+/* caption bar */
+.capbar{position:absolute;left:0;right:0;bottom:0;padding:28px 48px 32px;background:linear-gradient(180deg,transparent,rgba(5,10,18,.85) 46%);z-index:8;text-align:center;opacity:0;transition:opacity .4s var(--ease);pointer-events:none}
+.capbar.show{opacity:1}
+.cap-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);margin-bottom:9px}
+.cap-main{font-size:clamp(21px,2.5vw,30px);font-weight:600;letter-spacing:-.015em;color:#fff;line-height:1.25}
+.cap-sub{font-size:clamp(14px,1.35vw,17px);color:var(--mut);margin-top:8px;line-height:1.5;max-width:62ch;margin-left:auto;margin-right:auto}
+#s0 .capbar,.hide-cap .capbar{display:none}
+
+/* ---------- nav ---------- */
+.navbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:30;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-b);background:rgba(11,22,38,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
+.navbtn:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35)}
+.navbtn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.navbtn.prev{left:16px}.navbtn.next{right:16px}
+.navbtn.hidden{opacity:0;pointer-events:none}
+.boardlink{position:absolute;right:20px;bottom:16px;z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--mut-2);border:1px solid var(--line);border-radius:20px;padding:6px 13px;display:inline-flex;align-items:center;gap:7px;transition:color .2s,border-color .2s,background .2s}
+.boardlink:hover{color:#fff;border-color:var(--line-b);background:rgba(255,255,255,.06)}
+.hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-2);display:inline-flex;align-items:center;gap:9px;transition:opacity .4s ease}
+.hint .k{border:1px solid var(--line-b);border-radius:6px;padding:2px 7px}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.hint .ar{animation:nudge 1.4s ease-in-out infinite}
+
+/* ============ SCENE 0 · TITLE ============ */
+#s0{padding-bottom:74px}
+.title-mark{width:76px;height:76px;border-radius:20px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:35px;color:#fff;position:relative;overflow:hidden;opacity:0;transform:scale(.7);transition:opacity .7s var(--ease),transform .7s var(--ease);box-shadow:0 20px 60px -20px rgba(220,69,48,.7)}
+.title-mark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.22) 0 50%,rgba(255,255,255,0) 50%)}
+#s0.on .title-mark{opacity:1;transform:none}
+#s0 .t-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-2);margin-top:26px;opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease) .18s,transform .7s var(--ease) .18s}
+#s0 h1{font-size:clamp(40px,6.6vw,72px);letter-spacing:-.035em;line-height:1;text-align:center;margin-top:14px;opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease) .3s,transform .8s var(--ease) .3s}
+#s0 .t-sub{font-size:clamp(15px,1.65vw,19px);color:var(--mut);text-align:center;margin-top:18px;max-width:46ch;opacity:0;transform:translateY(12px);transition:opacity .8s var(--ease) .46s,transform .8s var(--ease) .46s}
+#s0.on .t-eyebrow,#s0.on h1,#s0.on .t-sub{opacity:1;transform:none}
+
+/* ============ SCENE 1 · MANDATE (light input) ============ */
+.pill{width:min(88%,680px);background:var(--paper);border-radius:16px;padding:20px 20px 20px 22px;display:flex;align-items:center;gap:15px;box-shadow:0 44px 90px -46px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);opacity:0;transform:translateY(14px) scale(.98);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.scene.on .pill{opacity:1;transform:none}
+.pill-b{flex:none;width:42px;height:42px;border-radius:11px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:19px;color:#fff}
+.pill-txt{flex:1;font-family:var(--mono);font-size:clamp(14px,1.55vw,17px);color:var(--ink-2);line-height:1.5;min-height:1.5em;font-weight:500}
+.pill-caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);vertical-align:-2px;animation:blink 1s step-end infinite}
+.pill-go{flex:none;width:48px;height:48px;border-radius:12px;background:var(--accent);border:0;display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease)}
+.pill-go svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pill.sent .pill-go{transform:scale(1.12)}
+.pill-cap{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-2);opacity:0;transition:opacity .4s ease .2s}
+.scene.on .pill-cap{opacity:1}
+@keyframes blink{50%{opacity:0}}
+
+/* ============ SCENE 2 · LIGHTS ON ============ */
+.ring{position:relative;width:min(70vh,400px);height:min(70vh,400px)}
+.mgr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.8);width:112px;height:112px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#2b4363,#0e1c30);border:1px solid var(--line-b);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3;opacity:0;transition:opacity .5s var(--ease),transform .5s var(--ease);box-shadow:0 0 40px -6px rgba(220,69,48,.45)}
+.scene.on .mgr{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.mgr .om{font-family:var(--mark);font-weight:700;font-size:28px;color:var(--accent-2)}
+.mgr .ol{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#c9d3e2;margin-top:5px}
+.mgr-ring{position:absolute;left:50%;top:50%;width:112px;height:112px;margin:-56px 0 0 -56px;border-radius:50%;border:1.5px solid rgba(242,131,111,.5);opacity:0;z-index:2}
+.scene.on .mgr-ring{animation:sonar 2.8s var(--ease) infinite}
+.scene.on .mgr-ring.r2{animation-delay:.9s}.scene.on .mgr-ring.r3{animation-delay:1.8s}
+@keyframes sonar{0%{opacity:.65;transform:scale(.9)}100%{opacity:0;transform:scale(3.2)}}
+.wdot{position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);z-index:2;display:flex;align-items:center;justify-content:center;transition:background .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.wdot svg{width:17px;height:17px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s var(--ease)}
+.wdot.lit{background:rgba(220,69,48,.3);border-color:rgba(242,131,111,1);box-shadow:0 0 18px 1px rgba(220,69,48,.65)}
+.wdot.lit svg{stroke:#fff}
+.wline{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;overflow:visible}
+.wline line{stroke:rgba(242,131,111,.28);stroke-width:1.4;opacity:0;transition:opacity .4s ease}
+.wline line.lit{stroke:rgba(242,131,111,.6)}
+.wline line.lit{opacity:1}
+
+/* ============ SCENE 3 · THE LINE ============ */
+.line-wrap{display:flex;flex-direction:column;align-items:center;gap:28px}
+.assembly{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;max-width:860px}
+.wcell{display:flex;align-items:center}
+.wchip{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--ink-2);background:var(--paper);border-radius:11px;padding:13px 17px;white-space:nowrap;box-shadow:0 18px 40px -30px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05);opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.scene.on .wchip{opacity:1;transform:none}
+.wcon{width:24px;height:2px;background:var(--accent-2);opacity:0;transition:opacity .4s ease}
+.scene.on .wcon{opacity:.7}
+.wcell:nth-child(1) .wchip{transition-delay:.05s}.wcell:nth-child(2) .wchip{transition-delay:.16s}.wcell:nth-child(3) .wchip{transition-delay:.27s}
+.wcell:nth-child(4) .wchip{transition-delay:.38s}.wcell:nth-child(5) .wchip{transition-delay:.49s}.wcell:nth-child(6) .wchip{transition-delay:.60s}
+.wcon{transition-delay:.5s}
+.badge{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;padding:10px 22px;border-radius:24px;opacity:0;transition:opacity .3s ease,background .3s ease,color .3s ease;display:inline-flex;align-items:center;gap:9px;font-weight:500}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.badge.show{opacity:1}
+.badge.test{color:#ffcf7a;background:rgba(255,196,92,.18)}
+.badge.fail{color:#ff9a86;background:rgba(220,69,48,.2)}
+.badge.pass{color:#8ef0b0;background:rgba(62,196,109,.22)}
+
+/* ============ SCENE 4 · THE CREW (light card) ============ */
+.crew-card{width:min(94%,940px);padding:30px 32px}
+.crew-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.crew-h .ch-t{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--ink)}
+.crew-h .ch-n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);background:rgba(220,69,48,.08);border:1px solid rgba(220,69,48,.2);border-radius:20px;padding:5px 12px}
+.crew-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:760px){.crew-cols{grid-template-columns:repeat(2,1fr);gap:18px}}
+.crew-col .cc-h{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);padding-bottom:9px;margin-bottom:9px;border-bottom:1px solid var(--line-2)}
+.crew-col .cc-i{font-size:14px;color:var(--ink-2);padding:6px 0;display:flex;align-items:center;gap:9px;opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.scene.on .crew-col .cc-i{opacity:1;transform:none}
+.crew-col .cc-i .d{width:6px;height:6px;border-radius:50%;background:var(--status);flex:none}
+
+/* ============ SCENE 5 · FAN-OUT (light card) ============ */
+.tree-card{width:min(90%,760px);padding:30px 30px 26px}
+.tree{position:relative;width:100%;height:264px}
+.tnode{position:absolute;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--ink-2);background:var(--bone);border:1px solid var(--line-card);border-radius:11px;padding:9px 13px;white-space:nowrap;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.scene.on .tnode{opacity:1;transform:none}
+.tnode.root{left:50%;top:0;transform:translateX(-50%);border-color:var(--accent);color:#fff;background:var(--accent);font-weight:600}
+.scene.on .tnode.root{transform:translateX(-50%)}
+.tnode.c1{left:8%;top:104px;transition-delay:.25s}.tnode.c2{left:40%;top:104px;transition-delay:.35s}.tnode.c3{left:72%;top:104px;transition-delay:.45s}
+.tnode.g1{left:0;top:208px;transition-delay:.6s}.tnode.g2{left:24%;top:208px;transition-delay:.7s}.tnode.g3{left:52%;top:208px;transition-delay:.8s}.tnode.g4{left:78%;top:208px;transition-delay:.9s}
+.tree svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tree svg path{fill:none;stroke:var(--accent);stroke-width:1.8;opacity:.55;stroke-dasharray:150;stroke-dashoffset:150;transition:stroke-dashoffset 1s var(--ease) .2s}
+.scene.on .tree svg path{stroke-dashoffset:0}
+
+/* ============ SCENE 6 · SIGNAL DESK ============ */
+#s6{justify-content:flex-start;padding:48px 40px 40px}
+.desk{width:min(96%,1000px);height:clamp(376px,54vh,470px);background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 60px 120px -50px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);opacity:0;transform:translateY(18px) scale(.985);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.desk.in{opacity:1;transform:none}
+.desk-bar{display:flex;align-items:center;gap:11px;padding:14px 20px;background:var(--navy);flex:none}
+.desk-bar .db-mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:14px;color:#fff}
+.desk-bar .db-title{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;color:rgba(255,255,255,.82)}
+.desk-bar .db-live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7fd4a4}
+.desk-bar .db-live .d{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.desk-body{flex:1;display:grid;grid-template-columns:.92fr 1.08fr;min-height:0}
+.desk-left{padding:20px 26px;border-right:1px solid var(--line-2);display:flex;flex-direction:column;min-width:0}
+.sig{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);background:rgba(220,69,48,.09);border:1px solid rgba(220,69,48,.22);border-radius:20px;padding:6px 12px}
+.sig .sd{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.6s infinite}
+.sig-head{display:flex;align-items:baseline;gap:10px;margin:14px 0 10px}
+.sig-name{font-weight:700;font-size:clamp(19px,2vw,26px);color:var(--ink);letter-spacing:-.015em}
+.sig-sec{font-family:var(--mono);font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.1em}
+.sig-rows{display:flex;flex-direction:column}
+.srow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:clamp(13.5px,1.4vw,15.5px);opacity:0;transform:translateY(5px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.srow.in{opacity:1;transform:none}
+.srow .sk{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted-2);padding-top:3px;flex:none}
+.srow .sv{color:var(--ink-2);font-weight:500;text-align:right}
+.srow .ok{color:var(--status-d);font-style:normal;font-weight:600}
+.sig-fit{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:14px}
+.fk{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted-2);flex:none}
+.fbar{flex:1;height:9px;border-radius:5px;background:#eee6db;overflow:hidden}
+.fbar b{display:block;height:100%;width:0;background:var(--accent);border-radius:5px;transition:width 1.1s var(--ease)}
+.fscore{font-family:var(--mono);font-weight:700;font-size:22px;color:var(--navy);min-width:34px;text-align:right}
+.desk-right{padding:20px 26px;display:flex;flex-direction:column;min-width:0}
+.dr-head{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px}
+.dr-av{width:28px;height:28px;border-radius:7px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:13px}
+.dr-rdy{margin-left:auto;display:none;align-items:center;gap:6px;color:var(--status-d)}
+.dr-rdy.show{display:inline-flex}
+.dr-rdy .d{width:6px;height:6px;border-radius:50%;background:var(--status)}
+.dr-to,.dr-subj{font-size:clamp(13.5px,1.4vw,16px);color:#3a352f;padding:6px 0}
+.dek{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-right:9px}
+.dr-subj{font-weight:600;color:#1a1620;border-bottom:1px solid var(--line-2);padding-bottom:13px;margin-bottom:14px}
+.dr-body{flex:1;font-size:clamp(13.5px,1.4vw,16px);line-height:1.62;color:#3a352f;white-space:pre-wrap}
+.dcaret{display:inline-block;width:1.5px;height:1em;background:var(--accent);vertical-align:-2px;margin-left:1px;opacity:0}
+.dcaret.on{opacity:1;animation:blink 1s step-end infinite}
+.dr-foot{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2)}
+.dr-send{font-size:13px;font-weight:600;color:#fff;background:var(--accent);padding:9px 17px;border-radius:9px;transition:opacity .3s}
+.dr-done{display:none;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--status-d)}
+.dr-done.show{display:inline-flex;animation:popIn .35s var(--ease)}
+@keyframes popIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+.desk-cursor{position:absolute;width:20px;height:20px;z-index:12;opacity:0;transition:transform .8s cubic-bezier(.5,0,.2,1),opacity .3s;pointer-events:none;left:0;top:0}
+.desk-cursor svg{width:100%;height:100%}
+@media(max-width:720px){.desk{height:min(76%,600px)}.desk-body{grid-template-columns:1fr;overflow-y:auto}.desk-right{border-top:1px solid var(--line-2)}}
+
+/* ============ SCENE 7 · SEND ============ */
+.send-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:30px;width:min(700px,88vw)}
+.outbox{position:relative;width:100%;height:120px;display:flex;align-items:center;justify-content:center}
+.senders{display:flex;gap:20px;z-index:2}
+.snode{width:78px;height:78px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-family:var(--mono);font-size:10.5px;color:#dbe4f0;transition:background .25s,border-color .25s,color .25s,box-shadow .25s}
+.snode svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.snode.hit{background:rgba(62,196,109,.2);border-color:rgba(62,196,109,.7);color:#9df3bd;box-shadow:0 0 22px 1px rgba(62,196,109,.45)}
+.envelope{position:absolute;left:50%;top:50%;width:22px;height:15px;border-radius:3px;background:var(--accent-2);opacity:0;z-index:1;box-shadow:0 2px 8px -2px rgba(0,0,0,.5)}
+.envelope.fly{animation:fly 1s var(--ease) forwards}
+@keyframes fly{0%{opacity:1;transform:translate(-50%,-50%) scale(.7)}100%{opacity:0;transform:translate(calc(-50% + 280px),-50%) scale(1)}}
+.send-ctr{font-family:var(--mono);font-size:15px;color:#fff}
+.send-ctr b{color:var(--accent-2);font-size:20px}
+.send-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut-2);border:1px dashed var(--line-b);border-radius:20px;padding:6px 14px}
+
+/* ============ SCENE 8 · BUILD THE FLOOR (light card) ============ */
+.floor-card{width:min(94%,900px);padding:30px 32px}
+.floor-card .fc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+.floor-card .fc-logo{height:19px;width:auto;flex:none;margin-top:3px;opacity:.8}
+.floor-card .fc-h{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
+.floor-card .fc-s{font-size:13.5px;color:var(--muted)}
+.floor-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:760px){.floor-grid{grid-template-columns:repeat(3,1fr)}}
+.wtile{position:relative;display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px 8px;border-radius:12px;border:1px solid var(--line-2);background:var(--bone);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .42s var(--ease),transform .42s var(--ease)}
+.scene.on .wtile{opacity:1;transform:none}
+.wtile.you{border-color:var(--accent);background:rgba(220,69,48,.06);box-shadow:0 0 0 1px var(--accent)}
+.wmark{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:18px;color:#fff;position:relative;overflow:hidden}
+.wmark::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0 50%,rgba(255,255,255,0) 50%)}
+.wtile .wn{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.wtile .wr{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
+.wtile.add{border-style:dashed;background:transparent;justify-content:center}
+.wtile.add .wp{font-size:26px;color:var(--muted-2);font-weight:300;line-height:1}
+.wtile.you .wtag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);padding:2px 8px;border-radius:20px;white-space:nowrap}
+
+/* ============ SCENE 9 · END ============ */
+#s9 .close-mark{height:22px;width:auto;filter:brightness(0) invert(1);opacity:0;margin-bottom:28px;transition:opacity .6s ease}
+#s9.on .close-mark{opacity:.85}
+#s9 h2{font-size:clamp(30px,4.8vw,50px);letter-spacing:-.025em;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease) .1s,transform .7s var(--ease) .1s}
+#s9 .close-sub{font-size:clamp(15px,1.5vw,18px);color:var(--mut);margin-top:14px;text-align:center;opacity:0;transition:opacity .7s var(--ease) .25s}
+#s9.on h2,#s9.on .close-sub{opacity:1;transform:none}
+
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 6px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;animation-iteration-count:1!important}}
+@media(max-width:640px){.stage{width:100vw;height:100vh;border-radius:0}}
+</style>
+</head>
+<body>
+
+<div class="steps" id="steps"></div>
+<div class="topbar">
+  <a href="/"><img src="/img/gambit-logo.png" alt="Gambit" class="tb-logo"></a>
+  <span class="tb-tag">The Bogan Factory</span>
+</div>
+
+<div class="player">
+  <div class="stage" id="stage">
+    <div class="grain"></div>
+    <div class="vig"></div>
+
+    <!-- S0 : TITLE -->
+    <div class="scene" id="s0">
+      <div class="title-mark">B</div>
+      <span class="t-eyebrow">Gambit · Worker factory</span>
+      <h1>The Bogan Factory</h1>
+      <p class="t-sub">How one mandate becomes a working AI factory, and an email that starts a conversation.</p>
+    </div>
+
+    <!-- S1 : MANDATE -->
+    <div class="scene" id="s1">
+      <div class="pill" id="pill">
+        <span class="pill-b">B</span>
+        <span class="pill-txt" id="pillTxt"><span class="pill-caret"></span></span>
+        <button class="pill-go" type="button" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="pill-cap">A buy-side thesis, in one line</div>
+    </div>
+
+    <!-- S2 : LIGHTS ON -->
+    <div class="scene" id="s2">
+      <div class="ring" id="ring">
+        <svg class="wline" id="wline" viewBox="0 0 400 400" preserveAspectRatio="none"></svg>
+        <span class="mgr-ring r1"></span><span class="mgr-ring r2"></span><span class="mgr-ring r3"></span>
+        <div class="mgr"><span class="om">M</span><span class="ol">Manager</span></div>
+      </div>
+    </div>
+
+    <!-- S3 : THE LINE -->
+    <div class="scene" id="s3">
+      <div class="line-wrap">
+        <div class="assembly">
+          <div class="wcell"><span class="wchip">Researcher</span><span class="wcon"></span></div>
+          <div class="wcell"><span class="wchip">Scraper</span><span class="wcon"></span></div>
+          <div class="wcell"><span class="wchip">Enricher</span><span class="wcon"></span></div>
+          <div class="wcell"><span class="wchip">Auditor</span><span class="wcon"></span></div>
+          <div class="wcell"><span class="wchip">Scorer</span><span class="wcon"></span></div>
+          <div class="wcell"><span class="wchip">Writer</span></div>
+        </div>
+        <span class="badge test" id="s3badge">Test run</span>
+      </div>
+    </div>
+
+    <!-- S4 : THE CREW -->
+    <div class="scene" id="s4">
+      <div class="card crew-card">
+        <div class="crew-h"><span class="ch-t">One worker, a full crew of specialists</span><span class="ch-n">assembled per mandate</span></div>
+        <div class="crew-cols" id="crewCols"></div>
+      </div>
+    </div>
+
+    <!-- S5 : FAN-OUT -->
+    <div class="scene" id="s5">
+      <div class="card tree-card">
+        <div class="tree">
+          <svg viewBox="0 0 700 264" preserveAspectRatio="none">
+            <path d="M350 26 L120 104"/><path d="M350 26 L360 104"/><path d="M350 26 L560 104"/>
+            <path d="M120 128 L30 208"/><path d="M120 128 L170 208"/>
+            <path d="M560 128 L420 208"/><path d="M560 128 L600 208"/>
+          </svg>
+          <div class="tnode root">Mandate</div>
+          <div class="tnode c1">Research agent</div>
+          <div class="tnode c2">Contact agent</div>
+          <div class="tnode c3">Scoring agent</div>
+          <div class="tnode g1">Revenue (estimate)</div>
+          <div class="tnode g2">Fleet size &middot; filings</div>
+          <div class="tnode g3">List exists?</div>
+          <div class="tnode g4">Owner match</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S6 : SIGNAL DESK -->
+    <div class="scene" id="s6">
+      <div class="desk" id="desk">
+        <div class="desk-bar">
+          <span class="db-mark">B</span>
+          <span class="db-title">Spearhead &middot; Signal Desk</span>
+          <span class="db-live"><span class="d"></span> Live</span>
+        </div>
+        <div class="desk-body">
+          <div class="desk-left">
+            <span class="sig"><span class="sd"></span> New signal</span>
+            <div class="sig-head"><span class="sig-name">Atlas Fabrication</span><span class="sig-sec">Industrials</span></div>
+            <div class="sig-rows" id="sigRows">
+              <div class="srow"><span class="sk">Owner</span><span class="sv">J. Marsh, founder <i class="ok">&#10003; 6 sources</i></span></div>
+              <div class="srow"><span class="sk">Trigger</span><span class="sv">Ownership change filed</span></div>
+              <div class="srow"><span class="sk">Financials</span><span class="sv">~$6M EBITDA, in band</span></div>
+              <div class="srow"><span class="sk">Class</span><span class="sv">Fabricator, not distributor</span></div>
+            </div>
+            <div class="sig-fit"><span class="fk">Thesis fit</span><span class="fbar"><b id="fitBar"></b></span><span class="fscore" id="fitScore">0</span></div>
+          </div>
+          <div class="desk-right">
+            <div class="dr-head"><span class="dr-av">B</span> Drafted by Bogan <span class="dr-rdy" id="drRdy"><span class="d"></span> ready</span></div>
+            <div class="dr-to"><span class="dek">To</span>J. Marsh &middot; Atlas Fabrication</div>
+            <div class="dr-subj"><span class="dek">Subj</span><span id="deskSubj"></span><i class="dcaret" id="caretSubj"></i></div>
+            <div class="dr-body"><span id="deskBody"></span><i class="dcaret" id="caretBody"></i></div>
+            <div class="dr-foot"><span class="dr-send" id="drSend">Queue outreach</span><span class="dr-done" id="drDone">&#10003; Queued</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="desk-cursor" id="deskCursor"><svg viewBox="0 0 24 24"><path d="M5 2l0 17 4.6-4.5 2.7 5.9 2.5-1.1-2.7-5.7 6.2-0.1z" fill="#0e1a2c" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <!-- S7 : SEND -->
+    <div class="scene" id="s7">
+      <div class="send-wrap">
+        <div class="outbox" id="outbox">
+          <div class="senders" id="senders">
+            <div class="snode"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>S1</div>
+            <div class="snode"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>S2</div>
+            <div class="snode"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>S3</div>
+            <div class="snode"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>S4</div>
+          </div>
+        </div>
+        <div class="send-ctr"><b id="sendCount">0</b> sent &middot; going out steadily</div>
+        <span class="send-tag">Not thousands at once</span>
+      </div>
+    </div>
+
+    <!-- S8 : BUILD THE FLOOR -->
+    <div class="scene" id="s8">
+      <div class="card floor-card">
+        <div class="fc-top">
+          <div>
+            <div class="fc-h">Bogan is one worker</div>
+            <div class="fc-s">Start with one. Add the next, and the next, until the floor runs itself.</div>
+          </div>
+          <img class="fc-logo" src="/img/gambit-logo.png" alt="Gambit">
+        </div>
+        <div class="floor-grid" id="floorGrid"></div>
+      </div>
+    </div>
+
+    <!-- S9 : END -->
+    <div class="scene hide-cap" id="s9">
+      <h2>That&rsquo;s the Bogan factory.</h2>
+      <p class="close-sub">Mandate in. Conversation out.</p>
+    </div>
+
+    <div class="capbar" id="capbar">
+      <div class="cap-lbl" id="capLbl"></div>
+      <div class="cap-main" id="capMain"></div>
+      <div class="cap-sub" id="capSub"></div>
+    </div>
+
+    <button class="navbtn prev" id="navPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="navbtn next" id="navNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    <a class="boardlink" id="boardlink" href="/the-bogan-factory-board">The factory floor &rarr;</a>
+  </div>
+</div>
+
+<noscript>
+  <div style="position:fixed;inset:0;overflow:auto;background:#0b1626;color:#fff;padding:60px 24px;font-family:sans-serif;line-height:1.6">
+    <h1>The Bogan Factory</h1>
+    <p>A user gives Bogan a mandate. A manager reads it and builds a line of specialist workers, does a test run, and adjusts until it is right. Workers spin up their own helper agents to estimate hard-to-find signals. The research becomes one signal and one written email, which goes out steadily. Bogan is one worker: start with one and build a whole floor.</p>
+    <p><a href="/workers/bogan" style="color:#f2836f">See Bogan &rarr;</a></p>
+  </div>
+</noscript>
+
+<script>
+(function(){
+  var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---- crew columns (scene 4) ---- */
+  var crew = [
+    ['Research', ['Researcher','Web scraper','Filing reader','Geo scan']],
+    ['Signals', ['Revenue est.','Fleet size','List finder','Owner finder']],
+    ['Scoring', ['Scorer','Auditor','Signal ranker','Dedupe']],
+    ['Outreach', ['Contact enricher','Draft agent','Sender','Queue manager']]
+  ];
+  var crewCols = $('crewCols');
+  crew.forEach(function(col, ci){
+    var c = document.createElement('div'); c.className='crew-col';
+    var h = document.createElement('div'); h.className='cc-h'; h.textContent=col[0]; c.appendChild(h);
+    col[1].forEach(function(name, ii){
+      var it = document.createElement('div'); it.className='cc-i';
+      it.style.transitionDelay = (0.2 + ci*0.06 + ii*0.05) + 's';
+      it.innerHTML='<span class="d"></span>'+name;
+      c.appendChild(it);
+    });
+    crewCols.appendChild(c);
+  });
+
+  /* ---- worker floor (scene 8) ---- */
+  var workers = [
+    ['B','Bogan','Buy-side','w-bogan',true],
+    ['A','Atlas','Sell-side','w-atlas'],
+    ['D','Dealio','Deal room','w-dealio'],
+    ['F','Fleet','Freight','w-fleet'],
+    ['M','Mira','Research','w-mira'],
+    ['C','Chloe','Concierge','w-chloe'],
+    ['J','Jericho','Support','w-jericho'],
+    ['D','Dawn','Recovery','w-dawn'],
+    ['G','Gillis','Hotel sales','w-gillis']
+  ];
+  var floorGrid = $('floorGrid');
+  workers.forEach(function(w, i){
+    var t = document.createElement('div');
+    t.className='wtile'+(w[4]?' you':'');
+    t.style.transitionDelay=(i*0.05)+'s';
+    t.innerHTML = (w[4]?'<span class="wtag">Start here</span>':'') +
+      '<span class="wmark" style="background:var(--'+w[3]+')">'+w[0]+'</span>'+
+      '<span class="wn">'+w[1]+'</span><span class="wr">'+w[2]+'</span>';
+    floorGrid.appendChild(t);
+  });
+  var add = document.createElement('div');
+  add.className='wtile add'; add.style.transitionDelay=(workers.length*0.05)+'s';
+  add.innerHTML='<span class="wp">+</span><span class="wr">your floor</span>';
+  floorGrid.appendChild(add);
+
+  /* ---- ring of workers (scene 2) ---- */
+  var RING_N = 12, R = 148, CX = 200, CY = 200;
+  var ring = $('ring'), wline = $('wline'), wdots = [], wlines = [];
+  for(var i=0;i<RING_N;i++){
+    var ang = (-90 + i*(360/RING_N)) * Math.PI/180;
+    var x = Math.cos(ang)*R, y = Math.sin(ang)*R;
+    var dot = document.createElement('span');
+    dot.className='wdot'; dot.style.transform='translate('+x+'px,'+y+'px)';
+    dot.innerHTML='<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0"/></svg>';
+    ring.appendChild(dot); wdots.push(dot);
+    var ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1',CX); ln.setAttribute('y1',CY);
+    ln.setAttribute('x2',CX+x); ln.setAttribute('y2',CY+y);
+    wline.appendChild(ln); wlines.push(ln);
+  }
+
+  /* ---- timers cleared on navigation ---- */
+  var timers = [];
+  function later(fn, ms){ var id=setTimeout(fn, ms); timers.push({t:id}); return id; }
+  function everyN(fn, ms){ var id=setInterval(fn, ms); timers.push({i:id}); return id; }
+  function clearTimers(){ timers.forEach(function(o){ if(o.i){clearInterval(o.i);} else {clearTimeout(o.t);} }); timers=[]; }
+
+  function typeInto(el, text, speed, caret){
+    return new Promise(function(res){
+      if(REDUCED){ el.textContent=text; res(); return; }
+      var i=0; if(caret) caret.classList.add('on');
+      (function step(){
+        if(i<=text.length){ el.textContent=text.slice(0,i); i++; later(step, speed); }
+        else { if(caret) caret.classList.remove('on'); res(); }
+      })();
+    });
+  }
+  function countTo(el, to, dur){
+    if(REDUCED){ el.textContent=to; return; }
+    var t0=performance.now();
+    (function f(now){ var p=Math.min(1,(now-t0)/dur); el.textContent=Math.round(p*to); if(p<1) requestAnimationFrame(f); })(t0);
+  }
+
+  var EMAIL_SUBJ = 'Your fabrication shop';
+  var EMAIL_BODY = 'John, saw the ownership filing. You built a real fabricator, not a distributor, and the funds are paying up for shops like yours.\n\nWorth a word before this becomes an auction.\n\nBogan · Spearhead';
+
+  function mandateActivate(){
+    var txt=$('pillTxt'), pill=$('pill');
+    pill.classList.remove('sent'); txt.textContent='';
+    var caret=document.createElement('span'); caret.className='pill-caret'; txt.appendChild(caret);
+    typeInto(txt, 'Founder-owned industrials, $3 to 8M EBITDA, ownership change filed in the last 90 days.', 15).then(function(){
+      later(function(){ pill.classList.add('sent'); }, 350);
+    });
+  }
+  function ringActivate(){
+    wdots.forEach(function(d){ d.classList.remove('lit'); });
+    wlines.forEach(function(l){ l.classList.remove('lit'); });
+    wdots.forEach(function(d,i){ later(function(){ d.classList.add('lit'); if(wlines[i]) wlines[i].classList.add('lit'); }, 450+i*120); });
+  }
+  function lineActivate(){
+    var b=$('s3badge');
+    b.className='badge test show'; b.textContent='Test run';
+    later(function(){ b.className='badge fail show'; b.textContent='Adjust'; },1300);
+    later(function(){ b.className='badge test show'; b.textContent='Test run'; },2400);
+    later(function(){ b.className='badge pass show'; b.textContent='Scale up'; },3400);
+  }
+  function deskActivate(){
+    var desk=$('desk');
+    $('deskSubj').textContent=''; $('deskBody').textContent='';
+    $('fitBar').style.width='0'; $('fitScore').textContent='0';
+    $('drRdy').classList.remove('show'); $('drDone').classList.remove('show'); $('drSend').style.opacity='1';
+    [].forEach.call(document.querySelectorAll('#sigRows .srow'), function(r){ r.classList.remove('in'); });
+    var cur=$('deskCursor'); cur.style.opacity='0';
+    desk.classList.remove('in'); later(function(){ desk.classList.add('in'); }, 60);
+    var rows=[].slice.call(document.querySelectorAll('#sigRows .srow'));
+    rows.forEach(function(r,i){ later(function(){ r.classList.add('in'); }, 500+i*230); });
+    later(function(){ $('fitBar').style.width='87%'; countTo($('fitScore'),87,1000); }, 1600);
+    later(function(){ $('drRdy').classList.add('show'); }, 2900);
+    later(function(){
+      typeInto($('deskSubj'), EMAIL_SUBJ, 26, $('caretSubj')).then(function(){
+        return typeInto($('deskBody'), EMAIL_BODY, 13, $('caretBody'));
+      }).then(function(){
+        var sendBtn=$('drSend'), scene=$('s6');
+        var sb=sendBtn.getBoundingClientRect(), sc=scene.getBoundingClientRect();
+        cur.style.opacity='1';
+        cur.style.transform='translate('+(sb.left-sc.left+sb.width*0.5)+'px,'+(sb.top-sc.top+sb.height*0.5)+'px)';
+        later(function(){ $('drSend').style.opacity='0'; $('drDone').classList.add('show'); cur.style.opacity='0'; }, 1100);
+      });
+    }, 3100);
+  }
+  function sendActivate(){
+    var nodes=[].slice.call(document.querySelectorAll('#senders .snode'));
+    var outbox=$('outbox'), count=$('sendCount');
+    nodes.forEach(function(n){ n.classList.remove('hit'); });
+    [].forEach.call(outbox.querySelectorAll('.envelope'), function(e){ e.remove(); });
+    count.textContent='0';
+    if(REDUCED){ count.textContent='10'; nodes[0].classList.add('hit'); return; }
+    var n=0, total=0;
+    everyN(function(){
+      nodes.forEach(function(x){ x.classList.remove('hit'); });
+      var node=nodes[n % nodes.length]; node.classList.add('hit');
+      var env=document.createElement('span'); env.className='envelope';
+      var nb=node.getBoundingClientRect(), ob=outbox.getBoundingClientRect();
+      env.style.left=(nb.left-ob.left+nb.width/2)+'px';
+      env.style.top=(nb.top-ob.top+nb.height/2)+'px';
+      outbox.appendChild(env);
+      requestAnimationFrame(function(){ env.classList.add('fly'); });
+      later(function(){ if(env.parentNode) env.remove(); }, 1100);
+      n++; total++; count.textContent=total;
+      if(total>=10){ clearTimers(); }
+    }, 360);
+  }
+
+  var scenes = [
+    { id:'s0', hideCap:true },
+    { id:'s1', label:'01 · The mandate', caption:'It starts with a mandate.', sub:'One clear idea of what to look for. That is what turns the factory on.', activate:mandateActivate },
+    { id:'s2', label:'02 · Lights on', caption:'That one mandate turns the factory on.', sub:'A manager reads it and calls up the workers the job needs.', activate:ringActivate },
+    { id:'s3', label:'03 · The line', caption:'It builds a line of workers, then tests it.', sub:'Good result? Scale it up. Not yet? Adjust it and run again.', activate:lineActivate },
+    { id:'s4', label:'04 · The crew', caption:'One worker, a full crew of specialists.', sub:'Each great at one job, assembled into a line for your mandate.' },
+    { id:'s5', label:'05 · The research', caption:'Workers spin up their own helper agents.', sub:'Estimating revenue, fleet size, whatever the mandate needs.' },
+    { id:'s6', label:'06 · The result', caption:'It all becomes one signal, and one email.', sub:'Everything the crew found, written for the exact person it is going to.', activate:deskActivate },
+    { id:'s7', label:'07 · The send', caption:'Then Bogan sends, steadily.', sub:'Not thousands at once, so the outreach stays quiet and personal.', activate:sendActivate },
+    { id:'s9', hideCap:true },
+    { id:'s8', label:'Build the floor', caption:'Start with one worker. Build the floor.', sub:'Bogan is one of a growing floor of Gambit workers.' }
+  ];
+
+  var capbar=$('capbar'), capLbl=$('capLbl'), capMain=$('capMain'), capSub=$('capSub'),
+      stage=$('stage'), navPrev=$('navPrev'), navNext=$('navNext'), stepsEl=$('steps');
+
+  // build step segments
+  scenes.forEach(function(){ var s=document.createElement('span'); s.className='seg'; stepsEl.appendChild(s); });
+  var segs=[].slice.call(stepsEl.children);
+
+  var idx=-1;
+  function go(i){
+    if(i<0) i=0;
+    if(i>=scenes.length) i=0; // wrap to start
+    idx=i; clearTimers();
+    document.querySelectorAll('.scene').forEach(function(el){ el.classList.remove('on'); });
+    var s=scenes[i]; $(s.id).classList.add('on');
+    if(s.hideCap){ capbar.classList.remove('show'); }
+    else { capLbl.textContent=s.label; capMain.textContent=s.caption; capSub.textContent=s.sub; capbar.classList.remove('show'); var cur=i; requestAnimationFrame(function(){ if(idx===cur) capbar.classList.add('show'); }); }
+    segs.forEach(function(sg,k){ sg.classList.toggle('done', k<=i); });
+    navPrev.classList.toggle('hidden', i===0);
+    if(s.activate) s.activate();
+  }
+  function next(){ go(idx+1); }
+  function prev(){ go(idx>0?idx-1:0); }
+
+  stage.addEventListener('click', function(){ next(); });
+  navPrev.addEventListener('click', function(e){ e.stopPropagation(); prev(); });
+  navNext.addEventListener('click', function(e){ e.stopPropagation(); next(); });
+  $('boardlink').addEventListener('click', function(e){ e.stopPropagation(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'||e.key==='PageDown'){ e.preventDefault(); next(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ e.preventDefault(); go(0); }
+  });
+
+  go(0);
+})();
+</script>
+</body>
+</html>
