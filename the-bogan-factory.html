@@ -107,8 +107,7 @@ button{font-family:inherit;color:inherit}
 .navbtn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .navbtn.prev{left:16px}.navbtn.next{right:16px}
 .navbtn.hidden{opacity:0;pointer-events:none}
-.counter{position:absolute;right:20px;bottom:18px;z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--mut-2)}
-.boardlink{position:absolute;left:20px;bottom:16px;z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--mut-2);border:1px solid var(--line);border-radius:20px;padding:6px 13px;display:inline-flex;align-items:center;gap:7px;transition:color .2s,border-color .2s,background .2s}
+.boardlink{position:absolute;right:20px;bottom:16px;z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--mut-2);border:1px solid var(--line);border-radius:20px;padding:6px 13px;display:inline-flex;align-items:center;gap:7px;transition:color .2s,border-color .2s,background .2s}
 .boardlink:hover{color:#fff;border-color:var(--line-b);background:rgba(255,255,255,.06)}
 .hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-2);display:inline-flex;align-items:center;gap:9px;transition:opacity .4s ease}
 .hint .k{border:1px solid var(--line-b);border-radius:6px;padding:2px 7px}
@@ -453,7 +452,6 @@ button{font-family:inherit;color:inherit}
 
     <button class="navbtn prev" id="navPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
     <button class="navbtn next" id="navNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-    <div class="counter" id="counter"></div>
     <a class="boardlink" id="boardlink" href="/the-bogan-factory-board">The origination board &rarr;</a>
   </div>
 </div>
@@ -640,7 +638,7 @@ button{font-family:inherit;color:inherit}
   ];
 
   var capbar=$('capbar'), capLbl=$('capLbl'), capMain=$('capMain'), capSub=$('capSub'),
-      stage=$('stage'), navPrev=$('navPrev'), navNext=$('navNext'), counter=$('counter'), stepsEl=$('steps');
+      stage=$('stage'), navPrev=$('navPrev'), navNext=$('navNext'), stepsEl=$('steps');
 
   // build step segments
   scenes.forEach(function(){ var s=document.createElement('span'); s.className='seg'; stepsEl.appendChild(s); });
@@ -656,7 +654,6 @@ button{font-family:inherit;color:inherit}
     if(s.hideCap){ capbar.classList.remove('show'); }
     else { capLbl.textContent=s.label; capMain.textContent=s.caption; capSub.textContent=s.sub; capbar.classList.remove('show'); var cur=i; requestAnimationFrame(function(){ if(idx===cur) capbar.classList.add('show'); }); }
     segs.forEach(function(sg,k){ sg.classList.toggle('done', k<=i); });
-    counter.textContent = ('0'+(i+1)).slice(-2) + ' / ' + ('0'+scenes.length).slice(-2);
     navPrev.classList.toggle('hidden', i===0);
     if(s.activate) s.activate();
   }
