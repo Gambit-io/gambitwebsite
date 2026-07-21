@@ -262,8 +262,10 @@ button{font-family:inherit;color:inherit}
 
 /* ============ SCENE 8 · BUILD THE FLOOR (light card) ============ */
 .floor-card{width:min(94%,900px);padding:30px 32px}
+.floor-card .fc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+.floor-card .fc-logo{height:19px;width:auto;flex:none;margin-top:3px;opacity:.8}
 .floor-card .fc-h{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
-.floor-card .fc-s{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+.floor-card .fc-s{font-size:13.5px;color:var(--muted)}
 .floor-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 @media(max-width:760px){.floor-grid{grid-template-columns:repeat(3,1fr)}}
 .wtile{position:relative;display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px 8px;border-radius:12px;border:1px solid var(--line-2);background:var(--bone);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .42s var(--ease),transform .42s var(--ease)}
@@ -424,15 +426,19 @@ button{font-family:inherit;color:inherit}
     <!-- S8 : BUILD THE FLOOR -->
     <div class="scene" id="s8">
       <div class="card floor-card">
-        <div class="fc-h">Bogan is one worker</div>
-        <div class="fc-s">Start with one. Add the next, and the next, until the floor runs itself.</div>
+        <div class="fc-top">
+          <div>
+            <div class="fc-h">Bogan is one worker</div>
+            <div class="fc-s">Start with one. Add the next, and the next, until the floor runs itself.</div>
+          </div>
+          <img class="fc-logo" src="/img/gambit-logo.png" alt="Gambit">
+        </div>
         <div class="floor-grid" id="floorGrid"></div>
       </div>
     </div>
 
     <!-- S9 : END -->
     <div class="scene hide-cap" id="s9">
-      <img src="/img/gambit-logo.png" alt="Gambit" class="close-mark">
       <h2>That&rsquo;s the Bogan factory.</h2>
       <p class="close-sub">Mandate in. Conversation out.</p>
     </div>
@@ -627,8 +633,8 @@ button{font-family:inherit;color:inherit}
     { id:'s5', label:'05 · The research', caption:'Workers spin up their own helper agents.', sub:'Estimating revenue, fleet size, whatever the mandate needs.' },
     { id:'s6', label:'06 · The result', caption:'It all becomes one signal, and one email.', sub:'Everything the crew found, written for the exact person it is going to.', activate:deskActivate },
     { id:'s7', label:'07 · The send', caption:'Then Bogan sends, steadily.', sub:'Not thousands at once, so the outreach stays quiet and personal.', activate:sendActivate },
-    { id:'s8', label:'08 · Build the floor', caption:'Start with one worker. Build the floor.', sub:'Bogan is one of a growing floor of Gambit workers.' },
-    { id:'s9', hideCap:true }
+    { id:'s9', hideCap:true },
+    { id:'s8', label:'08 · Build the floor', caption:'Start with one worker. Build the floor.', sub:'Bogan is one of a growing floor of Gambit workers.' }
   ];
 
   var capbar=$('capbar'), capLbl=$('capLbl'), capMain=$('capMain'), capSub=$('capSub'),
@@ -646,7 +652,7 @@ button{font-family:inherit;color:inherit}
     document.querySelectorAll('.scene').forEach(function(el){ el.classList.remove('on'); });
     var s=scenes[i]; $(s.id).classList.add('on');
     if(s.hideCap){ capbar.classList.remove('show'); }
-    else { capLbl.textContent=s.label; capMain.textContent=s.caption; capSub.textContent=s.sub; capbar.classList.remove('show'); requestAnimationFrame(function(){ capbar.classList.add('show'); }); }
+    else { capLbl.textContent=s.label; capMain.textContent=s.caption; capSub.textContent=s.sub; capbar.classList.remove('show'); var cur=i; requestAnimationFrame(function(){ if(idx===cur) capbar.classList.add('show'); }); }
     segs.forEach(function(sg,k){ sg.classList.toggle('done', k<=i); });
     counter.textContent = ('0'+(i+1)).slice(-2) + ' / ' + ('0'+scenes.length).slice(-2);
     hint.style.opacity = (i===0 ? '1' : '0');
