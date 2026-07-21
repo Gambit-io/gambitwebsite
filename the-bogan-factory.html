@@ -286,6 +286,27 @@ button{font-family:inherit;color:inherit}
 #s9 .close-sub{font-size:clamp(15px,1.5vw,18px);color:var(--mut);margin-top:14px;text-align:center;opacity:0;transition:opacity .7s var(--ease) .25s}
 #s9.on h2,#s9.on .close-sub{opacity:1;transform:none}
 
+/* ============ SCENE · THE BOARD (at scale) ============ */
+.board-card{width:min(97%,1080px);padding:22px 22px}
+.board-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.board-h .bh-t{font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-.01em}
+.board-h .bh-n{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--status-d)}
+.board-h .bh-n .d{width:6px;height:6px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.board-cols{display:grid;grid-template-columns:repeat(6,1fr);gap:11px;align-items:stretch}
+.bcol{background:var(--bone);border:1px solid var(--line-2);border-radius:12px;padding:10px 9px;display:flex;flex-direction:column;gap:8px}
+.bcol-h{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted-2);padding:2px 2px 7px;border-bottom:1px solid var(--line-2)}
+.bcol-h .cnt{color:var(--ink-2);font-weight:600;background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:1px 7px}
+.bcard{background:#fff;border:1px solid var(--line-card);border-radius:9px;padding:9px 10px;box-shadow:0 6px 14px -11px rgba(0,0,0,.5);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.scene.on .bcard{opacity:1;transform:none}
+.bcard.you{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.bcard .bc-co{font-size:11.5px;font-weight:600;color:var(--ink-2);letter-spacing:-.01em;line-height:1.25}
+.bcard .bc-sec{font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
+.bcard .bc-fit{margin-top:6px;display:inline-block;font-family:var(--mono);font-size:9px;font-weight:600;color:var(--accent-deep);background:rgba(220,69,48,.09);border-radius:5px;padding:2px 6px}
+.bmore{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);text-align:center;padding:3px 0 1px}
+.bcol:nth-child(1) .bcard{transition-delay:.05s}.bcol:nth-child(2) .bcard{transition-delay:.13s}.bcol:nth-child(3) .bcard{transition-delay:.21s}
+.bcol:nth-child(4) .bcard{transition-delay:.29s}.bcol:nth-child(5) .bcard{transition-delay:.37s}.bcol:nth-child(6) .bcard{transition-delay:.45s}
+@media(max-width:760px){.board-cols{grid-template-columns:repeat(3,1fr);gap:9px}}
+
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 6px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;animation-iteration-count:1!important}}
 @media(max-width:640px){.stage{width:100vw;height:100vh;border-radius:0}}
@@ -420,6 +441,49 @@ button{font-family:inherit;color:inherit}
         </div>
         <div class="send-ctr"><b id="sendCount">0</b> sent &middot; going out steadily</div>
         <span class="send-tag">Not thousands at once</span>
+      </div>
+    </div>
+
+    <!-- SK : THE BOARD (at scale) -->
+    <div class="scene" id="sk">
+      <div class="card board-card">
+        <div class="board-h"><span class="bh-t">Spearhead &middot; Origination board</span><span class="bh-n"><span class="d"></span> Live</span></div>
+        <div class="board-cols">
+          <div class="bcol">
+            <div class="bcol-h"><span>New signal</span><span class="cnt">14</span></div>
+            <div class="bcard"><div class="bc-co">Cedar Mfg.</div><div class="bc-sec">Ownership change</div></div>
+            <div class="bcard"><div class="bc-co">Delta Tool &amp; Die</div><div class="bc-sec">Succession filed</div></div>
+            <div class="bmore">+12 more</div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span>Researching</span><span class="cnt">9</span></div>
+            <div class="bcard"><div class="bc-co">Vantage Metalworks</div><div class="bc-sec">Industrials</div></div>
+            <div class="bcard"><div class="bc-co">Orizon Industrial</div><div class="bc-sec">Industrials</div></div>
+            <div class="bmore">+7 more</div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span>Scored</span><span class="cnt">6</span></div>
+            <div class="bcard"><div class="bc-co">Harbor Castings</div><div class="bc-sec">Industrials</div><span class="bc-fit">fit 82</span></div>
+            <div class="bcard"><div class="bc-co">Pike Fabrication</div><div class="bc-sec">Industrials</div><span class="bc-fit">fit 74</span></div>
+            <div class="bmore">+4 more</div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span>Drafting</span><span class="cnt">3</span></div>
+            <div class="bcard you"><div class="bc-co">Atlas Fabrication</div><div class="bc-sec">Industrials</div><span class="bc-fit">fit 87</span></div>
+            <div class="bmore">+2 more</div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span>Queued</span><span class="cnt">5</span></div>
+            <div class="bcard"><div class="bc-co">Ridgeline Machining</div><div class="bc-sec">Industrials</div><span class="bc-fit">fit 79</span></div>
+            <div class="bmore">+4 more</div>
+          </div>
+          <div class="bcol">
+            <div class="bcol-h"><span>Sent</span><span class="cnt">128</span></div>
+            <div class="bcard"><div class="bc-co">Summit Forge</div><div class="bc-sec">Industrials</div><span class="bc-fit">fit 88</span></div>
+            <div class="bcard"><div class="bc-co">Cross Valve Co.</div><div class="bc-sec">Industrials</div><span class="bc-fit">fit 81</span></div>
+            <div class="bmore">+126 more</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -632,6 +696,7 @@ button{font-family:inherit;color:inherit}
     { id:'s5', label:'05 · The research', caption:'Workers spin up their own helper agents.', sub:'Estimating revenue, fleet size, whatever the mandate needs.' },
     { id:'s6', label:'06 · The result', caption:'It all becomes one signal, and one email.', sub:'Everything the crew found, written for the exact person it is going to.', activate:deskActivate },
     { id:'s7', label:'07 · The send', caption:'Then Bogan sends, steadily.', sub:'Not thousands at once, so the outreach stays quiet and personal.', activate:sendActivate },
+    { id:'sk', label:'08 · At scale', caption:'And it runs at scale, all day.', sub:'Every signal moving from a filing to a first conversation.' },
     { id:'s9', hideCap:true },
     { id:'s8', label:'Build the floor', caption:'Start with one worker. Build the floor.', sub:'Bogan is one of a growing floor of Gambit workers.' }
   ];
