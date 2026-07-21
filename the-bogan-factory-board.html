@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81TPJZNKQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-81TPJZNKQ1");
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spearhead · Origination Board · Gambit</title>
+<meta name="description" content="The Bogan origination board: every signal moving from a filing to a first conversation, at scale.">
+<meta name="theme-color" content="#0b1626">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="canonical" href="https://gambitco.io/the-bogan-factory-board">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+
+:root{
+  --navy:#0b1626;--ink:#15110d;--ink-2:#241f1a;--paper:#ffffff;--bone:#f5f1ea;
+  --line-card:#e5ddd0;--line-2:#efeae1;--muted:#6f675c;--muted-2:#8a8175;
+  --accent:#dc4530;--accent-2:#f2836f;--accent-deep:#b23a26;--status:#3ec46d;--status-d:#1f9e54;
+  --mut:rgba(233,238,247,.74);--mut-2:rgba(233,238,247,.52);--line:rgba(255,255,255,.12);--line-b:rgba(255,255,255,.2);
+  --display:'General Sans','Helvetica Neue',Arial,sans-serif;--mark:'Orbitron',sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--display);color:#fff;background:radial-gradient(120% 90% at 50% -10%,rgba(220,69,48,.08),transparent 50%),#070f1c;-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit;text-decoration:none}
+
+.app{height:100vh;display:flex;flex-direction:column}
+
+/* header */
+.appbar{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);flex:none}
+.appbar .logo{height:16px;width:auto;filter:brightness(0) invert(1);opacity:.75}
+.appbar .div{width:1px;height:20px;background:var(--line)}
+.appbar .title{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#eaf0f8}
+.appbar .live{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7fd4a4}
+.appbar .live .d{width:7px;height:7px;border-radius:50%;background:var(--status);animation:pulse 2s infinite}
+.appbar .worker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut-2);border:1px solid var(--line);border-radius:20px;padding:5px 11px}
+.appbar .worker .b{width:16px;height:16px;border-radius:5px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;font-size:8px;color:#fff}
+
+/* mandate strip */
+.mandate{display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:1px solid var(--line);flex:none;background:rgba(255,255,255,.015)}
+.mandate .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2);flex:none}
+.mandate .val{font-family:var(--mono);font-size:12.5px;color:#dfe6f0;letter-spacing:.01em}
+@media(max-width:720px){.mandate .val{font-size:11px}}
+
+/* kpi row */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 24px;flex:none}
+.kpi{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.kpi .n{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em;color:#fff;line-height:1}
+.kpi .l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut-2);margin-top:7px}
+.kpi .n .u{color:var(--accent-2);font-size:15px;margin-left:3px;font-weight:600}
+@media(max-width:720px){.kpis{grid-template-columns:repeat(3,1fr)}}
+
+/* board */
+.board{flex:1;min-height:0;margin:4px 16px 16px;background:var(--bone);border-radius:16px;box-shadow:0 40px 90px -50px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);padding:16px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+@media(max-width:900px){.board{grid-template-columns:repeat(3,1fr);overflow-y:auto}}
+.bcol{background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:11px 10px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.bcol-h{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted-2);padding-bottom:8px;border-bottom:1px solid var(--line-2)}
+.bcol-h .cnt{color:var(--ink-2);font-weight:600;background:var(--bone);border:1px solid var(--line-2);border-radius:10px;padding:1px 8px}
+.bcards{display:flex;flex-direction:column;gap:8px;overflow:hidden;flex:1}
+.bcard{background:#fff;border:1px solid var(--line-card);border-radius:9px;padding:9px 11px;box-shadow:0 5px 12px -10px rgba(0,0,0,.5)}
+.bcard.you{border-color:var(--accent);box-shadow:0 0 0 1.5px var(--accent)}
+.bcard.new{animation:drop .5s var(--ease)}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.bcard .co{font-size:12px;font-weight:600;color:var(--ink-2);letter-spacing:-.01em;line-height:1.25;display:flex;align-items:center;gap:6px}
+.bcard .co .tag{font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:20px;padding:1px 6px}
+.bcard .sec{font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
+.bcard .meta{display:flex;align-items:center;justify-content:space-between;margin-top:7px;gap:8px}
+.bcard .fit{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--accent-deep);background:rgba(220,69,48,.09);border-radius:5px;padding:2px 6px}
+.bcard .agent{font-family:var(--mono);font-size:8px;letter-spacing:.03em;color:var(--muted-2);display:inline-flex;align-items:center;gap:4px}
+.bcard .agent .dot{width:5px;height:5px;border-radius:50%;background:var(--status)}
+.bmore{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);text-align:center;padding:4px 0 1px;margin-top:auto}
+
+/* footer link back to the film */
+.foot{position:fixed;right:20px;bottom:14px;z-index:20;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--mut-2);display:inline-flex;align-items:center;gap:7px}
+.foot a{color:var(--accent-2)}
+
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,196,109,.5)}70%{box-shadow:0 0 0 6px rgba(62,196,109,0)}100%{box-shadow:0 0 0 0 rgba(62,196,109,0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="appbar">
+    <img class="logo" src="/img/gambit-logo.png" alt="Gambit">
+    <span class="div"></span>
+    <span class="title">Spearhead &middot; Origination Board</span>
+    <span class="live"><span class="d"></span> Live</span>
+  </div>
+
+  <div class="mandate">
+    <span class="lbl">Mandate</span>
+    <span class="val">Founder-owned industrials &middot; $3 to 8M EBITDA &middot; ownership change filed in the last 90 days</span>
+    <span class="worker" style="margin-left:auto"><span class="b">B</span> Bogan &middot; buy-side worker</span>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n" id="kPipe">51</div><div class="l">In pipeline</div></div>
+    <div class="kpi"><div class="n" id="kRes">11</div><div class="l">In research</div></div>
+    <div class="kpi"><div class="n" id="kDraft">14</div><div class="l">Drafted today</div></div>
+    <div class="kpi"><div class="n" id="kSent">128</div><div class="l">Sent</div></div>
+    <div class="kpi"><div class="n" id="kReply">19<span class="u">&nbsp;replies</span></div><div class="l">In conversation</div></div>
+  </div>
+
+  <div class="board" id="board"></div>
+</div>
+
+<div class="foot">the bogan factory &middot; <a href="/the-bogan-factory">see the full story &rarr;</a></div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var cols = [
+    { name:'New signal', total:23, agent:'Scraper', cards:[
+      { co:'Cedar Mfg.', sec:'Ownership change' },
+      { co:'Delta Tool & Die', sec:'Succession filed' },
+      { co:'Ironwood Casting', sec:'Ownership change' },
+      { co:'Meridian Stamping', sec:'Retirement signal' }
+    ]},
+    { name:'Researching', total:11, agent:'Researcher', cards:[
+      { co:'Vantage Metalworks', sec:'Industrials' },
+      { co:'Orizon Industrial', sec:'Industrials' },
+      { co:'Calder Machine', sec:'Industrials' },
+      { co:'Bluepeak Fab', sec:'Industrials' }
+    ]},
+    { name:'Scored', total:7, agent:'Scorer', cards:[
+      { co:'Harbor Castings', sec:'Industrials', fit:82 },
+      { co:'Pike Fabrication', sec:'Industrials', fit:74 },
+      { co:'Granite Components', sec:'Industrials', fit:69 },
+      { co:'Novak Welding', sec:'Industrials', fit:77 }
+    ]},
+    { name:'Drafting', total:4, agent:'Bogan', cards:[
+      { co:'Atlas Fabrication', sec:'Industrials', fit:87, you:true },
+      { co:'Sterling Diecast', sec:'Industrials', fit:81 },
+      { co:'Redmond Tool', sec:'Industrials', fit:76 }
+    ]},
+    { name:'Queued', total:6, agent:'Sender', cards:[
+      { co:'Ridgeline Machining', sec:'Industrials', fit:79 },
+      { co:'Kestrel Industrial', sec:'Industrials', fit:84 },
+      { co:'Foxhill Fab', sec:'Industrials', fit:72 }
+    ]},
+    { name:'Sent', total:128, agent:'Bogan', cards:[
+      { co:'Summit Forge', sec:'Industrials', fit:88 },
+      { co:'Cross Valve Co.', sec:'Industrials', fit:81 },
+      { co:'Halden Metalworks', sec:'Industrials', fit:85 },
+      { co:'Pillar Manufacturing', sec:'Industrials', fit:79 }
+    ]}
+  ];
+
+  function cardHTML(c, agent){
+    var fit = (c.fit!=null) ? '<span class="fit">fit '+c.fit+'</span>' : '<span></span>';
+    var tag = c.you ? '<span class="tag">tracking</span>' : '';
+    return '<div class="bcard'+(c.you?' you':'')+'">'+
+      '<div class="co">'+c.co+tag+'</div>'+
+      '<div class="sec">'+c.sec+'</div>'+
+      '<div class="meta">'+fit+'<span class="agent"><span class="dot"></span>'+agent+'</span></div>'+
+    '</div>';
+  }
+  function render(){
+    var board = $('board'); board.innerHTML='';
+    cols.forEach(function(col){
+      var shown = col.cards.slice(0,4);
+      var extra = col.total - shown.length;
+      var html = '<div class="bcol"><div class="bcol-h"><span>'+col.name+'</span><span class="cnt">'+col.total+'</span></div>'+
+        '<div class="bcards">'+ shown.map(function(c){return cardHTML(c,col.agent);}).join('') +'</div>'+
+        (extra>0 ? '<div class="bmore">+'+extra+' more</div>' : '') + '</div>';
+      board.insertAdjacentHTML('beforeend', html);
+    });
+  }
+  render();
+
+  // light "live" pulse: sent + replies tick up gently
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(function(){
+      var sent=$('kSent'), reply=$('kReply');
+      var s=parseInt(sent.textContent,10)+ (1+Math.floor(Math.random()*2));
+      sent.textContent=s;
+      cols[5].total = s; // keep Sent column count in sync
+      if(Math.random()<0.35){ var r=parseInt(reply.childNodes[0].textContent,10)+1; reply.childNodes[0].textContent=r; }
+      // re-render just the Sent column count
+      var sentCol=document.querySelectorAll('.bcol')[5];
+      if(sentCol) sentCol.querySelector('.cnt').textContent=s;
+    }, 3000);
+  }
+})();
+</script>
+</body>
+</html>
