@@ -74,10 +74,11 @@ a{color:inherit;text-decoration:none}
 .bcol-h{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted-2);padding-bottom:8px;border-bottom:1px solid var(--line-2)}
 .bcol-h .cnt{color:var(--ink-2);font-weight:600;background:var(--bone);border:1px solid var(--line-2);border-radius:10px;padding:1px 8px}
 .bcards{display:flex;flex-direction:column;gap:8px;overflow:hidden;flex:1}
-.bcard{background:#fff;border:1px solid var(--line-card);border-radius:9px;padding:9px 11px;box-shadow:0 5px 12px -10px rgba(0,0,0,.5)}
+.bcard{background:#fff;border:1px solid var(--line-card);border-radius:9px;padding:9px 11px;box-shadow:0 5px 12px -10px rgba(0,0,0,.5);transition:opacity .3s var(--ease),transform .3s var(--ease)}
 .bcard.you{border-color:var(--accent);box-shadow:0 0 0 1.5px var(--accent)}
-.bcard.new{animation:drop .5s var(--ease)}
-@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.bcard.leaving{opacity:0;transform:translateX(26px)}
+.bcard.entering{animation:cardEnter .4s var(--ease)}
+@keyframes cardEnter{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 .bcard .co{font-size:12px;font-weight:600;color:var(--ink-2);letter-spacing:-.01em;line-height:1.25;display:flex;align-items:center;gap:6px}
 .bcard .co .tag{font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:20px;padding:1px 6px}
 .bcard .sec{font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
@@ -120,78 +121,94 @@ a{color:inherit;text-decoration:none}
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MAXV = 4;
+  var STAGES = ['New signal','Researching','Scored','Drafting','Queued','Sent'];
+  var AGENTS = ['Scraper','Researcher','Scorer','Bogan','Sender','Bogan'];
+
   var cols = [
-    { name:'New signal', total:23, agent:'Scraper', cards:[
-      { co:'Cedar Mfg.', sec:'Ownership change' },
-      { co:'Delta Tool & Die', sec:'Succession filed' },
-      { co:'Ironwood Casting', sec:'Ownership change' },
-      { co:'Meridian Stamping', sec:'Retirement signal' }
-    ]},
-    { name:'Researching', total:11, agent:'Researcher', cards:[
-      { co:'Vantage Metalworks', sec:'Industrials' },
-      { co:'Orizon Industrial', sec:'Industrials' },
-      { co:'Calder Machine', sec:'Industrials' },
-      { co:'Bluepeak Fab', sec:'Industrials' }
-    ]},
-    { name:'Scored', total:7, agent:'Scorer', cards:[
-      { co:'Harbor Castings', sec:'Industrials', fit:82 },
-      { co:'Pike Fabrication', sec:'Industrials', fit:74 },
-      { co:'Granite Components', sec:'Industrials', fit:69 },
-      { co:'Novak Welding', sec:'Industrials', fit:77 }
-    ]},
-    { name:'Drafting', total:4, agent:'Bogan', cards:[
-      { co:'Atlas Fabrication', sec:'Industrials', fit:87, you:true },
-      { co:'Sterling Diecast', sec:'Industrials', fit:81 },
-      { co:'Redmond Tool', sec:'Industrials', fit:76 }
-    ]},
-    { name:'Queued', total:6, agent:'Sender', cards:[
-      { co:'Ridgeline Machining', sec:'Industrials', fit:79 },
-      { co:'Kestrel Industrial', sec:'Industrials', fit:84 },
-      { co:'Foxhill Fab', sec:'Industrials', fit:72 }
-    ]},
-    { name:'Sent', total:128, agent:'Bogan', cards:[
-      { co:'Summit Forge', sec:'Industrials', fit:88 },
-      { co:'Cross Valve Co.', sec:'Industrials', fit:81 },
-      { co:'Halden Metalworks', sec:'Industrials', fit:85 },
-      { co:'Pillar Manufacturing', sec:'Industrials', fit:79 }
-    ]}
+    { total:23, cards:[ {co:'Cedar Mfg.',trig:'Ownership change'},{co:'Delta Tool & Die',trig:'Succession filed'},{co:'Ironwood Casting',trig:'Ownership change'},{co:'Meridian Stamping',trig:'Retirement signal'} ]},
+    { total:11, cards:[ {co:'Vantage Metalworks'},{co:'Orizon Industrial'},{co:'Calder Machine'},{co:'Bluepeak Fab'} ]},
+    { total:7,  cards:[ {co:'Harbor Castings',fit:82},{co:'Pike Fabrication',fit:74},{co:'Granite Components',fit:69},{co:'Novak Welding',fit:77} ]},
+    { total:4,  cards:[ {co:'Atlas Fabrication',fit:87,you:true},{co:'Sterling Diecast',fit:81},{co:'Redmond Tool',fit:76} ]},
+    { total:6,  cards:[ {co:'Ridgeline Machining',fit:79},{co:'Kestrel Industrial',fit:84},{co:'Foxhill Fab',fit:72} ]},
+    { total:128,cards:[ {co:'Summit Forge',fit:88},{co:'Cross Valve Co.',fit:81},{co:'Halden Metalworks',fit:85},{co:'Pillar Manufacturing',fit:79} ]}
   ];
 
-  function cardHTML(c, agent){
-    var fit = (c.fit!=null) ? '<span class="fit">fit '+c.fit+'</span>' : '<span></span>';
-    var tag = c.you ? '<span class="tag">tracking</span>' : '';
-    return '<div class="bcard'+(c.you?' you':'')+'">'+
-      '<div class="co">'+c.co+tag+'</div>'+
-      '<div class="sec">'+c.sec+'</div>'+
-      '<div class="meta">'+fit+'<span class="agent"><span class="dot"></span>'+agent+'</span></div>'+
-    '</div>';
-  }
-  function render(){
-    var board = $('board'); board.innerHTML='';
-    cols.forEach(function(col){
-      var shown = col.cards.slice(0,4);
-      var extra = col.total - shown.length;
-      var html = '<div class="bcol"><div class="bcol-h"><span>'+col.name+'</span><span class="cnt">'+col.total+'</span></div>'+
-        '<div class="bcards">'+ shown.map(function(c){return cardHTML(c,col.agent);}).join('') +'</div>'+
-        (extra>0 ? '<div class="bmore">+'+extra+' more</div>' : '') + '</div>';
-      board.insertAdjacentHTML('beforeend', html);
-    });
-  }
-  render();
+  // fictional company generator (no real names)
+  var PRE=['Cedar','Delta','Vantage','Orizon','Harbor','Pike','Granite','Novak','Sterling','Redmond','Ridgeline','Kestrel','Foxhill','Summit','Halden','Pillar','Ironwood','Meridian','Calder','Bluepeak','Ashford','Beacon','Copperline','Drayton','Elkhorn','Fairmont','Gorman','Hollis','Marlow','Tamworth','Weston','Aldridge'];
+  var SUF=['Mfg.','Tool & Die','Metalworks','Industrial','Castings','Fabrication','Machining','Forge','Stamping','Welding','Components','Diecast','Foundry','Ironworks'];
+  var TRIG=['Ownership change','Succession filed','Retirement signal','Recapitalization','Owner exit'];
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function mint(stage){ var c={ co: pick(PRE)+' '+pick(SUF), trig: pick(TRIG) }; if(stage>=2) c.fit=68+Math.floor(Math.random()*23); return c; }
 
-  // light "live" pulse: sent + replies tick up gently
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    setInterval(function(){
-      var sent=$('kSent'), reply=$('kReply');
-      var s=parseInt(sent.textContent,10)+ (1+Math.floor(Math.random()*2));
-      sent.textContent=s;
-      cols[5].total = s; // keep Sent column count in sync
-      if(Math.random()<0.35){ var r=parseInt(reply.childNodes[0].textContent,10)+1; reply.childNodes[0].textContent=r; }
-      // re-render just the Sent column count
-      var sentCol=document.querySelectorAll('.bcol')[5];
-      if(sentCol) sentCol.querySelector('.cnt').textContent=s;
-    }, 3000);
+  var board=$('board'); board.innerHTML='';
+  var colEls=[];
+  STAGES.forEach(function(name){
+    var el=document.createElement('div'); el.className='bcol';
+    el.innerHTML='<div class="bcol-h"><span>'+name+'</span><span class="cnt"></span></div><div class="bcards"></div><div class="bmore"></div>';
+    board.appendChild(el);
+    colEls.push({ cnt:el.querySelector('.cnt'), cards:el.querySelector('.bcards'), more:el.querySelector('.bmore') });
+  });
+
+  function cardEl(c, stage){
+    var el=document.createElement('div');
+    el.className='bcard'+(c.you?' you':'');
+    var fit=(c.fit!=null)?'<span class="fit">fit '+c.fit+'</span>':'<span></span>';
+    var tag=c.you?'<span class="tag">tracking</span>':'';
+    var sec=(stage===0)?(c.trig||'Signal'):'Industrials';
+    el.innerHTML='<div class="co">'+c.co+tag+'</div><div class="sec">'+sec+'</div>'+
+      '<div class="meta">'+fit+'<span class="agent"><span class="dot"></span>'+AGENTS[stage]+'</span></div>';
+    return el;
   }
+  function syncMeta(i){ var col=cols[i], ce=colEls[i]; ce.cnt.textContent=col.total; var extra=col.total-col.cards.length; ce.more.textContent = extra>0 ? ('+'+extra+' more') : ''; }
+  function renderCol(i){ var col=cols[i], ce=colEls[i]; ce.cards.innerHTML=''; col.cards.slice(0,MAXV).forEach(function(c){ ce.cards.appendChild(cardEl(c,i)); }); syncMeta(i); }
+  cols.forEach(function(_,i){ renderCol(i); });
+
+  var drafted=14, replies=19;
+  function recalcKPIs(){ var pipe=0; for(var i=0;i<5;i++) pipe+=cols[i].total; $('kPipe').textContent=pipe; $('kRes').textContent=cols[1].total; $('kSent').textContent=cols[5].total; }
+  recalcKPIs();
+
+  if(RM) return; // reduced motion: leave the board static
+
+  function capNodes(ce){ while(ce.cards.children.length>MAXV){ ce.cards.removeChild(ce.cards.lastChild); } }
+
+  function advance(){
+    // move one card forward from a random stage that has a visible card
+    var cand=[]; for(var s=0;s<5;s++){ if(cols[s].cards.length>0) cand.push(s); }
+    if(cand.length){
+      var s=cand[Math.floor(Math.random()*cand.length)];
+      var src=cols[s], dst=cols[s+1], srcEl=colEls[s], dstEl=colEls[s+1];
+      var card=src.cards.pop();
+      src.total=Math.max(0, src.total-1);
+      var outNode=srcEl.cards.children[srcEl.cards.children.length-1];
+      if(outNode){
+        outNode.classList.add('leaving');
+        setTimeout(function(){
+          if(outNode.parentNode) outNode.parentNode.removeChild(outNode);
+          if(src.cards.length<MAXV && src.total>src.cards.length){ var f=mint(s); src.cards.push(f); var fn=cardEl(f,s); fn.classList.add('entering'); srcEl.cards.appendChild(fn); }
+          syncMeta(s);
+        }, 330);
+      } else { syncMeta(s); }
+      // into next stage (assign fit when it reaches Scored)
+      if(s+1===2 && card.fit==null) card.fit=68+Math.floor(Math.random()*23);
+      dst.cards.unshift(card); if(dst.cards.length>MAXV) dst.cards.pop();
+      dst.total+=1;
+      if(s+1===3){ drafted++; $('kDraft').textContent=drafted; }
+      if(s+1===5 && Math.random()<0.5){ replies++; $('kReply').childNodes[0].textContent=replies; }
+      var dn=cardEl(card,s+1); dn.classList.add('entering');
+      dstEl.cards.insertBefore(dn, dstEl.cards.firstChild); capNodes(dstEl);
+      syncMeta(s+1);
+    }
+    // occasional new signal in (bounded so the first column doesn't balloon)
+    if(Math.random()<0.45 && cols[0].total<38){
+      var c0=cols[0], e0=colEls[0]; c0.total+=1;
+      if(c0.cards.length<MAXV){ var nc=mint(0); c0.cards.unshift(nc); var nn=cardEl(nc,0); nn.classList.add('entering'); e0.cards.insertBefore(nn,e0.cards.firstChild); capNodes(e0); }
+      syncMeta(0);
+    }
+    recalcKPIs();
+  }
+  setInterval(advance, 2100);
 })();
 </script>
 </body>
