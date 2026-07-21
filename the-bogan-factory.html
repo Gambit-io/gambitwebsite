@@ -452,7 +452,6 @@ button{font-family:inherit;color:inherit}
     <button class="navbtn prev" id="navPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
     <button class="navbtn next" id="navNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     <div class="counter" id="counter"></div>
-    <div class="hint" id="hint"><span class="k">click</span> or <span class="k">&rarr;</span> to advance <span class="ar">&rarr;</span></div>
   </div>
 </div>
 
@@ -638,7 +637,7 @@ button{font-family:inherit;color:inherit}
   ];
 
   var capbar=$('capbar'), capLbl=$('capLbl'), capMain=$('capMain'), capSub=$('capSub'),
-      stage=$('stage'), navPrev=$('navPrev'), navNext=$('navNext'), counter=$('counter'), hint=$('hint'), stepsEl=$('steps');
+      stage=$('stage'), navPrev=$('navPrev'), navNext=$('navNext'), counter=$('counter'), stepsEl=$('steps');
 
   // build step segments
   scenes.forEach(function(){ var s=document.createElement('span'); s.className='seg'; stepsEl.appendChild(s); });
@@ -655,7 +654,6 @@ button{font-family:inherit;color:inherit}
     else { capLbl.textContent=s.label; capMain.textContent=s.caption; capSub.textContent=s.sub; capbar.classList.remove('show'); var cur=i; requestAnimationFrame(function(){ if(idx===cur) capbar.classList.add('show'); }); }
     segs.forEach(function(sg,k){ sg.classList.toggle('done', k<=i); });
     counter.textContent = ('0'+(i+1)).slice(-2) + ' / ' + ('0'+scenes.length).slice(-2);
-    hint.style.opacity = (i===0 ? '1' : '0');
     navPrev.classList.toggle('hidden', i===0);
     if(s.activate) s.activate();
   }
