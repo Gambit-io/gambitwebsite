@@ -595,6 +595,15 @@
   .fchip:hover{border-color:var(--brand-border)}
   .fchip.on{background:var(--brand);color:#fff;border-color:var(--brand)}
   .fchip.on .fdot{box-shadow:0 0 0 2px rgba(255,255,255,.5)}
+  .chips-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:9px}
+  .chips-toggle{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft)}
+  .chips-toggle:hover{color:var(--brand)}
+  .chips-toggle em{font-style:normal;font-weight:600;color:var(--muted)}
+  .chips-toggle .chev{width:15px;height:15px;color:var(--dim);transition:transform .2s var(--ease)}
+  .ctrl-chips-wrap.collapsed .chips-toggle .chev{transform:rotate(-90deg)}
+  .ctrl-chips-wrap.collapsed .ctrl-chips{display:none}
+  .prio-legend{display:flex;align-items:center;gap:13px;margin-left:auto;font-size:11px;color:var(--muted)}
+  .prio-legend .pl{display:flex;align-items:center;gap:5px;white-space:nowrap}
   .fdot{width:7px;height:7px;border-radius:50%;flex:none}
   .fdot.hot{background:var(--m-orange)}.fdot.warm{background:var(--m-gold)}.fdot.pipe{background:var(--m-lilac)}
 
@@ -8007,7 +8016,13 @@ function renderWorkspaceShell(){
         <select class="ctrl-sel" onchange="wsLead(this.value)"><option value="all"${wsState.lead==='all'?' selected':''}>All status</option><option value="researching"${wsState.lead==='researching'?' selected':''}>Researching</option><option value="researched"${wsState.lead==='researched'?' selected':''}>Researched</option><option value="emailed"${wsState.lead==='emailed'?' selected':''}>Drafted</option><option value="replied"${wsState.lead==='replied'?' selected':''}>Reply in</option></select>
         <input class="ctrl-q" type="text" placeholder="Search company or contact" value="${wsState.q}" oninput="wsQuery(this.value)">
       </div>
-      <div class="ctrl-chips">${sigChips}</div>
+      <div class="ctrl-chips-wrap${wsState.sigChipsCollapsed?' collapsed':''}">
+        <div class="chips-bar">
+          <button class="chips-toggle" onclick="wsToggleChips()" aria-expanded="${wsState.sigChipsCollapsed?'false':'true'}">Signal filters <em>${sigs.length}</em>${chev}</button>
+          <span class="prio-legend"><span class="pl"><span class="fdot hot"></span>Hot &middot; act now</span><span class="pl"><span class="fdot warm"></span>Warm &middot; nurture</span><span class="pl"><span class="fdot pipe"></span>Pipeline &middot; watch</span></span>
+        </div>
+        <div class="ctrl-chips">${sigChips}</div>
+      </div>
     </div>
     <div class="ws-grid ${wsState.full?'full':''}" id="wsGrid">
       <div class="ws-list" id="wsList"></div>
@@ -8116,10 +8131,11 @@ function contactAcc(ct){
         <div class="tmsg-when">${m.dir==='out'?'Sam &middot; Gillis &middot; drafted':ct.name.split(' ')[0]+' &middot; replied, routed to you'} &middot; ${m.when}</div>
       </div>`).join('')}</div></div>`
     : `<div class="no-mail">Not the contact Sam drafted for. Reachable if you want to work this one directly.</div>`;
-  return `<div class="acc">
+  /* open the contact by default when Sam has a draft, so the email is visible without a hunt */
+  return `<div class="acc${thread.length?' open':''}">
     <button class="acc-head" onclick="accToggle(this)">
       <span class="acc-t">${ct.name}${ct.primary?'<span class="pill-primary">Primary</span>':''}<span class="acc-sub">${ct.title}</span></span>
-      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">Drafted</span>':''}${chev}</span>
+      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">View draft</span>':''}${chev}</span>
     </button>
     <div class="acc-body">
       <div class="cgrid">
@@ -8171,7 +8187,7 @@ function renderDetail(){
 
     <div class="acc-sec open">
       <button class="acc-sec-head" onclick="accToggle(this)"><span class="ash-t">Contacts <em>${cts.length}</em></span>${chev}</button>
-      <div class="acc-sec-body">${cts.map(contactAcc).join('')}</div>
+      <div class="acc-sec-body">${cts.slice().sort((a,b)=>((b.outreach.thread||[]).length-(a.outreach.thread||[]).length)||((b.primary?1:0)-(a.primary?1:0))).map(contactAcc).join('')}</div>
     </div>
 
     <div class="det-actions">
@@ -8184,6 +8200,7 @@ function renderDetail(){
 
 /* interactions */
 function accToggle(btn){ btn.parentElement.classList.toggle('open'); }
+function wsToggleChips(){ wsState.sigChipsCollapsed=!wsState.sigChipsCollapsed; const w=document.querySelector('.ctrl-chips-wrap'); if(!w) return; w.classList.toggle('collapsed', !!wsState.sigChipsCollapsed); const t=w.querySelector('.chips-toggle'); if(t) t.setAttribute('aria-expanded', wsState.sigChipsCollapsed?'false':'true'); }
 function toggleDetailFull(){ wsState.full=!wsState.full; const g=document.getElementById('wsGrid'); g.classList.toggle('full', wsState.full); renderDetail(); }
 function wsSelect(id){ wsState.selected=id; renderWorkspaceList(); renderDetail(); if(wsState.full){ document.getElementById('wsDetail').scrollIntoView({block:'start'}); } }
 function wsGroup(g){ wsState.group=g; renderWorkspaceShell(); renderWorkspaceList(); renderDetail(); }
