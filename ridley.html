@@ -16,9 +16,9 @@
     --pine-deep: #0B3B33;
     --pine-ink: #123B33;
     --mint: #6FE3BB;
-    --pink: #F79CB4;
-    --lilac: #C77BEB;
-    --plum: #3D1152;
+    --pink: #C9793E;
+    --lilac: #8FA9B0;
+    --plum: #22343A;
     --paper: #EDFBF4;
     --white: #FFFFFF;
     --mist: #CBEEDD;
@@ -243,7 +243,7 @@
   .jr-row { display: flex; align-items: center; }
   .jr-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; box-sizing: border-box; border: 1.5px solid rgba(191,233,216,0.45); }
   .jr-dot.done { background: var(--mint); border-color: var(--mint); }
-  .jr-dot.active { width: 18px; height: 18px; background: var(--pink); border-color: var(--pink); box-shadow: 0 0 0 6px rgba(247,156,180,0.14); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin: center; }
+  .jr-dot.active { width: 18px; height: 18px; background: var(--pink); border-color: var(--pink); box-shadow: 0 0 0 6px rgba(201,121,62,0.14); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin: center; }
   .jr-seg { flex: 1; height: 2px; background: rgba(191,233,216,0.18); }
   .jr-seg.done { background: var(--mint); }
   .jr-labels { display: flex; margin-top: 12px; }
@@ -398,7 +398,7 @@
   .wstep { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--pine-ink); }
   .wstep .wnum { width: 24px; height: 24px; border-radius: 50%; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
   .wstep.done .wnum { background: var(--mint); color: var(--pine); }
-  .wstep.now .wnum { background: var(--pink); color: #56142B; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
+  .wstep.now .wnum { background: var(--pink); color: #2A1408; animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
   .wstep.todo { opacity: 0.45; }
   .wstep.todo .wnum { border: 1.5px solid var(--mist); color: var(--pine); }
   .outrow { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
@@ -453,7 +453,7 @@
     <svg class="gshape" viewBox="0 0 300 260">
       <defs><mask id="gm"><rect width="300" height="260" fill="#fff"/><circle cx="216" cy="84" r="92" fill="#000"/></mask></defs>
       <rect width="300" height="260" rx="84" fill="#6FE3BB" fill-opacity="0.18" mask="url(#gm)"/>
-      <circle cx="216" cy="84" r="34" fill="#F79CB4" fill-opacity="0.5"/>
+      <circle cx="216" cy="84" r="34" fill="#C9793E" fill-opacity="0.5"/>
     </svg>
     <div class="gate-box">
       <span class="wm">
@@ -501,7 +501,7 @@
           <text x="430" y="216" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">your symptoms, heard</text>
           <text x="630" y="316" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the conversation</text>
           <text x="830" y="144" fill="#BFE9D4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">the right care</text>
-          <circle class="walkdot" r="16" fill="#F79CB4" opacity="0">
+          <circle class="walkdot" r="16" fill="#C9793E" opacity="0">
             <animateMotion id="walk" dur="6s" begin="indefinite" fill="freeze" calcMode="linear"
               path="M 430 250 C 545 250, 545 350, 630 350 C 715 350, 730 180, 830 178 C 960 176, 1150 172, 1300 170"/>
           </circle>
@@ -651,10 +651,10 @@ Plan: Rx
                 stroke-dasharray="1650" stroke-dashoffset="1650">
             <animate id="vtrailDraw" attributeName="stroke-dashoffset" from="1650" to="0" dur="8s" begin="indefinite" fill="freeze"/>
           </path>
-          <circle class="pulse" cx="430" cy="250" r="11" fill="#F79CB4"/>
+          <circle class="pulse" cx="430" cy="250" r="11" fill="#C9793E"/>
           <circle cx="630" cy="350" r="9" fill="#EDFBF4"/>
           <circle cx="830" cy="178" r="9" fill="#EDFBF4"/>
-          <text x="430" y="216" fill="#F79CB4" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
+          <text x="430" y="216" fill="#C9793E" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">triage, today</text>
           <text x="630" y="316" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">between visits</text>
           <text x="830" y="144" fill="#BFE9D8" font-family="Inter Tight" font-size="15" text-anchor="middle" letter-spacing="1">beyond urology</text>
         </svg>
@@ -723,7 +723,7 @@ Plan: Rx
     <section>
       <div class="shead">
         <h2>The logo system</h2>
-        <p>Wordmark in Fraunces at the display end of its optical axis. Pink companion on pine and white; pine companion on mint, so it stays the darkest point in the name.</p>
+        <p>Wordmark in Fraunces at the display end of its optical axis. Copper companion on pine and white; pine companion on mint, so it stays the darkest point in the name.</p>
       </div>
       <div class="grid g2">
         <div class="card">
@@ -752,7 +752,7 @@ Plan: Rx
           <div class="lockup" style="background:#fff;border:1px solid var(--mist);gap:26px">
             <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--pine)"><span style="width:24px;height:24px;border-radius:50%;background:var(--mint)"></span></span>
             <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--mint)"><span style="width:24px;height:24px;border-radius:50%;background:var(--pine)"></span></span>
-            <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--pink)"><span style="width:24px;height:24px;border-radius:50%;background:var(--plum)"></span></span>
+            <span style="width:78px;height:78px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--pink)"><span style="width:24px;height:24px;border-radius:50%;background:#2A1408"></span></span>
           </div>
           <div class="caption">The companion in its circle: avatar, favicon, the pulsing "Ridley is here" indicator.</div>
         </div>
@@ -773,7 +773,7 @@ Plan: Rx
               <defs><mask id="cs"><rect width="320" height="240" fill="#fff"/><circle cx="182" cy="92" r="59" fill="#000"/></mask></defs>
               <rect x="56" y="38" width="180" height="150" rx="54" fill="#6FE3BB" mask="url(#cs)"/>
               <circle cx="182" cy="92" r="59" fill="none" stroke="#EDFBF4" stroke-width="1" stroke-dasharray="3 5" opacity="0.3"/>
-              <circle class="pulse" cx="182" cy="92" r="22" fill="#F79CB4"/>
+              <circle class="pulse" cx="182" cy="92" r="22" fill="#C9793E"/>
             </svg>
           </div>
           <div class="caption"><b>One center, three circles.</b> The breathing room is even everywhere, and the companion never overpowers the moment it sits beside.</div>
@@ -784,7 +784,7 @@ Plan: Rx
             <svg viewBox="0 0 320 240">
               <defs><mask id="cc"><rect width="320" height="240" fill="#fff"/><circle cx="246" cy="74" r="48" fill="#000"/></mask></defs>
               <rect x="30" y="30" width="260" height="180" rx="44" fill="#0F4C42" mask="url(#cc)"/>
-              <circle cx="246" cy="74" r="18" fill="#F79CB4"/>
+              <circle cx="246" cy="74" r="18" fill="#C9793E"/>
               <text x="62" y="120" fill="#EDFBF4" font-family="Fraunces" font-size="20">Your results,</text>
               <text x="62" y="146" fill="#EDFBF4" font-family="Fraunces" font-size="20">explained simply</text>
               <text x="62" y="182" fill="#6FE3BB" font-family="Inter Tight" font-size="10.5" letter-spacing="1.8">READ WITH RIDLEY</text>
@@ -798,17 +798,17 @@ Plan: Rx
             <svg width="76" height="76" viewBox="0 0 76 76" style="width:76px;height:76px;flex:none;">
               <defs><mask id="i1"><rect width="76" height="76" fill="#fff"/><circle cx="58" cy="18" r="20" fill="#000"/></mask></defs>
               <rect width="76" height="76" rx="18" fill="#0F4C42" mask="url(#i1)"/>
-              <circle cx="58" cy="18" r="7.5" fill="#F79CB4"/>
+              <circle cx="58" cy="18" r="7.5" fill="#C9793E"/>
             </svg>
             <svg width="40" height="40" viewBox="0 0 40 40" style="width:40px;height:40px;flex:none;">
               <defs><mask id="i2"><rect width="40" height="40" fill="#fff"/><circle cx="29" cy="11" r="12.1" fill="#000"/></mask></defs>
               <rect width="40" height="40" rx="11" fill="#0F4C42" mask="url(#i2)"/>
-              <circle cx="29" cy="11" r="5" fill="#F79CB4"/>
+              <circle cx="29" cy="11" r="5" fill="#C9793E"/>
             </svg>
             <svg width="22" height="22" viewBox="0 0 22 22" style="width:22px;height:22px;flex:none;">
               <defs><mask id="i3"><rect width="22" height="22" fill="#fff"/><circle cx="15.5" cy="6.5" r="7.2" fill="#000"/></mask></defs>
               <rect width="22" height="22" rx="6.5" fill="#0F4C42" mask="url(#i3)"/>
-              <circle cx="15.5" cy="6.5" r="3.2" fill="#F79CB4"/>
+              <circle cx="15.5" cy="6.5" r="3.2" fill="#C9793E"/>
             </svg>
           </div>
           <div class="caption">Same geometry, three sizes, down to favicon. No letter needed; the notched tile is the signature.</div>
@@ -825,18 +825,18 @@ Plan: Rx
       <div class="roles">
         <div class="role"><div class="chip" style="background:var(--pine)"></div><div class="txt" style="padding-top:14px"><div class="nm">Deep pine &middot; #0F4C42</div><div class="use">The brand's home. Headers, primary buttons, the chat surface. Trust lives here.</div></div></div>
         <div class="role"><div class="chip" style="background:var(--mint)"></div><div class="txt" style="padding-top:14px"><div class="nm">Fresh mint &middot; #6FE3BB</div><div class="use">Light, air, progress. Backgrounds, highlights, positive states.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--pink)"></div><div class="txt" style="padding-top:14px"><div class="nm">Bright pink &middot; #F79CB4</div><div class="use">The companion's colour, and only the companion's. Wherever it appears, Ridley is there.</div></div></div>
-        <div class="role"><div class="chip" style="background:var(--lilac)"></div><div class="txt" style="padding-top:14px"><div class="nm">Lilac &middot; #C77BEB</div><div class="use">The patient's colour. Their messages, their choices, their side of the conversation.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--pink)"></div><div class="txt" style="padding-top:14px"><div class="nm">Burnt copper &middot; #C9793E</div><div class="use">The companion's colour, and only the companion's. Wherever it appears, Ridley is there.</div></div></div>
+        <div class="role"><div class="chip" style="background:var(--lilac)"></div><div class="txt" style="padding-top:14px"><div class="nm">Slate &middot; #8FA9B0</div><div class="use">The patient's colour. Their messages, their choices, their side of the conversation.</div></div></div>
         <div class="role"><div class="chip" style="background:var(--paper);border:1px solid var(--mist);border-radius:14px 0 0 14px;"></div><div class="txt" style="padding-top:14px"><div class="nm">Mint paper &middot; #EDFBF4</div><div class="use">The default page. Never stark white, never cold.</div></div></div>
       </div>
       <div class="ratio">
         <div style="flex:55; background:var(--paper); color:var(--pine-ink); border:1px solid var(--mist); border-right:none;">55<span class="rname"> &middot; Mint paper</span></div>
         <div style="flex:25; background:var(--pine); color:#D8F5EA;">25<span class="rname"> &middot; Pine</span></div>
         <div style="flex:12; background:var(--mint); color:var(--pine);">12<span class="rname"> &middot; Mint</span></div>
-        <div style="flex:6; background:var(--lilac); color:var(--plum);">6<span class="rname"> &middot; Lilac</span></div>
-        <div style="flex:2; background:var(--pink); color:#56142B; padding:12px 8px;">2</div>
+        <div style="flex:6; background:var(--lilac); color:var(--plum);">6<span class="rname"> &middot; Slate</span></div>
+        <div style="flex:2; background:var(--pink); color:#2A1408; padding:12px 8px;">2</div>
       </div>
-      <p class="ratio-note"><b>Pink is two percent.</b> Scarcity keeps the companion precious: the warmest colour appears exactly where Ridley is, and almost nowhere else.</p>
+      <p class="ratio-note"><b>Copper is two percent.</b> Scarcity keeps the companion precious: the warmest colour appears exactly where Ridley is, and almost nowhere else.</p>
     </section>
 
     <!-- ============ BRAND : TYPE ============ -->
@@ -900,7 +900,7 @@ Plan: Rx
                 <svg width="84" height="84" viewBox="0 0 84 84">
                   <defs><mask id="wa"><rect width="84" height="84" fill="#fff"/><circle cx="63" cy="21" r="22" fill="#000"/></mask></defs>
                   <rect width="84" height="84" rx="26" fill="#0F4C42" mask="url(#wa)"/>
-                  <circle class="pulse" cx="63" cy="21" r="8.5" fill="#F79CB4"/>
+                  <circle class="pulse" cx="63" cy="21" r="8.5" fill="#C9793E"/>
                 </svg>
               </div>
               <h4 class="disp">The virtual waiting room</h4>
@@ -990,7 +990,7 @@ Plan: Rx
               <svg width="26" height="26" viewBox="0 0 26 26">
                 <defs><mask id="sn"><rect width="26" height="26" fill="#fff"/><circle cx="19" cy="7" r="8" fill="#000"/></mask></defs>
                 <rect width="26" height="26" rx="8" fill="#0F4C42" mask="url(#sn)"/>
-                <circle cx="19" cy="7" r="3.4" fill="#F79CB4"/>
+                <circle cx="19" cy="7" r="3.4" fill="#C9793E"/>
               </svg>
               <span class="stitle2">Consultation summary &middot; M. Whitfield &middot; MRN 40213</span>
             </div>
@@ -1039,7 +1039,7 @@ Outcome B: medication eligible. Follow up in 6-8 weeks; contact office if side e
       <svg style="position:absolute; right:-50px; bottom:-70px; width:300px;" viewBox="0 0 300 260">
         <defs><mask id="clm"><rect width="300" height="260" fill="#fff"/><circle cx="216" cy="84" r="92" fill="#000"/></mask></defs>
         <rect width="300" height="260" rx="84" fill="#6FE3BB" fill-opacity="0.18" mask="url(#clm)"/>
-        <circle cx="216" cy="84" r="34" fill="#F79CB4" fill-opacity="0.5"/>
+        <circle cx="216" cy="84" r="34" fill="#C9793E" fill-opacity="0.5"/>
       </svg>
       <h2>Understanding what's happening. <em>Knowing what's next.</em></h2>
       <p><b>Where this goes from here:</b> the brand is ready to pressure-test with Neil, the product is heading into resident pilots, and the two meet in the screens above. Better triage, better experiences, one clinical AI.</p>
