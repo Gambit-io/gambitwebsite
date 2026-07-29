@@ -182,6 +182,7 @@
   #f0 .wm { font-size: clamp(64px, 14vw, 170px); color: var(--white); }
   #f1 { background: var(--pine); }
   #f2 { background: var(--pine-deep); }
+  #fentry { background: var(--pine); }
   #f3 { background: var(--pine); }
   #f4 { background: var(--pine); }
   #f5 { background: var(--pine-deep); }
@@ -356,6 +357,11 @@
     box-shadow: 0 30px 70px rgba(0,0,0,0.28);
   }
   .screen.light { background: var(--paper); border: 1px solid var(--mist); }
+  .condgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .cond { display: flex; align-items: center; gap: 9px; padding: 10px 12px; border-radius: 12px; border: 1.5px solid rgba(111,227,187,0.35); color: #D8F5EA; font-size: 12.5px; font-weight: 500; background: rgba(237,251,244,0.04); }
+  .cond .cdot { width: 8px; height: 8px; border-radius: 50%; background: rgba(191,233,216,0.5); flex: none; }
+  .cond.sel { border-color: var(--mint); background: var(--mint); color: var(--pine); }
+  .cond.sel .cdot { background: var(--pine); }
   .pstamp { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-size: 12.5px; font-weight: 600; color: #D8F5EA; }
   .pstamp .pdot { width: 13px; height: 13px; border-radius: 50%; background: var(--pink); animation: breath 5s cubic-bezier(0.37,0,0.63,1) infinite; }
   .pbubble { border-radius: 16px 16px 16px 5px; padding: 12px 14px; font-size: 13.5px; line-height: 1.45; max-width: 92%; width: fit-content; background: #E6F7EF; color: var(--pine-ink); }
@@ -547,6 +553,30 @@ Plan: Rx
       </div>
     </div>
 
+    <!-- FENTRY : THE FRONT DOOR -->
+    <div class="frame" id="fentry" data-hold="10000">
+      <div class="words jstage">
+        <div class="jbody">
+          <div class="s" style="letter-spacing:0.22em; text-transform:uppercase; font-size:12px; color:var(--mint); font-weight:600; margin-bottom:6px;">The front door</div>
+          <div class="t">One front door. Any condition.</div>
+          <div class="s">The patient signs in and says why they're here. Today, Ridley routes urology. The same door is built to triage anything that comes next.</div>
+        </div>
+        <div class="screen rise2" style="transition-delay:0.25s;">
+          <div class="pstamp"><span class="pdot"></span> Ridley &middot; Margaret W.</div>
+          <div class="pbubble">Welcome back. What brings you in today?</div>
+          <div class="condgrid">
+            <span class="cond sel"><span class="cdot"></span> Urology</span>
+            <span class="cond"><span class="cdot"></span> Primary care</span>
+            <span class="cond"><span class="cdot"></span> Skin</span>
+            <span class="cond"><span class="cdot"></span> Heart</span>
+            <span class="cond"><span class="cdot"></span> Mental health</span>
+            <span class="cond"><span class="cdot"></span> Women's health</span>
+          </div>
+          <div style="margin-top:12px; font-size:11px; color:rgba(216,245,234,0.55); letter-spacing:0.04em;">Live today: urology &middot; more pathways coming</div>
+        </div>
+      </div>
+    </div>
+
     <!-- F3 : INTAKE -->
     <div class="frame" id="f3" data-hold="9000">
       <div class="words jstage">
@@ -689,7 +719,7 @@ Plan: Rx
       <button class="hbtn" id="nextBtn" aria-label="Next">
         <svg width="14" height="14" viewBox="0 0 14 14"><path d="M4.5 2 L9.5 7 L4.5 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <span id="counter">1 / 9</span>
+      <span id="counter">1 / 10</span>
     </div>
 
     <button id="soundbtn"><span class="sd"></span><span id="soundlbl">Sound</span></button>
