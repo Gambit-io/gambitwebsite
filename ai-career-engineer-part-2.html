@@ -574,10 +574,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
   </div>
 </footer>
 
-<script>
-document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("mainNav").classList.toggle("open");this.classList.toggle("open")});
-document.querySelectorAll("#mainNav a").forEach(a=>{a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("open");document.querySelector(".menu-toggle").classList.remove("open")})});
-</script>
 <script src="/lib/site-chrome.js" defer></script>
 </body>
 </html>
