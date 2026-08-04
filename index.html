@@ -719,7 +719,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .ag-embed{width:100%;height:760px;border:none;border-radius:16px;display:block;background:transparent}
 .pt-hotel{background:linear-gradient(180deg,rgba(22,16,38,.2) 30%,rgba(16,12,28,.82)),url('/img/ind-gillis.jpg') center/cover,linear-gradient(160deg,#4a3b8a,#191233)}
 @media(max-width:820px){.askgambit{padding:64px 0}}
-@media(max-width:620px){.ag-embed{height:680px}}
+@media(max-width:620px){.ag-embed{height:900px}}
 </style>
 </head>
 <body>
@@ -1241,7 +1241,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- ASK GAMBIT -->
 <section class="askgambit" id="askgambit">
   <div class="ag-inner">
-    <iframe id="askgambit-embed" class="ag-embed" src="https://ask-g-sigma.vercel.app" width="100%" height="760" frameborder="0" title="Ask Gambit" loading="lazy" style="border:none;"></iframe>
+    <iframe id="askgambit-embed" class="ag-embed" src="https://ask-g-sigma.vercel.app" width="100%" height="760" frameborder="0" title="Ask Gambit" loading="lazy" allow="clipboard-read; clipboard-write" style="border:none;"></iframe>
   </div>
 </section>
 
@@ -1608,6 +1608,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     elT.textContent=tasks.toLocaleString();elR.textContent=resolved.toLocaleString();elE.textContent=esc.toLocaleString();
   }
   tick(); if(!RM) setInterval(tick,950);
+})();
+</script>
+<script>
+/* Ask Gambit inline embed: auto-size the iframe to the app's content height so
+   the section stays responsive on every breakpoint (no crop, no nested scroll).
+   Works once the AskG app posts {type:'askg:embed-size', height:<px>} while framed;
+   until then the CSS heights above act as a fallback. */
+(function(){
+  var ORIGIN='https://ask-g-sigma.vercel.app';
+  var frame=document.getElementById('askgambit-embed');
+  if(!frame) return;
+  window.addEventListener('message',function(e){
+    if(e.origin!==ORIGIN) return;
+    var d=e.data;
+    if(!d||d.type!=='askg:embed-size') return;
+    var h=typeof d.height==='number'?d.height:parseInt(d.height,10);
+    if(!h||isNaN(h)) return;
+    frame.style.height=Math.min(2000,Math.max(480,Math.round(h)))+'px';
+  },false);
 })();
 </script>
 </body>
