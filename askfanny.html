@@ -1113,6 +1113,44 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .if-note.ok{color:var(--status-d);font-weight:600}
 .if-note.err{color:#b23a26;font-weight:600}
 
+
+/* ---------- the event band: sits directly under the hero on purpose ---------- */
+.ev{background:var(--navy);color:#eef2f6;padding:74px 0}
+.ev .eyebrow{color:var(--accent-2)}
+.ev-grid{display:grid;grid-template-columns:.36fr .64fr;gap:52px;align-items:start}
+
+.ev-when{border-right:1px solid rgba(255,255,255,.13);padding-right:44px}
+.ev-badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--accent-2);border-radius:100px;padding:5px 12px;margin-bottom:20px}
+.ev-date{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;line-height:1}
+.ev-mo{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;color:#fff}
+.ev-d{font-family:var(--display);font-size:clamp(64px,8vw,104px);font-weight:600;letter-spacing:-.05em;color:#fff;line-height:.85}
+.ev-yr{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:rgba(240,243,248,.5)}
+.ev-time{margin-top:14px;font-size:16px;color:var(--accent-2);font-weight:500}
+.ev-place{margin-top:20px;display:flex;flex-direction:column;gap:3px;font-size:14.5px;line-height:1.45}
+.ev-place strong{color:#fff;font-weight:600}
+.ev-place span{color:rgba(240,243,248,.6)}
+
+.ev-what h2{margin:13px 0 16px;color:#fff;font-size:clamp(28px,3.5vw,42px);line-height:1.06}
+.ev-en{color:var(--accent-2)}
+.ev-lead{font-size:16.5px;line-height:1.6;color:rgba(240,243,248,.72);max-width:62ch}
+.ev-marks{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+.ev-mark{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(240,243,248,.82)}
+.ev-mark b{color:#fff;font-weight:600}
+.ev-ck{width:21px;height:21px;border-radius:50%;background:rgba(123,175,222,.18);border:1px solid rgba(123,175,222,.4);display:grid;place-items:center;flex:none;margin-top:2px}
+.ev-ck svg{width:11px;height:11px;stroke:var(--accent-2);stroke-width:2.4;fill:none}
+.ev-cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
+.ev-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
+.ev-ghost:hover{border-color:var(--accent-2);color:var(--accent-2)}
+.ev-note{margin-top:16px;font-size:12.5px;color:rgba(240,243,248,.45);line-height:1.5}
+
+@media(max-width:900px){
+  .ev{padding:56px 0}
+  .ev-grid{grid-template-columns:1fr;gap:32px}
+  .ev-when{border-right:0;border-bottom:1px solid rgba(255,255,255,.13);padding-right:0;padding-bottom:28px}
+}
+
+.ev-jump{text-decoration:none;transition:border-color .18s,color .18s}
+.ev-jump:hover{border-color:var(--accent);color:var(--accent-deep)}
 </style>
 <script src="https://ask-g-sigma.vercel.app/embed.js" defer></script>
 </head>
@@ -1320,7 +1358,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="wh-top fade-up d1"><span class="eyebrow">Sponsorship</span><span class="wh-status"><span class="sd"></span>Unveiling October 8 &middot; Montr&eacute;al</span></div>
+    <div class="wh-top fade-up d1"><span class="eyebrow">Sponsorship</span><a class="wh-status ev-jump" href="#event"><span class="sd"></span>Unveiled October 8 at the Montreal Summit on AI &amp; Oncology</a></div>
     <h1 class="fade-up d1" style="margin:14px 0 0">Partner with the next generation of conversational care.</h1>
     <p class="tag fade-up d2">AskFanny is a bilingual breast cancer companion, built by Gambit with the CHUM. Three companions answer today. Six more complete the pathway.</p>
     <div class="wh-cta fade-up d2" style="margin-top:26px">
@@ -1365,6 +1403,47 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   </div>
 </section>
 
+<!-- THE EVENT: where AskFanny is unveiled -->
+<section class="ev" id="event">
+  <div class="wrap">
+    <div class="ev-grid">
+
+      <div class="ev-when">
+        <div class="ev-badge">Unveiled at</div>
+        <div class="ev-date">
+          <span class="ev-mo">October</span>
+          <span class="ev-d">8</span>
+          <span class="ev-yr">2026</span>
+        </div>
+        <div class="ev-time">5:30 pm &ndash; 9:00 pm</div>
+        <div class="ev-place">
+          <strong>Grand Quay of the Port of Montr&eacute;al</strong>
+          <span>Montr&eacute;al, QC</span>
+        </div>
+      </div>
+
+      <div class="ev-what">
+        <span class="eyebrow">Montreal Summit on AI &amp; Oncology</span>
+        <h2>Acc&eacute;l&eacute;rons la lutte contre le cancer.<br><span class="ev-en">Racing for a Cure.</span></h2>
+        <p class="ev-lead">AskFanny is unveiled at the second edition of the Montreal Summit on AI and Oncology, hosted by the Groupe McPeak-Sirois. An evening for the Group&rsquo;s members and collaborators, and for professionals across healthcare, technology and innovation.</p>
+
+        <div class="ev-marks">
+          <div class="ev-mark"><span class="ev-ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span><b>10 years</b> of impact and collaboration, marked at the Group&rsquo;s anniversary</span></div>
+          <div class="ev-mark"><span class="ev-ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>The official launch of <b>10 Projects, $10 Million, 10 Years of Impact</b></span></div>
+          <div class="ev-mark"><span class="ev-ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>A showcase of AI innovation in oncology, <b>with a particular focus on breast cancer</b></span></div>
+        </div>
+
+        <div class="ev-cta">
+          <a href="#sponsor" class="btn btn-accent">Partner with us <span class="ar">&rarr;</span></a>
+          <a href="https://www.eventbrite.ca/e/accelerons-la-lutte-contre-le-cancer-racing-for-a-cure-tickets-1984779918164" target="_blank" rel="noopener noreferrer" class="btn btn-ghost ev-ghost">Event details</a>
+        </div>
+        <p class="ev-note">Sponsors are recognised at the unveiling. The Groupe McPeak-Sirois is a registered non-profit.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- PARTNERS -->
 <section class="logos">
   <div class="wrap">
@@ -1382,9 +1461,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <section class="flow" id="lineup">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Launching October 8</span>
-      <h2>A new way to support cancer patients, unveiled in Montr&eacute;al.</h2>
-      <p class="lead">On Thursday October 8, at <em>Acc&eacute;l&eacute;rons la lutte contre le cancer / Racing for a Cure</em>, the Montreal Summit on AI and Oncology, Gambit and the CHUM unveil AskFanny to the clinicians, researchers, hospital leadership and funders who shape oncology care in Quebec.</p>
+      <span class="eyebrow">The pathway</span>
+      <h2>Nine companions, across the whole journey.</h2>
+      <p class="lead">Breast cancer care is not one moment, it is a sequence of them. Each companion covers one stretch of that sequence, in the patient’s own language, at the hours the clinic cannot.</p>
     </div>
 
     <div class="lineup-grid">
