@@ -20,7 +20,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AskFanny · Gambit</title>
-<meta name="description" content="AskFanny is a breast cancer companion built with the CHUM. Answers only from hospital-approved guidance, in French and English, at any hour. Sponsor a companion and join us at the Montreal Summit on AI and Oncology, October 8.">
+<meta name="description" content="Six companions. $95,000 each. Sponsor one stretch of the breast cancer pathway in AskFanny, built by Gambit with the CHUM, unveiled at the Montreal Summit on AI and Oncology on October 8.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -69,7 +69,7 @@
 </script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="AskFanny · Gambit">
-<meta property="og:description" content="A breast cancer companion built with the CHUM. Grounded only in hospital-approved guidance, bilingual, and awake when the clinic is not. Sponsorship open ahead of October 8.">
+<meta property="og:description" content="Six companions, $95,000 each, one sponsor per companion. Built by Gambit with the CHUM and unveiled at the Montreal Summit on AI and Oncology, October 8.">
 <meta property="og:image" content="https://gambitco.io/img/ind-caregiver.jpg">
 <meta property="og:url" content="https://gambitco.io/askfanny">
 <meta name="twitter:card" content="summary_large_image">
@@ -535,10 +535,6 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .showcase,.suite,.fits,.results,.cta,.testi,.flow,.ellyn,.dawn-sec,.clinic-sec,.mtesti,.feat-sec,.process{padding-top:60px;padding-bottom:60px}
 }
 
-/* ---------- partner strip (replaces the logo bar) ---------- */
-.partnerbar{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:14px}
-.pname{font-size:clamp(14px,1.5vw,17px);font-weight:500;color:var(--ink);letter-spacing:-.01em;text-align:center}
-.pdot{width:5px;height:5px;border-radius:50%;background:var(--sand-deep);flex:none}
 
 /* ---------- event ---------- */
 .event{padding:96px 0;background:var(--bone)}
@@ -558,6 +554,93 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   .event{padding:72px 0}
   .event-grid{grid-template-columns:1fr;gap:34px}
 }
+
+/* ---------- placeholder token (visible on purpose, so gaps are obvious) ---------- */
+.ph{background:#fff4d6;border:1px dashed #d9b45e;border-radius:5px;padding:1px 7px;font-family:var(--mono);font-size:.86em;color:#6b5218;overflow-wrap:anywhere;word-break:break-word;display:inline}
+
+/* ---------- hero fact chips ---------- */
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.fact{display:inline-flex;align-items:baseline;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:9px 17px}
+.fact b{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.fact span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+
+/* ---------- what the money delivers (itemised) ---------- */
+.deliver{padding:96px 0;background:var(--bone)}
+.dl{margin-top:36px;border-top:1px solid var(--line);background:var(--paper);border-radius:0 0 16px 16px;overflow:hidden}
+.dl-row{display:grid;grid-template-columns:34px 1fr 1.25fr;gap:20px;padding:22px 26px;border-bottom:1px solid var(--line-2);align-items:start}
+.dl-row:last-child{border-bottom:0}
+.dl-n{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;padding-top:4px}
+.dl-k{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.dl-v{min-width:0;overflow-wrap:anywhere;font-size:14.5px;color:var(--muted);line-height:1.55}
+.dl-total{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:24px 26px;background:var(--ink);color:var(--paper);flex-wrap:wrap}
+.dl-total .tk{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.62}
+.dl-total .tv{font-size:32px;font-weight:600;letter-spacing:-.025em}
+@media(max-width:780px){
+  .deliver{padding:72px 0}
+  .dl-row{grid-template-columns:1fr;gap:7px;padding:20px}
+}
+
+/* ---------- the six slots ---------- */
+.slots{padding:96px 0}
+.slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+.slot{min-width:0;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:9px;transition:.22s var(--ease)}
+.slot:hover{border-color:var(--accent-2);transform:translateY(-2px);box-shadow:0 24px 50px -40px rgba(21,17,13,.55)}
+.slot.lead{border-color:var(--accent-2);background:linear-gradient(180deg,rgba(0,103,165,.05),var(--paper) 60%)}
+.slot-top{order:1;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.slot-h{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-.015em;color:var(--ink)}
+.slot-note{order:3;min-width:0;overflow-wrap:anywhere;font-size:12.5px;line-height:1.5;color:var(--accent-deep);background:rgba(0,103,165,.06);border-left:2px solid var(--accent-2);border-radius:0 8px 8px 0;padding:9px 12px;margin-top:2px}
+.slot-p{order:2;min-width:0;overflow-wrap:anywhere;font-size:13.8px;line-height:1.55;color:var(--muted);flex:1}
+.slot-foot{order:4;margin-top:auto;display:flex;align-items:center;gap:8px;padding-top:12px;margin-top:2px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+.slot-foot .sd{width:6px;height:6px;border-radius:50%;background:var(--status);flex:none}
+@media(max-width:900px){.slots{padding:72px 0}.slot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.slot-grid{grid-template-columns:1fr}}
+
+/* ---------- what the sponsor receives ---------- */
+.gets{padding:96px 0;background:var(--navy);color:#f2f5f8}
+.gets .eyebrow{color:var(--accent-2)}
+.gets h2{color:#fff}
+.gets .lead{color:var(--muted-d)}
+.gets-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:38px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden}
+.get{background:var(--navy);padding:26px 24px;display:flex;flex-direction:column;gap:8px}
+.get-k{display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.get-ic{width:26px;height:26px;border-radius:8px;background:rgba(123,175,222,.16);display:grid;place-items:center;flex:none}
+.get-ic svg{width:14px;height:14px;stroke:var(--accent-2);stroke-width:1.8;fill:none}
+.get-p{min-width:0;overflow-wrap:anywhere;font-size:14px;line-height:1.55;color:var(--muted-d)}
+.gets .ph{background:rgba(255,244,214,.13);border-color:rgba(217,180,94,.5);color:#f0d79a}
+@media(max-width:780px){.gets{padding:72px 0}.gets-grid{grid-template-columns:1fr}}
+
+/* ---------- who is behind it ---------- */
+.who{padding:96px 0;background:var(--bone-2)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.who-c{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px}
+.who-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:11px}
+.who-n{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.015em;color:var(--ink);margin-bottom:9px;line-height:1.25}
+.who-p{min-width:0;overflow-wrap:anywhere;font-size:14px;line-height:1.6;color:var(--muted)}
+@media(max-width:900px){.who{padding:72px 0}.who-grid{grid-template-columns:1fr}}
+
+/* ---------- why it matters ---------- */
+.why-body{max-width:70ch;margin-top:8px}
+.why-body p{font-size:17px;line-height:1.62;color:var(--muted);margin-bottom:18px}
+.why-reach{overflow-wrap:anywhere;margin-top:28px;padding:22px 24px;background:var(--bone);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;font-size:16px;line-height:1.6;color:var(--ink)}
+
+/* ---------- proof strip + built companions ---------- */
+.suite-grid.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.suite-grid.three{grid-template-columns:1fr}}
+.proofstrip{margin-top:22px;padding:26px;background:var(--bone);border-radius:16px}
+.estats.wide{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.estats.wide .en{font-size:34px}
+.ek-note{overflow-wrap:anywhere;display:block;margin-top:5px;font-size:11.5px;color:var(--muted-2);line-height:1.4}
+@media(max-width:820px){.estats.wide{grid-template-columns:1fr 1fr;gap:18px}}
+
+/* ---------- how it holds ---------- */
+.holds{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.holds-c{min-width:0;overflow-wrap:anywhere;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.holds-h{font-family:var(--display);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:9px;letter-spacing:-.01em}
+.holds-c p{font-size:14px;line-height:1.6;color:var(--muted)}
+.sourcing{margin-top:20px;font-size:13px;line-height:1.62;color:var(--muted-2);max-width:92ch}
+.sourcing b{color:var(--muted);font-weight:600}
+@media(max-width:820px){.holds{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -764,172 +847,236 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="fade-up d1">AskFanny</h1>
-    <div class="tag fade-up d2">Breast cancer care, answered at three in the morning.</div>
-    <div class="media fade-up d3">
-      <img class="m-img" src="/img/ind-caregiver.jpg" alt="A patient finding steady support, the moment AskFanny is built for" loading="eager" decoding="async">
-      <div class="m-vig"></div>
-      <span class="m-tag"><span class="dot"></span> Built with the CHUM &middot; prototype in clinical review</span>
-      <div class="m-cap">Answers only from what the hospital has approved. In French or English. Any hour.</div>
+    <h1 class="fade-up d1">Six companions.</h1>
+    <div class="tag fade-up d2">AskFanny is a bilingual patient companion for breast cancer, built by Gambit with the CHUM. Three are built. Six are open, at $95,000 each.</div>
+    <div class="fade-up d3">
+      <p class="lead" style="max-width:60ch;margin-top:18px">One sponsor per companion. The six open companions are unveiled on Thursday October 8 at Acc&eacute;l&eacute;rons la lutte contre le cancer, the Montr&eacute;al Summit on AI and Oncology, at the Grand Quai of the Port of Montr&eacute;al.</p>
+      <div class="facts">
+        <span class="fact"><b>$95,000 CAD</b><span>Per companion</span></span>
+        <span class="fact"><b>Six</b><span>Companions open</span></span>
+        <span class="fact"><b>Prototype in clinical review, not deployed to patients</b><span>Status</span></span>
+        <span class="fact"><b>The CHUM (Centre hospitalier de l&rsquo;Universit&eacute; de Montr&eacute;al)</b><span>Built with</span></span>
+      </div>
+      <div class="cta-btns" style="margin-top:30px">
+        <a href="#slots" class="btn btn-accent">Choose a companion <span class="ar">&rarr;</span></a>
+        <a href="#build" class="btn btn-ghost">What $95,000 delivers</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PARTNER STRIP -->
-<section class="logos">
-  <div class="wrap">
-    <div class="ll">A partnership between</div>
-    <div class="partnerbar">
-      <span class="pname">Centre hospitalier de l&rsquo;Universit&eacute; de Montr&eacute;al</span>
-      <span class="pdot"></span>
-      <span class="pname">Gambit</span>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT IT IS -->
-<section class="suite" id="what">
+<!-- WHY IT MATTERS -->
+<section class="suite" id="why">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The problem</span>
-      <h2>The clinic answers the same forty questions every day.</h2>
-      <p class="lead">A woman diagnosed with breast cancer leaves the appointment with more questions than she arrived with. They surface at midnight, on a Sunday, in the days between scans. She calls the clinic and waits, or she asks the open internet and gets an answer nobody at her hospital would stand behind. AskFanny is the third option.</p>
+      <span class="eyebrow">Why it matters</span>
+      <h2>The questions do not keep clinic hours.</h2>
     </div>
-    <div class="suite-grid">
+    <div class="why-body">
+        <p>The clinic answers the phone at 8am. The question arrives at 3am. A woman rereads her radiology report on a Friday night and stops at a word nobody explained. Another misses a dose of her oral treatment on a Saturday and wonders what to do about tonight&rsquo;s. The question is usually not complicated. It is just the kind nobody wants to phone about, so it waits, and it keeps her company while it does.</p>
+        <p>Their care teams answer these questions well, in clinic hours. A nurse answers one question at a time. A companion is built to answer the same question at 3am, in either language, only from documents the hospital has approved, and to say plainly when a question belongs to the care team. It does not replace the clinic. It covers the hours the clinic cannot. It never diagnoses. It never changes a treatment plan. It never speaks to prognosis. A companion between appointments, not a substitute for one.</p>
+      <div class="why-reach"><span class="ph">annual patient reach of the CHUM breast programme</span> women move through the CHUM breast programme each year. None of them has used AskFanny. Three companions are waiting on clinical review. Six more are waiting on somebody to build them, and that is the part this page is asking you to change.</div>
+    </div>
+  </div>
+</section>
 
+<!-- WHAT ALREADY EXISTS -->
+<section class="suite" id="exists" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Already built</span>
+      <h2>Three companions are built and working.</h2>
+      <p class="lead">The engine is built. The safety layer is written in code. Three companions answer in testing today, from 42 approved documents. AskFanny is a prototype in clinical review. No patient has used it, and none will until the CHUM says so.</p>
+    </div>
+    <div class="suite-grid three">
       <div class="suite-card">
         <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--accent)"><b>C</b></span><div><div class="sc-name">Camille</div><div class="sc-role">Radiology</div></div></div><span class="spill live"><span class="sd"></span>Built</span></div>
-        <p class="sc-desc">What a scan involves, what the day looks like, and what the words in a report mean. From the callback after a mammogram to a BI-RADS category she has just read for the first time.</p>
-        <div class="sc-tags"><span class="sc-tag">14 documents</span><span class="sc-tag">Bilingual</span></div>
+        <p class="sc-desc">Scans, appointments and reports. What the day looks like, what a callback after a mammogram means, and what a BI-RADS category says.</p>
       </div>
-
       <div class="suite-card">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--accent-deep)"><b>M</b></span><div><div class="sc-name">Maude</div><div class="sc-role">Reconstruction</div></div></div><span class="spill live"><span class="sd"></span>Built</span></div>
-        <p class="sc-desc">Implant, her own tissue, or no reconstruction at all, weighed at her own pace. Built from the CHUM&rsquo;s own patient fiches, so she arrives at the surgical appointment already knowing what to ask.</p>
-        <div class="sc-tags"><span class="sc-tag">CHUM fiches sant&eacute;</span><span class="sc-tag">Non-directive</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--accent)"><b>M</b></span><div><div class="sc-name">Maude</div><div class="sc-role">Reconstruction</div></div></div><span class="spill live"><span class="sd"></span>Built</span></div>
+        <p class="sc-desc">Implant, own tissue or no reconstruction at all, weighed without steering, built from the CHUM&rsquo;s own fiches sant&eacute; and the BRAVOURE aide-m&eacute;moire.</p>
       </div>
-
       <div class="suite-card">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--w-askellyn)"><b>J</b></span><div><div class="sc-name">Joelle</div><div class="sc-role">Oral treatments</div></div></div><span class="spill live"><span class="sd"></span>Built</span></div>
-        <p class="sc-desc">Day to day life on the CDK4/6 pills: side effects, a dose missed at two in the morning, what a blood count means, and the moment it is time to call the clinic instead.</p>
-        <div class="sc-tags"><span class="sc-tag">CANO and CAPhO</span><span class="sc-tag">Triage thresholds</span></div>
+        <div class="sc-top"><div class="sc-id"><span class="wmark s46" style="--wm:var(--accent)"><b>J</b></span><div><div class="sc-name">Joelle</div><div class="sc-role">Oral treatments</div></div></div><span class="spill live"><span class="sd"></span>Built</span></div>
+        <p class="sc-desc">Day to day on CDK4/6 inhibitors (abemaciclib, ribociclib, palbociclib). Side effects, missed doses, blood counts, and when to call the clinic.</p>
       </div>
-
-      <div class="suite-card">
-        <div class="sc-top"><div class="sc-id"><span class="wmark s46 two" style="--wm:var(--muted)"><b>+6</b></span><div><div class="sc-name">The rest of the pathway</div><div class="sc-role">Awaiting sponsorship</div></div></div><span class="spill pilot"><span class="sd"></span>Planned</span></div>
-        <p class="sc-desc">Surgery, systemic therapy, radiotherapy, survivorship, research and the CHUM&rsquo;s own resources. The engine is built. Each one needs its content written and clinically approved.</p>
-        <div class="sc-tags"><span class="sc-tag">Sponsor a companion</span></div>
-      </div>
-
     </div>
+
+    <div class="proofstrip">
+      <div class="estats wide">
+        <div class="estat"><div class="en">42</div><div class="ek">approved knowledge documents<br><span class="ek-note"><span class="ph">French and English split of the 42 approved documents</span>, authored separately</span></div></div>
+        <div class="estat"><div class="en">78</div><div class="ek">cases in the automated safety test suite</div></div>
+        <div class="estat"><div class="en">0</div><div class="ek">documents machine-translated</div></div>
+        <div class="estat"><div class="en">0</div><div class="ek">answers from outside the approved documents</div></div>
+      </div>
+    </div>
+
+    <div class="holds">
+      <div class="holds-c">
+        <div class="holds-h">How it holds</div>
+        <p>The safety layer runs in code, before the AI sees a message. A dangerous fever reading is intercepted in code and the user is directed to emergency care or their care team, without depending on model judgment. The system is closed. It answers only from hospital-approved documents, it does not browse the web, and when a question falls outside its scope it says so and points to the care team. Every turn is auditable. A clinician can see exactly which guidance produced an answer, and leave feedback on it. Clinical numbers, doses and thresholds are never reformatted between languages.</p>
+      </div>
+      <div class="holds-c">
+        <div class="holds-h">See a real answer, and the document behind it</div>
+        <p><span class="ph">one real exchange from the prototype cleared for publication: the patient question, the companion&rsquo;s answer, and the approved document that produced it, in French and English</span> Every turn looks like this. Prototype. Not for patient use. Demonstration by appointment.</p>
+      </div>
+    </div>
+    <p class="sourcing"><b>Sourcing.</b> Maude draws on the CHUM&rsquo;s own fiches sant&eacute;. Joelle draws on CHUM protocols, the CANO/CAPhO CDK4/6 Clinical Resource and Jerzak et al, Curr Oncol 2025. Camille draws on the Canadian Association of Radiologists Breast Disease Referral Guideline, Journal of Breast Imaging reviews, and Quebec&rsquo;s PQDCS screening programme. Individual documents trace to these sources. The product as a whole is in clinical review and has not been formally endorsed by the CHUM.</p>
   </div>
 </section>
 
-<!-- LIVE CONVERSATION -->
-<section class="ellyn" id="demo">
-  <div class="wrap">
-    <div class="ellyn-grid">
-      <div class="chat">
-        <div class="chat-h">
-          <span class="wmark s36" style="--wm:var(--accent)"><b>C</b></span>
-          <span class="cn">Camille</span>
-          <span class="clive"><span class="sd"></span> Radiology</span>
-        </div>
-        <div class="chat-body">
-          <div class="conv">
-            <div class="dmsg co"><div class="who">Camille</div>Hi, I&rsquo;m Camille. I&rsquo;m here to help you make sense of the imaging part of your care, the scan you&rsquo;re booked for, what the appointment is like, and what the words in a report mean.</div>
-            <div class="dmsg user"><div class="who">You</div>I got called back after my mammogram and I&rsquo;m scared.</div>
-            <div class="dmsg co"><div class="who">Camille</div>A callback means the radiologist saw something on your images they want a closer look at. It does not mean they found cancer. About one woman in ten is called back after a screening mammogram, and the large majority turn out to have nothing wrong.<br><br>Do you know yet when your appointment is?</div>
-          </div>
-        </div>
-        <div class="chat-input"><span>Ask your question here...</span><span class="snd"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-        <div class="chat-foot">Answers only from CHUM-approved guidance. Not a substitute for the care team.</div>
-      </div>
-
-      <div class="etxt">
-        <span class="eyebrow">A closed system</span>
-        <h2>It can only say what the hospital has already approved.</h2>
-        <p>Every answer comes from a set of documents the CHUM controls: their own patient fiches, their treatment protocols, and the national guidelines their clinicians already follow. When a question falls outside that set, AskFanny says so plainly and points to the care team. It does not browse the web, and it does not reason its way to a plausible answer.</p>
-        <div class="estats">
-          <div class="estat"><div class="en">42</div><div class="ek">Approved documents</div></div>
-          <div class="estat"><div class="en">2</div><div class="ek">Languages, equally</div></div>
-          <div class="estat"><div class="en">78</div><div class="ek">Safety test cases</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT IS BUILT -->
-<section class="fits" id="built">
-  <div class="wrap">
-    <div class="fits-head">
-      <span class="eyebrow">Built for a hospital</span>
-      <h2>The warmth of a nurse on the phone. The discipline of a protocol.</h2>
-      <p class="fits-sub">A companion that talks to frightened people about cancer has to be built differently from one that answers questions about a product. Four decisions carry the weight.</p>
-    </div>
-    <div class="fits-logos">
-      <div class="ftile"><span class="fic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="flb">Safety runs before the model</span><span class="fds">Emergencies are caught in code, not left to judgment. A dangerous fever escalates in milliseconds, without ever reaching the AI.</span></div>
-      <div class="ftile"><span class="fic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="flb">Nothing but approved content</span><span class="fds">Every claim traces to a named source, and a clinician can revise the wording without a developer and without a deployment.</span></div>
-      <div class="ftile"><span class="fic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span><span class="flb">French and English, equally</span><span class="fds">Not a translation layer. Both languages are written and reviewed, and a dose or a threshold is never reformatted between them.</span></div>
-      <div class="ftile"><span class="fic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="flb">Every turn is auditable</span><span class="fds">A clinician can open any answer and see exactly which guidance produced it, then leave feedback that reaches the team the same day.</span></div>
-    </div>
-    <div class="fits-claims">
-      <span>Never diagnoses</span>
-      <span>Never changes a treatment plan</span>
-      <span>Never speaks to prognosis</span>
-      <span>Defers to the care team</span>
-    </div>
-  </div>
-</section>
-
-<!-- SPONSOR A COMPANION -->
-<section class="results" id="sponsor">
+<!-- WHAT $95,000 DELIVERS -->
+<section class="deliver" id="build">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Where sponsorship goes</span>
-      <h2>The engine is built. Each companion needs its content.</h2>
-      <p class="lead">Three are working today. Six more are mapped, and every one follows the same path: a clinical author writes it, a CHUM clinician approves it, and it opens to patients. A sponsor funds one companion end to end and is named alongside it.</p>
+      <span class="eyebrow">The build</span>
+      <h2>$95,000 builds one companion, end to end.</h2>
+      <p class="lead">It covers one companion from scoping through clinical review, plus <span class="ph">hosting and upkeep term included in the price</span> of hosting and upkeep. A companion is a scope, not a feature. Here is the work the number pays for. Every bracket below is a value we do not yet have, and the breakdown is being set with the CHUM. We would rather show you the gaps than fill them with numbers we made up. You are not asked to commit against a bracket. Tell us which companion is yours and we hold it while the breakdown is finalised. You sign against a full costed page or you walk away, and either way the companion stays yours until you decide.</p>
     </div>
-    <div class="res-grid">
-
-      <div class="res-card">
-        <div class="res-n word">Survivorship</div>
-        <div class="res-nl">life after active treatment</div>
-        <p class="res-p">Follow-up, lasting effects, and the support that continues once the appointments space out. The most asked-for area, and the one with the largest community behind it.</p>
+    <div class="dl">
+      <div class="dl-row">
+        <div class="dl-n">01</div>
+        <div class="dl-k">Who you pay, and what you own</div>
+        <div class="dl-v">Who receives the money, how it is receipted, and who owns what is built are being set with the CHUM and the Groupe McPeak-Sirois. You will have all three in writing before you are asked to sign anything. <span class="ph">recipient entity, charitable receipting treatment, IP and licensing terms</span></div>
       </div>
-
-      <div class="res-card">
-        <div class="res-n word">Research</div>
-        <div class="res-nl">protocols and eligibility</div>
-        <p class="res-p">Which trials are open at the CHUM and what makes someone eligible, so a patient can ask about one with the right information already in hand.</p>
+      <div class="dl-row">
+        <div class="dl-n">02</div>
+        <div class="dl-k">Clinical scoping and source selection</div>
+        <div class="dl-v">We agree the boundary with the CHUM team before a word is written. What the companion answers, what it refuses, and which documents it may draw on. A companion&rsquo;s approved sources are its scope. <span class="ph">amount allocated to scoping and source selection</span></div>
       </div>
-
-      <div class="res-card">
-        <div class="res-n word">Surgery</div>
-        <div class="res-nl">before, during and after</div>
-        <p class="res-p">What the operation involves, how to prepare for the day, and what the first weeks of recovery actually look like.</p>
+      <div class="dl-row">
+        <div class="dl-n">03</div>
+        <div class="dl-k">Knowledge authoring, French and English</div>
+        <div class="dl-v">Every document written twice, in both languages, separately. Doses and thresholds carried across unchanged. The companion cannot answer from anything else. <span class="ph">amount allocated to bilingual authoring, and expected document count for this companion</span></div>
       </div>
-
-      <div class="res-card">
-        <div class="res-n word">Treatment</div>
-        <div class="res-nl">systemic therapy and radiotherapy</div>
-        <p class="res-p">Chemotherapy, infusions and radiation: what to expect on treatment days, managing side effects, and when a symptom means picking up the phone.</p>
+      <div class="dl-row">
+        <div class="dl-n">04</div>
+        <div class="dl-k">Clinical review cycles</div>
+        <div class="dl-v">Documents go to the CHUM clinicians who own the material and come back marked up, and are revised until the review is satisfied. Review outcomes are the hospital&rsquo;s decision, not a deliverable of this sponsorship. <span class="ph">amount allocated to review cycles, and number of cycles included</span></div>
       </div>
-
+      <div class="dl-row">
+        <div class="dl-n">05</div>
+        <div class="dl-k">Safety engineering and testing</div>
+        <div class="dl-v">New escalation triggers, new refusal boundaries, and new cases in the automated safety suite for this subject matter. What a companion refuses to answer is engineered as carefully as what it answers. <span class="ph">amount allocated to safety engineering and test authoring</span></div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-n">06</div>
+        <div class="dl-k">Audit trail, clinician feedback and hosting</div>
+        <div class="dl-v">The companion is built on the system the three existing companions already run on, so the safety layer and the audit trail come with it. Every answer traceable to the document behind it, and a feedback path for the clinical team. <span class="ph">amount allocated to build, audit trail and hosting, and the term covered</span></div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-n">07</div>
+        <div class="dl-k">What you are funding, said plainly</div>
+        <div class="dl-v">This is a build to clinical review, not a launch date. Deployment is the CHUM&rsquo;s decision and we will not promise it on their behalf. <span class="ph">build timeline from commitment to clinical review</span> <span class="ph">what happens to the sponsorship if the companion does not clear review</span> <span class="ph">payment schedule and milestones</span> <span class="ph">sponsorship term length, renewal terms, and what happens after year one</span></div>
+      </div>
+      <div class="dl-total">
+        <span class="tk">One companion, end to end</span>
+        <span class="tv">$95,000 CAD</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- THE EVENT -->
+<!-- CHOOSE YOUR COMPANION -->
+<section class="slots" id="slots">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Six open</span>
+      <h2>Choose the one you want built.</h2>
+      <p class="lead">Each one covers a stretch of the pathway where questions come up between appointments. The questions that are too small for a call and too persistent to ignore. Sponsorship is one to one. No shared billing, no tiers, no bronze. Each companion is built on its own, so funding one does not depend on the other five selling. Companions are built in the order they are claimed, and a claimed companion comes off this page.</p>
+    </div>
+    <div class="slot-grid">
+      <div class="slot lead">
+        <div class="slot-top"><div class="slot-h">Survivorship</div></div>
+        <div class="slot-note">The largest patient community on this pathway, and the least covered. The CHUM asked for this one first.</div>
+        <p class="slot-p">Active treatment ends, the appointments thin out, and she is left with follow-up dates, lasting effects and a clinic that opens on Wednesday.</p>
+        <div class="slot-foot"><span class="sd"></span>Open</div>
+      </div>
+      <div class="slot lead">
+        <div class="slot-top"><div class="slot-h">Research</div></div>
+        <div class="slot-note">Most patients never learn a trial existed for them. The CHUM asked for this one first.</div>
+        <p class="slot-p">She has heard there might be a trial and does not know what taking part would involve, or who to ask. The companion covers what a trial at the CHUM involves, what eligibility criteria mean in plain language, and who to ask about a specific one.</p>
+        <div class="slot-foot"><span class="sd"></span>Open</div>
+      </div>
+      <div class="slot">
+        <div class="slot-top"><div class="slot-h">Surgery</div></div>
+        <div class="slot-note">Sits directly beside Maude, the reconstruction companion already built.</div>
+        <p class="slot-p">The operation is booked. She wants to know what it involves, how to prepare, and what the first weeks of recovery ask of her.</p>
+        <div class="slot-foot"><span class="sd"></span>Open</div>
+      </div>
+      <div class="slot">
+        <div class="slot-top"><div class="slot-h">Systemic therapy</div></div>
+        <div class="slot-note">Extends to infusions the coverage Joelle gives oral treatment.</div>
+        <p class="slot-p">The first infusion is coming, and she wants to know what chemotherapy involves, session by session.</p>
+        <div class="slot-foot"><span class="sd"></span>Open</div>
+      </div>
+      <div class="slot">
+        <div class="slot-top"><div class="slot-h">Radiotherapy</div></div>
+        
+        <p class="slot-p">Planning is done. She wants to know what a session is like, and how to look after her skin between them.</p>
+        <div class="slot-foot"><span class="sd"></span>Open</div>
+      </div>
+      <div class="slot">
+        <div class="slot-top"><div class="slot-h">CHUM resources</div></div>
+        <div class="slot-note">The one that reaches the whole programme, not one stage of it.</div>
+        <p class="slot-p">She needs kinesiology, psychology or nutrition, and needs to reach the right service directly.</p>
+        <div class="slot-foot"><span class="sd"></span>Open</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THE SPONSOR RECEIVES -->
+<section class="gets" id="recognition">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Recognition</span>
+      <h2>Sponsors are named, not thanked.</h2>
+      <p class="lead">One name per companion, attached to a specific piece of the pathway. What is fixed today: the price, the exclusivity, and which six companions are available. The recognition package is being set with the CHUM and the Groupe McPeak-Sirois. Every specific below is marked until it is signed off.</p>
+    </div>
+    <div class="gets-grid">
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Category exclusivity</div>
+        <p class="get-p">One sponsor per companion, six companions, six sponsors. No co-titling and no shared billing. <span class="ph">whether exclusivity extends to a sector or industry category</span></p>
+      </div>
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Recognition on the companion you funded</div>
+        <p class="get-p"><span class="ph">whether in-product recognition is permitted at all, and if so its placement, wording and duration, subject to CHUM review</span> If the CHUM decides sponsor recognition does not belong inside a patient conversation, we will not argue with them, and your recognition moves to <span class="ph">agreed alternative recognition placement</span> with no change to the rest of the package.</p>
+      </div>
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Recognition at the unveiling</div>
+        <p class="get-p">Named on Thursday October 8 in front of the clinicians, researchers, hospital leadership and funders who shape oncology care in Quebec. <span class="ph">stage, signage and programme recognition, set with the Groupe McPeak-Sirois</span></p>
+      </div>
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Access to the build as it happens</div>
+        <p class="get-p">You see the build from our side. Documents approved, review cycles closed, safety cases passing. Not a report at the end, the work as it happens. <span class="ph">frequency and format of sponsor briefings with the Gambit team</span> <span class="ph">whether any CHUM clinician participation is available, subject to CHUM approval</span></p>
+      </div>
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Reporting you can take to a board</div>
+        <p class="get-p">What was built, what it covers, and what stage of review it has reached. <span class="ph">reporting cadence and format</span> No patient data. No clinical outcome claims. Review findings remain the CHUM&rsquo;s to publish or withhold.</p>
+      </div>
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Association, communications and term</div>
+        <p class="get-p"><span class="ph">whether and how a sponsor may reference association with the CHUM breast programme, set with the CHUM and its foundation</span> <span class="ph">joint announcement and co-branding terms</span> <span class="ph">sponsorship term length, renewal terms, and what happens after year one</span></p>
+      </div>
+      <div class="get">
+        <div class="get-k"><span class="get-ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Standing terms</div>
+        <p class="get-p">Sponsors have no input into clinical content. Recognition never appears alongside clinical guidance without CHUM approval. Any use of the CHUM name by a sponsor is the hospital&rsquo;s to grant, and is not conferred by this sponsorship. No sponsor is asked to commit before seeing all of it in writing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SUMMIT -->
 <section class="event" id="event">
   <div class="wrap">
     <div class="event-grid">
       <div class="event-txt">
-        <span class="eyebrow">Where it is shown</span>
-        <h2>The Montreal Summit on AI and Oncology.</h2>
-        <p>AskFanny is presented at <em>Acc&eacute;l&eacute;rons la lutte contre le cancer / Racing for a Cure</em>, the Montreal Summit on AI and Oncology, hosted by the Groupe McPeak-Sirois. The room is the people who decide what oncology care looks like in Quebec: clinicians, researchers, hospital leadership, and the funders behind them.</p>
-        <p>Sponsors are named at the showcase and invited to attend alongside the CHUM team.</p>
+        <span class="eyebrow">October 8</span>
+        <h2>October 8 is the stage and the deadline.</h2>
+        <p>Acc&eacute;l&eacute;rons la lutte contre le cancer, Racing for a Cure, is the Montr&eacute;al Summit on AI and Oncology, hosted by the Groupe McPeak-Sirois. The room is clinicians, researchers, hospital leadership and funders who shape oncology care in Quebec. It is not a general audience. It is the people who decide what gets built into cancer care here, in one place, for three and a half hours.</p>
+        <p>The six open companions are shown that evening. Build order follows commitment order, so a companion claimed before the Summit is named that night and started first. Companions still open are presented as still open. To be named on Thursday October 8, a companion has to be claimed before it. After October 8, a sponsorship is still a sponsorship. It is just no longer an unveiling. <span class="ph">form of sponsor recognition on the night, set with the Groupe McPeak-Sirois</span></p>
         <div class="cta-btns" style="margin-top:26px">
           <a href="https://www.eventbrite.ca/e/accelerons-la-lutte-contre-le-cancer-racing-for-a-cure-tickets-1984779918164" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Event details <span class="ar">&rarr;</span></a>
         </div>
@@ -937,11 +1084,42 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="event-card">
         <div class="ev-date"><span class="ev-mo">Oct</span><span class="ev-day">8</span></div>
         <div class="ev-rows">
-          <div class="ev-row"><span class="ev-k">Event</span><span class="ev-v">Acc&eacute;l&eacute;rons la lutte contre le cancer<br>Racing for a Cure</span></div>
-          <div class="ev-row"><span class="ev-k">Time</span><span class="ev-v">5:30 pm to 9:00 pm</span></div>
-          <div class="ev-row"><span class="ev-k">Venue</span><span class="ev-v">Grand Quai of the Port of Montreal<br>200 rue de la Commune Ouest, Montr&eacute;al</span></div>
+          <div class="ev-row"><span class="ev-k">Event</span><span class="ev-v">Acc&eacute;l&eacute;rons la lutte contre le cancer, Racing for a Cure</span></div>
+          <div class="ev-row"><span class="ev-k">What it is</span><span class="ev-v">The Montr&eacute;al Summit on AI and Oncology</span></div>
           <div class="ev-row"><span class="ev-k">Host</span><span class="ev-v">Groupe McPeak-Sirois</span></div>
+          <div class="ev-row"><span class="ev-k">Date</span><span class="ev-v">Thursday October 8</span></div>
+          <div class="ev-row"><span class="ev-k">Time</span><span class="ev-v">5:30pm to 9:00pm</span></div>
+          <div class="ev-row"><span class="ev-k">Venue</span><span class="ev-v">Grand Quai of the Port of Montr&eacute;al</span></div>
+          <div class="ev-row"><span class="ev-k">Address</span><span class="ev-v">200 rue de la Commune Ouest, Montr&eacute;al</span></div>
+          <div class="ev-row"><span class="ev-k">The room</span><span class="ev-v">Clinicians, researchers, hospital leadership and funders who shape oncology care in Quebec</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS BEHIND IT -->
+<section class="who" id="partners">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The partners</span>
+      <h2>Three organisations answer for this.</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-c">
+        <div class="who-k">Clinical partner</div>
+        <div class="who-n">The CHUM</div>
+        <p class="who-p">Centre hospitalier de l&rsquo;Universit&eacute; de Montr&eacute;al, the clinical partner. AskFanny is built with the CHUM and is in clinical review there, document by document. The guidance traces to CHUM sources, starting with the hospital&rsquo;s own fiches sant&eacute; behind Maude. The product as a whole has not been formally endorsed, and we will not describe it as though it has. <span class="ph">name and title of the CHUM clinical lead, published only with their written agreement to be named</span></p>
+      </div>
+      <div class="who-c">
+        <div class="who-k">Build partner</div>
+        <div class="who-n">Gambit</div>
+        <p class="who-p">Gambit builds the software. Scope first, then accountability. A closed system that answers only from hospital-approved documents. A safety layer written in code rather than trusted to a model. A 78-case test suite that runs on every change. An audit trail on every turn, so a clinician can see exactly which guidance produced an answer and say whether it was right. <span class="ph">Gambit sponsorship contact name, title, email and direct line</span></p>
+      </div>
+      <div class="who-c">
+        <div class="who-k">Host</div>
+        <div class="who-n">Groupe McPeak-Sirois</div>
+        <p class="who-p">Host of Acc&eacute;l&eacute;rons la lutte contre le cancer, Racing for a Cure, the Montr&eacute;al Summit on AI and Oncology, and convener of the room where the six companions are unveiled on Thursday October 8. <span class="ph">name and title of the Groupe McPeak-Sirois contact</span></p>
       </div>
     </div>
   </div>
@@ -950,11 +1128,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>Put a companion beside every patient on the pathway.</h2>
-    <p>Sponsor a companion and it carries your name from the summit onward, inside a tool the CHUM&rsquo;s own clinicians approve, in front of the patients who need it at the hours when nobody else is awake.</p>
+    <h2>Pick one. We build it.</h2>
+    <p>Tell us which companion is yours before Thursday October 8. We will show you the three that already work, open a single answer and walk you back through the guidance that produced it, and send the build plan and the costed breakdown as soon as it is confirmed with the CHUM. Survivorship and Research are the two the CHUM asked for first. Write to <span class="ph">Gambit sponsorship contact name, title, email and direct line</span> with the companion you want. You will have a call within two working days and the build plan in writing within five. Nothing is committed at that stage.</p>
     <div class="cta-btns">
-      <a href="/get-started" class="btn btn-accent">Become a sponsor <span class="ar">&rarr;</span></a>
-      <a href="/healthcare" class="btn btn-ghost">See the care companions</a>
+      <a href="/get-started" class="btn btn-accent">Claim a companion <span class="ar">&rarr;</span></a>
+      <a href="/get-started" class="btn btn-ghost">Book a walkthrough</a>
     </div>
   </div>
 </section>
