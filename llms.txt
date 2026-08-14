@@ -82,6 +82,7 @@ Gambit builds and runs custom AI workers alongside your team. Each worker is bui
 - [Case studies](https://gambitco.io/case-studies)
 - [About us](https://gambitco.io/about-us)
 - [What is an AI worker](https://gambitco.io/what-is-an-ai-worker)
+- [What is agentic AI](https://gambitco.io/what-is-agentic-ai)
 - [FAQs](https://gambitco.io/faqs)
 - [Insights](https://gambitco.io/insights)
 - [Partners: resellers and VARs](https://gambitco.io/partners)
