@@ -872,14 +872,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 #dStage.paused *{animation-play-state:paused!important}
 .demo-stage2{position:absolute;inset:0;z-index:2}
 .morph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;overflow:hidden;box-shadow:0 2px 10px -2px rgba(0,0,0,.35),0 40px 90px -28px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.1);transition:width .58s cubic-bezier(.16,1,.3,1),height .58s cubic-bezier(.16,1,.3,1),border-radius .58s cubic-bezier(.16,1,.3,1)}
-.morph.s-icon{width:210px;height:76px;border-radius:38px}
+.morph.s-icon{width:228px;height:80px;border-radius:22px}
 .morph.s-input{width:min(82%,620px);height:98px;border-radius:26px}
 .morph.s-desk{width:90%;height:87%;border-radius:16px}
-.bmark{position:absolute;overflow:hidden;background:var(--w-fanny);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mark);font-weight:700;z-index:4;transition:left .58s cubic-bezier(.16,1,.3,1),top .58s cubic-bezier(.16,1,.3,1),width .58s cubic-bezier(.16,1,.3,1),height .58s cubic-bezier(.16,1,.3,1),font-size .58s cubic-bezier(.16,1,.3,1),border-radius .58s cubic-bezier(.16,1,.3,1),transform .58s cubic-bezier(.16,1,.3,1)}
-.morph.s-icon .bmark{left:14px;top:50%;transform:translate(0,-50%);width:50px;height:50px;font-size:24px;border-radius:14px}
+.bmark{position:absolute;overflow:hidden;background:var(--w-fanny);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;letter-spacing:-.01em;z-index:4;transition:left .58s cubic-bezier(.16,1,.3,1),top .58s cubic-bezier(.16,1,.3,1),width .58s cubic-bezier(.16,1,.3,1),height .58s cubic-bezier(.16,1,.3,1),font-size .58s cubic-bezier(.16,1,.3,1),border-radius .58s cubic-bezier(.16,1,.3,1),transform .58s cubic-bezier(.16,1,.3,1)}
+.morph.s-icon .bmark{left:16px;top:50%;transform:translate(0,-50%);width:52px;height:52px;font-size:23px;border-radius:16px}
 .morph.s-input .bmark{left:16px;top:50%;transform:translate(0,-50%);width:46px;height:46px;font-size:21px;border-radius:13px}
 .morph.s-desk .bmark{left:15px;top:11px;transform:none;width:24px;height:24px;font-size:12px;border-radius:7px}
-.m-word{position:absolute;left:76px;top:50%;transform:translateY(-50%);font-family:var(--mark);font-weight:700;font-size:25px;letter-spacing:.04em;color:var(--ink);opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.m-word{position:absolute;left:84px;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:600;font-size:27px;letter-spacing:-.02em;color:var(--ink);opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .morph.s-icon .m-word{opacity:1}
 .m-input{position:absolute;inset:0;display:flex;align-items:center;gap:12px;padding:0 18px 0 78px;opacity:0;transition:opacity .3s;pointer-events:none}
 .morph.s-input .m-input{opacity:1}
@@ -994,7 +994,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .av-imaging{background:var(--a-imaging)!important;color:#fff!important}
 .av-recon{background:var(--a-recon)!important;color:#fff!important}
 .av-meds{background:var(--a-meds)!important;color:#fff!important}
-.av-soon{background:var(--bone-2)!important;color:var(--muted-2)!important;border:1px dashed var(--sand-deep)}
+.av-soon{background:#57606e!important;color:#fff!important}
 
 /* ---------- partner strip ---------- */
 .partnerbar{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:14px}
@@ -1002,7 +1002,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 .pdot{width:5px;height:5px;border-radius:50%;background:var(--sand-deep);flex:none}
 
 /* ---------- hero chat demo ---------- */
-.bm-mini{width:22px;height:22px;border-radius:7px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--mark);font-weight:700;font-size:11px;flex:none}
+.bm-mini{width:22px;height:22px;border-radius:7px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:11px;flex:none}
 .demo-body.chat{display:grid;grid-template-columns:.34fr .66fr;min-height:0}
 .cp-rail{padding:16px 14px;border-right:1px solid var(--line-2);display:flex;flex-direction:column;gap:7px;min-width:0;background:var(--bone)}
 .cp-rl{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:3px}
@@ -1039,11 +1039,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
 @media(max-width:600px){.lineup-grid{grid-template-columns:1fr}}
 .lu{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;transition:.22s var(--ease)}
 .lu:hover{transform:translateY(-2px);box-shadow:0 22px 46px -38px rgba(21,17,13,.6)}
-.lu:not(.live){border-style:dashed;background:transparent}
+
 .lu-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
 .lu-av{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:.02em;flex:none}
 .lu-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);border:1px solid var(--line);border-radius:20px;padding:4px 9px;white-space:nowrap}
 .lu-pill.live{color:var(--status-d);border-color:rgba(62,196,109,.35);background:rgba(62,196,109,.08)}
+.lu-pill.soon{color:var(--accent-deep);border-color:rgba(0,103,165,.3);background:rgba(0,103,165,.07)}
 .lu-pill .sd{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
 .lu-n{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
 .lu-w{font-size:12px;color:var(--muted-2)}
@@ -1313,7 +1314,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
   <div class="wrap">
     <div class="wh-top fade-up d1"><span class="eyebrow">Sponsorship</span><span class="wh-status"><span class="sd"></span>Unveiling October 8 &middot; Montr&eacute;al</span></div>
     <h1 class="fade-up d1" style="margin:14px 0 0">Partner with the next generation of conversational care.</h1>
-    <p class="tag fade-up d2">AskFanny is a bilingual breast cancer companion, built by Gambit with the CHUM. Three companions answer today. Six more are open to a core sponsor each.</p>
+    <p class="tag fade-up d2">AskFanny is a bilingual breast cancer companion, built by Gambit with the CHUM. Three companions answer today. Six more complete the pathway.</p>
     <div class="wh-cta fade-up d2" style="margin-top:26px">
       <a href="#sponsor" class="btn btn-accent">Become a core sponsor <span class="ar">&rarr;</span></a>
       <a href="#lineup" class="btn btn-ghost">See the companions</a>
@@ -1326,7 +1327,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
       <div class="demo-stage2" id="dStage">
         <div class="morph s-icon" id="dMorph">
           <span class="bmark" id="dB">F</span>
-          <span class="m-word" id="dWord">ASKFANNY</span>
+          <span class="m-word" id="dWord">AskFanny</span>
           <div class="m-input" id="dInput"><span class="mi-line"><span class="mi-text" id="dAsk"></span><i class="dcaret" id="dCaretA"></i></span><button class="mi-go" id="dSubmit" type="button"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
           <div class="m-desk" id="dDesk">
             <div class="demo-bar"><span class="bm-mini" id="dMini">F</span><span class="demo-title">AskFanny &middot; CHUM</span><span class="demo-live"><span class="dot"></span> approved guidance only</span></div>
@@ -1398,15 +1399,15 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
         <p class="lu-p">Day to day on the CDK4/6 pills. Side effects, a missed dose at 2am, blood counts, and when to call the clinic.</p>
       </div>
 
-      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">SU</span><span class="lu-pill"><span class="sd"></span>Open</span></div><div class="lu-n">Survivorship</div><div class="lu-w">Seeking a core sponsor</div><p class="lu-p">Life after active treatment. Follow-up, lasting effects, and the support that continues when the appointments thin out.</p></div>
-      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">RE</span><span class="lu-pill"><span class="sd"></span>Open</span></div><div class="lu-n">Research</div><div class="lu-w">Seeking a core sponsor</div><p class="lu-p">Which trials are open at the CHUM, and what makes a patient eligible, in language she can act on.</p></div>
-      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">SG</span><span class="lu-pill"><span class="sd"></span>Open</span></div><div class="lu-n">Surgery</div><div class="lu-w">Seeking a core sponsor</div><p class="lu-p">What the operation involves, how to prepare, and what the first weeks of recovery ask of her.</p></div>
-      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">ST</span><span class="lu-pill"><span class="sd"></span>Open</span></div><div class="lu-n">Systemic therapy</div><div class="lu-w">Seeking a core sponsor</div><p class="lu-p">Chemotherapy and infusions. What a treatment day involves, and which side effects mean a phone call.</p></div>
-      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">RT</span><span class="lu-pill"><span class="sd"></span>Open</span></div><div class="lu-n">Radiotherapy</div><div class="lu-w">Seeking a core sponsor</div><p class="lu-p">Planning, what a session is actually like, and caring for her skin across the course.</p></div>
-      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">RS</span><span class="lu-pill"><span class="sd"></span>Open</span></div><div class="lu-n">CHUM resources</div><div class="lu-w">Seeking a core sponsor</div><p class="lu-p">Kinesiology, psychology, nutrition. Reaching the right service directly, instead of the main line.</p></div>
+      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">SU</span><span class="lu-pill soon"><span class="sd"></span>Coming soon</span></div><div class="lu-n">Survivorship</div><div class="lu-w">In development</div><p class="lu-p">Life after active treatment. Follow-up, lasting effects, and the support that continues when the appointments thin out.</p></div>
+      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">RE</span><span class="lu-pill soon"><span class="sd"></span>Coming soon</span></div><div class="lu-n">Research</div><div class="lu-w">In development</div><p class="lu-p">Which trials are open at the CHUM, and what makes a patient eligible, in language she can act on.</p></div>
+      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">SG</span><span class="lu-pill soon"><span class="sd"></span>Coming soon</span></div><div class="lu-n">Surgery</div><div class="lu-w">In development</div><p class="lu-p">What the operation involves, how to prepare, and what the first weeks of recovery ask of her.</p></div>
+      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">ST</span><span class="lu-pill soon"><span class="sd"></span>Coming soon</span></div><div class="lu-n">Systemic therapy</div><div class="lu-w">In development</div><p class="lu-p">Chemotherapy and infusions. What a treatment day involves, and which side effects mean a phone call.</p></div>
+      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">RT</span><span class="lu-pill soon"><span class="sd"></span>Coming soon</span></div><div class="lu-n">Radiotherapy</div><div class="lu-w">In development</div><p class="lu-p">Planning, what a session is actually like, and caring for her skin across the course.</p></div>
+      <div class="lu"><div class="lu-top"><span class="lu-av av-soon">RS</span><span class="lu-pill soon"><span class="sd"></span>Coming soon</span></div><div class="lu-n">CHUM resources</div><div class="lu-w">In development</div><p class="lu-p">Kinesiology, psychology, nutrition. Reaching the right service directly, instead of the main line.</p></div>
     </div>
 
-    <div class="lineup-foot">Three companions answer today. Six are open, one core sponsor each.</div>
+    <div class="lineup-foot">Three companions answer today. Six more complete the pathway.</div>
   </div>
 </section>
 
@@ -1419,28 +1420,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <div class="fp-bar"><span class="tl"></span><span class="tl"></span><span class="tl"></span><span class="ft">Camille &middot; Radiology</span><span class="fl"><span class="dot"></span> approved guidance</span></div>
           <div class="fp-body">
             <div class="sm you">I got called back after my mammogram and I&rsquo;m scared.</div>
-            <div class="sm co"><span class="sm-av av-imaging">CA</span><div class="sm-b">A callback means the radiologist saw something they want a closer look at. It does not mean they found cancer. About one woman in ten is called back after a screening mammogram, and the large majority turn out to have nothing wrong.<br><br>Do you know yet when your appointment is?</div></div>
-            <div class="sm-src"><span class="ok">&#10003;</span> Answered from CHUM-approved imaging guidance</div>
+            <div class="sm co"><span class="sm-av av-imaging">CA</span><div class="sm-b">A callback means the radiologist wants a closer look. It does not mean they found cancer. About one woman in ten is called back, and the large majority turn out to have nothing wrong.<br><br>Do you know yet when your appointment is?</div></div>
+            <div class="sm-src"><span class="ok">&#10003;</span> Answered from CHUM-approved guidance</div>
           </div>
         </div>
       </div>
       <div class="feat-copy">
         <span class="flabel">Core sponsorship</span>
-        <h2>Become a core sponsor.</h2>
-        <p class="fsub">One sponsor per companion. Your organisation funds a complete stretch of the breast cancer pathway, built with the CHUM and carried into every conversation it touches.</p>
-        <div class="price"><span class="price-n">$90,000</span><span class="price-k">CAD per companion</span></div>
+        <h2>Back the whole initiative.</h2>
+        <p class="fsub">A core sponsor funds AskFanny itself, the platform and the pathway it is being built across, alongside the CHUM.</p>
+        <div class="price"><span class="price-n">$90,000</span><span class="price-k">CAD</span></div>
         <div class="feat-points">
-          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>One complete companion, scoped, authored in French and English, and taken through CHUM clinical review.</span></div>
-          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Named as the core sponsor of that companion, with category exclusivity. No shared billing, no tiers.</span></div>
-          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Recognition at the October 8 unveiling, in front of the room that shapes oncology care in Quebec.</span></div>
-          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Association with the CHUM breast cancer programme and the Groupe McPeak-Sirois summit.</span></div>
-          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Build reporting you can take to a board. What was written, what was reviewed, what is live.</span></div>
-          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>First right of refusal on renewal, and on the next companion to open.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Named core sponsor of AskFanny, with category exclusivity.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Recognition at the October 8 unveiling in Montr&eacute;al.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Association with the CHUM breast cancer programme.</span></div>
+          <div class="fpoint"><span class="fck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span><span>Your name carried as the pathway is completed.</span></div>
         </div>
         <div class="wh-cta" style="margin-top:28px">
           <a href="#inquire" class="btn btn-accent">Become a core sponsor <span class="ar">&rarr;</span></a>
         </div>
-        <p class="fnote">Recognition placement inside a patient-facing clinical tool is subject to CHUM review. Final terms are confirmed in writing before any commitment.</p>
       </div>
     </div>
   </div>
@@ -1541,11 +1539,11 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
     <div class="inq-grid">
       <div class="inq-copy">
         <span class="eyebrow">Become a sponsor</span>
-        <h2>Six companions. Six sponsors.</h2>
-        <p>Tell us which companion you want to build. We will send the full sponsorship terms, the build plan, and an invitation to see the three that already answer.</p>
+        <h2>Be part of this.</h2>
+        <p>We will send the full sponsorship terms and an invitation to see the three companions that already answer.</p>
         <div class="inq-meta">
           <div class="im"><span class="im-k">Core sponsorship</span><span class="im-v">$90,000 CAD</span></div>
-          <div class="im"><span class="im-k">Companions open</span><span class="im-v">Six</span></div>
+          <div class="im"><span class="im-k">The pathway</span><span class="im-v">Nine companions</span></div>
           <div class="im"><span class="im-k">Unveiling</span><span class="im-v">October 8, Montr&eacute;al</span></div>
         </div>
       </div>
@@ -1565,9 +1563,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.suite-card:focus-visibl
           <input id="f-email" name="email" type="email" autocomplete="email" required>
         </div>
         <div class="if-row">
-          <label for="f-companion">Companion of interest</label>
+          <label for="f-companion">Area of interest</label>
           <select id="f-companion" name="companion">
-            <option>No preference yet</option>
+            <option>The whole initiative</option>
             <option>Survivorship</option>
             <option>Research</option>
             <option>Surgery</option>
