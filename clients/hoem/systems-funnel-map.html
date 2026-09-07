@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="preauth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Systems and funnel map — HOEM &times; Gambit</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="stylesheet" href="/clients/portal.css">
+<script>window.GAMBIT_CLIENT = { slug: 'hoem', name: 'HOEM', code: 'hoem2026' };</script>
+<script src="/clients/portal.js" defer></script>
+<style>
+  /* Funnel-map layout, on the shared Gambit tokens. Wider than a text document. */
+  .doc.doc-wide { max-width: 1120px; }
+
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--secondary); margin: 0 0 22px; }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .sw { display: inline-block; width: 12px; height: 12px; border: 1px solid var(--ink); border-radius: 3px; }
+  .sw.manual { background: repeating-linear-gradient(45deg, var(--ink) 0 2px, var(--white) 2px 4px); }
+  .sw.jarvis { background: var(--ink); }
+  .sw.missing { border-style: dashed; border-color: var(--muted); }
+
+  .funnel { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin: 0 0 44px; }
+  .stage {
+    display: flex; flex-direction: column;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 14px 13px 13px;
+  }
+  .stage h3 { margin: 0 0 3px; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .stage .sys {
+    margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-light);
+    font-size: 11px; color: var(--muted); line-height: 1.4;
+  }
+  .stage ul { margin: 0; padding-left: 14px; font-size: 12px; color: var(--secondary); line-height: 1.45; flex: 1; }
+  .stage li { margin: 4px 0; }
+  .stage li.manual { color: var(--ink); }
+  .stage li.manual::marker { content: "▨ "; color: var(--ink); }
+  .stage li.missing { color: var(--muted); }
+  .stage li.missing::marker { content: "◌ "; color: var(--muted); }
+  .hook {
+    margin-top: 12px; padding: 7px 9px; border-radius: 6px;
+    background: var(--ink); color: var(--white);
+    font-size: 11px; line-height: 1.35;
+  }
+
+  .map-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  }
+  .systems { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin: 0 0 44px; }
+  .sysbox h4 { margin: 0 0 4px; font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em; }
+  .sysbox p { margin: 0; font-size: 13px; color: var(--secondary); line-height: 1.5; }
+  .sysbox .owns { margin-top: 6px; font-size: 12px; color: var(--muted); }
+
+  .strip { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .strip > div {
+    background: var(--faint); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 20px 22px;
+  }
+  .strip h4 { margin: 0 0 8px; font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em; }
+  .strip ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--secondary); line-height: 1.5; }
+  .strip li { margin: 5px 0; }
+
+  @media (max-width: 1000px) {
+    .funnel { grid-template-columns: repeat(4, 1fr); }
+    .systems { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .systems { grid-template-columns: 1fr 1fr; }
+    .strip { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .funnel { grid-template-columns: 1fr 1fr; }
+    .systems { grid-template-columns: 1fr; }
+  }
+  @media print {
+    @page { size: landscape; margin: 12mm; }
+    .stage, .strip > div { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="portal">
+
+  <header class="portal-top">
+    <div class="wrap">
+      <a class="portal-brand" href="/clients/hoem">
+        <img src="/img/gambit-logo.png" alt="Gambit">
+        <span class="divider"></span>
+        <span class="client">HOEM</span>
+      </a>
+      <nav class="portal-nav">
+        <a class="hide-sm" href="/clients/hoem">Workspace</a>
+        <button class="portal-lock" data-portal-lock type="button" aria-label="Lock workspace">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Lock
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <article class="doc doc-wide">
+    <a class="doc-back" href="/clients/hoem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to workspace
+    </a>
+
+    <p class="doc-eyebrow">HOEM &times; Gambit</p>
+    <h1>How HOEM runs today</h1>
+    <p class="doc-meta"><b>Systems and funnel map</b><span class="sep">·</span>For review before the deep dive on Wednesday, September 9, 2026</p>
+
+    <p class="doc-lede">The student journey as it actually works right now, which system owns each step, where the work is still done by hand, and where Jarvis can plug in. Built from HOEM's own SOPs, templates and journey docs.</p>
+
+    <div class="legend">
+      <span><i class="sw manual"></i> Done by hand today</span>
+      <span><i class="sw jarvis"></i> Jarvis hook</span>
+      <span><i class="sw missing"></i> Doc still missing (empty export)</span>
+    </div>
+
+    <div class="funnel">
+      <div class="stage">
+        <h3>1. Discover</h3>
+        <p class="sys">Google Ads, GA, socials, TTC, fairs, agents</p>
+        <ul>
+          <li>Word of mouth, TTC subway ads, Instagram / TikTok, housing fairs, Bonard (intl)</li>
+          <li class="manual">GA search terms sorted into keyword / exclusion lists by hand</li>
+          <li class="manual">"How did you hear about us" lives in scattered surveys</li>
+        </ul>
+        <div class="hook">Answer first questions on-site, 24/7, any persona</div>
+      </div>
+      <div class="stage">
+        <h3>2. Inquire</h3>
+        <p class="sys">Website form &rarr; Rent Manager</p>
+        <ul>
+          <li>Prospect created, set to "new prospect" stage</li>
+          <li class="manual">Daily leasing-board clean-up: duplicates, wrong stage</li>
+          <li class="manual">Occupancy numbers updated for team each morning</li>
+          <li class="missing">Prospect Strategy doc</li>
+        </ul>
+        <div class="hook">Capture + qualify the lead, create the prospect cleanly</div>
+      </div>
+      <div class="stage">
+        <h3>3. Nurture</h3>
+        <p class="sys">Rent Manager templates, email</p>
+        <ul>
+          <li>3-email sequence: Welcome &rarr; Learn more &rarr; Ready to book?</li>
+          <li class="manual">Campaigns sent Mon / Wed / Fri by coordinator</li>
+          <li class="manual">"Hot leads" (repeat inquiries) flagged to front desk</li>
+          <li class="missing">Prospect Outreach staff instructions</li>
+        </ul>
+        <div class="hook">Two-way conversation instead of one-way drip</div>
+      </div>
+      <div class="stage">
+        <h3>4. Tour</h3>
+        <p class="sys">Outlook Bookings (HOEMTours@)</p>
+        <ul>
+          <li>Virtual or in-person, under 30 min, ambassador-led</li>
+          <li>24h reminder + post-tour thank-you templates</li>
+          <li class="manual">Tour outcome transferred into Rent Manager by staff</li>
+          <li class="missing">Tour Transfer to Rent Manager doc</li>
+        </ul>
+        <div class="hook">Book / reschedule tours, send reminders, follow up</div>
+      </div>
+      <div class="stage">
+        <h3>5. Book</h3>
+        <p class="sys">book-a-room portal, Rent Manager</p>
+        <ul>
+          <li>Enter info &rarr; term + room &rarr; guarantor &rarr; sign agreement &rarr; pay</li>
+          <li>Needs proof of student status + guarantor</li>
+          <li class="manual">Next-day "RCL" audit checks every processed booking by hand</li>
+          <li class="missing">Cancellation / TYA guide</li>
+        </ul>
+        <div class="hook">Guide to the portal, answer fee + roommate questions</div>
+      </div>
+      <div class="stage">
+        <h3>6. Pay</h3>
+        <p class="sys">Rotessa, POS, MS Forms</p>
+        <ul>
+          <li>Installments via Rotessa (pre-authorized debit)</li>
+          <li class="manual">Payment plan: Form &rarr; jarvis@ inbox &rarr; tracker &rarr; Rent Manager &rarr; Rotessa</li>
+          <li class="manual">Front-desk POS payments</li>
+          <li class="missing">POS Payment Process guide</li>
+        </ul>
+        <div class="hook">Explain options, intake payment-plan requests</div>
+      </div>
+      <div class="stage">
+        <h3>7. Live</h3>
+        <p class="sys">Mosino One app, front desk, jarvis@</p>
+        <ul>
+          <li>Move-in, 24/7 front desk, events, Downtown Student</li>
+          <li>Mosino One: building access, visitor QR passes, turnstiles (Phase 1 rollout)</li>
+          <li class="manual">Front desk fields app setup questions</li>
+          <li class="missing">Short Stay &amp; Groups checklists</li>
+        </ul>
+        <div class="hook">Resident concierge: knows who you are, tone shifts</div>
+      </div>
+      <div class="stage">
+        <h3>8. Renew</h3>
+        <p class="sys">Portal, Rent Manager</p>
+        <ul>
+          <li>Renewal campaign, loyalty perks, room choice</li>
+          <li>Returning student handled as existing resident, old prospect set to Lost</li>
+          <li class="manual">Duplicate prospect checks on returners</li>
+        </ul>
+        <div class="hook">Renewal nudges, alumni + referral loop</div>
+      </div>
+    </div>
+
+    <p class="map-label">The systems underneath</p>
+    <div class="systems">
+      <div class="sysbox">
+        <h4>Rent Manager</h4>
+        <p>The spine. Prospects, leasing board, contracts, resident profiles (UDFs), stages, email templates.</p>
+        <p class="owns">Owns stages 2, 3, 5, 6, 8. Every Jarvis "action" routes through here.</p>
+      </div>
+      <div class="sysbox">
+        <h4>Rotessa</h4>
+        <p>Recurring payments and installment schedules.</p>
+        <p class="owns">Owns stage 6.</p>
+      </div>
+      <div class="sysbox">
+        <h4>Mosino One</h4>
+        <p>Resident app already rolling out: access, visitor passes, turnstiles, Staff Hub.</p>
+        <p class="owns">Owns stage 7. The incumbent in the "resident app" question.</p>
+      </div>
+      <div class="sysbox">
+        <h4>Microsoft 365</h4>
+        <p>Outlook Bookings (tours), Forms (payment plans), SharePoint + Excel (trackers), Outlook mail incl. jarvis@hoem.ca.</p>
+        <p class="owns">Glue across 3, 4, 6, 7.</p>
+      </div>
+      <div class="sysbox">
+        <h4>Google Ads + Analytics</h4>
+        <p>Paid search and site analytics, managed by hand. No aggregated dashboard today.</p>
+        <p class="owns">Owns stage 1.</p>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div>
+        <h4>What this means for Jarvis</h4>
+        <ul>
+          <li>Personality, knowledge and guardrails can start now from the tour guide, brand guide and USPs.</li>
+          <li>Every real "action" (create prospect, book tour, move stage, payment plan) depends on what Rent Manager exposes.</li>
+          <li>Jarvis must know new prospect vs. current resident, and change tone accordingly.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Where automation is already waiting</h4>
+        <ul>
+          <li>The next-day RCL audit: catch errors at entry instead of after.</li>
+          <li>The five-step payment-plan handoff.</li>
+          <li>Nurture sending, leasing-board clean-up, hot-lead flagging.</li>
+          <li>Marketing attribution: one dashboard across channels and spend.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="doc-note">
+      <b>This is our read, not the final word.</b> It was built from the documents you sent, so some steps will be wrong or missing. Tell Alex before Wednesday and we will correct it in the room. The dashed items are the six documents that came through empty; a re-send fills those gaps.
+    </div>
+  </article>
+
+  <footer class="portal-foot">
+    <div class="wrap">
+      <img src="/img/gambit-logo.png" alt="Gambit">
+      <p class="note">Private HOEM workspace. Please do not share this link outside your team.</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

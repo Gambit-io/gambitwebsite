@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="preauth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Discovery guide — HOEM &times; Gambit</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="stylesheet" href="/clients/portal.css">
+<script>window.GAMBIT_CLIENT = { slug: 'hoem', name: 'HOEM', code: 'hoem2026' };</script>
+<script src="/clients/portal.js" defer></script>
+<style>
+  /* Discovery-guide layout, on the shared Gambit tokens */
+  .doc-lede b { font-weight: 600; }
+
+  .ros {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 6px 0; margin: 0 0 14px;
+  }
+  .ros-row {
+    display: grid; grid-template-columns: 64px 1fr; gap: 20px;
+    padding: 12px 0; border-bottom: 1px solid var(--border-light);
+    font-size: 14.5px; line-height: 1.5;
+  }
+  .ros-row:last-child { border-bottom: none; }
+  .ros-row .t { font-weight: 600; color: var(--ink); }
+  .ros-row .lead { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+  .wf { padding: 30px 0 28px; border-bottom: 1px solid var(--border-light); }
+  .wf:last-of-type { border-bottom: none; }
+  .wf h2 { margin: 0 0 4px; font-size: 21px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+  .wf .who { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+  .wf .known {
+    margin: 0 0 16px; padding: 12px 16px;
+    background: var(--faint); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    font-size: 13.5px; color: var(--secondary); line-height: 1.55;
+  }
+  .wf .known b { color: var(--ink); font-weight: 500; }
+  .wf ol { margin: 0; padding-left: 22px; }
+  .wf li { margin: 7px 0; padding-left: 2px; font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+  .wf .listen { margin: 14px 0 0; font-size: 13.5px; color: var(--secondary); line-height: 1.55; }
+  .wf .listen b { color: var(--ink); font-weight: 500; }
+
+  .close {
+    margin-top: 34px; padding: 22px 24px;
+    background: var(--faint); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  }
+  .close h2 { margin: 0 0 8px; font-size: 17px; font-weight: 500; letter-spacing: -0.01em; }
+  .close p { margin: 0 0 8px; font-size: 14px; color: var(--secondary); line-height: 1.55; }
+  .close ul { margin: 6px 0 0; padding-left: 20px; font-size: 14px; color: var(--secondary); line-height: 1.5; }
+  .close li { margin: 5px 0; }
+
+  @media (max-width: 560px) {
+    .ros-row { grid-template-columns: 1fr; gap: 4px; }
+    .ros-row .lead { white-space: normal; }
+  }
+  @media print { .wf { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="portal">
+
+  <header class="portal-top">
+    <div class="wrap">
+      <a class="portal-brand" href="/clients/hoem">
+        <img src="/img/gambit-logo.png" alt="Gambit">
+        <span class="divider"></span>
+        <span class="client">HOEM</span>
+      </a>
+      <nav class="portal-nav">
+        <a class="hide-sm" href="/clients/hoem">Workspace</a>
+        <button class="portal-lock" data-portal-lock type="button" aria-label="Lock workspace">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Lock
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <article class="doc">
+    <a class="doc-back" href="/clients/hoem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to workspace
+    </a>
+
+    <p class="doc-eyebrow">HOEM &times; Gambit</p>
+    <h1>Deep dive: discovery guide</h1>
+    <p class="doc-meta"><b>Wednesday, September 9, 2026</b><span class="sep">·</span>HOEM boardroom, 186 Jarvis St<span class="sep">·</span>Morning, 2 hours</p>
+
+    <p class="doc-lede"><b>The rule for the room.</b> We are not here to automate what exists. For every step we ask three things: what happens, why it happens, and what the outcome is supposed to be. Some steps exist only because the current system forced them. Those are the ones that disappear.</p>
+
+    <div class="ros">
+      <div class="ros-row"><div class="t">0:00</div><div>Frame the session, confirm who leads which walkthrough <span class="lead">/ Ryan</span></div></div>
+      <div class="ros-row"><div class="t">0:10</div><div>Prospect to tour: the marketing and outreach side <span class="lead">/ Pilar + HOEM Alex</span></div></div>
+      <div class="ros-row"><div class="t">0:40</div><div>Tour to booked to paid: admissions, student side then back-end side <span class="lead">/ HOEM Alex + Matt</span></div></div>
+      <div class="ros-row"><div class="t">1:20</div><div>Resident life, Mosino One, and the jarvis@ inbox <span class="lead">/ Beth</span></div></div>
+      <div class="ros-row"><div class="t">1:40</div><div>Systems and integration: what Rent Manager can and can't do <span class="lead">/ Pat + whoever owns Rent Manager</span></div></div>
+      <div class="ros-row"><div class="t">1:50</div><div>Play back what we heard, agree what we'll bring back <span class="lead">/ Ryan</span></div></div>
+    </div>
+
+    <div class="wf">
+      <h2>1. Prospect intake and nurture</h2>
+      <p class="who">Pilar, HOEM Alex</p>
+      <p class="known"><b>We already know:</b> website form creates the prospect in Rent Manager. Three-email drip sent by hand Mon / Wed / Fri. Leasing board cleaned daily. Repeat inquirers flagged as "hot leads" to the front desk. Prospect Strategy and Outreach docs came through empty.</p>
+      <ol>
+        <li>Walk us through one real prospect from first click to "new prospect" stage. Where does the data land, and who touches it first?</li>
+        <li>Why is the drip sent by hand rather than triggered? Is that a Rent Manager limit or a choice?</li>
+        <li>What makes a lead "hot," exactly? What happens to it once it's flagged?</li>
+        <li>What questions do prospects actually ask in replies and DMs that the emails don't answer?</li>
+        <li>Which channels do you believe convert, and what's that belief based on?</li>
+        <li>Where do duplicates come from, and what does clean-up cost you per day?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> steps that exist to work around Rent Manager. Anything you "just know" about lead quality. How follow-up works today: this is Jarvis's first job.</p>
+    </div>
+
+    <div class="wf">
+      <h2>2. Tours</h2>
+      <p class="who">HOEM Alex, Pilar</p>
+      <p class="known"><b>We already know:</b> booked via Outlook Bookings (HOEMTours@), ambassador-led, under 30 minutes, "not a sales pitch." 24-hour reminder and post-tour follow-up templates exist. The tour-to-Rent-Manager transfer doc came through empty.</p>
+      <ol>
+        <li>Show us the handoff: tour booked in Outlook, then what has to happen in Rent Manager, and who does it?</li>
+        <li>What gets lost between a great tour and a booking? Where do people go quiet?</li>
+        <li>How do virtual tours differ in outcome from in-person? Who books which?</li>
+        <li>What do parents ask on tours that students don't?</li>
+        <li>Could a tour be booked, confirmed and followed up without a person in the loop? What would break?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> the exact moment tour intent becomes a Rent Manager record. That is a Jarvis action if the system allows it.</p>
+    </div>
+
+    <div class="wf">
+      <h2>3. Booking and contract</h2>
+      <p class="who">HOEM Alex, Matt</p>
+      <p class="known"><b>We already know:</b> book-a-room portal: info, term and room, guarantor, sign residence agreement, pay. Needs proof of student status. Next day, every processed booking is audited by hand against a checklist (duplicates, contract dates, term, unit on floor 15+). Cancellation / TYA guide came through empty.</p>
+      <ol>
+        <li>Walk one booking end to end from the student's screen, then the same booking from the back end.</li>
+        <li>What are the top three errors the daily audit catches? Why can't they be prevented at entry?</li>
+        <li>Which fields are people forced to fill by hand that the system could infer?</li>
+        <li>Where does the process differ for returning students, short stays, and groups?</li>
+        <li>What happens on a cancellation, and how often does it happen?</li>
+        <li>What would you remove from this process tomorrow if the system let you?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> "we have to do it this way because Rent Manager." Every one of those is a candidate for either an integration or a Stream 2 quick win.</p>
+    </div>
+
+    <div class="wf">
+      <h2>4. Payments and payment plans</h2>
+      <p class="who">Matt, HOEM Alex</p>
+      <p class="known"><b>We already know:</b> installments run through Rotessa. Payment plans go Form &rarr; jarvis@ inbox &rarr; tracker &rarr; approval criteria &rarr; Rent Manager UDF &rarr; Rotessa &rarr; two email templates. Nearly all requests are approved. POS process doc came through empty.</p>
+      <ol>
+        <li>Roughly how many payment-plan requests a term, and how long does each take start to finish?</li>
+        <li>If almost all are approved, what's the real purpose of the review step? What would you never want automated?</li>
+        <li>What does the front-desk POS flow look like, and how does it reconcile back to Rent Manager?</li>
+        <li>Where do students get confused about fees, installments, or the guarantor?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> which parts are judgment (keep human) versus data entry (automate). Privacy sensitivity here is high; note it for guardrails.</p>
+    </div>
+
+    <div class="wf">
+      <h2>5. Resident life, Mosino One, and the inbox</h2>
+      <p class="who">Beth, Jonathon</p>
+      <p class="known"><b>We already know:</b> Mosino One is live (Phase 1) for building access, visitor QR passes and turnstiles, with a Staff Hub. The front desk absorbs setup questions. jarvis@hoem.ca is the shared ops inbox and the contact on every template. Full-year journey docs exist for new and returning residents.</p>
+      <ol>
+        <li>What does Mosino One own today, what's on its roadmap, and what does it not do that residents keep asking for?</li>
+        <li>What arrives in the jarvis@ inbox in a normal week? Who triages it and how?</li>
+        <li>What are the ten questions the front desk answers most, by day and by night?</li>
+        <li>How do you know a resident is at risk of not renewing? When do you find out?</li>
+        <li>Where does a resident's identity live so that a message from them could be recognized (phone, email, app)?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> whether Mosino One is a platform Jarvis sits inside, beside, or replaces. This settles the "resident app vs Jarvis" question with facts instead of preference.</p>
+    </div>
+
+    <div class="wf">
+      <h2>6. Systems and integration</h2>
+      <p class="who">Pat, plus whoever owns Rent Manager and the website</p>
+      <p class="known"><b>We already know:</b> Rent Manager is the spine. Rotessa, Outlook Bookings, MS Forms, SharePoint trackers and Mosino One all hang off it, mostly by hand.</p>
+      <ol>
+        <li>Who administers Rent Manager? Do you have API access, and has anyone integrated with it before?</li>
+        <li>Which of these can Rent Manager do from outside: create a prospect, change a stage, read a resident, write a note, trigger a template?</li>
+        <li>Where does the website form post to? Who built the site and who can change it?</li>
+        <li>Can we get read access to Google Ads, GA and the survey data to see the attribution picture?</li>
+        <li>Which entity owns the data: HOEM Management, Canadian Student Communities, or the MPI group?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> the real answer on Rent Manager's API. This defines which Jarvis actions are real in the next 30 days versus which need a workaround or a phased approach.</p>
+    </div>
+
+    <div class="wf">
+      <h2>7. Jarvis persona checkpoints</h2>
+      <p class="who">Whole room, woven in as we go</p>
+      <p class="known"><b>We already know:</b> Matt wants the voice set fresh from the brand, not trained on front-desk emails. The tour guide and brand guide carry the voice well. Tone should shift from prospect to resident.</p>
+      <ol>
+        <li>In three words, how should Jarvis feel to a nervous international student? To a parent? To a second-year resident?</li>
+        <li>What must Jarvis never say or promise? What always goes to a human?</li>
+        <li>When a conversation gets personal (finances, wellbeing, a complaint), who is the human, and how fast?</li>
+        <li>Should Jarvis ever say it's an AI? When?</li>
+      </ol>
+      <p class="listen"><b>Listen for:</b> the escalation path. That is the guardrails layer of the blueprint, and it comes from you, not us.</p>
+    </div>
+
+    <div class="close">
+      <h2>How we close the room</h2>
+      <p>We play back the three biggest things we heard. Then we commit to what comes back at the next check-in:</p>
+      <ul>
+        <li>A current-state map of the process as it really runs, with the steps that only exist because of system limits marked.</li>
+        <li>A recommendation for where Jarvis starts and what it can actually do first, given what Rent Manager allows.</li>
+        <li>A short list of quick wins we could fix or automate now, separate from Jarvis.</li>
+      </ul>
+    </div>
+
+    <div class="doc-note">
+      <b>Read this before Wednesday.</b> If a question misses the point, or there is a workflow we should walk that is not here, tell Alex and we will fold it in. Nothing here is a test; it is the shape of the morning so nobody is caught cold.
+    </div>
+  </article>
+
+  <footer class="portal-foot">
+    <div class="wrap">
+      <img src="/img/gambit-logo.png" alt="Gambit">
+      <p class="note">Private HOEM workspace. Please do not share this link outside your team.</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
