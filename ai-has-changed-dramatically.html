@@ -207,6 +207,20 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
 .btn-outline-h:focus-visible, .btn-solid-h:focus-visible, .hero-btn-primary:focus-visible, .hero-btn-ghost:focus-visible, .cta-primary:focus-visible, .cta-outline:focus-visible { outline-offset: 3px; }
 
+/* Article subtitle */
+.article-subtitle { font-size: 19px; line-height: 1.5; font-weight: 400; color: var(--secondary); margin: 0 0 18px; max-width: 640px; }
+@media (max-width: 480px) { .article-subtitle { font-size: 17px; } }
+
+/* Related articles */
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); padding-bottom: 0; }
+.related-section h3 { font-size: 14px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+.related-list { display: flex; flex-direction: column; gap: 0; }
+.related-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-light); text-decoration: none; color: var(--ink); transition: opacity 0.15s; }
+.related-item:last-child { border-bottom: none; }
+.related-item:hover { opacity: 0.65; }
+.related-item-title { font-size: 14px; font-weight: 500; line-height: 1.35; }
+.related-item-arrow { font-size: 14px; color: var(--muted); flex-shrink: 0; }
+
 /* ===== inline post visuals (scoped, warm brand) ===== */
 .pv{ margin:34px 0;
   --ink:#15110d; --ink-2:#1f1a14; --paper:#fff; --bone:#f8f5ef; --bone-2:#f1ebe2;
@@ -480,6 +494,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
   <div class="article-header">
     <h1>AI Has Changed Dramatically. Here’s What It Can Do Now</h1>
+    <p class="article-subtitle">We’ve come a long way from the early days of ChatGPT.</p>
     <div class="article-meta">
       <span>Alex Bukowski</span>
       <div class="article-meta-divider"></div>
@@ -531,9 +546,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
             <div class="verdict no"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>No access to your systems</div>
           </div></div>
         </div>
-      </div>
-      <figcaption>Ask an early AI a live business question and it cannot reach the answer.</figcaption>
-    </figure>
+      </div>    </figure>
 
     <p>Before they went into the room, they read an enormous amount of information. Books, websites, articles, code, conversations, and all kinds of other material. Because of that, they can answer an incredible number of questions.</p>
 
@@ -543,7 +556,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <p>The same thing happens if you ask about your company's internal refund policy, this morning's sales numbers, or what happened in a customer conversation yesterday. Unless you give the AI that information somehow, it doesn't know.</p>
 
-    <p>This was also part of the reason hallucinations became such a big issue. Large language models are designed to generate likely responses, not look things up inside some perfect database of facts. Sometimes that means they produce something that sounds completely reasonable but happens to be wrong.</p>
+    <p>This was also part of the reason <a href="/ai-terms-explained">hallucinations</a> became such a big issue. Large language models are designed to generate likely responses, not look things up inside some perfect database of facts. Sometimes that means they produce something that sounds completely reasonable but happens to be wrong.</p>
 
     <p>People tried to solve a lot of this with better prompts. "Don't make anything up." "Only give me information you're sure about." "Double-check your answer before responding." Those instructions can help, but they can't give AI access to information it doesn't have.</p>
 
@@ -571,9 +584,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
             <div class="verdict yes"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reading from your systems</div>
           </div></div>
         </div>
-      </div>
-      <figcaption>Connected to your systems, it can finally answer.</figcaption>
-    </figure>
+      </div>    </figure>
 
     <p>Now if you ask, "What's our refund policy?", the AI can read your actual refund policy instead of trying to answer based only on what it already knows. That's basically the idea behind RAG.</p>
 
@@ -593,7 +604,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <h2>2025: How AI Agents Started Taking Action</h2>
 
-    <p>This is where AI agents really started getting attention.</p>
+    <p>This is where <a href="/what-is-agentic-ai">AI agents</a> really started getting attention.</p>
 
     <p>Instead of giving AI access only to information, developers started giving it access to tools too. That could mean browsing a website, searching a database, sending an email, running code, updating software, creating a file, or calling another system.</p>
 
@@ -611,11 +622,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
           <div class="step"><div class="dotc run"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#a86a18" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>Confirming it's done…</div>
           <div class="cardfoot"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Carried through from start to finish</div>
         </div>
-      </div>
-      <figcaption>With tools, it carries a task all the way through instead of just advising.</figcaption>
-    </figure>
+      </div>    </figure>
 
-    <p>For example, instead of asking AI to tell you how to research three competitors, you could potentially give an agent the goal of researching those competitors, gathering the information, comparing them, and putting the findings into a presentation.</p>
+    <p>For example, instead of asking AI to tell you how to research three competitors, you could potentially <a href="/how-businesses-are-implementing-agentic-ai">give an agent the goal</a> of researching those competitors, gathering the information, comparing them, and putting the findings into a presentation.</p>
 
     <p>That was a massive shift, and some of the demos looked unbelievable. The problem was that real work tends to be messier than demos.</p>
 
@@ -681,9 +690,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
           <div class="appr"><div><div class="lbl">A bigger decision</div><div class="sub">needs judgment</div></div><span class="pill a"><span class="pdot"></span>Checks with a person</span></div>
           <div class="appr"><div><div class="lbl">Something unusual</div><div class="sub">outside the norm</div></div><span class="pill r"><span class="pdot"></span>Stops and flags it</span></div>
         </div>
-      </div>
-      <figcaption>It handles routine work, checks with a person on bigger calls, and stops on anything unusual.</figcaption>
-    </figure>
+      </div>    </figure>
 
     <p>OpenAI wrote about this in a 2026 article on <a href="https://openai.com/index/harness-engineering/">harness engineering</a>. Their team used AI coding agents to build an internal software product containing roughly one million lines of agent-generated code. The project also showed how much infrastructure was needed around the agents to make that level of output reliable.</p>
 
@@ -695,7 +702,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <h2>How Does an AI Harness Work?</h2>
 
-    <p>Let's say you want an AI worker to handle freight load confirmations.</p>
+    <p>Let's say you want an AI worker to handle <a href="/workers/fleet">freight load confirmations</a>.</p>
 
     <p>You could technically connect an AI model to your systems and tell it, "Handle incoming load confirmations." But there's a huge amount of information hiding inside that sentence.</p>
 
@@ -734,9 +741,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
             </div>
           </div>
         </div>
-      </div>
-      <figcaption>A harness is the structure around a capable AI: what it can see, what it can do, its limits, and when to bring in a person.</figcaption>
-    </figure>
+      </div>    </figure>
 
     <p>So instead of giving the AI unlimited freedom, you build boundaries around the job. The worker gets access to the information it needs, like the incoming request, load information, rates, and company policies. It gets specific tools for checking records, updating the system, and sending confirmations. It also gets rules around when it can act on its own and when it needs to involve someone from the team.</p>
 
@@ -766,7 +771,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <p>That's why we've become much more interested in building AI around clearly defined jobs instead of simply giving businesses another AI tool to use.</p>
 
-    <p>A chatbot still needs someone to ask it questions. A copilot helps someone do their job. An agent can take action on someone's behalf. An AI worker is designed to own a specific piece of work from beginning to end.</p>
+    <p>A chatbot still needs someone to ask it questions. A copilot helps someone do their job. An agent can take action on someone's behalf. <a href="/what-is-an-ai-worker">An AI worker</a> is designed to own a specific piece of work from beginning to end.</p>
 
     <p>That's a very different relationship with the technology.</p>
 
@@ -782,10 +787,29 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <p>That's the idea behind the <a href="https://gambitco.io/">AI workers we're building at Gambit</a>. Each one has a specific job, access to the information and tools it needs, clear boundaries around what it can do, and a defined outcome it's responsible for.</p>
 
-    <p>For businesses, that opens up a much more practical way to think about AI. Instead of asking where another AI tool might fit, you can start looking at the work already happening across your business and asking which parts of it AI could realistically own.</p>
+    <p>For businesses, that opens up a much more practical way to think about AI. Instead of asking where another AI tool might fit, you can start <a href="/where-to-start-with-ai">looking at the work already happening across your business</a> and asking which parts of it AI could realistically own.</p>
 
     <p>If you're starting to think about what that could look like inside your business, <a href="https://gambitco.io/get-started">let's chat</a>.</p>
 
+  </div>
+
+  <!-- MORE FROM GAMBIT -->
+  <div class="related-section">
+    <h3>More from Gambit</h3>
+    <div class="related-list">
+      <a href="/how-businesses-are-implementing-agentic-ai" class="related-item">
+        <span class="related-item-title">How Today’s Businesses Are Implementing Agentic AI (7 Examples)</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+      <a href="/what-is-an-ai-worker" class="related-item">
+        <span class="related-item-title">What Is an AI Worker? And Why It Changes Everything</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+      <a href="/what-is-agentic-ai" class="related-item">
+        <span class="related-item-title">What Is Agentic AI and How Does It Work?</span>
+        <span class="related-item-arrow">→</span>
+      </a>
+    </div>
   </div>
 
   <!-- AUTHOR BLOCK -->
