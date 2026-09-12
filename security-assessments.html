@@ -246,6 +246,38 @@ h2{font-size:clamp(28px,3.8vw,44px)}
 .of-list li::before{content:"";position:absolute;left:1px;top:6px;width:9px;height:5px;border-left:1.6px solid var(--clay);border-bottom:1.6px solid var(--clay);transform:rotate(-45deg)}
 .of-note{margin-top:auto;border-top:1px solid var(--line);padding-top:15px;font-size:12.5px;color:var(--muted);line-height:1.5}
 .of-note b{color:var(--ink-2);font-weight:600}
+.of-note + .of-note{margin-top:9px;border-top:0;padding-top:0}
+.of-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:9px;margin:-4px 0 16px}
+.of-usd{font-family:var(--display);font-weight:600;font-size:27px;letter-spacing:-.025em;color:var(--ink);line-height:1.1}
+.of-cad{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--muted-2);white-space:nowrap}
+.of-flag{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:20px;padding:3px 8px;vertical-align:1px}
+.of-cap{background:var(--bone);border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-bottom:18px;font-size:12.5px;color:var(--muted);line-height:1.55}
+.of-cap b{color:var(--ink-2);font-weight:600}
+.of-cap-k{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:5px}
+
+/* ---------- compared to what ---------- */
+.cmp{padding:78px 0;background:var(--paper);border-top:1px solid var(--line-2)}
+.cmp-head{max-width:640px;margin:0 auto 34px;text-align:center}
+.cmp-head .eyebrow{margin-bottom:14px}
+.cmp-head h2{font-size:clamp(24px,2.9vw,34px);margin-bottom:13px}
+.cmp-head p{font-size:15.5px;color:var(--muted);line-height:1.6;max-width:56ch;margin:0 auto}
+.cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bone)}
+@media(max-width:860px){.cmp-grid{grid-template-columns:1fr}}
+.cmp-col{padding:26px 24px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.cmp-col:last-child{border-right:0}
+@media(max-width:860px){.cmp-col{border-right:0;border-bottom:1px solid var(--line)}.cmp-col:last-child{border-bottom:0}}
+.cmp-col.mine{background:radial-gradient(130% 150% at 78% 10%,#1d2f4a 0%,#0c1626 72%);border-right:0}
+.cmp-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:11px}
+.cmp-col.mine .cmp-k{color:var(--accent-2)}
+.cmp-col h3{font-size:16.5px;letter-spacing:-.01em;margin-bottom:12px}
+.cmp-col.mine h3{color:#fff}
+.cmp-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0}
+.cmp-list li{position:relative;padding-left:18px;font-size:13.5px;color:var(--muted);line-height:1.55}
+.cmp-list li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:1.6px;background:var(--sand-deep)}
+.cmp-col.mine .cmp-list li{color:rgba(225,232,242,.76)}
+.cmp-col.mine .cmp-list li b{color:#fff;font-weight:600}
+.cmp-col.mine .cmp-list li::before{background:none;left:1px;top:5px;width:9px;height:5px;border-left:1.6px solid var(--accent-2);border-bottom:1.6px solid var(--accent-2);transform:rotate(-45deg)}
+.cmp-foot{margin-top:22px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted-2);line-height:1.7}
 
 /* ---------- how it runs ---------- */
 .flow{background:var(--navy);color:#fff;padding:92px 0}
@@ -376,6 +408,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
   .hero{padding:104px 0 0}
   .hero .tag{max-width:none}
   .stance,.offers,.flow,.deliver,.limits{padding:68px 0}
+  .cmp{padding:56px 0}
+  .cmp-col{padding:24px 22px 26px}
   .cta{padding:68px 0 76px}
   .form-card{padding:26px 22px}
   .form-row-split{grid-template-columns:1fr;gap:18px}
@@ -594,10 +628,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
   <div class="wrap">
     <span class="eyebrow fade-up d1">Security assessments</span>
     <h1 class="fade-up d1" style="margin-top:14px">Authorized testing, run like a hire.</h1>
-    <div class="tag fade-up d2">Written scope. A named owner. Findings your team can actually fix.</div>
-    <p class="hero-lead fade-up d3">Gambit runs authorized security assessments alongside your team. Every engagement starts with rules of engagement in writing and ends with a report a person stands behind. Workers do the sweeping. People own the findings.</p>
+    <div class="tag fade-up d2">A named owner. An independent verifier. A fixed fee.</div>
+    <p class="hero-lead fade-up d3">Authorized testing run like a hire: a captain staffs specialist workers, an independent verifier has to reproduce every finding, and only <b>Attested</b> claims reach your report &mdash; under a written scope, at a fixed fee. Workers propose, verifiers dispose, and a person stands behind what ships.</p>
     <div class="hero-btns fade-up d3">
-      <a href="#start" class="btn btn-accent">Start an engagement <span class="ar">&rarr;</span></a>
+      <a href="#start" class="btn btn-accent">Book a scoping call <span class="ar">&rarr;</span></a>
       <a href="#offerings" class="btn btn-ghost">See the offerings <span class="ar">&rarr;</span></a>
     </div>
 
@@ -777,7 +811,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
     <div class="section-head">
       <span class="eyebrow">The offerings</span>
       <h2>Three ways to start.</h2>
-      <p class="lead">Pick the depth that matches the decision you need to make. Each one is a fixed scope with a date it ends and a report at the end of it.</p>
+      <p class="lead">Pick the depth that matches the decision you need to make. Each one is a fixed scope and a fixed fee, with a date it ends and a report at the end of it. Prices are listed in USD; CAD is approximate.</p>
     </div>
     <div class="offer-grid">
 
@@ -787,15 +821,18 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
           <span class="of-when">About 2 weeks</span>
         </div>
         <div class="of-role">Recon and inventory</div>
+        <div class="of-price"><span class="of-usd">USD 4,800</span><span class="of-cad">&asymp; CAD 6,500</span></div>
         <p class="of-out">An authoritative inventory of what you actually have facing the internet, and which parts of it deserve attention first. Most teams find something they had forgotten about.</p>
+        <div class="of-cap"><span class="of-cap-k">Scope cap</span>Up to <b>25</b> hostnames or IPs, or one primary domain plus its discovered subdomains. Overage +USD&nbsp;150/host or a custom quote.</div>
         <div class="of-lbl">Includes</div>
         <ul class="of-list">
           <li>Subdomain and DNS map</li>
           <li>Technology fingerprint per host</li>
           <li>Open ports and services table</li>
           <li>Prioritized watchlist, ranked by exposure</li>
+          <li>Short executive note</li>
         </ul>
-        <p class="of-note"><b>Not included:</b> exploitation, credential stuffing, or social engineering. This engagement observes; it does not push.</p>
+        <p class="of-note"><b>Not included:</b> exploitation, credential stuffing, social engineering, or authenticated app testing. Point-in-time map, no retest; optional refresh at 50% within 90 days.</p>
       </div>
 
       <div class="offer featured">
@@ -803,16 +840,20 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
           <div class="of-name">App &amp; API Assessment</div>
           <span class="of-when">About 3&ndash;4 weeks</span>
         </div>
-        <div class="of-role">Web and API findings</div>
-        <p class="of-out">Named web and API surfaces reviewed in depth, with every finding written so one of your engineers can reproduce it, fix it, and verify the fix.</p>
+        <div class="of-role">Web and API findings <span class="of-flag">Hero SKU</span></div>
+        <div class="of-price"><span class="of-usd">USD 14,500</span><span class="of-cad">&asymp; CAD 19,500</span></div>
+        <p class="of-out">One named web app and its first-party APIs, reviewed in depth, with every finding written so one of your engineers can reproduce it, fix it, and verify the fix. Only Attested findings ship.</p>
+        <div class="of-cap"><span class="of-cap-k">Scope cap</span>One application, up to <b>2</b> auth roles, up to <b>150</b> in-scope routes or endpoints. Extra app or role is a custom add-on.</div>
         <div class="of-lbl">Includes</div>
         <ul class="of-list">
           <li>Authentication and session flows</li>
           <li>Access-control review across roles and objects</li>
           <li>Injection classes reported as findings</li>
           <li>Configuration and security header gaps</li>
+          <li>One retest window &mdash; up to 5 findings, within 30 days</li>
         </ul>
-        <p class="of-note"><b>Proof of impact:</b> logs, screenshots, and request IDs. Reproduction steps are written for your team, not packaged as a public exploit.</p>
+        <p class="of-note"><b>Proof of impact:</b> logs, screenshots, and request IDs &mdash; not public exploit kits.</p>
+        <p class="of-note"><b>Not included:</b> red team, phishing, physical, or third-party tenant abuse.</p>
       </div>
 
       <div class="offer">
@@ -821,18 +862,69 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
           <span class="of-when">Scoped</span>
         </div>
         <div class="of-role">Human oversight, explicit ROE</div>
-        <p class="of-out">Deeper validation under direct human supervision, for the systems where a theoretical finding is not enough to move a decision.</p>
+        <div class="of-price"><span class="of-usd">From USD 28,000</span><span class="of-cad">&asymp; CAD 38,000</span></div>
+        <p class="of-out">Deeper validation under a human on-call and a signed ROE, for the systems where a theoretical finding is not enough to move a decision. Same attestation standard.</p>
+        <div class="of-cap"><span class="of-cap-k">Scope cap</span>Scoped per engagement. The &ldquo;from&rdquo; price is the floor for one mid-complexity product surface; fixed after the scoping call.</div>
         <div class="of-lbl">Includes</div>
         <ul class="of-list">
-          <li>Signed rules of engagement naming every target</li>
+          <li>Everything in App &amp; API for the agreed surfaces</li>
+          <li>Supervised deeper-validation seats as needed</li>
           <li>Your on-call available throughout the window</li>
-          <li>Validation steps agreed before they are run</li>
-          <li>The same reporting standard as every other tier</li>
+          <li>Coverage statement: what was and was not tested</li>
         </ul>
-        <p class="of-note"><b>Gate:</b> this tier is engaged only after a signed scope with named targets. There is no self-serve version of it.</p>
+        <p class="of-note"><b>Gate:</b> never self-serve. Kickoff only after a signed scope naming every target.</p>
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- COMPARED TO WHAT -->
+<section class="cmp" id="compared">
+  <div class="wrap">
+    <div class="cmp-head">
+      <span class="eyebrow">Compared to what</span>
+      <h2>Where this sits.</h2>
+      <p>Three different things get sold as &ldquo;a pentest.&rdquo; They are not the same purchase. Here is the honest placement.</p>
+    </div>
+
+    <div class="cmp-grid">
+
+      <div class="cmp-col">
+        <div class="cmp-k">Vulnerability scanners</div>
+        <h3>Cheap, automated, unverified</h3>
+        <ul class="cmp-list">
+          <li>Signature and version matching at speed</li>
+          <li>Output is a candidate list, not findings &mdash; triage lands on your team</li>
+          <li>No access-control or business-logic reasoning</li>
+          <li>Good for continuous hygiene, weak for a decision</li>
+        </ul>
+      </div>
+
+      <div class="cmp-col">
+        <div class="cmp-k">Day-rate boutiques</div>
+        <h3>Skilled humans, open-ended meter</h3>
+        <ul class="cmp-list">
+          <li>Typically priced by the day, so the total moves with the calendar</li>
+          <li>Scope tends to widen mid-engagement</li>
+          <li>Real expertise, but usually a queue before anyone starts</li>
+          <li>Quality tracks whichever tester you happen to get</li>
+        </ul>
+      </div>
+
+      <div class="cmp-col mine">
+        <div class="cmp-k">Gambit assessment floor</div>
+        <h3>Verified findings at a fixed fee</h3>
+        <ul class="cmp-list">
+          <li>A captain staffs <b>named specialist seats</b>, not one general-purpose bot</li>
+          <li>An <b>independent verifier</b> has to reproduce every finding before it can ship</li>
+          <li>Only <b>Attested</b> claims reach the report; High and Critical are human-attested</li>
+          <li><b>Fixed fee</b> with a hard scope cap and an end date, written before any traffic</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="cmp-foot">No competitor logos and no invented scores. This is a description of three purchase models, not a claim about any specific vendor.</p>
   </div>
 </section>
 
@@ -991,28 +1083,28 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
   <div class="wrap">
     <div class="cta-grid">
       <div class="cta-intro">
-        <span class="eyebrow">Start an engagement</span>
+        <span class="eyebrow">Book a scoping call</span>
         <h2>Tell us what you want assessed.</h2>
-        <p>Send the surfaces you care about and who is authorized to approve the work. We come back with a scope, a window, and a fixed price, usually within a day.</p>
+        <p>Send the surfaces you care about and who is authorized to approve the work. We come back with a scope, a window, and a <b>fixed price &mdash; usually within one business day</b>. The Factory floor is already staffed, so work starts once the scope is signed rather than after a queue.</p>
         <p class="cta-alt">Prefer email? Write to <a href="mailto:AI@gambitco.io">AI@gambitco.io</a>. Not sure which tier fits? <a href="/get-started">Start a general conversation</a> and we will point you at the right one.</p>
         <div class="cta-steps">
           <div class="cta-step">
             <span class="sn">1</span>
-            <div><h3>A scoping call</h3><p>Thirty minutes to agree what is in, what is out, and who signs. No tooling talk yet.</p></div>
+            <div><h3>A scoping call</h3><p>Thirty minutes to agree what is in, what is out, and who signs. No tooling talk yet. You get the scope and the fixed price back, usually within one business day.</p></div>
           </div>
           <div class="cta-step">
             <span class="sn">2</span>
-            <div><h3>Rules of engagement</h3><p>We write the scope, the window, the allowed techniques, and the emergency stop. You sign it before anything runs.</p></div>
+            <div><h3>Rules of engagement</h3><p>We write the scope cap, the window, the allowed techniques, and the emergency stop. You sign it before anything runs. Terms are 50% to start and 50% on report delivery.</p></div>
           </div>
           <div class="cta-step">
             <span class="sn">3</span>
-            <div><h3>The engagement</h3><p>Workers run the agreed checks. You get a status channel throughout and a report at the end.</p></div>
+            <div><h3>The engagement</h3><p>The floor runs the agreed checks, the verifier reproduces what they claim, and only Attested findings reach the report. Status channel throughout.</p></div>
           </div>
         </div>
       </div>
 
       <div class="form-card">
-        <div class="form-card-h">Engagement enquiry</div>
+        <div class="form-card-h">Engagement enquiry &mdash; priced in one business day</div>
         <form action="https://formspree.io/f/mbdzbyzg" method="POST">
           <input type="hidden" name="_subject" value="Security assessment enquiry">
           <input type="hidden" name="source" value="security-assessments">
@@ -1042,9 +1134,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
             <label class="form-label" for="tier">Which tier <span class="req">*</span></label>
             <select id="tier" name="tier" class="form-input" required>
               <option value="">Choose one</option>
-              <option>Surface Map (about 2 weeks)</option>
-              <option>App &amp; API Assessment (about 3-4 weeks)</option>
-              <option>Supervised Full Assessment (scoped)</option>
+              <option>Surface Map &mdash; USD 4,800 (about 2 weeks)</option>
+              <option>App &amp; API Assessment &mdash; USD 14,500 (about 3-4 weeks)</option>
+              <option>Supervised Full Assessment &mdash; from USD 28,000 (scoped)</option>
               <option>Not sure yet</option>
             </select>
           </div>
@@ -1064,7 +1156,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
 
-          <button type="submit" class="form-submit">Send it <span class="ar">&rarr;</span></button>
+          <button type="submit" class="form-submit">Book a scoping call <span class="ar">&rarr;</span></button>
           <p class="form-note">Your details stay between us and are used only to scope the engagement. Please do not send credentials or sensitive findings through this form.</p>
         </form>
       </div>
@@ -1103,10 +1195,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.stance .section-head,.st-card,.floor-intro,.seat,.cplane,.floor-foot > div,.offers .section-head,.offer,.flow-head,.fstep,.flow-note,.deliver .section-head,.dv,.mock,.lim-h,.lim-list li,.intake,.cta-intro,.form-card';
+  var sel = '.stance .section-head,.st-card,.floor-intro,.seat,.cplane,.floor-foot > div,.offers .section-head,.offer,.cmp-head,.cmp-col,.cmp-foot,.flow-head,.fstep,.flow-note,.deliver .section-head,.dv,.mock,.lim-h,.lim-list li,.intake,.cta-intro,.form-card';
   var els = [].slice.call(document.querySelectorAll(sel));
   els.forEach(function(el){ el.classList.add('reveal'); });
-  document.querySelectorAll('.stance-grid,.seat-grid,.offer-grid,.flow-steps,.dv-grid,.lim-list').forEach(function(g){
+  document.querySelectorAll('.stance-grid,.seat-grid,.offer-grid,.cmp-grid,.flow-steps,.dv-grid,.lim-list').forEach(function(g){
     [].slice.call(g.children).filter(function(c){ return c.classList.contains('reveal'); })
       .forEach(function(c,i){ c.style.transitionDelay = (i*70) + 'ms'; });
   });
