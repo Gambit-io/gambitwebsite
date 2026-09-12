@@ -1106,12 +1106,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
       <div class="form-card">
         <div class="form-card-h">Engagement enquiry &mdash; priced in one business day</div>
         <form action="https://formspree.io/f/mbdzbyzg" method="POST">
-          <input type="hidden" name="_subject" value="Security assessment enquiry">
+          <input type="hidden" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="source" value="security-assessments">
-
-          <div class="form-row-split">
-            <div>
-              <label class="form-label" for="fn">First name <span class="req">*</span></label>
+          <input type="hidden" name="routed_to" value="Droplet-Monitor">
+          <input type="hidden" name="_subject" value="[Assessments] New scoping inquiry — route to Droplet-Monitor">
+          <input type="hidden" name="_cc" value="AI@gambitco.io">
+          <label class="form-label" for="fn">First name <span class="req">*</span></label>
               <input id="fn" type="text" name="first_name" class="form-input" placeholder="First name" required>
             </div>
             <div>
