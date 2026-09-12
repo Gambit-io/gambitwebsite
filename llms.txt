@@ -59,6 +59,10 @@ Gambit builds and runs custom AI workers alongside your team. Each worker is bui
 - [The Factory](https://gambitco.io/factory): The engine every worker runs on. Build one worker, then many. Runs on your infrastructure, any model routed per task, every action auditable.
 - [Vision](https://gambitco.io/vision): 10x your operations, own your AI, no vendor or model lock-in, a partner as you scale.
 
+## Services
+
+- [Security Assessments](https://gambitco.io/security-assessments): Authorized security assessments run under written scope and rules of engagement. Three tiers: Surface Map (about two weeks, recon and inventory of internet-facing assets), App and API Assessment (about three to four weeks, findings on named web and API surfaces with evidence and remediation guidance), and Supervised Full Assessment (deeper validation under human oversight, engaged only after a signed scope). Every engagement ends with an executive summary, findings rated by severity with evidence, remediation guidance, and an optional retest. Gambit does not sell exploit tooling, attack-path automation, or proof-of-concept kits, and does not perform denial of service, social engineering, or physical testing.
+
 ## How It Works
 
 1. Tell Gambit the problem: the task or workflow that eats your team's time.
@@ -84,6 +88,7 @@ Gambit builds and runs custom AI workers alongside your team. Each worker is bui
 - [What is an AI worker](https://gambitco.io/what-is-an-ai-worker)
 - [What is agentic AI](https://gambitco.io/what-is-agentic-ai)
 - [How today's businesses are implementing agentic AI (7 examples)](https://gambitco.io/how-businesses-are-implementing-agentic-ai)
+- [Security assessments](https://gambitco.io/security-assessments)
 - [FAQs](https://gambitco.io/faqs)
 - [Insights](https://gambitco.io/insights)
 - [Partners: resellers and VARs](https://gambitco.io/partners)
