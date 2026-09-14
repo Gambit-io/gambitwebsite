@@ -904,7 +904,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
     <div class="cyb-head">
       <span class="eyebrow">Capability evidence</span>
       <h2>How we qualify the floor.</h2>
-      <p>Cybench is a public, independent benchmark of capture-the-flag security tasks. We ran it as an <b>automated agent team</b> &mdash; one captain and four specialist solvers, <b>open-weight GLM agents on Gambit Harness (DSH)</b>. The captain dispatched the work and scored what came back; the specialists solved the tasks themselves from the prompt and the supplied artifacts, <b>unguided, with no human steer inside the solve loop</b>. This was not a CTF night with people at the keyboard. It is the same captain-and-specialists floor we staff on an authorized assessment, pointed at somebody else's scoreboard &mdash; and here is the whole run, including the one we missed and the reasons the number is not directly comparable to a leaderboard.</p>
+      <p>Cybench is a public, independent benchmark of capture-the-flag security tasks. We ran it as an <b>automated agent team</b> &mdash; one captain and four specialist solvers, <b>open-weight GLM agents on Gambit Harness</b>. The captain dispatched the work and scored what came back; the specialists solved the tasks themselves from the prompt and the supplied artifacts, <b>unguided, with no human steer inside the solve loop</b>. This was not a CTF night with people at the keyboard. It is the same captain-and-specialists floor we staff on an authorized assessment, pointed at somebody else's scoreboard &mdash; and here is the whole run, including the one we missed and the reasons the number is not directly comparable to a leaderboard.</p>
     </div>
 
     <div class="cyb-panel">
@@ -924,7 +924,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
           </div>
           <div class="cyb-s">
             <div class="cyb-sk">What it ran on</div>
-            <div class="cyb-sv">Open-weight GLM on Gambit Harness (DSH)</div>
+            <div class="cyb-sv">Open-weight GLM on Gambit Harness</div>
             <p>Captain and specialists are the same GLM-class agents on our own harness &mdash; not a frontier closed model rented by the token.</p>
           </div>
         </div>
@@ -957,7 +957,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
           <div class="cyb-ctx-k">Public board context &mdash; read with the caveats below</div>
           <ul class="cyb-board">
             <li><span class="cb-n">Mythos Preview</span><span class="cb-v">100%<i>@ 35 tasks</i></span><span class="cb-t">Frontier closed model</span></li>
-            <li class="mine"><span class="cb-n">This run &middot; Gambit Harness (DSH)</span><span class="cb-v">96.8%<i>@ 31 tasks</i></span><span class="cb-t">Open-weight GLM &middot; automated agent team</span></li>
+            <li class="mine"><span class="cb-n">This run &middot; Gambit Harness</span><span class="cb-v">96.8%<i>@ 31 tasks</i></span><span class="cb-t">Open-weight GLM &middot; automated agent team</span></li>
             <li><span class="cb-n">Opus 4.7</span><span class="cb-v">96%<i>@ 35 tasks</i></span><span class="cb-t">Frontier closed model</span></li>
           </ul>
           <p class="cyb-ctx-p">That places this run in the <b>second-place tier</b> of the snapshot we captured &mdash; an <b>open-weight GLM on our own harness</b>, sitting between two <b>frontier closed models</b>. It is not a ranking and we will not call it one: <b>N</b> and per-task budgets differ, so the percentages are not measuring the identical thing. What stands on its own is the <b>4h02m of unattended</b> AgentTeams work. Read it with all three caveats below.</p>
@@ -972,7 +972,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
         <h3>The result is the harness, not the model.</h3>
       </div>
       <div>
-        <p>We did not buy our way to this. The entries above and beside us on that board are <b>frontier closed models</b>. Ours is an <b>open-weight GLM</b> running on <b>Gambit Harness (DSH)</b> &mdash; the same control plane we put on an authorized engagement.</p>
+        <p>We did not buy our way to this. The entries above and beside us on that board are <b>frontier closed models</b>. Ours is an <b>open-weight GLM</b> running on <b>Gambit Harness</b> &mdash; the same control plane we put on an authorized engagement.</p>
         <p>What closed the distance was structure. A <b>captain</b> that decomposes the work, dispatches it to <b>specialists</b>, and scores what comes back. Specialists that stay in their lane and finish their own task. And the <b>verifier culture</b> underneath both: nothing counts because it looks right. On a benchmark that means an exact-flag match or nothing. On your estate it means a finding is reproduced independently before it reaches the report. <b>Workers propose, verifiers dispose.</b></p>
         <p>The <b>4h02m</b> of unattended run time is part of that evidence. Nobody steered a solver. The harness kept the floor working until the last task completed.</p>
         <p>Model weights move every quarter. The specialization and the scoring are the part that transfers &mdash; and the part you are actually hiring.</p>
