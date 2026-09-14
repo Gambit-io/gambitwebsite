@@ -242,6 +242,12 @@ h2{font-size:clamp(28px,3.8vw,44px)}
 .cyb-in{position:relative;z-index:1}
 .cyb-score{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
 @media(max-width:860px){.cyb-score{grid-template-columns:1fr;gap:28px}}
+.cyb-setup{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:28px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.1)}
+@media(max-width:860px){.cyb-setup{grid-template-columns:1fr;gap:18px;margin-bottom:24px;padding-bottom:22px}}
+.cyb-s{display:flex;flex-direction:column;gap:7px}
+.cyb-sk{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2)}
+.cyb-sv{font-family:var(--display);font-weight:600;font-size:16.5px;letter-spacing:-.01em;line-height:1.25;color:#fff}
+.cyb-s p{font-size:12.5px;color:rgba(225,232,242,.6);line-height:1.55}
 .cyb-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}
 .cyb-num{font-family:var(--display);font-weight:600;font-size:clamp(58px,7vw,86px);letter-spacing:-.04em;line-height:.88;color:#fff}
 .cyb-of{font-size:.42em;letter-spacing:-.02em;color:rgba(225,232,242,.5)}
@@ -263,7 +269,16 @@ h2{font-size:clamp(28px,3.8vw,44px)}
 .cyb-board li.mine .cb-n{color:var(--accent-2)}
 .cb-v{font-family:var(--mono);font-size:15.5px;font-weight:600;color:#fff}
 .cb-v i{font-style:normal;font-size:10.5px;letter-spacing:.07em;color:rgba(225,232,242,.5);margin-left:6px}
+.cb-t{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:rgba(225,232,242,.42);line-height:1.45}
+.cyb-board li.mine .cb-t{color:rgba(240,78,54,.82)}
 .cyb-ctx-p{font-size:13px;color:rgba(225,232,242,.66);line-height:1.6;max-width:74ch}
+.cyb-why{margin-top:26px;border:1px solid var(--line);border-radius:16px;background:var(--bone);padding:28px 30px;display:grid;grid-template-columns:.85fr 1.35fr;gap:30px;align-items:start}
+@media(max-width:860px){.cyb-why{grid-template-columns:1fr;gap:16px;padding:24px 22px}}
+.cyb-why h3{font-size:clamp(19px,2.1vw,23px);letter-spacing:-.015em;line-height:1.22;color:var(--ink-2)}
+.cyb-why .cv-k{margin-bottom:10px}
+.cyb-why p{font-size:13.5px;color:var(--muted);line-height:1.65}
+.cyb-why p+p{margin-top:11px}
+.cyb-why p b{color:var(--ink-2);font-weight:600}
 .cyb-caveats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bone)}
 @media(max-width:860px){.cyb-caveats{grid-template-columns:1fr}}
 .cyb-cv{padding:22px 22px 24px;border-right:1px solid var(--line)}
@@ -859,12 +874,30 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
     <div class="cyb-head">
       <span class="eyebrow">Capability evidence</span>
       <h2>How we qualify the floor.</h2>
-      <p>Cybench is a public, independent benchmark of capture-the-flag security tasks. We run it <b>unguided</b> &mdash; the team gets the task and nothing else, no hints and no human steer &mdash; to check that the same captain-and-specialists floor we put on an authorized assessment can actually do the work. Here is the last run, including the one we missed and the reasons the number is not directly comparable to a leaderboard.</p>
+      <p>Cybench is a public, independent benchmark of capture-the-flag security tasks. We ran it as an <b>automated agent team</b> &mdash; one captain and four specialist solvers, <b>open-weight GLM agents on Gambit Harness (DSH)</b>. The captain dispatched the work and scored what came back; the specialists solved the tasks themselves from the prompt and the supplied artifacts, <b>unguided, with no human steer inside the solve loop</b>. This was not a CTF night with people at the keyboard. It is the same captain-and-specialists floor we staff on an authorized assessment, pointed at somebody else's scoreboard &mdash; and here is the whole run, including the one we missed and the reasons the number is not directly comparable to a leaderboard.</p>
     </div>
 
     <div class="cyb-panel">
       <div class="m-grid"></div>
       <div class="cyb-in">
+
+        <div class="cyb-setup">
+          <div class="cyb-s">
+            <div class="cyb-sk">How it ran</div>
+            <div class="cyb-sv">Automated agent team</div>
+            <p>Bots running themselves. The captain dispatched and scored; the members solved. Nobody steered a solver toward an answer, and no human touched a task while it was in flight.</p>
+          </div>
+          <div class="cyb-s">
+            <div class="cyb-sk">Who ran it</div>
+            <div class="cyb-sv">1 captain &middot; 4 specialist solvers</div>
+            <p>Four specialists worked in parallel, each on its own task, from the task prompt and the supplied artifacts and nothing else.</p>
+          </div>
+          <div class="cyb-s">
+            <div class="cyb-sk">What it ran on</div>
+            <div class="cyb-sv">Open-weight GLM on Gambit Harness (DSH)</div>
+            <p>Captain and specialists are the same GLM-class agents on our own harness &mdash; not a frontier closed model rented by the token.</p>
+          </div>
+        </div>
 
         <div class="cyb-score">
           <div class="cyb-big">
@@ -884,8 +917,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
               <p>One miss, on a single hard crypto task. We publish that it happened and nothing about how any task was approached.</p>
             </div>
             <div class="cyb-b">
-              <div class="cyb-b-top"><span class="cyb-bk">Team wall-clock</span><span class="cyb-bv">~4 hours</span></div>
-              <p>First dispatch to last completion, with specialist solvers working in parallel under one captain.</p>
+              <div class="cyb-b-top"><span class="cyb-bk">Team wall-clock</span><span class="cyb-bv">4h02m</span></div>
+              <p>About four hours, first dispatch to last completion. Four specialist solvers ran in parallel under one captain, so the per-task walls overlap inside that window.</p>
             </div>
           </div>
         </div>
@@ -893,13 +926,25 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
         <div class="cyb-ctx">
           <div class="cyb-ctx-k">Public board context &mdash; read with the caveats below</div>
           <ul class="cyb-board">
-            <li><span class="cb-n">Mythos Preview</span><span class="cb-v">100%<i>@ 35 tasks</i></span></li>
-            <li class="mine"><span class="cb-n">This run &middot; Gambit Factory</span><span class="cb-v">96.8%<i>@ 31 tasks</i></span></li>
-            <li><span class="cb-n">Opus 4.7</span><span class="cb-v">96%<i>@ 35 tasks</i></span></li>
+            <li><span class="cb-n">Mythos Preview</span><span class="cb-v">100%<i>@ 35 tasks</i></span><span class="cb-t">Frontier closed model</span></li>
+            <li class="mine"><span class="cb-n">This run &middot; Gambit Harness (DSH)</span><span class="cb-v">96.8%<i>@ 31 tasks</i></span><span class="cb-t">Open-weight GLM &middot; automated agent team</span></li>
+            <li><span class="cb-n">Opus 4.7</span><span class="cb-v">96%<i>@ 35 tasks</i></span><span class="cb-t">Frontier closed model</span></li>
           </ul>
-          <p class="cyb-ctx-p">That places this run in the <b>second-place tier</b> of the snapshot we captured. It is not a ranking and we will not call it one: the task sets are different sizes and the time budgets are not the same, so the percentages are not measuring the identical thing.</p>
+          <p class="cyb-ctx-p">That places this run in the <b>second-place tier</b> of the snapshot we captured &mdash; an <b>open-weight GLM on our own harness</b>, sitting between two <b>frontier closed models</b>. It is not a ranking and we will not call it one: the task sets are different sizes and the time budgets are not the same, so the percentages are not measuring the identical thing. Read it with all three caveats below.</p>
         </div>
 
+      </div>
+    </div>
+
+    <div class="cyb-why">
+      <div>
+        <div class="cv-k">What the number is actually evidence of</div>
+        <h3>The result is the harness, not the model.</h3>
+      </div>
+      <div>
+        <p>We did not buy our way to this. The entries above and beside us on that board are <b>frontier closed models</b>. Ours is an <b>open-weight GLM</b> running on <b>Gambit Harness (DSH)</b> &mdash; the same control plane we put on an authorized engagement.</p>
+        <p>What closed the distance was structure. A <b>captain</b> that decomposes the work, dispatches it to <b>specialists</b>, and scores what comes back. Specialists that stay in their lane and finish their own task. And the <b>verifier culture</b> underneath both: nothing counts because it looks right. On a benchmark that means an exact-flag match or nothing. On your estate it means a finding is reproduced independently before it reaches the report. <b>Workers propose, verifiers dispose.</b></p>
+        <p>Model weights move every quarter. The specialization and the scoring are the part that transfers &mdash; and the part you are actually hiring.</p>
       </div>
     </div>
 
@@ -910,7 +955,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
       </div>
       <div class="cyb-cv">
         <div class="cv-k">Different time budgets</div>
-        <p>Public board runs enforce their own per-task time limits. This run allowed <b>longer walls</b>, up to several hours on the hardest tasks. A like-for-like comparison would need the same budget on both sides.</p>
+        <p>Public board runs enforce their own per-task time limits. This run allowed <b>longer walls</b> &mdash; a <b>4h02m</b> team wall end to end, and up to several hours on the hardest single tasks. A like-for-like comparison would need the same budget on both sides.</p>
       </div>
       <div class="cyb-cv">
         <div class="cv-k">What it is evidence of</div>
@@ -1315,7 +1360,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.stance .section-head,.st-card,.floor-intro,.seat,.cplane,.floor-foot > div,.offers .section-head,.offer,.cyb-head,.cyb-panel,.cyb-cv,.cyb-foot,.cmp-head,.cmp-col,.cmp-foot,.flow-head,.fstep,.flow-note,.deliver .section-head,.dv,.mock,.lim-h,.lim-list li,.intake,.cta-intro,.form-card';
+  var sel = '.stance .section-head,.st-card,.floor-intro,.seat,.cplane,.floor-foot > div,.offers .section-head,.offer,.cyb-head,.cyb-panel,.cyb-why,.cyb-cv,.cyb-foot,.cmp-head,.cmp-col,.cmp-foot,.flow-head,.fstep,.flow-note,.deliver .section-head,.dv,.mock,.lim-h,.lim-list li,.intake,.cta-intro,.form-card';
   var els = [].slice.call(document.querySelectorAll(sel));
   els.forEach(function(el){ el.classList.add('reveal'); });
   document.querySelectorAll('.stance-grid,.seat-grid,.offer-grid,.cyb-caveats,.cmp-grid,.flow-steps,.dv-grid,.lim-list').forEach(function(g){
