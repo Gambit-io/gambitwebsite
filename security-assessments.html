@@ -227,7 +227,55 @@ h2{font-size:clamp(28px,3.8vw,44px)}
 .floor-foot .ff-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 .floor-foot h3{font-size:16px;letter-spacing:-.01em;margin-bottom:9px}
 .floor-foot p{font-size:13.5px;color:var(--muted);line-height:1.6}
+.floor-foot p a{color:var(--accent-deep);border-bottom:1px solid rgba(199,58,35,.32);transition:border-color .2s ease}
+.floor-foot p a:hover{border-bottom-color:var(--accent-deep)}
 
+
+/* ---------- capability evidence (cybench) ---------- */
+.cyb{padding:92px 0;background:var(--paper);border-top:1px solid var(--line-2)}
+.cyb-head{max-width:700px;margin:0 auto 40px;text-align:center}
+.cyb-head .eyebrow{margin-bottom:14px}
+.cyb-head h2{font-size:clamp(24px,2.9vw,34px);margin-bottom:14px}
+.cyb-head p{font-size:15.5px;color:var(--muted);line-height:1.65;max-width:62ch;margin:0 auto}
+.cyb-panel{position:relative;border-radius:18px;overflow:hidden;background:radial-gradient(130% 150% at 78% 12%,#1d2f4a 0%,#0c1626 70%);box-shadow:0 44px 90px -46px rgba(14,26,44,.55);padding:38px 40px 34px}
+.cyb-panel .m-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px}
+.cyb-in{position:relative;z-index:1}
+.cyb-score{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+@media(max-width:860px){.cyb-score{grid-template-columns:1fr;gap:28px}}
+.cyb-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}
+.cyb-num{font-family:var(--display);font-weight:600;font-size:clamp(58px,7vw,86px);letter-spacing:-.04em;line-height:.88;color:#fff}
+.cyb-of{font-size:.42em;letter-spacing:-.02em;color:rgba(225,232,242,.5)}
+.cyb-pct{display:inline-block;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--accent-2);margin-top:14px;border:1px solid rgba(240,78,54,.4);background:rgba(240,78,54,.1);border-radius:20px;padding:5px 12px}
+.cyb-note{font-size:13px;color:rgba(225,232,242,.66);line-height:1.6;margin-top:16px;max-width:36ch}
+.cyb-breaks{display:flex;flex-direction:column;gap:12px}
+.cyb-b{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:15px 18px}
+.cyb-b-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:6px}
+.cyb-bk{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(225,232,242,.52)}
+.cyb-bv{font-family:var(--mono);font-size:18px;font-weight:600;letter-spacing:.01em;color:#fff;white-space:nowrap}
+.cyb-b p{font-size:12.5px;color:rgba(225,232,242,.62);line-height:1.5}
+.cyb-ctx{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1)}
+.cyb-ctx-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(225,232,242,.5);margin-bottom:14px}
+.cyb-board{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
+@media(max-width:720px){.cyb-board{grid-template-columns:1fr}}
+.cyb-board li{display:flex;flex-direction:column;gap:7px;padding:13px 15px;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.03)}
+.cyb-board li.mine{border-color:rgba(240,78,54,.45);background:rgba(240,78,54,.1)}
+.cb-n{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(225,232,242,.58)}
+.cyb-board li.mine .cb-n{color:var(--accent-2)}
+.cb-v{font-family:var(--mono);font-size:15.5px;font-weight:600;color:#fff}
+.cb-v i{font-style:normal;font-size:10.5px;letter-spacing:.07em;color:rgba(225,232,242,.5);margin-left:6px}
+.cyb-ctx-p{font-size:13px;color:rgba(225,232,242,.66);line-height:1.6;max-width:74ch}
+.cyb-caveats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bone)}
+@media(max-width:860px){.cyb-caveats{grid-template-columns:1fr}}
+.cyb-cv{padding:22px 22px 24px;border-right:1px solid var(--line)}
+.cyb-cv:last-child{border-right:0}
+@media(max-width:860px){.cyb-cv{border-right:0;border-bottom:1px solid var(--line)}.cyb-cv:last-child{border-bottom:0}}
+.cv-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:9px}
+.cyb-cv p{font-size:13px;color:var(--muted);line-height:1.6}
+.cyb-cv p b{color:var(--ink-2);font-weight:600}
+.cyb-foot{margin-top:22px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted-2);line-height:1.8}
+.cyb-foot a{color:var(--accent-deep);border-bottom:1px solid rgba(199,58,35,.32)}
+.cyb-foot a:hover{border-bottom-color:var(--accent-deep)}
+@media(max-width:640px){.cyb{padding:74px 0}.cyb-panel{padding:28px 22px 26px}}
 /* ---------- offerings ---------- */
 .offers{padding:100px 0;background:var(--bone)}
 .offer-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
@@ -799,9 +847,81 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
       <div>
         <div class="ff-k">Where it runs</div>
         <h3>Against your scope, from a lab.</h3>
-        <p>Assessments run against your named scope from a hardened lab container. Public benchmarks are how we qualify the floor internally &mdash; they are not what you are buying, and they are not your systems.</p>
+        <p>Assessments run against your named scope from a hardened lab container. Public benchmarks are how we qualify the floor internally &mdash; <a href="#cybench">here is the last one, in full</a>. They are not what you are buying, and they are not your systems.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CAPABILITY EVIDENCE -->
+<section class="cyb" id="cybench">
+  <div class="wrap">
+    <div class="cyb-head">
+      <span class="eyebrow">Capability evidence</span>
+      <h2>How we qualify the floor.</h2>
+      <p>Cybench is a public, independent benchmark of capture-the-flag security tasks. We run it <b>unguided</b> &mdash; the team gets the task and nothing else, no hints and no human steer &mdash; to check that the same captain-and-specialists floor we put on an authorized assessment can actually do the work. Here is the last run, including the one we missed and the reasons the number is not directly comparable to a leaderboard.</p>
+    </div>
+
+    <div class="cyb-panel">
+      <div class="m-grid"></div>
+      <div class="cyb-in">
+
+        <div class="cyb-score">
+          <div class="cyb-big">
+            <div class="cyb-k">Unguided exact-flag solve rate</div>
+            <div class="cyb-num">30<span class="cyb-of">&thinsp;/&thinsp;31</span></div>
+            <div class="cyb-pct">96.8%</div>
+            <p class="cyb-note">Every task present in the official Cybench repository at the time of the run. Exact-flag match, scored by the benchmark, not by us.</p>
+          </div>
+
+          <div class="cyb-breaks">
+            <div class="cyb-b">
+              <div class="cyb-b-top"><span class="cyb-bk">Non-crypto</span><span class="cyb-bv">20 / 20</span></div>
+              <p>Web, pwn, reverse engineering, forensics and misc &mdash; a clean sweep of the categories closest to real application and infrastructure work.</p>
+            </div>
+            <div class="cyb-b">
+              <div class="cyb-b-top"><span class="cyb-bk">Cryptography</span><span class="cyb-bv">10 / 11</span></div>
+              <p>One miss, on a single hard crypto task. We publish that it happened and nothing about how any task was approached.</p>
+            </div>
+            <div class="cyb-b">
+              <div class="cyb-b-top"><span class="cyb-bk">Team wall-clock</span><span class="cyb-bv">~4 hours</span></div>
+              <p>First dispatch to last completion, with specialist solvers working in parallel under one captain.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cyb-ctx">
+          <div class="cyb-ctx-k">Public board context &mdash; read with the caveats below</div>
+          <ul class="cyb-board">
+            <li><span class="cb-n">Mythos Preview</span><span class="cb-v">100%<i>@ 35 tasks</i></span></li>
+            <li class="mine"><span class="cb-n">This run &middot; Gambit Factory</span><span class="cb-v">96.8%<i>@ 31 tasks</i></span></li>
+            <li><span class="cb-n">Opus 4.7</span><span class="cb-v">96%<i>@ 35 tasks</i></span></li>
+          </ul>
+          <p class="cyb-ctx-p">That places this run in the <b>second-place tier</b> of the snapshot we captured. It is not a ranking and we will not call it one: the task sets are different sizes and the time budgets are not the same, so the percentages are not measuring the identical thing.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cyb-caveats">
+      <div class="cyb-cv">
+        <div class="cv-k">Different N</div>
+        <p>Our run covered the <b>31</b> tasks present in the benchmark repository on the day it ran. Public board entries are typically scored over <b>35 to 40</b>. The percentages are not over identical task sets.</p>
+      </div>
+      <div class="cyb-cv">
+        <div class="cv-k">Different time budgets</div>
+        <p>Public board runs enforce their own per-task time limits. This run allowed <b>longer walls</b>, up to several hours on the hardest tasks. A like-for-like comparison would need the same budget on both sides.</p>
+      </div>
+      <div class="cyb-cv">
+        <div class="cv-k">What it is evidence of</div>
+        <p>It qualifies the floor we staff on <b>authorized, scoped engagements</b>. It is not a service level, not a guarantee, and not a prediction about your systems. Benchmark tasks are built to be solvable. Your estate is not.</p>
+      </div>
+    </div>
+
+    <p class="cyb-foot">
+      Benchmark details at <a href="https://cybench.github.io" target="_blank" rel="noopener">cybench.github.io</a> &middot; We publish the score and the caveats only<br>
+      No flags, no exploit methods, no proof-of-concept steps &mdash; on this page or in any public material
+    </p>
   </div>
 </section>
 
@@ -1195,10 +1315,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.form-input:focus-visibl
 /* ----- composed reveals ----- */
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.stance .section-head,.st-card,.floor-intro,.seat,.cplane,.floor-foot > div,.offers .section-head,.offer,.cmp-head,.cmp-col,.cmp-foot,.flow-head,.fstep,.flow-note,.deliver .section-head,.dv,.mock,.lim-h,.lim-list li,.intake,.cta-intro,.form-card';
+  var sel = '.stance .section-head,.st-card,.floor-intro,.seat,.cplane,.floor-foot > div,.offers .section-head,.offer,.cyb-head,.cyb-panel,.cyb-cv,.cyb-foot,.cmp-head,.cmp-col,.cmp-foot,.flow-head,.fstep,.flow-note,.deliver .section-head,.dv,.mock,.lim-h,.lim-list li,.intake,.cta-intro,.form-card';
   var els = [].slice.call(document.querySelectorAll(sel));
   els.forEach(function(el){ el.classList.add('reveal'); });
-  document.querySelectorAll('.stance-grid,.seat-grid,.offer-grid,.cmp-grid,.flow-steps,.dv-grid,.lim-list').forEach(function(g){
+  document.querySelectorAll('.stance-grid,.seat-grid,.offer-grid,.cyb-caveats,.cmp-grid,.flow-steps,.dv-grid,.lim-list').forEach(function(g){
     [].slice.call(g.children).filter(function(c){ return c.classList.contains('reveal'); })
       .forEach(function(c,i){ c.style.transitionDelay = (i*70) + 'ms'; });
   });
