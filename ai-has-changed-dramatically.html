@@ -228,7 +228,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
   --muted:#6f675c; --muted-2:#938b7f; --line:#e8e1d6; --line-2:#efeae1;
   --status:#3ec46d; --status-d:#1f9e54; --fleet:#0f74c4; --amber:#d08a2c; --red:#c8503c; --hl:#ffe24d;
   --disp:'General Sans','Hanken Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace; }
-.pv .shot{position:relative; aspect-ratio:16/10; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:30px 34px 34px; background:radial-gradient(125% 100% at 82% -8%, #cbac8d 0%, #a97f61 52%, #8a6650 100%); box-shadow:0 26px 60px -34px rgba(60,40,22,.5);}
+.pv .shot{position:relative; min-height:320px; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:32px 34px 34px; background:radial-gradient(125% 100% at 82% -8%, #cbac8d 0%, #a97f61 52%, #8a6650 100%); box-shadow:0 26px 60px -34px rgba(60,40,22,.5);}
 .pv .shot::before{content:""; position:absolute; inset:0; background:radial-gradient(60% 55% at 12% 105%, rgba(0,0,0,.16), transparent 68%);}
 .pv .scenelbl{align-self:flex-start; z-index:6; font-family:var(--mono); font-size:10px; letter-spacing:0.13em; text-transform:uppercase; color:rgba(255,255,255,.85); background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.24); padding:5px 10px; border-radius:30px;}
 .pv figcaption{font-size:13px; color:var(--muted); margin-top:12px; line-height:1.55;}
@@ -284,7 +284,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .pv .chartcard .ttl{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); margin-bottom:6px;}
 .pv .chartcard svg{width:100%; height:auto; display:block;}
 .pv svg text{font-family:var(--disp);}
-@media(max-width:520px){.pv .hgrid{grid-template-columns:1fr; gap:10px;} .pv .hcore{order:-1;} .pv .card{width:100%;}}
+@media(max-width:520px){.pv .hgrid{grid-template-columns:1fr; gap:10px;} .pv .hcore{order:-1;} .pv .card{width:100%;} .pv .shot{padding:20px 16px 22px; min-height:0;} .pv .source{position:static; width:100%; transform:none; opacity:1; filter:none; margin-bottom:4px;} .pv .lockbadge{display:none;}}
 </style>
   <link rel="stylesheet" href="/lib/site-chrome.css">
 <script src="https://ask-g-sigma.vercel.app/embed.js" defer></script>
