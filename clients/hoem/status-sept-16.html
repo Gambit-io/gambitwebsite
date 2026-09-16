@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="preauth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Status and two streams — HOEM &times; Gambit</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="stylesheet" href="/clients/portal.css">
+<script>window.GAMBIT_CLIENT = { slug: 'hoem', name: 'HOEM', code: 'hoem2026' };</script>
+<script src="/clients/portal.js" defer></script>
+<style>
+  /* Agenda-specific layout, on the shared Gambit tokens */
+
+  /* Two streams at a glance */
+  .streams { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 4px 0 8px; }
+  .stream {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px 24px 20px;
+  }
+  .stream .n {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--ink); color: var(--white);
+    font-size: 13px; font-weight: 600; margin-bottom: 12px;
+  }
+  .stream h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .stream p { font-size: 14px; color: var(--secondary); line-height: 1.55; margin: 0; }
+
+  /* Run of show */
+  .ros { border-top: 1px solid var(--border); margin: 0 0 8px; }
+  .ros-row {
+    display: grid; grid-template-columns: 62px 1fr; gap: 18px;
+    padding: 13px 0; border-bottom: 1px solid var(--border-light);
+    font-size: 14.5px; line-height: 1.5; align-items: baseline;
+  }
+  .ros-row .t { font-weight: 600; color: var(--ink); font-size: 13px; }
+  .ros-row b { font-weight: 500; }
+  .ros-row .lead { color: var(--muted); font-size: 13px; }
+
+  /* Track (status) sections */
+  .track { padding: 26px 0 6px; border-top: 1px solid var(--border); margin-top: 30px; }
+  .track-head { display: flex; align-items: baseline; gap: 12px; margin: 0 0 4px; }
+  .track-head .n {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--ink); color: var(--white); font-size: 12px; font-weight: 600; flex-shrink: 0;
+  }
+  .track-head h2 { font-size: 21px; font-weight: 500; letter-spacing: -0.02em; margin: 0; }
+  .track-sub { font-size: 13.5px; color: var(--muted); margin: 0 0 18px; padding-left: 36px; }
+
+  .item {
+    display: grid; grid-template-columns: 108px 1fr; gap: 18px;
+    padding: 14px 0; border-bottom: 1px solid var(--border-light);
+  }
+  .item:last-child { border-bottom: none; }
+  .item .status { padding-top: 1px; }
+  .item .body { font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+  .item .body .owner { color: var(--muted); font-size: 12.5px; display: block; margin-top: 3px; }
+  .item .body b { font-weight: 600; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 100px; white-space: nowrap;
+  }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .pill.done { color: var(--status-working); background: rgba(22,163,74,.10); }
+  .pill.active { color: var(--status-processing); background: rgba(37,99,235,.10); }
+  .pill.booked { color: var(--status-escalated); background: rgba(217,119,6,.10); }
+  .pill.next { color: var(--muted); background: var(--faint); }
+
+  /* Inline deck link + build inputs */
+  .deck-link {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    background: var(--faint); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 16px 18px; margin: 16px 0 4px;
+  }
+  .deck-link .txt { flex: 1; min-width: 220px; }
+  .deck-link .txt b { font-weight: 600; }
+  .deck-link .txt span { display: block; font-size: 13px; color: var(--secondary); margin-top: 2px; }
+
+  .inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0 4px; }
+  .inputs .box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 20px; }
+  .inputs .box h4 { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  .inputs ul { margin: 0; padding-left: 18px; }
+  .inputs li { font-size: 14px; color: var(--ink); line-height: 1.5; margin: 5px 0; }
+
+  .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .rules .rule { border-left: 2px solid var(--ink); padding: 2px 0 2px 16px; }
+  .rules .rule b { display: block; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--secondary); margin-bottom: 4px; }
+  .rules .rule p { margin: 0; font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+  .decisions { margin-top: 34px; padding: 22px 24px; background: var(--faint); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .decisions h2 { margin: 0 0 10px; font-size: 17px; font-weight: 500; letter-spacing: -0.01em; }
+  .decisions ol { margin: 0; padding-left: 20px; }
+  .decisions li { font-size: 14px; color: var(--ink); line-height: 1.5; margin: 6px 0; }
+
+  @media (max-width: 620px) {
+    .streams, .inputs, .rules { grid-template-columns: 1fr; }
+    .ros-row { grid-template-columns: 52px 1fr; gap: 12px; }
+    .item { grid-template-columns: 1fr; gap: 6px; }
+  }
+  @media print { .track, .stream, .inputs .box { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="portal">
+
+  <header class="portal-top">
+    <div class="wrap">
+      <a class="portal-brand" href="/clients/hoem">
+        <img src="/img/gambit-logo.png" alt="Gambit">
+        <span class="divider"></span>
+        <span class="client">HOEM</span>
+      </a>
+      <nav class="portal-nav">
+        <a class="hide-sm" href="/clients/hoem">Workspace</a>
+        <button class="portal-lock" data-portal-lock type="button" aria-label="Lock workspace">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Lock
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <article class="doc">
+    <a class="doc-back" href="/clients/hoem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to workspace
+    </a>
+
+    <p class="doc-eyebrow">HOEM &times; Gambit</p>
+    <h1>Status and two streams</h1>
+    <p class="doc-meta"><b>Tuesday, September 16, 2026</b><span class="sep">·</span>Weekly check-in<span class="sep">·</span>About 55 minutes</p>
+
+    <p class="doc-lede">The work now runs on two tracks at once. One gets your team working inside Claude and takes manual load off the inbox and the SOPs. The other builds the first Ita application. Today: a quick status on each, a walk through the Ita overview, and we lock the first thing we build.</p>
+
+    <div class="streams">
+      <div class="stream">
+        <span class="n">1</span>
+        <h3>Claude Enablement</h3>
+        <p>Getting HOEM's team set up and working inside Claude, starting with inbox triage, email drafts and the SOPs, so the everyday manual work starts to lift now.</p>
+      </div>
+      <div class="stream">
+        <span class="n">2</span>
+        <h3>ITA Platform Development</h3>
+        <p>Building Ita, the AI worker, on one shared brain. We start with Matching, the first application, and grow the suite from there.</p>
+      </div>
+    </div>
+
+    <div class="ros">
+      <div class="ros-row"><div class="t">0:00</div><div><b>Frame the two streams</b> and how today runs <span class="lead">/ Ryan</span></div></div>
+      <div class="ros-row"><div class="t">0:05</div><div><b>Stream 1: Claude Enablement.</b> Status round the room <span class="lead">/ Pat, Beth, Alex</span></div></div>
+      <div class="ros-row"><div class="t">0:20</div><div><b>Stream 2: ITA Platform Development.</b> Walk the Ita overview <span class="lead">/ Ryan</span></div></div>
+      <div class="ros-row"><div class="t">0:40</div><div><b>Confirm the first build</b> and what we need to start <span class="lead">/ together</span></div></div>
+      <div class="ros-row"><div class="t">0:50</div><div><b>Recap owners and dates</b>, set the next session <span class="lead">/ Alex</span></div></div>
+    </div>
+
+    <!-- STREAM 1 -->
+    <div class="track">
+      <div class="track-head"><span class="n">1</span><h2>Claude Enablement</h2></div>
+      <p class="track-sub">Where each piece stands, and what moves this week.</p>
+
+      <div class="item">
+        <div class="status"><span class="pill done">Done</span></div>
+        <div class="body"><b>Beth and Pat set up on the Claude team plan</b>, with permissions and access confirmed. Pat is working inside HOEM's Claude.<span class="owner">Beth + Pat</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill active">This week</span></div>
+        <div class="body"><b>Give Pat access to the shared inbox</b> so Claude can start triaging and drafting replies. Beth has an overview of everything sent in that we review today.<span class="owner">Beth &middot; review together today</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill next">Next</span></div>
+        <div class="body"><b>Audit the last batch of emails</b> to find which types already have templates and where the gaps are. Starts once inbox access is in.<span class="owner">Pat, after inbox access</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill active">This week</span></div>
+        <div class="body"><b>Share the roughly 60 existing SOPs</b> with Pat, so they can feed Ita's shared brain.<span class="owner">Beth</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill active">Ongoing</span></div>
+        <div class="body"><b>Copy and email templates with Eva</b>, the UK-based resident writer. Pat sends drafts, Eva reviews. We work around the time-zone gap.<span class="owner">Pat + Eva &middot; background</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill booked">Booked</span></div>
+        <div class="body"><b>Working session to live-build tools</b> around the tasks that eat the most time, separate from this check-in. Pat and Alex meet HOEM's Alex Thursday afternoon.<span class="owner">Pat + Alex &middot; Thursday PM</span></div>
+      </div>
+    </div>
+
+    <!-- STREAM 2 -->
+    <div class="track">
+      <div class="track-head"><span class="n">2</span><h2>ITA Platform Development</h2></div>
+      <p class="track-sub">The platform, and the first application we build.</p>
+
+      <div class="deck-link">
+        <div class="txt"><b>Ita: the platform overview</b><span>One worker, one brain, a growing suite. The architecture and where we start.</span></div>
+        <a class="btn" href="/ita" target="_blank" rel="noopener">Open the overview</a>
+      </div>
+
+      <div class="item">
+        <div class="status"><span class="pill active">Today</span></div>
+        <div class="body"><b>Walk the Ita overview together</b>, and confirm Matching as the first application. Staff-facing, and it does not wait on the Rent Manager connection.<span class="owner">Ryan + room</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill booked">Booked</span></div>
+        <div class="body"><b>Follow up with the Rent Manager developer</b> on the inventory API accuracy. Meeting already set.<span class="owner">Alex / HOEM</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill active">Ongoing</span></div>
+        <div class="body"><b>The marketing angle</b> for the matching idea and Ita's backstory. Good content potential; keep it warm.<span class="owner">Beth + team</span></div>
+      </div>
+      <div class="item">
+        <div class="status"><span class="pill next">Next</span></div>
+        <div class="body"><b>Book the working session</b> to build Matching live, once the inputs below are in hand.<span class="owner">together</span></div>
+      </div>
+
+      <div class="inputs">
+        <div class="box">
+          <h4>What we need from HOEM</h4>
+          <ul>
+            <li>This season's matching data and final placements</li>
+            <li>The guide Claude wrote during this year's run</li>
+            <li>The lifestyle questionnaire</li>
+            <li>The gendering and term rules, written out</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>The two rules we hold to</h4>
+          <div class="rules" style="grid-template-columns:1fr;gap:14px;margin-top:0;">
+            <div class="rule"><b>Rule one</b><p>Nothing reaches a student without a person, until HOEM decides otherwise.</p></div>
+            <div class="rule"><b>Rule two</b><p>No public satisfaction number until the data earns it.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="decisions">
+      <h2>What we leave the call with</h2>
+      <ol>
+        <li>Matching confirmed as the first Ita application.</li>
+        <li>The build working session booked, with an owner for each HOEM input.</li>
+        <li>Inbox access and the SOPs moving this week, so Stream 1 keeps lifting load.</li>
+        <li>The two rules agreed and written down.</li>
+      </ol>
+    </div>
+
+    <div class="doc-note">
+      <b>One agenda, two streams, on purpose.</b> Enablement gives your team fast wins now while the platform is built underneath. Tell Alex if a status here is off, or if something should move between now and Thursday's working session.
+    </div>
+  </article>
+
+  <footer class="portal-foot">
+    <div class="wrap">
+      <img src="/img/gambit-logo.png" alt="Gambit">
+      <p class="note">Private HOEM workspace. Please do not share this link outside your team.</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
