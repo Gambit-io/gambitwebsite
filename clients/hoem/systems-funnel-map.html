@@ -18,7 +18,7 @@
   .legend span { display: inline-flex; align-items: center; gap: 7px; }
   .sw { display: inline-block; width: 12px; height: 12px; border: 1px solid var(--ink); border-radius: 3px; }
   .sw.manual { background: repeating-linear-gradient(45deg, var(--ink) 0 2px, var(--white) 2px 4px); }
-  .sw.jarvis { background: var(--ink); }
+  .sw.ita { background: var(--ink); }
   .sw.missing { border-style: dashed; border-color: var(--muted); }
 
   .funnel { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin: 0 0 44px; }
@@ -110,11 +110,11 @@
     <h1>How HOEM runs today</h1>
     <p class="doc-meta"><b>Systems and funnel map</b><span class="sep">·</span>For review before the deep dive on Wednesday, September 9, 2026</p>
 
-    <p class="doc-lede">The student journey as it actually works right now, which system owns each step, where the work is still done by hand, and where Jarvis can plug in. Built from HOEM's own SOPs, templates and journey docs.</p>
+    <p class="doc-lede">The student journey as it actually works right now, which system owns each step, where the work is still done by hand, and where Ita can plug in. Built from HOEM's own SOPs, templates and journey docs.</p>
 
     <div class="legend">
       <span><i class="sw manual"></i> Done by hand today</span>
-      <span><i class="sw jarvis"></i> Jarvis hook</span>
+      <span><i class="sw ita"></i> Ita hook</span>
       <span><i class="sw missing"></i> Doc still missing (empty export)</span>
     </div>
 
@@ -212,7 +212,7 @@
       <div class="sysbox">
         <h4>Rent Manager</h4>
         <p>The spine. Prospects, leasing board, contracts, resident profiles (UDFs), stages, email templates.</p>
-        <p class="owns">Owns stages 2, 3, 5, 6, 8. Every Jarvis "action" routes through here.</p>
+        <p class="owns">Owns stages 2, 3, 5, 6, 8. Every Ita "action" routes through here.</p>
       </div>
       <div class="sysbox">
         <h4>Rotessa</h4>
@@ -238,11 +238,11 @@
 
     <div class="strip">
       <div>
-        <h4>What this means for Jarvis</h4>
+        <h4>What this means for Ita</h4>
         <ul>
           <li>Personality, knowledge and guardrails can start now from the tour guide, brand guide and USPs.</li>
           <li>Every real "action" (create prospect, book tour, move stage, payment plan) depends on what Rent Manager exposes.</li>
-          <li>Jarvis must know new prospect vs. current resident, and change tone accordingly.</li>
+          <li>Ita must know new prospect vs. current resident, and change tone accordingly.</li>
         </ul>
       </div>
       <div>

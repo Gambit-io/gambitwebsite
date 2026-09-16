@@ -2,6 +2,11 @@
   "rewrites": [],
   "redirects": [
     {
+      "source": "/clients/hoem/jarvis-blueprint",
+      "destination": "/clients/hoem/ita-blueprint",
+      "permanent": false
+    },
+    {
       "source": "/workers/harlo",
       "destination": "/workers/fleet",
       "permanent": true
