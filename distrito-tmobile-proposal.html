@@ -357,7 +357,7 @@ input { font-family: var(--font); }
   body.printing-summary .op-future-outro,
   body.printing-summary .op-pricing,
   body.printing-summary .op-footer { page-break-inside: avoid; }
-  body.printing-summary .op-page2 { page-break-before: always; break-before: page; }
+  body.printing-summary .op-page2 { page-break-before: always; break-before: page; padding-top: 0.6in; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   @page { margin: 0; size: letter; }
 }
@@ -404,12 +404,14 @@ input { font-family: var(--font); }
           <li><strong>A missing-data monitor.</strong> If a property hasn't sent its report, the system notices and can send the reminder itself, before it becomes a gap in the dashboard.</li>
           <li><strong>Direct system hooks, per property.</strong> Hooking directly into each property's own system, such as Aloha, the PMS platforms, or Intercard, so the data arrives without anyone needing to send or upload it.</li>
           <li><strong>A permissions layer as more data joins.</strong> As more contacts and sources get added, especially anything touching HR, who sees what gets set up on purpose, not left as a default.</li>
-          <li><strong>Distrito AI going proactive.</strong> Once the data is reliably in one place, it could start reaching outward on its own, for example flagging a property that's off pace and drafting a note about it.</li>
         </ul>
-        <p class="op-future-outro">Each step builds on the last, so the relationship keeps getting more useful the longer it runs, not less.</p>
       </div>
     </div>
     <div class="op-page2">
+      <ul class="op-list op-future-list op-future-continued">
+        <li><strong>Distrito AI going proactive.</strong> Once the data is reliably in one place, it could start reaching outward on its own, for example flagging a property that's off pace and drafting a note about it.</li>
+      </ul>
+      <p class="op-future-outro">Each step builds on the last, so the relationship keeps getting more useful the longer it runs, not less.</p>
       <div class="op-pricing">
         <div class="op-price"><div class="op-price-label">Build</div><div class="op-price-main">$25,000 USD</div><div class="op-price-sub">one-time</div></div>
         <div class="op-price"><div class="op-price-label">Maintenance</div><div class="op-price-main">$1,500 USD</div><div class="op-price-sub">per month</div></div>
@@ -605,7 +607,8 @@ input { font-family: var(--font); }
       <div class="team-card">
         <div class="team-avatar">AB</div>
         <div class="team-name">Alex Bukowski</div>
-        <div class="team-desc">Built the dashboard you saw on the call, using the 78 files you sent. Leads day-to-day delivery and the data-hygiene work.</div>
+        <div class="team-role">Project Coordinator</div>
+        <div class="team-desc">Leads day-to-day delivery and the data-hygiene work.</div>
       </div>
     </div>
   </div>
