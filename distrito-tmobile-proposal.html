@@ -319,7 +319,7 @@ input { font-family: var(--font); }
 .op-top { display: flex; align-items: center; justify-content: space-between; background: var(--sand); padding: 0.35in 0.7in; }
 .op-logo { height: 18px; }
 .op-toplabel { font-size: 9pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary); }
-.op-body { flex: 1; padding: 0.4in 0.7in 0; display: flex; flex-direction: column; justify-content: space-between; }
+.op-body { padding: 0.4in 0.7in 0; }
 .op-eyebrow { font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-deep); font-weight: 600; margin-bottom: 8pt; }
 .op-title { font-size: 25pt; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 10pt; color: var(--ink); }
 .op-lede { font-size: 11pt; color: var(--secondary); line-height: 1.5; max-width: 6.5in; margin-bottom: 0.2in; }
@@ -354,8 +354,10 @@ input { font-family: var(--font); }
   }
   body.printing-summary .op-cols,
   body.printing-summary .op-future-list li,
+  body.printing-summary .op-future-outro,
   body.printing-summary .op-pricing,
   body.printing-summary .op-footer { page-break-inside: avoid; }
+  body.printing-summary .op-page2 { page-break-before: always; break-before: page; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   @page { margin: 0; size: letter; }
 }
@@ -407,7 +409,7 @@ input { font-family: var(--font); }
         <p class="op-future-outro">Each step builds on the last, so the relationship keeps getting more useful the longer it runs, not less.</p>
       </div>
     </div>
-    <div>
+    <div class="op-page2">
       <div class="op-pricing">
         <div class="op-price"><div class="op-price-label">Build</div><div class="op-price-main">$25,000 USD</div><div class="op-price-sub">one-time</div></div>
         <div class="op-price"><div class="op-price-label">Maintenance</div><div class="op-price-main">$1,500 USD</div><div class="op-price-sub">per month</div></div>
