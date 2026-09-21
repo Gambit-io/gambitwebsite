@@ -225,6 +225,19 @@ input { font-family: var(--font); }
 .timeline-seg-3 { background: var(--muted); }
 .timeline-note { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
 
+/* Pipeline diagram */
+.pipeline { display: flex; gap: 6px; margin-top: 24px; align-items: stretch; }
+.pipeline-stage { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 18px 10px; text-align: center; }
+.pipeline-num { width: 26px; height: 26px; border-radius: 50%; background: var(--brand); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; margin: 0 auto 10px; }
+.pipeline-title { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.pipeline-desc { font-size: 12px; color: var(--secondary); line-height: 1.45; }
+.pipeline-arrow { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 16px; flex: 0 0 auto; padding: 0 2px; }
+.pipeline-note { font-size: 15px; color: var(--secondary); line-height: 1.6; margin-top: 24px; max-width: 620px; }
+@media (max-width: 700px) {
+  .pipeline { flex-direction: column; }
+  .pipeline-arrow { transform: rotate(90deg); padding: 4px 0; align-self: center; }
+}
+
 .phase-list { display: flex; flex-direction: column; gap: 16px; }
 .phase-card { padding: 24px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
 .phase-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
@@ -375,35 +388,34 @@ input { font-family: var(--font); }
     <div>
       <div class="op-eyebrow">Prepared for Distrito T-Mobile / Prisa Group</div>
       <h1 class="op-title">Portfolio Intelligence Dashboard</h1>
-      <p class="op-lede">A dashboard that brings restaurant, park, hotel, parking, foot traffic, and event data from 78 source files into one place, with a way to trace every number back to its source and an assistant that can answer questions about it.</p>
-      <p class="op-value">Today, seeing the full picture means going through 78 separate reports across six systems by hand. This dashboard brings them together automatically and keeps them current.</p>
+      <p class="op-lede">A system that ingests, cleans, and stores restaurant, park, hotel, parking, foot traffic, and event data from 78 source files, and serves it through a dashboard where every number traces back to its source and an assistant can answer questions about it.</p>
+      <p class="op-value">Today, seeing the full picture means going through 78 separate reports across six systems by hand. This system brings them together automatically and keeps them current.</p>
       <div class="op-cols">
         <div class="op-col">
-          <div class="op-h">What this gives you</div>
-          <ul class="op-list">
-            <li>One place to see restaurants, Toroverde Park, hotels, parking, foot traffic, and events, instead of 78 separate reports</li>
-            <li>Hotel numbers that read the same way across three different PMS systems</li>
-            <li>Every number traceable back to its source report</li>
-            <li>Distrito AI, to answer questions about the data directly</li>
-          </ul>
+          <div class="op-h">How it works</div>
+          <ol class="op-list">
+            <li>Ingest, watches for incoming reports as they arrive</li>
+            <li>Clean, parses and normalizes every file automatically</li>
+            <li>Database, one growing source of truth</li>
+            <li>Backend, serves current data, not a rebuilt snapshot</li>
+            <li>Dashboard, adjustable views plus Distrito AI to ask it directly</li>
+          </ol>
         </div>
         <div class="op-col">
           <div class="op-h">Our approach</div>
           <ol class="op-list">
-            <li>Harden and normalize the data pipeline</li>
-            <li>Automate how reports come in</li>
-            <li>Launch and hand off</li>
+            <li>Ingest and clean</li>
+            <li>Database and backend</li>
+            <li>Connect and launch</li>
           </ol>
         </div>
       </div>
       <div class="op-future">
         <div class="op-h">What this becomes</div>
-        <p class="op-future-intro">This isn't a one-time delivery. Pat walked through this same progression on the call, and the monthly fee is what builds it out, step by step:</p>
+        <p class="op-future-intro">This isn't a one-time delivery. Once the system above is running, here's where it goes next, and the monthly fee is what builds it out:</p>
         <ul class="op-list op-future-list">
-          <li><strong>A dedicated inbox, watched automatically.</strong> Properties keep emailing reports exactly as they do today, to one address, and the dashboard grabs and loads them with no new habit for your team.</li>
-          <li><strong>A missing-data monitor.</strong> If a property hasn't sent its report, the system notices and can send the reminder itself, before it becomes a gap in the dashboard.</li>
-          <li><strong>Direct system hooks, per property.</strong> Hooking directly into each property's own system, such as Aloha, the PMS platforms, or Intercard, so the data arrives without anyone needing to send or upload it.</li>
-          <li><strong>A permissions layer as more data joins.</strong> As more contacts and sources get added, especially anything touching HR, who sees what gets set up on purpose, not left as a default.</li>
+          <li><strong>Direct system hooks, per property.</strong> The build ships with inbox-based ingestion. Over time, that can be replaced property by property with direct hooks into each system, so nothing needs to be sent or uploaded at all.</li>
+          <li><strong>A deeper permissions layer.</strong> The build ships with a basic model for who sees what. As more sources get added, especially anything touching HR, that gets refined on purpose.</li>
         </ul>
       </div>
     </div>
@@ -470,8 +482,8 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">01 / What you saw, and what this becomes</div>
     <h2>The call was a first look, not the final product.</h2>
-    <p class="body">What we walked through on the call was an early version, built from the reports you sent us. We wanted to show what was possible before asking you to commit to anything. It showed that the data can be brought together in one dashboard. It is not yet the reliable, day to day system your team would use.</p>
-    <p class="body">This proposal covers both parts. A one-time fee to build that system, and a monthly fee to keep it accurate and build it out further.</p>
+    <p class="body">What we walked through on the call was an early version of the front end. We built it by hand from the reports you sent us, to show what was possible before asking you to commit to anything. It is not yet running on the system that would keep it current on its own. That system is what this proposal is for.</p>
+    <p class="body">This proposal covers both parts. A one-time fee to build the system underneath it, the part that takes in the reports, cleans them, and stores them, plus the dashboard on top. A monthly fee then keeps it accurate and builds it out further.</p>
   </div>
 </section>
 
@@ -480,7 +492,7 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">02 / The data behind it</div>
     <h2>78 files across six systems.</h2>
-    <p class="body">Each part of the portfolio comes from its own vendor, in its own format, on its own schedule. Restaurants report through Aloha POS. Toroverde Park reports through Intercard and its own POS system. The four hotels report through three different PMS brands. Parking, foot traffic, and the events calendar each come from a separate system as well.</p>
+    <p class="body">Each part of the portfolio comes from its own vendor, in its own format, on its own schedule. Restaurants report through Aloha POS. Toroverde Park reports through Intercard and its own POS system. The four hotels report through three different PMS brands. Parking, foot traffic, and the events calendar each come from a separate system as well. Reports arrive at different times, through different methods, in different file types. That's the case for building a system, not for cleaning things up by hand every month.</p>
     <table class="domain-table">
       <thead>
         <tr><th>Domain</th><th>Files</th><th>Source system(s)</th></tr>
@@ -516,12 +528,53 @@ input { font-family: var(--font); }
   </div>
 </section>
 
-<!-- 03 WHAT WE BUILT -->
+<!-- 03 HOW THE SYSTEM WORKS -->
+<section class="band band-white">
+  <div class="band-inner">
+    <div class="section-label">03 / How the system works</div>
+    <h2>What the build actually is.</h2>
+    <p class="body">This is the part that doesn't show up in a screenshot, but it's what the $25,000 build actually is. Five layers, each doing one job, so the dashboard is reading real, current data instead of a file someone had to rebuild by hand.</p>
+    <div class="pipeline">
+      <div class="pipeline-stage">
+        <div class="pipeline-num">1</div>
+        <div class="pipeline-title">Ingest</div>
+        <div class="pipeline-desc">Watches for incoming reports as they arrive, by email or upload, on whatever schedule each property runs on.</div>
+      </div>
+      <div class="pipeline-arrow">&#8594;</div>
+      <div class="pipeline-stage">
+        <div class="pipeline-num">2</div>
+        <div class="pipeline-title">Clean</div>
+        <div class="pipeline-desc">Parses each file and fixes the hygiene issues below automatically, and maps every hotel brand's report to one common format.</div>
+      </div>
+      <div class="pipeline-arrow">&#8594;</div>
+      <div class="pipeline-stage">
+        <div class="pipeline-num">3</div>
+        <div class="pipeline-title">Database</div>
+        <div class="pipeline-desc">Every cleaned report lands in one place that keeps growing, not a spreadsheet that gets overwritten each month.</div>
+      </div>
+      <div class="pipeline-arrow">&#8594;</div>
+      <div class="pipeline-stage">
+        <div class="pipeline-num">4</div>
+        <div class="pipeline-title">Backend</div>
+        <div class="pipeline-desc">Serves that data out, so the dashboard is always reading the current numbers, not a snapshot from whenever it was last rebuilt.</div>
+      </div>
+      <div class="pipeline-arrow">&#8594;</div>
+      <div class="pipeline-stage">
+        <div class="pipeline-num">5</div>
+        <div class="pipeline-title">Dashboard</div>
+        <div class="pipeline-desc">Where your team looks at it. Adjustable views and parameters, drill-downs, and Distrito AI to ask questions directly.</div>
+      </div>
+    </div>
+    <p class="pipeline-note">Once these are in place, the dashboard isn't something that has to be rebuilt by hand every time new reports come in. It reads live data, and your team can change what they're looking at or ask Distrito AI about it directly.</p>
+  </div>
+</section>
+
+<!-- 04 WHAT WE BUILT -->
 <section class="band band-sand">
   <div class="band-inner">
-    <div class="section-label">03 / What we built from it</div>
-    <h2>One dashboard, seven views, a data lineage on every number.</h2>
-    <p class="body">Today, seeing the full picture means opening 78 separate reports across six systems and piecing them together by hand. The 78 files above are reduced into a single insights-first dashboard instead. There's an executive summary that auto-narrates the priorities and risks worth leadership's attention, plus dedicated views for restaurants, Toroverde Park, hotels, parking, foot traffic, and events. Click any KPI, store, hotel, game, lot, or event and it opens a drill-down with the underlying detail, and a note naming exactly which source report the number came from.</p>
+    <div class="section-label">04 / What we built so far</div>
+    <h2>A proof of concept for the front end.</h2>
+    <p class="body">What you saw on the call is layer five, the dashboard, built by hand from the 78 files you sent, to prove the front end can work this way. It is not yet connected to the ingestion, cleaning, or database layers above, so today it doesn't update on its own. Here's what that front end looks like.</p>
     <div class="shot-wrap">
       <div class="shot-frame"><img src="/img/distrito-dash-exec.png" alt="Distrito T-Mobile executive summary view, showing portfolio KPIs and auto-generated priorities and risks"></div>
       <div class="shot-caption"><span>Executive summary, auto-narrated priorities, risks, and opportunities</span><strong>Live prototype</strong></div>
@@ -537,12 +590,11 @@ input { font-family: var(--font); }
       </div>
     </div>
     <div class="check-list">
-      <div class="label">What's already working</div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>Brings three different hotel PMS formats (Aloft R106/E-series, Hyatt, Fairfield) into one occupancy &middot; ADR &middot; RevPAR &middot; revenue view</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>Brings 78 files across 6 vendor systems into one consolidated dataset, with hygiene issues (duplicates, date mismatches, gaps) flagged and documented, not guessed at</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>Every number carries a data-lineage note back to its source report, so it can be traced</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>Distrito AI, an assistant grounded only in your real portfolio data, answers questions in plain language on any view, and says so when a number isn't in the data rather than guessing</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>Theme-aware, single-file, deploys anywhere, sits behind a private password gate</span></div>
+      <div class="label">What this prototype proves</div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>Three different hotel PMS formats (Aloft R106/E-series, Hyatt, Fairfield) can be normalized into one occupancy &middot; ADR &middot; RevPAR &middot; revenue view</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>78 files across 6 vendor systems can be reduced into one consolidated view, with hygiene issues (duplicates, date mismatches, gaps) flagged and documented, not guessed at</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>Every number can carry a data-lineage note back to its source report, so it can be traced</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>An assistant like Distrito AI can answer questions grounded in this data, and say so plainly when a number isn't in it rather than guessing</span></div>
     </div>
   </div>
 </section>
@@ -550,41 +602,40 @@ input { font-family: var(--font); }
 <!-- 04 OUR APPROACH -->
 <section class="band band-white">
   <div class="band-inner">
-    <div class="section-label">04 / Our approach</div>
-    <h2>How we'd approach it.</h2>
-    <p class="body">These are the steps we'd take. We haven't attached dates to them yet, since we'd want to confirm scope with your team first.</p>
+    <div class="section-label">05 / Our approach</div>
+    <h2>How we'd build the system.</h2>
+    <p class="body">These are the layers we'd build, in order. We haven't attached dates to them yet, since we'd want to confirm scope with your team first.</p>
     <div class="timeline">
       <div class="timeline-bar">
-        <div class="timeline-seg timeline-seg-1">HARDEN + NORMALIZE</div>
-        <div class="timeline-seg timeline-seg-2">AUTOMATE INGESTION</div>
-        <div class="timeline-seg timeline-seg-3">LAUNCH</div>
+        <div class="timeline-seg timeline-seg-1">INGEST + CLEAN</div>
+        <div class="timeline-seg timeline-seg-2">DATABASE + BACKEND</div>
+        <div class="timeline-seg timeline-seg-3">CONNECT + LAUNCH</div>
       </div>
     </div>
     <div class="timeline-note">A proposed sequence, not a fixed schedule.</div>
     <div class="phase-list">
       <div class="phase-card">
-        <div class="phase-head"><span class="phase-num">01</span><div class="phase-name">Harden and normalize</div></div>
+        <div class="phase-head"><span class="phase-num">01</span><div class="phase-name">Ingest and clean</div></div>
         <div class="phase-items">
-          <div class="phase-item">Resolve the cross-cutting hygiene issues listed above at the pipeline level, not by hand each month</div>
+          <div class="phase-item">Build the ingestion layer, a dedicated inbox or upload point that watches for incoming reports as they arrive</div>
+          <div class="phase-item">Parse each file type automatically and resolve the hygiene issues listed above at the pipeline level, not by hand each month</div>
           <div class="phase-item">Build the per-brand hotel mapping so occupancy, ADR, RevPAR and revenue read the same way across Aloft, Hyatt, and Fairfield</div>
-          <div class="phase-item">One canonical record per entity, date, and metric, so a newer snapshot supersedes an older one automatically</div>
-          <div class="phase-item">Design the permissions model for who sees what, ahead of adding more sensitive sources</div>
         </div>
       </div>
       <div class="phase-card">
-        <div class="phase-head"><span class="phase-num">02</span><div class="phase-name">Automate ingestion</div></div>
+        <div class="phase-head"><span class="phase-num">02</span><div class="phase-name">Database and backend</div></div>
         <div class="phase-items">
-          <div class="phase-item">Stand up a dedicated inbox each property already emails their reports to, so the dashboard refreshes automatically on receipt</div>
-          <div class="phase-item">A monitor flags any property that hasn't sent its report yet, and can send the reminder itself</div>
-          <div class="phase-item">A visible &ldquo;reports received this month&rdquo; status, so it's obvious what's current and what isn't</div>
+          <div class="phase-item">Stand up a centralized database that every cleaned report lands in, with one canonical record per entity, date, and metric</div>
+          <div class="phase-item">A newer snapshot supersedes an older one automatically, so the database always reflects the latest report received</div>
+          <div class="phase-item">Build the backend that serves this database out, and design the permissions model for who can see what</div>
         </div>
       </div>
       <div class="phase-card">
-        <div class="phase-head"><span class="phase-num">03</span><div class="phase-name">Launch</div></div>
+        <div class="phase-head"><span class="phase-num">03</span><div class="phase-name">Connect and launch</div></div>
         <div class="phase-items">
-          <div class="phase-item">Stakeholder walkthrough and sign-off with your team</div>
-          <div class="phase-item">Handoff documentation and access provisioning</div>
-          <div class="phase-item">Production launch with monitoring in place from day one</div>
+          <div class="phase-item">Connect the dashboard's KPIs, drill-downs, and Distrito AI to the live backend instead of a static file</div>
+          <div class="phase-item">Add adjustable query parameters and toggles, so your team can change what they're looking at</div>
+          <div class="phase-item">Stakeholder walkthrough, handoff documentation, and launch with monitoring in place from day one</div>
         </div>
       </div>
     </div>
@@ -594,7 +645,7 @@ input { font-family: var(--font); }
 <!-- 05 TEAM -->
 <section class="band band-sand">
   <div class="band-inner">
-    <div class="section-label">05 / Your Gambit team</div>
+    <div class="section-label">06 / Your Gambit team</div>
     <h2>The people behind the dashboard.</h2>
     <p class="body">Pat and Alex are your main points of contact for this project.</p>
     <div class="team-grid">
@@ -617,7 +668,7 @@ input { font-family: var(--font); }
 <!-- 06 HOW WE WORK -->
 <section class="band band-white">
   <div class="band-inner">
-    <div class="section-label">06 / How we work together</div>
+    <div class="section-label">07 / How we work together</div>
     <h2>Communication and cadence.</h2>
     <p class="body">Here's how we'd plan to stay in touch during the build. We're glad to adjust this once we talk it through together.</p>
     <div class="cadence-grid">
@@ -631,26 +682,18 @@ input { font-family: var(--font); }
 <!-- 07 WHAT THIS BECOMES -->
 <section class="band band-ink">
   <div class="band-inner">
-    <div class="section-label">07 / What this becomes</div>
-    <h2>The dashboard is the starting point.</h2>
-    <p class="future-intro">On the call, Pat walked through a few ways to keep the dashboard current, starting with the simplest and moving to the most involved. This is that same list, and it's what the monthly fee would go toward building, over time.</p>
+    <div class="section-label">08 / What this becomes</div>
+    <h2>The system is the starting point.</h2>
+    <p class="future-intro">Once the system above is up and running, here's where it goes next. This is what the monthly fee builds toward, over time.</p>
     <div class="future-list">
       <div class="future-item">
         <div class="future-tag">Next</div>
-        <div class="future-title">A dedicated inbox, watched automatically</div>
-        <div class="future-desc">Properties keep emailing reports exactly as they do today, to one address. The dashboard grabs it, loads it, and shows what's current, with no new habit for your team to learn.</div>
-      </div>
-      <div class="future-item">
-        <div class="future-title">A missing-data monitor</div>
-        <div class="future-desc">If a property hasn't sent its report, the system notices and can send the reminder itself, before it becomes a gap in the dashboard.</div>
-      </div>
-      <div class="future-item">
         <div class="future-title">Direct system hooks, per property</div>
-        <div class="future-desc">Hooking directly into each property's own system, such as Aloha, the PMS platforms, or Intercard, so the data arrives without anyone needing to send or upload it.</div>
+        <div class="future-desc">The build ships with inbox-based ingestion. Over time, that can be replaced property by property with direct hooks into each system, such as Aloha, the PMS platforms, or Intercard, so nothing needs to be sent or uploaded at all.</div>
       </div>
       <div class="future-item">
-        <div class="future-title">A permissions layer as more data joins</div>
-        <div class="future-desc">This came up on the call. As more contacts and sources get added, especially anything touching HR, who sees what needs to be set up on purpose, not left as a default.</div>
+        <div class="future-title">A deeper permissions layer as more data joins</div>
+        <div class="future-desc">The build ships with a basic model for who sees what. As more contacts and sources get added, especially anything touching HR, that model gets refined on purpose, not left as a default.</div>
       </div>
       <div class="future-item">
         <div class="future-title">Distrito AI goes proactive</div>
@@ -663,13 +706,13 @@ input { font-family: var(--font); }
 <!-- 08 PRICING -->
 <section class="band band-sand">
   <div class="band-inner">
-    <div class="section-label">08 / Investment</div>
+    <div class="section-label">09 / Investment</div>
     <h2>Pricing.</h2>
     <div class="price-grid">
       <div class="price-hero">
         <div class="label-dark">Build</div>
         <div class="price-hero-main">$25,000 USD<span class="price-hero-unit"> one-time</span></div>
-        <div class="price-hero-detail">One-time fee to build and harden the dashboard</div>
+        <div class="price-hero-detail">One-time fee to build the ingestion, cleaning, database, and backend system, and connect the dashboard to it</div>
       </div>
       <div class="price-card price-card-full">
         <div class="label">Maintenance</div>
@@ -678,8 +721,8 @@ input { font-family: var(--font); }
       </div>
     </div>
     <div class="price-notes">
-      <div class="price-note">The one-time fee covers turning the prototype into a system you can rely on day to day</div>
-      <div class="price-note">The monthly fee covers keeping the data accurate and building out the steps described above</div>
+      <div class="price-note">The one-time fee builds the system behind the dashboard, not just the front end you saw on the call</div>
+      <div class="price-note">The monthly fee covers keeping it accurate and going deeper, direct system hooks, permissions, and Distrito AI going proactive</div>
       <div class="price-note">All amounts are in USD</div>
     </div>
   </div>
