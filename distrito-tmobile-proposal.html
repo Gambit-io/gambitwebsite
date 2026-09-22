@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81TPJZNKQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-81TPJZNKQ1");
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xmhd1ty4hv");
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambit | Distrito T-Mobile Proposal</title>
+<meta name="description" content="Private proposal prepared for Prisa Group / Distrito T-Mobile by Gambit.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Gambit Technology Inc.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a;
+  --ink: #141414;
+  --secondary: #52525b;
+  --muted: #a1a1aa;
+  --border: #e4e4e7;
+  --border-light: #f0f0f2;
+  --page: #fafafa;
+  --white: #ffffff;
+  --sand: #F3EEE8;
+  --sand-border: #E8E2DA;
+  --danger: #dc2626;
+  --brand: #e20074;
+  --brand-deep: #b10062;
+  --font: 'General Sans', sans-serif;
+  --mark: 'Orbitron', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body, #root {
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  background: var(--black);
+  color: var(--ink);
+}
+button { font-family: var(--font); }
+input { font-family: var(--font); }
+
+.g-logo-mark { height: 20px; width: auto; display: block; filter: brightness(0) invert(1); }
+
+/* ============================================================
+   GATE
+   ============================================================ */
+.gate {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px;
+  background: var(--black);
+}
+.gate-logo { margin-bottom: 0; }
+.gate-logo img { height: 22px; }
+.gate-title {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-align: center;
+  line-height: 1.3;
+  color: var(--white);
+  max-width: 420px;
+}
+.gate-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: -16px; }
+.gate-row { display: flex; gap: 8px; width: 100%; max-width: 320px; }
+.gate-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.gate-input:focus { border-color: rgba(255,255,255,0.25); }
+.gate-input::placeholder { color: rgba(255,255,255,0.35); }
+.gate-btn {
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  border-radius: 100px;
+  padding: 12px 22px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.gate-btn:hover { opacity: 0.75; }
+.gate-err { font-size: 13px; color: var(--danger); margin-top: -16px; }
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+.shell { height: 100vh; display: flex; flex-direction: column; background: var(--page); animation: fadeIn 0.6s var(--ease); }
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; padding: 12px 24px;
+  border-bottom: 1px solid var(--border); background: var(--white); flex-shrink: 0;
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-left img { height: 20px; width: auto; display: block; }
+.topbar-logo { display: inline-flex; align-items: center; transition: opacity 0.15s; }
+.topbar-logo:hover { opacity: 0.7; }
+.topbar-divider { width: 1px; height: 16px; background: var(--border); }
+.topbar-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+.topbar-btn {
+  padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; cursor: pointer;
+  border: 1px solid var(--ink); background: var(--ink); color: var(--white);
+  display: flex; align-items: center; gap: 8px; transition: opacity 0.15s, transform 0.15s var(--ease);
+  font-family: var(--font); letter-spacing: 0.01em;
+}
+.topbar-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+.topbar-btn svg { width: 15px; height: 15px; }
+
+.scroll-region { flex: 1; min-height: 0; overflow: auto; }
+
+/* ============================================================
+   PROPOSAL BANDS
+   ============================================================ */
+.band { padding: 56px 24px; }
+.band-white { background: var(--white); }
+.band-sand { background: var(--sand); }
+.band-ink { background: var(--ink); }
+.band-inner { max-width: 760px; margin: 0 auto; }
+.band-ink .section-label { color: rgba(255,255,255,0.35); border-bottom-color: rgba(255,255,255,0.08); }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.band h1, .band h2 { font-size: 28px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 14px; color: var(--ink); }
+.band-ink h2 { color: var(--white); }
+.band h1.hero-title { font-size: 46px; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px; }
+.band p.body { font-size: 16px; color: var(--secondary); line-height: 1.6; max-width: 620px; }
+.band p.body + p.body { margin-top: 16px; }
+.band-ink p.body { color: rgba(255,255,255,0.6); }
+.band .label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.band .label-dark { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+
+.card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+
+.hero-center { text-align: center; padding-top: 16px; padding-bottom: 16px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--page);
+  border: 1px solid var(--border); border-radius: 100px; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-deep); margin-bottom: 24px;
+}
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); display: inline-block; }
+.hero-intro { font-size: 16px; color: var(--secondary); line-height: 1.6; max-width: 560px; margin: 0 auto; }
+
+/* Check/x lists */
+.check-list { margin-top: 24px; }
+.check-item {
+  display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-light);
+  font-size: 14px; color: var(--secondary); line-height: 1.5;
+}
+.check-item .mark { flex-shrink: 0; margin-top: 1px; color: var(--brand-deep); }
+
+/* Screenshot frames */
+.shot-wrap { margin-top: 28px; }
+.shot-frame {
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+.shot-frame img { display: block; width: 100%; height: auto; }
+.shot-caption { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+.shot-caption strong { color: var(--secondary); font-weight: 500; }
+.shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+
+/* Pipeline diagram */
+.pipeline { position: relative; display: flex; justify-content: space-between; gap: 8px; margin-top: 32px; }
+.pipeline::before { content: ""; position: absolute; top: 22px; left: 5%; right: 5%; height: 2px; background: var(--border); z-index: 0; }
+.pipeline-stage { position: relative; z-index: 1; flex: 1; text-align: center; padding: 0 4px; }
+.pipeline-icon {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--brand);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+  box-shadow: 0 0 0 6px var(--white);
+}
+.pipeline-icon svg { width: 20px; height: 20px; stroke: var(--white); fill: none; }
+.pipeline-title { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.pipeline-desc { font-size: 12px; color: var(--secondary); line-height: 1.45; }
+.pipeline-note { font-size: 15px; color: var(--secondary); line-height: 1.6; margin-top: 28px; max-width: 620px; }
+@media (max-width: 700px) {
+  .pipeline { flex-direction: column; gap: 22px; }
+  .pipeline::before { display: none; }
+  .pipeline-icon { box-shadow: none; }
+}
+
+.timeline { margin-top: 24px; margin-bottom: 12px; }
+.timeline-bar { display: flex; border-radius: 8px; overflow: hidden; height: 40px; }
+.timeline-seg { flex: 1; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 0 8px; text-align: center; }
+.timeline-seg-1 { background: var(--ink); }
+.timeline-seg-2 { background: var(--secondary); }
+.timeline-seg-3 { background: var(--muted); }
+.timeline-note { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+.phase-list { display: flex; flex-direction: column; gap: 16px; }
+.phase-card { padding: 24px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+.phase-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+.phase-num { font-size: 32px; font-weight: 500; letter-spacing: -0.02em; color: var(--brand); line-height: 1; }
+.phase-name { font-size: 17px; font-weight: 500; color: var(--ink); }
+.phase-intro { font-size: 14px; color: var(--secondary); line-height: 1.55; margin-bottom: 14px; }
+.phase-items { display: flex; flex-direction: column; gap: 8px; }
+.phase-item { font-size: 14px; color: var(--secondary); line-height: 1.5; padding-left: 16px; position: relative; }
+.phase-item::before { content: ""; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+/* Team grid */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 24px; }
+.team-card { padding: 20px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+.team-avatar { width: 40px; height: 40px; border-radius: 10px; background: var(--ink); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.team-name { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.team-role { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.team-desc { font-size: 13px; color: var(--secondary); line-height: 1.5; }
+
+/* Cadence grid */
+.cadence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.cadence-card { padding: 20px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+.cadence-card-full { grid-column: 1 / -1; }
+.cadence-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.cadence-desc { font-size: 13px; color: var(--secondary); line-height: 1.5; }
+
+/* Future (dark) */
+.future-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.future-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 24px; }
+.future-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; color: var(--white); }
+.future-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.future-intro { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 620px; margin-bottom: 8px; }
+.future-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--brand); background: rgba(226,0,116,0.12); border-radius: 4px; padding: 2px 7px; margin-bottom: 8px; }
+
+/* Pricing */
+.price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+.price-hero { grid-column: 1 / -1; background: var(--ink); border-radius: 12px; padding: 24px; color: var(--white); }
+.price-hero .label-dark { margin-bottom: 8px; }
+.price-hero-main { font-size: 34px; font-weight: 500; letter-spacing: -0.03em; }
+.price-hero-unit { font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.5); }
+.price-hero-detail { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+.price-card { padding: 20px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+.price-card-full { grid-column: 1 / -1; }
+.price-main { font-size: 20px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
+.price-unit { font-size: 13px; font-weight: 400; color: var(--muted); }
+.price-detail { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.price-notes { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+.price-note { font-size: 14px; color: var(--secondary); padding-left: 18px; position: relative; line-height: 1.5; }
+.price-note::before { content: "\2192"; position: absolute; left: 0; color: var(--brand); font-size: 13px; }
+
+/* CTA + signoff */
+.cta-center { text-align: center; }
+.cta-title { font-size: 32px; font-weight: 500; letter-spacing: -0.03em; color: var(--white); margin-bottom: 32px; line-height: 1.1; }
+.cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-primary { display: inline-flex; align-items: center; padding: 12px 28px; border-radius: 100px; background: var(--white); color: var(--ink); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity 0.15s; }
+.cta-primary:hover { opacity: 0.75; }
+.cta-ghost {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 100px; background: transparent;
+  border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: opacity 0.15s, border-color 0.15s, color 0.15s; font-family: inherit; cursor: pointer;
+}
+.cta-ghost:hover { opacity: 1; border-color: rgba(255,255,255,0.35); color: var(--white); }
+.cta-ghost svg { width: 16px; height: 16px; }
+.signoff { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+.signoff p { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+.signoff p.site { margin-bottom: 16px; }
+.signoff .legal { font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.5; max-width: 480px; margin: 0 auto; }
+
+/* ============================================================
+   SCROLLBAR + ANIMATIONS
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 520px) {
+  .band { padding: 44px 20px; }
+  .band h1.hero-title { font-size: 34px; }
+  .band h1, .band h2 { font-size: 22px; }
+  .cadence-grid, .price-grid, .shot-grid { grid-template-columns: 1fr; }
+  .topbar { padding: 12px 16px; }
+  .topbar-label { display: none; }
+  .topbar-btn-label { display: none; }
+  .topbar-btn { padding: 8px 12px; }
+}
+
+/* ============================================================
+   ONE-PAGE SUMMARY (print-only)
+   ============================================================ */
+#onepager { display: none; }
+.op-top { display: flex; align-items: center; justify-content: space-between; background: var(--sand); padding: 0.35in 0.7in; }
+.op-logo { height: 18px; }
+.op-toplabel { font-size: 9pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary); }
+.op-body { padding: 0.4in 0.7in 0; }
+.op-eyebrow { font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-deep); font-weight: 600; margin-bottom: 8pt; }
+.op-title { font-size: 25pt; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 10pt; color: var(--ink); }
+.op-lede { font-size: 11pt; color: var(--secondary); line-height: 1.5; max-width: 6.5in; margin-bottom: 0.2in; }
+.op-value { font-size: 10.5pt; color: var(--ink); line-height: 1.5; max-width: 6.5in; margin-bottom: 0.3in; padding: 10pt 14pt; background: rgba(226,0,116,0.06); border-left: 3px solid var(--brand); border-radius: 0 6pt 6pt 0; }
+.op-cols { display: flex; gap: 0.5in; margin-bottom: 0.3in; }
+.op-col { flex: 1; }
+.op-future { margin-bottom: 0.3in; }
+.op-future-intro { font-size: 10.5pt; color: var(--secondary); line-height: 1.5; margin-bottom: 10pt; max-width: 6.5in; }
+.op-future-list { padding-left: 16pt; margin-bottom: 10pt; }
+.op-future-list li { font-size: 10.5pt; color: var(--secondary); line-height: 1.5; margin-bottom: 10pt; max-width: 6.5in; }
+.op-future-list li strong { color: var(--ink); }
+.op-future-outro { font-size: 10.5pt; color: var(--ink); font-weight: 500; line-height: 1.5; max-width: 6.5in; margin-bottom: 0.35in; }
+.op-h { font-size: 9pt; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 8pt; }
+.op-list { padding-left: 16pt; }
+.op-list li { font-size: 10.5pt; color: var(--secondary); line-height: 1.5; margin-bottom: 6pt; }
+.op-pricing { display: flex; gap: 12pt; background: var(--sand); border-radius: 8pt; padding: 0.2in 0.25in; margin-bottom: 0.25in; }
+.op-price { flex: 1; }
+.op-price-label { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.05em; color: var(--secondary); margin-bottom: 4pt; }
+.op-price-main { font-size: 18pt; font-weight: 500; color: var(--ink); }
+.op-price-sub { font-size: 9pt; color: var(--muted); }
+.op-footer { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 0.3in; }
+.op-contact { font-size: 9.5pt; color: var(--secondary); line-height: 1.5; }
+.op-confidential { font-size: 7.5pt; color: var(--muted); max-width: 3in; text-align: right; }
+
+@media print {
+  html, body { height: auto !important; overflow: visible !important; background: var(--white) !important; }
+  body.printing-summary #root { display: none !important; }
+  body.printing-summary .shell { display: none !important; }
+  body.printing-summary #onepager {
+    display: flex; flex-direction: column;
+    width: 8.5in; min-height: 11in; background: var(--white); box-sizing: border-box;
+  }
+  body.printing-summary .op-cols,
+  body.printing-summary .op-future-list li,
+  body.printing-summary .op-future-outro,
+  body.printing-summary .op-pricing,
+  body.printing-summary .op-footer { page-break-inside: avoid; }
+  body.printing-summary .op-page2 { page-break-before: always; break-before: page; padding-top: 0.6in; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { margin: 0; size: letter; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<section id="onepager" aria-hidden="true">
+  <div class="op-top">
+    <img src="/img/gambit-logo.png" alt="Gambit" class="op-logo">
+    <div class="op-toplabel">Proposal summary</div>
+  </div>
+  <div class="op-body">
+    <div>
+      <div class="op-eyebrow">Prepared for Distrito T-Mobile / Prisa Group</div>
+      <h1 class="op-title">Portfolio Intelligence Dashboard</h1>
+      <p class="op-lede">What you saw on the call was a proof of concept, built by hand from the reports you sent us to show what's possible. This is the system that would replace it, one that ingests, cleans, and stores restaurant, park, hotel, parking, foot traffic, and event data, and serves it through a dashboard where every number traces back to its source and an assistant can answer questions about it.</p>
+      <p class="op-value">Every property reports on its own schedule, through its own method, in its own file type, and that only gets harder as more properties and sources get added. This system brings it together automatically and keeps it current.</p>
+      <div class="op-cols">
+        <div class="op-col">
+          <div class="op-h">How it works</div>
+          <ol class="op-list">
+            <li>Ingest, watches for incoming reports as they arrive</li>
+            <li>Clean, parses and normalizes every file automatically</li>
+            <li>Database, one growing source of truth</li>
+            <li>Backend, serves current data, not a rebuilt snapshot</li>
+            <li>Dashboard, adjustable views plus Distrito AI to ask it directly</li>
+          </ol>
+        </div>
+        <div class="op-col">
+          <div class="op-h">Our approach</div>
+          <ol class="op-list">
+            <li>Ingest and clean</li>
+            <li>Database and backend</li>
+            <li>Connect and launch</li>
+          </ol>
+        </div>
+      </div>
+      <div class="op-future">
+        <div class="op-h">What this becomes</div>
+        <p class="op-future-intro">This isn't a one-time delivery. Once the system above is running, here's where it goes next, and the monthly fee is what builds it out:</p>
+        <ul class="op-list op-future-list">
+          <li><strong>Direct system hooks, per property.</strong> The build ships with inbox-based ingestion. Over time, that can be replaced property by property with direct hooks into each system, so nothing needs to be sent or uploaded at all.</li>
+          <li><strong>A deeper permissions layer.</strong> The build ships with a basic model for who sees what. As more sources get added, especially anything touching HR, that gets refined on purpose.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="op-page2">
+      <ul class="op-list op-future-list op-future-continued">
+        <li><strong>Distrito AI going proactive.</strong> Once the data is reliably in one place, it could start reaching outward on its own, for example flagging a property that's off pace and drafting a note about it.</li>
+      </ul>
+      <p class="op-future-outro">Each step builds on the last, so the relationship keeps getting more useful the longer it runs, not less.</p>
+      <div class="op-pricing">
+        <div class="op-price"><div class="op-price-label">Build</div><div class="op-price-main">$25,000 USD</div><div class="op-price-sub">one-time</div></div>
+        <div class="op-price"><div class="op-price-label">Maintenance</div><div class="op-price-main">$1,500 USD</div><div class="op-price-sub">per month</div></div>
+      </div>
+      <div class="op-footer">
+        <div class="op-contact">Pat Belliveau, pat@gambitco.io<br>Alex Bukowski, alex@gambitco.io</div>
+        <div class="op-confidential">Confidential. Prepared for Prisa Group / Distrito T-Mobile by Gambit Technology Inc.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<template id="tpl-gate">
+  <div class="gate">
+    <div class="gate-logo"><img src="/img/gambit-logo.png" alt="Gambit" class="g-logo-mark"></div>
+    <div class="gate-title">A proposal prepared for<br>Distrito T-Mobile</div>
+    <p class="gate-sub">Enter the access code to continue</p>
+    <div class="gate-row">
+      <input class="gate-input" type="password" placeholder="Access code" autocomplete="off">
+      <button class="gate-btn">Enter</button>
+    </div>
+    <div class="gate-err" hidden>Invalid access code</div>
+  </div>
+</template>
+
+<template id="tpl-shell">
+  <div>
+    <div class="shell">
+      <div data-topbar class="topbar">
+        <div class="topbar-left">
+          <a href="https://www.gambitco.io/" target="_blank" rel="noopener" class="topbar-logo" aria-label="Visit gambitco.io">
+            <img src="/img/gambit-logo.png" alt="Gambit">
+          </a>
+          <span class="topbar-divider"></span>
+          <span class="topbar-label">Distrito T-Mobile Proposal</span>
+        </div>
+        <button class="topbar-btn" data-print>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span class="topbar-btn-label">Download Summary</span>
+        </button>
+      </div>
+      <div class="scroll-region">
+        <div data-proposal-wrap>
+
+<!-- 00 HERO -->
+<section class="band band-white">
+  <div class="band-inner hero-center">
+    <div class="chip"><span class="status-dot"></span>Prepared for Distrito T-Mobile / Prisa Group</div>
+    <h1 class="hero-title">Your portfolio, in one place.</h1>
+    <p class="hero-intro">Thank you, Christian, Jesael, Francisco, and Laura, for the time on the call, and for sharing the reports behind this dashboard. What you saw was built from that data to show what's possible. This proposal covers turning it into something your team can use day to day.</p>
+  </div>
+</section>
+
+<!-- 01 WHAT YOU SAW -->
+<section class="band band-sand">
+  <div class="band-inner">
+    <div class="section-label">01 / What you saw, and what this becomes</div>
+    <h2>The call was a first look, not the final product.</h2>
+    <p class="body">What we walked through on the call was an early version of the front end. We built it by hand from the reports you sent us, to show what was possible before asking you to commit to anything. It is not yet running on the system that would keep it current on its own. That system is what this proposal is for.</p>
+    <p class="body">This proposal covers both parts. A one-time fee to build the system underneath it, the part that takes in the reports, cleans them, and stores them, plus the dashboard on top. A monthly fee then keeps it accurate and builds it out further.</p>
+  </div>
+</section>
+
+<!-- 02 PROOF OF CONCEPT -->
+<section class="band band-white">
+  <div class="band-inner">
+    <div class="section-label">02 / The proof of concept</div>
+    <h2>A proof of concept, not the system.</h2>
+    <p class="body">What you saw on the call was built by hand from the reports you sent us, to prove the dashboard can work this way. It is not yet running on the system that would keep it current on its own, that's what the rest of this proposal covers. Here's what that front end looks like.</p>
+    <div class="shot-wrap">
+      <div class="shot-frame"><img src="/img/distrito-dash-exec.png" alt="Distrito T-Mobile executive summary view, showing portfolio KPIs and auto-generated priorities and risks"></div>
+      <div class="shot-caption"><span>Executive summary, auto-narrated priorities, risks, and opportunities</span><strong>Live prototype</strong></div>
+    </div>
+    <div class="shot-grid">
+      <div class="shot-wrap">
+        <div class="shot-frame"><img src="/img/distrito-dash-hotels.png" alt="Hotels view showing four properties across three PMS brands normalized into one occupancy view"></div>
+        <div class="shot-caption"><span>Hotels, three PMS brands, one view</span></div>
+      </div>
+      <div class="shot-wrap">
+        <div class="shot-frame"><img src="/img/distrito-dash-restaurants.png" alt="Restaurants view showing store-level performance across 12 operators"></div>
+        <div class="shot-caption"><span>Restaurants, 12 stores, one table</span></div>
+      </div>
+    </div>
+    <div class="check-list">
+      <div class="label">What this prototype proves</div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>Three different hotel PMS formats (Aloft R106/E-series, Hyatt, Fairfield) can be normalized into one occupancy &middot; ADR &middot; RevPAR &middot; revenue view</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>Reports across six vendor systems can be reduced into one consolidated view, with hygiene issues (duplicates, date mismatches, gaps) flagged and documented, not guessed at</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>Every number can carry a data-lineage note back to its source report, so it can be traced</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>An assistant like Distrito AI can answer questions grounded in this data, and say so plainly when a number isn't in it rather than guessing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 HOW THE SYSTEM WORKS -->
+<section class="band band-sand">
+  <div class="band-inner">
+    <div class="section-label">03 / How the system works</div>
+    <h2>Why this needs to be a system.</h2>
+    <p class="body">Every property in the portfolio reports on its own schedule, through its own method, in its own file type. Restaurants come through Aloha POS. The hotels come through three different PMS brands. Parking, foot traffic, Toroverde Park, and the events calendar each come from their own system too. That's not something a spreadsheet or a one-off script can keep up with, especially as more properties and sources get added. It needs a system.</p>
+    <p class="body">Here's what that system actually is. Five layers, each doing one job, so the dashboard is reading real, current data instead of a file someone had to rebuild by hand.</p>
+    <div class="pipeline">
+      <div class="pipeline-stage">
+        <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2 3h4l2-3h4"/><path d="M4 12l1.5-7h13L20 12"/><path d="M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></div>
+        <div class="pipeline-title">1. Ingest</div>
+        <div class="pipeline-desc">Watches for incoming reports as they arrive, by email or upload, on whatever schedule each property runs on.</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16l-6.5 8v6l-3 2v-8z"/></svg></div>
+        <div class="pipeline-title">2. Clean</div>
+        <div class="pipeline-desc">Parses each file and fixes the hygiene issues automatically, and maps every hotel brand's report to one common format.</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+        <div class="pipeline-title">3. Database</div>
+        <div class="pipeline-desc">Every cleaned report lands in one place that keeps growing, not a spreadsheet that gets overwritten each month.</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="0.5" fill="#fff"/><circle cx="7" cy="17" r="0.5" fill="#fff"/></svg></div>
+        <div class="pipeline-title">4. Backend</div>
+        <div class="pipeline-desc">Serves that data out, so the dashboard is always reading the current numbers, not a snapshot from whenever it was last rebuilt.</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="20" x2="5" y2="12"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="19" y1="20" x2="19" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg></div>
+        <div class="pipeline-title">5. Dashboard</div>
+        <div class="pipeline-desc">Where your team looks at it. Adjustable views and parameters, drill-downs, and Distrito AI to ask questions directly.</div>
+      </div>
+    </div>
+    <p class="pipeline-note">Once these are in place, the dashboard isn't something that has to be rebuilt by hand every time new reports come in. It reads live data, and your team can change what they're looking at or ask Distrito AI about it directly.</p>
+  </div>
+</section>
+
+<!-- 04 OUR APPROACH -->
+<section class="band band-white">
+  <div class="band-inner">
+    <div class="section-label">04 / Our approach</div>
+    <h2>How we'd build the system.</h2>
+    <p class="body">These are the layers we'd build, in order. We haven't attached dates to them yet, since we'd want to confirm scope with your team first.</p>
+    <div class="timeline">
+      <div class="timeline-bar">
+        <div class="timeline-seg timeline-seg-1">INGEST + CLEAN</div>
+        <div class="timeline-seg timeline-seg-2">DATABASE + BACKEND</div>
+        <div class="timeline-seg timeline-seg-3">CONNECT + LAUNCH</div>
+      </div>
+    </div>
+    <div class="timeline-note">A proposed sequence, not a fixed schedule.</div>
+    <div class="phase-list">
+      <div class="phase-card">
+        <div class="phase-head"><span class="phase-num">01</span><div class="phase-name">Ingest and clean</div></div>
+        <p class="phase-intro">This is where most of the actual mess lives. Properties send reports at different times, through different methods, in different file types, and today someone has to open each one and figure out what it is by hand. This phase builds the layer that does that automatically.</p>
+        <div class="phase-items">
+          <div class="phase-item">Build the ingestion layer, a dedicated inbox or upload point that watches for incoming reports as they arrive, whenever and however each property sends them</div>
+          <div class="phase-item">Parse each file type automatically and key off the date printed inside each report, not the filename, since filenames and file contents don't always agree</div>
+          <div class="phase-item">Build the per-brand hotel mapping so occupancy, ADR, RevPAR, and revenue read the same way, even though no two hotel brands report in the same format today</div>
+          <div class="phase-item">Resolve duplicates, gaps, and inconsistent formatting automatically, instead of catching them by hand each month</div>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-head"><span class="phase-num">02</span><div class="phase-name">Database and backend</div></div>
+        <p class="phase-intro">Once the data is clean, it needs somewhere real to live, not a spreadsheet that gets overwritten every time someone reruns a script.</p>
+        <div class="phase-items">
+          <div class="phase-item">Stand up a centralized database that every cleaned report lands in, with one canonical record per entity, date, and metric</div>
+          <div class="phase-item">A newer snapshot supersedes an older one automatically, so the database always reflects the latest report received, and keeps growing as more properties and sources get added</div>
+          <div class="phase-item">Build the backend that serves this database out to the dashboard on demand, instead of a file that has to be rebuilt and redeployed</div>
+          <div class="phase-item">Design the permissions model for who can see what, ahead of adding more sensitive sources</div>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-head"><span class="phase-num">03</span><div class="phase-name">Connect and launch</div></div>
+        <p class="phase-intro">The last step is making the front end you saw on the call actually run on top of all this, instead of a snapshot from the day it was built.</p>
+        <div class="phase-items">
+          <div class="phase-item">Connect the dashboard's KPIs, drill-downs, and Distrito AI to the live backend instead of a static file</div>
+          <div class="phase-item">Add adjustable query parameters and toggles, so your team can change what they're looking at instead of being locked into one view</div>
+          <div class="phase-item">Stakeholder walkthrough and sign-off with your team</div>
+          <div class="phase-item">Handoff documentation and launch, with monitoring in place from day one</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 WHAT THIS BECOMES -->
+<section class="band band-ink">
+  <div class="band-inner">
+    <div class="section-label">05 / What this becomes</div>
+    <h2>The system is the starting point.</h2>
+    <p class="future-intro">Once the system above is up and running, here's where it goes next. This is what the monthly fee builds toward, over time.</p>
+    <div class="future-list">
+      <div class="future-item">
+        <div class="future-tag">Next</div>
+        <div class="future-title">Direct system hooks, per property</div>
+        <div class="future-desc">The build ships with inbox-based ingestion. Over time, that can be replaced property by property with direct hooks into each system, such as Aloha, the PMS platforms, or Intercard, so nothing needs to be sent or uploaded at all.</div>
+      </div>
+      <div class="future-item">
+        <div class="future-title">A deeper permissions layer as more data joins</div>
+        <div class="future-desc">The build ships with a basic model for who sees what. As more contacts and sources get added, especially anything touching HR, that model gets refined on purpose, not left as a default.</div>
+      </div>
+      <div class="future-item">
+        <div class="future-title">Distrito AI goes proactive</div>
+        <div class="future-desc">Once the data is reliably in one place, it could start reaching outward on its own, for example flagging a property that's off pace and drafting a note about it. Pat described this as a kind of central brain for the portfolio on the call.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TEAM -->
+<section class="band band-sand">
+  <div class="band-inner">
+    <div class="section-label">06 / Your Gambit team</div>
+    <h2>The people behind the dashboard.</h2>
+    <p class="body">Pat and Alex are your main points of contact for this project.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">PB</div>
+        <div class="team-name">Pat Belliveau</div>
+        <div class="team-role">CEO / Founder</div>
+        <div class="team-desc">Leads the engagement for Gambit.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">AB</div>
+        <div class="team-name">Alex Bukowski</div>
+        <div class="team-role">Project Coordinator</div>
+        <div class="team-desc">Leads day-to-day delivery and the data-hygiene work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 HOW WE WORK -->
+<section class="band band-white">
+  <div class="band-inner">
+    <div class="section-label">07 / How we work together</div>
+    <h2>Communication and cadence.</h2>
+    <p class="body">Here's how we'd plan to stay in touch during the build. We're glad to adjust this once we talk it through together.</p>
+    <div class="cadence-grid">
+      <div class="cadence-card"><div class="cadence-title">Sync calls</div><div class="cadence-desc">Regular check-ins to cover progress, blockers, and decisions.</div></div>
+      <div class="cadence-card"><div class="cadence-title">Feedback anytime</div><div class="cadence-desc">Your team can reach out anytime with feedback or questions, not just during scheduled calls.</div></div>
+      <div class="cadence-card cadence-card-full"><div class="cadence-title">Monthly written update</div><div class="cadence-desc">A short summary of what shipped, what's next, and any open decisions.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 PRICING -->
+<section class="band band-sand">
+  <div class="band-inner">
+    <div class="section-label">08 / Investment</div>
+    <h2>Pricing.</h2>
+    <div class="price-grid">
+      <div class="price-hero">
+        <div class="label-dark">Build</div>
+        <div class="price-hero-main">$25,000 USD<span class="price-hero-unit"> one-time</span></div>
+        <div class="price-hero-detail">One-time fee to build the ingestion, cleaning, database, and backend system, and connect the dashboard to it</div>
+      </div>
+      <div class="price-card price-card-full">
+        <div class="label">Maintenance</div>
+        <div class="price-main">$1,500 USD<span class="price-unit">/month</span></div>
+        <div class="price-detail">Ongoing after launch</div>
+      </div>
+    </div>
+    <div class="price-notes">
+      <div class="price-note">The one-time fee builds the system behind the dashboard, not just the front end you saw on the call</div>
+      <div class="price-note">The monthly fee covers keeping it accurate and going deeper, direct system hooks, permissions, and Distrito AI going proactive</div>
+      <div class="price-note">All amounts are in USD</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + SIGN OFF -->
+<section class="band band-ink">
+  <div class="band-inner">
+    <div class="cta-center">
+      <h2 class="cta-title">Ready to talk next steps?</h2>
+      <div class="cta-row">
+        <a class="cta-primary" href="mailto:pat@gambitco.io?cc=alex@gambitco.io&subject=Distrito%20T-Mobile%20Proposal">Email Pat &amp; Alex</a>
+        <button class="cta-ghost" data-print type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Summary
+        </button>
+      </div>
+      <div class="signoff">
+        <p>Pat Belliveau &middot; pat@gambitco.io</p>
+        <p class="site">Alex Bukowski &middot; alex@gambitco.io</p>
+        <p class="legal">This proposal is confidential and intended solely for Prisa Group / Distrito T-Mobile. It may not be shared, reproduced, or distributed without prior written consent from Gambit Technology Inc.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+(function () {
+  'use strict';
+
+  var PASS = 'distrito2026';
+  var STORAGE_KEY = 'distrito_proposal_auth_v1';
+
+  var root = document.getElementById('root');
+
+  function clearRoot() {
+    while (root.firstChild) root.removeChild(root.firstChild);
+  }
+
+  function mountTemplate(id) {
+    clearRoot();
+    var tpl = document.getElementById(id);
+    var clone = tpl.content.cloneNode(true);
+    root.appendChild(clone);
+  }
+
+  // ---------- GATE ----------
+  function mountGate() {
+    mountTemplate('tpl-gate');
+    var input = root.querySelector('.gate-input');
+    var btn = root.querySelector('.gate-btn');
+    var err = root.querySelector('.gate-err');
+    input.focus();
+
+    function attempt() {
+      if (input.value.trim().toLowerCase() === PASS) {
+        try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+        mountShell();
+      } else {
+        err.hidden = false;
+        setTimeout(function () { err.hidden = true; }, 2000);
+      }
+    }
+
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') attempt();
+    });
+  }
+
+  // ---------- SHELL ----------
+  function mountShell() {
+    mountTemplate('tpl-shell');
+    var printBtns = root.querySelectorAll('[data-print]');
+    printBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.body.classList.add('printing-summary');
+        function cleanup() {
+          document.body.classList.remove('printing-summary');
+          window.removeEventListener('afterprint', cleanup);
+        }
+        window.addEventListener('afterprint', cleanup);
+        window.print();
+      });
+    });
+  }
+
+  // ---------- INIT ----------
+  var alreadyIn = false;
+  try { alreadyIn = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+  if (alreadyIn) {
+    mountShell();
+  } else {
+    mountGate();
+  }
+})();
+</script>
+</body>
+</html>
