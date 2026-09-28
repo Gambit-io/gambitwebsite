@@ -5,6 +5,6 @@
   "type": "module",
   "description": "Gambit website. Static HTML with a handful of Vercel serverless functions under /api.",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }
