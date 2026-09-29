@@ -595,6 +595,15 @@
   .fchip:hover{border-color:var(--brand-border)}
   .fchip.on{background:var(--brand);color:#fff;border-color:var(--brand)}
   .fchip.on .fdot{box-shadow:0 0 0 2px rgba(255,255,255,.5)}
+  .chips-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:9px}
+  .chips-toggle{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft)}
+  .chips-toggle:hover{color:var(--brand)}
+  .chips-toggle em{font-style:normal;font-weight:600;color:var(--muted)}
+  .chips-toggle .chev{width:15px;height:15px;color:var(--dim);transition:transform .2s var(--ease)}
+  .ctrl-chips-wrap.collapsed .chips-toggle .chev{transform:rotate(-90deg)}
+  .ctrl-chips-wrap.collapsed .ctrl-chips{display:none}
+  .prio-legend{display:flex;align-items:center;gap:13px;margin-left:auto;font-size:11px;color:var(--muted)}
+  .prio-legend .pl{display:flex;align-items:center;gap:5px;white-space:nowrap}
   .fdot{width:7px;height:7px;border-radius:50%;flex:none}
   .fdot.hot{background:var(--m-orange)}.fdot.warm{background:var(--m-gold)}.fdot.pipe{background:var(--m-lilac)}
 
@@ -913,40 +922,6 @@
   @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 
-  /* ===== demo feedback (topbar button + modal, wires to a Google Sheet) ===== */
-  .fb-btn{display:flex;align-items:center;gap:7px;height:38px;padding:0 13px;border-radius:11px;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);border:1px solid var(--brand-border);transition:filter .15s}
-  .fb-btn:hover{filter:brightness(.97)}
-  .fb-btn svg{width:16px;height:16px}
-  @media (max-width:760px){.fb-btn span{display:none}.fb-btn{padding:0 10px}}
-  .fb-overlay{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(30,24,50,.42);backdrop-filter:blur(3px)}
-  .fb-overlay.open{display:flex}
-  .fb-modal{position:relative;width:100%;max-width:460px;max-height:calc(100dvh - 40px);overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px 26px 24px;box-shadow:0 30px 80px -30px rgba(30,24,50,.5)}
-  .fb-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--muted);transition:background .15s,color .15s}
-  .fb-x:hover{background:var(--bg);color:var(--text)}
-  .fb-x svg{width:18px;height:18px}
-  .fb-h{font-family:'Sora';font-weight:600;font-size:20px;color:var(--text);margin-bottom:6px}
-  .fb-sub{font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:20px}
-  .fb-field{margin-bottom:16px}
-  .fb-lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft);margin-bottom:8px}
-  .fb-stars{display:flex;gap:6px}
-  .fb-star{width:34px;height:34px;color:var(--brand-border);transition:color .12s,transform .12s}
-  .fb-star svg{width:100%;height:100%}
-  .fb-star:hover{transform:scale(1.08)}
-  .fb-star.on{color:var(--brand)}
-  .fb-input,.fb-textarea,.fb-select{width:100%;font:inherit;font-size:14px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:11px 13px}
-  .fb-textarea{min-height:96px;resize:vertical;line-height:1.5}
-  .fb-input:focus,.fb-textarea:focus,.fb-select:focus{outline:none;border-color:var(--brand);background:var(--surface)}
-  .fb-send{width:100%;height:46px;margin-top:4px;border-radius:12px;font-size:14.5px;font-weight:600;color:#fff;background:var(--brand);transition:filter .15s}
-  .fb-send:hover{filter:brightness(1.08)}
-  .fb-send:disabled{opacity:.55}
-  .fb-err{display:none;font-size:12.5px;color:#c0392b;text-align:center;margin-top:10px}
-  .fb-success{text-align:center;padding:14px 6px 6px}
-  .fb-check{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;color:var(--teal-dark);background:var(--teal-soft)}
-  .fb-check svg{width:26px;height:26px}
-  .fb-again{margin-top:14px;font-size:13px;font-weight:600;color:var(--brand)}
-  .fb-again:hover{text-decoration:underline}
-  .fb-spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;display:inline-block;vertical-align:-2px;margin-right:7px;animation:fbspin .7s linear infinite}
-  @keyframes fbspin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -1037,10 +1012,6 @@
       <button class="lockup-btn" onclick="goHome()" title="Back to home"><div class="lockup" id="workLockup"></div></button>
       <div class="space-tabs" role="tablist" aria-label="Workspace" id="spaceTabs"></div>
       <div class="top-right">
-        <button class="fb-btn" onclick="openFeedback()" title="Share feedback on this demo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>Feedback</span>
-        </button>
         <button class="icon-btn" title="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
         </button>
@@ -1329,51 +1300,6 @@
   <div class="seg">
     <button class="on" id="segGillis" onclick="setTenant('gillis')">Gillis</button>
     <button id="segChoice" onclick="setTenant('choice')">Choice Hotels</button>
-  </div>
-</div>
-
-<!-- demo feedback modal (submits to a Google Sheet via Apps Script) -->
-<div class="fb-overlay" id="fbOverlay" onclick="if(event.target===this)closeFeedback()">
-  <div class="fb-modal" role="dialog" aria-modal="true" aria-label="Demo feedback">
-    <button class="fb-x" onclick="closeFeedback()" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
-    </button>
-    <div id="fbFormView">
-      <div class="fb-h">How's the demo landing?</div>
-      <p class="fb-sub">A minute of feedback helps us sharpen it. Only the comment is required.</p>
-      <form id="fbForm" novalidate>
-        <div class="fb-field">
-          <span class="fb-lbl">Overall impression</span>
-          <div class="fb-stars" id="fbStars"></div>
-        </div>
-        <div class="fb-field">
-          <span class="fb-lbl">Which part?</span>
-          <select class="fb-select" id="fbArea">
-            <option value="Overall">Overall</option>
-            <option value="Research">Research</option>
-            <option value="Market Assessment">Market Assessment</option>
-            <option value="AskGillis">AskGillis</option>
-            <option value="Data quality">Data quality</option>
-          </select>
-        </div>
-        <div class="fb-field">
-          <span class="fb-lbl">What stood out? What would you change?</span>
-          <textarea class="fb-textarea" id="fbText" placeholder="Your thoughts&hellip;" required></textarea>
-        </div>
-        <div class="fb-field">
-          <span class="fb-lbl">Your name <span style="text-transform:none;font-weight:500;color:var(--dim)">(optional)</span></span>
-          <input class="fb-input" id="fbName" type="text" placeholder="So we can follow up">
-        </div>
-        <button type="submit" class="fb-send" id="fbSend">Send feedback</button>
-        <p class="fb-err" id="fbErr">Something went wrong &mdash; please try again.</p>
-      </form>
-    </div>
-    <div class="fb-success" id="fbSuccessView" hidden>
-      <div class="fb-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <div class="fb-h">Thank you</div>
-      <p class="fb-sub" style="margin-bottom:0">Your feedback goes straight to the team.</p>
-      <button class="fb-again" id="fbAgain" type="button">Send another</button>
-    </div>
   </div>
 </div>
 
@@ -8090,7 +8016,13 @@ function renderWorkspaceShell(){
         <select class="ctrl-sel" onchange="wsLead(this.value)"><option value="all"${wsState.lead==='all'?' selected':''}>All status</option><option value="researching"${wsState.lead==='researching'?' selected':''}>Researching</option><option value="researched"${wsState.lead==='researched'?' selected':''}>Researched</option><option value="emailed"${wsState.lead==='emailed'?' selected':''}>Drafted</option><option value="replied"${wsState.lead==='replied'?' selected':''}>Reply in</option></select>
         <input class="ctrl-q" type="text" placeholder="Search company or contact" value="${wsState.q}" oninput="wsQuery(this.value)">
       </div>
-      <div class="ctrl-chips">${sigChips}</div>
+      <div class="ctrl-chips-wrap${wsState.sigChipsCollapsed?' collapsed':''}">
+        <div class="chips-bar">
+          <button class="chips-toggle" onclick="wsToggleChips()" aria-expanded="${wsState.sigChipsCollapsed?'false':'true'}">Signal filters <em>${sigs.length}</em>${chev}</button>
+          <span class="prio-legend"><span class="pl"><span class="fdot hot"></span>Hot &middot; act now</span><span class="pl"><span class="fdot warm"></span>Warm &middot; nurture</span><span class="pl"><span class="fdot pipe"></span>Pipeline &middot; watch</span></span>
+        </div>
+        <div class="ctrl-chips">${sigChips}</div>
+      </div>
     </div>
     <div class="ws-grid ${wsState.full?'full':''}" id="wsGrid">
       <div class="ws-list" id="wsList"></div>
@@ -8199,10 +8131,11 @@ function contactAcc(ct){
         <div class="tmsg-when">${m.dir==='out'?'Sam &middot; Gillis &middot; drafted':ct.name.split(' ')[0]+' &middot; replied, routed to you'} &middot; ${m.when}</div>
       </div>`).join('')}</div></div>`
     : `<div class="no-mail">Not the contact Sam drafted for. Reachable if you want to work this one directly.</div>`;
-  return `<div class="acc">
+  /* open the contact by default when Sam has a draft, so the email is visible without a hunt */
+  return `<div class="acc${thread.length?' open':''}">
     <button class="acc-head" onclick="accToggle(this)">
       <span class="acc-t">${ct.name}${ct.primary?'<span class="pill-primary">Primary</span>':''}<span class="acc-sub">${ct.title}</span></span>
-      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">Drafted</span>':''}${chev}</span>
+      <span class="acc-r">${st==='replied'?'<span class="ob replied">Reply in</span>':st==='emailed'?'<span class="ob emailed">View draft</span>':''}${chev}</span>
     </button>
     <div class="acc-body">
       <div class="cgrid">
@@ -8254,7 +8187,7 @@ function renderDetail(){
 
     <div class="acc-sec open">
       <button class="acc-sec-head" onclick="accToggle(this)"><span class="ash-t">Contacts <em>${cts.length}</em></span>${chev}</button>
-      <div class="acc-sec-body">${cts.map(contactAcc).join('')}</div>
+      <div class="acc-sec-body">${cts.slice().sort((a,b)=>((b.outreach.thread||[]).length-(a.outreach.thread||[]).length)||((b.primary?1:0)-(a.primary?1:0))).map(contactAcc).join('')}</div>
     </div>
 
     <div class="det-actions">
@@ -8267,6 +8200,7 @@ function renderDetail(){
 
 /* interactions */
 function accToggle(btn){ btn.parentElement.classList.toggle('open'); }
+function wsToggleChips(){ wsState.sigChipsCollapsed=!wsState.sigChipsCollapsed; const w=document.querySelector('.ctrl-chips-wrap'); if(!w) return; w.classList.toggle('collapsed', !!wsState.sigChipsCollapsed); const t=w.querySelector('.chips-toggle'); if(t) t.setAttribute('aria-expanded', wsState.sigChipsCollapsed?'false':'true'); }
 function toggleDetailFull(){ wsState.full=!wsState.full; const g=document.getElementById('wsGrid'); g.classList.toggle('full', wsState.full); renderDetail(); }
 function wsSelect(id){ wsState.selected=id; renderWorkspaceList(); renderDetail(); if(wsState.full){ document.getElementById('wsDetail').scrollIntoView({block:'start'}); } }
 function wsGroup(g){ wsState.group=g; renderWorkspaceShell(); renderWorkspaceList(); renderDetail(); }
@@ -8700,67 +8634,6 @@ function toggleCoachFull(btn){
     : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>`;
 }
 
-/* ============================================================
-   DEMO FEEDBACK -> Google Sheet (Apps Script web app)
-   Paste your deployed Apps Script /exec URL below. Until it is
-   set, submissions confirm to the user but are logged to console
-   only (not recorded). Setup steps live in demo/gillis-feedback.gs.
-   ============================================================ */
-const GILLIS_FEEDBACK_URL = ''; // <-- paste Google Apps Script Web App /exec URL
-let fbRating = 0;
-function fbRenderStars(){
-  const star = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.6l2.9 5.88 6.5.95-4.7 4.58 1.1 6.48L12 17.9l-5.8 3.05 1.1-6.48-4.7-4.58 6.5-.95z"/></svg>`;
-  const el = document.getElementById('fbStars'); if(!el) return;
-  el.innerHTML = [1,2,3,4,5].map(n=>`<button type="button" class="fb-star ${n<=fbRating?'on':''}" onclick="fbSetRating(${n})" aria-label="${n} star${n>1?'s':''}">${star}</button>`).join('');
-}
-function fbSetRating(n){ fbRating = (fbRating===n)?0:n; fbRenderStars(); }
-function openFeedback(){
-  fbRating = 0; fbRenderStars();
-  const f = document.getElementById('fbForm'); if(f) f.reset();
-  document.getElementById('fbFormView').hidden = false;
-  document.getElementById('fbSuccessView').hidden = true;
-  document.getElementById('fbErr').style.display = 'none';
-  const s = document.getElementById('fbSend'); s.disabled = false; s.textContent = 'Send feedback';
-  document.getElementById('fbOverlay').classList.add('open');
-  setTimeout(()=>{ const t=document.getElementById('fbText'); if(t) t.focus(); }, 120);
-}
-function closeFeedback(){ document.getElementById('fbOverlay').classList.remove('open'); }
-(function(){
-  const form = document.getElementById('fbForm');
-  if(!form) return;
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeFeedback(); });
-  document.getElementById('fbAgain').addEventListener('click', openFeedback);
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    const err = document.getElementById('fbErr'); err.style.display = 'none';
-    const text = document.getElementById('fbText').value.trim();
-    if(!text){ document.getElementById('fbText').focus(); return; }
-    const send = document.getElementById('fbSend');
-    send.disabled = true; send.innerHTML = '<span class="fb-spin"></span>Sending&hellip;';
-    const payload = {
-      source: 'gillis-demo',
-      tenant: (typeof currentTenant !== 'undefined' ? currentTenant : ''),
-      rating: fbRating,
-      area: document.getElementById('fbArea').value,
-      feedback: text,
-      name: document.getElementById('fbName').value.trim(),
-      timestamp: new Date().toISOString(),
-      page: location.pathname
-    };
-    try{
-      if(GILLIS_FEEDBACK_URL){
-        await fetch(GILLIS_FEEDBACK_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(payload) });
-      } else {
-        console.warn('[gillis feedback] GILLIS_FEEDBACK_URL not set — not recorded:', payload);
-      }
-      document.getElementById('fbFormView').hidden = true;
-      document.getElementById('fbSuccessView').hidden = false;
-    }catch(ex){
-      err.style.display = 'block';
-      send.disabled = false; send.textContent = 'Send feedback';
-    }
-  });
-})();
 
 /* ============================================================
    THE DOCKED TAMMY PANEL (same thread, following you around)
