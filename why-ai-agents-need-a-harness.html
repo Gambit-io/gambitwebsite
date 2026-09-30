@@ -290,6 +290,36 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 .hf .q4-d { font-size:12.5px; color:var(--fmuted); line-height:1.5; }
 @media (max-width:560px) { .hf .quad4 { grid-template-columns:1fr; } }
 
+/* ===== Figure: harness in action (records) ===== */
+.hf .scope { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:16px; }
+.hf .sc { background:var(--g-tint); border:1px solid var(--g-border); border-radius:10px; padding:10px 12px; }
+.hf .sc-k { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--g); font-weight:600; margin-bottom:3px; }
+.hf .sc-v { font-size:13px; color:var(--fink2); font-weight:450; line-height:1.4; }
+.hf .stage { font-size:12px; font-weight:500; color:var(--fmuted); margin:0 0 8px; }
+.hf .scope + .stage { margin-top:4px; }
+.hf .tbl { border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.hf .tr { display:grid; grid-template-columns:1fr 1.7fr 1.1fr; gap:10px; align-items:center; padding:11px 14px; font-size:12.5px; color:var(--fink2); }
+.hf .tr + .tr { border-top:1px solid var(--line2); }
+.hf .tr.th { background:var(--bone); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--fmuted2); padding:9px 14px; }
+.hf .tr.now { background:rgba(22,163,74,.05); }
+.hf .rid { font-weight:500; }
+.hf .dt { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
+.hf .dt s { color:var(--fmuted2); margin-right:6px; }
+.hf .dt .ok { color:#15803d; font-weight:500; }
+.hf .dt .blank { color:var(--fmuted2); font-style:italic; font-family:var(--font, inherit); }
+.hf .st { justify-self:start; display:inline-flex; align-items:center; gap:5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:9.5px; letter-spacing:.04em; padding:2px 8px; border-radius:20px; white-space:nowrap; }
+.hf .st::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.hf .st.fixed { color:#15803d; background:rgba(22,163,74,.1); }
+.hf .st.run { color:#1d4ed8; background:rgba(29,78,216,.08); }
+.hf .st.flag { color:#a16207; background:rgba(202,138,4,.12); }
+.hf .st.wait { color:var(--fmuted); background:var(--bone); }
+@media (max-width:560px) {
+  .hf .scope { grid-template-columns:1fr; }
+  .hf .tr { grid-template-columns:1fr auto; row-gap:4px; }
+  .hf .tr .dt { grid-column:1 / -1; grid-row:2; }
+  .hf .tr.th span:nth-child(2) { display:none; }
+}
+
 /* Related articles */
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); padding-bottom: 0; }
 .related-section h3 { font-size: 14px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
@@ -748,6 +778,28 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     <p>The worker stays focused on the field it was asked to update and the type of record it was given access to. It can keep moving through the task without asking for approval after every correction.</p>
 
     <p>The harness has already established the scope of the job, including which records the worker can access, which field it can change, and what it should do if it encounters something unexpected. As long as the work stays inside those boundaries, it can keep going.</p>
+
+    <figure class="hf" role="img" aria-label="Example: an AI worker corrects a mistyped date one property record at a time, inside a scope set by the harness. A record with no date is flagged for a person instead of changed.">
+      <div class="hf-head">
+        <span class="hf-eyebrow">Example · fixing a date across records</span>
+      </div>
+      <div class="stage">Set by the harness, before the job starts</div>
+      <div class="scope">
+        <div class="sc"><div class="sc-k">The AI can access</div><div class="sc-v">Only this batch of property records</div></div>
+        <div class="sc"><div class="sc-k">The AI can change</div><div class="sc-v">Only the date field</div></div>
+        <div class="sc"><div class="sc-k">If something’s unexpected</div><div class="sc-v">The AI stops and flags it</div></div>
+      </div>
+      <div class="stage">The AI worker, one record at a time</div>
+      <div class="tbl">
+          <div class="tr th"><span>Record</span><span>Date (wrong → corrected)</span><span>Status</span></div>
+          <div class="tr"><span class="rid">Property 1041</span><span class="dt"><s>Mar 14, 2062</s><span class="ok">Mar 14, 2026</span></span><span class="st fixed">Fixed</span></div>
+          <div class="tr"><span class="rid">Property 1042</span><span class="dt"><s>Mar 14, 2062</s><span class="ok">Mar 14, 2026</span></span><span class="st fixed">Fixed</span></div>
+          <div class="tr now"><span class="rid">Property 1043</span><span class="dt"><s>Mar 14, 2062</s><span class="ok">Mar 14, 2026</span></span><span class="st run">Updating</span></div>
+          <div class="tr"><span class="rid">Property 1044</span><span class="dt"><span class="blank">No date on record</span></span><span class="st flag">Flagged for a person</span></div>
+          <div class="tr"><span class="rid">Property 1045</span><span class="dt">Mar 14, 2062</span><span class="st wait">Next</span></div>
+      </div>
+      <figcaption>The harness sets the scope before the job starts, so the AI worker can move through the batch without asking for approval each time. When something doesn’t fit, like a record with no date, the AI flags it for a person instead of guessing.</figcaption>
+    </figure>
 
     <p>Those boundaries give the worker room to operate while keeping the job contained.</p>
 
