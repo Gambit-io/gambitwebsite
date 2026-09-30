@@ -275,6 +275,26 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
   .hf .scale-head span:last-child { display:none; }
 }
 
+/* ===== Figure 1b: concrete example ===== */
+.hf .core.claude { background:#fff; color:var(--fink); border:1px solid var(--line); box-shadow:0 10px 24px -16px rgba(21,17,13,.35); }
+.hf .core.claude .core-ic { background:#fbf1ec; }
+.hf .core.claude .core-ic svg { width:22px; height:22px; stroke:none; }
+.hf .core.claude .core-s { color:var(--fmuted); }
+.hf .col-h { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.hf .col-h .hand-l { font-size:13px; }
+.hf .item { display:flex; align-items:center; gap:9px; padding:8px 0; border-top:1px solid var(--line2); }
+.hf .lg { width:26px; height:26px; border-radius:7px; background:#fff; border:1px solid var(--line); display:grid; place-items:center; flex:none; }
+.hf .lg svg { width:15px; height:15px; }
+.hf .item-t { font-size:12.5px; font-weight:600; color:var(--fink); line-height:1.25; }
+.hf .item-d { font-size:11.5px; color:var(--fmuted); line-height:1.35; }
+.hf .rule { padding:8px 0; border-top:1px solid var(--line2); }
+.hf .pill { display:inline-flex; align-items:center; gap:5px; margin-top:4px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:9.5px; letter-spacing:.04em; padding:2px 8px; border-radius:20px; }
+.hf .pill::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.hf .pill.go { color:#15803d; background:rgba(22,163,74,.1); }
+.hf .pill.ask { color:#a16207; background:rgba(202,138,4,.12); }
+.hf .pill.no { color:#b91c1c; background:rgba(220,38,38,.09); }
+.hf .hand.list { gap:0; }
+
 /* Related articles */
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); padding-bottom: 0; }
 .related-section h3 { font-size: 14px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
@@ -632,6 +652,44 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     <p>“It’s like calling every car just ‘car,’” Pat says. “You can have a Corvette or a Honda. They’re both cars. That doesn’t tell you what either one can do.”</p>
 
     <p>An agent that checks the weather every morning and sends you a message doesn’t need much around it. An <a href="/what-is-an-ai-worker">AI worker</a> operating inside business systems for hours at a time needs more structure around how it works. They’re both <a href="/what-is-agentic-ai">agentic</a>, but the level of responsibility is different.</p>
+
+    <figure class="hf" role="img" aria-label="Example: Claude handling a refund request. The harness connects it to Zendesk, Stripe, and HubSpot; gives it the ticket, payment history, and refund policy in Notion; and sets rules for what it can do alone.">
+      <div class="hf-head">
+        <span class="hf-eyebrow">Example · a refund request</span>
+        <span class="hf-title">The same harness, with real tools</span>
+      </div>
+      <div class="frame">
+        <span class="frame-lbl">The harness</span>
+        <div class="core claude">
+          <div class="core-ic"><svg viewBox="0 0 24 24" role="img" aria-label="Claude"><path fill="#D97757" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg></div>
+          <div class="core-t">Claude</div>
+          <div class="core-s">The model, by Anthropic</div>
+        </div>
+        <div class="wires"><span></span><span></span><span></span></div>
+        <div class="hands">
+          <div class="hand list">
+            <div class="col-h"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.3l-6 6 2.1 2.1 6-6a4 4 0 0 0 5.3-5.4l-2.5 2.5-1.9-.2-.2-1.9z"/></svg></span><span class="hand-l">Tools and systems</span></div>
+            <div class="item"><span class="lg"><svg viewBox="0 0 24 24" role="img" aria-label="Zendesk"><path fill="#03363D" d="M12.914 2.904V16.29L24 2.905H12.914zM0 2.906C0 5.966 2.483 8.45 5.543 8.45s5.542-2.484 5.543-5.544H0zm11.086 4.807L0 21.096h11.086V7.713zm7.37 7.84c-3.063 0-5.542 2.48-5.542 5.543H24c0-3.06-2.48-5.543-5.543-5.543z"/></svg></span><div><div class="item-t">Zendesk</div><div class="item-d">Reads the ticket and replies</div></div></div>
+            <div class="item"><span class="lg"><svg viewBox="0 0 24 24" role="img" aria-label="Stripe"><path fill="#635BFF" d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg></span><div><div class="item-t">Stripe</div><div class="item-d">Looks up the charge, issues the refund</div></div></div>
+            <div class="item"><span class="lg"><svg viewBox="0 0 24 24" role="img" aria-label="HubSpot"><path fill="#FF7A59" d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg></span><div><div class="item-t">HubSpot</div><div class="item-d">Logs it on the customer record</div></div></div>
+          </div>
+          <div class="hand list">
+            <div class="col-h"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="hand-l">Information</span></div>
+            <div class="item"><span class="lg"><svg viewBox="0 0 24 24" role="img" aria-label="Zendesk"><path fill="#03363D" d="M12.914 2.904V16.29L24 2.905H12.914zM0 2.906C0 5.966 2.483 8.45 5.543 8.45s5.542-2.484 5.543-5.544H0zm11.086 4.807L0 21.096h11.086V7.713zm7.37 7.84c-3.063 0-5.542 2.48-5.542 5.543H24c0-3.06-2.48-5.543-5.543-5.543z"/></svg></span><div><div class="item-t">The customer’s ticket</div><div class="item-d">What they’re asking for</div></div></div>
+            <div class="item"><span class="lg"><svg viewBox="0 0 24 24" role="img" aria-label="Stripe"><path fill="#635BFF" d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg></span><div><div class="item-t">Their payment history</div><div class="item-d">What they paid, and when</div></div></div>
+            <div class="item"><span class="lg"><svg viewBox="0 0 24 24" role="img" aria-label="Notion"><path fill="#000000" d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/></svg></span><div><div class="item-t">Your refund policy</div><div class="item-d">What qualifies for a refund</div></div></div>
+          </div>
+          <div class="hand list">
+            <div class="col-h"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.5v6c0 4.2-3 7.4-7 8.5-4-1.1-7-4.3-7-8.5v-6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="hand-l">Rules</span></div>
+            <div class="rule"><div class="item-t">Refunds up to $100</div><span class="pill go">Handles it</span></div>
+            <div class="rule"><div class="item-t">Refunds over $100</div><span class="pill ask">A person approves</span></div>
+            <div class="rule"><div class="item-t">Cancel an account</div><span class="pill no">Not allowed</span></div>
+            <div class="rule"><div class="item-t">Stripe doesn’t respond</div><span class="pill ask">Stops and flags it</span></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>An illustrative setup, not a specific Gambit deployment. <b>Claude</b> does the thinking. <b>The harness</b> decides which systems it can reach, what it can see, and where a person steps in.</figcaption>
+    </figure>
 
     <h2>The Four Things a Harness Has to Handle</h2>
 
