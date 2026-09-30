@@ -214,7 +214,7 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 }
 .hf .hf-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:22px; }
 .hf .hf-eyebrow { font-family:ui-monospace,SFMono-Regular,Menlo,"Roboto Mono",monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--g); font-weight:600; }
-.hf .hf-title { font-size:15px; font-weight:600; letter-spacing:-.01em; color:var(--fink); }
+.hf .hf-title { font-size:13px; font-weight:500; letter-spacing:-.005em; color:var(--fmuted); }
 .hf figcaption { margin-top:18px; padding-top:14px; border-top:1px solid var(--line2); font-size:12.5px; color:var(--fmuted); line-height:1.5; }
 .hf figcaption b { color:var(--fink2); font-weight:600; }
 .hf .ic { width:30px; height:30px; border-radius:8px; display:grid; place-items:center; background:var(--paper); border:1px solid var(--line); flex:none; }
@@ -239,18 +239,6 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 .hf .hand-l { font-size:13.5px; font-weight:650; color:var(--fink); letter-spacing:-.01em; }
 .hf .hand-d { font-size:12px; color:var(--fmuted); line-height:1.42; }
 
-/* ===== Figure 2: four jobs ===== */
-.hf .quad { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.hf .q { --c:var(--g); background:var(--bone); border:1px solid var(--line2); border-radius:12px; padding:16px 15px 14px; display:flex; flex-direction:column; gap:8px; }
-.hf .q-top { display:flex; align-items:center; gap:10px; }
-.hf .q-n { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--c); font-weight:600; }
-.hf .q-l { font-size:14px; font-weight:650; color:var(--fink); letter-spacing:-.01em; }
-.hf .q-d { font-size:12px; color:var(--fmuted); line-height:1.45; flex:1; }
-.hf .q-ex { display:flex; align-items:center; gap:8px; margin-top:4px; padding-top:10px; border-top:1px solid var(--line2); font-size:11.5px; color:var(--fink2); }
-.hf .chips { display:flex; flex-wrap:wrap; gap:5px; }
-.hf .chip { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; color:var(--fink2); background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:2px 8px; }
-.hf .q.bogan { --c:#dc4530; } .hf .q.fleet { --c:#0f74c4; } .hf .q.chloe { --c:#2c8091; } .hf .q.breaks { --c:#b45309; }
-
 /* ===== Figure 3: responsibility scale ===== */
 .hf .scale { display:flex; flex-direction:column; gap:0; }
 .hf .row { display:grid; grid-template-columns:1fr 150px; gap:16px; align-items:center; padding:14px 0; }
@@ -270,7 +258,6 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
   .hf .hands { grid-template-columns:1fr; }
   .hf .wires { display:none; }
   .hf .core { margin-bottom:10px; }
-  .hf .quad { grid-template-columns:1fr; }
   .hf .row, .hf .scale-head { grid-template-columns:1fr; gap:10px; }
   .hf .scale-head span:last-child { display:none; }
 }
@@ -294,6 +281,15 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 .hf .pill.ask { color:#a16207; background:rgba(202,138,4,.12); }
 .hf .pill.no { color:#b91c1c; background:rgba(220,38,38,.09); }
 .hf .hand.list { gap:0; }
+
+/* ===== Figure: four jobs (simplified) ===== */
+.hf .quad4 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.hf .q4 { background:var(--bone); border:1px solid var(--line2); border-radius:12px; padding:18px 18px 20px; display:flex; flex-direction:column; }
+.hf .q4-top { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.hf .q4-n { font-family:ui-monospace,SFMono-Regular,Menlo,"Roboto Mono",monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--g); font-weight:600; }
+.hf .q4-l { font-size:15px; font-weight:650; color:var(--fink); letter-spacing:-.015em; line-height:1.3; margin-bottom:6px; }
+.hf .q4-d { font-size:12.5px; color:var(--fmuted); line-height:1.5; }
+@media (max-width:560px) { .hf .quad4 { grid-template-columns:1fr; } }
 
 /* Related articles */
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); padding-bottom: 0; }
@@ -695,46 +691,34 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <p>As Pat walked me through it, most of what a harness does fell into four areas.</p>
 
-    <figure class="hf" role="img" aria-label="Diagram: the four jobs of a harness: what the AI can see, touch, and decide, and what happens when something breaks.">
+    <figure class="hf" role="img" aria-label="Diagram: the four jobs of a harness: what the AI can see, what it can touch, what it can decide, and what happens when something breaks.">
       <div class="hf-head">
         <span class="hf-eyebrow">Four jobs of a harness</span>
-        <span class="hf-title">What it decides before the worker runs</span>
+        <span class="hf-title">Four questions, answered before the AI runs</span>
       </div>
-      <div class="quad">
-        <div class="q bogan">
-          <div class="q-top">
-            <span class="ic"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
-            <div><div class="q-n">01 · See</div><div class="q-l">What can the AI see?</div></div>
-          </div>
-          <div class="q-d">Which information it can access, and where that information comes from.</div>
-          <div class="q-ex"><span class="wmark s20" style="--wm:var(--w-bogan)"><b>B</b></span><span><b>Bogan</b> works with the data defined for deal origination.</span></div>
+      <div class="quad4">
+        <div class="q4">
+          <div class="q4-top"><span class="ic"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="q4-n">01 · See</span></div>
+          <div class="q4-l">What can the AI see?</div>
+          <div class="q4-d">The information it can access, and where that information comes from.</div>
         </div>
-        <div class="q fleet">
-          <div class="q-top">
-            <span class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.3l-6 6 2.1 2.1 6-6a4 4 0 0 0 5.3-5.4l-2.5 2.5-1.9-.2-.2-1.9z"/></svg></span>
-            <div><div class="q-n">02 · Touch</div><div class="q-l">What can the AI touch?</div></div>
-          </div>
-          <div class="q-d">Which tools and systems it can use, and what it can do inside each one.</div>
-          <div class="q-ex"><span class="wmark s20" style="--wm:var(--w-fleet)"><b>F</b></span><span><b>Fleet</b> writes confirmed loads back to the TMS.</span></div>
+        <div class="q4">
+          <div class="q4-top"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.3l-6 6 2.1 2.1 6-6a4 4 0 0 0 5.3-5.4l-2.5 2.5-1.9-.2-.2-1.9z"/></svg></span><span class="q4-n">02 · Touch</span></div>
+          <div class="q4-l">What can the AI touch?</div>
+          <div class="q4-d">The tools and systems it can use, and what it’s allowed to do in each one.</div>
         </div>
-        <div class="q chloe">
-          <div class="q-top">
-            <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13 6 7"/><path d="M12 13l6-6"/><path d="M6 11V7h4"/><path d="M18 11V7h-4"/></svg></span>
-            <div><div class="q-n">03 · Decide</div><div class="q-l">What can the AI decide?</div></div>
-          </div>
-          <div class="q-d">Which decisions it makes on its own, and which need a person.</div>
-          <div class="q-ex"><span class="wmark s20" style="--wm:var(--w-chloe)"><b>C</b></span><span><b>Chloe</b> routes out-of-scope requests to Vail staff.</span></div>
+        <div class="q4">
+          <div class="q4-top"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13 6 7"/><path d="M12 13l6-6"/><path d="M6 11V7h4"/><path d="M18 11V7h-4"/></svg></span><span class="q4-n">03 · Decide</span></div>
+          <div class="q4-l">What can the AI decide?</div>
+          <div class="q4-d">What it handles on its own, and what needs a person.</div>
         </div>
-        <div class="q breaks">
-          <div class="q-top">
-            <span class="ic"><svg viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
-            <div><div class="q-n">04 · Breaks</div><div class="q-l">What happens when something breaks?</div></div>
-          </div>
-          <div class="q-d">A defined path forward when the usual process doesn’t apply.</div>
-          <div class="q-ex"><div class="chips"><span class="chip">Retry</span><span class="chip">Stop</span><span class="chip">Flag it</span><span class="chip">Bring in a person</span></div></div>
+        <div class="q4">
+          <div class="q4-top"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span><span class="q4-n">04 · Breaks</span></div>
+          <div class="q4-l">What happens when something breaks?</div>
+          <div class="q4-d">Its next step: retry, stop, flag the issue, or bring in a person.</div>
         </div>
       </div>
-      <figcaption>The model keeps the same capabilities. <b>The harness</b> sets where they apply, drawn around the job the worker is doing.</figcaption>
+      <figcaption>Each answer is defined around <b>the job</b> the AI is there to do.</figcaption>
     </figure>
 
     <h3>What can the AI see?</h3>
