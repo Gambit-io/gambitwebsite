@@ -214,7 +214,6 @@ nav a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
 }
 .hf .hf-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:22px; }
 .hf .hf-eyebrow { font-family:ui-monospace,SFMono-Regular,Menlo,"Roboto Mono",monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--g); font-weight:600; }
-.hf .hf-title { font-size:13px; font-weight:500; letter-spacing:-.005em; color:var(--fmuted); }
 .hf figcaption { margin-top:18px; padding-top:14px; border-top:1px solid var(--line2); font-size:12.5px; color:var(--fmuted); line-height:1.5; }
 .hf figcaption b { color:var(--fink2); font-weight:600; }
 .hf .ic { width:30px; height:30px; border-radius:8px; display:grid; place-items:center; background:var(--paper); border:1px solid var(--line); flex:none; }
@@ -612,7 +611,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     <figure class="hf" role="img" aria-label="Diagram: the model does the thinking; the harness around it connects it to tools and systems, manages information, and sets rules.">
       <div class="hf-head">
         <span class="hf-eyebrow">The brain and the hands</span>
-        <span class="hf-title">What sits around the model</span>
       </div>
       <div class="frame">
         <span class="frame-lbl">The harness</span>
@@ -652,7 +650,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     <figure class="hf" role="img" aria-label="Example: Claude handling a refund request. The harness connects it to Zendesk, Stripe, and HubSpot; gives it the ticket, payment history, and refund policy in Notion; and sets rules for what it can do alone.">
       <div class="hf-head">
         <span class="hf-eyebrow">Example · a refund request</span>
-        <span class="hf-title">The same harness, with real tools</span>
       </div>
       <div class="frame">
         <span class="frame-lbl">The harness</span>
@@ -684,7 +681,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
           </div>
         </div>
       </div>
-      <figcaption>An illustrative setup, not a specific Gambit deployment. <b>Claude</b> does the thinking. <b>The harness</b> decides which systems it can reach, what it can see, and where a person steps in.</figcaption>
+      <figcaption>This is an example setup, not one of Gambit’s actual deployments. <b>Claude</b> does the thinking, and <b>the harness</b> decides which systems it can reach, what it can see, and when a person needs to step in.</figcaption>
     </figure>
 
     <h2>The Four Things a Harness Has to Handle</h2>
@@ -694,7 +691,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
     <figure class="hf" role="img" aria-label="Diagram: the four jobs of a harness: what the AI can see, what it can touch, what it can decide, and what happens when something breaks.">
       <div class="hf-head">
         <span class="hf-eyebrow">Four jobs of a harness</span>
-        <span class="hf-title">Four questions, answered before the AI runs</span>
       </div>
       <div class="quad4">
         <div class="q4">
@@ -771,8 +767,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
     <figure class="hf" role="img" aria-label="Diagram: the harness needed grows from a simple scheduled weather check, to an agent that updates records, to an AI worker inside business systems.">
       <div class="hf-head">
-        <span class="hf-eyebrow">All agentic, not all the same</span>
-        <span class="hf-title">The harness grows with the responsibility</span>
+        <span class="hf-eyebrow">How much harness an agent needs</span>
       </div>
       <div class="scale">
         <div class="scale-head"><span>The job</span><span>Harness needed</span></div>
@@ -798,7 +793,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
           <div class="meter"><div class="meter-bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span class="meter-l">Full harness</span></div>
         </div>
       </div>
-      <figcaption>They’re <b>all agentic</b>. What changes is how much the agent is trusted to do, and how much structure it needs around it.</figcaption>
+      <figcaption>All three of these are <b>agentic</b>. The difference is how much each one is trusted to do. The more responsibility an agent has, the more structure it needs around it.</figcaption>
     </figure>
 
     <p>That’s also why we use the term “AI worker” for <a href="/workers">what we build</a>. A worker is built around a specific job, and the harness follows from that job. It defines what the worker needs to see, what it needs to touch, what it can decide, and where a person still needs to be involved.</p>
