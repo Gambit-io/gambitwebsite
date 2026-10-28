@@ -242,9 +242,9 @@ input { font-family: var(--font); }
 /* Architecture */
 .arch { display: grid; grid-template-columns: 1fr 76px 1.2fr 76px 1fr; align-items: stretch; margin-top: 32px; }
 .arch-col { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
-.arch-col-agent { border: 2px solid var(--brand); background: rgba(241,4,79,0.04); }
+.arch-col-companion { border: 2px solid var(--brand); background: rgba(241,4,79,0.04); }
 .arch-head { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.arch-col-agent .arch-head { color: var(--brand-deep); }
+.arch-col-companion .arch-head { color: var(--brand-deep); }
 .arch-box { border: 1px solid var(--border-light); background: var(--page); border-radius: 8px; padding: 10px 12px; }
 .arch-box-title { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
 .arch-box-desc { font-size: 12px; color: var(--secondary); line-height: 1.45; }
@@ -409,7 +409,7 @@ input { font-family: var(--font); }
     <div>
       <div class="op-eyebrow">Prepared for Pancreatic Cancer North America</div>
       <h1 class="op-title">Ask-an-Expert AI</h1>
-      <p class="op-lede">A 24/7 AI agent for patients, families, caregivers and primary care physicians in Canada, in English and French. It answers only from documents PCNA approves, and it hands a conversation to a person at PCNA when one is needed.</p>
+      <p class="op-lede">A 24/7 AI companion for patients, families, caregivers and primary care physicians in Canada, in English and French. It answers only from documents PCNA approves, and it hands a conversation to a person at PCNA when one is needed.</p>
       <p class="op-value">Today, people wait up to two business days for an answer. This gives them a trusted place to start at any hour, with PCNA's experts still at the center.</p>
       <div class="op-cols">
         <div class="op-col">
@@ -438,14 +438,14 @@ input { font-family: var(--font); }
           <ul class="op-list">
             <li>Coverage outside Canada</li>
             <li>Languages other than English and French</li>
-            <li>Reselling or licensing the agent</li>
+            <li>Reselling or licensing the companion</li>
             <li>Connections to PCNA's other systems, apart from one SharePoint folder</li>
           </ul>
         </div>
         <div class="op-col">
           <div class="op-h">Ownership and data</div>
           <ul class="op-list">
-            <li>PCNA owns the agent and its content</li>
+            <li>PCNA owns the companion and its content</li>
             <li>Gambit uses PCNA's data only for this project and never shares it without PCNA's written consent</li>
           </ul>
         </div>
@@ -508,7 +508,7 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">01 / Where we'd start</div>
     <h2>You've already done the hard part.</h2>
-    <p class="body">You've described what the AI agent should do, what it must never do, and when a person has to step in. Today, someone who reaches out to Ask-an-Expert waits up to two business days for an answer. At 3 a.m., that's when people turn to search results instead.</p>
+    <p class="body">You've described what the AI companion should do, what it must never do, and when a person has to step in. Today, someone who reaches out to Ask-an-Expert waits up to two business days for an answer. At 3 a.m., that's when people turn to search results instead.</p>
     <p class="body">This proposal covers the first version. It's a front door to Ask-an-Expert that's open at any hour, with PCNA's experts still at the center of it.</p>
   </div>
 </section>
@@ -517,7 +517,7 @@ input { font-family: var(--font); }
 <section class="band band-white">
   <div class="band-inner">
     <div class="section-label">02 / The first version</div>
-    <h2>One agent, for Canada, in English and French.</h2>
+    <h2>One companion, for Canada, in English and French.</h2>
     <p class="body">It's built for patients, families, caregivers and primary care physicians. It answers from the documents PCNA approves and nothing else. Those can include outside material, like National Cancer Institute resources, once PCNA approves it.</p>
     <div class="check-list">
       <div class="label">What's included</div>
@@ -531,7 +531,7 @@ input { font-family: var(--font); }
       <div class="label">Out of scope</div>
       <div class="check-item"><span class="mark-out">&#10005;</span><span>Coverage outside Canada</span></div>
       <div class="check-item"><span class="mark-out">&#10005;</span><span>Languages other than English and French</span></div>
-      <div class="check-item"><span class="mark-out">&#10005;</span><span>Reselling or licensing the agent to other organizations</span></div>
+      <div class="check-item"><span class="mark-out">&#10005;</span><span>Reselling or licensing the companion to other organizations</span></div>
       <div class="check-item"><span class="mark-out">&#10005;</span><span>Connections to PCNA's other systems, apart from the one SharePoint folder that PCNA gives Gambit read access to</span></div>
     </div>
   </div>
@@ -542,7 +542,7 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">03 / How it works</div>
     <h2>Approved sources in, a person when it counts.</h2>
-    <p class="body">PCNA decides what the agent knows, and approves the rules for when it brings in a person.</p>
+    <p class="body">PCNA decides what the companion knows, and approves the rules for when it brings in a person.</p>
     <div class="pipeline">
       <div class="pipeline-stage">
         <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/></svg></div>
@@ -552,7 +552,7 @@ input { font-family: var(--font); }
       <div class="pipeline-stage">
         <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
         <div class="pipeline-title">2. Update</div>
-        <div class="pipeline-desc">Each upload triggers an update, and the agent reads the new material.</div>
+        <div class="pipeline-desc">Each upload triggers an update, and the companion reads the new material.</div>
       </div>
       <div class="pipeline-stage">
         <div class="pipeline-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
@@ -570,7 +570,7 @@ input { font-family: var(--font); }
         <div class="pipeline-desc">Complex medical questions and clinical trial navigation go to PCNA's Ask-an-Expert team.</div>
       </div>
     </div>
-    <p class="pipeline-note">The agent gives general information and navigation help. It doesn't diagnose, recommend treatment or interpret test results.</p>
+    <p class="pipeline-note">The companion gives general information and navigation help. It doesn't diagnose, recommend treatment or interpret test results.</p>
   </div>
 </section>
 
@@ -579,7 +579,7 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">04 / How it fits together</div>
     <h2>Three parts, and PCNA owns the knowledge.</h2>
-    <p class="body">PCNA keeps the approved documents in its own SharePoint folder. Gambit builds and runs the agent, which reads only from that folder. People reach the agent through a chat window on PCNA's website, and anything that needs a person comes back to PCNA as a crisis alert or a handoff.</p>
+    <p class="body">PCNA keeps the approved documents in its own SharePoint folder. Gambit builds and runs the companion, which reads only from that folder. People reach the companion through a chat window on PCNA's website, and anything that needs a person comes back to PCNA as a crisis alert or a handoff.</p>
     <div class="arch">
       <div class="arch-col">
         <div class="arch-head">PCNA</div>
@@ -588,9 +588,9 @@ input { font-family: var(--font); }
         <div class="arch-box"><div class="arch-box-title">Ask-an-Expert team</div><div class="arch-box-desc">Picks up handoffs, the conversations that need an expert.</div></div>
       </div>
       <div class="arch-link"><div class="arch-flow"><span class="arch-arrow">&rarr;</span><span class="arch-flow-label">documents</span></div><div class="arch-flow"><span class="arch-arrow">&larr;</span><span class="arch-flow-label">crisis alerts and handoffs</span></div></div>
-      <div class="arch-col arch-col-agent">
-        <div class="arch-head">The agent, built and run by Gambit</div>
-        <div class="arch-box"><div class="arch-box-title">Crisis screening</div><div class="arch-box-desc">Checks every message for crisis language before the agent writes any reply.</div></div>
+      <div class="arch-col arch-col-companion">
+        <div class="arch-head">The companion, built and run by Gambit</div>
+        <div class="arch-box"><div class="arch-box-title">Crisis screening</div><div class="arch-box-desc">Checks every message for crisis language before the companion writes any reply.</div></div>
         <div class="arch-box"><div class="arch-box-title">Approved knowledge</div><div class="arch-box-desc">Everything in PCNA's SharePoint folder, refreshed with each upload. Nothing from the open internet.</div></div>
         <div class="arch-box"><div class="arch-box-title">Answers</div><div class="arch-box-desc">General information and next steps, in English or French. Physician answers show their source and review date.</div></div>
       </div>
@@ -605,19 +605,19 @@ input { font-family: var(--font); }
 
     <div class="check-list">
       <div class="label">Keeping the knowledge current</div>
-      <div class="check-item"><span class="mark">&#10003;</span><span><strong>Adding a document.</strong> Someone at PCNA uploads it to the SharePoint folder. The upload triggers an update, and the agent can use it within a day.</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span><strong>Replacing or removing one.</strong> Replace or delete the file in the folder, and within a day the old version stops appearing in the agent's answers.</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span><strong>Only what's in the folder.</strong> If a document isn't in PCNA's SharePoint folder, the agent doesn't answer from it.</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span><strong>Adding a document.</strong> Someone at PCNA uploads it to the SharePoint folder. The upload triggers an update, and the companion can use it within a day.</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span><strong>Replacing or removing one.</strong> Replace or delete the file in the folder, and within a day the old version stops appearing in the companion's answers.</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span><strong>Only what's in the folder.</strong> If a document isn't in PCNA's SharePoint folder, the companion doesn't answer from it.</span></div>
     </div>
 
     <div class="steps">
       <div class="label">One conversation, step by step</div>
       <div class="step"><span class="step-num">1</span><div class="step-body">A person opens the chat on PCNA's website, at any hour, and writes in English or French.</div></div>
-      <div class="step"><span class="step-num">2</span><div class="step-body">Before the agent writes any reply, <strong>crisis screening</strong> checks the message for crisis language.</div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-body">Before the companion writes any reply, <strong>crisis screening</strong> checks the message for crisis language.</div></div>
       <div class="step"><span class="step-num step-num-alert">!</span><div class="step-body"><strong>If it finds crisis language,</strong> the chat shows immediate help, such as the 9-8-8 Suicide Crisis Helpline, or 9-1-1 for a medical emergency. PCNA's alert contact also gets a <strong>crisis alert</strong> by email, with a link to the conversation.</div></div>
-      <div class="step"><span class="step-num">3</span><div class="step-body">Otherwise, the agent looks for the answer in <strong>PCNA's approved documents only</strong>.</div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-body">Otherwise, the companion looks for the answer in <strong>PCNA's approved documents only</strong>.</div></div>
       <div class="step"><span class="step-num">4</span><div class="step-body">It answers with general information and what to do next. It doesn't diagnose, recommend treatment or interpret test results. Answers for physicians link to the source and show when it was last clinically reviewed.</div></div>
-      <div class="step"><span class="step-num">5</span><div class="step-body">If the documents don't cover the question, or it's a complex medical question or a request for clinical trial navigation, the agent says so and makes a <strong>handoff</strong> to PCNA's Ask-an-Expert team. It tells the person that PCNA will follow up.</div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-body">If the documents don't cover the question, or it's a complex medical question or a request for clinical trial navigation, the companion says so and makes a <strong>handoff</strong> to PCNA's Ask-an-Expert team. It tells the person that PCNA will follow up.</div></div>
     </div>
 
     <div class="decide">
@@ -637,7 +637,7 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">05 / Our approach</div>
     <h2>Four months, and PCNA signs off each one.</h2>
-    <p class="body">Each month ends with a checkpoint, and nothing moves forward until PCNA signs off. After launch, the agent runs as a monthly service.</p>
+    <p class="body">Each month ends with a checkpoint, and nothing moves forward until PCNA signs off. After launch, the companion runs as a monthly service.</p>
     <div class="timeline">
       <div class="timeline-bar">
         <div class="timeline-seg timeline-seg-1">MONTH 1</div>
@@ -650,7 +650,7 @@ input { font-family: var(--font); }
     <div class="phase-list">
       <div class="phase-card">
         <div class="phase-head"><span class="phase-num">01</span><div class="phase-name">Discovery and documents</div></div>
-        <p class="phase-intro">We learn how Ask-an-Expert runs today, and PCNA gathers the documents the agent will draw on.</p>
+        <p class="phase-intro">We learn how Ask-an-Expert runs today, and PCNA gathers the documents the companion will draw on.</p>
         <div class="phase-signoff"><strong>PCNA signs off</strong> on the list of approved sources, who receives alerts, and the decisions listed in section 04.</div>
       </div>
       <div class="phase-card">
@@ -698,7 +698,7 @@ input { font-family: var(--font); }
   <div class="band-inner">
     <div class="section-label">07 / Who does what</div>
     <h2>PCNA decides what it knows. We build it.</h2>
-    <p class="body">Alex leads the project for Gambit, and Ryan oversees it. PCNA names a project lead and an alert contact, and decides what the agent knows.</p>
+    <p class="body">Alex leads the project for Gambit, and Ryan oversees it. PCNA names a project lead and an alert contact, and decides what the companion knows.</p>
     <div class="team-grid">
       <div class="team-card">
         <div class="team-avatar">AB</div>
@@ -714,7 +714,7 @@ input { font-family: var(--font); }
       </div>
     </div>
     <div class="cadence-grid">
-      <div class="cadence-card"><div class="cadence-title">Knowledge</div><div class="cadence-desc">PCNA chooses, approves and uploads the documents. We build the agent to answer only from them.</div></div>
+      <div class="cadence-card"><div class="cadence-title">Knowledge</div><div class="cadence-desc">PCNA chooses, approves and uploads the documents. We build the companion to answer only from them.</div></div>
       <div class="cadence-card"><div class="cadence-title">Clinical review</div><div class="cadence-desc">PCNA's experts review content and keep it current. We show the source and review date on physician answers.</div></div>
       <div class="cadence-card"><div class="cadence-title">Crisis alerts</div><div class="cadence-desc">PCNA names the alert contact. We build the crisis screening and the alerts.</div></div>
       <div class="cadence-card"><div class="cadence-title">Handoffs</div><div class="cadence-desc">PCNA's Ask-an-Expert team picks them up. We build the handoff and agree with you how it reaches your team.</div></div>
@@ -722,7 +722,7 @@ input { font-family: var(--font); }
     </div>
     <div class="check-list">
       <div class="label">Ownership and data</div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>PCNA owns the agent and its content.</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>PCNA owns the companion and its content.</span></div>
       <div class="check-item"><span class="mark">&#10003;</span><span>Gambit uses PCNA's data only for this project and never shares it without PCNA's written consent.</span></div>
     </div>
   </div>
@@ -736,9 +736,9 @@ input { font-family: var(--font); }
     <p class="body">We'd track these, plus a few for safety, and agree the targets together.</p>
     <div class="check-list">
       <div class="check-item"><span class="mark">&#10003;</span><span>How quickly people get a first response, compared with today's two business days</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>How many conversations the agent handles, and how many become handoffs to an expert</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>How many conversations the companion handles, and how many become handoffs to an expert</span></div>
       <div class="check-item"><span class="mark">&#10003;</span><span>How often crisis alerts and handoffs reach the right person, and how fast</span></div>
-      <div class="check-item"><span class="mark">&#10003;</span><span>The questions people ask most, and where the agent had no good answer</span></div>
+      <div class="check-item"><span class="mark">&#10003;</span><span>The questions people ask most, and where the companion had no good answer</span></div>
     </div>
   </div>
 </section>
@@ -777,7 +777,7 @@ input { font-family: var(--font); }
       <div class="check-item"><span class="mark">1</span><span>Review this proposal together and confirm the scope of the first version</span></div>
       <div class="check-item"><span class="mark">2</span><span>PCNA names its project lead and its alert contact</span></div>
       <div class="check-item"><span class="mark">3</span><span>We agree a start date for the four-month build</span></div>
-      <div class="check-item"><span class="mark">4</span><span>PCNA gathers the approved documents the agent will draw on</span></div>
+      <div class="check-item"><span class="mark">4</span><span>PCNA gathers the approved documents the companion will draw on</span></div>
       <div class="check-item"><span class="mark">5</span><span>We start discovery</span></div>
     </div>
   </div>
