@@ -1,6 +1,6 @@
 # Gambit
 
-> Gambit (Gambit Technology Inc.) builds AI workers that run business operations. Not chatbots, not copilots: AI workers with a job title, a scope, and accountability to an outcome. Founded in 2023, headquartered in Canada, live across financial services, healthcare, public sector, legal, logistics, hospitality, and business services. Tagline: We put AI to work.
+> Gambit (Gambit Technologies Inc.) builds AI workers that run business operations. Not chatbots, not copilots: AI workers with a job title, a scope, and accountability to an outcome. Founded in 2023, headquartered in Canada, live across financial services, healthcare, public sector, legal, logistics, hospitality, and business services. Tagline: We put AI to work.
 
 ## What Gambit Does
 
